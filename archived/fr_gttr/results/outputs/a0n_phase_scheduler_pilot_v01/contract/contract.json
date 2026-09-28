@@ -1,0 +1,90 @@
+{
+ "contract_id": "A0N_RESPONSE_PHASE_AWARE_PILOT_V01",
+ "date": "2026-09-17",
+ "status": "FROZEN_BEFORE_ANY_GPU",
+ "purpose": "Pilot: can the response phase structure found in A0M (common-mode rho = |mean(h)|/std(h) decaying ~8-10x across training phases) guide a training policy? NOT a final algorithm. Mechanism pilot only.",
+ "frozen_science_semantics": {
+  "response": "production run_adjoint_only on event snapshot, H=4, M=4, hvp_fp32=True (formula/code UNCHANGED); raw hhat j=1..4 (dV_score/dlambda, negative=beneficial); candidate batches/events REUSED from A0K frozen K10 manifest (read-only)",
+  "phase_metric": "rho(t) = abs(mean(h_1..h_4)) / (std(h_1..h_4) + 1e-12); population std (ddof=0), same as A0M diagnostic",
+  "phase_policy": {
+   "high": "rho > 2            -> action = no-op (native AdamW step, no injection)",
+   "medium": "1 <= rho <= 2    -> action = inject g + lambda*(g_j* - g), j* = argmin_{j in 1..4} hhat_j, tie -> smallest id",
+   "low": "rho < 1             -> action = no-op (native AdamW step, no injection)"
+  },
+  "injection": "A0K-frozen semantics: single-step post-unscale/pre-clip gradient assignment p.grad = g + 0.05*(g_j - g); lambda=0.05 UNCHANGED; chosen==0 assigns native gradient clones (bitwise = no intervention)",
+  "forbidden": [
+   "modify optimizer/AdamW/clipping",
+   "modify lambda=0.05",
+   "modify response formula/H=4",
+   "complex/adaptive controllers",
+   "adaptive mixture",
+   "response cache/stale/JVP/block planning",
+   "tune rho thresholds by results",
+   "add seeds",
+   "auto-expand"
+  ]
+ },
+ "frozen_environment": {
+  "recipe": "e3c v0.7 identical to A0K/A0L: hidden 256x4, seq 128, batch 4, accum 2, bf16, clip 1.0, lr 5e-4, planned 128 optimizer steps",
+  "seeds_prefrozen": [
+   2030,
+   2031,
+   2032
+  ],
+  "cadence_prefrozen": {
+   "K": 10,
+   "control_steps": [
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    70,
+    80,
+    90,
+    100,
+    110,
+    120
+   ]
+  },
+  "events_source": "A0K live_manifest.json K10 events (sha256 below), read-only",
+  "eval": "v_score(64)/v_eval(64) frozen validation_split, every 10 steps + final (A0K/A0L identical)",
+  "a0k_live_manifest_sha256": "7ae6ff92b00ab7c893b735b976a113f6ca476e4e047dd133e63bdf33304abc67"
+ },
+ "arms": {
+  "A": "native AdamW (no events)",
+  "B": "fixed-j1: inject j=1 at EVERY event (A0K arm-B semantics; adjoint not computed, blind injection)",
+  "C": "phase-aware scheduler: at every event compute h_j + rho, act per frozen phase policy",
+  "A_wc": "arm A under T_C wall budget (equal wall-clock)",
+  "B_wc": "arm B under T_C wall budget (equal wall-clock)"
+ },
+ "equal_wall_clock_protocol": "T_C = measured wall of C full 128-step run in-session (all controller overhead included); A_wc/B_wc consume T_C in the same session",
+ "consistency_gates": {
+  "S1": "arm A(2031) model_hash bitwise == v0.7 bank at steps 46/52 (native path identity)",
+  "S2": "C-ghost (full phase machinery incl. adjoint + rho, forced action=0 at all events) trajectory bitwise == arm A",
+  "POST_MAIN": "A/B final_v_eval bitwise == frozen A0K K10 A/B summaries for seeds 2030-2032"
+ },
+ "must_save": [
+  "phase trajectory (per event: step, phase, rho)",
+  "rho(t) per seed",
+  "action events (chosen action, hhat, timings)",
+  "final v_eval per arm per seed",
+  "step logs",
+  "timing_meta per seed"
+ ],
+ "metrics": [
+  "gain vs AdamW = L_A - L_C (equal steps @128)",
+  "gain vs fixed-j1 = L_B - L_C",
+  "equal-wall-clock gains L_A_wc - L_C, L_B_wc - L_C (with steps-completed check)",
+  "controller overhead = sum(controller_compute_time)/wall + T_extra = T_C - T_A",
+  "phase occupancy = fraction of events in high/medium/low per seed"
+ ],
+ "interpretation_cases_frozen": {
+  "CASE_A": "median(L_B - L_C) > 0 AND >=2/3 seeds positive  -> phase scheduling effective (C beats B)",
+  "CASE_C": "median(L_A - L_C) < 0 AND median(L_B - L_C) < 0 -> stop phase route",
+  "CASE_B": "otherwise (incl. C~B) -> response mainly rediscovers fixed strategy"
+ },
+ "gpu_budget_seconds": 1800,
+ "stop_condition": "pilot only; report and stop; no expansion, no optimizer/lambda changes"
+}

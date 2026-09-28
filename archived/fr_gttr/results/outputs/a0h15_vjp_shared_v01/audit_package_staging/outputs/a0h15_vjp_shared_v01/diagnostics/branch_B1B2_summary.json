@@ -1,0 +1,245 @@
+{
+ "branch": "B",
+ "config": "FP32-HVP different-config (7 _hvp call points under nullcontext)",
+ "tolerance": {
+  "atol32": 1e-05,
+  "rtol32": 0.0001
+ },
+ "units": {
+  "2031/52": {
+   "1": {
+    "b1_elementwise_pass": true,
+    "max_abs_gap_fwd_adj": 5.043704386434311e-11,
+    "ranking_frozen_incl_noop": [
+     4,
+     2,
+     3,
+     0,
+     1
+    ],
+    "ranking_b1adj_incl_noop": [
+     4,
+     2,
+     3,
+     0,
+     1
+    ],
+    "ranking_identical": true,
+    "frozen_selection": 4,
+    "b1_selection": 4,
+    "elementwise_vs_frozenC": {
+     "max_abs_b1adj_minus_fzfwd": 5.043704386434311e-11,
+     "max_abs_fzadj_minus_fzfwd": 5.043704386434311e-11
+    }
+   },
+   "4": {
+    "b1_elementwise_pass": true,
+    "max_abs_gap_fwd_adj": 1.195714373868062e-10,
+    "ranking_frozen_incl_noop": [
+     4,
+     1,
+     3,
+     2,
+     0
+    ],
+    "ranking_b1adj_incl_noop": [
+     4,
+     1,
+     3,
+     2,
+     0
+    ],
+    "ranking_identical": true,
+    "frozen_selection": 4,
+    "b1_selection": 4,
+    "elementwise_vs_frozenC": {
+     "max_abs_b1adj_minus_fzfwd": 4.499897613483798e-06,
+     "max_abs_fzadj_minus_fzfwd": 1.3578728919484001e-06
+    }
+   },
+   "8": {
+    "b1_elementwise_pass": true,
+    "max_abs_gap_fwd_adj": 3.1347897628403176e-10,
+    "ranking_frozen_incl_noop": [
+     4,
+     3,
+     2,
+     1,
+     0
+    ],
+    "ranking_b1adj_incl_noop": [
+     4,
+     3,
+     2,
+     1,
+     0
+    ],
+    "ranking_identical": true,
+    "frozen_selection": 4,
+    "b1_selection": 4,
+    "elementwise_vs_frozenC": {
+     "max_abs_b1adj_minus_fzfwd": 5.783800797164694e-05,
+     "max_abs_fzadj_minus_fzfwd": 2.733342675937528e-06
+    }
+   }
+  },
+  "2034/64": {
+   "1": {
+    "b1_elementwise_pass": true,
+    "max_abs_gap_fwd_adj": 8.0323070243693e-12,
+    "ranking_frozen_incl_noop": [
+     4,
+     3,
+     1,
+     2,
+     0
+    ],
+    "ranking_b1adj_incl_noop": [
+     4,
+     3,
+     1,
+     2,
+     0
+    ],
+    "ranking_identical": true,
+    "frozen_selection": 4,
+    "b1_selection": 4,
+    "elementwise_vs_frozenC": {
+     "max_abs_b1adj_minus_fzfwd": 8.0323070243693e-12,
+     "max_abs_fzadj_minus_fzfwd": 8.0323070243693e-12
+    }
+   },
+   "4": {
+    "b1_elementwise_pass": true,
+    "max_abs_gap_fwd_adj": 1.0927131638763243e-10,
+    "ranking_frozen_incl_noop": [
+     3,
+     4,
+     1,
+     2,
+     0
+    ],
+    "ranking_b1adj_incl_noop": [
+     3,
+     4,
+     1,
+     2,
+     0
+    ],
+    "ranking_identical": true,
+    "frozen_selection": 3,
+    "b1_selection": 3,
+    "elementwise_vs_frozenC": {
+     "max_abs_b1adj_minus_fzfwd": 1.4296529522327475e-05,
+     "max_abs_fzadj_minus_fzfwd": 1.6147387182884054e-06
+    }
+   },
+   "8": {
+    "b1_elementwise_pass": true,
+    "max_abs_gap_fwd_adj": 4.1249323748382416e-10,
+    "ranking_frozen_incl_noop": [
+     4,
+     1,
+     3,
+     2,
+     0
+    ],
+    "ranking_b1adj_incl_noop": [
+     4,
+     1,
+     3,
+     2,
+     0
+    ],
+    "ranking_identical": true,
+    "frozen_selection": 4,
+    "b1_selection": 4,
+    "elementwise_vs_frozenC": {
+     "max_abs_b1adj_minus_fzfwd": 3.487643395095816e-05,
+     "max_abs_fzadj_minus_fzfwd": 6.235768118548202e-06
+    }
+   }
+  },
+  "2036/76": {
+   "1": {
+    "b1_elementwise_pass": true,
+    "max_abs_gap_fwd_adj": 4.557800274349044e-11,
+    "ranking_frozen_incl_noop": [
+     4,
+     3,
+     1,
+     0,
+     2
+    ],
+    "ranking_b1adj_incl_noop": [
+     4,
+     3,
+     1,
+     0,
+     2
+    ],
+    "ranking_identical": true,
+    "frozen_selection": 4,
+    "b1_selection": 4,
+    "elementwise_vs_frozenC": {
+     "max_abs_b1adj_minus_fzfwd": 4.557800274349044e-11,
+     "max_abs_fzadj_minus_fzfwd": 4.557800274349044e-11
+    }
+   },
+   "4": {
+    "b1_elementwise_pass": true,
+    "max_abs_gap_fwd_adj": 3.7335174448566155e-11,
+    "ranking_frozen_incl_noop": [
+     1,
+     4,
+     3,
+     0,
+     2
+    ],
+    "ranking_b1adj_incl_noop": [
+     1,
+     4,
+     3,
+     0,
+     2
+    ],
+    "ranking_identical": true,
+    "frozen_selection": 1,
+    "b1_selection": 1,
+    "elementwise_vs_frozenC": {
+     "max_abs_b1adj_minus_fzfwd": 3.729123485403385e-06,
+     "max_abs_fzadj_minus_fzfwd": 4.623218329076646e-07
+    }
+   },
+   "8": {
+    "b1_elementwise_pass": true,
+    "max_abs_gap_fwd_adj": 1.8934688821199697e-10,
+    "ranking_frozen_incl_noop": [
+     1,
+     4,
+     3,
+     2,
+     0
+    ],
+    "ranking_b1adj_incl_noop": [
+     1,
+     4,
+     3,
+     2,
+     0
+    ],
+    "ranking_identical": true,
+    "frozen_selection": 1,
+    "b1_selection": 1,
+    "elementwise_vs_frozenC": {
+     "max_abs_b1adj_minus_fzfwd": 5.521179527521623e-06,
+     "max_abs_fzadj_minus_fzfwd": 1.0245737614674507e-06
+    }
+   }
+  }
+ },
+ "B1_elementwise_PASS": true,
+ "B2_decision_ranking_identical_all_9": true,
+ "B3_no_retroactive_BF16_equivalence": true,
+ "timing_trigger": "NOT_COVERED: timing requires decision match on an INDEPENDENT validation set; batch A was demoted to dev per read-once rule, so only dev-level screening is claimed (small-scale dev screening, no statistical non-inferiority)."
+}

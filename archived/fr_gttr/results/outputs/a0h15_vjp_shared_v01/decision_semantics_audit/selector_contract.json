@@ -1,0 +1,22 @@
+{
+ "hhat_math_semantics": "hhat_j = d L_score(theta_{t+H}) / d lambda (per unit lambda, Case 1 of round-3 mandate)",
+ "action": "g_action = g + sign*lambda*(g_j - g), post-unscale/pre-clip, single optimizer step at h=1; sign=+1 is +lambda",
+ "predicted_delta_loss_j": "lambda * hhat_j; j=0 no-op: 0.0 (in candidate set)",
+ "predicted_gain_j": "-lambda * hhat_j; no-op gain 0.0",
+ "frozen_selector": "argmin_j predicted_delta_loss over j=0..4, tie-break lowest j",
+ "equivalences": "argmin predicted_delta_loss == argmin hhat == argmax predicted_gain (lambda>0)",
+ "sources": {
+  "a0g_action_def": "research/scripts/a0g_decision_utility_v01.py L7-15 (docstring), L576-625 (_run_action_branch)",
+  "a0g_hhat_def": "research/scripts/a0g_decision_utility_v01.py L540-548 (hhat = dL(theta_{t+H})/dλ; project_tangent(v_h, r_H))",
+  "a0g_selector": "research/src/fr/a0g_decision_utility_v01.py L225-229 select_action; L232-262 level3_decision",
+  "a0g_frozen_data_crosscheck": "outputs/fr_decision_utility_v01/level2_action_predictions.csv + level3_decision_metrics.csv: j_hat == argmin pred_delta_C over j=0..4 in 360/360; no-op chosen 6/360",
+  "a0h15_forward_scorer": "research/scripts/a0h15_vjp_diagnostics_v01.py L608-616 hhat_fwd_C = <v_h, r_H_C> (same convention); L559 hhat_adj = <w_0, a_j>",
+  "replay_gain_def": "research/scripts/a0h15_production_entry_v01.py L434-449 gain_vs_noop = v_noop - v_action; chosen_id = argmax gain (tie -> lowest j); choose_noop iff best gain <= 0"
+ },
+ "round2_violation": {
+  "file": "research/scripts/a0h15_accept_aprime_v01.py (pre-fix hash 937798f6...417fe10, saved in accept_aprime/driver_sha256_before_semantics_fix.txt)",
+  "what": "raw-hhat ARGMAX over j=1..4 (ranking() descending + max(key=(score,-j))); no-op excluded from ranking; L2 judged on that action",
+  "why_wrong": "hhat = dL/dλ => argmax hhat = max predicted Delta L = worst action; frozen rule is argmin"
+ },
+ "fixed_driver": "research/scripts/a0h15_accept_aprime_v01.py now uses frozen_decision() = fr.a0g_decision_utility_v01.select_action on {0:0.0, j:LAM*hhat_j}; A′ demoted to dev-investigation per frozen retry rule 2; no A″ this round"
+}

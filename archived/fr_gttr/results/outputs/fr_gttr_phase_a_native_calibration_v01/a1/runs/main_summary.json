@@ -1,0 +1,746 @@
+{
+ "2030/46": {
+  "steps": 256,
+  "completed": true,
+  "wall_s": 137.0128312260058,
+  "monitors": [
+   {
+    "h": 0,
+    "sum": 3464479.646484375,
+    "count": 475330,
+    "mean": 7.288577717552806,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 6.000976198003627,
+    "cum_input_tokens": 0,
+    "cum_nonpad_tokens": 0,
+    "cum_valid_tokens": 0
+   },
+   {
+    "h": 32,
+    "sum": 3407755.890625,
+    "count": 475330,
+    "mean": 7.169242190951549,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.275188799998432,
+    "cum_input_tokens": 32768,
+    "cum_nonpad_tokens": 29822,
+    "cum_valid_tokens": 29566
+   },
+   {
+    "h": 64,
+    "sum": 3372549.095703125,
+    "count": 475330,
+    "mean": 7.095174080540098,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.309719714001403,
+    "cum_input_tokens": 65536,
+    "cum_nonpad_tokens": 59846,
+    "cum_valid_tokens": 59334
+   },
+   {
+    "h": 96,
+    "sum": 3352198.033203125,
+    "count": 475330,
+    "mean": 7.052359483312909,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.20612987500499,
+    "cum_input_tokens": 98304,
+    "cum_nonpad_tokens": 89897,
+    "cum_valid_tokens": 89129
+   },
+   {
+    "h": 128,
+    "sum": 3336837.25,
+    "count": 475330,
+    "mean": 7.020043443502409,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.2226971999989473,
+    "cum_input_tokens": 131072,
+    "cum_nonpad_tokens": 120360,
+    "cum_valid_tokens": 119336
+   },
+   {
+    "h": 160,
+    "sum": 3322822.017578125,
+    "count": 475330,
+    "mean": 6.990558175537259,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.3199302009961684,
+    "cum_input_tokens": 163840,
+    "cum_nonpad_tokens": 150465,
+    "cum_valid_tokens": 149185
+   },
+   {
+    "h": 192,
+    "sum": 3310056.103515625,
+    "count": 475330,
+    "mean": 6.963701225497286,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.3504873069978203,
+    "cum_input_tokens": 196608,
+    "cum_nonpad_tokens": 180267,
+    "cum_valid_tokens": 178731
+   },
+   {
+    "h": 224,
+    "sum": 3296318.380859375,
+    "count": 475330,
+    "mean": 6.934799783012592,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.2795240049963468,
+    "cum_input_tokens": 229376,
+    "cum_nonpad_tokens": 210232,
+    "cum_valid_tokens": 208440
+   },
+   {
+    "h": 256,
+    "sum": 3283662.84765625,
+    "count": 475330,
+    "mean": 6.908175052397808,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.2845640029991046,
+    "cum_input_tokens": 262144,
+    "cum_nonpad_tokens": 240309,
+    "cum_valid_tokens": 238261
+   }
+  ],
+  "cum": {
+   "input_tokens": 262144,
+   "nonpad_tokens": 240309,
+   "valid_tokens": 238261
+  },
+  "snapshots": {
+   "128": "/home/b205/projects/fluctuation_response/outputs/fr_gttr_phase_a_native_calibration_v01/a1/snapshots/s2030_t46_h128.pt",
+   "256": "/home/b205/projects/fluctuation_response/outputs/fr_gttr_phase_a_native_calibration_v01/a1/snapshots/s2030_t46_h256.pt"
+  }
+ },
+ "2030/82": {
+  "steps": 256,
+  "completed": true,
+  "wall_s": 104.78328101399529,
+  "monitors": [
+   {
+    "h": 0,
+    "sum": 3395778.8046875,
+    "count": 475330,
+    "mean": 7.144044778758968,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.2315623109971057,
+    "cum_input_tokens": 0,
+    "cum_nonpad_tokens": 0,
+    "cum_valid_tokens": 0
+   },
+   {
+    "h": 32,
+    "sum": 3362712.98828125,
+    "count": 475330,
+    "mean": 7.074480862308817,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.3538890089985216,
+    "cum_input_tokens": 32768,
+    "cum_nonpad_tokens": 30129,
+    "cum_valid_tokens": 29873
+   },
+   {
+    "h": 64,
+    "sum": 3346459.169921875,
+    "count": 475330,
+    "mean": 7.040286053735037,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.6159365999992588,
+    "cum_input_tokens": 65536,
+    "cum_nonpad_tokens": 59762,
+    "cum_valid_tokens": 59250
+   },
+   {
+    "h": 96,
+    "sum": 3332635.384765625,
+    "count": 475330,
+    "mean": 7.011203552827772,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.52471250200324,
+    "cum_input_tokens": 98304,
+    "cum_nonpad_tokens": 90036,
+    "cum_valid_tokens": 89268
+   },
+   {
+    "h": 128,
+    "sum": 3317583.841796875,
+    "count": 475330,
+    "mean": 6.979538093107683,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.386151097001857,
+    "cum_input_tokens": 131072,
+    "cum_nonpad_tokens": 120718,
+    "cum_valid_tokens": 119694
+   },
+   {
+    "h": 160,
+    "sum": 3305004.69921875,
+    "count": 475330,
+    "mean": 6.953074073209665,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.458796398001141,
+    "cum_input_tokens": 163840,
+    "cum_nonpad_tokens": 150915,
+    "cum_valid_tokens": 149635
+   },
+   {
+    "h": 192,
+    "sum": 3293029.513671875,
+    "count": 475330,
+    "mean": 6.927880659061862,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.475572198003647,
+    "cum_input_tokens": 196608,
+    "cum_nonpad_tokens": 181096,
+    "cum_valid_tokens": 179560
+   },
+   {
+    "h": 224,
+    "sum": 3278353.064453125,
+    "count": 475330,
+    "mean": 6.897004322161709,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.3377084999956423,
+    "cum_input_tokens": 229376,
+    "cum_nonpad_tokens": 211495,
+    "cum_valid_tokens": 209703
+   },
+   {
+    "h": 256,
+    "sum": 3265279.740234375,
+    "count": 475330,
+    "mean": 6.869500642152557,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.393932401006168,
+    "cum_input_tokens": 262144,
+    "cum_nonpad_tokens": 241546,
+    "cum_valid_tokens": 239498
+   }
+  ],
+  "cum": {
+   "input_tokens": 262144,
+   "nonpad_tokens": 241546,
+   "valid_tokens": 239498
+  },
+  "snapshots": {
+   "128": "/home/b205/projects/fluctuation_response/outputs/fr_gttr_phase_a_native_calibration_v01/a1/snapshots/s2030_t82_h128.pt",
+   "256": "/home/b205/projects/fluctuation_response/outputs/fr_gttr_phase_a_native_calibration_v01/a1/snapshots/s2030_t82_h256.pt"
+  }
+ },
+ "2031/46": {
+  "steps": 256,
+  "completed": true,
+  "wall_s": 102.30772889500076,
+  "monitors": [
+   {
+    "h": 0,
+    "sum": 3460973.10546875,
+    "count": 475330,
+    "mean": 7.281200651060842,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.372521682998922,
+    "cum_input_tokens": 0,
+    "cum_nonpad_tokens": 0,
+    "cum_valid_tokens": 0
+   },
+   {
+    "h": 32,
+    "sum": 3402878.193359375,
+    "count": 475330,
+    "mean": 7.158980483788894,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.2710454879997997,
+    "cum_input_tokens": 32768,
+    "cum_nonpad_tokens": 30309,
+    "cum_valid_tokens": 30053
+   },
+   {
+    "h": 64,
+    "sum": 3366450.431640625,
+    "count": 475330,
+    "mean": 7.082343701513948,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.351046994997887,
+    "cum_input_tokens": 65536,
+    "cum_nonpad_tokens": 59298,
+    "cum_valid_tokens": 58786
+   },
+   {
+    "h": 96,
+    "sum": 3347960.853515625,
+    "count": 475330,
+    "mean": 7.043445298036364,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.330213900000672,
+    "cum_input_tokens": 98304,
+    "cum_nonpad_tokens": 89533,
+    "cum_valid_tokens": 88765
+   },
+   {
+    "h": 128,
+    "sum": 3333419.2734375,
+    "count": 475330,
+    "mean": 7.012852699045926,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.3215541780009517,
+    "cum_input_tokens": 131072,
+    "cum_nonpad_tokens": 119114,
+    "cum_valid_tokens": 118090
+   },
+   {
+    "h": 160,
+    "sum": 3318632.310546875,
+    "count": 475330,
+    "mean": 6.981743863309438,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.3321577989991056,
+    "cum_input_tokens": 163840,
+    "cum_nonpad_tokens": 148615,
+    "cum_valid_tokens": 147335
+   },
+   {
+    "h": 192,
+    "sum": 3304464.138671875,
+    "count": 475330,
+    "mean": 6.951936841082774,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.3036951959948055,
+    "cum_input_tokens": 196608,
+    "cum_nonpad_tokens": 178717,
+    "cum_valid_tokens": 177181
+   },
+   {
+    "h": 224,
+    "sum": 3289451.296875,
+    "count": 475330,
+    "mean": 6.920352800948814,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.3022877990006236,
+    "cum_input_tokens": 229376,
+    "cum_nonpad_tokens": 209027,
+    "cum_valid_tokens": 207235
+   },
+   {
+    "h": 256,
+    "sum": 3275830.25,
+    "count": 475330,
+    "mean": 6.891696821155828,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.2299194029983482,
+    "cum_input_tokens": 262144,
+    "cum_nonpad_tokens": 238819,
+    "cum_valid_tokens": 236771
+   }
+  ],
+  "cum": {
+   "input_tokens": 262144,
+   "nonpad_tokens": 238819,
+   "valid_tokens": 236771
+  },
+  "snapshots": {
+   "128": "/home/b205/projects/fluctuation_response/outputs/fr_gttr_phase_a_native_calibration_v01/a1/snapshots/s2031_t46_h128.pt",
+   "256": "/home/b205/projects/fluctuation_response/outputs/fr_gttr_phase_a_native_calibration_v01/a1/snapshots/s2031_t46_h256.pt"
+  }
+ },
+ "2031/82": {
+  "steps": 256,
+  "completed": true,
+  "wall_s": 101.14073445899703,
+  "monitors": [
+   {
+    "h": 0,
+    "sum": 3392699.03125,
+    "count": 475330,
+    "mean": 7.1375655465676475,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.394695299997693,
+    "cum_input_tokens": 0,
+    "cum_nonpad_tokens": 0,
+    "cum_valid_tokens": 0
+   },
+   {
+    "h": 32,
+    "sum": 3362373.8125,
+    "count": 475330,
+    "mean": 7.073767303767909,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.3568920999969123,
+    "cum_input_tokens": 32768,
+    "cum_nonpad_tokens": 29393,
+    "cum_valid_tokens": 29137
+   },
+   {
+    "h": 64,
+    "sum": 3345657.8046875,
+    "count": 475330,
+    "mean": 7.038600140297267,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.264564010001777,
+    "cum_input_tokens": 65536,
+    "cum_nonpad_tokens": 59653,
+    "cum_valid_tokens": 59141
+   },
+   {
+    "h": 96,
+    "sum": 3330838.154296875,
+    "count": 475330,
+    "mean": 7.0074225365469776,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.191203205002239,
+    "cum_input_tokens": 98304,
+    "cum_nonpad_tokens": 90273,
+    "cum_valid_tokens": 89505
+   },
+   {
+    "h": 128,
+    "sum": 3315809.81640625,
+    "count": 475330,
+    "mean": 6.975805895706667,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.2420907900013844,
+    "cum_input_tokens": 131072,
+    "cum_nonpad_tokens": 120259,
+    "cum_valid_tokens": 119235
+   },
+   {
+    "h": 160,
+    "sum": 3301492.380859375,
+    "count": 475330,
+    "mean": 6.945684852332853,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.327980984999158,
+    "cum_input_tokens": 163840,
+    "cum_nonpad_tokens": 150545,
+    "cum_valid_tokens": 149265
+   },
+   {
+    "h": 192,
+    "sum": 3285068.81640625,
+    "count": 475330,
+    "mean": 6.911132931660636,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.1854188939978485,
+    "cum_input_tokens": 196608,
+    "cum_nonpad_tokens": 180750,
+    "cum_valid_tokens": 179214
+   },
+   {
+    "h": 224,
+    "sum": 3271130.400390625,
+    "count": 475330,
+    "mean": 6.881809270171512,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.258333294004842,
+    "cum_input_tokens": 229376,
+    "cum_nonpad_tokens": 210819,
+    "cum_valid_tokens": 209027
+   },
+   {
+    "h": 256,
+    "sum": 3258440.685546875,
+    "count": 475330,
+    "mean": 6.855112628167536,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.2885997889970895,
+    "cum_input_tokens": 262144,
+    "cum_nonpad_tokens": 240160,
+    "cum_valid_tokens": 238112
+   }
+  ],
+  "cum": {
+   "input_tokens": 262144,
+   "nonpad_tokens": 240160,
+   "valid_tokens": 238112
+  },
+  "snapshots": {
+   "128": "/home/b205/projects/fluctuation_response/outputs/fr_gttr_phase_a_native_calibration_v01/a1/snapshots/s2031_t82_h128.pt",
+   "256": "/home/b205/projects/fluctuation_response/outputs/fr_gttr_phase_a_native_calibration_v01/a1/snapshots/s2031_t82_h256.pt"
+  }
+ },
+ "2032/46": {
+  "steps": 256,
+  "completed": true,
+  "wall_s": 101.69862680300139,
+  "monitors": [
+   {
+    "h": 0,
+    "sum": 3474745.501953125,
+    "count": 475330,
+    "mean": 7.310175040399565,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.3085766680014785,
+    "cum_input_tokens": 0,
+    "cum_nonpad_tokens": 0,
+    "cum_valid_tokens": 0
+   },
+   {
+    "h": 32,
+    "sum": 3429217.7421875,
+    "count": 475330,
+    "mean": 7.214393667951739,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.2434139700053493,
+    "cum_input_tokens": 32768,
+    "cum_nonpad_tokens": 30114,
+    "cum_valid_tokens": 29858
+   },
+   {
+    "h": 64,
+    "sum": 3392669.2421875,
+    "count": 475330,
+    "mean": 7.137502876291208,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.196061695998651,
+    "cum_input_tokens": 65536,
+    "cum_nonpad_tokens": 60565,
+    "cum_valid_tokens": 60053
+   },
+   {
+    "h": 96,
+    "sum": 3375788.15234375,
+    "count": 475330,
+    "mean": 7.101988412984137,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.339719197996601,
+    "cum_input_tokens": 98304,
+    "cum_nonpad_tokens": 90822,
+    "cum_valid_tokens": 90054
+   },
+   {
+    "h": 128,
+    "sum": 3359505.892578125,
+    "count": 475330,
+    "mean": 7.067733769335251,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.2288329990042257,
+    "cum_input_tokens": 131072,
+    "cum_nonpad_tokens": 120968,
+    "cum_valid_tokens": 119944
+   },
+   {
+    "h": 160,
+    "sum": 3343693.97265625,
+    "count": 475330,
+    "mean": 7.034468627387815,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.3147862990008434,
+    "cum_input_tokens": 163840,
+    "cum_nonpad_tokens": 151163,
+    "cum_valid_tokens": 149883
+   },
+   {
+    "h": 192,
+    "sum": 3329904.447265625,
+    "count": 475330,
+    "mean": 7.00545820222924,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.235996796996915,
+    "cum_input_tokens": 196608,
+    "cum_nonpad_tokens": 181171,
+    "cum_valid_tokens": 179635
+   },
+   {
+    "h": 224,
+    "sum": 3316917.421875,
+    "count": 475330,
+    "mean": 6.978136077830139,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.2966468849990633,
+    "cum_input_tokens": 229376,
+    "cum_nonpad_tokens": 211057,
+    "cum_valid_tokens": 209265
+   },
+   {
+    "h": 256,
+    "sum": 3303598.908203125,
+    "count": 475330,
+    "mean": 6.950116567864694,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.1596865879982943,
+    "cum_input_tokens": 262144,
+    "cum_nonpad_tokens": 240711,
+    "cum_valid_tokens": 238663
+   }
+  ],
+  "cum": {
+   "input_tokens": 262144,
+   "nonpad_tokens": 240711,
+   "valid_tokens": 238663
+  },
+  "snapshots": {
+   "128": "/home/b205/projects/fluctuation_response/outputs/fr_gttr_phase_a_native_calibration_v01/a1/snapshots/s2032_t46_h128.pt",
+   "256": "/home/b205/projects/fluctuation_response/outputs/fr_gttr_phase_a_native_calibration_v01/a1/snapshots/s2032_t46_h256.pt"
+  }
+ },
+ "2032/82": {
+  "steps": 256,
+  "completed": true,
+  "wall_s": 101.9611947500016,
+  "monitors": [
+   {
+    "h": 0,
+    "sum": 3418340.505859375,
+    "count": 475330,
+    "mean": 7.191510121093503,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.2959531950036762,
+    "cum_input_tokens": 0,
+    "cum_nonpad_tokens": 0,
+    "cum_valid_tokens": 0
+   },
+   {
+    "h": 32,
+    "sum": 3386732.421875,
+    "count": 475330,
+    "mean": 7.125012984400311,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.3127521130008972,
+    "cum_input_tokens": 32768,
+    "cum_nonpad_tokens": 30334,
+    "cum_valid_tokens": 30078
+   },
+   {
+    "h": 64,
+    "sum": 3371580.369140625,
+    "count": 475330,
+    "mean": 7.093136072077557,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.305322429005173,
+    "cum_input_tokens": 65536,
+    "cum_nonpad_tokens": 60513,
+    "cum_valid_tokens": 60001
+   },
+   {
+    "h": 96,
+    "sum": 3355823.26953125,
+    "count": 475330,
+    "mean": 7.059986261189595,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.3620102139975643,
+    "cum_input_tokens": 98304,
+    "cum_nonpad_tokens": 90509,
+    "cum_valid_tokens": 89741
+   },
+   {
+    "h": 128,
+    "sum": 3341696.107421875,
+    "count": 475330,
+    "mean": 7.030265515372215,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.262405405002937,
+    "cum_input_tokens": 131072,
+    "cum_nonpad_tokens": 121316,
+    "cum_valid_tokens": 120292
+   },
+   {
+    "h": 160,
+    "sum": 3327639.455078125,
+    "count": 475330,
+    "mean": 7.0006931081104184,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.2029888319957536,
+    "cum_input_tokens": 163840,
+    "cum_nonpad_tokens": 151057,
+    "cum_valid_tokens": 149777
+   },
+   {
+    "h": 192,
+    "sum": 3314926.544921875,
+    "count": 475330,
+    "mean": 6.973947667771601,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.3524921019998146,
+    "cum_input_tokens": 196608,
+    "cum_nonpad_tokens": 181345,
+    "cum_valid_tokens": 179809
+   },
+   {
+    "h": 224,
+    "sum": 3305501.228515625,
+    "count": 475330,
+    "mean": 6.954118672323702,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.400240005001251,
+    "cum_input_tokens": 229376,
+    "cum_nonpad_tokens": 211597,
+    "cum_valid_tokens": 209805
+   },
+   {
+    "h": 256,
+    "sum": 3288461.39453125,
+    "count": 475330,
+    "mean": 6.918270242844445,
+    "input_slots": 524288,
+    "nonpad_tokens": 479426,
+    "wall_s": 3.392078999997466,
+    "cum_input_tokens": 262144,
+    "cum_nonpad_tokens": 241599,
+    "cum_valid_tokens": 239551
+   }
+  ],
+  "cum": {
+   "input_tokens": 262144,
+   "nonpad_tokens": 241599,
+   "valid_tokens": 239551
+  },
+  "snapshots": {
+   "128": "/home/b205/projects/fluctuation_response/outputs/fr_gttr_phase_a_native_calibration_v01/a1/snapshots/s2032_t82_h128.pt",
+   "256": "/home/b205/projects/fluctuation_response/outputs/fr_gttr_phase_a_native_calibration_v01/a1/snapshots/s2032_t82_h256.pt"
+  }
+ }
+}

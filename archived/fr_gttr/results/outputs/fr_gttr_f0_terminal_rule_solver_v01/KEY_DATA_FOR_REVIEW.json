@@ -1,0 +1,68 @@
+{
+ "status": "BLOCKED_AT_CALIBRATION",
+ "calibration": {
+  "g_sens": {
+   "a": -5060.515069535734,
+   "b": -147722.88773644276
+  },
+  "FD_eps0.01": {
+   "a": -0.005446051953406084,
+   "b": -0.34536717418687246
+  },
+  "FD_eps0.005": {
+   "a": 0.14070405691839483,
+   "b": -0.35920768203139275
+  },
+  "verdict": {
+   "a": "FULL_HORIZON_GRADIENT_UNRESOLVED",
+   "b": "FULL_HORIZON_GRADIENT_UNRESOLVED"
+  },
+  "clip_active_steps": 184,
+  "eps_V": 1e-07
+ },
+ "horizon_scan": {
+  "T2": {
+   "fd": -1.045914,
+   "sens": -1.045142
+  },
+  "T4": {
+   "fd": -3.104639,
+   "sens": -3.100682
+  },
+  "T8": {
+   "fd": -10.034951,
+   "sens": -10.02292
+  },
+  "T16": {
+   "fd": -22.105888,
+   "sens": -22.11378
+  },
+  "T32": {
+   "fd": 27.986909,
+   "note": "sign flip: chaos onset"
+  }
+ },
+ "not_run": [
+  "grid",
+  "solvers",
+  "policy_freeze",
+  "audit_native",
+  "audit_ref32",
+  "confirm_eval"
+ ],
+ "v_confirm_calls": 0,
+ "v_final_calls": 0,
+ "ledger_final": {
+  "traj_updates": 4864,
+  "train_fw": 9728,
+  "train_bw": 9728,
+  "hvp_dirs": 1140,
+  "hvp_micro": 2280,
+  "design_evals": 32,
+  "design_grad_evals": 6,
+  "confirm_evals": 0,
+  "failures": 0,
+  "total_fw": 13824,
+  "total_bw": 12776
+ }
+}

@@ -1,0 +1,68 @@
+{
+ "contract_id": "A0P_LR_TEMPORAL_KERNEL_V01",
+ "date": "2026-09-18",
+ "task": "Learning-rate response temporal kernel validation: does the A0O-validated LR response have a stable decay timescale; build the theory bridge from short-term response to long-term training gain.",
+ "perturbation": {
+  "channel": "optimizer_input_log_lr",
+  "definition": "u = log(eta/eta0), A0O-verified parameterization",
+  "delta": 0.05,
+  "delta_frozen": true,
+  "structure": "IMPULSE: u applied at optimizer step t ONLY (step 1 of the replay); steps t+1..t+64 run the frozen native AdamW schedule (set_native_micro_lr resets lr every micro-step, so the pulse reverts natively at step 2). This differs from A0O's PERSISTENT schedule input; A0O remains untouched (read-only).",
+  "branches": ["u=+delta", "u=0 (x2, CRN bitwise check)", "u=-delta"]
+ },
+ "state_and_stream": {
+  "bank_states": {"seeds": [2030, 2031, 2037], "steps": [46, 82],
+   "source": "outputs/e3_confirmatory/v07/seed_{seed}/states/state_step_{step:03d}.pt (read-only)"},
+  "stream_seeds_per_state": [7300, 7301],
+  "n_cells": 12,
+  "stream_content_recipe": "batch_seed = derive_stream_seed(stream_seed, 404); batches = batches_from_train_pool(train_indices(3936), batch_size=4, batch_seed, 128 micro-batches = 64 optimizer steps x accumulation_steps=2). One deterministic permutation prefix per stream; identical across branches (CRN).",
+  "provenance_gate": "A0O amendment-A1 pattern: A0K live_manifest event key must exist for stream_event_key(seed, step): 2030/2031 -> own seed, 2037 -> 2032, step -> largest multiple of 10 <= step. Content NOT reused (128 micro-batches > event lookahead); recipe above is authoritative."
+ },
+ "tau_grid": [1, 2, 4, 8, 16, 32, 64],
+ "tau_grid_frozen": true,
+ "tau_grid_note": "Dyadic grid mandated by task; no tau may be added/removed/selected based on results.",
+ "recorded": {
+  "per_cell_per_tau": ["L_plus(u=+delta)", "L0(u=0)", "L_minus(u=-delta)", "R_fd(tau)=(L_plus-L_minus)/(2*delta)", "R_analytic(tau)"],
+  "rollout_checkpoints": "val loss evaluated at every grid tau along the SAME 64-step rollout (RNG-wrapped, no trajectory disturbance); u=0 branch run twice, L0_repeat must equal L0 bitwise (CRN)"
+ },
+ "analytic": {
+  "definition": "R(tau) = <p_th ENTERING reverse iter 1, lr_1 * e_lr(1)>, where e_lr = -adaptive(c_1) - wd*theta_1 (A0O-validated pure theta-channel pulse, lr_pulse reused from frozen a0o module by import) and p_th is the endpoint cotangent dL/d(theta_{t+tau}) rewound through the frozen A0H15 reverse adjoint (adamw_tangent_step_adjoint + _a0h1._clip_transpose + fp32 HVP at k>=2) over steps k=tau..2. Linearity: impulse response of the same validated tangent system; the ONLY delta vs A0O production code is source placement (contract at k=1 only).",
+  "hvp": "fp32 (A0O production candidate)"
+ },
+ "stage1_gate": {
+  "scope": "pooled over all 12 cells x 7 taus (n=84 analytic-vs-FD pairs), plus per-tau breakdown",
+  "criteria": {"abs_pearson_ge": 0.8, "sign_accuracy_ge": 0.9},
+  "precedent": "A0O stage-1 gate thresholds, reused frozen",
+  "on_fail": "STOP: no Stage 2, report failure"
+ },
+ "stage2_temporal_law": {
+  "kernel_primary": "R_analytic (validated by Stage 1); R_fd recorded alongside",
+  "fits": {
+   "tool": "scipy.optimize.curve_fit, frozen call: maxfev=20000, no bounds",
+   "exponential": {"form": "R(tau) = A * exp(-tau/tau_c)", "p0": {"A": "R(1)", "tau_c": 8.0}},
+   "power_law": {"form": "R(tau) = A * tau**(-alpha)", "p0": {"A": "R(1)", "alpha": 1.0}},
+   "signed": "A free sign; fits run on signed R(tau) values as-is",
+   "model_comparison": "SSE_exp vs SSE_power reported per cell; NO model selection enters any verdict rule (both reported)"
+  },
+  "memory_metrics": {
+   "integrated_abs_response": "I = sum_{tau in grid} |R(tau)| (dyadic sum, grid fixed)",
+   "half_life": "smallest tau where |R(tau)| <= |R(1)|/2, linear interpolation in tau between bracketing grid points; if never halved on grid -> null (reported as not_reached)",
+   "sign_stability": "fraction of grid points with sign(R(tau)) == sign(R(1))"
+  },
+  "q1": "Stable decay timescale? Rule (pre-registered): YES iff median sign_stability >= 5/7 AND median max(R2_exp,R2_power) >= 0.8 AND CV(tau_c exp fit across cells) < 0.5.",
+  "q2": "Does the H=4 window carry long-term direction? S4 = sum_{tau in {1,2,4}} R(tau); S64 = sum_{all grid} R(tau). Metrics: sign_agreement(S4,S64) across cells; Pearson(S4,S64) across cells (n=12). Pre-registered reading: sign agreement >= 10/12 AND Pearson > 0 -> H=4 window contains long-term direction information.",
+  "q3": "Shared timescale across seeds/stages? Per-cell (tau_c, alpha, half_life, sign_stability) reported by seed and by step; CV(tau_c) across cells with per-group breakdowns; normalized-shape pairwise Pearson median (R(tau)/R(1)). Shared iff CV < 0.5 with no seed group median deviating >2x from pooled median (diagnostic, not selection)."
+ },
+ "forbidden": [
+  "no controller / no closed-loop runner",
+  "no lambda tuning, no optimizer/scheduler change",
+  "no delta change, no tau selection based on results, no extra phases/thresholds post-hoc",
+  "no model/seed/state selection based on results (all 12 cells reported)",
+  "A0O and all earlier frozen artifacts read-only; docs append-only",
+  "no GPU work before this contract + live_manifest hash notes exist on disk"
+ ],
+ "amendments": [],
+ "outputs": "outputs/a0p_lr_temporal_kernel_v01/ (contract/ runs/ analysis/ reports/A0P_REPORT.md hashes/ audit/); code research/src/fr/a0p_lr_temporal_kernel_v01.py + research/scripts/a0p_{run,analyze,audit_pack}_v01.py",
+ "budget_s": 1800,
+ "stop_rule": "Stage 1 gate PASS -> Stage 2 -> report -> STOP. Do not auto-launch any next round."
+}

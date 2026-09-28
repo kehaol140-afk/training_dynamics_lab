@@ -1,0 +1,29 @@
+{
+  "config_id": "CONTINUATION_ADAPTATION_SMOKE_V01",
+  "device": "cuda:0",
+  "unexpected_issues": [],
+  "checks": {
+    "all_runs_complete": true,
+    "eval_works": true,
+    "c0_model_state_identical_across_runs": true,
+    "eval_at_c0_identical_across_runs": true,
+    "batch_manifest_identical_across_runs": true,
+    "determinism_A_repeat": true,
+    "arms_produce_distinct_trajectories": true,
+    "arm_application_verified": true
+  },
+  "final_model_hashes": {
+    "A": "e01b8bf7f375476034025d13abfe0e35c1eb38b6d895df40ddddd024cfab5028",
+    "B": "02cfef13635b1dfbefbc8da4948ec20403304ee84906c1ec1a3c429e8f86388c",
+    "C1": "5e60d53e5ded3a797a7c99c075c282c3559b8a53cde1f315146ad7f1c5c24415",
+    "C2": "e2e04825db100027356b022d39ae4664143759ba6683d217b9f13d1a888038c7",
+    "D": "f3577f5abe8e662309ee9051da8b6eabecdf34e0f359bab804ae75245a87e0a2"
+  },
+  "final_eval_mean_by_arm": {
+    "A": 7.000079862877923,
+    "B": 6.965247404699763,
+    "C1": 7.213022104454256,
+    "C2": 6.978865885729803,
+    "D": 6.990704152769986
+  }
+}

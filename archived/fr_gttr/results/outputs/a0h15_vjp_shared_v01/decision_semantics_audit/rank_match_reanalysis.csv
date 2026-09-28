@@ -1,0 +1,10 @@
+seed,step,H,active_only_rank_match,five_action_rank_match_raw_score_order,chosen_id_match_bf16_vs_fp32adj_frozen_rule,choose_noop_match_bf16_vs_fp32adj,frozen_chosen_bf16,frozen_chosen_fp32_adj,no_op_position_bf16,no_op_position_fp32_adj,raw_argmax_bf16,raw_argmax_fp32_adj,replay_oracle_chosen_id,frozen_rule_equals_replay_oracle,old_program_chosen_id,old_program_equals_oracle
+2030,52,1,True,True,True,True,1,1,3,3,2,2,MISSING,MISSING,MISSING,MISSING
+2030,52,4,True,True,True,True,1,1,3,3,2,2,1,True,2,False
+2030,52,8,True,True,True,True,2,2,2,2,1,1,MISSING,MISSING,MISSING,MISSING
+2033,64,1,True,True,True,True,3,3,1,1,2,2,MISSING,MISSING,MISSING,MISSING
+2033,64,4,True,True,True,True,4,4,2,2,3,3,4,True,3,False
+2033,64,8,True,True,True,True,1,1,2,2,3,3,MISSING,MISSING,MISSING,MISSING
+2037,82,1,True,True,True,True,4,4,1,1,3,3,MISSING,MISSING,MISSING,MISSING
+2037,82,4,True,True,True,True,1,1,2,2,4,4,1,True,4,False
+2037,82,8,True,True,True,True,1,1,1,1,4,4,MISSING,MISSING,MISSING,MISSING

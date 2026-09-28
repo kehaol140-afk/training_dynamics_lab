@@ -1,0 +1,114 @@
+{
+  "source_v07_config": {
+    "protocol_version": "E3C_CONFIRMATORY_V07",
+    "discovery_role": "DISCOVERY_ONLY_DO_NOT_USE_FOR_PRIMARY_CONFIRMATORY",
+    "discovery_train_seeds": [
+      2026,
+      2027,
+      2028,
+      2029
+    ],
+    "confirmation_train_seeds": [
+      2030,
+      2031,
+      2032,
+      2033,
+      2034,
+      2035,
+      2036,
+      2037
+    ],
+    "partition_seed": 40202601,
+    "hidden_size": 256,
+    "num_hidden_layers": 4,
+    "max_seq_len": 128,
+    "batch_size": 4,
+    "accumulation_steps": 2,
+    "learning_rate": 0.0005,
+    "grad_clip": 1.0,
+    "dtype": "bfloat16",
+    "subset_lines": 4096,
+    "planned_total_optimizer_steps": 128,
+    "probe_pool_size": 32,
+    "eval_pool_size": 128,
+    "eval_batch_size": 8,
+    "primary_horizon": 8,
+    "horizons": [
+      1,
+      2,
+      4,
+      8,
+      12,
+      16,
+      24,
+      32
+    ],
+    "e3_state_steps": [
+      46,
+      52,
+      58,
+      64,
+      70,
+      76,
+      82
+    ],
+    "e3_primary_rho": 0.25,
+    "e3_e1_streams": 16,
+    "e3_e2_streams": 8,
+    "v07_e1_stream_base_seed": 307202601,
+    "v07_e2_stream_base_seed": 308202601,
+    "confirmatory_bootstrap_reps": 10000,
+    "confirmatory_permutation_reps": 20000,
+    "confirmatory_random_seed": 77070001,
+    "secondary_holm_alpha": 0.05,
+    "output_dir": "outputs/e3_confirmatory/v07",
+    "discovery_output_dir": "outputs/e3_replication/v06",
+    "exclude_probe_eval_from_trajectory_step0": true,
+    "environment_conda_env": "fr_minimind"
+  },
+  "audit_config": {
+    "protocol": "FR_A0D_EPSILON_CONVERGENCE_V01",
+    "states": [
+      {
+        "seed": 2037,
+        "step": 46
+      },
+      {
+        "seed": 2030,
+        "step": 46
+      },
+      {
+        "seed": 2037,
+        "step": 82
+      }
+    ],
+    "horizons": [
+      2,
+      4,
+      8
+    ],
+    "epsilon_levels": [
+      "epsilon",
+      "epsilon/2",
+      "epsilon/4"
+    ],
+    "epsilon_multipliers": [
+      1.0,
+      0.5,
+      0.25
+    ],
+    "streams_per_state": 8,
+    "full_epsilon_source": "IMMUTABLE_E3_CONFIRMATORY_V07_PAIRED_BRANCHES",
+    "half_and_quarter_source": "NEW_RUN_THETA_BRANCH_STRICT_REPLAY",
+    "tangent_source": "IMMUTABLE_A0C_RESPONSE_PROPAGATION_V01_C_FULL_TANGENT",
+    "chi_formula": "(X_plus-X_minus)/(2*epsilon_level)",
+    "branch_order": "restore checkpoint -> restore stream RNG -> future batches -> forward -> accumulated backward -> unscale -> pulse -> clip -> native AdamW step",
+    "dtype": "bfloat16",
+    "accumulation_steps": 2,
+    "grad_clip": 1.0,
+    "batch_size": 4,
+    "base_learning_rate": 0.0005,
+    "no_fitted_variables": true
+  },
+  "audit_config_sha256": "54941cbd9e16602b7cf2f3a3d3f779c0ada42ff120edb6fbc08b4771155dc3ca"
+}

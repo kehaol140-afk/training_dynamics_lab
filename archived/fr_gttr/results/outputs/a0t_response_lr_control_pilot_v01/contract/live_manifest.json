@@ -1,0 +1,61 @@
+{
+ "manifest_id": "A0T_RESPONSE_LR_CONTROL_PILOT_V01_LIVE",
+ "contract_sha256": "2f2e790b6f20432611b7ca5d02ceb22ee69332935b8282171ea41ef7cac83271",
+ "note": "Every module/driver/analyzer hash change is logged HERE before any run that could reveal results. Sequencing: write/amend code -> append note with new sha256 -> launch.",
+ "module_hash_notes": [
+  {
+   "seq": 0,
+   "ts": "2026-09-18",
+   "files": [
+    "contract/contract.json"
+   ],
+   "sha256": {
+    "contract/contract.json": "2f2e790b6f20432611b7ca5d02ceb22ee69332935b8282171ea41ef7cac83271"
+   },
+   "reason": "Contract frozen BEFORE any GPU: frozen controller rule (sign(chi_lr)->u=+-0.05 persistent), 36 cells (D1 24 + D2 12), arms A/B/C, H grid {4,16,64} nested streams, C==B aliasing rule, CRN, frozen metrics/pass-fail, forbidden list."
+  },
+  {
+   "seq": 1,
+   "ts": "2026-09-18",
+   "files": [
+    "research/src/fr/a0t_response_lr_control_pilot_v01.py",
+    "research/scripts/a0t_run_v01.py",
+    "research/scripts/a0t_analyze_v01.py"
+   ],
+   "sha256": {
+    "research/src/fr/a0t_response_lr_control_pilot_v01.py": "80c239e7c76d568b27bbff51b72932a127880ea54dc995c0311889c13d10d40a",
+    "research/scripts/a0t_run_v01.py": "f2b6a04f651dc83c62193b15842eafcefd323227219f8a23de1202192e49b35a",
+    "research/scripts/a0t_analyze_v01.py": "b006410b0fddf46c128332f5da0af8cded0b4dd1cbe4f5f577f0d44ad10d32ac"
+   },
+   "reason": "A0T stats module (frozen controller action_u, wilcoxon/sign-consistency/terciles/erosion/gate), GPU driver (36 cells, frozen chi read-only, C==B aliasing, CRN A@H4 x2, 1650s budget guard), analyzer (CSV 9 cols per state, supplementary, plots, report). Written BEFORE any GPU launch."
+  },
+  {
+   "seq": 2,
+   "ts": "2026-09-18",
+   "files": [
+    "research/scripts/a0t_analyze_v01.py"
+   ],
+   "sha256": {
+    "research/scripts/a0t_analyze_v01.py": "54d5cca310aaa5315d4fff830938178d395b8806909f350a0792752b6c5a97df"
+   },
+   "reason": "Post-results REPORTING amendment (no computation change, no GPU): analyzer now surfaces the pre-existing actions_disagree flag (2/18 states: D1 2030/46, 2030/64 \u2014 frozen streams disagree on chi_lr sign) in analysis.json + A0T_REPORT.md limitations. Trigger: mandated CSV's stream-mean action semantics observed to hide per-stream sign disagreement."
+  },
+  {
+   "seq": 3,
+   "ts": "2026-09-18",
+   "files": [
+    "research/scripts/a0t_audit_pack_v01.py"
+   ],
+   "sha256": {
+    "research/scripts/a0t_audit_pack_v01.py": "bc65226b82248d48c0288b99fd1840a0975d885056bf8c7acfa9b86f4ba9bd47"
+   },
+   "reason": "Audit pack script (a0s/a0q pattern: sha256 manifest + tar bundle). Written BEFORE running the audit pack."
+  }
+ ],
+ "events": [
+  {
+   "ts": "2026-09-18",
+   "event": "A0T launch 1 (only launch): 36/36 cells, CRN 36/36, 1351.4s GPU/1800s, 0 crashes, 34/36 C==B aliased, 2 cells distinct C (both chi>0, both C beats B). Gate PASS: gain_C,H4 median +4.41e-4 (wilcoxon p=2.0e-10), sign consistency 35/36 (binom p=1.1e-9), C not worse than B. Terciles monotonic: higher C_t -> higher success/median gain in both datasets. Erosion: median gain grows with H (persistent perturbation compounds), success dips at H=16. Post-results reporting amendment seq 2 (actions_disagree surfaced, no computation change). Verdict PASS per frozen rule; limitations incl. short!=long (A0P), tiny gains, C-vs-B near-degeneracy by construction."
+  }
+ ]
+}

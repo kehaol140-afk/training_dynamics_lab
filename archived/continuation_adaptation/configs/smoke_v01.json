@@ -1,0 +1,88 @@
+{
+  "config_id": "CONTINUATION_ADAPTATION_SMOKE_V01",
+  "date_frozen": "2026-09-26",
+  "protocol_doc": "docs/EXPERIMENT_PROTOCOL.md",
+  "question": "Implementation correctness smoke: can a v07-bank checkpoint be continued deterministically for 64 optimizer steps under arms A/B/C1/C2/D, with correct beta modification and CRN across arms? No performance interpretation.",
+
+  "lab_root_relative": {
+    "bank_dir": "legacy_fluctuation_response/outputs/e3_confirmatory/v07",
+    "minimind_base": "minimind_base"
+  },
+
+  "c0": {
+    "seed": 2030,
+    "state_optimizer_step": 64,
+    "state_relpath": "seed_2030/states/state_step_064.pt",
+    "expected_metadata": {
+      "protocol": "E3C_CONFIRMATORY_V07_STATE_BANK",
+      "global_micro_step": 128,
+      "total_micro_steps": 256,
+      "planned_total_optimizer_steps": 128,
+      "partition_sha256": "5ecaf0a3533d5dddd3fe2a768f13f5f8131cb620cb78412c35df5467539391f4"
+    }
+  },
+
+  "corpus": {
+    "subset_relpath": "e3c_subset.jsonl",
+    "subset_sha256_frozen": "1e657af9baae0784e582d82ef936160473aa069878e422ef48683a718056b0f4",
+    "partition_relpath": "partition_v07.json"
+  },
+
+  "model": {
+    "hidden_size": 256,
+    "num_hidden_layers": 4,
+    "max_seq_len": 128,
+    "use_moe": false
+  },
+
+  "train": {
+    "batch_size": 4,
+    "accumulation_steps": 2,
+    "grad_clip": 1.0,
+    "dtype": "bfloat16",
+    "base_lr": 0.0005,
+    "weight_decay": 0.01,
+    "lr_schedule_mode": "original_axis",
+    "lr_schedule_note": "lr(gm) = get_lr(gm, total_micro=256, 5e-4); gm = c0.global_micro_step + k; replanned-cosine (changed-budget semantics) is a P4 frozen item, NOT implemented here."
+  },
+
+  "budget_optimizer_steps": 64,
+
+  "batch_stream": {
+    "source": "original_trajectory_extension",
+    "train_batch_seed_rule": "train_seed + 1704",
+    "note": "batches_from_train_pool(partition.train_indices, batch_size, train_batch_seed, (t0+B)*accum)[t0*accum:] ; identical manifest across arms (CRN)"
+  },
+
+  "arms": {
+    "A":  { "betas": [0.9, 0.999], "reset_m": false, "reset_v": false, "reset_step": false },
+    "B":  { "betas": [0.9, 0.99],  "reset_m": false, "reset_v": false, "reset_step": false },
+    "C1": { "betas": [0.9, 0.99],  "reset_m": false, "reset_v": true,  "reset_step": false },
+    "C2": { "betas": [0.9, 0.99],  "reset_m": true,  "reset_v": false, "reset_step": false },
+    "D":  { "betas": [0.9, 0.99],  "reset_m": true,  "reset_v": true,  "reset_step": true }
+  },
+
+  "eval": {
+    "pool": "partition.eval_indices (128 samples, never trained on)",
+    "batch_size": 8,
+    "at_c0": true,
+    "primary": "final mean per-token NLL after budget exhausted",
+    "identical_at_c0_across_arms_required": true
+  },
+
+  "smoke_runs": ["A", "A_repeat", "B", "C1", "C2", "D"],
+  "a_repeat_semantics": "arm A rerun from same C0 for bitwise determinism check; not a scientific arm",
+
+  "outputs": {
+    "run_dir": "outputs/smoke_v01/runs",
+    "report": "outputs/smoke_v01/smoke_report.json"
+  },
+
+  "forbidden": [
+    "modifying legacy_fluctuation_response / minimind_base / optimizer_sensitivity",
+    "new optimizer / GTTR / hypergradient / HVP / second-order solver / controller",
+    "retraining to generate checkpoints",
+    "changing any field of this config after first run",
+    "interpreting smoke performance as a research result"
+  ]
+}

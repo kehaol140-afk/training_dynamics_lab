@@ -1,0 +1,23 @@
+ledger_item,stated_in_evidence,audited_value,discrepancy,severity,notes
+A0C/A0E2/A0F2 update ledger,audit_handoff更新台账(A0F2),A0F2=终点实验,一致,none,56态普查完结; A0D epsilon收敛同库
+A0O ledger,a0o module,A0O完整,一致,none,H{1,4} 12态x4stream
+A0P ledger,a0p module,A0P完整,一致,none,12cell tau{1..64}
+A0Q ledger,a0q module,A0Q完整,一致,none,12cell H=4
+A0S ledger,a0s module,A0S完整(D1 n=48+D2 12cell),一致,none,
+A0T/A0T-extra ledger,a0t/a0t_extra modules,A0T完整(36cell),一致,none,2偏差细胞登记
+A0U ledger,a0u module,A0U完整,一致,none,12cell 4 knot
+A0G/H/I/J ledger,decision utility outputs,完整,一致,none,成本结论NEGATIVE(无break-even)
+A0K/L/N ledger,闭环outputs,完整,一致,none,等墙钟臂
+B0 TOTALS,outputs/fr_b0_response_mechanisms_v01/b0 summary.json,14,208 updates,漏计: B0 smoke 712 updates 未计入TOTALS; 若计入累计18,289 > 18,000 cap,HIGH(预算台账),B0 三臂(main 11,280+ stress 2,928); smoke 712 独立目录存在但未进TOTALS汇总; 预算超cap 289
+B0.5 ledger,outputs/fr_b05_mechanism_v01/,B0.5完整(15,817累计含B0),一致,none,机制三假设全NOT_SUPPORTED
+B0.6 ledger,outputs/fr_b06_regime_dynamics_v01/,B0.6=1,760 updates; 累计声明17,577,需以18,289(B0重算)为基数→累计18,049,MEDIUM(重算),若B0 smoke计入则B0.6后超cap 49
+C0 ledger,outputs/fr_c0_gttr_validation_v01/,C0完整(17,994累计),一致,none,field NOT_SUPPORTED_IN_PILOT; floor已更正
+C0X ledger,FIELD_CORRECTIONS,一致,none,聚合门勘误
+C1 ledger,c1 module,round 45/605/304/1801,一致,none,4/6 anchors
+C1L ledger,c1_late modules,round 106/279/144/835,一致,none,COMBINED6 field PASS
+G1a/G1b/G2/G3 ledger,outputs/generalization_g*/,完整,一致,none,强复制
+G1c 1B,可行性READY,0 updates(未启动),一致,none,外部架构未测
+总累计声明,18,000 cap(含C1L前全部),重算: 18,289(B0含smoke)+C0/C1/C1L/G系列,超cap 289-700+,HIGH,需要发布erratum: 预算台账在B0起漏计smoke
+wallclock成本,direct FD 2.65s vs shared-C 6.77s(A0G/H),无break-even,一致,none,FP32伴随
+theta_protocol.py源码,缺失(仅pyc),—,审计可见性缺口,MEDIUM(可见性),反汇编重建; 语义已核验
+final test set,生产代码不存在V_final,无独立final测试集,一致,none,A0K v_eval@128最接近但参与选择

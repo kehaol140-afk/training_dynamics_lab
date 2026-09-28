@@ -1,0 +1,14 @@
+{
+  "seed": 2026,
+  "hidden_size": 256,
+  "num_hidden_layers": 4,
+  "max_seq_len": 128,
+  "batch_size": 4,
+  "accumulation_steps": 2,
+  "warmup_optimizer_steps": 2,
+  "replay_optimizer_steps": 8,
+  "learning_rate": 0.0005,
+  "grad_clip": 1.0,
+  "dtype": "bfloat16",
+  "subset_lines": 4096
+}

@@ -1,0 +1,295 @@
+{
+ "n_checks": 36,
+ "n_pass": 36,
+ "all_pass": true,
+ "checks": [
+  {
+   "check": "Gain=L_base-L_action",
+   "unit": "2030/52",
+   "H": 4,
+   "j": 0,
+   "ok": true,
+   "detail": "0.000000000000 vs 0.000000000000"
+  },
+  {
+   "check": "no-op Gain=0",
+   "unit": "2030/52",
+   "H": 4,
+   "j": 0,
+   "ok": true,
+   "detail": "gain=0,delta=0"
+  },
+  {
+   "check": "Gain=L_base-L_action",
+   "unit": "2030/52",
+   "H": 4,
+   "j": 1,
+   "ok": true,
+   "detail": "0.000891387463 vs 0.000891387463"
+  },
+  {
+   "check": "Gain=L_base-L_action",
+   "unit": "2030/52",
+   "H": 4,
+   "j": 2,
+   "ok": true,
+   "detail": "-0.000254809856 vs -0.000254809856"
+  },
+  {
+   "check": "Gain=L_base-L_action",
+   "unit": "2030/52",
+   "H": 4,
+   "j": 3,
+   "ok": true,
+   "detail": "-0.000016152859 vs -0.000016152859"
+  },
+  {
+   "check": "Gain=L_base-L_action",
+   "unit": "2030/52",
+   "H": 4,
+   "j": 4,
+   "ok": true,
+   "detail": "-0.000122427940 vs -0.000122427940"
+  },
+  {
+   "check": "oracle max Gain >= 0",
+   "unit": "2030/52",
+   "H": 4,
+   "j": "*",
+   "ok": true,
+   "detail": "max=0.00089139"
+  },
+  {
+   "check": "Regret>=0",
+   "unit": "2030/52",
+   "H": 4,
+   "j": 0,
+   "ok": true,
+   "detail": "regret=0.000891387463"
+  },
+  {
+   "check": "Regret>=0",
+   "unit": "2030/52",
+   "H": 4,
+   "j": 1,
+   "ok": true,
+   "detail": "regret=0.000000000000"
+  },
+  {
+   "check": "Regret>=0",
+   "unit": "2030/52",
+   "H": 4,
+   "j": 2,
+   "ok": true,
+   "detail": "regret=0.001146197319"
+  },
+  {
+   "check": "Regret>=0",
+   "unit": "2030/52",
+   "H": 4,
+   "j": 3,
+   "ok": true,
+   "detail": "regret=0.000907540321"
+  },
+  {
+   "check": "Regret>=0",
+   "unit": "2030/52",
+   "H": 4,
+   "j": 4,
+   "ok": true,
+   "detail": "regret=0.001013815403"
+  },
+  {
+   "check": "Gain=L_base-L_action",
+   "unit": "2033/64",
+   "H": 4,
+   "j": 0,
+   "ok": true,
+   "detail": "0.000000000000 vs 0.000000000000"
+  },
+  {
+   "check": "no-op Gain=0",
+   "unit": "2033/64",
+   "H": 4,
+   "j": 0,
+   "ok": true,
+   "detail": "gain=0,delta=0"
+  },
+  {
+   "check": "Gain=L_base-L_action",
+   "unit": "2033/64",
+   "H": 4,
+   "j": 1,
+   "ok": true,
+   "detail": "0.000104129314 vs 0.000104129314"
+  },
+  {
+   "check": "Gain=L_base-L_action",
+   "unit": "2033/64",
+   "H": 4,
+   "j": 2,
+   "ok": true,
+   "detail": "0.000100910664 vs 0.000100910664"
+  },
+  {
+   "check": "Gain=L_base-L_action",
+   "unit": "2033/64",
+   "H": 4,
+   "j": 3,
+   "ok": true,
+   "detail": "-0.000073492527 vs -0.000073492527"
+  },
+  {
+   "check": "Gain=L_base-L_action",
+   "unit": "2033/64",
+   "H": 4,
+   "j": 4,
+   "ok": true,
+   "detail": "0.000357985497 vs 0.000357985497"
+  },
+  {
+   "check": "oracle max Gain >= 0",
+   "unit": "2033/64",
+   "H": 4,
+   "j": "*",
+   "ok": true,
+   "detail": "max=0.00035799"
+  },
+  {
+   "check": "Regret>=0",
+   "unit": "2033/64",
+   "H": 4,
+   "j": 0,
+   "ok": true,
+   "detail": "regret=0.000357985497"
+  },
+  {
+   "check": "Regret>=0",
+   "unit": "2033/64",
+   "H": 4,
+   "j": 1,
+   "ok": true,
+   "detail": "regret=0.000253856182"
+  },
+  {
+   "check": "Regret>=0",
+   "unit": "2033/64",
+   "H": 4,
+   "j": 2,
+   "ok": true,
+   "detail": "regret=0.000257074833"
+  },
+  {
+   "check": "Regret>=0",
+   "unit": "2033/64",
+   "H": 4,
+   "j": 3,
+   "ok": true,
+   "detail": "regret=0.000431478024"
+  },
+  {
+   "check": "Regret>=0",
+   "unit": "2033/64",
+   "H": 4,
+   "j": 4,
+   "ok": true,
+   "detail": "regret=0.000000000000"
+  },
+  {
+   "check": "Gain=L_base-L_action",
+   "unit": "2037/82",
+   "H": 4,
+   "j": 0,
+   "ok": true,
+   "detail": "0.000000000000 vs 0.000000000000"
+  },
+  {
+   "check": "no-op Gain=0",
+   "unit": "2037/82",
+   "H": 4,
+   "j": 0,
+   "ok": true,
+   "detail": "gain=0,delta=0"
+  },
+  {
+   "check": "Gain=L_base-L_action",
+   "unit": "2037/82",
+   "H": 4,
+   "j": 1,
+   "ok": true,
+   "detail": "0.000235497952 vs 0.000235497952"
+  },
+  {
+   "check": "Gain=L_base-L_action",
+   "unit": "2037/82",
+   "H": 4,
+   "j": 2,
+   "ok": true,
+   "detail": "0.000180780888 vs 0.000180780888"
+  },
+  {
+   "check": "Gain=L_base-L_action",
+   "unit": "2037/82",
+   "H": 4,
+   "j": 3,
+   "ok": true,
+   "detail": "-0.000005662441 vs -0.000005662441"
+  },
+  {
+   "check": "Gain=L_base-L_action",
+   "unit": "2037/82",
+   "H": 4,
+   "j": 4,
+   "ok": true,
+   "detail": "-0.000279545784 vs -0.000279545784"
+  },
+  {
+   "check": "oracle max Gain >= 0",
+   "unit": "2037/82",
+   "H": 4,
+   "j": "*",
+   "ok": true,
+   "detail": "max=0.00023550"
+  },
+  {
+   "check": "Regret>=0",
+   "unit": "2037/82",
+   "H": 4,
+   "j": 0,
+   "ok": true,
+   "detail": "regret=0.000235497952"
+  },
+  {
+   "check": "Regret>=0",
+   "unit": "2037/82",
+   "H": 4,
+   "j": 1,
+   "ok": true,
+   "detail": "regret=0.000000000000"
+  },
+  {
+   "check": "Regret>=0",
+   "unit": "2037/82",
+   "H": 4,
+   "j": 2,
+   "ok": true,
+   "detail": "regret=0.000054717064"
+  },
+  {
+   "check": "Regret>=0",
+   "unit": "2037/82",
+   "H": 4,
+   "j": 3,
+   "ok": true,
+   "detail": "regret=0.000241160393"
+  },
+  {
+   "check": "Regret>=0",
+   "unit": "2037/82",
+   "H": 4,
+   "j": 4,
+   "ok": true,
+   "detail": "regret=0.000515043736"
+  }
+ ]
+}

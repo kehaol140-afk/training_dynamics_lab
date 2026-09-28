@@ -1,0 +1,110 @@
+{
+ "ledger_id": "A0H20_EXPOSURE_LEDGER_V01",
+ "date": "2026-09-16",
+ "frozen_before_A_double_prime_exposure": true,
+ "state_key_definition": "train_seed + checkpoint identity (state_step_SSS.pt path + sha256) + true optimizer step",
+ "unit_key_definition": "state key + future stream identity (stream_id + stream_seed + batch_manifest_sha256) + H + split/candidate identity",
+ "unseen_definition": "unit not used in A0H implementation/selector-rule debugging AND its task-utility labels (gain/ranking) never viewed",
+ "global_historical_exposure": {
+  "scope": "ALL 56 bank states",
+  "source": "A0C/A0D/A0E2/A0F/A0F2 response-propagation (mechanism-only: chi/tangent model fits)",
+  "disposition": "historical exposure, NOT auto-excluded (mechanism-only, no selector/utility viewing)"
+ },
+ "excluded_states": [
+  {
+   "train_seed": 2030,
+   "step": 52,
+   "checkpoint_path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2030/states/state_step_052.pt",
+   "q_sha256": "8e4f8086d8f0678558f58ca205671387f037f266830d4818e6327d6cfb11c160",
+   "reason": "A0H-1.5 A' acceptance unit: hhat/ranking/gain viewed incl. corrected re-scoring"
+  },
+  {
+   "train_seed": 2031,
+   "step": 52,
+   "checkpoint_path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2031/states/state_step_052.pt",
+   "q_sha256": "3b405839dabaf21539267df9b5f0ba6590bea3547cbc12e5eda47514e0aa373d",
+   "reason": "A0H-1 diagnostics dev unit (D): scorer/adjoint implementation debugging on stream0 outputs; utility labels viewed"
+  },
+  {
+   "train_seed": 2032,
+   "step": 58,
+   "checkpoint_path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2032/states/state_step_058.pt",
+   "q_sha256": "5e11559b1b78c4b18110d3fd54590e9d9ebc13b467aa96f7b3f52e7dec8a769a",
+   "reason": "A0H-1.5 A batch (demoted per read-once rule): dev-validation decision comparison viewed"
+  },
+  {
+   "train_seed": 2033,
+   "step": 64,
+   "checkpoint_path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2033/states/state_step_064.pt",
+   "q_sha256": "9d2587b0cbe269f569d03b6c699dc39967213b400d2d920515ef9df84d477d0f",
+   "reason": "A0H-1.5 A' acceptance unit: hhat/ranking/gain viewed incl. corrected re-scoring"
+  },
+  {
+   "train_seed": 2034,
+   "step": 64,
+   "checkpoint_path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2034/states/state_step_064.pt",
+   "q_sha256": "26f9c4457cd1876df145d2faa32f2995222109f94ef26d32d119c7915daafc28",
+   "reason": "A0H-1 diagnostics dev unit (D): scorer/adjoint implementation debugging on stream0 outputs; utility labels viewed"
+  },
+  {
+   "train_seed": 2035,
+   "step": 70,
+   "checkpoint_path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2035/states/state_step_070.pt",
+   "q_sha256": "648d2df3b8e78e04645bc2b176a0905c24f289e6569d9799dcc078c41f7b4aaa",
+   "reason": "A0H-1.5 A batch (demoted per read-once rule): dev-validation decision comparison viewed"
+  },
+  {
+   "train_seed": 2036,
+   "step": 76,
+   "checkpoint_path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2036/states/state_step_076.pt",
+   "q_sha256": "3145bbd15f4249416edb66a470515b1cec9c6e238d022678becac83af7b6491f",
+   "reason": "A0H-1 diagnostics dev unit (D): scorer/adjoint implementation debugging on stream0 outputs; utility labels viewed"
+  },
+  {
+   "train_seed": 2037,
+   "step": 46,
+   "checkpoint_path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2037/states/state_step_046.pt",
+   "q_sha256": "0b1994500ca5354556d2a6a930df9966b3f5aafdc7904a3871065db6bbfc5b94",
+   "reason": "A0H-1.5 A batch (demoted per read-once rule): dev-validation decision comparison viewed"
+  },
+  {
+   "train_seed": 2037,
+   "step": 82,
+   "checkpoint_path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2037/states/state_step_082.pt",
+   "q_sha256": "68b4bfb93df710b6d4136fc56b905d4a51fe22df9aca84e86e6d9a85189979af",
+   "reason": "A0H-1.5 A' acceptance unit: hhat/ranking/gain viewed incl. corrected re-scoring"
+  }
+ ],
+ "historical_mechanism_only_states": [
+  {
+   "train_seed": 2030,
+   "step": 46,
+   "note": "A0C locked mechanism state (H in {1,2,4,8} x 8 e2 streams); mechanism-only; eligible with record"
+  },
+  {
+   "train_seed": 2037,
+   "step": 46,
+   "note": "A0C locked mechanism state; already excluded on other grounds"
+  },
+  {
+   "train_seed": 2037,
+   "step": 82,
+   "note": "A0C locked mechanism state; already excluded on other grounds"
+  }
+ ],
+ "dev_rehearsal_unit": {
+  "train_seed": 2031,
+  "step": 52,
+  "stream_id": 0,
+  "note": "dev-only; D state (already excluded); never enters acceptance analysis"
+ },
+ "unknown_exposure_policy": "exclude when unclear (宁缺勿补)",
+ "counts": {
+  "bank_states": 56,
+  "excluded": 9,
+  "eligible": 47,
+  "selected_states": 6,
+  "selected_units": 12,
+  "selected_seeds": 6
+ }
+}

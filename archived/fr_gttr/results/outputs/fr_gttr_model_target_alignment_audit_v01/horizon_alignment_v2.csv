@@ -1,0 +1,20 @@
+arm_id,experiment,cell_seed,arm,目标轴,初始累计step,干预长度,观测长度,updates_per_rollout,tokens_per_update,n_rollouts,gain_vs_native,gain_vs_fixed,uncertainty_n,continuation_only,信息时点,来源
+A01,A0C,v07 bank 3态x8stream,tangent精度(A/B/BH/C vs FD),v_score,step46-82(pool),NA(H<=8),NA,NA,1024,24(3态x8),NA(诊断: rel err C=0.0045-0.0219),NA,24,是,chi事后(offline),a0_fr_audit outputs
+A02,A0E2/A0F2,56态普查,tangent精度普查+尺度分解,v_score,同上,NA(H<=8),NA,NA,1024,448,NA(rel err 0.128-0.206 B; C beat B 168/224),NA,448,是,事后,a0e2/a0f2 outputs
+A03,A0O,12态x4stream,LR持久响应(u=+-0.05),v_score,bank step46-82,H{1,4},H{1,4},NA,1024,96,NA(响应幅度; Pearson0.9552 sign0.9688),NA,96,是,模拟后(非在线),a0o REPORT
+A04,A0P,12cell,LR单步脉冲核tau{1..64},v_score,同上,tau步,tau步,NA,1024,12,NA(gate FAIL 0.7314; 半衰期4-8步+长尾),NA,12,是,事后,a0p REPORT
+A05,A0Q,12cell,LR/clip/wd三通道持久控制图,v_score,同上,H=4,H=4,NA,1024,12,NA(LR PASS0.842; clip事件驱动7/12死; wd2e-6),NA,12,是,事后,a0q REPORT
+A06,A0S,D1 n=48+D2 12cell,可控性配对(C_t vs G_t),v_score,同上,H=4,H=4,NA,1024,48+12,G/L0~7e-5(方向46/48+12/12),NA,48+12,是,D2新rollout但同流配对,a0s REPORT
+A07,A0T,36cell共享128-micro流,冻结sign(chi)->u=+-0.05,v_score,H{4,16,64},H{4,16,64},128,1024,36,H4 median+4.41e-4 sign35/36; H64 median+4.7e-3(2细胞反转),约0(C==B 34/36别名),36(median/IQR),是,in-sample同开发流,a0t/a0t_extra REPORT
+A08,A0U,12cell knot{46,52,64,82},chi池化schedule(C) vs 固定(B) vs native(A),v_score,step46起,W=64,W=64,64,1024,12,正(Case B dominant; B-C final n.s.),AUC B-C p=1.2e-2(C更差),12,是,in-sample同开发流,a0u REPORT
+A09,A0G/H/I/J,H=4 M=4+no-op,决策效用+成本,v_eval(V_score分裂),v07 anchor,H=4选择,H=20,NA,1024,12(H20),+1.467e-4(PI[+8.7e-5,+2.1e-4]决策保持12/12),NA,12,是,V_score选/V_eval评(分裂),a0g..a0j outputs
+A10,A0K/L/N,K事件/T=128,闭环三臂+墙钟臂,v_eval@128,v07 anchor,T=128,T=128,128,1024,K20等,A0K C-A median+7.44e-4; A0L B-C+7.46e-3; A0N B-C-6.78e-4,负/混合(C<=B 6/9; selector不优),n=3-6 pilot,是,v_eval反复用于动作评价(非独立final),a0k/a0l/a0n REPORTs
+A11,B0,6cellx2anchorxu_grid5xH{4,16,64},native/persistent/pulse4_release,v_eval主,step46/82,H{4,16,64},64,64,1024,216 main+6 stress,NA单值(假设一H4恒等0/24; 假设二H64 disp0.109; 内点极小4/36),NA,216,是,事后,b0 summary.json
+A12,B0.5,6cell,4臂(native/persist/m-transplant/v-transplant),v_eval,step46,T=64,T=64,64,1024,6,NA(三假设NOT_SUPPORTED; retained=theta位移),NA,6,是,事后,b05 REPORT
+A13,B0.6,26轨迹,regime诊断(psi_t 9通道),诊断统计量,step46,64步窗,64,NA,1024,26,NA(切换NOT_SUPPORTED; rho=0.996),NA,26,是,事后,b06 REPORT
+A14,C0,step46x2stream,3臂(A/Bp/Bm)+field/shadow,v_diag(24 anchors),step46,64,64,64,1024,24,NA(field逐点FAIL 1.166已勘误; tracking残差2e-7),NA,24,是,已知真实s/Splus/qplus(非动作前),c0 REPORT/C0X
+A15,C1,4/6 anchors,field E(K{8,16,32})+shadow,v_diag(新dev/audit各32 probes不相交),step46,64,64,64,1024,4 anchors,NA(field E R0.505/C0.398=误差比非gain),NA,4 anchors,是,预测先落盘再audit(防泄漏),c1 REPORT
+A16,C1L,R/A/t48+C/A/t48,field/shadow晚锚,v_diag,全局step94/128(73%),64,64,64,1024,4,NA(COMBINED6 R0.4914/C0.3618; 4/4 IMPROVED),NA,4,是,重建态(bank无step94),c1l REPORT
+A17,G1a/G1b/G2,26M/100M/D1,tangent复制+训练,v_score,stage26/64/102,H<=8,H<=8,128(planned),1024,3实验,NA(R^2>=0.99949复制精度),NA,per-manifest,否(独立训练),事后,g系列REPORTs
+A18,G3,clip移除干预,gain_clip,v_eval,同,同,T窗,102,1024,arm级,+0.094(vs native clip),NA,单规模单配置,否,事后,g3 REPORT
+A19,G1c 1B,~1B外部dense,可行性Phase0/1+cdiag,诊断,外部,NA,NA,NA,外部,Phase0/1,NA(C-failure: scale-dependent limitation+fp16 trigger),NA,诊断级,否,—,g1c REPORTs

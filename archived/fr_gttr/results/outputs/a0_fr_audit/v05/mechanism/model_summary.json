@@ -1,0 +1,39 @@
+{
+  "analysis": "A0C_partial_FR_models_retained",
+  "n": 448,
+  "models": {
+    "base": {
+      "formula": "chi ~ 1 + B",
+      "n": 448,
+      "R2": 0.0008219907458267839,
+      "residual_df": 446,
+      "coefficients": {
+        "intercept": -0.18262183103467602,
+        "B": 0.060286864701427884
+      },
+      "pvalues": {
+        "intercept": 1.2674116683538743e-123,
+        "B": 0.5450018333840403
+      }
+    },
+    "control": {
+      "formula": "chi ~ 1 + B + alpha_direct",
+      "n": 448,
+      "R2": 0.7714216063214694,
+      "residual_df": 445,
+      "coefficients": {
+        "intercept": -0.039671313848486774,
+        "B": 0.3248322469612899,
+        "alpha_direct": 0.47003023045409453
+      },
+      "pvalues": {
+        "intercept": 3.793919479442038e-17,
+        "B": 4.7098912349185464e-11,
+        "alpha_direct": 1.2543657888754959e-144
+      }
+    }
+  },
+  "delta_R2": 0.7705996155756426,
+  "input": "outputs/a0_fr_audit/v01/direct_path/a0c_state_horizon.csv",
+  "input_sha256": "59e32a6dff4ce499232f220440e7aefa3f7e4cef1760058ea70eb318ed268b13"
+}

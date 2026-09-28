@@ -1,0 +1,167 @@
+{
+ "note": "shared-GPU conditions (external jobs present); medians over interleaved repeats",
+ "summary": [
+  {
+   "state": "2031/52",
+   "stage": "native_step",
+   "n": 5,
+   "wall_median_s": 0.056075699991197325,
+   "wall_min_s": 0.05230840000149328,
+   "wall_max_s": 0.08151039900258183,
+   "cuda_median_ms": 52.08310317993164
+  },
+  {
+   "state": "2031/52",
+   "stage": "scoring_A",
+   "n": 5,
+   "wall_median_s": 0.4066210900055012,
+   "wall_min_s": 0.39108399899851065,
+   "wall_max_s": 0.5163058939942857,
+   "cuda_median_ms": 405.7891540527344
+  },
+  {
+   "state": "2031/52",
+   "stage": "scoring_A_math",
+   "n": 5,
+   "wall_median_s": 0.5927775979944272,
+   "wall_min_s": 0.4472411980095785,
+   "wall_max_s": 3.9473031630041078,
+   "cuda_median_ms": 591.9933471679688
+  },
+  {
+   "state": "2031/52",
+   "stage": "scoring_B",
+   "n": 5,
+   "wall_median_s": 0.3027846979966853,
+   "wall_min_s": 0.265922092992696,
+   "wall_max_s": 4.057193785003619,
+   "cuda_median_ms": 299.4727478027344
+  },
+  {
+   "state": "2031/52",
+   "stage": "selected_gradient_recompute",
+   "n": 5,
+   "wall_median_s": 0.0459360989916604,
+   "wall_min_s": 0.036941398997441866,
+   "wall_max_s": 0.05979780000052415,
+   "cuda_median_ms": 45.15459060668945
+  },
+  {
+   "state": "2031/52",
+   "stage": "shared_prefix",
+   "n": 5,
+   "wall_median_s": 1.0846371960069519,
+   "wall_min_s": 1.01617039499979,
+   "wall_max_s": 5.16706500199507,
+   "cuda_median_ms": 1059.1326904296875
+  },
+  {
+   "state": "2034/64",
+   "stage": "native_step",
+   "n": 5,
+   "wall_median_s": 0.04708670200488996,
+   "wall_min_s": 0.045047599996905774,
+   "wall_max_s": 0.055081600992707536,
+   "cuda_median_ms": 43.53664016723633
+  },
+  {
+   "state": "2034/64",
+   "stage": "scoring_A",
+   "n": 5,
+   "wall_median_s": 0.5438470050139586,
+   "wall_min_s": 0.3490656020003371,
+   "wall_max_s": 3.7666743339941604,
+   "cuda_median_ms": 543.061767578125
+  },
+  {
+   "state": "2034/64",
+   "stage": "scoring_A_math",
+   "n": 5,
+   "wall_median_s": 0.5364354049961548,
+   "wall_min_s": 0.4430048059875844,
+   "wall_max_s": 0.6432332239928655,
+   "cuda_median_ms": 535.77734375
+  },
+  {
+   "state": "2034/64",
+   "stage": "scoring_B",
+   "n": 5,
+   "wall_median_s": 0.34643870299623813,
+   "wall_min_s": 0.2616287020064192,
+   "wall_max_s": 0.3985987029882381,
+   "cuda_median_ms": 341.4799499511719
+  },
+  {
+   "state": "2034/64",
+   "stage": "selected_gradient_recompute",
+   "n": 5,
+   "wall_median_s": 0.0484089999954449,
+   "wall_min_s": 0.03679060000285972,
+   "wall_max_s": 0.05170630000066012,
+   "cuda_median_ms": 47.485374450683594
+  },
+  {
+   "state": "2034/64",
+   "stage": "shared_prefix",
+   "n": 5,
+   "wall_median_s": 1.0806212070019683,
+   "wall_min_s": 1.0184994380106218,
+   "wall_max_s": 5.453388166992227,
+   "cuda_median_ms": 1042.576904296875
+  },
+  {
+   "state": "2036/76",
+   "stage": "native_step",
+   "n": 5,
+   "wall_median_s": 0.04696459899423644,
+   "wall_min_s": 0.04347289999714121,
+   "wall_max_s": 0.053742400006740354,
+   "cuda_median_ms": 44.116031646728516
+  },
+  {
+   "state": "2036/76",
+   "stage": "scoring_A",
+   "n": 5,
+   "wall_median_s": 0.38775259800604545,
+   "wall_min_s": 0.34470329400210176,
+   "wall_max_s": 0.39789319899864495,
+   "cuda_median_ms": 387.0593566894531
+  },
+  {
+   "state": "2036/76",
+   "stage": "scoring_A_math",
+   "n": 5,
+   "wall_median_s": 0.4224436020012945,
+   "wall_min_s": 0.3338122979912441,
+   "wall_max_s": 0.46034729199891444,
+   "cuda_median_ms": 421.9341735839844
+  },
+  {
+   "state": "2036/76",
+   "stage": "scoring_B",
+   "n": 5,
+   "wall_median_s": 0.29549959900032263,
+   "wall_min_s": 0.2604172010032926,
+   "wall_max_s": 4.556476233992726,
+   "cuda_median_ms": 289.7505187988281
+  },
+  {
+   "state": "2036/76",
+   "stage": "selected_gradient_recompute",
+   "n": 5,
+   "wall_median_s": 0.040287200012244284,
+   "wall_min_s": 0.039070600003469735,
+   "wall_max_s": 0.05022370000369847,
+   "cuda_median_ms": 39.30467224121094
+  },
+  {
+   "state": "2036/76",
+   "stage": "shared_prefix",
+   "n": 5,
+   "wall_median_s": 0.9605265840073116,
+   "wall_min_s": 0.8884744940005476,
+   "wall_max_s": 5.649321687000338,
+   "cuda_median_ms": 925.9298095703125
+  }
+ ]
+}

@@ -1,0 +1,125 @@
+{
+ "contract_id": "A0O_LR_INPUT_RESPONSE_VALIDATION_V01",
+ "date": "2026-09-17",
+ "status": "FROZEN_BEFORE_ANY_GPU",
+ "purpose": "Validate whether the training-dynamics response framework extends from DATA perturbation to an OPTIMIZER-INPUT perturbation channel: multiplicative log-LR of the frozen AdamW schedule, u = log(eta/eta0). NOT a final LR controller.",
+ "frozen_science_semantics": {
+  "input_channel": "eta_k(u) = eta_k * exp(u), applied at EVERY optimizer step k=1..H of the H-step future rollout (persistent schedule input, not one-shot pulse)",
+  "u_grid": [
+   "-delta",
+   "0",
+   "+delta"
+  ],
+  "delta": 0.05,
+  "delta_rule": "frozen before any GPU; tuning delta by results is FORBIDDEN",
+  "theory": {
+   "forward": "theta+ = (1 - lr*wd)*theta - lr*adaptive(c)  [decoupled weight decay INCLUDED]",
+   "u_channel": "d theta+/du = lr * (-adaptive(c) - wd*theta)  [chain rule: d lr/du = lr at u=0]",
+   "h_eta": "<v_H, S>, S = sum_k T_k e_u(k); T_k = frozen per-step tangent transition (clipping transpose + fp32 future HVP); pulse enters via dc channel: clipped(c + u e) -> dm1=(1-b1) u e, dv1=2(1-b2) c u e"
+  },
+  "fd_reference": "(L(+delta) - L(-delta)) / (2 delta), L = V_score at endpoint theta_{t+H}(u)",
+  "gates": {
+   "S1": "pooled Pearson |r|(h_eta, FD) >= 0.8 AND sign accuracy >= 0.9 across all cells",
+   "S1_fail_action": "STOP; report failure; do NOT proceed to Stage 2"
+  },
+  "stage2": {
+   "states": [
+    [
+     2030,
+     46
+    ],
+    [
+     2030,
+     64
+    ],
+    [
+     2030,
+     82
+    ]
+   ],
+   "streams_per_state": 8,
+   "actions": [
+    "increase LR (u=+delta)",
+    "baseline (u=0)",
+    "decrease LR (u=-delta)"
+   ],
+   "prediction": "argmin_u {h_eta * u}  ==  sign(h_eta) -> action",
+   "metrics": [
+    "direction accuracy",
+    "regret = selected loss - optimal realized loss",
+    "prediction calibration (Pearson h_eta vs realized slope)",
+    "null = constant-zero response (always baseline)"
+   ]
+  },
+  "frozen_environment": {
+   "recipe": "e3c v0.7 identical to A0K/A0L/A0N; states from v0.7 bank (seeds 2030/2031/2037 x steps 46/52/64/82)",
+   "stage1_streams": [
+    7110,
+    7111,
+    7112,
+    7113
+   ],
+   "stage2_streams": [
+    7200,
+    7201,
+    7202,
+    7203,
+    7204,
+    7205,
+    7206,
+    7207
+   ],
+   "lookahead": "A0K frozen live_manifest events (read-only) reused as the future stream",
+   "a0k_live_manifest_sha256": "7ae6ff92b00ab7c893b735b976a113f6ca476e4e047dd133e63bdf33304abc67"
+  },
+  "forbidden": [
+   "modify optimizer/AdamW/clipping/scheduler",
+   "modify lambda=0.05",
+   "modify response formula/H=4",
+   "tune delta by results",
+   "add thresholds",
+   "add phases",
+   "enlarge candidate set",
+   "response cache/JVP/block planning",
+   "train any controller"
+  ]
+ },
+ "questions": [
+  "Q1: does an LR-input response exist (S1 gate)?",
+  "Q2: is it more informative than random/fixed adjustment (Stage 2 vs null)?",
+  "Q3: does it add a control dimension beyond the data response?"
+ ],
+ "gpu_budget_seconds": 1800,
+ "stop_condition": "report and stop; do not auto-launch any next round; no Stage 3 unless explicitly authorized later",
+ "amendment_A1": {
+  "time": "2026-09-17",
+  "reason": "Driver crashed pre-compute: A0K live_manifest events are keyed at closed-loop cadence steps {10..120} for seeds 2030-2035; A0O bank states are A0C locked grid (seeds 2030/2031/2037 x steps 46/52/64/82). No event key f'{seed}/{step}' exists. Zero A0O GPU results were produced before this amendment.",
+  "stream_mapping_rule_frozen": {
+   "2030": "event 2030/{largest multiple of 10 <= step}",
+   "2031": "event 2031/{largest multiple of 10 <= step}",
+   "2037": "event 2032/{largest multiple of 10 <= step}  (A0K has no 2037 events; 2032 stream used as frozen replay data)"
+  },
+  "mapping_examples": {
+   "(2030,46)": "2030/40",
+   "(2030,82)": "2030/80",
+   "(2031,52)": "2031/50",
+   "(2037,64)": "2032/60"
+  },
+  "science_unchanged": "Stream selection is replay-future-data input only; A0O states, delta, u-grid, gates, forbidden list all unchanged."
+ },
+ "amendment_A2": {
+  "time": "2026-09-17",
+  "reason": "Two pre-results defects found while monitoring the first (stopped) launch; no valid scientific results were produced or viewed before this amendment: (1) analytic pulse was routed through the dc channel as a gradient-frame shift, polluting m/v; correct structure is a pure theta-channel push (m1/v1 are lr-independent) contracted with the reverse theta-cotangent. (2) the 4 frozen stream seeds per state reused the same A0K event lookahead, giving bitwise-identical replicas instead of distinct streams.",
+  "theory_correction": {
+   "pulse_channel": "theta-only: d(theta_{k+1})/du = lr_k * e_lr(k), e_lr = -adaptive(c_k) - wd*theta_k",
+   "mv_pulse": "dm1 = dv1 = 0 at the pulse step (gradient c_k is u-independent)",
+   "h_eta": "sum_k <p_th^{(k)}, lr_k*e_lr(k)>; p_th^{(k)} = dL/d(theta_{k+1}) from the frozen reverse adjoint"
+  },
+  "stream_recipe_frozen": {
+   "batch_seed": "derive_stream_seed(stream_seed, 404)  (same derivation as A0K manifest builder)",
+   "lookahead": "batches_from_train_pool(train_indices, bs, batch_seed, 8*accum) from v07 partition",
+   "scope": "applies to all Stage-1 and Stage-2 cells; A0K event key mapping (A1) retained for provenance gate only"
+  },
+  "science_unchanged": "states, delta=0.05, u-grid, gates, forbidden list unchanged."
+ }
+}

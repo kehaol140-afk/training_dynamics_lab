@@ -1,0 +1,152 @@
+{
+ "unit_id": "2034_046_s0",
+ "H_decision": 4,
+ "lambda": 0.05,
+ "scorer_mode": "production_entry forward_only/adjoint_only at H_dec (round-2 selfcheck: bit-identical to frozen diag pass at same config)",
+ "state": {
+  "train_seed": 2034,
+  "step": 46,
+  "q_sha256": "f24f932635d1f1f6552c6e12a0a44a105cd4cea805e86e37964e22350fc0b2ee",
+  "stream_id": 0,
+  "stream_seed": 3491346944497853343,
+  "batch_manifest_sha256": "9ef8ff60bf8bdf7054657aa7b17c21184a1713f3c44f727b6030314013186f56"
+ },
+ "scorers_H4": {
+  "hhat": {
+   "bf16_fwd_C": {
+    "1": -0.015035079323766453,
+    "2": -0.00869167754399546,
+    "3": -0.003556633425602027,
+    "4": -0.006090709885570585
+   },
+   "fp32hvp_fwd": {
+    "1": -0.01497874872113736,
+    "2": -0.008665245645465757,
+    "3": -0.0035448907967890525,
+    "4": -0.006078337694674064
+   },
+   "fp32hvp_adjoint": {
+    "1": -0.014978748553213139,
+    "2": -0.00866524561822921,
+    "3": -0.003544890938725163,
+    "4": -0.006078337643932915
+   }
+  },
+  "units": {
+   "hhat": "dL_score/dlambda (loss per unit lambda)",
+   "predicted_delta_loss": "lambda*hhat (loss)",
+   "predicted_gain": "-lambda*hhat (loss)"
+  }
+ },
+ "mode_fingerprints": {
+  "bf16_fwd": {
+   "hvp_fp32": false,
+   "mode": "forward_only"
+  },
+  "fp32_fwd": {
+   "hvp_fp32": true,
+   "mode": "forward_only"
+  },
+  "fp32_adj": {
+   "hvp_fp32": true,
+   "mode": "adjoint_only",
+   "w_0_norm": 0.24618465726570762
+  },
+  "adjoint_constraint": "adjoint_only ran without candidate future tangents; forward references are separate runs (audit cost)"
+ },
+ "counters": {
+  "bf16_fwd": {
+   "baseline_steps": 4,
+   "candidate_grad_calls": 4,
+   "hvp_calls": 12,
+   "reverse_adjoint_steps": 0,
+   "clip_transpose_calls": 0,
+   "endpoint_grad_calls": 1,
+   "scoring_dot_calls": 4,
+   "replay_branches": 0,
+   "replay_native_steps": 0,
+   "replay_scoring_calls": 0,
+   "outer_autograd_backward_calls": 0
+  },
+  "fp32_fwd": {
+   "baseline_steps": 4,
+   "candidate_grad_calls": 4,
+   "hvp_calls": 12,
+   "reverse_adjoint_steps": 0,
+   "clip_transpose_calls": 0,
+   "endpoint_grad_calls": 1,
+   "scoring_dot_calls": 4,
+   "replay_branches": 0,
+   "replay_native_steps": 0,
+   "replay_scoring_calls": 0,
+   "outer_autograd_backward_calls": 0
+  },
+  "fp32_adj": {
+   "baseline_steps": 4,
+   "candidate_grad_calls": 4,
+   "hvp_calls": 3,
+   "reverse_adjoint_steps": 4,
+   "clip_transpose_calls": 5,
+   "endpoint_grad_calls": 1,
+   "scoring_dot_calls": 4,
+   "replay_branches": 0,
+   "replay_native_steps": 0,
+   "replay_scoring_calls": 0,
+   "outer_autograd_backward_calls": 0
+  }
+ },
+ "choices_pre_eval": {
+  "bf16C_argmin": {
+   "chosen_id": 1,
+   "five_action_ranking": [
+    1,
+    2,
+    4,
+    3,
+    0
+   ],
+   "margin": {
+    "best_j": 1,
+    "best_pred_delta": -0.0007517539661883227,
+    "second_j": 2,
+    "second_pred_delta": -0.000434583877199773,
+    "margin": 0.0003171700889885497
+   }
+  },
+  "fp32fwd_argmin": {
+   "chosen_id": 1,
+   "five_action_ranking": [
+    1,
+    2,
+    4,
+    3,
+    0
+   ],
+   "margin": {
+    "best_j": 1,
+    "best_pred_delta": -0.000748937436056868,
+    "second_j": 2,
+    "second_pred_delta": -0.0004332622822732879,
+    "margin": 0.0003156751537835801
+   }
+  },
+  "fp32adj_argmin": {
+   "chosen_id": 1,
+   "five_action_ranking": [
+    1,
+    2,
+    4,
+    3,
+    0
+   ],
+   "margin": {
+    "best_j": 1,
+    "best_pred_delta": -0.000748937427660657,
+    "second_j": 2,
+    "second_pred_delta": -0.0004332622809114605,
+    "margin": 0.00031567514674919647
+   }
+  }
+ },
+ "wall_seconds": 19.764570921994164
+}

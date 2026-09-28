@@ -1,0 +1,78 @@
+{
+  "step": 950000,
+  "stream_id": 1,
+  "H": 1,
+  "q_sha256": "08128dd4f86429399d9b732778d18e81b2a35f76ef978d71a25c3b883ca2cbb0",
+  "checks": [
+    {
+      "name": "replay_gpu_loss_bitexact",
+      "ok": true,
+      "detail": "loss_gap=0"
+    },
+    {
+      "name": "replay_gpu_grads_nonwte_bitexact",
+      "ok": true,
+      "detail": "max_gap_nonwte=0 wte_gap=0 (wte: embedding atomicAdd, expected non-deterministic on CUDA)"
+    },
+    {
+      "name": "replay_cpu_fp32_bitexact",
+      "ok": true,
+      "detail": "loss_gap=0 max_grad_gap=0"
+    },
+    {
+      "name": "gradient_propagation",
+      "ok": true,
+      "detail": "loss=10.661172 |g|=106.192673 clip_coef=0.009417 finite=True"
+    },
+    {
+      "name": "h1_identity_B_eq_C",
+      "ok": true,
+      "detail": "|B1-C1|=0"
+    },
+    {
+      "name": "h1_fd_vs_tangent",
+      "ok": true,
+      "detail": "[{\"level\": \"eps\", \"epsilon\": 0.00025294696671568535, \"chi_fd\": -1.5392963161366064, \"rel_err_B\": 0.0001699318610891975, \"rel_err_C\": 0.0001699318610891975, \"X_plus\": -0.0004025605184147188, \"X_minus\": 0.0003761601496720478}, {\"level\": \"eps/2\", \"epsilon\": 0.00012647348335784268, \"chi_fd\": -1.53944087782638, \"rel_err_B\": 7.601058259577578e-05, \"rel_err_C\": 7.601058259577578e-05, \"X_plus\": -0.00020789855612257202, \"X_minus\": 0.00018149834436174275}]"
+    },
+    {
+      "name": "hvp_executability",
+      "ok": true,
+      "detail": "peak_mem_gb=20.2 time=646.2s/584.7s |hvp|=2.49014 finite=True repeat_max_gap=0 <q,hvp>=0.000231095"
+    }
+  ],
+  "baseline_step1": {
+    "loss": 10.66117238998413,
+    "grad_norm": 106.19267272949219,
+    "clip_coef": 0.009416845483590801
+  },
+  "sigma_q": 0.0010117878668627414,
+  "epsilon": 0.00025294696671568535,
+  "fd": [
+    {
+      "level": "eps",
+      "epsilon": 0.00025294696671568535,
+      "chi_fd": -1.5392963161366064,
+      "rel_err_B": 0.0001699318610891975,
+      "rel_err_C": 0.0001699318610891975,
+      "X_plus": -0.0004025605184147188,
+      "X_minus": 0.0003761601496720478
+    },
+    {
+      "level": "eps/2",
+      "epsilon": 0.00012647348335784268,
+      "chi_fd": -1.53944087782638,
+      "rel_err_B": 7.601058259577578e-05,
+      "rel_err_C": 7.601058259577578e-05,
+      "X_plus": -0.00020789855612257202,
+      "X_minus": 0.00018149834436174275
+    }
+  ],
+  "hvp": {
+    "peak_mem_gb": 20.196694374084473,
+    "time_s": 646.2119371891022,
+    "norm": 2.490141753866434,
+    "finite": true,
+    "repeat_max_gap": 0.0,
+    "q_dot_hvp": 0.00023109483170455255
+  }
+}

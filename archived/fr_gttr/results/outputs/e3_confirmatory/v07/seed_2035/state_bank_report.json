@@ -1,0 +1,82 @@
+{
+  "protocol": "E3C_CONFIRMATORY_V07_STATE_BANK",
+  "technical_pass": true,
+  "train_seed": 2035,
+  "train_batch_seed": 3739,
+  "state_steps": [
+    46,
+    52,
+    58,
+    64,
+    70,
+    76,
+    82
+  ],
+  "horizons": [
+    1,
+    2,
+    4,
+    8,
+    12,
+    16,
+    24,
+    32
+  ],
+  "partition_sha256": "5ecaf0a3533d5dddd3fe2a768f13f5f8131cb620cb78412c35df5467539391f4",
+  "probe_overlap": 0,
+  "eval_overlap": 0,
+  "trajectory_step0_first_micro_batch": [
+    3051,
+    3434,
+    3960,
+    2439
+  ],
+  "trajectory_step0_probe_overlap": 0,
+  "trajectory_step0_eval_overlap": 0,
+  "prereg_lock_path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/PREREG_LOCK.json",
+  "prereg_lock_sha256": "6e74215685b42a732d8a241140c7a7e851355b456dd1d98337e4a4fd36ae5457",
+  "states": [
+    {
+      "step": 46,
+      "path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2035/states/state_step_046.pt",
+      "model_hash": "2878dc654ee86b8672114321712775d35c77efc5d579e9d00ba015d3c77530c2",
+      "optimizer_hash": "668b5c3a8e461d7955654a82dce6969f773f3070edb5e4ee2f8e7e0e148203f1"
+    },
+    {
+      "step": 52,
+      "path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2035/states/state_step_052.pt",
+      "model_hash": "72c6f5be2d606ff5ed7ffa6c113c63f6cbf69b51a99d38ebbeec0ab9c923962a",
+      "optimizer_hash": "5b37135f4aeeb410e2c4c9b236f710914dda01d75820f78a94c9d3bfb6a56023"
+    },
+    {
+      "step": 58,
+      "path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2035/states/state_step_058.pt",
+      "model_hash": "2071f4ad4e8dbda4bd852154eccd176c61bb6df39c8dc549cd5c1b67eef0107b",
+      "optimizer_hash": "0dc455f22fd7988f066cc1aa1c8774c660603c5fc6d42500bc14701f4c200bae"
+    },
+    {
+      "step": 64,
+      "path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2035/states/state_step_064.pt",
+      "model_hash": "c1397156dd4248d27afd013aac56ba870cc82741dba58d35365094984a07ca9f",
+      "optimizer_hash": "a512c6079f42ee4a32836818c56d754a20bae52b55fd56ac0bd86f74f63f682a"
+    },
+    {
+      "step": 70,
+      "path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2035/states/state_step_070.pt",
+      "model_hash": "2fccfdf9c4d72e70d46f71437f676e2ec4f626c4a97693c0dd5f37c6b4791baa",
+      "optimizer_hash": "96c53426bd519200d66d84a4521776859defa6cb3054e0fe4a94bb1cc4864913"
+    },
+    {
+      "step": 76,
+      "path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2035/states/state_step_076.pt",
+      "model_hash": "beee10accbad793bbc6971c115b5a1956da10216411f036ee5c78aeb40d70bfb",
+      "optimizer_hash": "ef5587fe44c91f331a6aa0f99d82b08ababbb91470fb8cc46304ffd23f9e4f16"
+    },
+    {
+      "step": 82,
+      "path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2035/states/state_step_082.pt",
+      "model_hash": "becd3b132e130e7b1376890318171a0df16ee1a54d834b20b4361447854b9fec",
+      "optimizer_hash": "eabc17745b9548047072aa709b3b1b27f8af21930bb94e1127a681c7b199093b"
+    }
+  ]
+}

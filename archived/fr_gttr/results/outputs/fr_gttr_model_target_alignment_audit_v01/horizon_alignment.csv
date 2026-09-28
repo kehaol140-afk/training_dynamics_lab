@@ -1,0 +1,20 @@
+arm_id,experiment,time_axis,unit_steps_vs_wallclock,H_scope,T_scope,readout_axis,readout_t,loss_to_val_gap,causal_chain,split_source,overlap_with_selection,independence,alignment_status
+A01,A0C,train micro-step,unit=step(H),H<=8,step~46-82,v_score(LM NLL),t+H,同split自测(训练步loss+eval一致口径),状态->动作->H步后NLL(after-t),a0g validation_split train侧,否(A0C未做选择),chi=eval轴自FD,ALIGNED
+A02,A0E2/A0F2,train micro-step,unit=step,56态普查 H<=8,stage3 pool,v_score,同A01,同A01,同A01,同A01,否(普查非选择),回归诊断ALIGNED
+A03,A0O,train micro-step,unit=step,H{1,4},bank中段,persistent动作后v_score,t+H,同A01,动作->解析伴随(信息时点=模拟后),同A01,是(响应选择),伴随=开环replay,ALIGNED_WITH_CAVEAT(非在线)
+A04,A0P,train micro-step,unit=step,tau{1..64},单步脉冲窗,v_score,t+tau,同A01,脉冲->单指数外推失败,同A01,否,核估计in-sample,ALIGNED
+A05,A0Q,train micro-step,unit=step,H=4,3通道×12cell,v_score,t+4,同A01,Jacobian通道幅度->增益,同A01,否,控制图pilot,ALIGNED
+A06,A0S,train micro-step,unit=step,H=4,D1离线48+D2新rollout,v_score,t+4,同A01,C_t->G_t方向配对,新rollout(D2),否,D2同流配对in-sample,ALIGNED_WITH_CAVEAT
+A07,A0T,train micro-step,unit=step,H{4,16,64},36cell共享128-micro流,v_score,t+H,同A01,冻结chi->sign->u->gain,同A01,是(同流in-sample),H4短期!=长期(A0T-extra),MISALIGNED(短期读出; 长期反转)
+A08,A0U,train micro-step,unit=step,W=64 rollout,knot{46,52,64,82},v_score,t+64,同A01,chi池化->段乘子开环执行,同A01,是(同流in-sample),schedule不优于固定+5%,MISALIGNED(开环; 无out-of-sample)
+A09,A0G/A0H/A0I/A0J,train micro-step,unit=step,H=4/M=4动作,T=128短窗,v_eval(V_score分裂),t+H,eval轴同split分离,V_score vs V_eval分裂,是(动作由V_score选择; 效用V_eval),in-sample选择,SPLIT_ALIGNED(双轴)
+A10,A0K/A0L/A0N,train micro-step+墙钟,step T=128 + wallclock等价,事件K臂,T=128,v_eval@128,t=128,eval读出,L0->K->DeltaW/DeltaK@128,同A01,是(反复用于动作评价),无独立final测试集,MISALIGNED(无final轴; 等墙钟赢在尺度)
+A11,B0,train micro-step,unit=step,T=64窗,臂3×u_grid5×H{4,16,64},v_eval主读出,t+64,eval读出,native/persistent/pulse4_release,同A01,否,冻结step46(与C0同),ALIGNED
+A12,B0.5,train micro-step,unit=step,T=64窗,4臂x64步x6cell,v_eval,t+64,eval读出,D-transplant m/v原位覆盖,同A01,否,机制识别ALIGNED
+A13,B0.6,train micro-step,unit=step,64步窗,26轨迹x64步,psi_t通道(LM统计量),窗内64,诊断读出,regime切换HMM,同A01,否,9维投影,ALIGNED(诊断层)
+A14,C0,train micro-step,unit=step,step46x2stream,3臂x64步,24 anchors dev/audit各8,t+64,eval读出,Mgeom=g+Hs再clip; shadow U-map,同A01,否(C0未选择; C1冻结规则),单ckpt,ALIGNED
+A15,C1,train micro-step,unit=step,step46,新dev/audit各32 probes不相交,t+64,eval读出,field E/shadow U,同A01,是(冻结规则经C0选择),严格防泄漏(预测先落盘),ALIGNED_WITH_CAVEAT(2/6 anchors)
+A16,C1L,train micro-step,unit=step,全局step94/128(73%),R/A/C/t48重放49步/cell,t+64,eval读出,冻结规则沿用,同A01,是(规则沿用),bank无step94(非真实训练状态),MISALIGNED(t48=重建态非原训练点)
+A17,G1a/G1b/G2,train micro-step,unit=step,H<=8,T窗同v07,v_score,t+H,eval读出,scale/data复制; C R^2>0.999,独立语料(D1),否,强复制ALIGNED
+A18,G3,train micro-step,unit=step,T窗同v07,arm+0.094 gain_clip,v_eval,t+T,eval读出,clip因果干预,同A01,否,机制确认ALIGNED
+A19,1B(G1c),未启动,—,—,—,—,—,—,—,—,—,NOT_TESTED

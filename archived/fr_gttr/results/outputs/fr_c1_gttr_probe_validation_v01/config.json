@@ -1,0 +1,104 @@
+{
+ "experiment_id": "FR_C1_GTTR_PROBE_VALIDATION_V01",
+ "protocol": "FR_C0X_C1_GTTR_Offline_and_Probe_Validation_Claude_Code.md",
+ "anchors": {
+  "R": [
+   [
+    "A",
+    0
+   ],
+   [
+    "Bp",
+    16
+   ],
+   [
+    "A",
+    48
+   ]
+  ],
+  "C": [
+   [
+    "A",
+    0
+   ],
+   [
+    "Bp",
+    16
+   ],
+   [
+    "A",
+    48
+   ]
+  ]
+ },
+ "executed_anchors": {
+  "R": [
+   [
+    "A",
+    0
+   ],
+   [
+    "Bp",
+    16
+   ]
+  ],
+  "C": [
+   [
+    "A",
+    0
+   ],
+   [
+    "Bp",
+    16
+   ]
+  ]
+ },
+ "coverage_note": "协议固定 6 anchor；本轮因计入失败的首跑（32 HVP）与 smoke (16 HVP) 后全量 6 anchor 需 432>416 HVP，超出 round cap。对称减覆盖：每 cell 测 A/t0 + Bp/t16（t∈{0,16}），A/t48 两 anchor 本轮不测；round HVP 预算 304/416。",
+ "path_lengths": {
+  "A": 49,
+  "Bp": 17
+ },
+ "probe_banks": {
+  "n_dev": 32,
+  "n_audit": 32,
+  "micros_per_probe": 2,
+  "dev_seed": 2026092103,
+  "audit_seed": 2026092104
+ },
+ "k_prefixes": [
+  8,
+  16,
+  32
+ ],
+ "half_split": 16,
+ "budget": {
+  "optimizer_updates_max": 192,
+  "grad_evals_max": 1400,
+  "hvp_calls_max": 416,
+  "micro_forward_calls_max": 3200,
+  "gpu_wall_s_max": 5400,
+  "planned": {
+   "smoke_updates": 8,
+   "main_updates": 132
+  },
+  "accounting": "round-total; failures/rechecks/salvage count; effective-batch evals and micro-forward calls kept as two simultaneous sets; old 18,000 ledger untouched, C1 billed separately; never divide C1 totals by 18000"
+ },
+ "precision": {
+  "model_dtype": "bfloat16",
+  "inner_products": "fp64",
+  "hvp_fp32": true
+ },
+ "clip": {
+  "tau_source": "rt cfg grad_clip (same as C0)",
+  "CLIP_DENOMINATOR_EPS": 1e-06
+ },
+ "optim": {
+  "beta1": 0.9,
+  "beta2": 0.999,
+  "eps": 1e-08,
+  "wd": 0.01
+ },
+ "stop_v": "P frozen from the AUDIT bank's mean clipped g0 (C0 pair-baseline convention, a2v/b2v at t_after); applied to both banks for within-anchor comparability; ablation only, not an optimizer.",
+ "d_c_to_u": "local c->U derivative, dev bank, post-update shadow state; clip-Jacobian factor not included; diagnostic only",
+ "memory": "per-probe vectors freed after accumulation; only fp64 group sums and scalar projection lists persist within an anchor"
+}

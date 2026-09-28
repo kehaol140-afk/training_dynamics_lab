@@ -1,0 +1,7 @@
+item,status,note
+C0 half-bank aggregate gate (g3),DATA_MISSING,"C0 never saved half-bank SSE/TSS; aggregate per-point recheck impossible. C0X verdict unchanged (erratum, original preserved). New late data does NOT repair this historical gap."
+OLD C1 shadow per-probe same-probe residual SE,NOT_SAVED,Old runner saved field residual norms only. probe_summary.csv K32 shadow rows carry the FIELD residual value (analyzer fill artifact) - excluded from any shadow inference.
+OLD C1 stop-v per-probe norms/ratio/cosine,PARTIAL,Only mean-level inner and diff-norm saved for old anchors; per-probe norm ratio and cosine not recoverable offline.
+A0T - C0 v_eval cross-axis absolute comparison,AXIS_MISMATCH,v_score full axis vs independent 64-sample v_eval; no shared axis; constant-offset alignment forbidden. Unchanged.
+C0 readout ledger h=65 row,"NOT_PRESENT (index definition, not imputed)","63 ledger rows per cell/arm, h in 2..64 (updates 1..63); intervals [0,4)=[1..4], [4,16)=[5..16], [16,63]=[17..63]; no interpolation/zero-fill; no new GPU spent on history."
+OLD C1 per-group sumsq/centered_SS,NOT_SAVED,Old records saved mean_sq_norm and SE only; per-probe dispersion (centered_SS) not recomputable beyond the saved SE. NEW late records save full sufficient statistics.

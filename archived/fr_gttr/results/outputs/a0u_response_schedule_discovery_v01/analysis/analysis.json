@@ -1,0 +1,368 @@
+{
+ "stage1_phase_analysis": {
+  "n_trajectories": 12,
+  "frac_all_negative": 0.9166666666666666,
+  "median_sign_consistency": 1.0,
+  "sign_consistency_distribution": [
+   0.5,
+   1.0
+  ],
+  "phase_mean_abs": {
+   "early": {
+    "median": 0.01131332933224094,
+    "min": 0.00040261172731281825,
+    "max": 0.027389933439131653
+   },
+   "middle": {
+    "median": 0.00877026048777546,
+    "min": 0.0026304510413677207,
+    "max": 0.015041479241077127
+   },
+   "late": {
+    "median": 0.007630687131037095,
+    "min": 0.0019609417717729727,
+    "max": 0.009734964163890414
+   }
+  },
+  "does_response_define_phases": {
+   "note": "descriptive: |chi| median per phase + sign consistency across knots",
+   "all_negative_count": 11,
+   "late_weaker_than_early_frac": 0.75
+  },
+  "cross_seed_similarity": {
+   "7110": {
+    "pairs": {
+     "2030v2031": {
+      "pearson": -0.2689337571064547,
+      "sign_agreement": 0.5
+     },
+     "2030v2037": {
+      "pearson": 0.2558711057205258,
+      "sign_agreement": 0.5
+     },
+     "2031v2037": {
+      "pearson": 0.025100633185123865,
+      "sign_agreement": 1.0
+     }
+    },
+    "per_knot_seed_sign_agreement": [
+     0.6666666666666666,
+     1.0,
+     0.6666666666666666,
+     1.0
+    ]
+   },
+   "7111": {
+    "pairs": {
+     "2030v2031": {
+      "pearson": 0.07349597074670482,
+      "sign_agreement": 1.0
+     },
+     "2030v2037": {
+      "pearson": 0.3358979303695871,
+      "sign_agreement": 1.0
+     },
+     "2031v2037": {
+      "pearson": -0.4790555737120969,
+      "sign_agreement": 1.0
+     }
+    },
+    "per_knot_seed_sign_agreement": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "7112": {
+    "pairs": {
+     "2030v2031": {
+      "pearson": -0.9319817114995947,
+      "sign_agreement": 1.0
+     },
+     "2030v2037": {
+      "pearson": 0.7345270340028596,
+      "sign_agreement": 1.0
+     },
+     "2031v2037": {
+      "pearson": -0.49445850465996716,
+      "sign_agreement": 1.0
+     }
+    },
+    "per_knot_seed_sign_agreement": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   },
+   "7113": {
+    "pairs": {
+     "2030v2031": {
+      "pearson": 0.12714763342336244,
+      "sign_agreement": 1.0
+     },
+     "2030v2037": {
+      "pearson": 0.8516230726516223,
+      "sign_agreement": 1.0
+     },
+     "2031v2037": {
+      "pearson": -0.39920230200738194,
+      "sign_agreement": 1.0
+     }
+    },
+    "per_knot_seed_sign_agreement": [
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   }
+  }
+ },
+ "stage3_blocks_final_loss": {
+  "A_minus_B": {
+   "n": 12,
+   "median": 0.005683928728103638,
+   "mean": 0.0061322251955668134,
+   "frac_positive": 1.0,
+   "wilcoxon_vs0": {
+    "n_nonzero": 12,
+    "statistic": 0.0,
+    "p": 0.00048828125
+   },
+   "binom_p_positive": 0.00048828125,
+   "n_nonzero": 12
+  },
+  "A_minus_C": {
+   "n": 12,
+   "median": 0.004870563745498657,
+   "mean": 0.004367580016454061,
+   "frac_positive": 0.9166666666666666,
+   "wilcoxon_vs0": {
+    "n_nonzero": 12,
+    "statistic": 4.0,
+    "p": 0.00341796875
+   },
+   "binom_p_positive": 0.00634765625,
+   "n_nonzero": 12
+  },
+  "B_minus_C": {
+   "n": 12,
+   "median": -0.00032779574394226074,
+   "mean": -0.0017646451791127522,
+   "frac_positive": 0.25,
+   "wilcoxon_vs0": {
+    "n_nonzero": 12,
+    "statistic": 14.0,
+    "p": 0.05224609375
+   },
+   "binom_p_positive": 0.14599609375,
+   "n_nonzero": 12
+  }
+ },
+ "stage3_blocks_auc": {
+  "A_minus_B": {
+   "n": 12,
+   "median": 0.16163182258605957,
+   "mean": 0.18693272272745767,
+   "frac_positive": 1.0,
+   "wilcoxon_vs0": {
+    "n_nonzero": 12,
+    "statistic": 0.0,
+    "p": 0.00048828125
+   },
+   "binom_p_positive": 0.00048828125,
+   "n_nonzero": 12
+  },
+  "A_minus_C": {
+   "n": 12,
+   "median": 0.13469868898391724,
+   "mean": 0.11454145113627116,
+   "frac_positive": 0.9166666666666666,
+   "wilcoxon_vs0": {
+    "n_nonzero": 12,
+    "statistic": 9.0,
+    "p": 0.01611328125
+   },
+   "binom_p_positive": 0.00634765625,
+   "n_nonzero": 12
+  },
+  "B_minus_C": {
+   "n": 12,
+   "median": -0.03568333387374878,
+   "mean": -0.07239127159118652,
+   "frac_positive": 0.16666666666666666,
+   "wilcoxon_vs0": {
+    "n_nonzero": 12,
+    "statistic": 8.0,
+    "p": 0.01220703125
+   },
+   "binom_p_positive": 0.03857421875,
+   "n_nonzero": 12
+  }
+ },
+ "stage3_blocks_early_improvement": {
+  "B": {
+   "n": 12,
+   "median": 0.0006994903087615967,
+   "mean": 0.0007181465625762939,
+   "frac_positive": 0.75,
+   "wilcoxon_vs0": {
+    "n_nonzero": 12,
+    "statistic": 12.0,
+    "p": 0.0341796875
+   },
+   "binom_p_positive": 0.14599609375,
+   "n_nonzero": 12
+  },
+  "C": {
+   "n": 12,
+   "median": 0.00016131997108459473,
+   "mean": 0.00013075768947601318,
+   "frac_positive": 0.5833333333333334,
+   "wilcoxon_vs0": {
+    "n_nonzero": 12,
+    "statistic": 30.0,
+    "p": 0.5185546875
+   },
+   "binom_p_positive": 0.7744140625,
+   "n_nonzero": 12
+  }
+ },
+ "schedule_summary": {
+  "n_cells": 12,
+  "n_lr_changes_distribution": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "n_up_segments_distribution": [
+   0,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3,
+   3
+  ],
+  "n_down_segments_distribution": [
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   0,
+   3
+  ],
+  "multiplier_vectors": [
+   [
+    1.0,
+    0.951229424500714,
+    0.951229424500714,
+    0.951229424500714
+   ],
+   [
+    1.0,
+    1.0512710963760241,
+    1.0512710963760241,
+    1.0512710963760241
+   ],
+   [
+    1.0,
+    1.0512710963760241,
+    1.0512710963760241,
+    1.0512710963760241
+   ],
+   [
+    1.0,
+    1.0512710963760241,
+    1.0512710963760241,
+    1.0512710963760241
+   ],
+   [
+    1.0,
+    1.0512710963760241,
+    1.0512710963760241,
+    1.0512710963760241
+   ],
+   [
+    1.0,
+    1.0512710963760241,
+    1.0512710963760241,
+    1.0512710963760241
+   ],
+   [
+    1.0,
+    1.0512710963760241,
+    1.0512710963760241,
+    1.0512710963760241
+   ],
+   [
+    1.0,
+    1.0512710963760241,
+    1.0512710963760241,
+    1.0512710963760241
+   ],
+   [
+    1.0,
+    1.0512710963760241,
+    1.0512710963760241,
+    1.0512710963760241
+   ],
+   [
+    1.0,
+    1.0512710963760241,
+    1.0512710963760241,
+    1.0512710963760241
+   ],
+   [
+    1.0,
+    1.0512710963760241,
+    1.0512710963760241,
+    1.0512710963760241
+   ],
+   [
+    1.0,
+    1.0512710963760241,
+    1.0512710963760241,
+    1.0512710963760241
+   ]
+  ],
+  "identical_to_B_frac": 0.0,
+  "mean_n_lr_changes": 1.0
+ },
+ "verdict": {
+  "case_A": false,
+  "case_B": true,
+  "case_C": false,
+  "label": "B_response_like_fixed_scaling"
+ },
+ "cost": {
+  "schedule_generation_cost_s": 0.05,
+  "training_cost_gpu_s": 475.54,
+  "budget_s": 1800,
+  "per_arm_gpu_s_est": 118.9
+ },
+ "crn_all": true,
+ "n_cells": 12
+}

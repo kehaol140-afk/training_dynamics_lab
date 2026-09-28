@@ -1,0 +1,19 @@
+{
+  "protocol": "FR_G1C_EXTERNAL_1B_STRESS_TEST_V01",
+  "status": "EXTERNAL_CHECKPOINT_UNAVAILABLE",
+  "created_at_utc": "2026-09-16T16:05:00Z",
+  "science_executed": false,
+  "verdict": {
+    "label": "EXTERNAL_CHECKPOINT_UNAVAILABLE",
+    "pass": null,
+    "note": "B14 blocked-tier label; no scientific result exists; this is NOT a negative scientific result for the response mechanism"
+  },
+  "screening": {
+    "repos_screened": 7,
+    "revisions_screened": 14,
+    "state_files_found": 0,
+    "primary": "allenai/OLMo-1B (apache-2.0, 1.24B, AdamW betas(0.9,0.95) wd0.1 lr4e-4 clip1.0, 336 step revisions, model-only)"
+  },
+  "results": null,
+  "next_step": "report EXTERNAL_CHECKPOINT_UNAVAILABLE; do NOT auto-start second external model/7B/D2; optional user decision: alternative external family with public optimizer state (outside AllenAI OLMo series) requires new authorization"
+}

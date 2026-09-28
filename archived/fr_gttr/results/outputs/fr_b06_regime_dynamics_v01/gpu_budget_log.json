@@ -1,0 +1,194 @@
+{
+ "phases": [
+  {
+   "phase": "smoke",
+   "t_start": 486276.461809947,
+   "t_end": 486276.461810247,
+   "wall_s": 0.0,
+   "gpu": "cuda:0",
+   "detail": {
+    "snapshot_identity": true,
+    "crn_native_repeat": true,
+    "tokens_per_step_1024": true,
+    "m_v_finite_positive": true,
+    "cos_bounds": true,
+    "disp_monotone_nonneg": true,
+    "state_entries_eq_named": true,
+    "grad_flat_norm_consistency": false,
+    "bitwise_vs_frozen_b0_diag_h1_8": true,
+    "budget_after_smoke": {
+     "smoke_optimizer_updates": 16
+    },
+    "ALL_PASS": false
+   },
+   "optimizer_updates": 16,
+   "eval_calls": 0,
+   "theta_bar_evals": 0,
+   "theta_captures": 0,
+   "launch_id": "smoke_attempt_1"
+  },
+  {
+   "phase": "smoke",
+   "t_start": 486322.145355634,
+   "t_end": 486322.145356134,
+   "wall_s": 0.0,
+   "gpu": "cuda:0",
+   "detail": {
+    "snapshot_identity": true,
+    "crn_native_repeat": true,
+    "tokens_per_step_1024": true,
+    "m_v_finite_positive": true,
+    "cos_bounds": true,
+    "disp_monotone_nonneg": true,
+    "state_entries_eq_named": true,
+    "grad_flat_norm_consistency": true,
+    "bitwise_vs_frozen_b0_diag_h1_8": true,
+    "budget_after_smoke": {
+     "smoke_optimizer_updates": 16
+    },
+    "ALL_PASS": true
+   },
+   "optimizer_updates": 16,
+   "eval_calls": 0,
+   "theta_bar_evals": 0,
+   "theta_captures": 0,
+   "launch_id": "smoke_attempt_2"
+  },
+  {
+   "phase": "main_attempt_1_FAILED_driver_bug",
+   "t_start": null,
+   "t_end": null,
+   "wall_s": null,
+   "gpu": null,
+   "detail": {
+    "optimizer_updates": 64,
+    "reason": "KeyError writing psi_main.csv row (metadata fields mixed into PSI_FIELDS); one full 64-step native arm on cell 2030x46 stream 7500 completed on GPU before the crash; updates consumed but no rows recorded. Fixed in seq 5; arm re-run in main_attempt_2."
+   },
+   "optimizer_updates": 64,
+   "eval_calls": 0,
+   "theta_bar_evals": 0,
+   "theta_captures": 0,
+   "launch_id": "main_attempt_1_failed"
+  },
+  {
+   "phase": "main_s2030_t46",
+   "t_start": 486436.711327068,
+   "t_end": 486465.698316932,
+   "wall_s": 28.987,
+   "gpu": "cuda:0",
+   "detail": {
+    "optimizer_updates": 256
+   },
+   "optimizer_updates": 256,
+   "eval_calls": 0,
+   "theta_bar_evals": 0,
+   "theta_captures": 0,
+   "launch_id": "main_attempt_2"
+  },
+  {
+   "phase": "main_s2030_t82",
+   "t_start": 486465.698978332,
+   "t_end": 486488.381292257,
+   "wall_s": 22.682,
+   "gpu": "cuda:0",
+   "detail": {
+    "optimizer_updates": 512
+   },
+   "optimizer_updates": 512,
+   "eval_calls": 0,
+   "theta_bar_evals": 0,
+   "theta_captures": 0,
+   "launch_id": "main_attempt_2"
+  },
+  {
+   "phase": "main_s2031_t46",
+   "t_start": 486488.381838857,
+   "t_end": 486511.060561046,
+   "wall_s": 22.679,
+   "gpu": "cuda:0",
+   "detail": {
+    "optimizer_updates": 768
+   },
+   "optimizer_updates": 768,
+   "eval_calls": 0,
+   "theta_bar_evals": 0,
+   "theta_captures": 0,
+   "launch_id": "main_attempt_2"
+  },
+  {
+   "phase": "main_s2031_t82",
+   "t_start": 486511.061177246,
+   "t_end": 486534.178218466,
+   "wall_s": 23.117,
+   "gpu": "cuda:0",
+   "detail": {
+    "optimizer_updates": 1024
+   },
+   "optimizer_updates": 1024,
+   "eval_calls": 0,
+   "theta_bar_evals": 0,
+   "theta_captures": 0,
+   "launch_id": "main_attempt_2"
+  },
+  {
+   "phase": "main_s2032_t46",
+   "t_start": 486534.178878766,
+   "t_end": 486557.217020415,
+   "wall_s": 23.038,
+   "gpu": "cuda:0",
+   "detail": {
+    "optimizer_updates": 1280
+   },
+   "optimizer_updates": 1280,
+   "eval_calls": 0,
+   "theta_bar_evals": 0,
+   "theta_captures": 0,
+   "launch_id": "main_attempt_2"
+  },
+  {
+   "phase": "main_s2032_t82",
+   "t_start": 486557.217715215,
+   "t_end": 486580.098940563,
+   "wall_s": 22.881,
+   "gpu": "cuda:0",
+   "detail": {
+    "optimizer_updates": 1536
+   },
+   "optimizer_updates": 1536,
+   "eval_calls": 0,
+   "theta_bar_evals": 0,
+   "theta_captures": 0,
+   "launch_id": "main_attempt_2"
+  },
+  {
+   "phase": "stress",
+   "launch_id": "836420_1789923110",
+   "t_start": 487057.411909862,
+   "t_end": 487057.411910462,
+   "wall_s": 0.0,
+   "gpu": "cuda:0",
+   "detail": {
+    "optimizer_updates": 128
+   },
+   "optimizer_updates": 128,
+   "eval_calls": 0,
+   "theta_bar_evals": 0,
+   "theta_captures": 0
+  }
+ ],
+ "TOTALS": {
+  "optimizer_updates": 1760,
+  "eval_calls": 0,
+  "theta_bar_evals": 0,
+  "theta_captures": 0
+ },
+ "UPDATE_CAP": 18000,
+ "consumed_before_b06": 15817,
+ "project_cumulative": 17577,
+ "repairs": [
+  {
+   "ts": "2026-09-21",
+   "what": "TOTALS merge bug: log_phase added carried TOTALS at every phase of a multi-phase launch, so main attempt 2 (6 per-cell phases, process-cumulative budget) was counted 6x (5,472 instead of 1,632; project spuriously 21,289 > cap). Repaired: launch_id assigned to all 9 legacy phases from known launch truth; TOTALS recomputed as sum of per-launch final cumulative = 16+16+64+1536 = 1,632; project 17,449/18,000. log_phase itself fixed in manifest seq 6. No GPU work occurred during repair."
+  }
+ ]
+}

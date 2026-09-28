@@ -1,0 +1,29 @@
+{
+ "tag": "A0L_LIVE_MANIFEST",
+ "created_before_any_main_results": true,
+ "note": "module_hash_notes chain; any future module change must be appended here BEFORE results are viewed",
+ "events_manifest_sha256": "552852df618142777917776ac7381b722c94997cad74e1ffa91c05d588795884",
+ "events_sha": "04bd9f2b5a5dec44",
+ "module_hash_notes": [
+  {
+   "seq": 0,
+   "ts": "2026-09-17TpreGPU",
+   "change": "initial freeze: runner/driver/analyzer/build_manifest hashes at freeze time; runner v1.0"
+  },
+  {
+   "seq": 1,
+   "ts": "2026-09-17TsmokeS2",
+   "change": "ENGINEERING FIX after S1 PASS / S2 smoke crash (no scientific results viewed): a0l_mixture_runner_v01._arm_batches arm B used members[\"1\"] (group size 973 < 1024 needed) instead of members[\"0\"] (1038, controller component j=1); zero scientific results existed at fix time; S1 smoke (identity gate) had passed and is unaffected (arm A path untouched); contract/manifest/events semantics unchanged",
+   "file": "research/src/fr/a0l_mixture_runner_v01.py",
+   "sha256_after": "e1a75c1167c598563ee322e2086242b460ab923deb87cc9f7b8b7f0376ce7ca6"
+  }
+ ],
+ "files": {
+  "research/src/fr/a0l_mixture_runner_v01.py": "e1a75c1167c598563ee322e2086242b460ab923deb87cc9f7b8b7f0376ce7ca6",
+  "research/scripts/a0l_run_v01.py": "52d1f04ba7640a3364e5d716caaf9a464a8edeeb0b0dcf88c9fa8afb8ecec9aa",
+  "research/scripts/a0l_analyze_v01.py": "f430196658a2e356430ac7528958de3dc8c6071ac54bac9b2746de9b6cdcb4d1",
+  "research/scripts/a0l_build_manifest_v01.py": "12f8720741aca63f9ea8fe4d9a630d5580c6cb7e7bd1fae08a13f75d9c35919e",
+  "contract/contract.json": "a541dd3c80e73d8fe8f02bcdfbb65b5f814a541e627f9b0bbaf03f0b69f20cd4",
+  "contract/a0l_events_manifest.json": "552852df618142777917776ac7381b722c94997cad74e1ffa91c05d588795884"
+ }
+}

@@ -1,0 +1,18 @@
+# Round-2 GPU budget log. NOTE: earlier wall-clock stamps were reconstructed
+# from command order; the anchor below (system UTC at write time) is exact.
+# Elapsed seconds per entry are measured/estimated GPU-session wall times.
+branchB1_collect_d1_bf16 | ~05:20Z | cuda:1 | shared | 2031/52 | 42 | bookkeeping_run_d1_bf16.log | bookkeeping closure collection (BF16 pass with collect)
+branchB1_collect_d1_fp32hvp | ~05:23Z | cuda:1 | shared | 2031/52 | 44 | bookkeeping_run_d1_fp32hvp.log | bookkeeping closure collection (FP32-HVP pass)
+bookkeeping_d2d3 | ~05:32Z | cuda:1 | shared | 2034/64,2036/76 | 88 | bookkeeping_run_d2d3.log | D2/D3 closure runs (bf16+fp32hvp)
+prod_entry_selfcheck_v1 | ~05:33Z | cuda:1 | shared | 2031/52 | 51 | selfcheck_d1_h4_m4.json (v1) | first selfcheck; exposed ordering mismatch
+prod_entry_disc_h1_fwd | ~05:34Z | cuda:1 | shared | 2031/52 | 38 | disc_h1_fwd.json | H=1 discriminator after ordering fix; confirmed
+prod_entry_selfcheck_v2 | ~05:36Z | cuda:1 | shared | 2031/52 | 47 | selfcheck_d1_h4_m4.json (v2) | adjoint mismatch isolated (step_after bug)
+prod_entry_disc_h1_adj | ~05:37Z | cuda:1 | shared | 2031/52 | 36 | disc_h1_adj.json | H=1 adjoint discriminator
+prod_entry_selfcheck_v3 | ~05:39Z | cuda:1 | shared | 2031/52 | 48 | selfcheck_d1_h4_m4.json (v3) | ALL EQUALITY PASS (bitwise fwd+adj; B1 gate 1.2e-10)
+dress_rehearsal_drift | ~05:40Z | cuda:1 | shared | n/a | 25 | (stdout) | config-mismatch pre-read failures verified; frozen cfg hash unchanged
+timing_d1_h4_m4 | ~05:41Z | cuda:1 | exclusive-in-practice | 2031/52 | 150 | timing_d1_h4_m4.json + gpu1_util_during_timing.log | H4/M4 four-mode timing; GPU1 avg util 6.2% max 24% during window; foreign empty context only
+timing_d1_matrix_ext | ~05:43Z | cuda:1 | exclusive-in-practice | 2031/52 | 330 | timing_d1_matrix_ext.json | H in {1,4,8} x M in {1,2,4} extension (7 combos incl warmups)
+# total estimated round-2 GPU wall before A' opening: ~940s of 1800s cap
+aprime_acceptance | ~05:52Z | cuda:1 | exclusive-in-practice | 2030/52,2033/64,2037/82 | 330 | accept_aprime/ | 2 diag passes + replay + branches per unit; 3/3 units completed; verdicts FAIL(L2) reported honestly
+# round-2 total estimated: ~1270s of 1800s cap; ~530s headroom at close
+final_frozen_hash_check | 2026-09-15T05:58Z | n/a | n/a | all | 0 | (stdout) | 13/13 non-doc frozen sources unchanged vs source_hashes_round2_start.txt; only sanctioned drift = FR_PROJECT_STATUS.md + FR_EXPERIMENT_INDEX.md (round-2 wrap-up updates per mandate §7)

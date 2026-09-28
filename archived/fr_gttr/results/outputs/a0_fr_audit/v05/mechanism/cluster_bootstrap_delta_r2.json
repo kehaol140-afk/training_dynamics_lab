@@ -1,0 +1,47 @@
+{
+  "analysis": "overall_delta_R2_seed_cluster_bootstrap",
+  "models": {
+    "base": "chi ~ 1 + B",
+    "control": "chi ~ 1 + B + alpha_direct"
+  },
+  "n": 448,
+  "cluster_count": 8,
+  "cluster_ids": [
+    2030,
+    2031,
+    2032,
+    2033,
+    2034,
+    2035,
+    2036,
+    2037
+  ],
+  "cluster_sizes": {
+    "2030": 56,
+    "2031": 56,
+    "2032": 56,
+    "2033": 56,
+    "2034": 56,
+    "2035": 56,
+    "2036": 56,
+    "2037": 56
+  },
+  "clusters_per_replicate": 8,
+  "bootstrap_reps": 1000,
+  "valid_reps": 1000,
+  "random_seed": 20260909,
+  "sampling_unit": "seed",
+  "method": "nonparametric_cluster_percentile",
+  "confidence_level": 0.95,
+  "R2_base_point_estimate": 0.0008219907458267839,
+  "R2_control_point_estimate": 0.7714216063214694,
+  "point_estimate_delta_R2": 0.7705996155756426,
+  "bootstrap_mean_delta_R2": 0.7643871430421563,
+  "bootstrap_std_delta_R2": 0.05182472294089428,
+  "ci95": [
+    0.6718828846431384,
+    0.8758535227898848
+  ],
+  "input": "outputs/a0_fr_audit/v01/direct_path/a0c_state_horizon.csv",
+  "input_sha256": "59e32a6dff4ce499232f220440e7aefa3f7e4cef1760058ea70eb318ed268b13"
+}

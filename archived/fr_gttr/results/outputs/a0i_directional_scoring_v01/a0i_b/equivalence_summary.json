@@ -1,0 +1,32 @@
+{
+ "n_passes_total": 18,
+ "abs_err": {
+  "max": 2.8291145353123368e-05,
+  "median": 4.224814012390634e-06,
+  "mean": 8.195753329236821e-06
+ },
+ "abs_err_isolated_vs_math_ref": {
+  "max": 2.291084634986791e-05,
+  "median": 7.105641287995777e-06
+ },
+ "rel_err": {
+  "max": 0.007357123388564874,
+  "median": 0.0018222657365037152
+ },
+ "gate_atol32": 1e-05,
+ "gate_rtol32": 0.0001,
+ "gate_pass_fraction": "54/72",
+ "ranking_agreement": {
+  "A_vs_B": "18/18",
+  "A_vs_Amath": "18/18"
+ },
+ "chosen_id_agreement": {
+  "A_vs_B": "18/18",
+  "A_vs_Amath": "18/18"
+ },
+ "interpretation": {
+  "abs_err_end_to_end": "JVP(math) vs production full-grad(ambient flash): includes SDPA kernel difference",
+  "abs_err_isolated": "JVP(math) vs full-grad(math): isolates forward-mode vs reverse-mode accumulation",
+  "gate": "pre-fixed engineering tolerance; pass means implementation agreement only"
+ }
+}

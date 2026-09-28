@@ -1,0 +1,148 @@
+{
+ "contract_id": "A0H20_CORRECTED_ACCEPTANCE_CONTRACT_V01",
+ "date": "2026-09-16",
+ "status": "FROZEN_BEFORE_A_DOUBLE_PRIME_EXPOSURE",
+ "supersedes_clauses": {
+  "old_clause_source": "outputs/a0h15_vjp_shared_v01/accept_aprime/PREREGISTRATION.md (L1b/L2 'argmax-ĥ' selector clause)",
+  "revision_reason": "Round-3 decision-semantics audit (Branch A) proved the argmax-ĥ clause violated frozen A0G selector semantics (argmin predicted Delta L over j=0..4 with no-op). The clause and the implementation had drifted together. Original text preserved in that file and in L2_CONTRACT_AUDIT.md; this contract replaces it for the new batch only.",
+  "old_records_preserved": true
+ },
+ "semantics": {
+  "action_ids": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "action_0": "no-op: NO additional intervention; continue the original training update (NOT skipping the optimizer step)",
+  "action_j_positive": "at post-unscale/pre-clip, exactly ONE optimizer step at horizon h=1: g' = g + lambda*(g_j - g); afterwards resume the perturbed trajectory normally",
+  "lambda": 0.05,
+  "lambda_rule": "one common positive lambda for all non-zero actions, fixed",
+  "H": 4,
+  "readout": "theta_{t+H} post-step",
+  "hhat_semantics": "dL_score/dlambda (Case 1; no sign transform, no utility transform)",
+  "predicted_delta_loss_j": "lambda*hhat_j",
+  "predicted_gain_j": "-lambda*hhat_j",
+  "hhat_0": 0.0,
+  "predicted_delta_loss_0": 0.0,
+  "selected_id": "min(action_ids, key=(predicted_delta_loss_j, action_id))",
+  "tie_break": "exact A0G comparison, lowest action_id; NO floating-point rounding, no tolerance-tie, no gain threshold introduced",
+  "lambda_note": "the common positive lambda does not change ranking; the old program's error was argmax plus dropping no-op, NOT omitting lambda in ranking",
+  "score_outputs": "persist hhat, lambda*hhat and -lambda*hhat per action with explicit units (loss per unit lambda; loss; loss)"
+ },
+ "revoked_clauses": {
+  "clause": "must choose_noop=False AND every unit Gain>0",
+  "status": "REVOKED_FOR_THIS_BATCH",
+  "original_text_preserved_in": "accept_aprime/PREREGISTRATION.md + decision_semantics_audit/L2_CONTRACT_AUDIT.md",
+  "reason": "no-op is a legal output with Gain=0; per-unit mandatory positive gain is not required by A0G frozen semantics (A0G itself chose no-op 6/360 at method C). All-no-op is NOT a positive result; harmful actions are counted honestly."
+ },
+ "separate_status_fields": [
+  "COMPLETION_STATUS",
+  "PROTOCOL_VALID",
+  "NUMERICAL_GATE",
+  "DECISION_PRESERVATION",
+  "UTILITY_PILOT_RESULT"
+ ],
+ "no_composite_pass": true,
+ "early_stop_meaning": "stopping per pre-registered conditions is not a protocol violation and does not imply all stages completed",
+ "numerical_gate": {
+  "formula": "abs(hhat_fwd_C - hhat_adj) <= atol32 + rtol32*abs(hhat_fwd_C)",
+  "atol32": 1e-05,
+  "rtol32": 0.0001,
+  "source": "frozen A0H-1.5 round-2 B1 gate as actually applied to the FP32-HVP candidate (a0h15_accept_aprime_v01.py L35; PREREGISTRATION.md 'L1 numerics'); thresholds parsed from artifacts, not fitted",
+  "scope": "all 4 active actions at H=4 (decision horizon); H=1/H=8 diffs reported as diagnostic",
+  "finite_check": "all scores/losses/diffs/thresholds must pass isfinite; threshold non-negative; NaN/Inf -> NON_FINITE, blocked from gate/aggregation/argmin",
+  "claim_limit": "pass means same-config implementation agreement only; NOT native-derivative absolute correctness"
+ },
+ "methods": {
+  "scorers": {
+   "bf16_forward_C": {
+    "hvp_precision": "bf16",
+    "role": "frozen historical config comparator"
+   },
+   "fp32hvp_forward": {
+    "hvp_precision": "fp32",
+    "role": "same-config FP32 numerical reference"
+   },
+   "fp32hvp_adjoint": {
+    "hvp_precision": "fp32",
+    "role": "THIS ROUND'S CANDIDATE (shared VJP adjoint)"
+   }
+  },
+  "selection_strategies": [
+   "noop",
+   "bf16C_argmin",
+   "fp32fwd_argmin",
+   "fp32adj_argmin",
+   "replay_score_oracle",
+   "uniform_random_expectation",
+   "dev_fixed"
+  ],
+  "replay": "native +lambda real replay, 5 actions per unit, single pass computing V_score and V_eval separately per branch",
+  "adjoint_constraint": "adjoint_only must NOT depend on candidate future tangents to build w0 and must not hide a joint forward; forward reference is a separate audit-cost run; mode fingerprints + call counters persisted",
+  "eval_isolation": "V_eval per-candidate labels computed in the same pass but written to a separate module/file; selectors/thresholds/sample selection never read eval; analysis reads eval only after ALL choices are locked"
+ },
+ "batch_plan": {
+  "target_states": 6,
+  "streams_per_state": 2,
+  "target_units": 12,
+  "min_seeds_target": 3,
+  "reduced_batch_rule": "if only 3-5 eligible states, register the full eligible set x2 streams BEFORE opening any result; if <3 states or any state lacks 2 legal streams -> NO_ELIGIBLE_BATCH (deliver ledger+manifest only)",
+  "selection_rule": "sort eligible states by (train_seed, true optimizer step, checkpoint ID); round-robin across seeds; per state take the first 2 streams in stable registered stream-ID order; selection by identity/availability/exposure ONLY - never by hhat/gain/loss/history",
+  "seed_short_rule": "<3 seeds does not auto-block but must be registered with tightened interpretation"
+ },
+ "analysis_plan": {
+  "main_endpoint": "FP32 adjoint chosen action's V_eval Gain: per-state mean over its 2 streams, then equal weight over states; ALL units incl. no-op and harmful",
+  "paired_baselines": [
+   "noop",
+   "bf16C",
+   "fp32fwd",
+   "replay_score",
+   "random_expectation",
+   "dev_fixed"
+  ],
+  "secondary": [
+   "harmful_rate=mean(Gain_eval<0)",
+   "noop_fraction",
+   "Regret_eval=delta_L_eval_selected-min_j(delta_L_eval_j)",
+   "within_state_ranking",
+   "oracle_hit_rate",
+   "finite_action_prediction_error"
+  ],
+  "bootstrap": {
+   "design": "seed->state->stream hierarchical paired bootstrap",
+   "n": 10000,
+   "rng_seed": 260916,
+   "interval": "95% percentile",
+   "pairing": "same action labels and methods paired",
+   "aggregation": "same equal-weight state aggregation",
+   "single_seed_rule": "no seed-level interval if only 1 seed",
+   "interpretation": "exploratory uncertainty only; stream count != independent seed count; favorable proportion is NOT a frequentist p-value"
+  },
+  "utility_pilot_labels": {
+   "NOT_COVERED": "utility stage not entered per pre-registered branch",
+   "INCOMPLETE": "entered but data incomplete",
+   "POSITIVE/ZERO/NEGATIVE_POINT_ESTIMATE": "complete; by main endpoint mean sign"
+  },
+  "no_translation": "the label never means 'proven significantly better than all methods'",
+  "failure_attribution_limit": "observational localization only: lambda*hhat vs delta_L_score then delta_L_score vs delta_L_eval; NO lambda/nonlinearity/proxy-failure claims without magnitude or native-derivative probe evidence; no immediate retuning/re-candidating/A-triple-prime"
+ },
+ "budget": {
+  "gpu_wall_seconds_cap": 1800,
+  "scope": "dev rehearsal + all acceptance GPU work, summed",
+  "waiting_total_max_minutes": 10
+ },
+ "forbidden_this_round": [
+  "new decision rules",
+  "hybrid/replay-gain fitting",
+  "lambda changes",
+  "AdamW/lr/beta/eps/clip changes",
+  "new training seeds/checkpoints/long training",
+  "v06",
+  "low-rank",
+  "sparse-HVP",
+  "H=8 utility",
+  "full timing matrix redo"
+ ]
+}

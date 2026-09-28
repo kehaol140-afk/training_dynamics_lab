@@ -1,0 +1,136 @@
+{
+  "step": 950000,
+  "files": {
+    "config.yaml": {
+      "path": "/home/b205/projects/fluctuation_response/outputs/generalization_g1c_feasibility_v01/checkpoints/step950000_config.yaml",
+      "exists": true,
+      "size_bytes": 163724,
+      "expected_size": null,
+      "size_ok": true,
+      "sha256": "babefbaa189465ab9c423c178b4a367d23dd6707da1999702df25efc7403a7da"
+    },
+    "model.pt": {
+      "path": "/home/b205/projects/fluctuation_response/outputs/generalization_g1c_feasibility_v01/checkpoints/step950000_model.pt",
+      "exists": true,
+      "size_bytes": 5939703038,
+      "expected_size": 5939703038,
+      "size_ok": true,
+      "sha256": "6e7b1690215915dfb9cf697eefd2a22aea1404752ad1cdc531d4c18cae04e40b"
+    },
+    "optim.pt": {
+      "path": "/home/b205/projects/fluctuation_response/outputs/generalization_g1c_feasibility_v01/checkpoints/step950000_optim.pt",
+      "exists": true,
+      "size_bytes": 11879442406,
+      "expected_size": 11879442406,
+      "size_ok": true,
+      "sha256": "ffcb8374c53f635df2fdd22aab11aa1067f19d1285fc6074f2cffd141ccacdb2"
+    },
+    "train.pt": {
+      "path": "/home/b205/projects/fluctuation_response/outputs/generalization_g1c_feasibility_v01/checkpoints/step950000_train.pt",
+      "exists": true,
+      "size_bytes": 17036,
+      "expected_size": null,
+      "size_ok": true,
+      "sha256": "7ce75e9a84db628930650b35c03769fbdf7959c67a25ae6851bd0d981fbd8989"
+    }
+  },
+  "checks": [
+    {
+      "name": "file:config.yaml",
+      "ok": true,
+      "detail": "size=163724 expected=None sha256=babefbaa189465ab9c423c178b4a367d23dd6707da1999702df25efc7403a7da"
+    },
+    {
+      "name": "file:model.pt",
+      "ok": true,
+      "detail": "size=5939703038 expected=5939703038 sha256=6e7b1690215915dfb9cf697eefd2a22aea1404752ad1cdc531d4c18cae04e40b"
+    },
+    {
+      "name": "file:optim.pt",
+      "ok": true,
+      "detail": "size=11879442406 expected=11879442406 sha256=ffcb8374c53f635df2fdd22aab11aa1067f19d1285fc6074f2cffd141ccacdb2"
+    },
+    {
+      "name": "file:train.pt",
+      "ok": true,
+      "detail": "size=17036 expected=None sha256=7ce75e9a84db628930650b35c03769fbdf7959c67a25ae6851bd0d981fbd8989"
+    },
+    {
+      "name": "model_restore_keys",
+      "ok": true,
+      "detail": "n_tensors=131 n_elements=1484916736 (expected 1484916736) match=True"
+    },
+    {
+      "name": "optim_state_entries",
+      "ok": true,
+      "detail": "state_entries=131 params=131"
+    },
+    {
+      "name": "optim_step_values",
+      "ok": true,
+      "detail": "step unique=[950001.0] min=950001.0 max=950001.0 (expect all == 950000)"
+    },
+    {
+      "name": "optim_groups",
+      "ok": true,
+      "detail": "[{\"n_params\": 130, \"lr\": 0.00027699376575216877, \"betas\": [0.9, 0.95], \"eps\": 1e-08, \"weight_decay\": 0.1, \"initial_lr\": 0.0004, \"max_grad_norm\": 1.0, \"amsgrad\": false, \"foreach\": null, \"fused\": null, \"first_name\": \"_fsdp_wrapped_module.transformer.blocks.0.att_proj.weight\", \"last_name\": \"_fsdp_wrapped_module.transformer.ln_f.weight\"}, {\"n_params\": 1, \"lr\": 0.00027699376575216877, \"betas\": [0.9, 0.95], \"eps\": 1e-08, \"weight_decay\": 0.0, \"initial_lr\": 0.0004, \"max_grad_norm\": 1.0, \"amsgrad\": false, \"foreach\": null, \"fused\": null, \"first_name\": \"_fsdp_wrapped_module.transformer.wte.weight\", \"last_name\": \"_fsdp_wrapped_module.transformer.wte.weight\"}]"
+    },
+    {
+      "name": "optim_m_v_finite",
+      "ok": true,
+      "detail": "|m|=0.0153637 mean(v)=6.74971e-12"
+    },
+    {
+      "name": "train_global_step",
+      "ok": true,
+      "detail": "global_step=950000 tokens=1992294400000"
+    },
+    {
+      "name": "train_rng",
+      "ok": true,
+      "detail": "rng flags={'has_rng_cuda': True, 'has_rng_numpy': True, 'has_rng_python': True, 'has_rng_torch': True}"
+    },
+    {
+      "name": "scheduler_state",
+      "ok": true,
+      "detail": "has_scheduler_state=False -> constant-lr fallback lr=0.0002769937658 (protocol 6.5)"
+    },
+    {
+      "name": "optim_meta_vs_config",
+      "ok": true,
+      "detail": "betas_ok=True eps_ok=True wd_set=[0.0, 0.1] config_optim_keys=[]"
+    }
+  ],
+  "train_state": {
+    "keys": [
+      "checkpoints",
+      "ephemeral_checkpoints",
+      "epoch",
+      "global_step",
+      "global_train_examples_seen_this_epoch",
+      "global_train_tokens_seen",
+      "rng",
+      "unsharded_checkpoints",
+      "world_size"
+    ],
+    "global_step": 950000,
+    "global_train_tokens_seen": 1992294400000,
+    "epoch": 0,
+    "world_size": 256,
+    "has_rng_cuda": true,
+    "has_rng_numpy": true,
+    "has_rng_python": true,
+    "has_rng_torch": true,
+    "has_scheduler_state": false
+  },
+  "scheduler_state_present": false,
+  "wall_time_s": 38.32884359359741,
+  "config_excerpt": {
+    "d_model": 2048,
+    "n_heads": 16,
+    "n_layers": 16,
+    "vocab_size": 100278,
+    "embedding_size": 100352,
+    "max_sequence_length": 4096
+  }
+}

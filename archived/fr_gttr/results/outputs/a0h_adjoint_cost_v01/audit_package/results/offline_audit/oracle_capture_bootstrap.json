@@ -1,0 +1,182 @@
+[
+  {
+    "split": "formal",
+    "H": 4,
+    "method": "random",
+    "oracle_capture_boot": {
+      "mean": 0.355865705451604,
+      "ci95_low": 0.15963049835114837,
+      "ci95_high": 0.5652568402186311,
+      "P_gt_0": 0.9998,
+      "P_lt_0": 0.0002
+    },
+    "denominator_sum_mean": 0.00025759462167819345,
+    "denominator_cv": 0.11951089568915468,
+    "unstable_flag": false
+  },
+  {
+    "split": "formal",
+    "H": 4,
+    "method": "alignment",
+    "oracle_capture_boot": {
+      "mean": 0.3058530694730119,
+      "ci95_low": -0.021030293563632077,
+      "ci95_high": 0.5695649629328935,
+      "P_gt_0": 0.9687,
+      "P_lt_0": 0.0313
+    },
+    "denominator_sum_mean": 0.00025759462167819345,
+    "denominator_cv": 0.11951089568915468,
+    "unstable_flag": false
+  },
+  {
+    "split": "formal",
+    "H": 4,
+    "method": "B",
+    "oracle_capture_boot": {
+      "mean": 0.5082791415907594,
+      "ci95_low": 0.31121343615209046,
+      "ci95_high": 0.6881703001065622,
+      "P_gt_0": 1.0,
+      "P_lt_0": 0.0
+    },
+    "denominator_sum_mean": 0.00025759462167819345,
+    "denominator_cv": 0.11951089568915468,
+    "unstable_flag": false
+  },
+  {
+    "split": "formal",
+    "H": 4,
+    "method": "C",
+    "oracle_capture_boot": {
+      "mean": 0.594147996768778,
+      "ci95_low": 0.43040988083119935,
+      "ci95_high": 0.7345218075849645,
+      "P_gt_0": 1.0,
+      "P_lt_0": 0.0
+    },
+    "denominator_sum_mean": 0.00025759462167819345,
+    "denominator_cv": 0.11951089568915468,
+    "unstable_flag": false
+  },
+  {
+    "split": "formal",
+    "H": 4,
+    "method": "never",
+    "oracle_capture_boot": {
+      "mean": 0.0,
+      "ci95_low": 0.0,
+      "ci95_high": 0.0,
+      "P_gt_0": 0.0,
+      "P_lt_0": 0.0
+    },
+    "denominator_sum_mean": 0.00025759462167819345,
+    "denominator_cv": 0.11951089568915468,
+    "unstable_flag": false
+  },
+  {
+    "split": "formal",
+    "H": 4,
+    "method": "dev_fixed",
+    "oracle_capture_boot": {
+      "mean": 0.3724451032110305,
+      "ci95_low": 0.13904520665837594,
+      "ci95_high": 0.5741170629583522,
+      "P_gt_0": 0.9983,
+      "P_lt_0": 0.0017
+    },
+    "denominator_sum_mean": 0.00025759462167819345,
+    "denominator_cv": 0.11951089568915468,
+    "unstable_flag": false
+  },
+  {
+    "split": "formal",
+    "H": 8,
+    "method": "random",
+    "oracle_capture_boot": {
+      "mean": 0.45296828453044435,
+      "ci95_low": 0.2521559849893585,
+      "ci95_high": 0.6218226886912801,
+      "P_gt_0": 1.0,
+      "P_lt_0": 0.0
+    },
+    "denominator_sum_mean": 0.0003354248389601707,
+    "denominator_cv": 0.1429293869922541,
+    "unstable_flag": false
+  },
+  {
+    "split": "formal",
+    "H": 8,
+    "method": "alignment",
+    "oracle_capture_boot": {
+      "mean": 0.5595765618330235,
+      "ci95_low": 0.334005912937444,
+      "ci95_high": 0.7551563107613452,
+      "P_gt_0": 1.0,
+      "P_lt_0": 0.0
+    },
+    "denominator_sum_mean": 0.0003354248389601707,
+    "denominator_cv": 0.1429293869922541,
+    "unstable_flag": false
+  },
+  {
+    "split": "formal",
+    "H": 8,
+    "method": "B",
+    "oracle_capture_boot": {
+      "mean": 0.455141469944386,
+      "ci95_low": 0.28079129035032596,
+      "ci95_high": 0.6038565410584189,
+      "P_gt_0": 0.9999,
+      "P_lt_0": 0.0001
+    },
+    "denominator_sum_mean": 0.0003354248389601707,
+    "denominator_cv": 0.1429293869922541,
+    "unstable_flag": false
+  },
+  {
+    "split": "formal",
+    "H": 8,
+    "method": "C",
+    "oracle_capture_boot": {
+      "mean": 0.674070700390816,
+      "ci95_low": 0.5029061307292242,
+      "ci95_high": 0.814820476271748,
+      "P_gt_0": 1.0,
+      "P_lt_0": 0.0
+    },
+    "denominator_sum_mean": 0.0003354248389601707,
+    "denominator_cv": 0.1429293869922541,
+    "unstable_flag": false
+  },
+  {
+    "split": "formal",
+    "H": 8,
+    "method": "never",
+    "oracle_capture_boot": {
+      "mean": 0.0,
+      "ci95_low": 0.0,
+      "ci95_high": 0.0,
+      "P_gt_0": 0.0,
+      "P_lt_0": 0.0
+    },
+    "denominator_sum_mean": 0.0003354248389601707,
+    "denominator_cv": 0.1429293869922541,
+    "unstable_flag": false
+  },
+  {
+    "split": "formal",
+    "H": 8,
+    "method": "dev_fixed",
+    "oracle_capture_boot": {
+      "mean": 0.3765347503160986,
+      "ci95_low": 0.0499520224186283,
+      "ci95_high": 0.6073563997535111,
+      "P_gt_0": 0.9868,
+      "P_lt_0": 0.0132
+    },
+    "denominator_sum_mean": 0.0003354248389601707,
+    "denominator_cv": 0.1429293869922541,
+    "unstable_flag": false
+  }
+]

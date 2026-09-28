@@ -1,0 +1,155 @@
+{
+ "phases": [
+  {
+   "phase": "smoke",
+   "t_start": 481745.737606975,
+   "t_end": 481766.573436275,
+   "wall_s": 20.836,
+   "gpu": "cuda:0",
+   "detail": {
+    "checks": {
+     "snapshot_identity": true,
+     "crn_native_repeat": true,
+     "distances_native_zero": false,
+     "frozen_runner_agreement_endpoint": true,
+     "val_eval_rng_isolation": true,
+     "pulse4_eq_persistent_H4_losses": true,
+     "D_val_eq_C_at_h4": true,
+     "D_mv_eq_A_mv_bitwise": true,
+     "D_step_counter_eq_A": true,
+     "C_differs_from_persistent_post_release_m_v": true,
+     "s_monotonic": true,
+     "pulse_excess_frozen_post_release": true,
+     "tokens_per_step_1024": true,
+     "budget_within_cap": true
+    }
+   },
+   "optimizer_updates": 64,
+   "eval_calls": 26,
+   "theta_captures": 56,
+   "opt_captures": 56
+  },
+  {
+   "phase": "smoke",
+   "t_start": 481823.331059541,
+   "t_end": 481843.780872685,
+   "wall_s": 20.45,
+   "gpu": "cuda:0",
+   "detail": {
+    "checks": {
+     "snapshot_identity": true,
+     "crn_native_repeat": true,
+     "distances_native_zero": true,
+     "frozen_runner_agreement_endpoint": true,
+     "val_eval_rng_isolation": true,
+     "pulse4_eq_persistent_H4_losses": true,
+     "D_val_eq_C_at_h4": true,
+     "D_mv_eq_A_mv_bitwise": true,
+     "D_step_counter_eq_A": true,
+     "C_differs_from_persistent_post_release_m_v": true,
+     "s_monotonic": true,
+     "pulse_excess_frozen_post_release": true,
+     "tokens_per_step_1024": true,
+     "budget_within_cap": true
+    }
+   },
+   "optimizer_updates": 64,
+   "eval_calls": 26,
+   "theta_captures": 56,
+   "opt_captures": 56
+  },
+  {
+   "phase": "main_s2030_t46",
+   "t_start": 481866.603116099,
+   "t_end": 481934.44822484,
+   "wall_s": 67.845,
+   "gpu": "cuda:0",
+   "detail": {
+    "updates": 256
+   },
+   "optimizer_updates": 256,
+   "eval_calls": 128,
+   "theta_captures": 256,
+   "opt_captures": 256
+  },
+  {
+   "phase": "main_s2030_t82",
+   "t_start": 481934.44896374,
+   "t_end": 481993.593908988,
+   "wall_s": 59.145,
+   "gpu": "cuda:0",
+   "detail": {
+    "updates": 512
+   },
+   "optimizer_updates": 512,
+   "eval_calls": 256,
+   "theta_captures": 512,
+   "opt_captures": 512
+  },
+  {
+   "phase": "main_s2031_t46",
+   "t_start": 481993.596478988,
+   "t_end": 482052.762155712,
+   "wall_s": 59.166,
+   "gpu": "cuda:0",
+   "detail": {
+    "updates": 768
+   },
+   "optimizer_updates": 768,
+   "eval_calls": 384,
+   "theta_captures": 768,
+   "opt_captures": 768
+  },
+  {
+   "phase": "main_s2031_t82",
+   "t_start": 482052.764792012,
+   "t_end": 482111.443641688,
+   "wall_s": 58.679,
+   "gpu": "cuda:0",
+   "detail": {
+    "updates": 1024
+   },
+   "optimizer_updates": 1024,
+   "eval_calls": 512,
+   "theta_captures": 1024,
+   "opt_captures": 1024
+  },
+  {
+   "phase": "main_s2032_t46",
+   "t_start": 482111.446302887,
+   "t_end": 482171.025359791,
+   "wall_s": 59.579,
+   "gpu": "cuda:0",
+   "detail": {
+    "updates": 1280
+   },
+   "optimizer_updates": 1280,
+   "eval_calls": 640,
+   "theta_captures": 1280,
+   "opt_captures": 1280
+  },
+  {
+   "phase": "main_s2032_t82",
+   "t_start": 482171.027948691,
+   "t_end": 482230.60269153,
+   "wall_s": 59.575,
+   "gpu": "cuda:0",
+   "detail": {
+    "updates": 1536
+   },
+   "optimizer_updates": 1536,
+   "eval_calls": 768,
+   "theta_captures": 1536,
+   "opt_captures": 1536
+  }
+ ],
+ "TOTALS": {
+  "optimizer_updates": 1609,
+  "eval_calls": 802,
+  "theta_captures": 1601,
+  "opt_captures": 1601
+ },
+ "UPDATE_CAP_TOTAL": 18000,
+ "PRIOR_CONSUMED": 14208,
+ "NOTE": "TOTALS = full B0.5 consumption across all three driver processes: smoke attempt 1 (9 updates; aborted by shape-mismatch bug, see audit.md sec.7) + smoke attempt 2 (64) + main (1536) = 1609 updates, 802 evals. Project cumulative incl. B0: 14208 + 1609 = 15817 / 18000 (87.9%). Patch reason: each process overwrote TOTALS with its own BUDGET; attempt-1's log entry was overwritten by attempt-2 (same filename)."
+}

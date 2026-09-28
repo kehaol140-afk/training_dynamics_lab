@@ -1,0 +1,262 @@
+{
+ "round": "fr_phase_b_gttr_action_scoring_v03",
+ "protocol": [
+  "FR_PhaseB_GTTR_Action_Scoring_Execution_v3.md",
+  "FR_PhaseB_SharedGPU_TokenPrimary_Amendment_v1.md"
+ ],
+ "states": [
+  {
+   "state_id": "S0",
+   "seed": 2030,
+   "n0": 46,
+   "real_stream": 97006,
+   "sim_stream": 197006
+  },
+  {
+   "state_id": "S1",
+   "seed": 2030,
+   "n0": 82,
+   "real_stream": 97007,
+   "sim_stream": 197007
+  },
+  {
+   "state_id": "S2",
+   "seed": 2031,
+   "n0": 46,
+   "real_stream": 97008,
+   "sim_stream": 197008
+  },
+  {
+   "state_id": "S3",
+   "seed": 2031,
+   "n0": 82,
+   "real_stream": 97009,
+   "sim_stream": 197009
+  },
+  {
+   "state_id": "S4",
+   "seed": 2032,
+   "n0": 46,
+   "real_stream": 97010,
+   "sim_stream": 197010
+  },
+  {
+   "state_id": "S5",
+   "seed": 2032,
+   "n0": 82,
+   "real_stream": 97011,
+   "sim_stream": 197011
+  }
+ ],
+ "arms": [
+  {
+   "name": "NATIVE",
+   "u": 0.0
+  },
+  {
+   "name": "LR_DOWN",
+   "u": -0.05
+  },
+  {
+   "name": "LR_UP",
+   "u": 0.05
+  }
+ ],
+ "h_points": [
+  1,
+  4,
+  16,
+  64
+ ],
+ "intervention_steps": 4,
+ "models": [
+  "MODEL_NO_GEOMETRY",
+  "MODEL_GTTR"
+ ],
+ "p_microbatches": 2,
+ "q_dirs_max": 4,
+ "fd_delta_scale": 0.001,
+ "fd_rank_tol": 1e-06,
+ "fd_rel_gate": 0.2,
+ "tie_tol_nats": 1e-12,
+ "optimizer": {
+  "name": "torch.optim.AdamW",
+  "betas": [
+   0.9,
+   0.999
+  ],
+  "eps": 1e-08,
+  "weight_decay": 0.01,
+  "clip_tau": 1.0
+ },
+ "targets": {
+  "control": "V_control_ref64_v1 (FP32 no-autocast batch8)",
+  "monitor": "V_monitor D0[4096:8192) (A1 dtype/mode batch32)",
+  "v_final": "V_final_eval_calls=0"
+ },
+ "statuses_expected": {
+  "TOKENS_TO_TARGET_IMPROVEMENT": "NOT_TESTED_PHASE_B",
+  "TIME_TO_TARGET": "NOT_EVALUATED_SHARED_GPU",
+  "WALL_CLOCK_SPEEDUP": "NOT_EVALUATED_SHARED_GPU",
+  "ENERGY_BENEFIT": "NOT_EVALUATED_SHARED_GPU"
+ },
+ "bootstrap": {
+  "reps": 1000,
+  "seed": 77071001,
+  "label": "BLOCK_PROXY"
+ },
+ "budget": {
+  "plan": {
+   "updates": 1168,
+   "train_fw": 2336,
+   "train_bw": 2336,
+   "model_fw": 210,
+   "model_bw": 210,
+   "eval_fw": 11016,
+   "total_fw": 13562,
+   "total_bw": 2546,
+   "fd_dirs": 35,
+   "monitor_evals": 81,
+   "control_evals": 81,
+   "virtual_steps": 2688
+  },
+  "cap": {
+   "updates": 1280,
+   "total_fw": 14500,
+   "total_bw": 2920,
+   "model_fw": 360,
+   "model_bw": 360,
+   "fd_dirs": 50,
+   "monitor_evals": 84,
+   "control_evals": 90
+  },
+  "wall": "OBSERVATIONAL_SHARED_GPU no cap; 5400s ops hint only",
+  "v_final_eval_calls": 0
+ },
+ "preflight": {
+  "d0": {
+   "lines": 1270238,
+   "sha256": "6dd6716c84ab36897bdbfc7f88e04f4441c48c1ab7ecee88ce0b0e7d4685560c"
+  },
+  "v_monitor": {
+   "rows": "[4096:8192)",
+   "n": 4096,
+   "sha256": "607ba1cd570eba71069c030643a8b514b1b869f16176efadc4f7687f6ef66f84",
+   "identical_to_a1": true
+  },
+  "v_control_ref64": {
+   "target_id": "V_control_ref64_v1",
+   "n_rows": 64,
+   "row_ids_sorted_first8": [
+    18,
+    52,
+    77,
+    131,
+    226,
+    319,
+    392,
+    431
+   ],
+   "split_sha256": "2dfdba24188aad8e4fb2fad0c28f15e281d5ec5d3a81f3f05e7ad3c17bb73259",
+   "semantics": "sum(row_nll_sum)/sum(row_valid_target_count); FP32; no-autocast; eval batch 8; eval mode",
+   "disjoint_train": true,
+   "disjoint_v_monitor": true,
+   "not_independent_test_set": "\u590d\u7528\u5f00\u53d1\u8d44\u6599\uff0c\u53ea\u4f5c\u672c\u8f6e\u5f00\u53d1\u8bc4\u5206\u8f74",
+   "no_concat_with_a0t_absolute": true
+  },
+  "bank": {
+   "S0": {
+    "seed": 2030,
+    "n0": 46,
+    "gm0": 92,
+    "path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2030/states/state_step_046.pt"
+   },
+   "S1": {
+    "seed": 2030,
+    "n0": 82,
+    "gm0": 164,
+    "path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2030/states/state_step_082.pt"
+   },
+   "S2": {
+    "seed": 2031,
+    "n0": 46,
+    "gm0": 92,
+    "path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2031/states/state_step_046.pt"
+   },
+   "S3": {
+    "seed": 2031,
+    "n0": 82,
+    "gm0": 164,
+    "path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2031/states/state_step_082.pt"
+   },
+   "S4": {
+    "seed": 2032,
+    "n0": 46,
+    "gm0": 92,
+    "path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2032/states/state_step_046.pt"
+   },
+   "S5": {
+    "seed": 2032,
+    "n0": 82,
+    "gm0": 164,
+    "path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2032/states/state_step_082.pt"
+   }
+  },
+  "streams": {
+   "real": {
+    "S0": 97006,
+    "S1": 97007,
+    "S2": 97008,
+    "S3": 97009,
+    "S4": 97010,
+    "S5": 97011
+   },
+   "sim": {
+    "S0": 197006,
+    "S1": 197007,
+    "S2": 197008,
+    "S3": 197009,
+    "S4": 197010,
+    "S5": 197011
+   },
+   "sim_shift_applied": 0,
+   "smoke": 97020,
+   "conflict_check": "no registered stream_seed at real/sim/smoke ids"
+  },
+  "schedule": {
+   "id": "finite_cosine_then_hold_5e-5_v01",
+   "label": "NATIVE_WITH_DECLARED_TAIL",
+   "formula": "old_get_lr(gm,256,5e-4) if gm<=256 else 5e-5",
+   "action": "LR'=eta_base(n0+k)*exp(u*1[k<4]), u in {0,-0.05,+0.05}"
+  },
+  "budget": {
+   "plan": {
+    "updates": 1168,
+    "train_fw": 2336,
+    "train_bw": 2336,
+    "model_fw": 210,
+    "model_bw": 210,
+    "eval_fw": 11016,
+    "total_fw": 13562,
+    "total_bw": 2546,
+    "fd_dirs": 35,
+    "monitor_evals": 81,
+    "control_evals": 81,
+    "virtual_steps": 2688
+   },
+   "cap": {
+    "updates": 1280,
+    "total_fw": 14500,
+    "total_bw": 2920,
+    "model_fw": 360,
+    "model_bw": 360,
+    "fd_dirs": 50,
+    "monitor_evals": 84,
+    "control_evals": 90
+   },
+   "wall": "OBSERVATIONAL_SHARED_GPU no cap; 5400s ops hint only",
+   "v_final_eval_calls": 0
+  },
+  "hardware_mode": "SHARED_GPU"
+ }
+}

@@ -1,0 +1,38 @@
+{
+ "cell": "2030/46",
+ "stream_id": 97000,
+ "updates_planned": 16,
+ "identity_level": "bitwise(theta,m,v,step,lr) + RNG state equality",
+ "theta_m_v_step_lr_bitwise_equal": true,
+ "mismatch": "",
+ "rng_state_equal": true,
+ "rng_mismatch": "",
+ "data_cursor_equal": true,
+ "monitor_records_on": [
+  {
+   "h": 0,
+   "sum": 3464479.646484375,
+   "count": 475330,
+   "mean": 7.288577717552806,
+   "wall_s": 3.3242650009997305
+  },
+  {
+   "h": 4,
+   "sum": 3457112.888671875,
+   "count": 475330,
+   "mean": 7.273079520905213,
+   "wall_s": 3.3144317059995956
+  },
+  {
+   "h": 8,
+   "sum": 3448454.56640625,
+   "count": 475330,
+   "mean": 7.254864128934109,
+   "wall_s": 3.213029901002301
+  }
+ ],
+ "diag_rows_on_h1": 46,
+ "off_updates": 8,
+ "on_updates": 8,
+ "verdict": "PASS"
+}

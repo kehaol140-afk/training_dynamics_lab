@@ -1,0 +1,174 @@
+{
+ "round": "fr_gttr_r1_objective_identification_v01",
+ "protocol": "FR_GTTR_R1_Model_To_Rule_Identification_v1.md",
+ "protocol_sha256": "7c131ce35984d212853f63978f705bc8c3d363664eaa2fbc7053c564c5c21faf",
+ "cells": [
+  {
+   "seed": 2030,
+   "start": 46,
+   "sim_seed": 202609230100
+  },
+  {
+   "seed": 2030,
+   "start": 82,
+   "sim_seed": 202609230101
+  },
+  {
+   "seed": 2031,
+   "start": 46,
+   "sim_seed": 202609230102
+  },
+  {
+   "seed": 2031,
+   "start": 82,
+   "sim_seed": 202609230103
+  },
+  {
+   "seed": 2032,
+   "start": 46,
+   "sim_seed": 202609230104
+  },
+  {
+   "seed": 2032,
+   "start": 82,
+   "sim_seed": 202609230105
+  }
+ ],
+ "k_values": [
+  1.0,
+  2.0
+ ],
+ "schedule": {
+  "id": "finite_cosine_then_hold_5e-5_v01",
+  "configured_peak": 0.0005,
+  "eta_by_cell": {
+   "2030/46": {
+    "gm": 94,
+    "eta_native": 0.0003661792956511227,
+    "eta_k1": 0.0003661792956511227,
+    "eta_k2": 0.0007323585913022454
+   },
+   "2030/82": {
+    "gm": 166,
+    "eta_native": 0.00017383745082771352,
+    "eta_k1": 0.00017383745082771352,
+    "eta_k2": 0.00034767490165542704
+   },
+   "2031/46": {
+    "gm": 94,
+    "eta_native": 0.0003661792956511227,
+    "eta_k1": 0.0003661792956511227,
+    "eta_k2": 0.0007323585913022454
+   },
+   "2031/82": {
+    "gm": 166,
+    "eta_native": 0.00017383745082771352,
+    "eta_k1": 0.00017383745082771352,
+    "eta_k2": 0.00034767490165542704
+   },
+   "2032/46": {
+    "gm": 94,
+    "eta_native": 0.0003661792956511227,
+    "eta_k1": 0.0003661792956511227,
+    "eta_k2": 0.0007323585913022454
+   },
+   "2032/82": {
+    "gm": 166,
+    "eta_native": 0.00017383745082771352,
+    "eta_k1": 0.00017383745082771352,
+    "eta_k2": 0.00034767490165542704
+   }
+  }
+ },
+ "probes": {
+  "fit": 8,
+  "audit": 8,
+  "micro_per_probe": 2,
+  "micros_per_state": 32,
+  "sim_seed_rule": "202609230100+idx by (seed,start) sorted; conflict block-shift +1000 (metadata only)",
+  "fit_micros": [
+   0,
+   15
+  ],
+  "audit_micros": [
+   16,
+   31
+  ],
+  "sampler": "derive_stream_seed(sim,404)->permutation(3936)->batch4; frozen train pool only"
+ },
+ "radii": {
+  "primary": 0.05,
+  "half": 0.025,
+  "role": "\u56fa\u5b9a\u5c3a\u5ea6\u8bca\u65ad\uff1bprimary \u62a5\u544a\u4e3a\u4e3b\uff1b\u4e0d\u5f97\u770b AUDIT \u540e\u9009\u4e3b\u534a\u5f84"
+ },
+ "audit_grid": {
+  "per_radius": "x in {-r,0,r} x y in {0,r/2,r}",
+  "merged_unique": 16,
+  "plus": "a_LR,a_2D per radius"
+ },
+ "objectives": {
+  "v_ctrl": {
+   "rows": 64,
+   "dtype": "FP32",
+   "autocast": "off",
+   "eval_batch": 8,
+   "agg": "sum/count full library",
+   "backend": "MATH SDPA\uff08q/H \u4e0e\u7aef\u70b9\u7edf\u4e00\uff1b\u8bb0\u5f55 base loss\uff09",
+   "role": "\u5efa\u6a21\u76ee\u6807\uff0c\u4e0d\u662f final"
+  },
+  "v_check256": {
+   "rows": "[4096,4351) by ID",
+   "eval_batch": 32,
+   "dtype": "bf16 autocast + logits.float()",
+   "role": "primary \u534a\u5f84 native/a_LR/a_2D \u76ee\u6807\u8fc1\u79fb\u68c0\u67e5\uff1b\u4e0d\u53c2\u4e0e\u6c42\u5bfc\u548c\u6c42\u89e3"
+  },
+  "v_final": {
+   "calls": 0
+  }
+ },
+ "numerics": {
+  "rel_tol": 1e-12,
+  "k_asym_rel_tol": 0.0001,
+  "cond_skip_interior": 100000000000000.0,
+  "low_signal_abs": 1e-09,
+  "no_psd_clip": true,
+  "no_jitter": true,
+  "tie_break": "(m, y, |x|, x)"
+ },
+ "bootstrap": {
+  "n": 1000,
+  "seed": 2026092301,
+  "unit": "effective-batch",
+  "fit_audit_independent": true,
+  "paired_k_and_actions": true
+ },
+ "budget": {
+  "caps": {
+   "total_fw": 22000,
+   "total_bw_vjp_micro": 3000,
+   "hvp_dirs": 224,
+   "committed_updates": 0,
+   "v_final_calls": 0
+  },
+  "plan": {
+   "train_fw": 192,
+   "fit_fw": 768,
+   "hvp_dirs": 192,
+   "ctrl_fw": 15360,
+   "check_fw": 2304,
+   "total_fw": 18624,
+   "train_bw": 192,
+   "fit_bw": 768,
+   "vjp_micro": 1536,
+   "total_bw_micro": 2496,
+   "committed_updates": 0,
+   "v_final_calls": 0
+  },
+  "extra_base_eval_note": "AUDIT base(theta_plus) \u72ec\u7acb\u8ba1\u8d39\u4ee5\u9a8c\u8bc1 native \u5dee\u4e25\u683c 0\uff1b\u8ba1\u5212\u603b\u989d\u542b\u4f59\u91cf"
+ },
+ "code": {
+  "git_head": "UNKNOWN",
+  "runner": "/home/b205/projects/fluctuation_response/research/scripts/r1_run_v01.py",
+  "runner_sha256": "33429b7d232d82d482a9485505b01b1356a4b2ea93113bc845d8ea27921ebda1"
+ }
+}

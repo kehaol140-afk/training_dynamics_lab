@@ -1,0 +1,201 @@
+{
+ "generated_by": "research/scripts/b0_analyze_v01.py",
+ "wall_s": 5.9,
+ "smoke": {
+  "ALL_PASS": true,
+  "checks": {
+   "snapshot_identity": true,
+   "crn_native_repeat": true,
+   "frozen_runner_agreement_endpoint": true,
+   "nested_readout_prefix_H4": true,
+   "pulse4_eq_persistent_H4_losses": true,
+   "pulse4_eq_persistent_H4_theta": true,
+   "pulse4_eq_persistent_H4_optstate": true,
+   "release_m_v_diverged_from_persistent_H16": true,
+   "release_m_v_retained_H16": true,
+   "release_theta_diverges_H16": true,
+   "release_native_lr_restored": true,
+   "pulse4_eq_persistent_H4_losses_negu": true,
+   "tokens_per_step_1024": true,
+   "n_micro_assert": true,
+   "eval_rng_isolation": true,
+   "ALL_PASS": true
+  }
+ },
+ "main_pulse_eq_persistent_H4_violations": 0,
+ "budget": {
+  "optimizer_updates": 14208,
+  "eval_calls": 1656,
+  "theta_bar_evals": 162,
+  "theta_captures": 666
+ },
+ "budget_cap": 18000,
+ "n_cells_main": 6,
+ "n_cell_stream_arms_main": 216,
+ "n_stress_arms": 6,
+ "chi_structure_by_H_persistent_v_eval": {
+  "4": {
+   "mean": 0.005550384521484597,
+   "positive": 2,
+   "negative": 4,
+   "n": 6,
+   "Q_identifiable": 2
+  },
+  "16": {
+   "mean": -0.012988845507313199,
+   "positive": 1,
+   "negative": 5,
+   "n": 6,
+   "Q_identifiable": 0
+  },
+  "64": {
+   "mean": -0.09290615717570656,
+   "positive": 0,
+   "negative": 6,
+   "n": 6,
+   "Q_identifiable": 0
+  }
+ },
+ "response_H64_chi_sign": {
+  "positive": 2,
+  "negative": 10,
+  "total": 12
+ },
+ "curvature_classification_counts": {
+  "INTERIOR_MINIMUM": 4,
+  "BOUNDARY_SATURATED": 16,
+  "FLAT_OR_NEGATIVE_RESPONSE": 16
+ },
+ "u_star_interior_cells_H64": [],
+ "u_star_interior_cells_anyH": [
+  {
+   "seed": 2030,
+   "step": 46,
+   "protocol": "persistent",
+   "H": 4,
+   "u_star": 0.0015946461715413013,
+   "chi": -0.005817413330075016,
+   "Q": 3.648090362548709
+  },
+  {
+   "seed": 2030,
+   "step": 46,
+   "protocol": "pulse4_release",
+   "H": 4,
+   "u_star": 0.0015946461715413013,
+   "chi": -0.005817413330075016,
+   "Q": 3.648090362548709
+  },
+  {
+   "seed": 2032,
+   "step": 46,
+   "protocol": "persistent",
+   "H": 4,
+   "u_star": 0.0012676915132925413,
+   "chi": -0.01100420951843617,
+   "Q": 8.6805105209352
+  },
+  {
+   "seed": 2032,
+   "step": 46,
+   "protocol": "pulse4_release",
+   "H": 4,
+   "u_star": 0.0012676915132925413,
+   "chi": -0.01100420951843617,
+   "Q": 8.6805105209352
+  }
+ ],
+ "release_vs_persistent": {
+  "4": {
+   "cells_supported": 0,
+   "cells_total": 24,
+   "max_abs_mean_delta": 0.0
+  },
+  "16": {
+   "cells_supported": 23,
+   "cells_total": 24,
+   "max_abs_mean_delta": 0.004995167255401611
+  },
+  "64": {
+   "cells_supported": 24,
+   "cells_total": 24,
+   "max_abs_mean_delta": 0.005130499601364136,
+   "pulse_gain_fraction_of_persistent_median": 0.09816492690082887
+  }
+ },
+ "decomposition_H64": {
+  "center_share_median": null,
+  "n_rows": 48,
+  "J_disp_negative_count_total_H": 0
+ },
+ "decomposition_by_H": {
+  "4": {
+   "abs_resp_ens_mean": 0.00020193619032700857,
+   "abs_resp_center_mean": 0.0003615046540896098,
+   "abs_resp_disp_mean": 0.0002651332567135493,
+   "disp_fraction_of_ctrdisp": 0.42310439911579745,
+   "resp_disp_negative_frac": 0.4583333333333333,
+   "n": 48
+  },
+  "16": {
+   "abs_resp_ens_mean": 0.0010939274604121845,
+   "abs_resp_center_mean": 0.0008620520432790121,
+   "abs_resp_disp_mean": 0.0007280493155121803,
+   "disp_fraction_of_ctrdisp": 0.4578634635377264,
+   "resp_disp_negative_frac": 0.5208333333333334,
+   "n": 48
+  },
+  "64": {
+   "abs_resp_ens_mean": 0.0019627207269271216,
+   "abs_resp_center_mean": 0.0021332216759522757,
+   "abs_resp_disp_mean": 0.00026138685643672943,
+   "disp_fraction_of_ctrdisp": 0.10915640402231183,
+   "resp_disp_negative_frac": 0.3958333333333333,
+   "n": 48
+  }
+ },
+ "stress_cells": {
+  "s2030_t46": {
+   "native_+0.000": {
+    "4": 7.270499,
+    "16": 7.206216,
+    "64": 7.068539
+   },
+   "persistent_-0.050": {
+    "4": 7.26925,
+    "16": 7.208082,
+    "64": 7.078991
+   },
+   "persistent_+0.050": {
+    "4": 7.271886,
+    "16": 7.205255,
+    "64": 7.061111
+   }
+  },
+  "s2030_t64": {
+   "native_+0.000": {
+    "4": 7.183027,
+    "16": 7.137565,
+    "64": 7.047541
+   },
+   "persistent_-0.050": {
+    "4": 7.182797,
+    "16": 7.13873,
+    "64": 7.051981
+   },
+   "persistent_+0.050": {
+    "4": 7.183277,
+    "16": 7.136212,
+    "64": 7.043077
+   }
+  }
+ },
+ "labels": {
+  "stats": "pilot/exploratory: seed (n=3) is the only independent cluster; streams and timepoints are NOT independent seeds",
+  "u_star": "hindsight/oracle: derived from full response curves including V_eval of future rollouts; not deployable online",
+  "v_grid": "hindsight upper bound by construction",
+  "local_quasi_stationarity": "NOT_TESTED this round",
+  "architecture": "NOT_TESTED (single 4.98M minimind v0.7 config)",
+  "energy": "NOT_ESTABLISHED"
+ }
+}

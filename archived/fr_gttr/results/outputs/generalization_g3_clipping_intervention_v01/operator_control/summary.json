@@ -1,0 +1,17 @@
+{
+  "ablation_BH_fixed_vs_unmodified_real_max_abs_gap": 0.03922824328420427,
+  "ablation_divergence_note": "expected and NOT an implementation inconsistency: the frozen HVP leg is taken along the C tangent, which the identity override alters from horizon 3 onward; within-run C_identity == BH_fixed bit-exact is the operator-control result",
+  "baseline_regime": "clip=1.0 (G1a frozen bank, read-only)",
+  "bit_identical_cells": 36,
+  "frozen_cross_check_max_abs_gap": 0.0,
+  "max_abs_gap": 0.0,
+  "max_rel_gap": 0.0,
+  "mean_abs_gap": 0.0,
+  "meaning": "C_identity == BH_fixed attributes the BH_fixed-vs-C difference to the clipping Jacobian operator; NOT a no-clip training-regime claim",
+  "n_cells": 36,
+  "pass": true,
+  "protocol": "FR_G3_CLIPPING_INTERVENTION_V01",
+  "subphase": "G3a_operator_control",
+  "tolerance_abs": 1e-12,
+  "tolerance_rel": 1e-09
+}

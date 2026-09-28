@@ -1,0 +1,103 @@
+{
+  "created_at_utc": "2026-09-16T12:02:36Z",
+  "experiment_config": "experiment_config.json",
+  "output_subdirs": [
+    "operator_control",
+    "bank",
+    "theta",
+    "clip_reference",
+    "no_clip_regime",
+    "results"
+  ],
+  "phase_details": {
+    "analyze": {
+      "verdict": "MECHANISM_CONFIRMED"
+    },
+    "clipref": {
+      "cross_check_max_gap": 0.0,
+      "rows": 72
+    },
+    "g3a_operator": {
+      "ablation_BH_fixed_vs_unmodified_real_max_abs_gap": 0.03922824328420427,
+      "ablation_divergence_note": "expected and NOT an implementation inconsistency: the frozen HVP leg is taken along the C tangent, which the identity override alters from horizon 3 onward; within-run C_identity == BH_fixed bit-exact is the operator-control result",
+      "baseline_regime": "clip=1.0 (G1a frozen bank, read-only)",
+      "bit_identical_cells": 36,
+      "frozen_cross_check_max_abs_gap": 0.0,
+      "max_abs_gap": 0.0,
+      "max_rel_gap": 0.0,
+      "mean_abs_gap": 0.0,
+      "meaning": "C_identity == BH_fixed attributes the BH_fixed-vs-C difference to the clipping Jacobian operator; NOT a no-clip training-regime claim",
+      "n_cells": 36,
+      "pass": true,
+      "protocol": "FR_G3_CLIPPING_INTERVENTION_V01",
+      "subphase": "G3a_operator_control",
+      "tolerance_abs": 1e-12,
+      "tolerance_rel": 1e-09
+    },
+    "smoke": {
+      "seed": 2042,
+      "step": 26
+    },
+    "tangents": {
+      "bh_fixed_equals_C": true,
+      "replay_pass_all": true,
+      "streams": 36
+    },
+    "theta": {
+      "e2_streams": 36,
+      "states": 9
+    },
+    "train": {
+      "param_counts": {
+        "state_dict_elements": 29958528,
+        "unique_params": 26681728
+      },
+      "seeds": [
+        2042,
+        2043,
+        2044
+      ]
+    }
+  },
+  "phase_status": {
+    "analyze": "COMPLETE",
+    "audit": "NOT_STARTED",
+    "clipref": "COMPLETE",
+    "g3a_operator": "COMPLETE",
+    "smoke": "PASS",
+    "tangents": "COMPLETE",
+    "theta": "COMPLETE",
+    "train": "COMPLETE"
+  },
+  "phases": [
+    "preregister",
+    "g3a_operator",
+    "train",
+    "theta",
+    "smoke",
+    "clipref",
+    "tangents",
+    "analyze",
+    "audit"
+  ],
+  "protocol": "FR_G3_CLIPPING_INTERVENTION_V01",
+  "source_hashes": {
+    "frozen_a0c_module": "7b1dde12db88986eba889b5bf9a79e5d73327b67cc0bbebbfc8194b39caec433",
+    "frozen_a0c_runner": "874865198da7514dcd4fe57120268934ce988b046d27baf6e6c54b20b489cd24",
+    "frozen_a0e2_module": "fad4d50d9d6fb9031702e5330459fd0cf183a872601ab21170fd58febd506ca9",
+    "frozen_a0e2_runner": "cd4d5decef578cce96031d99e71ff3f776d35020b7b1c47fdec1ecc5f077bfd1",
+    "g1a_config": "7c6b406a2e8964b63080ff15f3d9cf974de7b6e6b34e81b5c3a2d59ad272fba0",
+    "g1a_mechanism_session": "3f3db3cf98050b8c0b68e566becfb157d7ab0b1d0856794c157b23982164124a",
+    "g1a_per_stream": "361243f33e10cf156b185981cc254e455dbde0df429fe72930edf472e2967be3",
+    "g1a_summary": "8661c5c0192b92c4f6c029e507f3e4e08b35b686147734970046b55731b70efb",
+    "g3_config": "bec5e5b0b52213143b399c40375b0e7e5065e25ed44352a9a5899796e2f2ee1c",
+    "g3_module": "70837f8047c4c6845fcdb4b21769ab2b470d6e8ac24680191c6463499242c2c6",
+    "g3_protocol_md": "9386148adedc778a31bad60f91d56b01e3f21ae1b6345280d0cd0c5307bf42ba",
+    "g3_runner": "e2bd82d9603915c2d3290ee34b7ebf7ed1e1ea2f8b3ee41065b16528e42375aa",
+    "minimind_model": "47f124f5f386a8cd76b488b36ecc3e00fc43e3894cdb3ba602420188d9ba8860",
+    "minimind_trainer_utils": "c613d485c8861caccc9d920e4639a8053cdfb4d69e56fa33280a631a5530234b",
+    "theta_protocol_pyc": "61e1bae38a2b20d0407e134f215094060624178da215d2232c94739d1d7751e7",
+    "v07_data_d0": "1e657af9baae0784e582d82ef936160473aa069878e422ef48683a718056b0f4",
+    "v07_partition": "ee1810b229b104cdc0f03a82bf816df19afd666a287955cbbec4e7f8fdec379f"
+  }
+}

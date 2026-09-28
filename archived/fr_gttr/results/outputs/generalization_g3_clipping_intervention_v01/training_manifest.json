@@ -1,0 +1,39 @@
+{
+  "clip_implementation": "clip_grad_norm_ never called; see experiment_config.json",
+  "grad_clip_enabled": false,
+  "param_counts": {
+    "state_dict_elements": 29958528,
+    "unique_params": 26681728
+  },
+  "protocol": "G3_NOCLIP_STATE_BANK_V01",
+  "seed_reports": [
+    "/home/b205/projects/fluctuation_response/outputs/generalization_g3_clipping_intervention_v01/bank/seed_2042/state_bank_report.json",
+    "/home/b205/projects/fluctuation_response/outputs/generalization_g3_clipping_intervention_v01/bank/seed_2043/state_bank_report.json",
+    "/home/b205/projects/fluctuation_response/outputs/generalization_g3_clipping_intervention_v01/bank/seed_2044/state_bank_report.json"
+  ],
+  "seeds": [
+    2042,
+    2043,
+    2044
+  ],
+  "stages": {
+    "EARLY": {
+      "cumulative_tokens": 26624,
+      "fraction": 0.203125,
+      "step": 26
+    },
+    "LATE": {
+      "cumulative_tokens": 104448,
+      "fraction": 0.796875,
+      "step": 102
+    },
+    "MIDDLE": {
+      "cumulative_tokens": 65536,
+      "fraction": 0.5,
+      "step": 64
+    }
+  },
+  "tokens_per_optimizer_step": 1024,
+  "total_planned_optimizer_steps": 128,
+  "training_terminated_at_step": 102
+}

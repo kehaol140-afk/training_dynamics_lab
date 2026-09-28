@@ -1,0 +1,10 @@
+{
+  "config_id": "CONTINUATION_ADAPTATION_P4_FULL_V01",
+  "config_sha256": "b4716c8efe6c7e490f4eed8f2b419505cc624fc9643730dfd6a5581d723a8fe2",
+  "seal_lock_sha256": "8b269dd47a0a4121524d897972c4df803ee0f64156b69affddcd0f8dca791447",
+  "n_rows": 280,
+  "n_cells": 56,
+  "eval_pool": "partition.eval_indices (128 samples, never trained on)",
+  "primary_metric": "final validation NLL (mean per-token CE on V_final at budget exhaustion)",
+  "table_csv": "sealed_evaluation_table.csv"
+}

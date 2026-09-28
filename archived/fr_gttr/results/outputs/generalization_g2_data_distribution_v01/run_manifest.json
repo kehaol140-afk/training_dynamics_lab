@@ -1,0 +1,104 @@
+{
+  "protocol": "FR_G2_DATA_DISTRIBUTION_GENERALIZATION_V01",
+  "created_at_utc": "2026-09-16T14:33:16Z",
+  "experiment_config": "experiment_config.json",
+  "phases": [
+    "preregister",
+    "dataset",
+    "train",
+    "theta",
+    "smoke",
+    "tangents",
+    "mechanism",
+    "analyze",
+    "audit"
+  ],
+  "phase_status": {
+    "dataset": "COMPLETE",
+    "train": "COMPLETE",
+    "theta": "COMPLETE",
+    "smoke": "PASS",
+    "tangents": "COMPLETE",
+    "mechanism": "COMPLETE",
+    "analyze": "COMPLETE",
+    "audit": "NOT_STARTED"
+  },
+  "source_hashes": {
+    "g2_config": "78e52162897726008e82555c58ba5b819f181d7415206fa7b18838240e0245a7",
+    "g2_protocol_md": "6a9ccf9be3cf997035aaf859d8db5d1816396286096c2b1c106752bfe993bc54",
+    "g2_module": "a2692ade2e71b0b62fb6b2d1108db49a2c0fad3b5b1f75f7009250d953701071",
+    "g2_runner": "4038f890b87a6352a4c04f95769ed62db8503fb4001bff1d4e4a757a63096c98",
+    "frozen_g1a_module": "2a21ec06a234eb071df9f8d57668b9a53843a6b0dadc30202d0b09c9273dd097",
+    "frozen_g1a_runner": "af7e4573ff39e8ae5c40a274eaf5bab615eab9cee26ddd25f4c202f2dd24a7ac",
+    "frozen_a0c_module": "7b1dde12db88986eba889b5bf9a79e5d73327b67cc0bbebbfc8194b39caec433",
+    "frozen_a0c_runner": "874865198da7514dcd4fe57120268934ce988b046d27baf6e6c54b20b489cd24",
+    "frozen_a0e2_module": "fad4d50d9d6fb9031702e5330459fd0cf183a872601ab21170fd58febd506ca9",
+    "frozen_a0e2_runner": "cd4d5decef578cce96031d99e71ff3f776d35020b7b1c47fdec1ecc5f077bfd1",
+    "theta_protocol_pyc": "61e1bae38a2b20d0407e134f215094060624178da215d2232c94739d1d7751e7",
+    "minimind_model": "47f124f5f386a8cd76b488b36ecc3e00fc43e3894cdb3ba602420188d9ba8860",
+    "minimind_trainer_utils": "c613d485c8861caccc9d920e4639a8053cdfb4d69e56fa33280a631a5530234b",
+    "minimind_lm_dataset": "e6dd56b5745015ddc1579932c292ec7a5e1cc33796a5eadf4911065d92f1c6b8",
+    "d0_e3c_subset": "1e657af9baae0784e582d82ef936160473aa069878e422ef48683a718056b0f4",
+    "d0_partition_v07": "ee1810b229b104cdc0f03a82bf816df19afd666a287955cbbec4e7f8fdec379f",
+    "d1_raw_pretrain_hq": "82b19375460d44feb15937ea3712121b5292271cf18eb87407b6d3e27427c18b",
+    "d1_pool": "MISSING",
+    "d1_partition": "MISSING",
+    "g1a_output_dir_readonly_reference": "8661c5c0192b92c4f6c029e507f3e4e08b35b686147734970046b55731b70efb",
+    "full_state_module": "709334f8fb229fc38869787dc22f2f7a57a3d687276b6f2392564a90f0e5853f",
+    "direction_module": "7040c5b6be82b8eebaedb7daa2ed0533c011249776c229cf533a5dff7037bebd",
+    "stream_rng_module": "242956de271a8b839ddb3b39cc7e63d48b63ed253841255580d34e39ecd867a4",
+    "batch_manifest_module": "6bf1703f0e09f4b713113bfa05ad3eccb83119c8ad0838d4a1df5688ac932ffb",
+    "stage_c_runtime_module": "692a7f8e143359601ab79d94887d5df176d1ce0bc4dd3bc303a5b5950d21d1a0",
+    "native_schedule_module": "225bcd942090ea6be5c7564dc18f29ab6ee47a80547ff6238b92d6f9b9b6b263",
+    "native_adamw_guard_module": "19cdae886e8fa57c8672c9aa323070770e975675ad35617f55a48ddc02677d7c",
+    "response_stats_module": "9bc9ce87a3afb4be518fb0360a70af017a896ba1ef58724511a68aca5cb2bba8",
+    "pilot_partition_module": "9fece66acd9a81e523597e24d7a08e8bd0c0754d4174eaaaeaae905892a72c9f",
+    "hashing_module": "ccc94714b4c2c00c5d5c3bd05fffad3b2c4da811ca8ff0e802651b0daddf7536"
+  },
+  "output_subdirs": [
+    "data",
+    "bank",
+    "theta",
+    "tangents",
+    "mechanism",
+    "results"
+  ],
+  "phase_details": {
+    "dataset": {
+      "d0_records": 4096,
+      "d1_records": 1413103,
+      "d1_pool_sha256": "5d4c5e6b181e7791f12ceff2635011f17ba6e81d208942f22e5b1a24ad85a882",
+      "partition_sha256": "63fed3888a2b91296c8471147f54f1f9ffa74fd2e6134e82d94aa9e39384f050"
+    },
+    "train": {
+      "seeds": [
+        2043,
+        2044
+      ],
+      "param_counts": {
+        "unique_params": 26681728,
+        "state_dict_elements": 29958528
+      }
+    },
+    "theta": {
+      "states": 6,
+      "e2_streams": 24
+    },
+    "smoke": {
+      "seed": 2042,
+      "step": 26
+    },
+    "tangents": {
+      "streams": 36,
+      "replay_pass_all": true,
+      "max_native_clip_tensor_l2_gap": 2.0847505842676793e-07
+    },
+    "mechanism": {
+      "seed": 2042,
+      "h1_identity_max_abs_gap": 0.0
+    },
+    "analyze": {
+      "verdict": "STRONG_DATA_REPLICATION"
+    }
+  }
+}

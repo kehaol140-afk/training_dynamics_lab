@@ -1,0 +1,64 @@
+{
+  "audit": "fr_gttr_model_target_alignment_audit_v01",
+  "date": "2026-09-22",
+  "claims_total": 25,
+  "coverage": {
+    "EXACT_FOR_IMPLEMENTATION": 2,
+    "EMPIRICALLY_COVERED": 16,
+    "EMPIRICALLY_COVERED_WITH_CAVEAT": 3,
+    "NOT_SUPPORTED": 4,
+    "NOT_TESTED": 4,
+    "PROTOCOL_MISMATCH": 1
+  },
+  "coverage_notes": "分层计数有重叠(C18同时PROTOCOL_MISMATCH与EMPIRICALLY_COVERED_WITH_CAVEAT); NOT_TESTED集中在C22全局几何/C23下游能力/C25长时域",
+  "exact_identities_confirmed": 6,
+  "exact_identities_notes": "EXACT-1..EXACT-6全部SUPPORTED_WITHIN_SCOPE(记账恒等式fp64残差<=2.8e-20; 聚合门68/68行复算吻合; 充分统计恒等48/48行)",
+  "gate_results": {
+    "G1_bank_fidelity": "PASS",
+    "G2_replay_identity": "PASS",
+    "G3_impulse_response": "FAIL",
+    "G4_recoverability": "PASS",
+    "G5_glossary": "PASS",
+    "G6_checkpoint_fidelity": "PASS"
+  },
+  "budget_ledger": {
+    "stated_cumulative_pre_c1": 17994,
+    "stated_final_with_c1l": "约19000(声明)",
+    "audited_b0_with_smoke": 18289,
+    "discrepancy": "B0 smoke 712 updates 未计入TOTALS; 若计入则B0已超18,000 cap by 289",
+    "severity": "HIGH",
+    "action": "发布erratum更新台账基数; 后续实验以18,289为起点"
+  },
+  "critical_counterexamples": [
+    "T1: A0T-extra H=4 win vs H=16/64 reverse(2偏差细胞) — 短期!=长期",
+    "T2: A0P 长尾 — 无稳定时间尺度, 短期核外推失败",
+    "T3: B0.6 rho=0.996 近单位单图 — 局部地形不唯一决定全局",
+    "T4/T5: 范数与曲率不决定目标收益"
+  ],
+  "untested": [
+    "C22 全局几何(跨谷/慢流形)",
+    "C23 下游任务能力",
+    "C25 >128步时域",
+    "1B外部架构",
+    "clip激活态连续控制/联合动作",
+    "beta/eps/batch size动作",
+    "长期(>64步)收益预测"
+  ],
+  "downgrades": [
+    "HYP-1 物理量为目标代理: NOT_SUPPORTED",
+    "HYP-2 Hessian/范数为能力指标: NOT_SUPPORTED",
+    "HYP-3 短期外推: CONTRADICTED_OR_MISIMPLEMENTED"
+  ],
+  "alignment_verdict": "MISALIGNED_FOR_DEPLOYMENT_CLAIMS: 全部读出为LM NLL轴(V_score/V_eval), 无独立final测试集, 无下游能力评测; 控制器/schedule结论仅限冻结规则in-sample; 短期(H<=64)gain不得外推为最终训练收益",
+  "files": [
+    "coverage_matrix.csv",
+    "theorem_assumption_checks.csv",
+    "target_dictionary.csv",
+    "horizon_alignment.csv",
+    "cost_target_audit.csv",
+    "audit_summary.json",
+    "AUDIT_REPORT.md",
+    "KEY_DATA_FOR_REVIEW.md",
+    "NEXT_VALIDATION_SPEC.md"
+  ]
+}

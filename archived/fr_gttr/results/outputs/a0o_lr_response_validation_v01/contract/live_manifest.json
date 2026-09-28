@@ -1,0 +1,98 @@
+{
+ "manifest_id": "A0O_LIVE_MANIFEST_V01",
+ "status": "FROZEN_BEFORE_ANY_GPU",
+ "module_hash_notes": [
+  {
+   "seq": 0,
+   "time": "2026-09-17",
+   "file": "research/src/fr/a0o_lr_response_v01.py",
+   "sha256": "4888301efd5529a7d9badc58d881af04e7ec48f87c2bf170e58fa518fb4997fd",
+   "note": "core module: lr_pulse + run_lr_response + run_lr_rollout; final form before launch"
+  },
+  {
+   "seq": 1,
+   "time": "2026-09-17",
+   "file": "research/scripts/a0o_run_v01.py",
+   "sha256": "554f701bad9c58cbabcd034004f166415e56ac6d7e07a57cfa492033fd1150b9",
+   "note": "driver: Stage1 (12 states x 4 streams x H{1,4}) -> gate -> Stage2 (3 states x 8 streams, H=4)"
+  },
+  {
+   "seq": 2,
+   "time": "2026-09-17",
+   "file": "research/scripts/a0o_run_v01.py",
+   "sha256": "080f5b7b5137ee9bb4c3d3c0a38327290cb694b68703f30becd0d7dfb1c1d29c",
+   "note": "amendment A1: cell() maps (seed,step)->frozen A0K event via contract rule (2030/2031 same seed, 2037->2032, largest multiple of 10 <= step); logged before relaunch, zero results viewed"
+  },
+  {
+   "seq": 3,
+   "time": "2026-09-17",
+   "file": "research/src/fr/a0o_lr_response_v01.py",
+   "sha256": "0bb640080be16f3d160f1ebadd033f75f324ffd8b7124bd5636f2743e80e8ea3",
+   "note": "bug fix pre-results: _clip_transpose imported via a0h15_production_entry_v01._a0h1 (frozen a0h_adjoint_dev_check_v01) instead of nonexistent a0h1_clip_jacobian_v01"
+  },
+  {
+   "seq": 4,
+   "time": "2026-09-17",
+   "file": "research/scripts/a0o_run_v01.py",
+   "sha256": "5e18c89d5844ae55c38399a8d1520488fefb6f5ec1aef0ea0cd9834acf78d38f",
+   "note": "bug fix pre-results: bank checkpoint v07/seed_{s}/states/state_step_{s:03d}.pt loaded via load_full_training_state into rt before each (seed,step) cell group; previously cell() snapshotted fresh random init (no exp_avg)"
+  },
+  {
+   "seq": 5,
+   "time": "2026-09-17",
+   "file": "research/src/fr/a0o_lr_response_v01.py",
+   "sha256": "53955ae423a75c34e7a4ba3b819d49969bb170e93bfbde23c93c303fa333e9c3",
+   "note": "bug fix pre-results: run_lr_rollout uses _baseline_no_step(want_snapshot=True) so snap['lr'] (frozen per-horizon schedule value) is available for the u-perturbation"
+  },
+  {
+   "seq": 6,
+   "time": "2026-09-17",
+   "file": "research/src/fr/a0o_lr_response_v01.py",
+   "sha256": "1730562039d98d81dff452720358d8b82b17c92d7bac2eba779f62ae088ff354",
+   "note": "bug fix pre-results: endpoint score = a0g._val_loss_only(torch, model, val_score_tensors, autocast_ctx) (4-arg, matching a0k.eval_both), RNG-wrapped; removed unused named"
+  },
+  {
+   "seq": 7,
+   "time": "2026-09-17",
+   "file": "research/src/fr/a0o_lr_response_v01.py",
+   "sha256": "65dccaa2b6de7c94ea931c0f867c4592f275441996a1d75cff047e122095ddd7",
+   "note": "amendment A2: analytic LR pulse corrected to pure theta-channel push contracted with reverse theta-cotangent (removed wrong dc-channel m/v pollution); docstring updated"
+  },
+  {
+   "seq": 8,
+   "time": "2026-09-17",
+   "file": "research/scripts/a0o_run_v01.py",
+   "sha256": "d3e3d543a6abca95fbdcd0c3b3f241340aae7ea59b25e2423437918e55c8f2e2",
+   "note": "amendment A2: per-stream lookahead content via derive_stream_seed(stream_seed,404) + batches_from_train_pool (A0K recipe); w_0_norm -> v_H_norm"
+  },
+  {
+   "seq": 9,
+   "time": "2026-09-17",
+   "file": "research/scripts/a0o_analyze_v01.py",
+   "sha256": "f897342a4f3f95c6b6a5397d5e9e960e3e0d34b2c2590bc5965d962b5c322897",
+   "note": "amendment A2: report theory/implementation text matches corrected theta-channel pulse"
+  },
+  {
+   "seq": 10,
+   "time": "2026-09-17",
+   "file": "research/scripts/a0o_run_v01.py",
+   "sha256": "bf43aa0142a5e3d0e310ebf1e55c834636d83cdb9d99255ca309af6cf25847e2",
+   "note": "reporting bug fix post-GPU: Stage-2 calibration slope uses chosen-action branch (h>0 -> u=-delta -> d_minus); was inverted (reported -0.250). GPU results unchanged; corrected metric recomputed offline in analysis/stage2_metrics_corrected.json"
+  },
+  {
+   "seq": 11,
+   "time": "2026-09-17",
+   "file": "research/scripts/a0o_analyze_v01.py",
+   "sha256": "142ff904e970e36924a425dc1f5e6a8364eb4c9eeb7145221a7275176893544b",
+   "note": "analyzer recomputes corrected Stage-2 metrics from saved cells and documents the driver calibration branch inversion"
+  },
+  {
+   "seq": 12,
+   "time": "2026-09-17",
+   "file": "research/scripts/a0o_analyze_v01.py",
+   "sha256": "3ec5e3ef097ceb6b872fae710c23d7f258ac432fdfbcae7105c6b91683f3a46a",
+   "note": "report text: A1/A2 stream recipe description, budget-overage explanation, seq 0-11 refs"
+  }
+ ],
+ "contract_sha256": "c925c8480f1f58f81a4eeecccb852e3c1a5bf8c1932392253419f66f2fd4805a"
+}

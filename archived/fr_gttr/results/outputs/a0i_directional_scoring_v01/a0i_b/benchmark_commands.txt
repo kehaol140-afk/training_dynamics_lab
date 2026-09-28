@@ -1,0 +1,24 @@
+# A0I-B benchmark commands (exact invocations; conda env fr_minimind, PYTHONPATH=research/src)
+
+# probe (single dev state, JVP backend feasibility)
+CUDA_VISIBLE_DEVICES=1 PYTHONPATH=research/src python research/scripts/a0i_b_directional_scoring_v01.py \
+  --device cuda:0 --cmd probe --state 2031/52 --stream 0 --horizon 4 --m 4 \
+  --out outputs/a0i_directional_scoring_v01/a0i_b/probe_2031_52.json
+
+# benchmark, one invocation per dev state (stream 0, H=4, M=4, warmup 1 + 5 timed repeats, interleaved A/B order)
+for st in 2031/52 2034/64 2036/76; do
+  CUDA_VISIBLE_DEVICES=1 PYTHONPATH=research/src python research/scripts/a0i_b_directional_scoring_v01.py \
+    --device cuda:0 --cmd run --state $st --stream 0 --horizon 4 --m 4 \
+    --repeats 5 --warmup 1 --jvp-backend math \
+    --out outputs/a0i_directional_scoring_v01/a0i_b/run_$(echo $st | tr '/' '_')
+done
+
+# analysis (CPU)
+python research/scripts/a0i_b_analyze_v01.py
+
+# notes:
+# - physical GPU1 via CUDA_VISIBLE_DEVICES=1 (matches prior rounds); external jobs
+#   present on both GPUs throughout (recorded in environment.json); nothing killed.
+# - JVP backend: ambient (flash SDPA) -> NotImplementedError for forward AD
+#   (see probe_2031_52.json); all METHOD B numbers use forced math SDPA.
+# - M=1,2 nested prefixes are TIMING-ONLY subsets of the frozen 4 candidates.

@@ -1,0 +1,62 @@
+{
+ "contract_id": "A0T_RESPONSE_LR_CONTROL_PILOT_V01",
+ "date": "2026-09-18",
+ "mandate": "Response-guided Learning Rate Control Pilot: validate whether A0S controllability information converts into a useful fixed training control rule. First algorithm validation after mechanism discovery. Fixed pilot: no controller optimization, no hyperparameter tuning.",
+ "controller_frozen": {
+  "rule": "per cell: read frozen chi_lr; if chi_lr < 0 -> u=+0.05; if chi_lr > 0 -> u=-0.05; eta_new = eta_native_k * exp(u) applied at EVERY optimizer step of the window (persistent, A0O semantics)",
+  "no_threshold": true, "no_confidence": true, "no_phase": true, "no_adaptive_tuning": true,
+  "delta": 0.05, "delta_source": "frozen a0o (imported via frozen a0q.DELTA)",
+  "chi_source": "FROZEN read-only: D1 = outputs/a0o_lr_response_validation_v01/runs/stage1_cells.jsonl h_eta (H==4); D2 = outputs/a0q_response_control_map_v01/runs/cells.jsonl h_lr. NOT recomputed."
+ },
+ "cells": {
+  "D1": {"n": 24, "seeds": [2030, 2031, 2037], "steps": [46, 52, 64, 82],
+         "streams": [7110, 7111],
+         "selection_rule": "first two frozen A0O stage1 streams per state (result-independent)"},
+  "D2": {"n": 12, "seeds": [2030, 2031, 2037], "steps": [46, 82],
+         "streams": [7400, 7401],
+         "selection_rule": "both frozen A0Q streams per state"},
+  "total": 36
+ },
+ "arms": {
+  "A": "native AdamW (u=0)",
+  "B": "fixed LR perturbation u=+0.05 at every step, all cells",
+  "C": "response-guided: u = +0.05 if chi_lr<0 else -0.05 at every step"
+ },
+ "horizons": {"H": [4, 16, 64],
+  "stream": "one lookahead of 128 micro-batches per cell (batch_seed=derive_stream_seed(stream_seed,404), frozen A0K recipe); prefixes used for H=4 (8) and H=16 (32): batches_from_train_pool is a seeded permutation prefix, so windows are nested and matched"},
+ "aliasing": "on cells where action == +0.05, arm C's rollout is bitwise-identical to arm B's (same frozen function, u, stream, state, RNG) -> run once, alias, record aliased=true. This makes C-vs-B near-degenerate on these banks BY CONSTRUCTION (frozen A0S: chi_lr<0 in 46/48 D1 cells and 12/12 D2 cells); reported honestly, not hidden.",
+ "crn": "arm A (u=0) run twice at H=4 per cell; bitwise equality required (all cells)",
+ "metrics": {
+  "gain_X_H": "L_A,H - L_X,H for X in {B,C}, H in {4,16,64}",
+  "stats": ["median/IQR of gains", "Wilcoxon signed-rank (two-sided) gain vs 0 and (gain_C - gain_B) vs 0",
+            "sign consistency: fraction(gain_C,H > 0), binomial test vs 0.5"],
+  "thirds": "rank cells by C_t WITHIN each dataset; split top/mid/bottom thirds; per-third success rate (fraction gain_C,H4>0) and median gain_C,H4; pooled D1+D2 via per-dataset table + combined counts",
+  "erosion": "gain_C at H=16 and H=64 vs H=4 (short-vs-long; A0P linkage)"
+ },
+ "pass_fail_frozen": {
+  "PASS_iff": ["(i) median gain_C,H4 > 0 AND Wilcoxon p < 0.05",
+               "(ii) sign consistency H4 > 0.5 AND binomial p < 0.05",
+               "(iii) median(gain_C - gain_B, H4) >= 0 (C not worse than fixed)"],
+  "FAIL_cases": ["controller gain not significant vs native", "direction no better than chance", "C worse than fixed B"]
+ },
+ "csv": {
+  "file": "a0t_response_lr_control_table.csv",
+  "columns": ["seed", "step", "chi_lr", "C_t", "action", "loss_H4", "loss_H16", "loss_H64", "gain"],
+  "row_semantics": "one row per (seed,step) state = stream-average over that state's cell(s); action = stream-majority action; loss_H* = arm C losses; gain = L_A,H4 - L_C,H4. Full per-cell detail (stream_seed, per-arm per-H losses, gains) in a0t_detail_supplementary.csv."
+ },
+ "forbidden": [
+  "optimize the controller", "tune hyperparameters", "introduce threshold/confidence/phase/adaptation",
+  "change delta (0.05) or the H grid {4,16,64}", "recompute chi (frozen read-only)",
+  "edit any frozen artifact or module", "result-driven threshold/rule/cell changes",
+  "claim short-term gain = final training improvement"
+ ],
+ "limitations_required_in_report": [
+  "short-term (finite-H) gain does NOT equal final training improvement",
+  "A0P: long memory, non-exponential response kernel -> H=16/64 gains may not persist",
+  "absolute gains are tiny (A0S: G/L0 ~ 7e-5 at H=4)",
+  "C-vs-B near-degeneracy by construction on these banks (chi sign overwhelmingly negative)"
+ ],
+ "budget": {"gpu_s": 1800, "expected_gpu_s": "~1100-1300 (36 cells; aliasing saves ~1/3 of rollouts)", "hard_stop": true},
+ "deliverables": ["a0t_response_lr_control_table.csv", "a0t_detail_supplementary.csv", "A0T_REPORT.md", "plots", "audit pack"],
+ "stop_rule": "STOP after experiment. Do not auto-launch any next round."
+}

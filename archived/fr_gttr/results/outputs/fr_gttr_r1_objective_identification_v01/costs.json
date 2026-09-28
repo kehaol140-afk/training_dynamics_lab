@@ -1,0 +1,46 @@
+{
+ "plan": {
+  "train_fw": 192,
+  "fit_fw": 768,
+  "hvp_dirs": 192,
+  "ctrl_fw": 15360,
+  "check_fw": 2304,
+  "total_fw": 18624,
+  "train_bw": 192,
+  "fit_bw": 768,
+  "vjp_micro": 1536,
+  "total_bw_micro": 2496,
+  "committed_updates": 0,
+  "v_final_calls": 0
+ },
+ "caps": {
+  "total_fw": 22000,
+  "total_bw_vjp_micro": 3000,
+  "hvp_dirs": 224,
+  "committed_updates": 0,
+  "v_final_calls": 0
+ },
+ "ledger_final": {
+  "ts": 1790221808.7833147,
+  "phase": "audit",
+  "cell": "2032/82",
+  "wall_s": 139.401,
+  "note": "probe15 k=2.0 coords=16 check=3",
+  "total_fw": 16576,
+  "total_bw": 2496,
+  "train_fw": 192,
+  "train_bw": 192,
+  "fit_fw": 768,
+  "fit_bw": 768,
+  "vjp_micro": 1536,
+  "hvp_dirs": 192,
+  "ctrl_fw": 13312,
+  "check_fw": 2304,
+  "ctrl_evals": 1664,
+  "check_evals": 288,
+  "failures": 0,
+  "retries": 0
+ },
+ "n_conditions": 12,
+ "wall_note": "OBSERVATIONAL_SHARED_GPU only"
+}

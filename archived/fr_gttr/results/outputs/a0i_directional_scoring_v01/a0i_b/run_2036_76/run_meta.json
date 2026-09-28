@@ -1,0 +1,24 @@
+{
+ "state": "2036/76",
+ "stream": 0,
+ "H": 4,
+ "M": 4,
+ "lambda": 0.05,
+ "repeats": 5,
+ "warmup": 1,
+ "jvp_backend": "math",
+ "gpu_seconds_for_state": 76.45882157600136,
+ "counters_last_pass": {
+  "baseline_steps": 0,
+  "candidate_grad_calls": 0,
+  "hvp_calls": 0,
+  "reverse_adjoint_steps": 0,
+  "clip_transpose_calls": 0,
+  "endpoint_grad_calls": 0,
+  "scoring_dot_calls": 0,
+  "replay_branches": 0,
+  "replay_native_steps": 0,
+  "replay_scoring_calls": 0,
+  "outer_autograd_backward_calls": 0
+ }
+}

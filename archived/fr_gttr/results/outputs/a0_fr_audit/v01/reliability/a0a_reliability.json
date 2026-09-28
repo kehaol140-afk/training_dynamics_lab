@@ -1,0 +1,93 @@
+{
+  "protocol": "A0_FR_DIAGNOSTICS_V01_A0A",
+  "data_integrity": true,
+  "horizon": 8,
+  "chi_reliability": {
+    "n_unique_splits": 35,
+    "rho_full": {
+      "median": 0.9799985092127281,
+      "p05": 0.9446618430729093,
+      "p25": 0.9642441348991506,
+      "p75": 0.9892602507713648,
+      "p95": 0.9940983473408372,
+      "mean": 0.9757706343671608
+    }
+  },
+  "B_reliability_available": false,
+  "B_reliability": null,
+  "observed": {
+    "K_seed_fe": 0.3768608979182702,
+    "r_detrended": 0.5405571946383922,
+    "analysis": {
+      "pooled_pearson": 0.32890040280166855,
+      "seed_fe": {
+        "K": 0.3768608979182702,
+        "r2": 0.8001649788254833
+      },
+      "detrended_pearson": 0.5405571946383922,
+      "first_difference_pearson": 0.6033880934933994,
+      "loso_step_vs_B": {
+        "folds": [
+          {
+            "held_out_seed": 2030,
+            "step_only_mae": 0.05037359665527219,
+            "step_plus_B_mae": 0.039640744191706885,
+            "relative_gain": 0.21306504153385653
+          },
+          {
+            "held_out_seed": 2031,
+            "step_only_mae": 0.03705533542557362,
+            "step_plus_B_mae": 0.03755608112380083,
+            "relative_gain": -0.013513457440777098
+          },
+          {
+            "held_out_seed": 2032,
+            "step_only_mae": 0.026616769938483574,
+            "step_plus_B_mae": 0.03388818318588928,
+            "relative_gain": -0.2731891684908171
+          },
+          {
+            "held_out_seed": 2033,
+            "step_only_mae": 0.022441951217564236,
+            "step_plus_B_mae": 0.030762083164439107,
+            "relative_gain": -0.3707401315605349
+          },
+          {
+            "held_out_seed": 2034,
+            "step_only_mae": 0.020523418091168373,
+            "step_plus_B_mae": 0.022815338615679703,
+            "relative_gain": -0.11167343150786309
+          },
+          {
+            "held_out_seed": 2035,
+            "step_only_mae": 0.03449986386765158,
+            "step_plus_B_mae": 0.02493230028108276,
+            "relative_gain": 0.27732177794300644
+          },
+          {
+            "held_out_seed": 2036,
+            "step_only_mae": 0.03159544363392648,
+            "step_plus_B_mae": 0.02485088091292449,
+            "relative_gain": 0.21346630859646587
+          },
+          {
+            "held_out_seed": 2037,
+            "step_only_mae": 0.04574393608975514,
+            "step_plus_B_mae": 0.042323583791660006,
+            "relative_gain": 0.07477170944327984
+          }
+        ],
+        "mean_gain": 0.001188581064577067,
+        "median_gain": 0.030629126001251367,
+        "folds_improved": 4,
+        "n_folds": 8
+      }
+    }
+  },
+  "correction": null,
+  "boundary": [
+    "Classical disattenuation is diagnostic only.",
+    "v0.7 H8_CONFIRMATION=FAIL unchanged."
+  ],
+  "B_MEASUREMENT_NOISE_CAN_EXPLAIN_K377": "B_RELIABILITY_UNAVAILABLE_FROM_EXISTING_RAW"
+}

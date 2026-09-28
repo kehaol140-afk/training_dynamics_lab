@@ -1,0 +1,71 @@
+{
+  "protocol": "A0_FR_DIAGNOSTICS_V01",
+  "data_integrity": true,
+  "formal_state_count": 56,
+  "formal_raw_files": [
+    "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2030/theta_mapping_raw.json",
+    "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2031/theta_mapping_raw.json",
+    "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2032/theta_mapping_raw.json",
+    "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2033/theta_mapping_raw.json",
+    "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2034/theta_mapping_raw.json",
+    "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2035/theta_mapping_raw.json",
+    "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2036/theta_mapping_raw.json",
+    "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2037/theta_mapping_raw.json"
+  ],
+  "primary_Y_H": "X_theta(H)=<q_t, theta_(t+H)-theta_t>",
+  "B_definition": "Cov(delta s,Y)/Var(delta s), s=<q_t,g_first>",
+  "chi_definition": "mean_stream[(X_plus-X_minus)/(2 epsilon)]",
+  "e1_stream_counts": [
+    16
+  ],
+  "e2_stream_counts": [
+    8
+  ],
+  "causal_CRN": "E2_BASELINE_PLUS_MINUS_SHARE_STREAM_SEED_BATCHES_AND_LR_PATH_WITHIN_STREAM",
+  "natural_future_stream_semantics": "E1_EACH_STREAM_HAS_OWN_STREAM_SEED_AND_BATCH_MANIFEST_THROUGH_HORIZON",
+  "sampler": {
+    "source_path": "/home/b205/projects/fluctuation_response/research/src/fr/stage_c_runtime.py",
+    "exists": true,
+    "semantics": "WITHOUT_REPLACEMENT_SINGLE_PERMUTATION_OF_TRAIN_POOL"
+  },
+  "rho_values": [
+    0.25
+  ],
+  "epsilon_formula": "epsilon=rho*sigma_q (verified by v0.7 source; numeric state fields stored)",
+  "K_formal_semantics": "regression slope in confirmatory analysis; pointwise chi/B is not primary",
+  "grad_clip": 1.0,
+  "formal_clipping_keys": [
+    "baseline_rate",
+    "minus_rate",
+    "plus_rate"
+  ],
+  "amp_source_audit": {
+    "source_path": "/home/b205/projects/fluctuation_response/research/src/fr/minimind_v03_runtime.py",
+    "exists": true,
+    "scaler_enabled_inference": "BF16_DISABLED_BY_SOURCE",
+    "make_amp_snippet": "def make_amp(torch, device: str, dtype_name: str):\n    \"\"\"构造与 MiniMind 当前语义等价的 AMP 上下文和 GradScaler。\"\"\"\n    device_type = \"cuda\" if str(device).startswith(\"cuda\") else \"cpu\"\n    amp_dtype = torch.bfloat16 if dtype_name == \"bfloat16\" else torch.float16\n    if device_type == \"cpu\":\n        return nullcontext(), torch.amp.GradScaler(\"cuda\", enabled=False), device_type\n    # PyTorch 2.11 推荐新接口，避免旧 torch.cuda.amp 的 FutureWarning。\n    return (\n        torch.amp.autocast(\"cuda\", dtype=amp_dtype),\n        torch.amp.GradScaler(\"cuda\", enabled=(dtype_name == \"float16\")),\n        device_type,\n    )\n\n\ndef stack_batch(ds, batch_indices: Sequence[int], device: str):\n    \"\"\"按显式 index manifest 取样并堆叠成一个 batch。\"\"\"\n    import torch\n    xs, ys = zip(*(ds[int(i)] for i in batch_indices))\n    return torch.stack(xs).to(device), torch.stack(ys).to(device)\n\n\ndef raw_model(model):\n    \"\"\"去掉 DDP / compile 外壳。\"\"\"\n    x = getattr(model, \"module\", model)\n    return getattr(x, \"_orig_mod\", x)\n"
+  },
+  "optimizer_hparams": {
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0.01,
+    "amsgrad": false,
+    "maximize": false
+  },
+  "lr_semantics": "MiniMind get_lr written before every micro-batch; optimizer consumes last micro-batch LR at accumulation boundary",
+  "state_fractions": [
+    0.359375,
+    0.40625,
+    0.453125,
+    0.5,
+    0.546875,
+    0.59375,
+    0.640625
+  ],
+  "formal_B_chi_recomputed": false,
+  "e1_per_stream_future_X_available": false,
+  "scientific_boundary": "v0.7 H8_CONFIRMATION=FAIL unchanged; 2030..2037 are post-confirmatory mechanism-development data."
+}

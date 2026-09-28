@@ -1,0 +1,30 @@
+{
+ "tag": "A0J_PER_CALL_TRACE",
+ "n_calls_verbatim": 15,
+ "n_calls_module": 14,
+ "rollout_divergence": {
+  "kind": "state",
+  "call": "_restore_and_seed",
+  "field": "pre_rng",
+  "verbatim": "7b6295da3d821b3a",
+  "module": "b1f64a5e6edaee43",
+  "call_index": 0
+ },
+ "verbatim_endpoint_post_model": "c58f0f51a91d2854",
+ "module_endpoint_post_model": "3d2bc2cf1f052a50",
+ "vH_match": true,
+ "preload_s": 6.647763726010453,
+ "probe_s": 9.905040832993109,
+ "module_trace_tail": [
+  {
+   "call": 13,
+   "fn": "_endpoint_grad",
+   "pre_rng": "b1f64a5e6edaee43",
+   "post_rng": "b1f64a5e6edaee43",
+   "pre_model": "3d2bc2cf1f052a50",
+   "post_model": "3d2bc2cf1f052a50",
+   "pre_opt": "d21385ad0d1dfc62",
+   "post_opt": "d21385ad0d1dfc62"
+  }
+ ]
+}

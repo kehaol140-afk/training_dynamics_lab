@@ -1,0 +1,36 @@
+{
+  "data_integrity": true,
+  "sampler": {
+    "source_path": "/home/b205/projects/fluctuation_response/research/src/fr/stage_c_runtime.py",
+    "exists": true,
+    "semantics": "WITHOUT_REPLACEMENT_SINGLE_PERMUTATION_OF_TRAIN_POOL"
+  },
+  "future_stream": {
+    "source_path": "/home/b205/projects/fluctuation_response/research/scripts/e3c_multiseed_theta_v07.py",
+    "exists": true,
+    "natural": "E1_EACH_STREAM_HAS_OWN_STREAM_SEED_AND_BATCH_MANIFEST_THROUGH_HORIZON",
+    "causal": "E2_BASELINE_PLUS_MINUS_SHARE_STREAM_SEED_BATCHES_AND_LR_PATH_WITHIN_STREAM"
+  },
+  "clip_summary": {
+    "e1_mean_first_clip_rate": 0.31473214285714285,
+    "e2_baseline_mean_first_clip_rate": 0.29464285714285715,
+    "e2_plus_mean_first_clip_rate": 0.31026785714285715,
+    "e2_minus_mean_first_clip_rate": 0.29017857142857145,
+    "state_range_baseline": [
+      0.0,
+      1.0
+    ]
+  },
+  "clip_data_scope": "FIRST OPTIMIZER STEP ONLY; full future clip rate not saved in v0.7 raw",
+  "amp_source": {
+    "source_path": "/home/b205/projects/fluctuation_response/research/src/fr/minimind_v03_runtime.py",
+    "exists": true,
+    "scaler_enabled_inference": "BF16_DISABLED_BY_SOURCE",
+    "make_amp_snippet": "def make_amp(torch, device: str, dtype_name: str):\n    \"\"\"构造与 MiniMind 当前语义等价的 AMP 上下文和 GradScaler。\"\"\"\n    device_type = \"cuda\" if str(device).startswith(\"cuda\") else \"cpu\"\n    amp_dtype = torch.bfloat16 if dtype_name == \"bfloat16\" else torch.float16\n    if device_type == \"cpu\":\n        return nullcontext(), torch.amp.GradScaler(\"cuda\", enabled=False), device_type\n    # PyTorch 2.11 推荐新接口，避免旧 torch.cuda.amp 的 FutureWarning。\n    return (\n        torch.amp.autocast(\"cuda\", dtype=amp_dtype),\n        torch.amp.GradScaler(\"cuda\", enabled=(dtype_name == \"float16\")),\n        device_type,\n    )\n\n\ndef stack_batch(ds, batch_indices: Sequence[int], device: str):\n    \"\"\"按显式 index manifest 取样并堆叠成一个 batch。\"\"\"\n    import torch\n    xs, ys = zip(*(ds[int(i)] for i in batch_indices))\n    return torch.stack(xs).to(device), torch.stack(ys).to(device)\n\n\ndef raw_model(model):\n    \"\"\"去掉 DDP / compile 外壳。\"\"\"\n    x = getattr(model, \"module\", model)\n    return getattr(x, \"_orig_mod\", x)\n"
+  },
+  "AMP_SKIP_CONFOUND": "UNLIKELY",
+  "CONFOUND_RISK": "NONTRIVIAL",
+  "rho_values": [
+    0.25
+  ]
+}

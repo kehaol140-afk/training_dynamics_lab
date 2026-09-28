@@ -1,0 +1,28 @@
+{
+  "cell_id": "s2031_t064",
+  "runs": [
+    {
+      "multiplier": 0.5,
+      "run_id": "A_lr0.5",
+      "final_monitor_nll": 7.0914336494220205
+    },
+    {
+      "multiplier": 1.0,
+      "run_id": "A_lr1",
+      "final_monitor_nll": 7.062349470840988
+    },
+    {
+      "multiplier": 2.0,
+      "run_id": "A_lr2",
+      "final_monitor_nll": 7.032611098468944
+    },
+    {
+      "multiplier": 4.0,
+      "run_id": "A_lr4",
+      "final_monitor_nll": 6.992385003291151
+    }
+  ],
+  "selected_multiplier": 4.0,
+  "boundary_unresolved": true,
+  "selection_criterion": "final_monitor_nll"
+}

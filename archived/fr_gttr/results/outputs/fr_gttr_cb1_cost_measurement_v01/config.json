@@ -1,0 +1,50 @@
+{
+ "round": "fr_gttr_cb1_cost_measurement_v01",
+ "protocol": "FR_GTTR_CB1_Cost_Measurement_And_Progress_Link_v1.md",
+ "protocol_sha256": "a503a71115a8e7605e090600292ea20e0859d99d3c9b86e10987041e8f4c08e9",
+ "selected_rule": "\u6bcf state \u539f\u4e24\u6761 stream \u4e2d\u6570\u503c ID \u8f83\u5c0f\u8005\uff08\u9884\u7b97\u8303\u56f4\uff0c\u975e\u62e9\u4f18\uff09\uff1b\u53e6\u4e00\u8def\u4ecd\u5728 CB0 \u5168\u8868",
+ "ell_by_start": {
+  "46": 7.020043501537879,
+  "82": 6.979538126804536
+ },
+ "detection": {
+  "old": "OLD_GRID16_LAG16\uff08\u4fdd\u6301\u539f\u5224\u5b9a\uff09",
+  "new": "REFINED_GRID4_LAG16\uff08\u786e\u8ba4\u95f4\u9694\u4ecd 16 updates\uff1bREPLAY_RESOLUTION_DIAGNOSTIC\uff09",
+  "reuse": "h0/h4/16 \u500d\u6570\u7528\u65e7\u540c\u8f74\u503c\uff1b8,12,20,... \u65b0\u6d4b"
+ },
+ "replay": {
+  "restore": "\u539f h1 full-state\uff08theta/m/v/step/RNG\uff09\uff0crestore_rng=True\uff1b\u4e0d\u91cd\u65b0\u65bd\u52a0 R1 \u52a8\u4f5c",
+  "rule": "h2..T16 \u5168\u90e8\u539f\u751f AdamW k=2",
+  "overlap_checks": "\u6bcf\u6761 h16 \u4e0e T16 \u4e24\u5904\uff08\u4f4d\u7ea7\u4e00\u81f4\u9884\u671f\uff09",
+  "smoke_stream": "202609240300 \u4e4b\u5916\u4e0d\u7528\uff1bsmoke \u7528\u9996\u6761\u9009\u5b9aBASE \u7684 h1 \u5feb\u7167"
+ },
+ "budget": {
+  "caps": {
+   "replay_updates": 4800,
+   "total_fw": 125000,
+   "bw": 9600,
+   "monitor_evals": 900,
+   "q_hvp_probe": 0,
+   "v_ctrl": 0,
+   "v_final": 0
+  },
+  "plan": {
+   "main_updates": 1694,
+   "smoke_updates": 16,
+   "main_monitor_evals": 339,
+   "smoke_monitor_evals": 3
+  }
+ },
+ "sources": {
+  "r2b_monitor": {
+   "path": "/home/b205/projects/fluctuation_response/outputs/fr_gttr_r2b_solved_update_bridge_v01/monitor_metrics.csv",
+   "sha256": "6fb0831d2c9d77c92fd3fad003f2217a6a52de36e7070be478a45055aa00c747"
+  },
+  "r2b_manifest": {
+   "sha256": "f5945d7fcb8c46b0c66cf086e9d57d50c33d1f82539ee38dbe859d8b104befdd"
+  },
+  "r1_solutions": {
+   "sha256": "732fd8daecbbcfe850db83795d49e4431b106858a27c8bbe7ee0b73c4fe88662"
+  }
+ }
+}

@@ -1,0 +1,124 @@
+{
+ "B1": {
+  "name": "B1_toy_progress_transverse",
+  "ok": true,
+  "params": {
+   "eta0": 0.1,
+   "a": 0.15,
+   "kappa": 1.0,
+   "sigma": 1.0,
+   "q0": 0.052631578947368425,
+   "fd_probe": 1e-06
+  },
+  "chi_by_H": [
+   {
+    "H": 4,
+    "chi_analytic": 0.006776531578947366,
+    "chi_fd": 0.006776531558116972,
+    "abs_err": 2.0830394700799282e-11,
+    "sign": 1
+   },
+   {
+    "H": 16,
+    "chi_analytic": -0.009250327928058862,
+    "chi_fd": -0.009250327948073789,
+    "abs_err": 2.0014927215594724e-11,
+    "sign": -1
+   },
+   {
+    "H": 64,
+    "chi_analytic": -0.11629920748156575,
+    "chi_fd": -0.11629920737554755,
+    "abs_err": 1.0601819422362269e-10,
+    "sign": -1
+   }
+  ],
+  "H4_sign": 1,
+  "H16_sign": -1,
+  "H64_sign": -1,
+  "sigma0_chi_H16": -0.036,
+  "gain_sign_ok": true,
+  "wrong_1plusu_law_detected": true,
+  "wrong_1plusu_fd_bias": 1.3961291142998433e-05,
+  "correct_exp_fd_bias": 5.800440605434332e-06,
+  "q0_u_drift_detected": true,
+  "pulse4_eq_persistent_at_H4": true,
+  "pulse4_differs_persistent_at_H64": true,
+  "offbyone_detected": true
+ },
+ "B2": {
+  "0.8I": {
+   "sigma_fixed_point_ok": true,
+   "A_lag_maxabs": 0.0,
+   "A_lag": [
+    [
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0
+    ]
+   ]
+  },
+  "diag(0.8,-0.8)": {
+   "sigma_fixed_point_ok": true,
+   "A_lag_maxabs": 0.0,
+   "A_lag": [
+    [
+     0.0,
+     0.0
+    ],
+    [
+     0.0,
+     0.0
+    ]
+   ]
+  },
+  "0.8Rot(0.35)": {
+   "sigma_fixed_point_ok": true,
+   "A_lag_maxabs": 0.5486364919287222,
+   "A_lag": [
+    [
+     0.0,
+     -0.5486364919287222
+    ],
+    [
+     0.5486364919287222,
+     0.0
+    ]
+   ]
+  },
+  "name": "B2_steady_state_vs_detailed_balance",
+  "scope_note": "Gaussian Markov, single time-reversal rule for all coordinates; does NOT extend to full AdamW entropy production",
+  "ok": true
+ },
+ "B3": {
+  "name": "B3_decision_value_boundary",
+  "ok": true,
+  "V_sign_same_sign": 0.0,
+  "V_sign_mixed_sign": 0.000625,
+  "u_star_interior": 0.024999999999999998,
+  "u_star_boundary": 0.05,
+  "u_star_negative_chi": -0.0025,
+  "same_sign_different_amplitude": true,
+  "Qneg_formula_not_applied": true,
+  "rng_seed": 20260920
+ },
+ "B4": {
+  "name": "B4_decomposition_identity",
+  "ok": true,
+  "S": 4,
+  "dim": 6,
+  "L_ens_eq_L_center_plus_Jdisp": true,
+  "chi_ens_eq_chi_center_plus_chi_disp": true,
+  "chi_ens": 3.4380210410326484,
+  "chi_center": -0.014953431985511578,
+  "chi_disp": 3.4529744730181644,
+  "Jdisp_nonneg_fraction_random": 0.85,
+  "note": "J_disp sign-free (quadratic, indefinite A)"
+ },
+ "ALL_OK": true,
+ "wall_s": 0.049,
+ "device": "cpu"
+}

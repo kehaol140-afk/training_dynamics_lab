@@ -1,0 +1,46 @@
+{
+ "definition": "same-probe pairing only (identical evaluations); cross-probe diversity is NOT a floor",
+ "diag_state_identity": true,
+ "diag_state_identity_detail": {
+  "sig_off": "9e2c4109fecb5e9dfcc9568bf9ec9415c470bf713fa790b5889a6c3288dc7952",
+  "sig_on": "9e2c4109fecb5e9dfcc9568bf9ec9415c470bf713fa790b5889a6c3288dc7952",
+  "shared_fields_checked": [
+   "lr_native",
+   "lr_applied",
+   "full_state_sha256"
+  ],
+  "note": "no external C0/B0-style full-state table exists for C1; only these common fields + full-state hash checked; not extrapolated beyond",
+  "updates": 8
+ },
+ "numerical_floor_same_probe": {
+  "grad": 0.0,
+  "hvp": 0.0,
+  "v": 0.0,
+  "q": 0.0
+ },
+ "hvp_proxy_native_rel_gap_max": 0.004472299818394586,
+ "hvp_precision_gate": "PASS",
+ "bank_disjointness": {
+  "dev_audit_overlap": [],
+  "c0_overlap": [],
+  "rollout_overlap": [],
+  "dev_probes": 32,
+  "audit_probes": 32,
+  "status": "PASS"
+ },
+ "per_step_wall_s_smoke_on": [
+  0.2085260000312701,
+  0.16157150000799447,
+  0.16023979999590665,
+  0.14684609998948872
+ ],
+ "counters": {
+  "optimizer_updates": 8,
+  "grad_evals": 19,
+  "hvp_calls": 16,
+  "micro_forward_calls": 63,
+  "shadow_steps": 0,
+  "shadow_seconds": 0.0
+ },
+ "shadow_seconds": 0.0
+}

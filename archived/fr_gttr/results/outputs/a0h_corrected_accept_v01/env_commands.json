@@ -1,0 +1,18 @@
+{
+ "python": "/home/b205/miniforge3/envs/fr_minimind/bin/python",
+ "conda_env": "fr_minimind",
+ "torch": "2.11.0",
+ "cuda_visible_devices": "1",
+ "device_used": "cuda:0 (physical GPU1)",
+ "gpu_sharing": "GPU1 0% util at start; 31GB resident by external process; no external task killed; shared-idle",
+ "pythonpath": "research/src",
+ "platform": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+ "commands": {
+  "contract": "python research/scripts/a0h20_contract_v01.py",
+  "manifest": "python research/scripts/a0h20_manifest_v01.py",
+  "tests": "PYTHONPATH=research/src python -m unittest research.tests.test_a0h20_acceptance_v01 -v",
+  "dev": "PYTHONPATH=research/src CUDA_VISIBLE_DEVICES=1 python research/scripts/a0h20_corrected_accept_v01.py --phase dev --seed 2031 --step 52 --stream 0",
+  "batch": "PYTHONPATH=research/src CUDA_VISIBLE_DEVICES=1 python research/scripts/a0h20_corrected_accept_v01.py --phase batch --device cuda:0",
+  "analysis": "PYTHONPATH=research/src python research/scripts/a0h20_analyze_v01.py"
+ }
+}

@@ -1,0 +1,40 @@
+{
+ "tag": "A0I_METHOD_FINGERPRINTS",
+ "frozen_science_semantics": {
+  "identity_under_test": "h_j = D_theta L_j[w_0] - w_0^T g, w_0 fixed tangent (no derivative of w_0)",
+  "L_j": "sum_micro (loss_micro + aux)/accum, exact sum semantics matching _grad_on_batches",
+  "selector": "argmin_j lambda*h_j with h_0=0, exact-tie lowest action_id, lambda=0.05 common positive (rank-preserving)",
+  "score_precision": "project_tangent float64 CPU dot (both methods)"
+ },
+ "METHOD_A_FULL_GRAD_DOT": {
+  "role": "production reference",
+  "grad": "per-candidate _grad_on_batches (RNG-wrapped, model->train mode, bf16 autocast, ambient SDPA)",
+  "score": "a_j = g_j - native_g; h_j = project_tangent(w_0, a_j)",
+  "backend": "ambient flash SDPA (fp32 params, bf16 autocast)",
+  "side_product": "full per-candidate gradients retained (enables selected-gradient recompute check)"
+ },
+ "METHOD_B_PER_CANDIDATE_DIRECTIONAL": {
+  "role": "dev candidate under test",
+  "implementation": "torch.func.jvp + torch.func.functional_call on detached {params, buffers}",
+  "tangent": "t_p = w_0 (fixed), t_b = zeros_like buffers",
+  "per_candidate_fn": "micros closure, out = model(micro); sum (out.loss + out.aux)/accum",
+  "backend": "MATH SDPA forced via a0g._math_sdpa_context (ambient flash SDPA forward-AD = NotImplementedError, UNSUPPORTED_IN_CURRENT_BACKEND, see probe_2031_52.json)",
+  "precision": "same fp32 params + bf16 autocast ctx as METHOD A; RNG: dropout=0.0, Philox candidate batches pre-materialized (identical tensors both methods)",
+  "score": "h_j = float(directional) - w0_dot_g"
+ },
+ "METHOD_A_MATH_KERNEL_CONTROL": {
+  "role": "isolate forward-mode vs reverse-mode from kernel difference",
+  "definition": "METHOD A re-run under MATH SDPA; used for abs_err_isolated"
+ },
+ "METHOD_C_SHARED_POOL_DIRECTIONAL": {
+  "role": "structural applicability only",
+  "verdict": "NOT_APPLICABLE",
+  "reason": "candidate pools are pairwise-disjoint hash groups (verified numerically, method_c_derivation.md); alpha decomposition exact but computationally void"
+ },
+ "shared_prefix_both_methods": {
+  "stages": "H=4 horizon baseline+clip+step, endpoint grad, shared reverse adjoint walk -> w_0 (fp32-HVP)",
+  "endpoint_grad_calls_per_pass": 1,
+  "reverse_adjoint_steps_per_pass": 4
+ },
+ "counters_note": "run_meta counters_last_pass were reset at capture (all zero); per-pass counter integrity was enforced live via CounterRolodex-style assertions in the runner script"
+}

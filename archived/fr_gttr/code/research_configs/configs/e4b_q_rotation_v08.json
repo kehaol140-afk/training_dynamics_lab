@@ -1,0 +1,23 @@
+{
+  "protocol_version": "E4B1_Q_ROTATION_V08",
+  "study_role": "EXPLORATORY_MECHANISM_DO_NOT_REWRITE_V07",
+  "source_protocol": "E3C_CONFIRMATORY_V07",
+  "source_config": "research/configs/e3c_confirmatory_v07.json",
+  "confirmation_train_seeds": [2030, 2031, 2032, 2033, 2034, 2035, 2036, 2037],
+  "state_steps": [46, 52, 58, 64, 70, 76, 82],
+  "horizons": [1, 2, 4, 8, 12, 16, 24, 32],
+  "primary_exploratory_horizon": 8,
+  "supporting_horizons": [4, 12],
+  "source_stream_family": "e2",
+  "source_streams": 8,
+  "output_dir": "outputs/e4b_dynamic_state/v08/q_rotation",
+  "smoke_output_dir": "outputs/e4b_dynamic_state/v08/q_rotation_smoke",
+  "conditional_screening": {
+    "baseline_model": "chi = seed_FE + state_fraction + B",
+    "candidate_model": "chi = seed_FE + state_fraction + B + mean_Rq + B*mean_Rq",
+    "ranking_horizon": 8,
+    "promising_mean_relative_mae_gain_gt": 0.0,
+    "promising_folds_improved_gte": 6,
+    "promising_delta_same_sign_folds_gte": 6
+  }
+}

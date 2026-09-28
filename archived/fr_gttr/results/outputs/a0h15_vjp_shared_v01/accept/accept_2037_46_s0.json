@@ -1,0 +1,189 @@
+{
+ "state": "dev:2037/46",
+ "stream_id": 0,
+ "wall_seconds": 11.75872635199994,
+ "methods": {
+  "C|1": {
+   "rows": [
+    {
+     "j": 1,
+     "hhat_fwd": -0.18167669910160064,
+     "hhat_adj": -0.18167669364782046,
+     "abs_diff": 5.453780177466783e-09,
+     "tol": 1.9167669910160064e-05,
+     "pass": true
+    },
+    {
+     "j": 2,
+     "hhat_fwd": -2.2457595808359354,
+     "hhat_adj": -2.245759513345919,
+     "abs_diff": 6.749001624228868e-08,
+     "tol": 0.00022557595808359355,
+     "pass": true
+    },
+    {
+     "j": 3,
+     "hhat_fwd": -0.009504133547769906,
+     "hhat_adj": -0.009504133290156829,
+     "abs_diff": 2.576130767040219e-10,
+     "tol": 1.9504133547769905e-06,
+     "pass": true
+    },
+    {
+     "j": 4,
+     "hhat_fwd": -1.0567767982515188,
+     "hhat_adj": -1.0567767668577859,
+     "abs_diff": 3.1393732946582986e-08,
+     "tol": 0.00010667767982515188,
+     "pass": true
+    }
+   ],
+   "elementwise_pass_frozen_gate": true,
+   "fwd_ranking": [
+    2,
+    4,
+    1,
+    3,
+    0
+   ],
+   "fwd_chosen_id": 2,
+   "adj_ranking": [
+    2,
+    4,
+    1,
+    3,
+    0
+   ],
+   "adj_chosen_id": 2,
+   "decision_match": true,
+   "noop_score": 0.0,
+   "choose_noop": false,
+   "best_active_score": -2.245759513345919,
+   "margin": -1.1889827464881333
+  },
+  "C|4": {
+   "rows": [
+    {
+     "j": 1,
+     "hhat_fwd": 0.14219118438746037,
+     "hhat_adj": 0.14213419360159305,
+     "abs_diff": 5.6990785867322424e-05,
+     "tol": 1.5219118438746039e-05,
+     "pass": false
+    },
+    {
+     "j": 2,
+     "hhat_fwd": 1.5585703124548793,
+     "hhat_adj": 1.559885518321731,
+     "abs_diff": 0.001315205866851743,
+     "tol": 0.00015685703124548793,
+     "pass": false
+    },
+    {
+     "j": 3,
+     "hhat_fwd": 6.656519415806695e-05,
+     "hhat_adj": 5.5220929631045e-05,
+     "abs_diff": 1.1344264527021956e-05,
+     "tol": 1.0066565194158067e-06,
+     "pass": false
+    },
+    {
+     "j": 4,
+     "hhat_fwd": -0.20958825620339336,
+     "hhat_adj": -0.21011185423251144,
+     "abs_diff": 0.0005235980291180831,
+     "tol": 2.1958825620339337e-05,
+     "pass": false
+    }
+   ],
+   "elementwise_pass_frozen_gate": false,
+   "fwd_ranking": [
+    4,
+    0,
+    3,
+    1,
+    2
+   ],
+   "fwd_chosen_id": 4,
+   "adj_ranking": [
+    4,
+    0,
+    3,
+    1,
+    2
+   ],
+   "adj_chosen_id": 4,
+   "decision_match": true,
+   "noop_score": 0.0,
+   "choose_noop": false,
+   "best_active_score": -0.21011185423251144,
+   "margin": -0.21016707516214247
+  },
+  "C|8": {
+   "rows": [
+    {
+     "j": 1,
+     "hhat_fwd": 0.08130303138156456,
+     "hhat_adj": 0.08153300023729886,
+     "abs_diff": 0.00022996885573429993,
+     "tol": 9.130303138156457e-06,
+     "pass": false
+    },
+    {
+     "j": 2,
+     "hhat_fwd": 1.0257635648049983,
+     "hhat_adj": 1.0286225226925467,
+     "abs_diff": 0.002858957887548419,
+     "tol": 0.00010357635648049984,
+     "pass": false
+    },
+    {
+     "j": 3,
+     "hhat_fwd": 0.0001327564689140374,
+     "hhat_adj": 0.00013164884620007163,
+     "abs_diff": 1.1076227139657615e-06,
+     "tol": 1.0132756468914038e-06,
+     "pass": false
+    },
+    {
+     "j": 4,
+     "hhat_fwd": 0.14889351360526187,
+     "hhat_adj": 0.1489659339092225,
+     "abs_diff": 7.242030396062415e-05,
+     "tol": 1.5889351360526187e-05,
+     "pass": false
+    }
+   ],
+   "elementwise_pass_frozen_gate": false,
+   "fwd_ranking": [
+    0,
+    3,
+    1,
+    4,
+    2
+   ],
+   "fwd_chosen_id": 0,
+   "adj_ranking": [
+    0,
+    3,
+    1,
+    4,
+    2
+   ],
+   "adj_chosen_id": 0,
+   "decision_match": true,
+   "noop_score": 0.0,
+   "choose_noop": true,
+   "best_active_score": 0.00013164884620007163,
+   "margin": -0.08140135139109879
+  }
+ },
+ "shared_w0_norm": {
+  "1": 0.6603167806553168,
+  "4": 1.034387518871163,
+  "8": 0.8038423078098862
+ },
+ "disposition": "DEV_VALIDATION_ONLY",
+ "disposition_reason": "Batch A demoted to dev per read-once rule (acceptance_disposition_readonce.md); these results carry no acceptance status.",
+ "disposition_timestamp": "2026-09-15T04:06:33Z"
+}

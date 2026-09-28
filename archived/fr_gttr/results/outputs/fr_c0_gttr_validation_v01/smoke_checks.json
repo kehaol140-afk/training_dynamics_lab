@@ -1,0 +1,24 @@
+{
+ "smoke_diag_identity": "DEFERRED_TO_ANALYZER",
+ "smoke_attempts_disclosed": {
+  "attempt1_updates": 9,
+  "attempt2_updates": 24,
+  "total_wasted": 33
+ },
+ "numerical_floor": {
+  "grad": 1.6500472516120002,
+  "hvp": 0.17023550631815346,
+  "v": 0.0,
+  "q": 0.0
+ },
+ "hvp_proxy_native_rel_gap_max": 0.005355603627878193,
+ "hvp_precision_gate": "PASS",
+ "counters": {
+  "optimizer_updates": 0,
+  "grad_evals": 35,
+  "hvp_calls": 32,
+  "forward_calls": 131,
+  "shadow_steps": 0
+ },
+ "budget_project_cumulative": 17610
+}

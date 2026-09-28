@@ -1,0 +1,340 @@
+{
+  "protocol": "FR_G2_DATA_DISTRIBUTION_GENERALIZATION_V01",
+  "ordering_rule": "for each theta invocation, all E2 manifests of its seeds are generated and written before any E2 response branch of those states executes; invocations merge into this file",
+  "e2_base_seed": 409202601,
+  "streams": [
+    {
+      "train_seed": 2042,
+      "state_step": 26,
+      "stage": "EARLY",
+      "epsilon": 0.0210729235622205,
+      "rho": 0.25,
+      "manifests": [
+        {
+          "stream_id": 0,
+          "stream_seed": 8146531230456626431,
+          "batch_seed": 4875172151830562616,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2042/e2_stream_manifests/state_step_026/e2_stream_000_batches.json",
+          "batch_manifest_sha256": "0abd50fe8f2289665e4417b3a48b3de73bc15b3bea5d9c42100c083986f4433c"
+        },
+        {
+          "stream_id": 1,
+          "stream_seed": 365854234490814031,
+          "batch_seed": 6303949181808640347,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2042/e2_stream_manifests/state_step_026/e2_stream_001_batches.json",
+          "batch_manifest_sha256": "99963fb5c8d8f951e11177ac477ebf1c8b3e2a623ec3a605d55ecd21bf7e37be"
+        },
+        {
+          "stream_id": 2,
+          "stream_seed": 1808549275379777438,
+          "batch_seed": 7732726211786718078,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2042/e2_stream_manifests/state_step_026/e2_stream_002_batches.json",
+          "batch_manifest_sha256": "312a388739159ecaf6d0da53d039feba4764129b7b493f59ec27201cc4cbddb2"
+        },
+        {
+          "stream_id": 3,
+          "stream_seed": 3251244316268740845,
+          "batch_seed": 9161503241764795809,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2042/e2_stream_manifests/state_step_026/e2_stream_003_batches.json",
+          "batch_manifest_sha256": "c80248ea11a161a3036caceb9bf227391b08022461dcdec8404bc6de576cd460"
+        }
+      ]
+    },
+    {
+      "train_seed": 2042,
+      "state_step": 64,
+      "stage": "MIDDLE",
+      "epsilon": 0.020260386712552772,
+      "rho": 0.25,
+      "manifests": [
+        {
+          "stream_id": 0,
+          "stream_seed": 7099826148494925367,
+          "batch_seed": 1205605715122282984,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2042/e2_stream_manifests/state_step_064/e2_stream_000_batches.json",
+          "batch_manifest_sha256": "e9ffd82272c5d5abe39545f51aa45201dbab757725c54c16e0d801908731cd77"
+        },
+        {
+          "stream_id": 1,
+          "stream_seed": 8542521189383888774,
+          "batch_seed": 2634382745100360715,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2042/e2_stream_manifests/state_step_064/e2_stream_001_batches.json",
+          "batch_manifest_sha256": "d6b0b8743b0160692cfba5f61718699238c6bf8f436f76c09f43b3eab4c52a16"
+        },
+        {
+          "stream_id": 2,
+          "stream_seed": 761844193418076374,
+          "batch_seed": 4063159775078438446,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2042/e2_stream_manifests/state_step_064/e2_stream_002_batches.json",
+          "batch_manifest_sha256": "862407a9828e8876c50b673971afa9c1f9b82b8aacc32e9139bef825d849768a"
+        },
+        {
+          "stream_id": 3,
+          "stream_seed": 2204539234307039781,
+          "batch_seed": 5491936805056516177,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2042/e2_stream_manifests/state_step_064/e2_stream_003_batches.json",
+          "batch_manifest_sha256": "cf6d6f20869e3ddfa9b99ba4b835c8e35a3a07f309222f8a555f0984f6bd9c8e"
+        }
+      ]
+    },
+    {
+      "train_seed": 2042,
+      "state_step": 102,
+      "stage": "LATE",
+      "epsilon": 0.015598341749862408,
+      "rho": 0.25,
+      "manifests": [
+        {
+          "stream_id": 0,
+          "stream_seed": 6053121066533224303,
+          "batch_seed": 6759411315268779159,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2042/e2_stream_manifests/state_step_102/e2_stream_000_batches.json",
+          "batch_manifest_sha256": "9a4c8afecac05904ca8bd12c75eebff9cddb4df8f9ce6a18a8c2de576dbb2fc3"
+        },
+        {
+          "stream_id": 1,
+          "stream_seed": 7495816107422187710,
+          "batch_seed": 8188188345246856890,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2042/e2_stream_manifests/state_step_102/e2_stream_001_batches.json",
+          "batch_manifest_sha256": "61c4aee532879170fcdf5ca201123df702ed59bc6611daa4f5ea4cd99c4e5012"
+        },
+        {
+          "stream_id": 2,
+          "stream_seed": 8938511148311151117,
+          "batch_seed": 393593338370158814,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2042/e2_stream_manifests/state_step_102/e2_stream_002_batches.json",
+          "batch_manifest_sha256": "cc63e9396b482ab5071faded04ec68aa7f9dd282b94052718529783c5571722e"
+        },
+        {
+          "stream_id": 3,
+          "stream_seed": 1157834152345338717,
+          "batch_seed": 1822370368348236545,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2042/e2_stream_manifests/state_step_102/e2_stream_003_batches.json",
+          "batch_manifest_sha256": "7ddad899c888c89cdc00571ded2bbec6fbdc58d7bd2169c28e1bccf003ff9341"
+        }
+      ]
+    },
+    {
+      "train_seed": 2043,
+      "state_step": 26,
+      "stage": "EARLY",
+      "epsilon": 0.018626981619590716,
+      "rho": 0.25,
+      "manifests": [
+        {
+          "stream_id": 0,
+          "stream_seed": 8535404326167186220,
+          "batch_seed": 4231008910851373328,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2043/e2_stream_manifests/state_step_026/e2_stream_000_batches.json",
+          "batch_manifest_sha256": "7a96ca42f7041a80ce6209a95b0a6c322fc60603bbb4338890728ab38411fda3"
+        },
+        {
+          "stream_id": 1,
+          "stream_seed": 754727330201373820,
+          "batch_seed": 5659785940829451059,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2043/e2_stream_manifests/state_step_026/e2_stream_001_batches.json",
+          "batch_manifest_sha256": "527227fb5b63c64ca61ff7f1fdc257a33deb46ad1ef14c51ed58c74818381dba"
+        },
+        {
+          "stream_id": 2,
+          "stream_seed": 2197422371090337227,
+          "batch_seed": 7088562970807528790,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2043/e2_stream_manifests/state_step_026/e2_stream_002_batches.json",
+          "batch_manifest_sha256": "9475442ecba400c3649c3cfe08132aab40df81aba2f5a609c1e19ad162216ee9"
+        },
+        {
+          "stream_id": 3,
+          "stream_seed": 3640117411979300634,
+          "batch_seed": 8517340000785606521,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2043/e2_stream_manifests/state_step_026/e2_stream_003_batches.json",
+          "batch_manifest_sha256": "ac5aa9f5be1cf7687f527852257ddce9bff1f52790fc27f87f3bcfa4d439d72f"
+        }
+      ]
+    },
+    {
+      "train_seed": 2043,
+      "state_step": 64,
+      "stage": "MIDDLE",
+      "epsilon": 0.015221216643938685,
+      "rho": 0.25,
+      "manifests": [
+        {
+          "stream_id": 0,
+          "stream_seed": 7488699244205485156,
+          "batch_seed": 561442474143093696,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2043/e2_stream_manifests/state_step_064/e2_stream_000_batches.json",
+          "batch_manifest_sha256": "7002e0c4451d29fb49240d2f4b6f8c6cad155f5a32bd9d666473e2c65efbbc89"
+        },
+        {
+          "stream_id": 1,
+          "stream_seed": 8931394285094448563,
+          "batch_seed": 1990219504121171427,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2043/e2_stream_manifests/state_step_064/e2_stream_001_batches.json",
+          "batch_manifest_sha256": "7115a52c1870312d0006a45dc27d35b381654b19275e40b91e31b91894c479e2"
+        },
+        {
+          "stream_id": 2,
+          "stream_seed": 1150717289128636163,
+          "batch_seed": 3418996534099249158,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2043/e2_stream_manifests/state_step_064/e2_stream_002_batches.json",
+          "batch_manifest_sha256": "d5d7d44450dc9c8eccadaf390f43fa7613e2e3c8e69acd5d537d45a587995fe0"
+        },
+        {
+          "stream_id": 3,
+          "stream_seed": 2593412330017599570,
+          "batch_seed": 4847773564077326889,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2043/e2_stream_manifests/state_step_064/e2_stream_003_batches.json",
+          "batch_manifest_sha256": "e2c0d027aa6b6b1f59533105e7620c9ad07b605f9f1918085718ff31fd717cc4"
+        }
+      ]
+    },
+    {
+      "train_seed": 2043,
+      "state_step": 102,
+      "stage": "LATE",
+      "epsilon": 0.010702368830148466,
+      "rho": 0.25,
+      "manifests": [
+        {
+          "stream_id": 0,
+          "stream_seed": 6441994162243784092,
+          "batch_seed": 6115248074289589871,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2043/e2_stream_manifests/state_step_102/e2_stream_000_batches.json",
+          "batch_manifest_sha256": "ba10596fb0825563ba3cbc5107a1798b0048129ac1e21bb59f599bdd4de2fe3d"
+        },
+        {
+          "stream_id": 1,
+          "stream_seed": 7884689203132747499,
+          "batch_seed": 7544025104267667602,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2043/e2_stream_manifests/state_step_102/e2_stream_001_batches.json",
+          "batch_manifest_sha256": "50e4a9c093eb9b86b864188e48ad0779b50d9ae0400a63c47371a09efaf8b431"
+        },
+        {
+          "stream_id": 2,
+          "stream_seed": 104012207166935099,
+          "batch_seed": 8972802134245745333,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2043/e2_stream_manifests/state_step_102/e2_stream_002_batches.json",
+          "batch_manifest_sha256": "aa875d18a8ff9d0a130ffa30256966ef8503d0a3f4b9f4c0da12fa0bf5dd05f5"
+        },
+        {
+          "stream_id": 3,
+          "stream_seed": 1546707248055898506,
+          "batch_seed": 1178207127369047257,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2043/e2_stream_manifests/state_step_102/e2_stream_003_batches.json",
+          "batch_manifest_sha256": "9b35158f5a7a7d2634e6f598ccb626f4a4abc36f0cc84862a1584a9debc43bca"
+        }
+      ]
+    },
+    {
+      "train_seed": 2044,
+      "state_step": 26,
+      "stage": "EARLY",
+      "epsilon": 0.022197347039028665,
+      "rho": 0.25,
+      "manifests": [
+        {
+          "stream_id": 0,
+          "stream_seed": 8924277421877746009,
+          "batch_seed": 3586845669872184040,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2044/e2_stream_manifests/state_step_026/e2_stream_000_batches.json",
+          "batch_manifest_sha256": "2f02f13ed1cc5a026b12e2c5845c1a8f23a33267ec754ba62070ab2d8904672e"
+        },
+        {
+          "stream_id": 1,
+          "stream_seed": 1143600425911933609,
+          "batch_seed": 5015622699850261771,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2044/e2_stream_manifests/state_step_026/e2_stream_001_batches.json",
+          "batch_manifest_sha256": "544ab923b10c1b34eda0f03b53b0d96584dc9754ddb5d69c395af9636ebb78a8"
+        },
+        {
+          "stream_id": 2,
+          "stream_seed": 2586295466800897016,
+          "batch_seed": 6444399729828339502,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2044/e2_stream_manifests/state_step_026/e2_stream_002_batches.json",
+          "batch_manifest_sha256": "515316e4da66b057a4538d60360e0ba7d7fd8a19140c8ffbd7fd331901c101bb"
+        },
+        {
+          "stream_id": 3,
+          "stream_seed": 4028990507689860423,
+          "batch_seed": 7873176759806417233,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2044/e2_stream_manifests/state_step_026/e2_stream_003_batches.json",
+          "batch_manifest_sha256": "f6781beae1a4522bd972667181080a6a40b96b38782c87390231295589762287"
+        }
+      ]
+    },
+    {
+      "train_seed": 2044,
+      "state_step": 64,
+      "stage": "MIDDLE",
+      "epsilon": 0.014391712351406362,
+      "rho": 0.25,
+      "manifests": [
+        {
+          "stream_id": 0,
+          "stream_seed": 7877572339916044945,
+          "batch_seed": 9140651270018680215,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2044/e2_stream_manifests/state_step_064/e2_stream_000_batches.json",
+          "batch_manifest_sha256": "1e712ee9bb4f7013144e0edaef3ab0b6351c5d2b0ea91124b1e184a6f154d41d"
+        },
+        {
+          "stream_id": 1,
+          "stream_seed": 96895343950232545,
+          "batch_seed": 1346056263141982139,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2044/e2_stream_manifests/state_step_064/e2_stream_001_batches.json",
+          "batch_manifest_sha256": "b7f05581752a02c9ac3371445afb6352d4a78de81542226b27c450ad847fb633"
+        },
+        {
+          "stream_id": 2,
+          "stream_seed": 1539590384839195952,
+          "batch_seed": 2774833293120059870,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2044/e2_stream_manifests/state_step_064/e2_stream_002_batches.json",
+          "batch_manifest_sha256": "3bc5ae7ba630c6e86cf39ae921a8d3b863b0350f8ac96c035995920643b67dc7"
+        },
+        {
+          "stream_id": 3,
+          "stream_seed": 2982285425728159359,
+          "batch_seed": 4203610323098137601,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2044/e2_stream_manifests/state_step_064/e2_stream_003_batches.json",
+          "batch_manifest_sha256": "c6df1bc157e6bd42a897b01ac5c92f678d3cd5726a2b0bf1398339578057d62c"
+        }
+      ]
+    },
+    {
+      "train_seed": 2044,
+      "state_step": 102,
+      "stage": "LATE",
+      "epsilon": 0.01230314800265434,
+      "rho": 0.25,
+      "manifests": [
+        {
+          "stream_id": 0,
+          "stream_seed": 6830867257954343881,
+          "batch_seed": 5471084833310400583,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2044/e2_stream_manifests/state_step_102/e2_stream_000_batches.json",
+          "batch_manifest_sha256": "85d612ced632169892e691f1923ddd21a14cc782528cf75b636f401f3864690e"
+        },
+        {
+          "stream_id": 1,
+          "stream_seed": 8273562298843307288,
+          "batch_seed": 6899861863288478314,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2044/e2_stream_manifests/state_step_102/e2_stream_001_batches.json",
+          "batch_manifest_sha256": "2371d69761d4e78a51df1f3a49b116ee2ad9fec644a6cd80704f240643aab7a6"
+        },
+        {
+          "stream_id": 2,
+          "stream_seed": 492885302877494888,
+          "batch_seed": 8328638893266556045,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2044/e2_stream_manifests/state_step_102/e2_stream_002_batches.json",
+          "batch_manifest_sha256": "ecca1e106d41a7e8f0f025d3049aeb36f4bdf182164b9f9bb7e108b5566d628e"
+        },
+        {
+          "stream_id": 3,
+          "stream_seed": 1935580343766458295,
+          "batch_seed": 534043886389857969,
+          "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/theta/seed_2044/e2_stream_manifests/state_step_102/e2_stream_003_batches.json",
+          "batch_manifest_sha256": "15902673e4e239e6065daee722e3cf91140d5e3f3a36579e60c05708030ba299"
+        }
+      ]
+    }
+  ]
+}

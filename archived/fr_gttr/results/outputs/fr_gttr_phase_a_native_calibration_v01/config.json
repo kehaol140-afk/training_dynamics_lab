@@ -1,0 +1,42 @@
+{
+  "round": "fr_gttr_phase_a_native_calibration_v01",
+  "protocol": "FR_GTTR_PhaseA_Native_Target_Calibration_Claude_Code.md v1.0",
+  "date": "2026-09-22",
+  "schedule_determination": {
+    "case": "C",
+    "verdict": "SCHEDULE_BLOCKED",
+    "blocked_before": "GPU_main",
+    "rule_source": "protocol §4 case C",
+    "investigation": {
+      "get_lr_source": "minimind/trainer/trainer_utils.py:40-41",
+      "get_lr_formula": "lr*(0.1 + 0.45*(1 + cos(pi*current_step/total_steps)))",
+      "planned_total_optimizer_steps": 128,
+      "total_micro_steps_used_by_all_prior_continuation_runners": 256,
+      "lr_indexing": "micro-step (2 micro = 1 optimizer step, accum=2)",
+      "lr_consumed_at_optimizer_step": "last micro of each pair (AdamW consumes lr at step())",
+      "floor": "0.1*lr = 5e-5, reached exactly at total_steps, NOT terminal",
+      "beyond_total_steps": "cos() re-rises: formula rebounds and oscillates; e.g. anchor46 trajectory reaches floor 5e-5 at h=82 then LR climbs back to ~3.7e-4 by h=255",
+      "declared_tail_in_code_configs_or_approved_docs": "NONE_FOUND",
+      "prior_runner_convention": "c0_run_v01.py / c1_late_run_v01.py / a0k_closed_loop_runner_v01.py all call get_lr(gm, 256, lr) verbatim beyond planned_total=128; none declares a tail, floor-hold, or extension; native_future_lrs (a0_fr_diagnostics.py:503) documents the rebound as the expected future axis"
+    },
+    "reasoning": [
+      "A fails: no horizon-independent extension or documented terminal tail exists in scheduler, configs, or approved documents",
+      "B fails: the 0.1*lr value is the minimum of a finite cosine, not a declared positive terminal floor with a fixed tail convention; no document declares 'hold floor beyond total_steps'",
+      "C applies: finite cosine, formula rebounds/cycles beyond range (gm in (256,512) rises from 5e-5 back toward 5.5e-4), multiple implicit conflicting conventions exist (verbatim get_lr(gm,256) continuation in 3+ runners vs planned_total=128 terminal), no documented extension semantics"
+    ]
+  },
+  "resource_consumption": {
+    "model_forward": 0,
+    "model_backward": 0,
+    "optimizer_updates": 0,
+    "hvp": 0,
+    "v_final_eval_calls": 0,
+    "gpu_seconds": 0,
+    "note": "CPU code/config reading only; no GPU main, no smoke, no monitor evaluation"
+  },
+  "deliverables": [
+    "outputs/fr_gttr_phase_a_native_calibration_v01/config.json",
+    "outputs/fr_gttr_phase_a_native_calibration_v01/schedule_candidates.csv",
+    "outputs/fr_gttr_phase_a_native_calibration_v01/preflight.md"
+  ]
+}

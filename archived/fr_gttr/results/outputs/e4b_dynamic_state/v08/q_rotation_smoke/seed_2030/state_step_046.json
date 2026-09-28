@@ -1,0 +1,115 @@
+{
+  "protocol": "E4B1_Q_ROTATION_V08",
+  "study_role": "EXPLORATORY_MECHANISM_DO_NOT_REWRITE_V07",
+  "seed": 2030,
+  "state_step": 46,
+  "state_fraction": 0.359375,
+  "q_t_sha256": "764b8a38287a29bd1cb628f22075db83a1e0799dec829b1b0262141d273edd45",
+  "B_theta": {
+    "1": -0.012947359156844179,
+    "2": -0.022391408290596184,
+    "4": -0.04986819888554187,
+    "8": -0.10823933120604061,
+    "12": -0.15728504142234662,
+    "16": -0.15643112448857796,
+    "24": -0.14538946183888823,
+    "32": -0.09340332912828354
+  },
+  "chi_theta": {
+    "1": -0.06518665650671931,
+    "2": -0.12186788757085676,
+    "4": -0.21323439011937995,
+    "8": -0.3251535061036468,
+    "12": -0.3700671249132664,
+    "16": -0.39078944210609456,
+    "24": -0.38814539950931176,
+    "32": -0.3674051940335752
+  },
+  "streams": [
+    {
+      "stream_id": 0,
+      "stream_seed": 1935854561655614187,
+      "batch_seed": 4917119891725899067,
+      "first_preclip_grad_norm": 0.7980483770370483,
+      "first_clipped": false,
+      "last_lr": 0.0001991997829867505,
+      "replay_exact": {
+        "model_hash_equal": true,
+        "optimizer_hash_equal": true,
+        "first_clipped_equal": true,
+        "last_lr_equal": true,
+        "pass": true
+      },
+      "observations": [
+        {
+          "horizon": 1,
+          "R_q": 0.9930970067107463,
+          "q_t_sha256": "764b8a38287a29bd1cb628f22075db83a1e0799dec829b1b0262141d273edd45",
+          "q_future_sha256": "ea72856981d61c240d5591b1127a8cb3e490c7577bd2048010c37ad32024685e",
+          "probe_loss_future": 7.20759391784668,
+          "probe_grad_norm_future": 0.3924760387783071
+        },
+        {
+          "horizon": 2,
+          "R_q": 0.966072004467379,
+          "q_t_sha256": "764b8a38287a29bd1cb628f22075db83a1e0799dec829b1b0262141d273edd45",
+          "q_future_sha256": "e0314d0f7a1f79545058865c09b2dc9135551cd1f3005f1ab61e080c18ea8af6",
+          "probe_loss_future": 7.204801082611084,
+          "probe_grad_norm_future": 0.38627696684483936
+        },
+        {
+          "horizon": 4,
+          "R_q": 0.9019582876760797,
+          "q_t_sha256": "764b8a38287a29bd1cb628f22075db83a1e0799dec829b1b0262141d273edd45",
+          "q_future_sha256": "f1ee26e4fbbf681a00a1f1695b4311de46b0cfe178df226658746095e4cbc013",
+          "probe_loss_future": 7.1997857093811035,
+          "probe_grad_norm_future": 0.4040591674411595
+        },
+        {
+          "horizon": 8,
+          "R_q": 0.8179664103231877,
+          "q_t_sha256": "764b8a38287a29bd1cb628f22075db83a1e0799dec829b1b0262141d273edd45",
+          "q_future_sha256": "7a0d0c184829ffdd0e71f6bccef2bee967c37731ed39cfc92330bb31f0dd5a08",
+          "probe_loss_future": 7.188726425170898,
+          "probe_grad_norm_future": 0.4349910458456613
+        },
+        {
+          "horizon": 12,
+          "R_q": 0.7872438554812822,
+          "q_t_sha256": "764b8a38287a29bd1cb628f22075db83a1e0799dec829b1b0262141d273edd45",
+          "q_future_sha256": "128f4abb2957350d61f46439bcb463d3db2039862fd212bcb3457b6bb25e2427",
+          "probe_loss_future": 7.1689934730529785,
+          "probe_grad_norm_future": 0.41924961223548957
+        },
+        {
+          "horizon": 16,
+          "R_q": 0.7536029381696229,
+          "q_t_sha256": "764b8a38287a29bd1cb628f22075db83a1e0799dec829b1b0262141d273edd45",
+          "q_future_sha256": "da1ced7827cb0da27c75d9cd519e945fe5b306c8baceab57264ccf222a2290b1",
+          "probe_loss_future": 7.153818130493164,
+          "probe_grad_norm_future": 0.4297848370004112
+        },
+        {
+          "horizon": 24,
+          "R_q": 0.624720361648627,
+          "q_t_sha256": "764b8a38287a29bd1cb628f22075db83a1e0799dec829b1b0262141d273edd45",
+          "q_future_sha256": "ad8d8d73c649ec3125e6fd13d5c5ee02088c1209007ea1ada8bb277b12fef053",
+          "probe_loss_future": 7.1153059005737305,
+          "probe_grad_norm_future": 0.434751854411675
+        },
+        {
+          "horizon": 32,
+          "R_q": 0.6407070202801673,
+          "q_t_sha256": "764b8a38287a29bd1cb628f22075db83a1e0799dec829b1b0262141d273edd45",
+          "q_future_sha256": "37974644df434e64effb9332dd0f4e6abde75e119d5888f7b96a428010cc279f",
+          "probe_loss_future": 7.0979838371276855,
+          "probe_grad_norm_future": 0.47258254711547526
+        }
+      ],
+      "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2030/e2_stream_manifests/state_step_046/e2_stream_000_batches.json",
+      "batch_manifest_sha256": "a34cad58e885c04a76244d1c4c414d2b14313addea8ac459ac43e5273b3765a0"
+    }
+  ],
+  "technical_pass": true,
+  "complete": false
+}

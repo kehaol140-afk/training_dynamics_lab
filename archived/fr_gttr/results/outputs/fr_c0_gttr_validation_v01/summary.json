@@ -1,0 +1,488 @@
+{
+ "experiment": "FR_C0_GTTR_VALIDATION_V01",
+ "date": "2026-09-21",
+ "budget": {
+  "per_process_finals": [
+   {
+    "ts": 1789972732.2393835,
+    "phase": "smoke",
+    "cell": "R",
+    "arm": "A",
+    "h": 8,
+    "project_cumulative": 17585,
+    "optimizer_updates": 8,
+    "grad_evals": 0,
+    "hvp_calls": 0,
+    "forward_calls": 0,
+    "shadow_steps": 0,
+    "note": ""
+   },
+   {
+    "ts": 1789982814.7321937,
+    "phase": "smoke",
+    "cell": "R",
+    "arm": "Bm",
+    "h": 4,
+    "project_cumulative": 17601,
+    "optimizer_updates": 24,
+    "grad_evals": 88,
+    "hvp_calls": 24,
+    "forward_calls": 232,
+    "shadow_steps": 96,
+    "note": ""
+   },
+   {
+    "ts": 1789983463.3996437,
+    "phase": "main",
+    "cell": "ALL",
+    "arm": "ALL",
+    "h": 64,
+    "project_cumulative": 17961,
+    "optimizer_updates": 384,
+    "grad_evals": 960,
+    "hvp_calls": 192,
+    "forward_calls": 2064,
+    "shadow_steps": 768,
+    "note": "main_complete"
+   },
+   {
+    "ts": 1789984459.2836208,
+    "phase": "floor2",
+    "cell": "R",
+    "arm": "ALL",
+    "h": 0,
+    "project_cumulative": 17577,
+    "optimizer_updates": 0,
+    "grad_evals": 36,
+    "hvp_calls": 32,
+    "forward_calls": 132,
+    "shadow_steps": 0,
+    "note": "floor2_only_zero_updates"
+   }
+  ],
+  "totals_logged_sums": {
+   "optimizer_updates": 416.0,
+   "grad_evals": 1084.0,
+   "hvp_calls": 248.0,
+   "forward_calls": 2428.0,
+   "shadow_steps": 864.0,
+   "gpu_active_wall_s_sum": 795.4699583053589
+  },
+  "optimizer_updates_reconciled": 17994,
+  "caps": {
+   "gpu_active_wall_s": 3600,
+   "nongradient_evals_max": 1400,
+   "hvp_calls_max": 256,
+   "forward_calls_max": 2400,
+   "shadow_steps": "counted separately, no real updates"
+  },
+  "caps_logged_sums": {
+   "optimizer_updates": 416.0,
+   "grad_evals": 1084.0,
+   "hvp_calls": 248.0,
+   "forward_calls": 2428.0,
+   "shadow_steps": 864.0,
+   "gpu_active_wall_s_sum": 795.4699583053589
+  },
+  "caps_round_total_ok": false,
+  "caps_per_process_ok": true,
+  "caps_note": "Runner enforced caps per process (counters reset each process).  Round-total logged forwards exceed the 2400 cap by the two zero-update salvage floor processes after the smoke crashes; disclosed here.  HVP and grad-eval round totals are within caps.  Attempt-1's crashed-step counters are unlogged, so logged sums are a lower bound.",
+  "project_cumulative_final_reconciled": 17994,
+  "project_cumulative_runner_last_row": 17961,
+  "cumulative_note": "runner rows in the main process add the static config base (17577) to per-process counters, so they omit the 33 reconciled smoke-attempt updates; the reconciled total 17577+33+384=17994 is authoritative and within the 18000 cap.",
+  "project_cap": 18000,
+  "smoke_wasted_disclosed": {
+   "attempt1_updates": 9,
+   "attempt2_updates": 24,
+   "total_wasted": 33
+  }
+ },
+ "smoke": {
+  "smoke_checks": {
+   "smoke_diag_identity": "DEFERRED_TO_ANALYZER",
+   "smoke_attempts_disclosed": {
+    "attempt1_updates": 9,
+    "attempt2_updates": 24,
+    "total_wasted": 33
+   },
+   "numerical_floor": {
+    "grad": 0.0,
+    "hvp": 0.0,
+    "v": 0.0,
+    "q": 0.0
+   },
+   "hvp_proxy_native_rel_gap_max": 0.005355603627878193,
+   "hvp_precision_gate": "PASS",
+   "counters": {
+    "optimizer_updates": 0,
+    "grad_evals": 35,
+    "hvp_calls": 32,
+    "forward_calls": 131,
+    "shadow_steps": 0
+   },
+   "budget_project_cumulative": 17610,
+   "numerical_floor_supersession": {
+    "original_pooled_floor": {
+     "grad": 1.6500472516120002,
+     "hvp": 0.17023550631815346,
+     "v": 0.0,
+     "q": 0.0
+    },
+    "corrected_same_probe_floor": {
+     "grad": 0.0,
+     "hvp": 0.0,
+     "v": 0.0,
+     "q": 0.0
+    },
+    "reason": "max ||diff|| of repeated IDENTICAL evaluations (same probe paired with its own repeats only), fp64"
+   }
+  },
+  "floor_superseded": true,
+  "diag_identity_reconstructed": {
+   "internal_attempt2_steps": {
+    "n_off": 8,
+    "n_on": 8,
+    "max_abs_diff": {
+     "lr_native": 0.0,
+     "lr_applied": 0.0,
+     "preclip_norm": 0.0,
+     "clip_active": 0.0,
+     "s_norm": 0.0
+    },
+    "identity": true
+   },
+   "external_b0_stress_diag": {
+    "max_abs_diff": {
+     "lr_applied": 0.0,
+     "lr_native": 0.0,
+     "preclip_norm": 0.0,
+     "s_norm_vs_update_norm": 1.248508321727293e-08,
+     "clip_active_mismatch": 0
+    },
+    "n_compared": 64,
+    "identity": true
+   },
+   "gate": "PASS",
+   "s_norm_tolerance": 1e-06,
+   "note": "attempt-2 smoke steps compared diag-off vs diag-on rows; main cell-R arm-A compared against frozen B0 stress_diag native rows (2030,46,7110) h=1..64.  33 smoke-attempt updates disclosed in budget_log.jsonl."
+  },
+  "a0t_veval_crosscheck": {
+   "checks": [
+    {
+     "cell": "R",
+     "arm_c0": "A",
+     "arm_a0t": "A",
+     "h": 4,
+     "v_eval_c0": 7.16686737537384,
+     "loss_a0t": 7.270499289035797,
+     "abs_diff": 0.10363191366195679,
+     "within_5e-4": false
+    },
+    {
+     "cell": "R",
+     "arm_c0": "A",
+     "arm_a0t": "A",
+     "h": 16,
+     "v_eval_c0": 7.099464237689972,
+     "loss_a0t": 7.206216216087341,
+     "abs_diff": 0.10675197839736938,
+     "within_5e-4": false
+    },
+    {
+     "cell": "R",
+     "arm_c0": "A",
+     "arm_a0t": "A",
+     "h": 64,
+     "v_eval_c0": 6.970355987548828,
+     "loss_a0t": 7.068539083003998,
+     "abs_diff": 0.09818309545516968,
+     "within_5e-4": false
+    },
+    {
+     "cell": "R",
+     "arm_c0": "Bp",
+     "arm_a0t": "B",
+     "h": 4,
+     "v_eval_c0": 7.169006645679474,
+     "loss_a0t": 7.271885931491852,
+     "abs_diff": 0.10287928581237793,
+     "within_5e-4": false
+    },
+    {
+     "cell": "R",
+     "arm_c0": "Bp",
+     "arm_a0t": "B",
+     "h": 16,
+     "v_eval_c0": 7.098682165145874,
+     "loss_a0t": 7.205255150794983,
+     "abs_diff": 0.10657298564910889,
+     "within_5e-4": false
+    },
+    {
+     "cell": "R",
+     "arm_c0": "Bp",
+     "arm_a0t": "B",
+     "h": 64,
+     "v_eval_c0": 6.964255928993225,
+     "loss_a0t": 7.061110615730286,
+     "abs_diff": 0.09685468673706055,
+     "within_5e-4": false
+    },
+    {
+     "cell": "R",
+     "arm_c0": "Bm",
+     "arm_a0t": "C",
+     "h": 4,
+     "v_eval_c0": 7.165054082870483,
+     "loss_a0t": 7.2692500948905945,
+     "abs_diff": 0.10419601202011108,
+     "within_5e-4": false
+    },
+    {
+     "cell": "R",
+     "arm_c0": "Bm",
+     "arm_a0t": "C",
+     "h": 16,
+     "v_eval_c0": 7.100611865520477,
+     "loss_a0t": 7.208081662654877,
+     "abs_diff": 0.10746979713439941,
+     "within_5e-4": false
+    },
+    {
+     "cell": "R",
+     "arm_c0": "Bm",
+     "arm_a0t": "C",
+     "h": 64,
+     "v_eval_c0": 6.978068947792053,
+     "loss_a0t": 7.078991115093231,
+     "abs_diff": 0.10092216730117798,
+     "within_5e-4": false
+    },
+    {
+     "cell": "C",
+     "arm_c0": "A",
+     "arm_a0t": "A",
+     "h": 4,
+     "v_eval_c0": 7.15233987569809,
+     "loss_a0t": 7.265842,
+     "abs_diff": 0.11350212430191053,
+     "within_5e-4": false
+    },
+    {
+     "cell": "C",
+     "arm_c0": "A",
+     "arm_a0t": "A",
+     "h": 16,
+     "v_eval_c0": 7.094322383403778,
+     "loss_a0t": 7.211281,
+     "abs_diff": 0.11695861659622153,
+     "within_5e-4": false
+    },
+    {
+     "cell": "C",
+     "arm_c0": "A",
+     "arm_a0t": "A",
+     "h": 64,
+     "v_eval_c0": 6.9767754673957825,
+     "loss_a0t": 7.079616,
+     "abs_diff": 0.10284053260421722,
+     "within_5e-4": false
+    },
+    {
+     "cell": "C",
+     "arm_c0": "Bp",
+     "arm_a0t": "B",
+     "h": 4,
+     "v_eval_c0": 7.151491940021515,
+     "loss_a0t": 7.265272,
+     "abs_diff": 0.1137800599784855,
+     "within_5e-4": false
+    },
+    {
+     "cell": "C",
+     "arm_c0": "Bp",
+     "arm_a0t": "B",
+     "h": 16,
+     "v_eval_c0": 7.095591604709625,
+     "loss_a0t": 7.211586,
+     "abs_diff": 0.11599439529037436,
+     "within_5e-4": false
+    },
+    {
+     "cell": "C",
+     "arm_c0": "Bp",
+     "arm_a0t": "B",
+     "h": 64,
+     "v_eval_c0": 6.972328722476959,
+     "loss_a0t": 7.073692,
+     "abs_diff": 0.10136327752304108,
+     "within_5e-4": false
+    }
+   ],
+   "n": 15,
+   "all_within_tolerance": false,
+   "status": "AXIS_MISMATCH",
+   "tolerance": 0.0005,
+   "mean_abs_diff": 0.10612672856419879,
+   "axis_note": "Systematic ~0.1 offset at EVERY (cell, arm, h): provenance check shows A0T cells.jsonl losses were read on the FULL v_score split (a0q.run_channel_rollout endpoint -> a0g._val_loss_only over rt['val_score_tensors']), while C0 v_eval is the dedicated 64-sample split and C0 v_diag is the 8-ID prefix of v_score.  No C0 readout shares the A0T axis, so the 5e-4 absolute check is not satisfiable post hoc.  Trajectory identity for cell-R arm-A is established independently by the B0 stress_diag bitwise gate.  Arm mapping: C0 Bp<->A0T B (fixed +0.05); C0 Bm<->A0T C only for cell R (u=-0.05 controller); cell C A0T C==B (aliased)."
+  }
+ },
+ "numerical_floor": {
+  "grad": 0.0,
+  "hvp": 0.0,
+  "v": 0.0,
+  "q": 0.0
+ },
+ "order_discipline_predictions_before_audit": true,
+ "E_M0_equals_1_all_anchors": true,
+ "verdicts": {
+  "formula_implementation": "PASS",
+  "local_training_field_prediction": "LOCAL_GEOMETRY_NOT_SUPPORTED_IN_PILOT",
+  "local_shadow_update_prediction": "LOCAL_GEOMETRY_UNRESOLVED",
+  "tracking_signal_resolution": "PASS",
+  "readout_accounting": "PASS",
+  "future_H16_H64_prediction": "NOT_TESTED",
+  "adaptive_training_value": "NOT_TESTED",
+  "energy_benefit": "NOT_TESTED"
+ },
+ "verdict_details": {
+  "local_training_field_prediction": {
+   "per_cell": {
+    "R": {
+     "n_resolved": 7,
+     "arms": [
+      "A",
+      "Bm",
+      "Bp"
+     ],
+     "t": [
+      0,
+      16,
+      48
+     ],
+     "mean_E": 0.4394467455855756
+    },
+    "C": {
+     "n_resolved": 7,
+     "arms": [
+      "A",
+      "Bm",
+      "Bp"
+     ],
+     "t": [
+      0,
+      16,
+      48
+     ],
+     "mean_E": 0.4248824023276066
+    }
+   },
+   "halfbank_resolved_le_1": false,
+   "halfbank_all_anchor_max": 2.4305686705802896,
+   "halfbank_scope_note": "half-bank <=1 applied over signal-resolved anchors (the population the frozen rule defines E_M over).  Under the alternative all-anchor reading the max half-bank E is 2.431, which sits at unresolved anchors where ybar is below the resolution gate (noise ratios)."
+  },
+  "local_shadow_update_prediction": {
+   "per_cell": {
+    "R": {
+     "n_resolved": 3,
+     "arms": [
+      "A",
+      "Bm",
+      "Bp"
+     ],
+     "t": [
+      48
+     ],
+     "mean_E": 0.42719335013561305
+    },
+    "C": {
+     "n_resolved": 3,
+     "arms": [
+      "A",
+      "Bm",
+      "Bp"
+     ],
+     "t": [
+      48
+     ],
+     "mean_E": 0.40655493023917183
+    }
+   },
+   "halfbank_resolved_le_1": true,
+   "halfbank_all_anchor_max": 3.2493192867196448,
+   "halfbank_scope_note": "half-bank <=1 applied over signal-resolved anchors (the population the frozen rule defines E_M over).  Under the alternative all-anchor reading the max half-bank E is 3.249, which sits at unresolved anchors where ybar is below the resolution gate (noise ratios)."
+  },
+  "tracking_max_W_sum_identity_residual": 2.1175523125943618e-07,
+  "readout_telescope": {
+   "C/A": {
+    "sum_K_V": 0.1283504593088604,
+    "sum_W_total": 0.30724402544045215,
+    "delta_v_diag": -0.1788935661315918,
+    "telescope_residual": 5.551115123125783e-17,
+    "n_rows": 64
+   },
+   "C/Bm": {
+    "sum_K_V": 0.16942424500629488,
+    "sum_W_total": 0.34271259034320906,
+    "delta_v_diag": -0.17328834533691406,
+    "telescope_residual": -1.1102230246251565e-16,
+    "n_rows": 64
+   },
+   "C/Bp": {
+    "sum_K_V": 0.07435199850771872,
+    "sum_W_total": 0.26004192465517967,
+    "delta_v_diag": -0.18568992614746094,
+    "telescope_residual": -1.3877787807814457e-17,
+    "n_rows": 64
+   },
+   "R/A": {
+    "sum_K_V": 0.0835040977000896,
+    "sum_W_total": 0.28689088129994306,
+    "delta_v_diag": -0.20338678359985352,
+    "telescope_residual": 5.551115123125783e-17,
+    "n_rows": 64
+   },
+   "R/Bm": {
+    "sum_K_V": 0.08264610058580828,
+    "sum_W_total": 0.27355214840685327,
+    "delta_v_diag": -0.19090604782104492,
+    "telescope_residual": -6.938893903907228e-17,
+    "n_rows": 64
+   },
+   "R/Bp": {
+    "sum_K_V": 0.10333320719742059,
+    "sum_W_total": 0.3146679125502038,
+    "delta_v_diag": -0.2113347053527832,
+    "telescope_residual": -2.7755575615628914e-17,
+    "n_rows": 64
+   }
+  },
+  "readout_K_V_stats": {
+   "n_rows": 378,
+   "n_negative": 90,
+   "mean": 0.0016973812389052712,
+   "min": -0.0013642131691659499,
+   "max": 0.05169443030264573
+  }
+ },
+ "hvp_precision_gate": "PASS",
+ "theory_fixes_disclosed": [
+  "T1/T2 harness: native trajectory must be one continuous run (warm state was reset to zeros per call)",
+  "T3: tangent must consume the CLIPPED gradient C(g) like the real step, with d_c = clip-JVP(H d_theta); raw-g pass gives 13% multi-step drift",
+  "T3 boundary: r = m/eps is finite and nonzero for zero v with nonzero warm m (BOUNDARY_V_ZERO); r==0 only when m==0 too",
+  "T4: e_m == m_hat - mu requires filter gains to sum to 1, i.e. chain from t_prev=0; readout W_wd uses PRE-update theta"
+ ],
+ "terminology_bans": [
+  "temperature",
+  "free energy",
+  "entropy production",
+  "equilibrium",
+  "detailed balance",
+  "field theory",
+  "phase transition"
+ ],
+ "outputs_manifest": {
+  "REPORT.md": "a34748472787cedb9b605f84086d887c3be66137e6a624ce242f158b1fa4da35",
+  "summary.json": "976820dce53e3103b3d946e142f0b6e70e82f8f3b8bba0855db7c9b073b5a04b"
+ }
+}

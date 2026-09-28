@@ -1,0 +1,47 @@
+{
+  "protocol": "FR_A0E2_CURVATURE_DECOMPOSITION_V02_BH_FIXED",
+  "selected_states": [
+    [
+      2037,
+      46
+    ],
+    [
+      2030,
+      46
+    ],
+    [
+      2037,
+      82
+    ]
+  ],
+  "horizons_propagated": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "aggregation_scopes": {
+    "all_12": {
+      "rows": 12,
+      "horizons": [
+        1,
+        2,
+        4,
+        8
+      ]
+    },
+    "h_gt_1_9": {
+      "rows": 9,
+      "horizons": [
+        2,
+        4,
+        8
+      ]
+    }
+  },
+  "bh_old_definition": "frozen FR_A0E code path (initial pulse bypasses J_clip(g_t)); reproduced bit-exactly",
+  "bh_fixed_definition": "initial pulse identical to B/C (q through J_clip(g_t)); future raw HVP without clip-JVP radial correction",
+  "h1_identity_tolerance": 1e-10,
+  "a0c_reproduction_tolerance": 1e-09,
+  "a0e_reproduction_tolerance": 1e-09
+}

@@ -1,0 +1,10 @@
+test_clip_active (research.tests.test_a0h_adjoint_v01.TestAdjointStepVsFD.test_clip_active) ... ok
+test_clip_inactive_multistep_bias_correction (research.tests.test_a0h_adjoint_v01.TestAdjointStepVsFD.test_clip_inactive_multistep_bias_correction) ... ok
+test_clip_transpose_identity_active_and_inactive (research.tests.test_a0h_adjoint_v01.TestTransposeIdentities.test_clip_transpose_identity_active_and_inactive) ... ok
+test_compose_two_steps_identity_h2 (research.tests.test_a0h_adjoint_v01.TestTransposeIdentities.test_compose_two_steps_identity_h2)
+H=2: verify A2^T w and A1^T (A2^T w) each satisfy the identity. ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 1.013s
+
+OK

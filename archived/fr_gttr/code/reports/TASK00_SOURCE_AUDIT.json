@@ -1,0 +1,51 @@
+{
+  "source_sha256": {
+    "train_pretrain.py": "0c630aa6b5dce11a35f9176ff8337930a72a79bffee0a9282a4378b8005955f8",
+    "trainer_utils.py": "c613d485c8861caccc9d920e4639a8053cdfb4d69e56fa33280a631a5530234b",
+    "lm_dataset.py": "e6dd56b5745015ddc1579932c292ec7a5e1cc33796a5eadf4911065d92f1c6b8"
+  },
+  "native_adamw": true,
+  "gradient_accumulation": true,
+  "training_order_ok": true,
+  "training_order_positions": [
+    1423,
+    1514,
+    1568,
+    1633,
+    1668,
+    1697
+  ],
+  "native_checkpoint_model_half": true,
+  "native_checkpoint_optimizer": true,
+  "native_checkpoint_epoch": true,
+  "native_checkpoint_step": true,
+  "native_checkpoint_rng": false,
+  "scaler_passed_to_checkpoint": true,
+  "seed_controls_python": true,
+  "seed_controls_numpy": true,
+  "seed_controls_torch": true,
+  "seed_controls_cuda": true,
+  "single_gpu_randperm": true,
+  "skip_batch_sampler": true,
+  "pretrain_dataset_random_in_getitem": false,
+  "line_ranges": {
+    "lm_checkpoint": [
+      63,
+      116
+    ],
+    "setup_seed": [
+      54,
+      61
+    ],
+    "SkipBatchSampler": [
+      134,
+      157
+    ],
+    "PretrainDataset": [
+      37,
+      55
+    ]
+  },
+  "native_resume_exact_replay_ready": false,
+  "fr_v02_e0_smoke_ready": true
+}

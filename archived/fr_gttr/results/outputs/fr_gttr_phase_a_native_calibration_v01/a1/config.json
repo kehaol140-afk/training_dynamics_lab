@@ -1,0 +1,119 @@
+{
+ "round": "fr_gttr_phase_a_native_calibration_v01/a1",
+ "schedule_id": "finite_cosine_then_hold_5e-5_v01",
+ "schedule_label": "NATIVE_WITH_DECLARED_TAIL",
+ "cells": [
+  {
+   "seed": 2030,
+   "start": 46,
+   "stream_id": 97000,
+   "n0": 46
+  },
+  {
+   "seed": 2030,
+   "start": 82,
+   "stream_id": 97001,
+   "n0": 82
+  },
+  {
+   "seed": 2031,
+   "start": 46,
+   "stream_id": 97002,
+   "n0": 46
+  },
+  {
+   "seed": 2031,
+   "start": 82,
+   "stream_id": 97003,
+   "n0": 82
+  },
+  {
+   "seed": 2032,
+   "start": 46,
+   "stream_id": 97004,
+   "n0": 46
+  },
+  {
+   "seed": 2032,
+   "start": 82,
+   "stream_id": 97005,
+   "n0": 82
+  }
+ ],
+ "monitor": {
+  "rows": "[4096:8192)",
+  "n_rows": 4096,
+  "eval_batch_rows": 32,
+  "metric": "sum(valid-target NLL)/count(valid targets) per row, full-library aggregate",
+  "points": [
+   0,
+   32,
+   64,
+   96,
+   128,
+   160,
+   192,
+   224,
+   256
+  ]
+ },
+ "train": {
+  "optimizer": "torch.optim.AdamW",
+  "betas": [
+   0.9,
+   0.999
+  ],
+  "eps": 1e-08,
+  "weight_decay": 0.01,
+  "clip_tau": 1.0,
+  "batch_size": 4,
+  "accumulation_steps": 2,
+  "tokens_per_step_expected": 1024,
+  "dtype": "bfloat16 autocast, fp32 master weights/moments"
+ },
+ "budget": {
+  "plan_main_updates": 1536,
+  "plan_smoke_updates": 16,
+  "plan_total": 1552,
+  "cap_updates": 1664,
+  "cap_monitor_fw": 7800,
+  "cap_total_fw": 12000,
+  "cap_wall_s": 5400,
+  "new_gradient_calls": 0,
+  "new_hvp_calls": 0,
+  "v_final_eval_calls": 0,
+  "train_backward": "present and logged"
+ },
+ "diagnostics": {
+  "extra_gradient_calls": 0,
+  "extra_hvp_calls": 0,
+  "layer_diag_points": [
+   1,
+   16,
+   32,
+   48,
+   64,
+   80,
+   96,
+   112,
+   128,
+   144,
+   160,
+   176,
+   192,
+   208,
+   224,
+   240,
+   256
+  ],
+  "innovation_label": "INNOVATION_PROXY"
+ },
+ "statuses_expected": {
+  "ACTION_VALUE": "NOT_TESTED",
+  "ADAPTIVE_GAIN": "NOT_TESTED",
+  "FINAL_CONFIRMED_TARGET": "NOT_TESTED",
+  "ENERGY_BENEFIT": "NOT_TESTED",
+  "TRUE_TRACKING_ERROR": "NOT_MEASURED",
+  "DRIFT_NOISE_SEPARATION": "NOT_MEASURED"
+ }
+}

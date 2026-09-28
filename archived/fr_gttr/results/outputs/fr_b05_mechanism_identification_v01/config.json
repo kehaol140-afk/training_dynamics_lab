@@ -1,0 +1,144 @@
+{
+  "meta": {
+    "experiment": "FR B0.5 mechanism identification",
+    "version": "v01",
+    "date_frozen": "2026-09-20",
+    "mandate": "Identify the physical mechanism behind the persistent LR-up benefit (B0 follow-up). No new optimizer. No large-scale experiments.",
+    "status": "FROZEN BEFORE ANY B0.5 GPU RESULT. B0 was completed and reported before this config was written (B0 totals: 14208/18000 optimizer updates).",
+    "language": "report in English; raw tables English"
+  },
+  "frozen_reuse": {
+    "bank": "outputs/e3_confirmatory/v07/ (seeds 2030-2032 x steps 46/82, state_step_*.pt full_state v0.2)",
+    "config_ref": "research/configs/e3c_confirmatory_v07.json (batch 4 x accum 2 = 1024 tokens/optimizer step, lr 5e-4, clip 1.0, bf16, seq 128)",
+    "primitives": [
+      "a0k.build_live_runtime(seed, device)",
+      "a0k.make_event_ctx(rt, manifest, seed, step, snap)",
+      "a0k.model_hash / a0k.opt_hash",
+      "pe._restore_and_seed(rt, ctx, stream)",
+      "pe._baseline_no_step(rt, ctx, batches, h, want_snapshot=True) -> (native_gradient, _, snap)",
+      "pe._clip_and_step(rt, native_gradient, snap)",
+      "a0g._val_loss_only(torch, model, val_tensors, autocast_ctx) (v_eval and v_score, RNG-isolated)",
+      "a0q.run_channel_rollout (frozen-runner cross-check, u=0 endpoint v_score)",
+      "b0_run_v01.run_arm / make_stream / cell_snapshot / pick_gpu / log_phase (frozen B0 driver, import-only reuse)"
+    ],
+    "step_semantics": "identical to B0/a0o/a0q/a0u: per micro-step the schedule rewrites lr from snap['lr']; the consumed lr of an optimizer step is the last micro of the accumulation window; intervention multiplier m applied as g['lr']=snap['lr']*m before pe._clip_and_step"
+  },
+  "u_semantics": {
+    "definition": "u = log(eta/eta_native), eta(k;u) = eta_native(k)*exp(u)",
+    "delta_frozen": 0.05,
+    "persistent": "exp(u) at every optimizer step h=1..64",
+    "pulse4_release": "exp(u) at h=1..4, multiplier 1.0 at h>=5; theta/m/v and optimizer step counter retained (B0-validated semantics)"
+  },
+  "sample": {
+    "cells": [[2030, 46], [2030, 82], [2031, 46], [2031, 82], [2032, 46], [2032, 82]],
+    "n_cells": 6,
+    "stream": 7500,
+    "stream_role": "development stream reused from B0 frozen dev pool (same frozen recipe: derive_stream_seed(x,404) + batches_from_train_pool); one stream only, pilot scale per mandate",
+    "note": "identical (seed,step) sample as B0 main cells for continuity; no cherry-picking by response sign"
+  },
+  "arms": {
+    "A_native": "u=0 all 64 steps. Also the reference trajectory: per-step theta/m/v stored in CPU memory during the run (<=3.5GB per cell, freed between cells) for distance computations.",
+    "B_persistent": "u=+0.05 at every step (exp(0.05)=1.0513 multiplier).",
+    "C_pulse4_release": "u=+0.05 at h=1..4, native afterwards, state retained.",
+    "D_transplant": "INTERVENTION ARM, clearly labeled as intervention (not a training method): h=1..4 identical to C; after the h=4 optimizer step, overwrite optimizer memory (exp_avg, exp_avg_sq) of every parameter IN PLACE with arm A's post-step-4 values (bitwise copy); theta and optimizer step counter untouched; h>=5 native LR. AdamW step counter is identical across arms at every h (all arms stepped the same number of times from the same checkpoint), so no step-counter ambiguity. Semantics: at h>=5, D differs from C ONLY through (m,v); D differs from A only through theta displacement accumulated during the 4 pulse steps."
+  },
+  "horizon_T": 64,
+  "recordings": {
+    "per_step_all_arms": [
+      "d_theta = ||theta_t - theta_t^A||_F (all parameters, fp32 accumulate)",
+      "d_m = ||m_t - m_t^A||_F",
+      "d_v = ||v_t - v_t^A||_F",
+      "train_loss (probe, per optimizer step)",
+      "grad_norm (pre-clip), update_norm, update_cos_prev",
+      "cos_sep = cos(theta_t^arm - theta_t^A, update_t^A) (alignment of the separation with the native update direction)",
+      "lr_native, lr_applied, multiplier, preclip_norm, clip_active, tokens"
+    ],
+    "val_loss_cadence": "every 4 optimizer steps for every arm (v_eval and v_score, RNG isolated), plus endpoints",
+    "native_only_per_cell": [
+      "velocity curves for H2: per-step velocity v_t = theta_t - theta_{t-1} (flattened fp32, in memory)",
+      "for lag D=1..16: sum_t <v_t, v_{t+D}>, and the same for the residual after subtracting the w=9 moving-average smooth component",
+      "slow-direction persistence: mean_t cos(s_t, s_{t+D}) where s_t is the smooth component of velocity",
+      "per-step ||v_t||, ||smooth_t||, ||residual_t||"
+    ],
+    "persisted_small": "all of the above aggregates per cell (few KB per cell); full theta/m/v trajectories are NOT persisted to disk"
+  },
+  "hypotheses": {
+    "H1_time_reparameterization": {
+      "statement": "Persistent LR-up benefit = path acceleration: the arm is (approximately) the native trajectory traversed faster; aligning losses by cumulative LR time s(t)=sum_k eta_k collapses the curves.",
+      "construction": "s_A(t) = sum_{k<=t} lr_native(k) from diag; for arm X, s_X(t) = sum_{k<=t} multiplier_k*lr_native(k); s_A^{-1} by monotone linear interpolation (lr>0 so s_A strictly increasing). L̃_X(t) = interp(L_A at s_A^{-1}(s_X(t))).",
+      "metrics": {
+        "alignment_rel_err": "||L_X - L̃_X||_2 / ||L_X - L_A||_2 on the val curve grid (every 4 steps, v_score primary, v_eval secondary), evaluated ONLY on non-clamped indices (accelerated arms run past s_A end; edge-clamped points excluded); H1 supported direction requires alignment_rel_err < 1 (beats same-time baseline) with margin",
+        "pulse_frozen_delta_test": "EXACT statement (valid for any native LR schedule): under pure H1, L_C(t) = L_A(s_A^{-1}(s_C(t))) post-release, evaluated with the same clamped-mask rule. DERIVED signature: implied lag l(t)=s_A^{-1}(s_C(t))-t approximately constant post-release (exactly constant only under uniform native LR; CPU-tested). Decay of Delta_C(t)=L_C(t)-L_A(t) toward 0 post-release falsifies pure H1 for the after-effect."
+      },
+      "decision_rule": "SUPPORTED only if alignment_rel_err(B, H=64) < 0.5 in >=5/6 cells AND the pulse frozen-delta test holds (constant implied lag + match) in >=5/6 cells; NOT_SUPPORTED if the pulse delta decays toward zero in >=5/6 cells; else UNRESOLVED/qualitative."
+    },
+    "H2_slow_fast_separation": {
+      "statement": "The native trajectory admits a slow-fast split: a smooth drifting component plus a faster residual; we only test whether tau_fast << tau_slow (no equilibrium claim, no stationarity claim).",
+      "construction": "w=9 moving-average smooth component of theta_t; residual = velocity minus smooth velocity. C_v(D) normalized autocorrelation of residual velocities, D=1..16. tau_fast = first lag with C_v < 1/e (per cell; report None if no crossing). tau_slow = first lag with direction persistence of smooth increments < 1/e (report >=16 as lower bound if no crossing).",
+      "decision_rule": "SUPPORTED if tau_fast observed (crossing within 16 lags) in >=5/6 cells AND tau_fast < tau_slow/4 (using lower bound 16 when tau_slow does not cross); NOT_SUPPORTED if tau_fast not observed in >=4/6 cells or tau_fast >= tau_slow/2 in >=4/6 cells; else UNRESOLVED. Descriptive curves always reported. Claim ONLY 'tau_fast << tau_slow' or its absence - no quasi-steady state claim beyond what the numbers show."
+    },
+    "H3_optimizer_memory_after_effect": {
+      "statement": "The post-release retained benefit of pulse4 (B0: ~9.8% of persistent at H=64) is carried mainly by the optimizer memory (m,v) state, not by the raw theta displacement.",
+      "channel_decomposition": "At h>=5, C and D share theta by construction, so L_C - L_A = (L_D - L_A) + (L_C - L_D): L_D - L_A is the theta-displacement channel (native m/v), L_C - L_D is the m/v-memory channel at fixed theta. G_X = L_A - L_X (gain). m/v-channel share = (G_C - G_D)/G_C at H=16 and H=64.",
+      "distance_evidence": "d_m^D(t), d_v^D(t) post-release (does the transplanted native memory re-diverge, and how fast); d_theta^D vs d_theta^C.",
+      "decision_rule": "SUPPORTED if (G_C - G_D)/G_C > 0.5 at H=64 in >=5/6 cells (m/v channel carries the majority of retained gain); NOT_SUPPORTED if < 0.2 in >=5/6 cells (theta displacement carries it); else MIXED/UNRESOLVED. Also report sign consistency: G_D vs G_C same direction."
+    }
+  },
+  "smoke_checks": [
+    "snapshot_identity (save/load full state hash)",
+    "crn_native_repeat (arm A twice: identical readouts + theta bitwise at endpoint)",
+    "frozen_runner_agreement_endpoint (new runner u=0 vs a0q.run_channel_rollout v_score bitwise)",
+    "distances_native_zero (arm A vs stored A refs: all d_theta/d_m/d_v exactly 0 at every step)",
+    "pulse4_eq_persistent_H4 (B==C bitwise losses/theta/m/v at h=4)",
+    "D_transplant_state (at h=4: D theta==C theta bitwise; D m/v==A m/v bitwise; step counters equal across arms)",
+    "s_monotonic (s_A strictly increasing; s_C - s_A constant to fp tolerance for h>=4)",
+    "val_eval_rng_isolation",
+    "tokens_per_step_1024"
+  ],
+  "smoke_scale": {"cells": [[2030, 46]], "T": 8, "stream": 7500,
+    "expected_optimizer_updates": "4 arms x 8 (run_cell) + 8 (CRN repeat) + 8 (self-distance) + 8 (frozen-runner check) + 8 (no-eval RNG-isolation) = 48; runner hard-caps via guard_budget and logs the true count",
+    "note": "T=8 still exercises the h=4 transplant branch and the post-release regime"},
+  "budget": {
+    "project_optimizer_update_cap": 18000,
+    "already_consumed_by_B0": 14208,
+    "b05_smoke_planned": 64,
+    "b05_main_planned": 1536,
+    "b05_total_planned": 1600,
+    "project_cumulative_planned": 15808,
+    "eval_calls_counted_separately": true,
+    "guard": "stop and report if cap would be exceeded; no silent expansion of cells/arms/T"
+  },
+  "terminology": {
+    "required_terms": ["controlled non-equilibrium dynamical system", "quasi-steady state", "memory kernel", "response function"],
+    "banned_terms": ["temperature", "free energy", "entropy production", "equilibrium", "detailed balance", "field theory"],
+    "rule": "describe the system as a controlled non-equilibrium dynamical system; quasi-steady state only if explicitly warranted by numbers (default: not claimed); H3 discussed via memory channel / memory-kernel language; no banned term may appear in any conclusion (reporting a banned term only to quote the ban itself is allowed)."
+  },
+  "verdict_labels": ["PROVED", "SUPPORTED", "NOT_SUPPORTED", "MIXED", "UNRESOLVED", "NOT_TESTED"],
+  "verdict_rule": "every conclusion labeled PROVED (numerical/identity-level), SUPPORTED (pre-registered decision rule met), NOT_SUPPORTED (decision rule for rejection met), MIXED, UNRESOLVED, or NOT_TESTED; no label without the cell-count evidence",
+  "statistics": {
+    "independent_clusters": "3 training seeds; stream/timepoints are NOT independent seeds",
+    "scale": "pilot (6 cells, 1 stream); report per-cell values and ranges; no strong small-p claims; seed-cluster bootstrap if any, flagged exploratory",
+    "hindsight_labels": "any quantity using future-rollout information (e.g. implied lag fits evaluated on the same curve) labeled descriptive/within-sample, not deployable"
+  },
+  "forbidden": [
+    "no new optimizer / no optimizer or scheduler modification beyond the frozen LR-multiplier intervention",
+    "no large-scale runs; 6 cells fixed",
+    "no cherry-picking cells by response sign or outcome",
+    "no banned terminology",
+    "no claim beyond the recorded horizon (64 steps) - A0P long-horizon caveat applies"
+  ],
+  "amendments": [
+    {
+      "id": "B05-A1",
+      "date": "2026-09-20",
+      "when": "after CPU stage-B tests, before any B0.5 GPU run",
+      "what": "H1 pulse_frozen_delta_test: replaced 'implied lag must be constant post-release' (exactly true only under uniform native LR) with the exact inversion-based statement + derived approximate-lag signature; alignment metric now excludes clamped tail indices (masked_rel_err). Module align_loss_by_s returns clamped mask. CPU tests updated and PASS (14/14)."
+    },
+    {
+      "id": "B05-A2",
+      "date": "2026-09-20",
+      "when": "after runner implementation review, before any B0.5 GPU run",
+      "what": "smoke budget corrected 48 -> 64 updates (run_cell 4 arms x 8 = 32, plus CRN repeat 8, self-distance 8, frozen-runner check 8, no-eval RNG-isolation 8). H2 in-runner aggregates computed with torch-native equivalents of the b5 python estimators (b5 remains the CPU-tested reference; avoids 5M-wide python lists). cells.jsonl never serializes tensors (opt captures kept in memory for smoke checks only)."
+    }
+  ]
+}

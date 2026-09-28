@@ -1,0 +1,150 @@
+{
+ "manifest_id": "FR_B06_REGIME_DYNAMICS_V01_LIVE",
+ "config_sha256": "e0da9a7fb26dfed47cfc79cee325c310ad86057edcaeea5c9c2addaba2942003",
+ "note": "Every module/driver/hash change is logged HERE before any GPU launch that could reveal results. Sequencing: write/amend code -> append note with new sha256 -> launch. Budget base at B0.6 start: 15,817/18,000 consumed through B0+B0.5; B0.6 plans 1,680 (smoke 16 + main 1,536 + stress 128) -> 17,497 cumulative, 503 headroom.",
+ "module_hash_notes": [
+  {
+   "seq": 0,
+   "ts": "2026-09-21",
+   "files": [
+    "outputs/fr_b06_regime_dynamics_v01/config.json"
+   ],
+   "sha256": {
+    "outputs/fr_b06_regime_dynamics_v01/config.json": "e0da9a7fb26dfed47cfc79cee325c310ad86057edcaeea5c9c2addaba2942003"
+   },
+   "reason": "B0.6 config frozen BEFORE any GPU: Q3a switching-linear-response primary (headline), Q1 regime structure vs phase AND drift nulls supporting, Q2 chi-by-regime supporting, Q3b occupancy-mixture chi. Budget updated to post-B0.5 base (15,817 consumed; 17,497 cumulative planned). B0.5 cross-referenced: mechanism hypotheses NOT_SUPPORTED -> regime test operates at theta-trajectory/reduced-state level, not optimizer memory."
+  },
+  {
+   "seq": 1,
+   "ts": "2026-09-21",
+   "files": [
+    "research/src/fr/b06_regime_dynamics_v01.py"
+   ],
+   "sha256": {
+    "research/src/fr/b06_regime_dynamics_v01.py": "ad2b2f35c145f8475cc0d373ea7827ef2eb86d476358f7b882f43d0fda901a70"
+   },
+   "reason": "B0.6 pure analysis module first write (CPU-only): 9-channel psi_t construction, Standardizer, phase + drift nulls, numpy Gaussian HMM (scaled forward-backward, vectorized EM), GMM grid, persistence/transition stats, switching linear maps with within/across held-out split, q1/q2/q3a/q3b verdicts under frozen rules, retained-gain descriptive leg, theory tests T1-T6. Written BEFORE any GPU launch; 23/23 unit tests PASS (298s)."
+  },
+  {
+   "seq": 2,
+   "ts": "2026-09-21",
+   "files": [
+    "research/tests/test_b06_regime_dynamics_v01.py"
+   ],
+   "sha256": {
+    "research/tests/test_b06_regime_dynamics_v01.py": "660735478e5ff82bdf1d40f66458ef482ac9151bf069e235df22fed2bfde4d14"
+   },
+   "reason": "B0.6 unit tests (unittest, CPU only): features/nulls/HMM/switching maps/Q1-Q3b verdict paths/retained gain/T1-T6 with reduced settings for T2/T3. ALL PASS in 298s before any GPU launch."
+  },
+  {
+   "seq": 3,
+   "ts": "2026-09-21",
+   "files": [
+    "research/scripts/b06_record_psi_v01.py",
+    "research/scripts/b06_gate_v01.py"
+   ],
+   "sha256": {
+    "research/scripts/b06_record_psi_v01.py": "200ef6dee28389227da8c416f9285730551e394e9cc17e44023ec52d22346447",
+    "research/scripts/b06_gate_v01.py": "24fcd3346c8a7c27adaba90cca6b0f2a5fca93b9c0e96a15828a4cc4dd2cba3c"
+   },
+   "reason": "Recorder first write: mirrors b0_run_v01.run_arm step loop EXACTLY at native multiplier 1.0 (frozen pe._baseline_no_step + pe._clip_and_step, no eval calls, no theta captures), adds m_norm/v_norm (Adam state, trainable-only by construction), g_cos (named-subset gradient cosine, 0 at h=1), disp (named-subset displacement from trajectory start). Smoke = 2x8 = 16 updates incl. inline bitwise gate vs frozen B0 main_diag h=1..8; budget guard at 18,000 with cross-process TOTALS merge (B0.5 lesson). Gate script: full 26x64 offline bitwise CRN gate vs frozen B0 diag, fail => stop. Both written BEFORE any GPU launch."
+  },
+  {
+   "seq": 4,
+   "ts": "2026-09-21",
+   "files": [
+    "research/scripts/b06_record_psi_v01.py"
+   ],
+   "sha256": {
+    "research/scripts/b06_record_psi_v01.py": "7b51c89b455dbecd6274bb48344470085877d21e189a5fdcf52ff64c47c7f008"
+   },
+   "reason": "Smoke attempt 1 FAILED on the internal diagnostic grad_flat_norm_consistency (tolerance 1e-9 too tight for fp32 summation-order noise between per-tensor sum and cat-then-vector_norm; ~1e-7 abs diff at grad_norm~0.72). The protocol-critical bitwise gate vs frozen B0 diag h=1..8 PASSED on attempt 1. Amendment: diagnostic tolerance relaxed to 1e-6 relative; NO change to any recorded field, step semantics, or shared-field computation. Smoke attempt 1 consumed 16 updates (project 15,833/18,000)."
+  },
+  {
+   "seq": 5,
+   "ts": "2026-09-21",
+   "files": [
+    "research/scripts/b06_record_psi_v01.py"
+   ],
+   "sha256": {
+    "research/scripts/b06_record_psi_v01.py": "366bfeff61e1fd31fca912972645d052a8a0e4279cec8150eb089a3126027b7c"
+   },
+   "reason": "Main attempt 1 crashed with KeyError on the first CSV row write: PSI_FIELDS mixed metadata columns (tag/seed/step/stream_seed) into the recorder-row dict comprehension. One full 64-step native arm (cell 2030x46 stream 7500) completed on GPU before the crash; its 64 updates are recorded in gpu_budget_log.json as phase main_attempt_1_FAILED_driver_bug (no rows written). Fix: REC_FIELDS (recorder output only) separated from PSI_FIELDS (CSV schema); no change to step semantics or recorded values. Amended BEFORE main attempt 2 launch."
+  },
+  {
+   "seq": 6,
+   "ts": "2026-09-21",
+   "files": [
+    "research/scripts/b06_record_psi_v01.py"
+   ],
+   "sha256": {
+    "research/scripts/b06_record_psi_v01.py": "903677fdd8b9a684198a464ddca286111b25c890c94e6fa4774b72ce42820281"
+   },
+   "reason": "Budget-merge bugfix BEFORE stress launch: log_phase previously added carried TOTALS at EVERY phase of a multi-phase launch, so main attempt 2 (6 per-cell phases) was counted 6x in gpu_budget_log.json (TOTALS 5,472; spurious project 21,289 > 18,000 cap). Data integrity unaffected: psi_main.csv complete (1,537 lines = 24x64 + header). Correct accounting: smoke 16+16 + failed main 64 + main attempt 2 1,536 = 1,632 B0.6 updates; project 17,449/18,000, leaving 551 headroom (stress 128 -> 17,577). Fix: per-process LAUNCH_ID; TOTALS = sum over launches of per-launch final cumulative. Legacy phases repaired in-place (launch_id annotated, TOTALS recomputed); repair recorded in gpu_budget_log.json 'repairs'. No GPU work during repair; no change to recorder fields or step semantics."
+  },
+  {
+   "seq": 7,
+   "ts": "2026-09-21",
+   "files": [
+    "research/scripts/b06_gate_v01.py",
+    "research/scripts/b06_analyze_v01.py"
+   ],
+   "sha256": {
+    "research/scripts/b06_gate_v01.py": "eefe89765d17ea769491806fbb75eab09a73b88dae39a473c93cdd5c65d611f9",
+    "research/scripts/b06_analyze_v01.py": "232121d7bf2499840dc48f3ec8e9a5ca7d852da6468f69da005ad38a7865b1b1"
+   },
+   "reason": "GPU recording COMPLETE: smoke 16+16 (attempt 2 PASS), main 1,536 (attempt 2, 24 trajectories x 64), stress 128 (2 x 64); budget TOTALS 1,760, project 17,577/18,000. Offline CRN gate PASS: all 26 trajectories x 64 steps bitwise equal to frozen B0 diag native rows (0 mismatches). Gate print-bug fix (skip non-dict top-level key). Analyzer first write: Q3a PRIMARY (switching linear maps + within-cell robustness), Q1 with phase+drift nulls, Q2 permutation, Q3b LOCO-CV with frozen a0c _metric, retained-gain descriptive leg with frozen 1e-7 floor, stress robustness decode, T1-T6 full settings, 7 figures. Both logged BEFORE analysis launch; analyzer is CPU-only on gated data."
+  },
+  {
+   "seq": 8,
+   "ts": "2026-09-21",
+   "files": [
+    "research/scripts/b06_analyze_v01.py"
+   ],
+   "sha256": {
+    "research/scripts/b06_analyze_v01.py": "27b44a2eca6da82b918725ab1c0d493e71363fb5270427396d6e8fc7aec7cec6"
+   },
+   "reason": "Analyzer bugfix BEFORE first completed analysis run: run_all_theory_tests returns {T1..T6, ALL_OK}, not a 'tests' list; the analysis-launch (seq 7 hash) was stopped within minutes (during Q1 stage, before any result file was written) and relaunched with this fix. No result files existed at stop time; no science output was seen. Deterministic CPU-only analysis on gated data."
+  },
+  {
+   "seq": 9,
+   "ts": "2026-09-21",
+   "files": [
+    "research/scripts/b06_analyze_v01.py"
+   ],
+   "sha256": {
+    "research/scripts/b06_analyze_v01.py": "8df263f5dc7a4370dc5d3eb5acd6ed4c03ab29971a18d4588460ab2040ee0fc0"
+   },
+   "reason": "Analyzer bugfix BEFORE first completed analysis run (second pre-completion stop, seq 8 -> seq 9): fit_switching_linear_maps regime parameters (W/A/b/resid_cov) are numpy arrays with mixed int/str keys, which would crash json.dumps at the analysis.json write after all computation. Added _safe() sanitizer applied to analysis.json and theory_tests.json. The seq-8 launch was stopped during Q1 (no result files written); deterministic CPU-only re-run on gated data loses no information."
+  },
+  {
+   "seq": 10,
+   "ts": "2026-09-21",
+   "files": [
+    "research/scripts/b06_analyze_v01.py"
+   ],
+   "sha256": {
+    "research/scripts/b06_analyze_v01.py": "eafe3059561d5ae9295d988e0791ed01ac1b02e219e7a34004780be569b3cd74"
+   },
+   "reason": "Path fix BEFORE first completed analysis run: frozen B0 main_diag.csv lives under outputs/fr_b0_response_mechanisms_v01/runs/ (recorder and gate already used the correct runs/ path); the seq-9 launch completed stages Q1/Q3a/Q2/Q3b in-memory then crashed at stage 5 (retained-gain leg) before writing ANY result file. Deterministic CPU-only re-run on gated data; no result output existed at stop time."
+  }
+ ],
+ "events": [
+  {
+   "ts": "2026-09-21",
+   "event": "Smoke attempt 1: 8/9 checks PASS; FAILED on internal diagnostic grad_flat_norm_consistency (tolerance too tight; fp32 summation-order noise). Protocol-critical bitwise gate vs frozen B0 diag h=1..8 PASSED. 16 updates consumed."
+  },
+  {
+   "ts": "2026-09-21",
+   "event": "Smoke attempt 2: ALL_PASS (9/9 incl. bitwise gate vs frozen B0 main_diag h=1..8). 16 updates consumed. Budget TOTALS 32."
+  },
+  {
+   "ts": "2026-09-21",
+   "event": "Main attempt 1: driver crashed on first CSV row write (KeyError, seq 5 fix). 64 updates consumed, recorded as main_attempt_1_FAILED_driver_bug in gpu_budget_log.json. Budget TOTALS 96 (project 15,913/18,000)."
+  },
+  {
+   "ts": "2026-09-21",
+   "event": "ANALYSIS COMPLETE (no code change -> no new seq; analyzer at seq 10 hash eafe3059): offline CRN gate ALL_PASS re-confirmed at analysis start; theory tests T1-T6 ALL_OK at full settings; Q1 NOT_SUPPORTED (k=2 test LL -2261.0 does not beat phase-null p95 -2114.6; persistence opposite of metastability: mean run 25.6 steps, switch rate 0.0238 vs null p95 0.01396); Q3a standalone NOT_SUPPORTED (local 0.29609 vs global 0.29558, n_local_across=0/360); Q2 NOT_TESTED (all 6 cells dominant regime 1); Q3b NOT_TESTED (raw 3/3 seed folds, fragile); retained-gain descriptive rho=-0.369 p=0.076 n=24; headline NOT_TESTED per frozen headline_rule. Results: runs/analysis.json, runs/theory_tests.json, runs/summary.json, 7 figures; report B06_regime_dynamics_report.md filled (sections 4-6)."
+  }
+ ]
+}

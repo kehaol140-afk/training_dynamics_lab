@@ -1,0 +1,47 @@
+{
+ "manifest_id": "A0U_RESPONSE_SCHEDULE_DISCOVERY_V01_LIVE",
+ "contract_sha256": "e8443d44fdbed8162f0adf869507058d3b52e9dfbc508b589fc86b9a844d89f5",
+ "note": "Every module/driver/analyzer hash change is logged HERE before any run that could reveal results. Sequencing: write/amend code -> append note with new sha256 -> launch.",
+ "module_hash_notes": [
+  {
+   "seq": 0,
+   "ts": "2026-09-18",
+   "files": [
+    "contract/contract.json"
+   ],
+   "sha256": {
+    "contract/contract.json": "e8443d44fdbed8162f0adf869507058d3b52e9dfbc508b589fc86b9a844d89f5"
+   },
+   "reason": "Contract frozen BEFORE any GPU: frozen phase segmentation, K=4 partial-window schedule rule (alpha=0.05), window W=64 with frozen segments/checkpoints, arms A/B/C, 12 cells, CRN, metrics, case A/B/C interpretation, forbidden list, in-sample limitation pre-registered."
+  },
+  {
+   "seq": 1,
+   "ts": "2026-09-18",
+   "files": [
+    "research/src/fr/a0u_response_schedule_discovery_v01.py",
+    "research/scripts/a0u_run_v01.py",
+    "research/scripts/a0u_analyze_v01.py",
+    "research/tests/test_a0u_response_schedule_discovery_v01.py"
+   ],
+   "sha256": {
+    "module": "9dd85caa70ce188a0d6a7c5844bc34c54d8341c56db46519fdc7b1eed09b7593",
+    "driver": "73aad069857c9a41c5b987ec0b22c5e6eb51563ab5d8ce3475a76c2158ccb467",
+    "analyzer": "f792ed2220c4746366fbf2a524381f9fbe3c9b9984ff9fc83129e1e98c3514c4",
+    "test": "8a2fe235712f69fc68e787f0c5bbeab63f013c7373785283b2f1903c211b51c1"
+   },
+   "reason": "Initial module/driver/analyzer/test, written AFTER contract freeze; unit tests (7) PASS before any GPU. Schedule rule = frozen partial-window K=4 sign averaging; rollout mirrors frozen a0q.run_channel_rollout override semantics with per-segment multiplier + 5 checkpoints; CRN A x2 per cell."
+  },
+  {
+   "seq": 2,
+   "ts": "2026-09-18",
+   "files": [
+    "research/scripts/a0u_run_v01.py"
+   ],
+   "sha256": {
+    "research/scripts/a0u_run_v01.py": "f21b8e18f77793b42b597eafe71bdff38676cde5f3d94646268b9f3272bc2e89"
+   },
+   "reason": "PRE-RESULTS defect fix: launch-1 crashed at model.to() (invalid device ordinal) because CUDA_VISIBLE_DEVICES=0 hid cuda:1; no cell completed, no results observed. GPU 1 now occupied by foreign processes (30.6 GiB); GPU 0 free -> GPU='cuda:0'. Computation unchanged."
+  }
+ ],
+ "events": []
+}

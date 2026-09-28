@@ -1,0 +1,197 @@
+{
+ "state_stream_action": [
+  {
+   "seed": 2030,
+   "start": 46,
+   "S": 0,
+   "stream_seeds": [
+    202609240200,
+    202609240201
+   ],
+   "smoke_stream": 202609240300,
+   "n0": 46,
+   "gm_first": 94,
+   "action": {
+    "x_LR": 0.05,
+    "x_2D": 0.05,
+    "y_2D": 0.05,
+    "eta_mult_LR": 1.05,
+    "eta_mult_2D": 1.05,
+    "alpha_new_2D": 0.047619047619047616,
+    "full_uses_native": false
+   },
+   "eta_ref_first": 0.0007323585913022454,
+   "ell": 7.020043501537879
+  },
+  {
+   "seed": 2030,
+   "start": 82,
+   "S": 1,
+   "stream_seeds": [
+    202609240202,
+    202609240203
+   ],
+   "smoke_stream": 202609240300,
+   "n0": 82,
+   "gm_first": 166,
+   "action": {
+    "x_LR": 0.05,
+    "x_2D": 0.05,
+    "y_2D": 0.05,
+    "eta_mult_LR": 1.05,
+    "eta_mult_2D": 1.05,
+    "alpha_new_2D": 0.047619047619047616,
+    "full_uses_native": false
+   },
+   "eta_ref_first": 0.00034767490165542704,
+   "ell": 6.979538126804536
+  },
+  {
+   "seed": 2031,
+   "start": 46,
+   "S": 2,
+   "stream_seeds": [
+    202609240204,
+    202609240205
+   ],
+   "smoke_stream": 202609240300,
+   "n0": 46,
+   "gm_first": 94,
+   "action": {
+    "x_LR": 0.05,
+    "x_2D": 0.05,
+    "y_2D": 0.011755757652496488,
+    "eta_mult_LR": 1.05,
+    "eta_mult_2D": 1.05,
+    "alpha_new_2D": 0.011195959669044273,
+    "full_uses_native": false
+   },
+   "eta_ref_first": 0.0007323585913022454,
+   "ell": 7.020043501537879
+  },
+  {
+   "seed": 2031,
+   "start": 82,
+   "S": 3,
+   "stream_seeds": [
+    202609240206,
+    202609240207
+   ],
+   "smoke_stream": 202609240300,
+   "n0": 82,
+   "gm_first": 166,
+   "action": {
+    "x_LR": 0.05,
+    "x_2D": 0.05,
+    "y_2D": 0.05,
+    "eta_mult_LR": 1.05,
+    "eta_mult_2D": 1.05,
+    "alpha_new_2D": 0.047619047619047616,
+    "full_uses_native": false
+   },
+   "eta_ref_first": 0.00034767490165542704,
+   "ell": 6.979538126804536
+  },
+  {
+   "seed": 2032,
+   "start": 46,
+   "S": 4,
+   "stream_seeds": [
+    202609240208,
+    202609240209
+   ],
+   "smoke_stream": 202609240300,
+   "n0": 46,
+   "gm_first": 94,
+   "action": {
+    "x_LR": 0.05,
+    "x_2D": 0.05,
+    "y_2D": 0.05,
+    "eta_mult_LR": 1.05,
+    "eta_mult_2D": 1.05,
+    "alpha_new_2D": 0.047619047619047616,
+    "full_uses_native": false
+   },
+   "eta_ref_first": 0.0007323585913022454,
+   "ell": 7.020043501537879
+  },
+  {
+   "seed": 2032,
+   "start": 82,
+   "S": 5,
+   "stream_seeds": [
+    202609240210,
+    202609240211
+   ],
+   "smoke_stream": 202609240300,
+   "n0": 82,
+   "gm_first": 166,
+   "action": {
+    "x_LR": -0.05,
+    "x_2D": -0.05,
+    "y_2D": 0.05,
+    "eta_mult_LR": 0.95,
+    "eta_mult_2D": 0.95,
+    "alpha_new_2D": 0.052631578947368425,
+    "full_uses_native": false
+   },
+   "eta_ref_first": 0.00034767490165542704,
+   "ell": 6.979538126804536
+  }
+ ],
+ "r1_provenance": {
+  "restricted_solutions": {
+   "path": "/home/b205/projects/fluctuation_response/outputs/fr_gttr_r1_objective_identification_v01/restricted_solutions.csv",
+   "sha256": "732fd8daecbbcfe850db83795d49e4431b106858a27c8bbe7ee0b73c4fe88662"
+  },
+  "model_coefficients": {
+   "path": "/home/b205/projects/fluctuation_response/outputs/fr_gttr_r1_objective_identification_v01/model_coefficients.csv",
+   "sha256": "6c8bae664ae5e633df01e1ce6bffbc4c6d00d6ec48c72a0a6612588aae8e3bf4"
+  },
+  "prediction_seal": {
+   "path": "/home/b205/projects/fluctuation_response/outputs/fr_gttr_r1_objective_identification_v01/prediction_seal.json",
+   "sha256": "dd6e560ad6df82c842f9fed1e88b02fb6afb4fa8fe129a4a26f61d8c476e0732"
+  },
+  "consistency_recheck": "r1m \u53d7\u9650\u6c42\u89e3\u5668\u5bf9\u5c01\u5b58 b/K \u590d\u7b97\u4e0e CSV \u89e3\u4e00\u81f4\uff08\u4e00\u81f4\u6027\u4e0e\u7248\u672c\u68c0\u67e5\uff0c\u4e0d\u6784\u6210\u65b0\u62df\u5408\uff09"
+ },
+ "bank": {
+  "2030/46": {
+   "path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2030/states/state_step_046.pt",
+   "n0": 46,
+   "gm_first_update_last_micro": 94,
+   "sha256": "553ae69d89a0713f4f8f5dd6a5aab215eb71679177bc305980690872d29909e8"
+  },
+  "2030/82": {
+   "path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2030/states/state_step_082.pt",
+   "n0": 82,
+   "gm_first_update_last_micro": 166,
+   "sha256": "74188e8d0ccc5d24e0d724bb1296e373b4554affa0b3e7b2134e4bb0089001f2"
+  },
+  "2031/46": {
+   "path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2031/states/state_step_046.pt",
+   "n0": 46,
+   "gm_first_update_last_micro": 94,
+   "sha256": "7b214cbd4ff806739bfa16af0df101d5024181e07f2c6e18a244b4999eee2d14"
+  },
+  "2031/82": {
+   "path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2031/states/state_step_082.pt",
+   "n0": 82,
+   "gm_first_update_last_micro": 166,
+   "sha256": "37415502534f8637e35ab001b52a57021f10322ef320336d08421538e8d71ba0"
+  },
+  "2032/46": {
+   "path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2032/states/state_step_046.pt",
+   "n0": 46,
+   "gm_first_update_last_micro": 94,
+   "sha256": "5f88bedbb2860172b066a157005a1763b38fc90c52b7983baf50fbba91ca70ea"
+  },
+  "2032/82": {
+   "path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2032/states/state_step_082.pt",
+   "n0": 82,
+   "gm_first_update_last_micro": 166,
+   "sha256": "3a2d6a51c2e0013d22219befeaf2727ec201e19cded75db49d07ab6042fc1ccb"
+  }
+ },
+ "sampler": "b0.make_stream\uff08\u51bb\u7ed3 train pool\uff1b\u65b0\u6d41\uff0c\u4e0d\u590d\u7528 R1 FIT/AUDIT\uff09",
+ "note": "\u4e0d\u80fd\u5c06 36 \u8f68\u8ff9\u79f0 36 \u72ec\u7acb\u6a21\u578b\uff1b3 \u8bad\u7ec3 seeds"
+}

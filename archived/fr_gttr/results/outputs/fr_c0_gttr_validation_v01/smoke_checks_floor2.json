@@ -1,0 +1,18 @@
+{
+ "definition": "max ||diff|| of repeated IDENTICAL evaluations (same probe paired with its own repeats only), fp64",
+ "repeats_per_probe": 4,
+ "numerical_floor_corrected": {
+  "grad": 0.0,
+  "hvp": 0.0,
+  "v": 0.0,
+  "q": 0.0
+ },
+ "counters": {
+  "optimizer_updates": 0,
+  "grad_evals": 36,
+  "hvp_calls": 32,
+  "forward_calls": 132,
+  "shadow_steps": 0
+ },
+ "note": "supersedes smoke_checks.json numerical_floor, which pooled cross-probe pairs (different evaluations) contrary to the frozen definition; supersession disclosed in REPORT.md"
+}

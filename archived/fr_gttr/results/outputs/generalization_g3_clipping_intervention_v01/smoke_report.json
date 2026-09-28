@@ -1,0 +1,29 @@
+{
+  "checks": {
+    "all_outputs_finite": true,
+    "checkpoint_restore": true,
+    "fd_crn_consistent": true,
+    "fd_outputs_finite": true,
+    "h1_B_equals_BH_fixed_equals_C": true,
+    "h1_analytic_vs_fd_rel_err": 0.0008789032105369514,
+    "h1_consistency": true,
+    "hvp_executed": true,
+    "hvp_finite": true,
+    "no_clip_never_active_branches": true,
+    "no_unexpected_optimizer_steps": true,
+    "noclip_BH_fixed_equals_C": true,
+    "noclip_BH_fixed_equals_C_max_abs_gap": 0.0,
+    "noclip_no_clip_active_in_trace": true,
+    "optimizer_state_dims_names": true,
+    "q_names_shapes": true,
+    "rho0_noop": true,
+    "shadow_hash_match": true,
+    "training_never_clipped": true
+  },
+  "overall_pass": true,
+  "protocol": "FR_G3_CLIPPING_INTERVENTION_V01",
+  "state": {
+    "seed": 2042,
+    "step": 26
+  }
+}

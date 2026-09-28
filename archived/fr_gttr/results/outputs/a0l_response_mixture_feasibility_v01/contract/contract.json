@@ -1,0 +1,56 @@
+{
+  "contract_id": "A0L_RESPONSE_MIXTURE_FEASIBILITY_V01",
+  "date": "2026-09-17",
+  "status": "FROZEN_BEFORE_ANY_GPU",
+  "round_purpose": "Feasibility pilot: can the training response upgrade from one-shot action selection (A0K) to CONTINUOUS data-mixture control? Not a selector fix; the continuous-control hypothesis test. Small-scale pilot only; no auto-expansion.",
+  "frozen_science_semantics": {
+    "state_response": "H=4 response via production run_adjoint_only on the event snapshot (shared-adjoint FULL_GRAD_DOT hhat_j, hvp_fp32=True), candidates = frozen 4 data groups (members of outputs/fr_decision_utility_v01/data_group_definition.json, which PARTITION the 3936-sample train pool: sizes 1038/973/987/938), j=1..4, no no-op candidate, NO cache, NO stale gradients, NO JVP scoring, NO block planning",
+    "mixture_space": "pi_t lives on the 4-simplex over data groups. pi_0 = ORIGINAL DISTRIBUTION = empirical group proportions = [1038,973,987,938]/3936 = [0.263718,0.247206,0.250763,0.238321] (groups partition the train pool; this is exactly the native training distribution)",
+    "controller_update": "every K=50 steps at event step t in {50,100}: (1) snapshot full state+RNG; (2) production H=4 response -> h_j (raw hhat, dV_score/dLambda at Lambda=0; NEGATIVE = beneficial); (3) q_j = softmax(-gamma_t * h_j) with gamma_t = 1/(std_j(h)+1e-12) frozen scale-free form (guard: std<1e-12 -> q=uniform); (4) pi_{t} = (1-alpha)*pi_before + alpha*q, alpha=0.1 FROZEN; (5) restore snapshot+RNG. pi held constant within each window: pi_0 governs steps 1-49, pi_50 governs steps 50-99, pi_100 governs steps 100-128. gamma form and alpha are frozen pre-GPU; tuning either by results is forbidden.",
+    "execution": "per-micro mixture sampling: for micro m (0-based) in window w, component j ~ pi_w drawn from a DEDICATED deterministic generator (torch.Generator, seeded derive_stream_seed(train_seed+1704, 9090+w), CPU, isolated from global torch RNG so the dropout RNG sequence is identical across arms); batch_m = candidate_batches_for(derive_stream_seed(train_seed+1704, m), j, members_{j-1}, batch_size=4, n_micro=1)[0]. Arm A = native batches_from_train_pool(train_indices,4,train_seed+1704,256) (the original distribution). Arm B = component fixed j=1 for all micros (fixed-j1 continuous mixture = train on group 1 only). Training loss per micro = native mean over the drawn batch (NO gradient injection in A0L; the treatment is the data mixture, not a gradient perturbation)."
+  },
+  "frozen_environment": {
+    "config": "research/configs/e3c_confirmatory_v07.json (hidden 256 x 4 layers, seq 128, batch 4, accum 2, bf16, clip 1.0, lr 5e-4, planned_total_optimizer_steps=128, total_micro_steps=256)",
+    "training_loop": "e3c native AdamW recipe identical to A0K: setup_seed(train_seed) BEFORE init_model -> AdamW -> per-micro set_native_micro_lr -> autocast fwd/bwd /accum -> scaler.unscale_ -> clip_grad_norm_(1.0) -> scaler.step+update -> zero_grad. Optimizer, clipping, H, lambda untouched.",
+    "eval": "frozen validation_split.json v_score(64)/v_eval(64), a0g._val_loss_only, RNG-wrapped, every 10 steps at 10..128 plus final",
+    "identity": "all arms of a seed share identical init (setup_seed before init_model) and identical global-RNG/dropout sequence; cross-arm difference is the DATA COMPOSITION only (the treatment). Control events RNG-neutral (capture/restore around all response computation)."
+  },
+  "groups": {
+    "A": "native AdamW baseline (original distribution = full train pool)",
+    "B": "fixed-j1 continuous mixture (pi = one-hot on group 1 for the entire run)",
+    "C": "response mixture controller (pi updated at steps 50/100 per frozen update rule)"
+  },
+  "seeds_prefrozen": [2030, 2031, 2032],
+  "expansion_rule": "PILOT ONLY - no seed expansion, no cadence changes, no alpha/gamma tuning regardless of results",
+  "cadence_prefrozen": {"K": 50, "control_steps": [50, 100], "T_total": 128},
+  "equal_wall_clock_protocol": {
+    "definition": "per seed: T_C = measured wall of arm C full 128-step run (snapshot+response+restore+eval all included); A_wc and B_wc each consume the same budget T_C in the same session immediately after C (finish current optimizer step after exhaust, then final eval)",
+    "gain_time": "Gain_time(vs AdamW) = L_eval(A_wc @ T_C) - L_eval(C @ 128); Gain_time(vs fixed-j1) = L_eval(B_wc @ T_C) - L_eval(C @ 128)"
+  },
+  "evaluation_items": ["1. Final Eval Loss (v_eval @128 per arm per seed)", "2. Gain vs AdamW = L_A - L_C and L_A - L_B", "3. Gain vs fixed-j1 = L_B - L_C", "4. Equal wall-clock gain per protocol above", "5. pi trajectory (pi_0, pi_50, pi_100 per seed) plus per-window record"],
+  "per_event_log_fields": ["step", "seed", "arm", "window_index", "pi_before(4)", "h_j(4)", "q_j(4)", "pi_after(4)", "window_train_loss_mean", "v_eval_at_event", "v_score_at_event", "gamma_t", "std_h", "model_hash_before", "optimizer_hash_before", "rng_state_hash", "dataloader_position", "stream_seed", "controller_compute_time", "rollout_time", "wall_clock_timestamp"],
+  "smokes_prefrozen": {
+    "S1": "arm A(2031) must bitwise-reproduce e3c v0.7 bank model_hash at steps 46/52 (proves mixture hooks are no-ops on the native path)",
+    "S2": "determinism: arm B(2030) run twice -> identical trajectory tail model_hash",
+    "S3": "one C control event cost summary"
+  },
+  "forbidden_this_round": [
+    "modify optimizer / AdamW / clipping",
+    "modify H=4 / lambda=0.05",
+    "new model structures",
+    "selector repair or re-selection semantics (this round tests continuous control, not the selector)",
+    "gradient injection as the treatment (A0L treatment = data mixture only)",
+    "tune alpha or gamma by results; change K; add seeds; auto-expand",
+    "response cache / stale gradients / JVP scoring / block planning",
+    "use V_eval feedback to adjust the controller"
+  ],
+  "gpu_budget_seconds": 1800,
+  "retry_rule": "infra/serialization-class retries only under same frozen contract/manifest; no env upgrades; no killing external tasks; no commit/push/reset; module hash changes logged in contract manifest BEFORE any results viewed",
+  "interpretation_cases": {
+    "Case_A": "C > B > A (final eval loss ordering, consistent across seeds) -> enter continuous response controller route",
+    "Case_B": "C approx B > A -> consider response-discovered schedule (the response merely rediscovers what fixed-j1 already does)",
+    "Case_C": "C <= A -> stop this route; analyze why response cannot directly control long-term mixture"
+  },
+  "deliverables": ["contract/contract.json(+sha256)", "contract/a0l_events_manifest.json(+sha256)", "runs/ per-run step logs + per-event logs", "dashboard/dashboard.csv + dashboard.json", "reports/A0L_REPORT.md", "audit/manifest_sha256.txt + a0l_audit.tar.gz + .sha256", "hashes/ method fingerprints", "docs: append-only FR_PROJECT_STATUS.md + FR_EXPERIMENT_INDEX.md"],
+  "stop_condition": "after A0L reporting: STOP; no auto-expansion, no lambda/optimizer changes, no new rounds; wait for analysis"
+}

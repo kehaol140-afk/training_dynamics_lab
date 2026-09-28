@@ -1,0 +1,519 @@
+{
+ "tag": "A0J_GPU_BUDGET_LOG",
+ "budget_seconds": 1800,
+ "entries": [
+  {
+   "phase": "preload_runtime",
+   "seconds": 34.84250655400683,
+   "kind": "NON_METERED_PRELOAD_GPU_HELD",
+   "note": "model init + dataset + val tensors + contexts on GPU"
+  },
+  {
+   "phase": "p0_profiler_pass",
+   "seconds": 47.02316057999269,
+   "kind": "METERED_ATTRIBUTION_ONLY"
+  },
+  {
+   "phase": "p0_stage_timing",
+   "seconds": 40.375637676013866,
+   "kind": "METERED"
+  },
+  {
+   "phase": "p0_e4_hvp_precision_probe",
+   "seconds": 5.044327375013381,
+   "kind": "METERED"
+  },
+  {
+   "phase": "p0_perstage_aggregation",
+   "seconds": 93.8563712729956,
+   "kind": "METERED"
+  },
+  {
+   "phase": "TOTAL_SESSION",
+   "seconds": 250.53505373300868,
+   "kind": "GPU_HELD_WALL"
+  },
+  {
+   "phase": "preload_runtime_gate_repeats",
+   "seconds": 13.112872249999782,
+   "kind": "NON_METERED_PRELOAD_GPU_HELD"
+  },
+  {
+   "phase": "p0_gate_per_repeat_timing",
+   "seconds": 30.352807661984116,
+   "kind": "METERED"
+  },
+  {
+   "phase": "RETRY_TRANSPARENCY_NOTE",
+   "seconds": 0.0,
+   "kind": "NOTE",
+   "note": "two infra-class retries under the SAME frozen manifest/algorithm: (1) a0j_p0_profiler_v01 attempt 1 crashed in the E4 probe (KeyError: snapshot lacks 'native_gradient' before _clip_only enriches it) after completing profiler+timing phases; fixed by using the returned native_gradient map. (2) a0j_p1_cache_study_v01 attempt 1 crashed with NameError (missing rank_agreement import) after the first anchor pass, before any output was written. No semantic changes; no results had been viewed between attempt and fix for either retry. (3) a0j_p1_cache_study_v01 attempt 2 crashed with AttributeError (norm_map applied to a 3-channel p dict in vector diagnostics) before any output write; fixed by adding norm_p helper in the module; no results had been written or viewed in any crashed attempt."
+  },
+  {
+   "phase": "p0_attempt1_crashed_session_ESTIMATE",
+   "seconds": 125.0,
+   "kind": "ESTIMATE_GPU_HELD_WALL",
+   "note": "a0j_p0_profiler_v01 attempt 1 (crashed at E4 probe, before any output write): preload ~35s + profiler pass ~47s + stage timing ~40s + partial E4 ~2s, estimated from attempt-2 phase timings; no end-of-run log was written by the crashed process"
+  },
+  {
+   "phase": "preload_runtime",
+   "seconds": 15.84447982799611,
+   "kind": "NON_METERED_PRELOAD_GPU_HELD"
+  },
+  {
+   "phase": "aged_pass_2031/52/s0_a1",
+   "seconds": 5.7505484230059665,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2031/52/s0_a2",
+   "seconds": 2.45666311099194,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2031/52/s0_a4",
+   "seconds": 5.579296328010969,
+   "kind": "METERED"
+  },
+  {
+   "phase": "unit_2031/52/s0",
+   "seconds": 76.9455874140258,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2031/52/s1_a1",
+   "seconds": 5.9088484210078605,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2031/52/s1_a2",
+   "seconds": 5.71179549000226,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2031/52/s1_a4",
+   "seconds": 5.801573478995124,
+   "kind": "METERED"
+  },
+  {
+   "phase": "unit_2031/52/s1",
+   "seconds": 27.78467934098444,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2034/64/s0_a1",
+   "seconds": 22.615363896999042,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2034/64/s0_a2",
+   "seconds": 2.4174254149838816,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2034/64/s0_a4",
+   "seconds": 2.3840473140007816,
+   "kind": "METERED"
+  },
+  {
+   "phase": "unit_2034/64/s0",
+   "seconds": 34.056599995994475,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2034/64/s1_a1",
+   "seconds": 2.2505338189948816,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2034/64/s1_a2",
+   "seconds": 2.3515420140174683,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2034/64/s1_a4",
+   "seconds": 2.438347215007525,
+   "kind": "METERED"
+  },
+  {
+   "phase": "unit_2034/64/s1",
+   "seconds": 10.18864249897888,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2036/76/s0_a1",
+   "seconds": 2.2490010950132273,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2036/76/s0_a2",
+   "seconds": 2.2058619950257707,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2036/76/s0_a4",
+   "seconds": 2.3229615970049053,
+   "kind": "METERED"
+  },
+  {
+   "phase": "unit_2036/76/s0",
+   "seconds": 9.955148689012276,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2036/76/s1_a1",
+   "seconds": 2.1940521029755473,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2036/76/s1_a2",
+   "seconds": 2.408200901991222,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2036/76/s1_a4",
+   "seconds": 11.494512417004444,
+   "kind": "METERED"
+  },
+  {
+   "phase": "unit_2036/76/s1",
+   "seconds": 19.077648824983044,
+   "kind": "METERED"
+  },
+  {
+   "phase": "interleaved_cost_block",
+   "seconds": 23.805660170008196,
+   "kind": "METERED"
+  },
+  {
+   "phase": "TOTAL_SESSION",
+   "seconds": 217.66619106198777,
+   "kind": "GPU_HELD_WALL"
+  },
+  {
+   "phase": "preload_gate_diagnosis_probe",
+   "seconds": 9.183321083983174,
+   "kind": "NON_METERED_PRELOAD_GPU_HELD"
+  },
+  {
+   "phase": "gate_failure_diagnosis_probe",
+   "seconds": 13.880309186992235,
+   "kind": "METERED"
+  },
+  {
+   "phase": "preload_mirror_probe",
+   "seconds": 8.725961084011942,
+   "kind": "NON_METERED_PRELOAD_GPU_HELD"
+  },
+  {
+   "phase": "mirror_divergence_localization_probe",
+   "seconds": 7.989970188995358,
+   "kind": "METERED"
+  },
+  {
+   "phase": "preload_bisect_probe",
+   "seconds": 6.723621187993558,
+   "kind": "NON_METERED_PRELOAD_GPU_HELD"
+  },
+  {
+   "phase": "module_vs_verbatim_bisect",
+   "seconds": 11.163394065981265,
+   "kind": "METERED"
+  },
+  {
+   "phase": "preload_trace_probe",
+   "seconds": 6.647763726010453,
+   "kind": "NON_METERED_PRELOAD_GPU_HELD"
+  },
+  {
+   "phase": "per_call_trace_probe",
+   "seconds": 9.905040832993109,
+   "kind": "METERED"
+  },
+  {
+   "phase": "preload_bisect_probe",
+   "seconds": 6.424542927998118,
+   "kind": "NON_METERED_PRELOAD_GPU_HELD"
+  },
+  {
+   "phase": "module_vs_verbatim_bisect",
+   "seconds": 11.216506344993832,
+   "kind": "METERED"
+  },
+  {
+   "phase": "preload_runtime",
+   "seconds": 6.678123107005376,
+   "kind": "NON_METERED_PRELOAD_GPU_HELD"
+  },
+  {
+   "phase": "aged_pass_2031/52/s0_a1",
+   "seconds": 3.1783881050068885,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2031/52/s0_a2",
+   "seconds": 3.262087804992916,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2031/52/s0_a4",
+   "seconds": 3.492840905004414,
+   "kind": "METERED"
+  },
+  {
+   "phase": "unit_2031/52/s0",
+   "seconds": 15.356381321005756,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2031/52/s1_a1",
+   "seconds": 3.24092840400408,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2031/52/s1_a2",
+   "seconds": 3.254106103006052,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2031/52/s1_a4",
+   "seconds": 3.438828482001554,
+   "kind": "METERED"
+  },
+  {
+   "phase": "unit_2031/52/s1",
+   "seconds": 14.096684395975899,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2034/64/s0_a1",
+   "seconds": 3.298909570003161,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2034/64/s0_a2",
+   "seconds": 3.339877975988202,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2034/64/s0_a4",
+   "seconds": 3.4913157759874593,
+   "kind": "METERED"
+  },
+  {
+   "phase": "unit_2034/64/s0",
+   "seconds": 14.412527776003117,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2034/64/s1_a1",
+   "seconds": 3.2387878760055173,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2034/64/s1_a2",
+   "seconds": 3.3444839459843934,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2034/64/s1_a4",
+   "seconds": 3.37348261999432,
+   "kind": "METERED"
+  },
+  {
+   "phase": "unit_2034/64/s1",
+   "seconds": 14.210750509984791,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2036/76/s0_a1",
+   "seconds": 3.2838634170184378,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2036/76/s0_a2",
+   "seconds": 3.3552413299912587,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2036/76/s0_a4",
+   "seconds": 3.31143985199742,
+   "kind": "METERED"
+  },
+  {
+   "phase": "unit_2036/76/s0",
+   "seconds": 14.210015830001794,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2036/76/s1_a1",
+   "seconds": 3.2327893499750644,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2036/76/s1_a2",
+   "seconds": 3.409398608986521,
+   "kind": "METERED"
+  },
+  {
+   "phase": "aged_pass_2036/76/s1_a4",
+   "seconds": 3.436415328993462,
+   "kind": "METERED"
+  },
+  {
+   "phase": "unit_2036/76/s1",
+   "seconds": 14.362858807027806,
+   "kind": "METERED"
+  },
+  {
+   "phase": "interleaved_cost_block",
+   "seconds": 9.495521697012009,
+   "kind": "METERED"
+  },
+  {
+   "phase": "TOTAL_SESSION",
+   "seconds": 102.82906414300669,
+   "kind": "GPU_HELD_WALL"
+  },
+  {
+   "phase": "p1_replay_attempt1_crashed",
+   "seconds": 0.0,
+   "kind": "RETRY_TRANSPARENCY_NOTE",
+   "note": "replay runner exited 1 with ImportError: stable_hash not in fr.a0g_decision_utility_v01 (module replay branch line 531 wrong import path; correct source fr.hashing). Infra/serialization-class. Same manifest/algorithm; aged_decision_pass untouched; decisions_frozen.json + sha256 unchanged; no cache/replay results viewed before fix. Module 3ee5ded9->fa62027b, manifest updated (5th note)."
+  },
+  {
+   "phase": "preload_runtime_replay",
+   "seconds": 6.346014943992486,
+   "kind": "NON_METERED_PRELOAD_GPU_HELD"
+  },
+  {
+   "phase": "replay_2031/52/s0_a1",
+   "seconds": 3.3846506259869784,
+   "kind": "METERED"
+  },
+  {
+   "phase": "replay_2031/52/s0_a2",
+   "seconds": 2.756202015996678,
+   "kind": "METERED"
+  },
+  {
+   "phase": "replay_2031/52/s0_a4",
+   "seconds": 3.2436687169829383,
+   "kind": "METERED"
+  },
+  {
+   "phase": "replay_2031/52/s1_a1",
+   "seconds": 2.5669879140041303,
+   "kind": "METERED"
+  },
+  {
+   "phase": "replay_2031/52/s1_a2",
+   "seconds": 2.8126816890144255,
+   "kind": "METERED"
+  },
+  {
+   "phase": "replay_2031/52/s1_a4",
+   "seconds": 3.2597971840004902,
+   "kind": "METERED"
+  },
+  {
+   "phase": "replay_2034/64/s0_a1",
+   "seconds": 2.593952488998184,
+   "kind": "METERED"
+  },
+  {
+   "phase": "replay_2034/64/s0_a2",
+   "seconds": 2.7987797939858865,
+   "kind": "METERED"
+  },
+  {
+   "phase": "replay_2034/64/s0_a4",
+   "seconds": 3.324380892998306,
+   "kind": "METERED"
+  },
+  {
+   "phase": "replay_2034/64/s1_a1",
+   "seconds": 2.6655819029838312,
+   "kind": "METERED"
+  },
+  {
+   "phase": "replay_2034/64/s1_a2",
+   "seconds": 2.775532215979183,
+   "kind": "METERED"
+  },
+  {
+   "phase": "replay_2034/64/s1_a4",
+   "seconds": 3.3448147189919837,
+   "kind": "METERED"
+  },
+  {
+   "phase": "replay_2036/76/s0_a1",
+   "seconds": 2.6543878999946173,
+   "kind": "METERED"
+  },
+  {
+   "phase": "replay_2036/76/s0_a2",
+   "seconds": 2.8542289930046536,
+   "kind": "METERED"
+  },
+  {
+   "phase": "replay_2036/76/s0_a4",
+   "seconds": 3.305238291999558,
+   "kind": "METERED"
+  },
+  {
+   "phase": "replay_2036/76/s1_a1",
+   "seconds": 2.614073153003119,
+   "kind": "METERED"
+  },
+  {
+   "phase": "replay_2036/76/s1_a2",
+   "seconds": 2.8091723500110675,
+   "kind": "METERED"
+  },
+  {
+   "phase": "replay_2036/76/s1_a4",
+   "seconds": 3.51520605199039,
+   "kind": "METERED"
+  },
+  {
+   "phase": "TOTAL_SESSION",
+   "seconds": 59.6319077439839,
+   "kind": "GPU_HELD_WALL"
+  },
+  {
+   "phase": "analyze_offline",
+   "seconds": 0.0,
+   "kind": "OFFLINE_NOT_METERED"
+  },
+  {
+   "phase": "analyze_offline",
+   "seconds": 0.0,
+   "kind": "OFFLINE_NOT_METERED"
+  },
+  {
+   "phase": "analyze_offline",
+   "seconds": 0.0,
+   "kind": "OFFLINE_NOT_METERED"
+  },
+  {
+   "phase": "analyze_offline",
+   "seconds": 0.0,
+   "kind": "OFFLINE_NOT_METERED"
+  }
+ ],
+ "cumulative_s": 1010.0985365398519,
+ "TOTALS": {
+  "budget_seconds": 1800,
+  "cumulative_gpu_seconds_est": 1640.760753221839,
+  "crashes": 4,
+  "crash_list": [
+   "p0_attempt1_E4_KeyError",
+   "p1_attempt1_NameError_rank_agreement",
+   "p1_attempt2_AttributeError_norm_map_dict",
+   "p1_replay_attempt1_ImportError_stable_hash"
+  ],
+  "retries": "all infra/serialization-class under same manifest/algorithm; no results viewed between an attempt and its fix; 4 module-hash updates logged in manifest BEFORE result viewing",
+  "environment_changes": "none (no upgrades; no external tasks killed)"
+ }
+}

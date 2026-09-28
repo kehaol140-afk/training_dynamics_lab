@@ -1,0 +1,70 @@
+{
+ "state": "S0",
+ "smoke_stream": 97020,
+ "updates_planned": 16,
+ "u": 0.0,
+ "lr_u0_equals_native_schedule": true,
+ "theta_m_v_step_lr_bitwise_equal": true,
+ "mismatch": "",
+ "rng_state_equal": true,
+ "rng_mismatch": "",
+ "data_cursor_equal": true,
+ "off_on_data_tokens_equal": true,
+ "off_updates": 8,
+ "on_updates": 8,
+ "on_monitor_evals": [
+  {
+   "H": 1,
+   "sum": 3462631.83203125,
+   "count": 475330,
+   "mean": 7.284690282606294
+  },
+  {
+   "H": 4,
+   "sum": 3455844.86328125,
+   "count": 475330,
+   "mean": 7.270411847098332
+  },
+  {
+   "H": 8,
+   "sum": 3452461.736328125,
+   "count": 475330,
+   "mean": 7.263294419304747
+  }
+ ],
+ "on_control_evals": [
+  {
+   "H": 1,
+   "sum": 55326.1240234375,
+   "count": 7602,
+   "mean": 7.277837940467969
+  },
+  {
+   "H": 4,
+   "sum": 55208.310546875,
+   "count": 7602,
+   "mean": 7.262340245576822
+  },
+  {
+   "H": 8,
+   "sum": 55088.8125,
+   "count": 7602,
+   "mean": 7.246620955011839
+  }
+ ],
+ "q0dot_rows": [
+  {
+   "h": 1,
+   "q0dot": -34.96784972899828
+  },
+  {
+   "h": 4,
+   "q0dot": -166.23984287414987
+  },
+  {
+   "h": 8,
+   "q0dot": -364.1641749803678
+  }
+ ],
+ "verdict": "PASS"
+}

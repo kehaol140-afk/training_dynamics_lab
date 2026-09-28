@@ -1,0 +1,154 @@
+{
+ "manifest_id": "A0J_CACHE_DEV_MANIFEST_V01",
+ "date": "2026-09-16",
+ "status": "FROZEN_BEFORE_A0J_GPU_EXPOSURE",
+ "frozen_by_rule": "contract.json anchor_stream_selection_rule_prefixed: anchors = frozen a0g DEV_STATES (2031/52, 2034/64, 2036/76), streams = two smallest stream_ids {0,1} -> 6 anchor-stream trajectories; selected BEFORE viewing any A0J cache result; NO state may be swapped based on cache performance",
+ "exposure_status": "all 3 anchor states are recorded as exposed dev states in outputs/a0h_corrected_accept_v01/exposure_ledger.json excluded_states (A0H-1 diagnostics dev units); stream 0 of each was also used by A0I-B; dev-only, no acceptance identity, no unseen acceptance states used",
+ "H": 4,
+ "lambda": 0.05,
+ "M": 4,
+ "cache_ages": [
+  1,
+  2,
+  4
+ ],
+ "frozen_semantics_source": "outputs/a0i_directional_scoring_v01/contract.json -> outputs/a0h_corrected_accept_v01/contract/contract.json",
+ "anchors": [
+  {
+   "anchor_id": "A1",
+   "train_seed": 2031,
+   "state_step": 52,
+   "stage": "early",
+   "optimizer_step_note": "true optimizer step = checkpoint step 52 (bank state)",
+   "checkpoint_path": "outputs/e3_confirmatory/v07/seed_2031/states/state_step_052.pt",
+   "checkpoint_sha256": "cea357a2bd1e2faaa58834afc291b5b8a355962dacb2d37cfff05ac2073ca28b",
+   "q_sha256": "3b405839dabaf21539297df9b5f0ba6590bea3547cbc12e5eda47514e0aa373d",
+   "streams": [
+    {
+     "stream_id": 0,
+     "stream_seed": 1674017800379864555,
+     "batch_manifest_path": "outputs/e3_confirmatory/v07/seed_2031/e2_stream_manifests/state_step_052/e2_stream_000_batches.json",
+     "batch_manifest_sha256": "6a59ad5f382476a1c905f1965785854df90c0b699f841c64ce9d324562d41539",
+     "n_batches": 64,
+     "covers_optimizer_steps": 32
+    },
+    {
+     "stream_id": 1,
+     "stream_seed": 3116712841268827962,
+     "batch_manifest_path": "outputs/e3_confirmatory/v07/seed_2031/e2_stream_manifests/state_step_052/e2_stream_001_batches.json",
+     "batch_manifest_sha256": "e7e817d65666be85e03dc8967c9b9fa143a015e3e385bb7e59401bc988ff60c7",
+     "n_batches": 64,
+     "covers_optimizer_steps": 32
+    }
+   ]
+  },
+  {
+   "anchor_id": "A2",
+   "train_seed": 2034,
+   "state_step": 64,
+   "stage": "middle",
+   "optimizer_step_note": "true optimizer step = checkpoint step 64 (bank state)",
+   "checkpoint_path": "outputs/e3_confirmatory/v07/seed_2034/states/state_step_064.pt",
+   "checkpoint_sha256": "34b12e16ef85ee4fed3dac6d5bf1f8d8a2c02fa01d789ace3dc44e02f0f8cc3f",
+   "q_sha256": "26f9c4457cd1876df145d2faa32f2995222109f94ef26d32d119c7915daafc28",
+   "streams": [
+    {
+     "stream_id": 0,
+     "stream_seed": 1539217373538925080,
+     "batch_manifest_path": "outputs/e3_confirmatory/v07/seed_2034/e2_stream_manifests/state_step_064/e2_stream_000_batches.json",
+     "batch_manifest_sha256": "a09a5f6a557a27c97333b7a7a27de487d20f5a70ccd808e6e973f5c9529ac21d",
+     "n_batches": 64,
+     "covers_optimizer_steps": 32
+    },
+    {
+     "stream_id": 1,
+     "stream_seed": 2981912414427888487,
+     "batch_manifest_path": "outputs/e3_confirmatory/v07/seed_2034/e2_stream_manifests/state_step_064/e2_stream_001_batches.json",
+     "batch_manifest_sha256": "521f7d53b02be85af2c013bee3c1a9ab719a01700c4ae0a6d2498e1e52874c69",
+     "n_batches": 64,
+     "covers_optimizer_steps": 32
+    }
+   ]
+  },
+  {
+   "anchor_id": "A3",
+   "train_seed": 2036,
+   "state_step": 76,
+   "stage": "late",
+   "optimizer_step_note": "true optimizer step = checkpoint step 76 (bank state)",
+   "checkpoint_path": "outputs/e3_confirmatory/v07/seed_2036/states/state_step_076.pt",
+   "checkpoint_sha256": "1a0a11cc89fc2e0295534917483799e18f0b0bbd0274f16e685e2b13c36e56b0",
+   "q_sha256": "3145bbd15f4249416edb66a470515b1cec9c6e238d022678becac83af7b6491f",
+   "streams": [
+    {
+     "stream_id": 0,
+     "stream_seed": 1015543850987425816,
+     "batch_manifest_path": "outputs/e3_confirmatory/v07/seed_2036/e2_stream_manifests/state_step_076/e2_stream_000_batches.json",
+     "batch_manifest_sha256": "5fc930ffa79a32e317fe382a87264baf938349c1db046d5f769734b48e368e58",
+     "n_batches": 64,
+     "covers_optimizer_steps": 32
+    },
+    {
+     "stream_id": 1,
+     "stream_seed": 2458238891876389223,
+     "batch_manifest_path": "outputs/e3_confirmatory/v07/seed_2036/e2_stream_manifests/state_step_076/e2_stream_001_batches.json",
+     "batch_manifest_sha256": "24771eca49da10cc68701f1c6f0c60a2f0cb3252128636cbbd784504cb1072ce",
+     "n_batches": 64,
+     "covers_optimizer_steps": 32
+    }
+   ]
+  }
+ ],
+ "trajectory_window": "anchor lookahead horizons 1..4; per age k in {1,2,4} the pending native step is stream horizon k+1 and the fresh H=4 lookahead covers stream horizons k+1..k+4 (max horizon 8 <= 32 covered by manifests); the baseline no-op trajectory z_tau..z_(tau+4) uses stream horizons 1..4; NO new batches generated; maximum window tau+4+H covered by frozen manifests",
+ "candidate_split_identity": {
+  "source": "outputs/fr_decision_utility_v01/data_group_definition.json",
+  "sha256": "6e617cd76df8d5ca3ac84c892397b2cb75bf96bb8d628cca50a5582e19add5ad",
+  "n_groups": 4,
+  "construction": "frozen per-stream-seed deterministic hash-group candidate batches (candidate_batches_for, local Philox); same candidate batches at every age; candidate gradients always recomputed at current theta_t"
+ },
+ "score_eval_identity": {
+  "v_score_split": {
+   "source": "outputs/fr_decision_utility_v01/validation_split.json",
+   "sha256": "6ed8aeb58a1976414e2ed406bb76c126b082c379b028f9894c4a30048cbfc0f0"
+  },
+  "v_eval_split": {
+   "source": "outputs/fr_decision_utility_v01/validation_split.json",
+   "sha256": "6ed8aeb58a1976414e2ed406bb76c126b082c379b028f9894c4a30048cbfc0f0"
+  }
+ },
+ "model_config_identity": {
+  "config_path": "research/configs/e3c_confirmatory_v07.json",
+  "sha256": "6d81ca45a9b37206837523aa74c8ab8d0a649323aa03d431be8693cb54be1587",
+  "dtype": "bfloat16",
+  "accumulation_steps": 2,
+  "grad_clip": 1.0,
+  "hidden_size": 256,
+  "num_hidden_layers": 4,
+  "n_trainable_params": 4980000
+ },
+ "implementations": {
+  "exact_shared_adjoint_path": {
+   "note": "frozen production entry mirrored call-for-call by a0j module; fp32-HVP config (production candidate)",
+   "files": {
+    "research/scripts/a0h15_production_entry_v01.py": "417564552e973d9664715e815bb7a6049409a5988bd7e9b763ff73dc565e7933",
+    "research/scripts/a0h_adjoint_dev_check_v01.py": "f89de8336d54a8e037a9ecd7474a6ad1950ff0e32353453c3e8e713e8d5fa225",
+    "research/src/fr/a0h_adjoint_v01.py": "0f1e68b62ff1a10e1cc7ea5c8e774b03e247d468e49d42c7fd6cc2292184273e",
+    "research/src/fr/a0c_adamw_response_propagation_v01.py": "7b1dde12db88986eba889b5bf9a79e5d73327b67cc0bbebbfc8194b39caec433",
+    "research/scripts/a0g_decision_utility_v01.py": "55884820477805c7601193ad29621a41b23f8eb6fba7418c30cb03becb5a19c5",
+    "research/src/fr/a0g_decision_utility_v01.py": "808d6c6101628c7b0bb3f0d5397131c42ca237a55b31a608330ea8c11938f015"
+   }
+  },
+  "a0j_cached_p_implementation": {
+   "note": "this round's module: apply_Gt_T extraction + aged decision orchestration + replay",
+   "module_path": "research/src/fr/a0j_future_sensitivity_cache_v01.py",
+   "module_sha256": "3ee5ded97ee8bf573e7de3b4f67854553c3c3f2041f185cf4b52e5a86e755953",
+   "module_sha256_change_note": "chain of pre-results fixes (no cache-age result was viewed before any of them): 246c3858... -> 9050ee06... (timer split) -> 7743b1d8... (norm_p + guards) -> 3ee5ded97ee8bf573e7de3b4f67854553c3c3f2041f185cf4b52e5a86e755953 (SEMANTIC MIRROR FIX: the pending horizon's optimizer step was missing after clip, so horizons age+2..age+H ran on an unstepped state with accumulating grads; found by the gate-failure diagnosis probes (per-call state trace), not by viewing cache results; the mirror now reproduces production run_adjoint_only scores bitwise on the probe unit; 12/12 CPU tests re-passed)",
+   "test_path": "research/tests/test_a0j_cache_v01.py",
+   "test_sha256": "2e48728f29428848623ac9b5bce662fab511634e1821376db2baa7c801bb5ede"
+  },
+  "runner_hashes_recorded_at_first_gpu_run": "method_fingerprints.json captures the runner source hashes as executed (recorded at P0 launch)"
+ },
+ "contract_sha256": "9a306711e0ef7e86eb3bb9b8b9ba3d81db83687c239d821870c52db83ab5d4c3",
+ "module_sha256": "fa62027ba0a62d52cbdbe4de01322e973f611f9d67eb01c7f56558006dcd260a",
+ "module_sha256_change_note": " | 5th: 3ee5ded9->fa62027ba0a62d52cbdbe4de01322e973f611f9d67eb01c7f56558006dcd260a replay branch ImportError fix (stable_hash import path .a0g_decision_utility_v01 -> .hashing); infra/serialization-class retry under frozen manifest/algorithm; aged_decision_pass/decision logic UNTOUCHED; decisions_frozen.json unchanged; no cache results viewed between attempt and fix"
+}

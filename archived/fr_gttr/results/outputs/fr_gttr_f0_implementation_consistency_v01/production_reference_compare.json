@@ -1,0 +1,182 @@
+{
+  "module_file": "/home/b205/projects/fluctuation_response/research/src/fr/f0_terminal_rule_v01.py",
+  "module_sha": "ae4de2d31017b66c66a526bde8594ed7aa7f86fead1576d5fe0e26fadb1c7af9",
+  "cases": [
+    {
+      "tau": 0.02,
+      "horizon": 16,
+      "module_file": "/home/b205/projects/fluctuation_response/research/src/fr/f0_terminal_rule_v01.py",
+      "module_sha": "ae4de2d31017b66c66a526bde8594ed7aa7f86fead1576d5fe0e26fadb1c7af9",
+      "max_diff_theta": 0.0,
+      "max_diff_m": 8.673617379884035e-19,
+      "max_diff_v": 0.0,
+      "max_diff_S_theta": 2.168404344971009e-19,
+      "max_diff_S_m": 3.3881317890172014e-21,
+      "max_diff_S_v": 1.2407709188295415e-24,
+      "first_divergence": null,
+      "grad_prod": [
+        -0.00023368228154806723,
+        0.0001756239475066409
+      ],
+      "grad_max_abs_err": 5.421010862427522e-20,
+      "PASS": true
+    },
+    {
+      "tau": 0.02,
+      "horizon": 32,
+      "module_file": "/home/b205/projects/fluctuation_response/research/src/fr/f0_terminal_rule_v01.py",
+      "module_sha": "ae4de2d31017b66c66a526bde8594ed7aa7f86fead1576d5fe0e26fadb1c7af9",
+      "max_diff_theta": 0.0,
+      "max_diff_m": 1.734723475976807e-18,
+      "max_diff_v": 0.0,
+      "max_diff_S_theta": 4.336808689942018e-19,
+      "max_diff_S_m": 1.3552527156068805e-20,
+      "max_diff_S_v": 1.6543612251060553e-24,
+      "first_divergence": null,
+      "grad_prod": [
+        -0.0009369686472056324,
+        0.0006232532909599209
+      ],
+      "grad_max_abs_err": 0.0,
+      "PASS": true
+    },
+    {
+      "tau": 0.02,
+      "horizon": 256,
+      "module_file": "/home/b205/projects/fluctuation_response/research/src/fr/f0_terminal_rule_v01.py",
+      "module_sha": "ae4de2d31017b66c66a526bde8594ed7aa7f86fead1576d5fe0e26fadb1c7af9",
+      "max_diff_theta": 0.0,
+      "max_diff_m": 1.734723475976807e-18,
+      "max_diff_v": 0.0,
+      "max_diff_S_theta": 1.734723475976807e-18,
+      "max_diff_S_m": 1.0842021724855044e-19,
+      "max_diff_S_v": 1.0587911840678754e-22,
+      "first_divergence": null,
+      "grad_prod": [
+        -0.011247613716693215,
+        -0.0019446125090167106
+      ],
+      "grad_max_abs_err": 0.0,
+      "PASS": true
+    },
+    {
+      "tau": 0.25,
+      "horizon": 16,
+      "module_file": "/home/b205/projects/fluctuation_response/research/src/fr/f0_terminal_rule_v01.py",
+      "module_sha": "ae4de2d31017b66c66a526bde8594ed7aa7f86fead1576d5fe0e26fadb1c7af9",
+      "max_diff_theta": 0.0,
+      "max_diff_m": 0.0,
+      "max_diff_v": 0.0,
+      "max_diff_S_theta": 4.336808689942018e-19,
+      "max_diff_S_m": 2.710505431213761e-20,
+      "max_diff_S_v": 5.293955920339377e-23,
+      "first_divergence": null,
+      "grad_prod": [
+        -0.0018727173780318594,
+        0.0014116465226056843
+      ],
+      "grad_max_abs_err": 0.0,
+      "PASS": true
+    },
+    {
+      "tau": 0.25,
+      "horizon": 32,
+      "module_file": "/home/b205/projects/fluctuation_response/research/src/fr/f0_terminal_rule_v01.py",
+      "module_sha": "ae4de2d31017b66c66a526bde8594ed7aa7f86fead1576d5fe0e26fadb1c7af9",
+      "max_diff_theta": 0.0,
+      "max_diff_m": 0.0,
+      "max_diff_v": 0.0,
+      "max_diff_S_theta": 8.673617379884035e-19,
+      "max_diff_S_m": 4.336808689942018e-19,
+      "max_diff_S_v": 1.6940658945086007e-21,
+      "first_divergence": null,
+      "grad_prod": [
+        -0.007604961976843249,
+        0.005052371958328742
+      ],
+      "grad_max_abs_err": 0.0,
+      "PASS": true
+    },
+    {
+      "tau": 0.25,
+      "horizon": 256,
+      "module_file": "/home/b205/projects/fluctuation_response/research/src/fr/f0_terminal_rule_v01.py",
+      "module_sha": "ae4de2d31017b66c66a526bde8594ed7aa7f86fead1576d5fe0e26fadb1c7af9",
+      "max_diff_theta": 2.7755575615628914e-17,
+      "max_diff_m": 2.0816681711721685e-17,
+      "max_diff_v": 0.0,
+      "max_diff_S_theta": 2.7755575615628914e-17,
+      "max_diff_S_m": 1.5612511283791264e-17,
+      "max_diff_S_v": 1.0842021724855044e-19,
+      "first_divergence": null,
+      "grad_prod": [
+        -0.04404842805195632,
+        -0.007706276946565666
+      ],
+      "grad_max_abs_err": 0.0,
+      "PASS": true
+    },
+    {
+      "tau": 100.0,
+      "horizon": 16,
+      "module_file": "/home/b205/projects/fluctuation_response/research/src/fr/f0_terminal_rule_v01.py",
+      "module_sha": "ae4de2d31017b66c66a526bde8594ed7aa7f86fead1576d5fe0e26fadb1c7af9",
+      "max_diff_theta": 0.0,
+      "max_diff_m": 0.0,
+      "max_diff_v": 0.0,
+      "max_diff_S_theta": 8.673617379884035e-19,
+      "max_diff_S_m": 1.0842021724855044e-19,
+      "max_diff_S_v": 4.235164736271502e-22,
+      "first_divergence": null,
+      "grad_prod": [
+        -0.003037961401885363,
+        0.0022873755073696523
+      ],
+      "grad_max_abs_err": 0.0,
+      "PASS": true
+    },
+    {
+      "tau": 100.0,
+      "horizon": 32,
+      "module_file": "/home/b205/projects/fluctuation_response/research/src/fr/f0_terminal_rule_v01.py",
+      "module_sha": "ae4de2d31017b66c66a526bde8594ed7aa7f86fead1576d5fe0e26fadb1c7af9",
+      "max_diff_theta": 0.0,
+      "max_diff_m": 0.0,
+      "max_diff_v": 0.0,
+      "max_diff_S_theta": 6.938893903907228e-18,
+      "max_diff_S_m": 1.734723475976807e-18,
+      "max_diff_S_v": 1.6940658945086007e-21,
+      "first_divergence": null,
+      "grad_prod": [
+        -0.012340164393274634,
+        0.00814522602289749
+      ],
+      "grad_max_abs_err": 1.734723475976807e-18,
+      "PASS": true
+    },
+    {
+      "tau": 100.0,
+      "horizon": 256,
+      "module_file": "/home/b205/projects/fluctuation_response/research/src/fr/f0_terminal_rule_v01.py",
+      "module_sha": "ae4de2d31017b66c66a526bde8594ed7aa7f86fead1576d5fe0e26fadb1c7af9",
+      "max_diff_theta": 1.3877787807814457e-17,
+      "max_diff_m": 1.734723475976807e-17,
+      "max_diff_v": 0.0,
+      "max_diff_S_theta": 5.551115123125783e-17,
+      "max_diff_S_m": 4.163336342344337e-17,
+      "max_diff_S_v": 1.734723475976807e-18,
+      "first_divergence": null,
+      "grad_prod": [
+        -0.032690952707508034,
+        -0.004185526702411828
+      ],
+      "grad_max_abs_err": 6.938893903907228e-18,
+      "PASS": true
+    }
+  ],
+  "rule_derivative_check": {
+    "autograd_jac_err": 6.505213034913027e-19,
+    "sum_eta_rel_err": 0.0
+  },
+  "all_pass": true
+}

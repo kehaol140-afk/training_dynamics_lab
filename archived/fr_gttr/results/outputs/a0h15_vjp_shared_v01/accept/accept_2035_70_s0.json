@@ -1,0 +1,189 @@
+{
+ "state": "dev:2035/70",
+ "stream_id": 0,
+ "wall_seconds": 11.492246803998569,
+ "methods": {
+  "C|1": {
+   "rows": [
+    {
+     "j": 1,
+     "hhat_fwd": -0.0009570684818813306,
+     "hhat_adj": -0.0009570685595324559,
+     "abs_diff": 7.765112533010543e-11,
+     "tol": 1.095706848188133e-06,
+     "pass": true
+    },
+    {
+     "j": 2,
+     "hhat_fwd": -0.00042671808090272254,
+     "hhat_adj": -0.000426718110688874,
+     "abs_diff": 2.9786151464154115e-11,
+     "tol": 1.0426718080902721e-06,
+     "pass": true
+    },
+    {
+     "j": 3,
+     "hhat_fwd": -0.0007638975303348808,
+     "hhat_adj": -0.0007638975994745093,
+     "abs_diff": 6.913962859265294e-11,
+     "tol": 1.076389753033488e-06,
+     "pass": true
+    },
+    {
+     "j": 4,
+     "hhat_fwd": -0.002050068871394431,
+     "hhat_adj": -0.0020500690683938967,
+     "abs_diff": 1.9699946578535799e-10,
+     "tol": 1.205006887139443e-06,
+     "pass": true
+    }
+   ],
+   "elementwise_pass_frozen_gate": true,
+   "fwd_ranking": [
+    4,
+    1,
+    3,
+    2,
+    0
+   ],
+   "fwd_chosen_id": 4,
+   "adj_ranking": [
+    4,
+    1,
+    3,
+    2,
+    0
+   ],
+   "adj_chosen_id": 4,
+   "decision_match": true,
+   "noop_score": 0.0,
+   "choose_noop": false,
+   "best_active_score": -0.0020500690683938967,
+   "margin": -0.0010930005088614408
+  },
+  "C|4": {
+   "rows": [
+    {
+     "j": 1,
+     "hhat_fwd": -0.0012532592124488572,
+     "hhat_adj": -0.0012525705437661536,
+     "abs_diff": 6.886686827036002e-07,
+     "tol": 1.1253259212448856e-06,
+     "pass": true
+    },
+    {
+     "j": 2,
+     "hhat_fwd": -0.0042911668399984075,
+     "hhat_adj": -0.004291197426912727,
+     "abs_diff": 3.058691431905014e-08,
+     "tol": 1.4291166839998407e-06,
+     "pass": true
+    },
+    {
+     "j": 3,
+     "hhat_fwd": -0.002956703015662854,
+     "hhat_adj": -0.0029564380352965027,
+     "abs_diff": 2.649803663512876e-07,
+     "tol": 1.2956703015662855e-06,
+     "pass": true
+    },
+    {
+     "j": 4,
+     "hhat_fwd": -0.003589939825195558,
+     "hhat_adj": -0.003588841380664714,
+     "abs_diff": 1.0984445308441504e-06,
+     "tol": 1.3589939825195558e-06,
+     "pass": true
+    }
+   ],
+   "elementwise_pass_frozen_gate": true,
+   "fwd_ranking": [
+    2,
+    4,
+    3,
+    1,
+    0
+   ],
+   "fwd_chosen_id": 2,
+   "adj_ranking": [
+    2,
+    4,
+    3,
+    1,
+    0
+   ],
+   "adj_chosen_id": 2,
+   "decision_match": true,
+   "noop_score": 0.0,
+   "choose_noop": false,
+   "best_active_score": -0.004291197426912727,
+   "margin": -0.0007023560462480127
+  },
+  "C|8": {
+   "rows": [
+    {
+     "j": 1,
+     "hhat_fwd": -0.004308115448074451,
+     "hhat_adj": -0.004308873977859927,
+     "abs_diff": 7.585297854759143e-07,
+     "tol": 1.430811544807445e-06,
+     "pass": true
+    },
+    {
+     "j": 2,
+     "hhat_fwd": -0.005044185083499327,
+     "hhat_adj": -0.005043722510023896,
+     "abs_diff": 4.6257347543088995e-07,
+     "tol": 1.5044185083499328e-06,
+     "pass": true
+    },
+    {
+     "j": 3,
+     "hhat_fwd": -0.00371446066284758,
+     "hhat_adj": -0.0037138742420606036,
+     "abs_diff": 5.864207869763459e-07,
+     "tol": 1.371446066284758e-06,
+     "pass": true
+    },
+    {
+     "j": 4,
+     "hhat_fwd": -0.004727673179545789,
+     "hhat_adj": -0.004727031340071281,
+     "abs_diff": 6.418394745081463e-07,
+     "tol": 1.4727673179545788e-06,
+     "pass": true
+    }
+   ],
+   "elementwise_pass_frozen_gate": true,
+   "fwd_ranking": [
+    2,
+    4,
+    1,
+    3,
+    0
+   ],
+   "fwd_chosen_id": 2,
+   "adj_ranking": [
+    2,
+    4,
+    1,
+    3,
+    0
+   ],
+   "adj_chosen_id": 2,
+   "decision_match": true,
+   "noop_score": 0.0,
+   "choose_noop": false,
+   "best_active_score": -0.005043722510023896,
+   "margin": -0.00031669116995261537
+  }
+ },
+ "shared_w0_norm": {
+  "1": 0.05185817369120218,
+  "4": 0.17079291939221034,
+  "8": 0.2618928666271432
+ },
+ "disposition": "DEV_VALIDATION_ONLY",
+ "disposition_reason": "Batch A demoted to dev per read-once rule (acceptance_disposition_readonce.md); these results carry no acceptance status.",
+ "disposition_timestamp": "2026-09-15T04:06:33Z"
+}

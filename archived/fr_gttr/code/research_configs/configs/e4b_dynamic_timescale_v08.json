@@ -1,0 +1,53 @@
+{
+  "protocol_version": "E4B_DYNAMIC_LOWDIM_V08",
+  "study_role": "POST_CONFIRMATORY_EXPLORATORY_MECHANISM_DO_NOT_REWRITE_V07",
+  "source_q_rotation_config": "research/configs/e4b_q_rotation_v08.json",
+  "source_q_rotation_output": "outputs/e4b_dynamic_state/v08/q_rotation",
+  "confirmation_train_seeds": [2030, 2031, 2032, 2033, 2034, 2035, 2036, 2037],
+  "state_steps": [46, 52, 58, 64, 70, 76, 82],
+  "horizons": [1, 2, 4, 8, 12, 16, 24, 32],
+  "streams_per_state": 8,
+  "primary_exploratory_horizon": 8,
+  "supporting_horizons": [4, 12],
+  "branching_output_dir": "outputs/e4b_dynamic_state/v08/branching",
+  "tau_output_dir": "outputs/e4b_dynamic_state/v08/tau_q",
+  "branching_metric": {
+    "name": "D_q",
+    "definition": "sample std over future streams of R_q at fixed seed/state/H",
+    "ddof": 1
+  },
+  "screening": {
+    "baseline_model": "chi = seed_FE + state_fraction + B",
+    "candidate_model": "chi = seed_FE + state_fraction + B + z + B*z",
+    "standardization": "training-fold-only",
+    "promising_mean_relative_mae_gain_gt": 0.0,
+    "promising_folds_improved_gte": 6,
+    "promising_interaction_same_sign_folds_gte": 6
+  },
+  "tau_fit": {
+    "model": "Rbar_q(H) = c + (1-c)*exp(-H/tau_q)",
+    "tau_min": 0.1,
+    "tau_max": 512.0,
+    "coarse_log_grid_points": 4096,
+    "refine_log_grid_points": 2048,
+    "refine_rounds": 3,
+    "c_min": -1.0,
+    "c_max": 1.0,
+    "boundary_tolerance_fraction": 0.001,
+    "fit_status_good_median_r2_gte": 0.90,
+    "fit_status_good_success_fraction_gte": 1.0,
+    "fit_status_good_boundary_fraction_lte": 0.10,
+    "fit_status_mixed_median_r2_gte": 0.70,
+    "fit_status_mixed_success_fraction_gte": 0.95
+  },
+  "curve_collapse": {
+    "x_definition": "H/tau_q",
+    "x_bin_edges": [0.0, 0.25, 0.5, 1.0, 2.0, 4.0, 8.0, 16.0, 1e30],
+    "minimum_group_n": 16,
+    "supported_relative_rmse_gain_gte": 0.05,
+    "mixed_relative_rmse_gain_gt": 0.0,
+    "minimum_used_fraction_supported": 0.90,
+    "minimum_used_fraction_mixed": 0.80,
+    "note": "Descriptive only. Within each raw-H group or fixed H/tau bin, fit chi ~ seed_FE + state_fraction + B and compare pooled residual RMSE. No chi/B ratio is used."
+  }
+}

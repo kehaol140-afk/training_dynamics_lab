@@ -1,0 +1,269 @@
+{
+ "manifest_id": "A0H20_ACCEPTANCE_MANIFEST_V01",
+ "run_id": "A0H20_CORRECTED_ACCEPTANCE_V01",
+ "date": "2026-09-16",
+ "frozen_before_A_double_prime_exposure": true,
+ "contract_sha256": "b692ede3405cf49871bbbf01c829bcaed1e92e8e21e6749d9ac2530f89546b46",
+ "semantics": {
+  "action_ids": [
+   0,
+   1,
+   2,
+   3,
+   4
+  ],
+  "H": 4,
+  "lambda": 0.05,
+  "selected_id": "min(action_ids, key=(predicted_delta_loss_j=lambda*hhat_j, action_id)); no-op predicted 0.0; exact tie lowest id"
+ },
+ "dev_fixed": {
+  "action_id": 1,
+  "frozen_before_exposure": true,
+  "source": "old A' 3-state replay V_score gain_vs_noop (H=4, lambda=0.05, stream0)",
+  "per_action_equal_weight_mean_gain": {
+   "0": 0.0,
+   "1": 0.0004103382428487142,
+   "2": 8.960564931233725e-06,
+   "3": -3.17692756652832e-05,
+   "4": -1.4662742614746094e-05
+  },
+  "rule": "equal-weight per-state mean incl. no-op; argmax; tie lowest action_id"
+ },
+ "units": [
+  {
+   "unit_id": "2030_046_s0",
+   "train_seed": 2030,
+   "step": 46,
+   "checkpoint_path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2030/states/state_step_046.pt",
+   "q_sha256": "764b8a38287a29bd1cb628f22075db83a1e0799dec829b1b0262141d273edd45",
+   "stream_id": 0,
+   "stream_seed": 1935854561655614187,
+   "batch_manifest_sha256": "a34cad58e885c04a76244d1c4c414d2b14313addea8ac459ac43e5273b3765a0",
+   "H": 4,
+   "lambda": 0.05
+  },
+  {
+   "unit_id": "2030_046_s1",
+   "train_seed": 2030,
+   "step": 46,
+   "checkpoint_path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2030/states/state_step_046.pt",
+   "q_sha256": "764b8a38287a29bd1cb628f22075db83a1e0799dec829b1b0262141d273edd45",
+   "stream_id": 1,
+   "stream_seed": 3378549602544577594,
+   "batch_manifest_sha256": "54fcf7cad4d0d45f4e03ef3a9f37c632d2d8d68e7d95b245b8e09d7549d8865e",
+   "H": 4,
+   "lambda": 0.05
+  },
+  {
+   "unit_id": "2031_046_s0",
+   "train_seed": 2031,
+   "step": 46,
+   "checkpoint_path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2031/states/state_step_046.pt",
+   "q_sha256": "4ee2fdbf8dfb3439eb69f184592fddce4841980d3062a8cc6b75419b7bea0116",
+   "stream_id": 0,
+   "stream_seed": 2324727657366173976,
+   "batch_manifest_sha256": "d0100d6bdd24fc1537352c66ff09db66613d82fa691d1fe0ef345485e82860da",
+   "H": 4,
+   "lambda": 0.05
+  },
+  {
+   "unit_id": "2031_046_s1",
+   "train_seed": 2031,
+   "step": 46,
+   "checkpoint_path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2031/states/state_step_046.pt",
+   "q_sha256": "4ee2fdbf8dfb3439eb69f184592fddce4841980d3062a8cc6b75419b7bea0116",
+   "stream_id": 1,
+   "stream_seed": 3767422698255137383,
+   "batch_manifest_sha256": "99fda85b33ed6389571cccfbc68408723fd46c6071f1903256cdb7dd33293ba0",
+   "H": 4,
+   "lambda": 0.05
+  },
+  {
+   "unit_id": "2032_046_s0",
+   "train_seed": 2032,
+   "step": 46,
+   "checkpoint_path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2032/states/state_step_046.pt",
+   "q_sha256": "f63715891b348efd7a8aa0c68b1e27b7fbd755a6c75a875ae43ae31fa488273b",
+   "stream_id": 0,
+   "stream_seed": 2713600753076733765,
+   "batch_manifest_sha256": "37cb92124ee64fa3ebcbd56fd00da92ac7d519d83f9ceee8776e4933f219be37",
+   "H": 4,
+   "lambda": 0.05
+  },
+  {
+   "unit_id": "2032_046_s1",
+   "train_seed": 2032,
+   "step": 46,
+   "checkpoint_path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2032/states/state_step_046.pt",
+   "q_sha256": "f63715891b348efd7a8aa0c68b1e27b7fbd755a6c75a875ae43ae31fa488273b",
+   "stream_id": 1,
+   "stream_seed": 4156295793965697172,
+   "batch_manifest_sha256": "bd86cba6843fbcd162fca80f3312d4fe33d00237598a8865818f806a5535879a",
+   "H": 4,
+   "lambda": 0.05
+  },
+  {
+   "unit_id": "2033_046_s0",
+   "train_seed": 2033,
+   "step": 46,
+   "checkpoint_path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2033/states/state_step_046.pt",
+   "q_sha256": "72f69b85b1846feff22ac7a4dd54b9c4775a0a597628b8084ac8516c4f1ecb9d",
+   "stream_id": 0,
+   "stream_seed": 3102473848787293554,
+   "batch_manifest_sha256": "d03d1f47f6f0401a832341d75a26e8b99882f9820d10d867bccdf77947ddf526",
+   "H": 4,
+   "lambda": 0.05
+  },
+  {
+   "unit_id": "2033_046_s1",
+   "train_seed": 2033,
+   "step": 46,
+   "checkpoint_path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2033/states/state_step_046.pt",
+   "q_sha256": "72f69b85b1846feff22ac7a4dd54b9c4775a0a597628b8084ac8516c4f1ecb9d",
+   "stream_id": 1,
+   "stream_seed": 4545168889676256961,
+   "batch_manifest_sha256": "94028046681f4fba833f1e75077fd8ccbf4d4d75fc95ed6b44359250fa150039",
+   "H": 4,
+   "lambda": 0.05
+  },
+  {
+   "unit_id": "2034_046_s0",
+   "train_seed": 2034,
+   "step": 46,
+   "checkpoint_path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2034/states/state_step_046.pt",
+   "q_sha256": "f24f932635d1f1f6552c6e12a0a44a105cd4cea805e86e37964e22350fc0b2ee",
+   "stream_id": 0,
+   "stream_seed": 3491346944497853343,
+   "batch_manifest_sha256": "9ef8ff60bf8bdf7054657aa7b17c21184a1713f3c44f727b6030314013186f56",
+   "H": 4,
+   "lambda": 0.05
+  },
+  {
+   "unit_id": "2034_046_s1",
+   "train_seed": 2034,
+   "step": 46,
+   "checkpoint_path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2034/states/state_step_046.pt",
+   "q_sha256": "f24f932635d1f1f6552c6e12a0a44a105cd4cea805e86e37964e22350fc0b2ee",
+   "stream_id": 1,
+   "stream_seed": 4934041985386816750,
+   "batch_manifest_sha256": "47976cf3678db5713927e67a3abf8987ad357c8b9a354ebac56cb35ab1014fd0",
+   "H": 4,
+   "lambda": 0.05
+  },
+  {
+   "unit_id": "2035_046_s0",
+   "train_seed": 2035,
+   "step": 46,
+   "checkpoint_path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2035/states/state_step_046.pt",
+   "q_sha256": "a8d56de333d65713f0f745270fe4eea4912e1342e9ef9866be4379dd5abd2dc0",
+   "stream_id": 0,
+   "stream_seed": 3880220040208413132,
+   "batch_manifest_sha256": "2095ede9d95432f13800e885e351ea2c1f529e05107792e672aca5ecc13e7bb0",
+   "H": 4,
+   "lambda": 0.05
+  },
+  {
+   "unit_id": "2035_046_s1",
+   "train_seed": 2035,
+   "step": 46,
+   "checkpoint_path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2035/states/state_step_046.pt",
+   "q_sha256": "a8d56de333d65713f0f745270fe4eea4912e1342e9ef9866be4379dd5abd2dc0",
+   "stream_id": 1,
+   "stream_seed": 5322915081097376539,
+   "batch_manifest_sha256": "6892f858784b3bb7cf70794d2fbd79a1f458363abff2ffab94d2e1ec63568a2a",
+   "H": 4,
+   "lambda": 0.05
+  }
+ ],
+ "unit_fixed_order": [
+  "2030_046_s0",
+  "2030_046_s1",
+  "2031_046_s0",
+  "2031_046_s1",
+  "2032_046_s0",
+  "2032_046_s1",
+  "2033_046_s0",
+  "2033_046_s1",
+  "2034_046_s0",
+  "2034_046_s1",
+  "2035_046_s0",
+  "2035_046_s1"
+ ],
+ "dev_unit": {
+  "unit_id": "dev_2031_052_s0",
+  "train_seed": 2031,
+  "step": 52,
+  "stream_id": 0,
+  "H": 4,
+  "lambda": 0.05
+ },
+ "checkpoint_identity_sha256": {
+  "2030_046": "553ae69d89a0713f4f8f5dd6a5aab215eb71679177bc305980690872d29909e8",
+  "2031_046": "7b214cbd4ff806739bfa16af0df101d5024181e07f2c6e18a244b4999eee2d14",
+  "2032_046": "5f88bedbb2860172b066a157005a1763b38fc90c52b7983baf50fbba91ca70ea",
+  "2033_046": "480c76ff6ed4e379184f600d8adf3eedfb030e1aa7bdd663a1c11589a36d6433",
+  "2034_046": "42aa2966d552becb0eeda1896453a8384b54b1e1fdceffdc2d8bb7ec3907216d",
+  "2035_046": "baf26a6174eb30e3f4279da29dade056a0977c120a84bcd5b3f8d7e91e9114bb"
+ },
+ "exclusion_count": 9,
+ "source_hashes": {
+  "research/src/fr/a0g_decision_utility_v01.py": "808d6c6101628c7b0bb3f0d5397131c42ca237a55b31a608330ea8c11938f015",
+  "research/scripts/a0g_decision_utility_v01.py": "55884820477805c7601193ad29621a41b23f8eb6fba7418c30cb03becb5a19c5",
+  "research/scripts/a0h15_vjp_diagnostics_v01.py": "5e8a56abb45b9288eef4331f8ee71d87b50308e5b70f2d8fb6c3f4b163220966",
+  "research/scripts/a0h15_production_entry_v01.py": "417564552e973d9664715e815bb7a6049409a5988bd7e9b763ff73dc565e7933",
+  "research/scripts/a0h15_accept_aprime_v01.py": "7e6f2d3054049f8da247d8f62294cccb50262fdf3d0f63aca77a410baa000c2d",
+  "research/scripts/a0h20_contract_v01.py": "5f151d28e174538e449be704eeccb20ac7524c39719bbd4e22440cc320f4c4e8",
+  "research/scripts/a0h20_manifest_v01.py": "57e910e060b77979c840af1d13c2e22456ccc34ea6603e1bf533f89f8f5232a0",
+  "research/scripts/a0h20_corrected_accept_v01.py": "5310aee7b29d9ede1aa83fb1961f4448842209cfb10159fecad26ed9c7aa219f",
+  "research/tests/test_a0h20_acceptance_v01.py": "7ba613632954a10c21340f12a8221c14e1e793218810f9d0158e4822ec34e66d",
+  "outputs/fr_decision_utility_v01/validation_split.json": "6ed8aeb58a1976414e2ed406bb76c126b082c379b028f9894c4a30048cbfc0f0",
+  "outputs/e3_confirmatory/v07/PREREG_LOCK.json": "6e74215685b42a732d8a241140c7a7e851355b456dd1d98337e4a4fd36ae5457"
+ },
+ "aggregation_rule": "per-unit Gain/delta -> per-state mean over its 2 streams -> equal weight over 6 states; ALL units incl. no-op/harmful; no post-hoc denoising/thresholds",
+ "bootstrap": {
+  "design": "seed->state->stream hierarchical paired",
+  "n": 10000,
+  "rng_seed": 260916,
+  "interval": "95% percentile",
+  "note": "exploratory only; not a p-value"
+ },
+ "commands": {
+  "env": "conda env fr_minimind; PYTHONPATH=research/src; CUDA_VISIBLE_DEVICES=1",
+  "dev_rehearsal": "python research/scripts/a0h20_corrected_accept_v01.py --phase dev --seed 2031 --step 52 --stream 0",
+  "batch": "python research/scripts/a0h20_corrected_accept_v01.py --phase batch --manifest outputs/a0h_corrected_accept_v01/acceptance_manifest.json",
+  "cpu_tests": "python -m unittest research.tests.test_a0h20_acceptance_v01 -v"
+ },
+ "fixed_execution_order": [
+  "1. CPU unit tests (selector 7 + interface checks)",
+  "2. dev rehearsal on dev_2031_052_s0 (full chain, timed, GPU budget log start)",
+  "3. P1 scorers for all 12 units -> predictions/ + choices_pre_eval (locked, hashed; no-op explicit)",
+  "4. P2 same-config FP32 numerical gate -> gate.json (any fail -> STOPPED_AT_NUMERICAL_GATE)",
+  "5. P3 per-unit 5-action dual-label replay -> labels/ (score labels first, lock replay-score choice, then eval labels)",
+  "6. P4 analysis reads eval only after all choices locked"
+ ],
+ "gpu_budget": {
+  "cap_seconds": 1800,
+  "scope": "dev rehearsal + all batch GPU work, summed",
+  "log": "outputs/a0h_corrected_accept_v01/gpu_budget_log.json",
+  "waiting_total_max_minutes": 10,
+  "no_external_kill": true
+ },
+ "failure_retry_rules": {
+  "infra_interruption": "resume same fingerprint/manifest/fixed order; never overwrite successful records",
+  "numeric_selection_label_change_informed_by_scores": "whole batch demoted; independent acceptance ends",
+  "serialization_only_fix": "requires proof of no numeric/choice change else demote",
+  "gate_failure": "NUMERICAL_GATE=FAIL -> COMPLETION_STATUS=STOPPED_AT_NUMERICAL_GATE, UTILITY_PILOT_RESULT=NOT_COVERED; keep failures; no passing-subset continuation; no re-batch",
+  "reduced_batch": "3-5 eligible states -> register reduced batch BEFORE opening results; <3 states or <2 legal streams/state -> NO_ELIGIBLE_BATCH (ledger+manifest only)"
+ },
+ "eval_isolation": "V_eval 5-action labels written separately; selectors/thresholds/sample selection never read eval; analysis reads eval only after ALL choices locked; interface tests verify",
+ "implementation_notes": [
+  {
+   "date": "2026-09-16",
+   "note": "P1 scorers use production-entry forward_only/adjoint_only modes at H_dec=4 (round-2 selfcheck: bit-identical to frozen diag pass at same config). Multi-H diag pass exercised once in dev rehearsal; H=1/H=8 diffs are diagnostic-only per contract; main analysis is H=4-only. Rationale: 1800s GPU budget. No score read; no numeric/selection/label logic change."
+  },
+  {
+   "date": "2026-09-16",
+   "note": "dev phase budget logging added retroactively (serialization-only; wall reconstructed from preload-end to report mtime; no numeric/choice effect)"
+  }
+ ]
+}

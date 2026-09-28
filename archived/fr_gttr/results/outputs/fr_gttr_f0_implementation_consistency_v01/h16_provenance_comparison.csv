@@ -1,0 +1,21 @@
+field,old_scan_h16,CALFIX_h16,verdict
+run_id,f0_diag_small_T,CALFIX-1,MATCHED
+source_sha,NOT_RECOVERABLE,ae4de2d3…,NOT_RECOVERABLE
+state,seed2030/start46/bank,seed2030/start46/bank,MATCHED
+n0,46,46,MATCHED
+true_parameter_step,47..62,47..62,MATCHED
+schedule_total,16 (build_w(16)->Z over 16 items),256 (build_w(256)->Z over 256),CONFIRMED_DIFFERENCE
+executed_updates,16,256,MATCHED
+readout_h,16,16/32/256,MATCHED
+first_batch,same stream micros 0..31,same stream micros 0..31,MATCHED
+stream_id,202609250400,202609250400,MATCHED
+rng_recipe,seed_future_stream,seed_future_stream,MATCHED
+gm_at_lr_call,NOT_RECOVERABLE,94..606,NOT_RECOVERABLE
+target_id,random_linear_target（randn fixed seed),V_design_monitor_FP32_MATH_sumcount_v1,CONFIRMED_DIFFERENCE
+target_count,4(参数数),475330(全库有效token),CONFIRMED_DIFFERENCE
+reduction,dot(target·theta),sum/count,CONFIRMED_DIFFERENCE
+mode,eval,eval,MATCHED
+dtype,fp32(FP64 dot),fp32(FP64 dot),MATCHED
+backend,MATH SDPA,MATH SDPA,MATCHED
+sens_q_normalization,raw grad (未除count),raw grad (未除count -> D3缺陷),MATCHED(同一缺陷)
+init_sensitivity_alias,原版(浅拷贝),修复版(独立),CONFIRMED_DIFFERENCE(生产主循环零初始化不受影响)

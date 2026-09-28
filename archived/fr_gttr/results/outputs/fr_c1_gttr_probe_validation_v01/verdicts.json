@@ -1,0 +1,188 @@
+{
+ "C0_RULE_REVIEW": {
+  "X1_halfbank_gate": "ERRATUM_REQUIRED",
+  "X2_floor_correction": "CONSISTENT_RECOMPUTED (floor2 same-probe; all flags recomputed offline)",
+  "X3_axis": "UNCHANGED (A0T vs C0-v_eval AXIS_MISMATCH stands)",
+  "X4_ledger": "UNCHANGED (417 approved; reconciled 17,994/18,000)",
+  "overall": "ERRATUM_REQUIRED",
+  "note": "C0 正式判定只由 C0X 按原规则计算；C1 不作为 C0 的重新验收"
+ },
+ "C1_EXECUTION": {
+  "verdict": "PARTIAL",
+  "within_caps": true,
+  "round_total_counters": {
+   "optimizer_updates": 45,
+   "grad_evals": 605,
+   "hvp_calls": 304,
+   "micro_forward_calls": 1801
+  },
+  "caps": {
+   "optimizer_updates_max": 192,
+   "grad_evals_max": 1400,
+   "hvp_calls_max": 416,
+   "micro_forward_calls_max": 3200,
+   "gpu_wall_s_max": 5400
+  },
+  "smoke_gates_pass": true,
+  "order_integrity": {
+   "ok": true,
+   "detail": [
+    {
+     "anchor": "R/A/t0",
+     "ok": true,
+     "pred_idx": 0,
+     "audit_idx": 1
+    },
+    {
+     "anchor": "R/Bp/t16",
+     "ok": true,
+     "pred_idx": 2,
+     "audit_idx": 3
+    },
+    {
+     "anchor": "C/A/t0",
+     "ok": true,
+     "pred_idx": 4,
+     "audit_idx": 5
+    },
+    {
+     "anchor": "C/Bp/t16",
+     "ok": true,
+     "pred_idx": 6,
+     "audit_idx": 7
+    }
+   ],
+   "predictions_mtime_lt_records_mtime": true
+  },
+  "decomposition_identity_ok": true,
+  "failed_attempts_counted": [
+   "main run 1 (pre-fix)"
+  ],
+  "coverage": "4/6 anchors (A/t0, Bp/t16 per cell); A/t48 not measured: full 6-anchor plan would need 432 HVPs round-total (>416) after counting the failed first attempt (32) and smoke (16)",
+  "reason": "执行与防泄漏顺序干净、round 预算内；覆盖对称减至 4/6 anchor（round HVP cap 计入失败首跑后 432>416）"
+ },
+ "SAME_PROBE_APPROXIMATION": {
+  "per_anchor": [
+   {
+    "anchor": "C/A/t0",
+    "channel": "field",
+    "M0_err_norm": 0.05237562921251234,
+    "same_probe_err_norm": 0.00344152593137406,
+    "better_than_M0": true
+   },
+   {
+    "anchor": "C/A/t0",
+    "channel": "shadow",
+    "M0_err_norm": 0.0038575626287699703,
+    "same_probe_err_norm": 0.0006078391482413709,
+    "better_than_M0": true
+   },
+   {
+    "anchor": "C/Bp/t16",
+    "channel": "field",
+    "M0_err_norm": 0.086930845202521,
+    "same_probe_err_norm": 0.021998064429511667,
+    "better_than_M0": true
+   },
+   {
+    "anchor": "C/Bp/t16",
+    "channel": "shadow",
+    "M0_err_norm": 0.007946060142902675,
+    "same_probe_err_norm": 0.0033310078631799494,
+    "better_than_M0": true
+   },
+   {
+    "anchor": "R/A/t0",
+    "channel": "field",
+    "M0_err_norm": 0.05194293897078359,
+    "same_probe_err_norm": 0.005366018315177526,
+    "better_than_M0": true
+   },
+   {
+    "anchor": "R/A/t0",
+    "channel": "shadow",
+    "M0_err_norm": 0.004518238288828804,
+    "same_probe_err_norm": 0.000976995898706442,
+    "better_than_M0": true
+   },
+   {
+    "anchor": "R/Bp/t16",
+    "channel": "field",
+    "M0_err_norm": 0.17373732871630437,
+    "same_probe_err_norm": 0.05893792694006318,
+    "better_than_M0": true
+   },
+   {
+    "anchor": "R/Bp/t16",
+    "channel": "shadow",
+    "M0_err_norm": 0.01886120008970597,
+    "same_probe_err_norm": 0.00978227814732817,
+    "better_than_M0": true
+   }
+  ],
+  "summary": "8/8 anchor-channels beat M0 (zero prediction) under the same-probe approximation",
+  "resolution_note": "resolvability per probe_summary (3SE, floor=0)"
+ },
+ "INDEPENDENT_BANK_PREDICTION": {
+  "E_K32_per_cell": {
+   "C": 0.3981517546881647,
+   "R": 0.5048995678135464
+  },
+  "E_halves_per_cell": {
+   "C": [
+    0.3856180241346428,
+    0.69364648368314
+   ],
+   "R": [
+    0.6995302513022768,
+    0.4968051482746706
+   ]
+  },
+  "distinct_t_resolvable": {
+   "C": 2,
+   "R": 2
+  },
+  "coverage": "4/6 anchors (A/t0, Bp/t16 per cell); A/t48 not measured: full 6-anchor plan would need 432 HVPs round-total (>416) after counting the failed first attempt (32) and smoke (16)",
+  "verdict": "LOCAL_SUPPORT_ON_SELECTED_ANCHORS",
+  "verdict_note": "gate statistics missing"
+ },
+ "SHADOW_PREDICTION": {
+  "E_K32_per_cell": {
+   "C": 0.584811866934942,
+   "R": 0.6673477883361788
+  },
+  "E_halves_per_cell": {
+   "C": [
+    0.6034531357705302,
+    0.9798531347867289
+   ],
+   "R": [
+    0.8724961922279462,
+    0.6320979717306452
+   ]
+  },
+  "distinct_t_resolvable": {
+   "C": 1,
+   "R": 1
+  },
+  "coverage": "4/6 anchors (A/t0, Bp/t16 per cell); A/t48 not measured: full 6-anchor plan would need 432 HVPs round-total (>416) after counting the failed first attempt (32) and smoke (16)",
+  "verdict": "UNRESOLVED",
+  "verdict_note": "E gates pass; >=2-distinct-t resolvability precondition not established (t0 shadow targets below 3SE floor at all measured K)"
+ },
+ "ERROR_DECOMPOSITION": {
+  "cross_term_range": [
+   -0.00012125527051998466,
+   0.0004946255624152948
+  ],
+  "abs_cross_over_e_sq": [
+   0.017810451250956632,
+   0.1942372956910265
+  ],
+  "identity_residual_max": 8.673617379884035e-19,
+  "verdict": "MIXED",
+  "note": "cross term reported and kept; no norm-percentage attribution; sign/magnitude varies by anchor"
+ },
+ "FUTURE_H16_H64_PREDICTION": "NOT_TESTED",
+ "ADAPTIVE_TRAINING_VALUE": "NOT_TESTED",
+ "ENERGY_BENEFIT": "NOT_TESTED"
+}

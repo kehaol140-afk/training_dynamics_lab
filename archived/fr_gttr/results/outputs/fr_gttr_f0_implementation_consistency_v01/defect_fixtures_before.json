@@ -1,0 +1,35 @@
+{
+  "D4": {
+    "expected": "eta[:16] \u5e94\u53d6\u81ea T256 \u5168\u89c4\u5219\uff08Z \u5bf9 256 \u9879\u5f52\u4e00\uff09",
+    "failing_input": "phi=(0.1,-0.2), rollout T=16\uff08\u73b0\u884c ref32/native rollout \u7528 build_w(T)\uff09",
+    "before_output": {
+      "eta16_first3": [
+        0.0008184913510151247,
+        0.0008058813192076644,
+        0.0007931932383480977
+      ],
+      "eta256_first3": [
+        0.0009124392639630624,
+        0.0008983818299698016,
+        0.0008842373883135174
+      ],
+      "max_abs_diff_first16": 9.394791294793767e-05,
+      "sum_eta16": 0.011552341479497234,
+      "sum_eta256_prefix": 0.012878340062517818
+    },
+    "independent_expected": "eta[:16]==eta256[:16]\uff08\u5dee\u5e94=0\uff09"
+  },
+  "D3": {
+    "expected": "q = grad(V), V=sum/count -> q=grad(sum)/count",
+    "failing_input": "\u4e24 chunk \u6709\u6548 token 4/6\uff08\u4e0d\u540c\uff09\uff0ccount=10",
+    "before_output": {
+      "pattern_q_vs_mean_grad_max_ratio": 10.000001907348633,
+      "first_element_ratio": 10.0,
+      "count": 10
+    },
+    "independent_expected": {
+      "ratio_should_be": 1.0,
+      "pattern_is_count_times": 10
+    }
+  }
+}

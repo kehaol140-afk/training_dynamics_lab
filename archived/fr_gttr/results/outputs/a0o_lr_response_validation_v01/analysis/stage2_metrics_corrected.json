@@ -1,0 +1,15 @@
+{
+ "n": 24,
+ "direction_accuracy": 0.875,
+ "true_action_counts": {
+  "+1": 17,
+  "0": 3,
+  "-1": 4
+ },
+ "regret_median": 0.0,
+ "null_regret_median": 0.00048032402992248535,
+ "calibration_pearson_corrected": 0.9423961448914346,
+ "stage2_subset_central_fd_pearson": 0.9843842815832898,
+ "curvature_median_lp+lm-2l0": -0.000133514404296875,
+ "note": "calibration recomputed offline with chosen-branch slope; driver <= seq9 reported -0.2496 with inverted branch (runs/stage2_metrics.json left untouched)"
+}

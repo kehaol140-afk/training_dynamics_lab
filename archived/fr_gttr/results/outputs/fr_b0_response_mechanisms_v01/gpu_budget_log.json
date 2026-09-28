@@ -1,0 +1,174 @@
+{
+ "phases": [
+  {
+   "phase": "smoke",
+   "t_start": 467907.866778325,
+   "t_end": 467907.866778625,
+   "wall_s": 0.0,
+   "gpu": "cuda:0",
+   "detail": {
+    "snapshot_identity": true,
+    "crn_native_repeat": true,
+    "frozen_runner_agreement_endpoint": true,
+    "nested_readout_prefix_H4": true,
+    "pulse4_eq_persistent_H4_losses": true,
+    "pulse4_eq_persistent_H4_theta": true,
+    "release_m_v_retained_H16": false,
+    "release_theta_diverges_H16": true,
+    "release_native_lr_restored": true,
+    "pulse4_eq_persistent_H4_losses_negu": true,
+    "tokens_per_step_1024": true,
+    "n_micro_assert": true,
+    "eval_rng_isolation": true,
+    "budget_after_smoke": {
+     "smoke": 356
+    },
+    "ALL_PASS": false
+   },
+   "optimizer_updates": 356,
+   "eval_calls": 34,
+   "theta_bar_evals": 0,
+   "theta_captures": 17
+  },
+  {
+   "phase": "smoke",
+   "t_start": 468508.641131078,
+   "t_end": 468508.641131578,
+   "wall_s": 0.0,
+   "gpu": "cuda:0",
+   "detail": {
+    "snapshot_identity": true,
+    "crn_native_repeat": true,
+    "frozen_runner_agreement_endpoint": true,
+    "nested_readout_prefix_H4": true,
+    "pulse4_eq_persistent_H4_losses": true,
+    "pulse4_eq_persistent_H4_theta": true,
+    "pulse4_eq_persistent_H4_optstate": true,
+    "release_m_v_diverged_from_persistent_H16": true,
+    "release_m_v_retained_H16": true,
+    "release_theta_diverges_H16": true,
+    "release_native_lr_restored": true,
+    "pulse4_eq_persistent_H4_losses_negu": true,
+    "tokens_per_step_1024": true,
+    "n_micro_assert": true,
+    "eval_rng_isolation": true,
+    "budget_after_smoke": {
+     "smoke": 356
+    },
+    "ALL_PASS": true
+   },
+   "optimizer_updates": 356,
+   "eval_calls": 34,
+   "theta_bar_evals": 0,
+   "theta_captures": 17
+  },
+  {
+   "phase": "main_s2030_t46",
+   "t_start": 468830.3832088,
+   "t_end": 469014.167391426,
+   "wall_s": 183.784,
+   "gpu": "cuda:0",
+   "detail": {
+    "optimizer_updates": 2304
+   },
+   "optimizer_updates": 2304,
+   "eval_calls": 270,
+   "theta_bar_evals": 27,
+   "theta_captures": 108
+  },
+  {
+   "phase": "main_s2030_t82",
+   "t_start": 469014.168076526,
+   "t_end": 469194.442994045,
+   "wall_s": 180.275,
+   "gpu": "cuda:0",
+   "detail": {
+    "optimizer_updates": 4608
+   },
+   "optimizer_updates": 4608,
+   "eval_calls": 540,
+   "theta_bar_evals": 54,
+   "theta_captures": 216
+  },
+  {
+   "phase": "main_s2031_t46",
+   "t_start": 469194.443644145,
+   "t_end": 469375.998311184,
+   "wall_s": 181.555,
+   "gpu": "cuda:0",
+   "detail": {
+    "optimizer_updates": 6912
+   },
+   "optimizer_updates": 6912,
+   "eval_calls": 810,
+   "theta_bar_evals": 81,
+   "theta_captures": 324
+  },
+  {
+   "phase": "main_s2031_t82",
+   "t_start": 469375.999184684,
+   "t_end": 469557.393911287,
+   "wall_s": 181.395,
+   "gpu": "cuda:0",
+   "detail": {
+    "optimizer_updates": 9216
+   },
+   "optimizer_updates": 9216,
+   "eval_calls": 1080,
+   "theta_bar_evals": 108,
+   "theta_captures": 432
+  },
+  {
+   "phase": "main_s2032_t46",
+   "t_start": 469557.394739787,
+   "t_end": 469738.599810651,
+   "wall_s": 181.205,
+   "gpu": "cuda:0",
+   "detail": {
+    "optimizer_updates": 11520
+   },
+   "optimizer_updates": 11520,
+   "eval_calls": 1350,
+   "theta_bar_evals": 135,
+   "theta_captures": 540
+  },
+  {
+   "phase": "main_s2032_t82",
+   "t_start": 469738.600617551,
+   "t_end": 469919.476122065,
+   "wall_s": 180.876,
+   "gpu": "cuda:0",
+   "detail": {
+    "optimizer_updates": 13824
+   },
+   "optimizer_updates": 13824,
+   "eval_calls": 1620,
+   "theta_bar_evals": 162,
+   "theta_captures": 648
+  },
+  {
+   "phase": "stress",
+   "t_start": 1789906201.5805995,
+   "t_end": 1789906201.5806003,
+   "wall_s": null,
+   "gpu": "cuda:0",
+   "detail": {
+    "optimizer_updates": 384,
+    "note": "retroactively logged: stress_cells() in b0_run_v01.py originally omitted log_phase; numbers cross-checked against runs/driver_summary.json from the stress process (384=6x64 updates, 36=6x3Hx2 evals, 18=6x3 captures)"
+   },
+   "optimizer_updates": 384,
+   "eval_calls": 36,
+   "theta_bar_evals": 0,
+   "theta_captures": 18
+  }
+ ],
+ "TOTALS": {
+  "optimizer_updates": 14208,
+  "eval_calls": 1656,
+  "theta_bar_evals": 162,
+  "theta_captures": 666
+ },
+ "UPDATE_CAP": 18000,
+ "GRAND_TOTAL_optimizer_updates": 14208,
+ "GRAND_TOTAL_frac_of_cap": 0.7893333333333333
+}

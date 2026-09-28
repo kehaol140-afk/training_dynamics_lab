@@ -1,0 +1,55 @@
+{
+  "status": "PASS",
+  "max_abs_error_gain_plus_regret_minus_oracle": 0.0,
+  "note": "regret = actual−best、gain = −actual，二者相加在浮点舍入内等于 −best；舍入影响 ≤1 ulp（~1e-12 量级 @ gain~1e-4），不作为独立显著性证据。",
+  "examples": [],
+  "paired_delta_C_minus_B": {
+    "status": "PASS",
+    "n_pairs": 360,
+    "max_abs_error_delta_regret_plus_delta_gain": 0.0
+  },
+  "all_pairs_delta_check": [
+    {
+      "a": "C",
+      "b": "alignment",
+      "status": "PASS",
+      "n_pairs": 360,
+      "max_abs_error_delta_regret_plus_delta_gain": 0.0
+    },
+    {
+      "a": "C",
+      "b": "random",
+      "status": "PASS",
+      "n_pairs": 360,
+      "max_abs_error_delta_regret_plus_delta_gain": 0.0
+    },
+    {
+      "a": "B",
+      "b": "C",
+      "status": "PASS",
+      "n_pairs": 360,
+      "max_abs_error_delta_regret_plus_delta_gain": 0.0
+    },
+    {
+      "a": "B",
+      "b": "alignment",
+      "status": "PASS",
+      "n_pairs": 360,
+      "max_abs_error_delta_regret_plus_delta_gain": 0.0
+    },
+    {
+      "a": "B",
+      "b": "random",
+      "status": "PASS",
+      "n_pairs": 360,
+      "max_abs_error_delta_regret_plus_delta_gain": 0.0
+    },
+    {
+      "a": "alignment",
+      "b": "random",
+      "status": "PASS",
+      "n_pairs": 360,
+      "max_abs_error_delta_regret_plus_delta_gain": 0.0
+    }
+  ]
+}

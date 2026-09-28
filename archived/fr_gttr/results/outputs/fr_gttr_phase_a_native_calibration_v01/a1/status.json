@@ -1,0 +1,62 @@
+{
+ "round": "fr_gttr_phase_a_native_calibration_v01/a1",
+ "date": "2026-09-22",
+ "report": "REPORT.md",
+ "schedule": {
+  "id": "finite_cosine_then_hold_5e-5_v01",
+  "label": "NATIVE_WITH_DECLARED_TAIL",
+  "verdict": "DECLARED_BY_USER_THIS_ROUND"
+ },
+ "IMPLEMENTATION": "PASS",
+ "DATA_SPLIT": {
+  "row_level": "PASS",
+  "exact_duplicates": 0,
+  "document_independence": "DOCUMENT_INDEPENDENCE_UNVERIFIED"
+ },
+ "SCHEDULE": "PASS",
+ "COVERAGE": "PASS",
+ "NATIVE_PROGRESS_MEASURABLE": "PASS",
+ "TARGET_CALIBRATION": "PASS",
+ "DIAGNOSTIC_AVAILABILITY": "PASS",
+ "TRUE_TRACKING_ERROR": "NOT_MEASURED",
+ "DRIFT_NOISE_SEPARATION": "NOT_MEASURED",
+ "ACTION_VALUE": "NOT_TESTED",
+ "ADAPTIVE_GAIN": "NOT_TESTED",
+ "FINAL_CONFIRMED_TARGET": "NOT_TESTED",
+ "ENERGY_BENEFIT": "NOT_TESTED",
+ "CONFIRMED_TOKENS_TO_TARGET": "NOT_TESTED",
+ "GENERALIZATION_OR_ENERGY_GAIN": "NOT_TESTED",
+ "final_call_count": 0,
+ "new_gradient_calls": 0,
+ "new_hvp_calls": 0,
+ "hit_label": "CALIBRATION_ONLY",
+ "ell_candidates": {
+  "46": 7.02,
+  "82": 6.9795
+ },
+ "group_bracketed": {
+  "46": true,
+  "82": true
+ },
+ "cells_completed": "6/6 x 256/256 steps",
+ "resources": {
+  "planned_updates": 1552,
+  "actual_updates": 1552,
+  "cap_updates": 1664,
+  "actual_monitor_fw": 7296,
+  "cap_monitor_fw": 7800,
+  "actual_total_fw": 10400,
+  "cap_total_fw": 12000,
+  "failures": 0,
+  "wall_s": 708,
+  "cap_wall_s": 5400
+ },
+ "errata": "ERRATA_AND_SUPPLEMENT_v01.md",
+ "schedule_label_corrigendum": "start=82 floor first consumed at horizon h=46 (true_step=128, gm=256); h=0 pre-horizon LR=1.788e-4 was mislabeled as floor in REPORT.md \u00a71",
+ "tokens_label_corrigendum": "262,144 per cell = input slots (256x1024); valid_loss_tokens per cell in 236,771..239,551 (see ERRATA \u4e00.2)",
+ "phase_b_freeze_draft": "PHASE_B_FREEZE_DRAFT.md v2 (DRAFT_FOR_APPROVAL, not executed; M0 abolished, arms=NATIVE/LR_DOWN/LR_UP, models=MODEL_GTTR/MODEL_NO_GEOMETRY, 1152 updates, 78 evals)",
+ "first_floor_preupdate_h": {
+  "46": 82,
+  "82": 46
+ }
+}

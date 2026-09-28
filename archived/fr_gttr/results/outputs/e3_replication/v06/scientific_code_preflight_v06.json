@@ -1,0 +1,17 @@
+{
+  "pass": true,
+  "checks": {
+    "native_train_order": true,
+    "fr_branch_order": true,
+    "full_state_model": true,
+    "full_state_optimizer": true,
+    "full_state_capture_rng": true,
+    "full_state_restore_rng": true,
+    "v05_probe_overlap_zero": true,
+    "v05_eval_overlap_zero": true,
+    "v05_v04_model_bridge": true,
+    "v05_v04_optimizer_bridge": true,
+    "v05_rho0_noop": true,
+    "v05_technical_pass": true
+  }
+}

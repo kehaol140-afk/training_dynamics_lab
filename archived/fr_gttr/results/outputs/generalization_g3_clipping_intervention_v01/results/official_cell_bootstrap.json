@@ -1,0 +1,191 @@
+{
+  "aggregation": "official-cell; identical to results/summary.json interaction.mean_delta_clip",
+  "bootstrap": {
+    "fraction_resamples_delta_positive": 0.9978,
+    "mean": 0.09521029869596051,
+    "median": 0.08317222918160709,
+    "pi95_high": 0.3220956089617538,
+    "pi95_low": 0.0068868558355734116
+  },
+  "direction_consistent_with_stream_level_bootstrap": true,
+  "estimand": "Delta_clip = equal-weight mean over the 18 official (seed,stage,H) cells of [gain_clip(clip=1.0) - gain_clip(no-clip)]; official cell = mean of the 4 stream chi; cell-level relative error vs cell-mean chi_FD (frozen a0c relative_error); gain_clip(cell) = rel_err_BH_fixed - rel_err_C; H in {4,8}",
+  "interpretation_note": "fraction_resamples_delta_positive is the fraction of bootstrap resamples in which the difference is positive; it is NOT a p-value, a posterior probability, or a significance probability.",
+  "n_resamples": 20000,
+  "observed_delta_clip": 0.09397950627466435,
+  "paired_cells": [
+    {
+      "H": 4,
+      "delta_clip": 0.006178918239197193,
+      "gain_clip_clip": 0.006178918239197193,
+      "gain_clip_noclip": 0.0,
+      "seed": 2042,
+      "stage": "EARLY",
+      "step": 26
+    },
+    {
+      "H": 8,
+      "delta_clip": 0.031609613087076,
+      "gain_clip_clip": 0.031609613087076,
+      "gain_clip_noclip": 0.0,
+      "seed": 2042,
+      "stage": "EARLY",
+      "step": 26
+    },
+    {
+      "H": 4,
+      "delta_clip": 0.009355054967323516,
+      "gain_clip_clip": 0.009355054967323516,
+      "gain_clip_noclip": 0.0,
+      "seed": 2042,
+      "stage": "MIDDLE",
+      "step": 64
+    },
+    {
+      "H": 8,
+      "delta_clip": 0.03350169164039943,
+      "gain_clip_clip": 0.03350169164039943,
+      "gain_clip_noclip": 0.0,
+      "seed": 2042,
+      "stage": "MIDDLE",
+      "step": 64
+    },
+    {
+      "H": 4,
+      "delta_clip": 0.0028317628574493687,
+      "gain_clip_clip": 0.0028317628574493687,
+      "gain_clip_noclip": 0.0,
+      "seed": 2042,
+      "stage": "LATE",
+      "step": 102
+    },
+    {
+      "H": 8,
+      "delta_clip": 0.011708299544759503,
+      "gain_clip_clip": 0.011708299544759503,
+      "gain_clip_noclip": 0.0,
+      "seed": 2042,
+      "stage": "LATE",
+      "step": 102
+    },
+    {
+      "H": 4,
+      "delta_clip": -0.025222896581847586,
+      "gain_clip_clip": -0.025222896581847586,
+      "gain_clip_noclip": 0.0,
+      "seed": 2043,
+      "stage": "EARLY",
+      "step": 26
+    },
+    {
+      "H": 8,
+      "delta_clip": 0.007683471046084602,
+      "gain_clip_clip": 0.007683471046084602,
+      "gain_clip_noclip": 0.0,
+      "seed": 2043,
+      "stage": "EARLY",
+      "step": 26
+    },
+    {
+      "H": 4,
+      "delta_clip": 0.028171377851691534,
+      "gain_clip_clip": 0.028171377851691534,
+      "gain_clip_noclip": 0.0,
+      "seed": 2043,
+      "stage": "MIDDLE",
+      "step": 64
+    },
+    {
+      "H": 8,
+      "delta_clip": 0.05091802724253152,
+      "gain_clip_clip": 0.05091802724253152,
+      "gain_clip_noclip": 0.0,
+      "seed": 2043,
+      "stage": "MIDDLE",
+      "step": 64
+    },
+    {
+      "H": 4,
+      "delta_clip": 0.010120303586671337,
+      "gain_clip_clip": 0.010120303586671337,
+      "gain_clip_noclip": 0.0,
+      "seed": 2043,
+      "stage": "LATE",
+      "step": 102
+    },
+    {
+      "H": 8,
+      "delta_clip": 0.03540223154232701,
+      "gain_clip_clip": 0.03540223154232701,
+      "gain_clip_noclip": 0.0,
+      "seed": 2043,
+      "stage": "LATE",
+      "step": 102
+    },
+    {
+      "H": 4,
+      "delta_clip": -0.020556027087002646,
+      "gain_clip_clip": -0.020556027087002646,
+      "gain_clip_noclip": 0.0,
+      "seed": 2044,
+      "stage": "EARLY",
+      "step": 26
+    },
+    {
+      "H": 8,
+      "delta_clip": 0.003103467151689406,
+      "gain_clip_clip": 0.003103467151689406,
+      "gain_clip_noclip": 0.0,
+      "seed": 2044,
+      "stage": "EARLY",
+      "step": 26
+    },
+    {
+      "H": 4,
+      "delta_clip": 0.5750952929332449,
+      "gain_clip_clip": 0.5750952929332449,
+      "gain_clip_noclip": 0.0,
+      "seed": 2044,
+      "stage": "MIDDLE",
+      "step": 64
+    },
+    {
+      "H": 8,
+      "delta_clip": 0.8431182097699014,
+      "gain_clip_clip": 0.8431182097699014,
+      "gain_clip_noclip": 0.0,
+      "seed": 2044,
+      "stage": "MIDDLE",
+      "step": 64
+    },
+    {
+      "H": 4,
+      "delta_clip": 0.020721561271602695,
+      "gain_clip_clip": 0.020721561271602695,
+      "gain_clip_noclip": 0.0,
+      "seed": 2044,
+      "stage": "LATE",
+      "step": 102
+    },
+    {
+      "H": 8,
+      "delta_clip": 0.06789075388085919,
+      "gain_clip_clip": 0.06789075388085919,
+      "gain_clip_noclip": 0.0,
+      "seed": 2044,
+      "stage": "LATE",
+      "step": 102
+    }
+  ],
+  "protocol": "FR_G3_CLIPPING_INTERVENTION_V01",
+  "resampling_hierarchy": "seed -> stage -> H-cell, with replacement at every level; H kept whole within stage",
+  "rng_seed": 20260916,
+  "statistical_mismatch": false,
+  "stream_level_bootstrap_frozen_reference": {
+    "mean": 0.08563305265069761,
+    "median": 0.06398660426783087,
+    "p_positive": 0.99985,
+    "pi95_high": 0.2938361904767626,
+    "pi95_low": 0.008626193018998573
+  },
+  "subphase": "official_cell_bootstrap_phase_a"
+}

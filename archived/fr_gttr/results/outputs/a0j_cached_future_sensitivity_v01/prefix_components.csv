@@ -1,0 +1,22 @@
+component,median_s,definition
+A_state_snapshot_clone_restore,0.07873179999296553,load_full_training_state + zero_grad + seed_future_stream
+B_lookahead_pending_fwd_bwd,0.10004279599525034,pending horizon fwd/bwd (+snapshot)
+B_lookahead_rollout_rest,0.18014241999480873,"native rollout horizons 2..H (fwd/bwd+clip+step, snapshots)"
+B_clip_pending,0.004864899005042389,clip_grad_norm_ at pending horizon
+C_endpoint_Vscore_forward_probe,0.06505510001443326,"ATTRIBUTION PROBE only (train-mode forward, no backward); not separable in executed path"
+D_endpoint_Vscore_gradient,0.20139022200601175,executed endpoint gradient on val_score split
+E1_optimizer_local_analytic_VJP,0.3373885700129904,sum over walk steps of adamw_tangent_step_adjoint
+E2_clipping_VJP_future_steps,0.02171960103441961,sum over walk steps h>=2 of clip transpose
+E3_curvature_HVP,0.4552998709550593,sum over walk steps h>=2 of math-SDPA HVP (bf16 autocast)
+E4_precision_backend_conversion_probe,,bf16 HVP median 0.2067s vs fp32 0.1591s (probe)
+F_action_step_GtTp_w0,0.0012163000064902008,clip transpose at pending step producing w_0
+G_candidate_gradient_generation,0.24904124299064279,4 candidate full gradients (RNG-wrapped)
+H_score_dot_products_selector,0.20173142300336622,4 dot products + argmin
+GATE_GtTp_fresh_selfcheck,0.0854212970007211,"apply_Gt_T(p_fresh) self-consistency (gate, not production)"
+T_total_exact_one_shot,5.497905874013668,median whole-pass wall (measured)
+T_total_exact_one_shot_sum_of_stages,1.9169904419977684,sum of stage medians (sanity check)
+T_native_step,0.14166969899088144,one native optimizer step (fwd/bwd+clip+step)
+T_recomputable_prefix_GATE_BplusCplusDplusE,1.3610385800129734,B(lookahead incl pending fwd/bwd) + C(endpoint fwd probe) + D(endpoint grad) + E(reverse adjoint)
+T_recomputable_prefix_strict_marginal,1.1959406840032898,rollout beyond pending + endpoint grad + E (marginal closed-loop view)
+S_upper_GATE,1.3290022336435008,T_total/(T_total - prefix_gate)
+S_upper_strict,1.2779986892456479,T_total/(T_total - prefix_strict)

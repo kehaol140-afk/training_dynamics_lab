@@ -1,0 +1,20 @@
+{
+ "run_id": "A0H20_CORRECTED_ACCEPTANCE_V01",
+ "COMPLETION_STATUS": "COMPLETE",
+ "PROTOCOL_VALID": "PASS",
+ "NUMERICAL_GATE": "PASS",
+ "DECISION_PRESERVATION": {
+  "same_config_fp32fwd_vs_fp32adj": {
+   "rank_match": "12/12",
+   "chosen_id_match": "12/12",
+   "noop_position_match": "12/12"
+  },
+  "cross_config_bf16C_vs_fp32adj": {
+   "rank_match": "12/12",
+   "chosen_id_match": "12/12",
+   "noop_position_match": "12/12"
+  }
+ },
+ "UTILITY_PILOT_RESULT": "POSITIVE_POINT_ESTIMATE",
+ "status_note": "separate fields per contract; no composite PASS. POSITIVE_POINT_ESTIMATE is a sign label on the pre-registered main endpoint mean only; never 'proven significantly better than all methods'."
+}

@@ -1,0 +1,150 @@
+{
+  "T1_known_displacement_is_not_open_loop": {
+    "expected": "动作前程序访问真实未来位移 s / Splus / qplus 必须被信息门拒绝",
+    "pre_action_reads_ok": true,
+    "leak_detected": true,
+    "implication": "g1_hat=g0+H0*s 与 shadow U(g;Splus) 是已知真实位移/未来统计量的局部条件近似，不是动作前可用的开环预测，更不是 H48/H64 开环预测",
+    "boundary": "本 stub 只演示信息方向；真实 runner 的调用顺序以代码审计（审计C节）为准",
+    "verdict": "PASS"
+  },
+  "T2_single_basin_horizon_reversal": {
+    "expected": "H4 导数为正（短期 LR 脉冲升损失），H16 为负；反转无需 switching/非凸性/模型错误",
+    "H4": {
+      "analytic": 0.591064453125,
+      "numeric_centered": 0.5910757266959499
+    },
+    "H16": {
+      "analytic": -0.0005356792152846719,
+      "numeric_centered": -0.0005356792812795822
+    },
+    "H4_sign": "positive",
+    "H16_sign": "negative",
+    "verdict": "PASS"
+  },
+  "T3_local_terrain_not_global": {
+    "expected": "|x|<0.5 邻域内 f1==f2、导数相同；远处函数值不同（屏障处差 A*e^-1≈1.8396）；固定步长 GD 从 x=0 出发在 f1 上到达全局最小附近、在 f2 上被屏障阻挡",
+    "max_abs_f_gap_in_local_neighborhood": 0.0,
+    "max_abs_dgrad_gap_in_local_neighborhood": 0.0,
+    "gap_at_barrier_center": 3.678794,
+    "argmin_f1": 3.0,
+    "argmin_f2": 3.0,
+    "gd_from_x0_final_x_f1": 3.0,
+    "gd_from_x0_final_x_f2_small_eta": 0.803,
+    "gd_from_x0_final_x_f2_large_eta": 3.0,
+    "smoothness": "bump 为紧支撑光滑函数（|u|>=1 为 0），整体 C^infty；大步长可数值翻越屏障（轨迹结果随步长改变，正是局部地形不唯一决定全局的演示）",
+    "implication": "局部测量不能无条件恢复全地形/全程轨迹；不声称 FR 真实轨迹跨过此类障碍",
+    "verdict": "PASS"
+  },
+  "T4_same_norm_opposite_gain": {
+    "expected": "位移范数相同 (0.1)，DeltaV 分别 -0.095 与 +0.105",
+    "norm_plus": 0.1,
+    "norm_minus": 0.1,
+    "DeltaV_plus": -0.095,
+    "DeltaV_minus": 0.105,
+    "implication": "目标读取方向不可被范数/'温度'等标量代理替代",
+    "verdict": "PASS"
+  },
+  "T5_curvature_reparam_not_capability": {
+    "expected": "物理点不变、函数值不变；phi 坐标 Hessian 随 a^2 缩放",
+    "rows": [
+      {
+        "a": 1.0,
+        "f_at_same_physical_point": 0.0,
+        "hessian_in_phi": 1.0
+      },
+      {
+        "a": 3.0,
+        "f_at_same_physical_point": 0.0,
+        "hessian_in_phi": 9.0
+      }
+    ],
+    "boundary": "不声称相同 eta 下 GD/Adam 轨迹不变；只说明原始曲率指标不能无条件作为任务能力标尺",
+    "verdict": "PASS"
+  },
+  "T6_step_token_cost_ordering_reversal": {
+    "expected": "B 步数更少 (80<100) 但 update tokens 更多 (163840>102400)；probe/candidate 开销必须入账且不免费",
+    "steps": {
+      "A": 100,
+      "B": 80
+    },
+    "update_tokens": {
+      "A": 102400,
+      "B": 163840
+    },
+    "probe_candidate_overhead_tokens": {
+      "A": 122880,
+      "B": 122880
+    },
+    "total_tokens": {
+      "A": 225280,
+      "B": 286720
+    },
+    "fewer_steps_more_tokens": true,
+    "verdict": "PASS"
+  },
+  "T7_censoring_cannot_disappear": {
+    "expected": "hit_rate=3/5=0.6；2 条右删失保留；拒绝对成功者均值作总体节约；拒绝把 step50/100 的稀疏评估插值为精确 tau=60 而不披露不确定区间",
+    "hit_count": 3,
+    "total": 5,
+    "hit_rate": 0.6,
+    "censored_count": 2,
+    "censor_budget_steps": 128,
+    "mean_tau_success_only_steps": 90.0,
+    "rejected_naive_saving_claim": 38.0,
+    "terminal_loss_censored": [
+      0.55,
+      0.61
+    ],
+    "sparse_eval_grid": [
+      50,
+      100
+    ],
+    "true_tau_example": 60,
+    "first_observed_hit_step": 100,
+    "interpolation_uncertainty_disclosed": true,
+    "verdict": "PASS"
+  },
+  "T8_aggregate_vs_perpoint_gate": {
+    "expected": "聚合 E = (6*0.43 + 1.166)/7 ≈ 0.594（<1，聚合门 PASS）；最大单点 1.166>1（逐点门 FAIL）",
+    "ratios": [
+      0.43,
+      0.43,
+      0.43,
+      0.43,
+      0.43,
+      0.43,
+      1.166
+    ],
+    "aggregate_E": 0.535143,
+    "max_single_point": 1.166,
+    "perpoint_gate_verdict": "FAIL",
+    "aggregate_gate_verdict": "PASS",
+    "implication": "逐点 max 不得替代固定聚合 SSE/TSS；missing 统计需保留标记；这正是 C0X erratum（aggregate-vs-per-point）的数值形态",
+    "verdict": "PASS"
+  },
+  "T9_statistical_recovery_conditions": {
+    "expected": "合成向量验证：mean||X_k||^2 = ||Xbar||^2 + mean sq dev（机器精度）；恢复式 tr(Sigma_hat)/K = SE_norm^2 + (a^2-b^2)/(K-1) 为纯代数恒等式（残差~1e-16）；SE_norm 与 SE_vec 不得互换",
+    "K": 16,
+    "D": 20,
+    "a_mean_sample_norm": 1.8070437892251499,
+    "SE_norm": 0.053971863157003724,
+    "b_norm_of_mean": 1.2881083042282255,
+    "SE_vec_sq": 0.10999191219633653,
+    "exact_decomposition_residual": 0.0,
+    "recovery_identity_residual": 0.0,
+    "se_norm_vs_se_vec_gap": 0.2776784228316209,
+    "boundary": "该恢复仅在 same-K、同对象、同权重、独立分组下成立；不同对象/权重/bootstrap SE 禁止套用；旧 raw 缺失与'等价充分统计可恢复'必须区分",
+    "verdict": "PASS"
+  },
+  "_meta": {
+    "negative_checks": {
+      "T1": "若无信息门，程序可在动作前读真实 s —— 本参考以 RuntimeError 抓到",
+      "T2": "若数值差分符号与解析不一致则 assert 失败",
+      "T7": "若只对成功者平均，hit_rate 字段将丢失（本 JSON 强制保留 censored_count）",
+      "T8": "若用逐点 max 当门，aggregate_E 与 max_single_point 两字段并列暴露差异",
+      "T9": "若把 SE_norm 当 SE_vec，se_norm_vs_se_vec_gap 暴露混淆"
+    },
+    "scope": "全部测试为低维数学反例，检验论证结构；不得写成为真实 LLM 机制已验证",
+    "environment": "numpy 2.3.5, CPU only, no repo imports"
+  }
+}

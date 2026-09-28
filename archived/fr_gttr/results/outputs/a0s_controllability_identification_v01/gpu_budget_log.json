@@ -1,0 +1,189 @@
+{
+ "phases": [
+  {
+   "phase": "cell_s2030_t46_x7400",
+   "t_start": 297775.976809958,
+   "t_end": 297792.440758836,
+   "wall_s": 16.464,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "cells_done": 1
+   },
+   "occupancy": [
+    "0, 0 %, 282 MiB",
+    "1, 58 %, 31105 MiB"
+   ]
+  },
+  {
+   "phase": "cell_s2030_t46_x7401",
+   "t_start": 297792.498685836,
+   "t_end": 297796.829136029,
+   "wall_s": 4.33,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "cells_done": 2
+   },
+   "occupancy": [
+    "0, 0 %, 282 MiB",
+    "1, 49 %, 31137 MiB"
+   ]
+  },
+  {
+   "phase": "cell_s2030_t82_x7400",
+   "t_start": 297798.613246626,
+   "t_end": 297805.409989414,
+   "wall_s": 6.797,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "cells_done": 3
+   },
+   "occupancy": [
+    "0, 0 %, 282 MiB",
+    "1, 50 %, 31169 MiB"
+   ]
+  },
+  {
+   "phase": "cell_s2030_t82_x7401",
+   "t_start": 297805.464624113,
+   "t_end": 297807.473747207,
+   "wall_s": 2.009,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "cells_done": 4
+   },
+   "occupancy": [
+    "0, 0 %, 282 MiB",
+    "1, 44 %, 31037 MiB"
+   ]
+  },
+  {
+   "phase": "cell_s2031_t46_x7400",
+   "t_start": 297814.186352181,
+   "t_end": 297815.835552569,
+   "wall_s": 1.649,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "cells_done": 5
+   },
+   "occupancy": [
+    "nvidia-smi failed: Command '['nvidia-smi', '--query-gpu=index,utilization.gpu,memory.used', '--format=csv,noheader']' timed out after 10 seconds"
+   ]
+  },
+  {
+   "phase": "cell_s2031_t46_x7401",
+   "t_start": 297828.434505386,
+   "t_end": 297839.166020032,
+   "wall_s": 10.732,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "cells_done": 6
+   },
+   "occupancy": [
+    "0, 0 %, 282 MiB",
+    "1, 17 %, 30977 MiB"
+   ]
+  },
+  {
+   "phase": "cell_s2031_t82_x7400",
+   "t_start": 297854.30399134,
+   "t_end": 297856.837491313,
+   "wall_s": 2.533,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "cells_done": 7
+   },
+   "occupancy": [
+    "0, 0 %, 283 MiB",
+    "1, 7 %, 31111 MiB"
+   ]
+  },
+  {
+   "phase": "cell_s2031_t82_x7401",
+   "t_start": 297858.675159293,
+   "t_end": 297863.931448126,
+   "wall_s": 5.256,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "cells_done": 8
+   },
+   "occupancy": [
+    "0, 0 %, 282 MiB",
+    "1, 7 %, 31101 MiB"
+   ]
+  },
+  {
+   "phase": "cell_s2037_t46_x7400",
+   "t_start": 297872.083136326,
+   "t_end": 297873.994062108,
+   "wall_s": 1.911,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "cells_done": 9
+   },
+   "occupancy": [
+    "0, 0 %, 6526 MiB",
+    "1, 11 %, 30969 MiB"
+   ]
+  },
+  {
+   "phase": "cell_s2037_t46_x7401",
+   "t_start": 297874.8190071,
+   "t_end": 297880.288361051,
+   "wall_s": 5.469,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "cells_done": 10
+   },
+   "occupancy": [
+    "0, 0 %, 6526 MiB",
+    "1, 49 %, 31101 MiB"
+   ]
+  },
+  {
+   "phase": "cell_s2037_t82_x7400",
+   "t_start": 297887.429680896,
+   "t_end": 297891.880373471,
+   "wall_s": 4.451,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "cells_done": 11
+   },
+   "occupancy": [
+    "0, 0 %, 6526 MiB",
+    "1, 41 %, 31039 MiB"
+   ]
+  },
+  {
+   "phase": "cell_s2037_t82_x7401",
+   "t_start": 297892.422352468,
+   "t_end": 297897.04287945,
+   "wall_s": 4.621,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "cells_done": 12
+   },
+   "occupancy": [
+    "0, 0 %, 6526 MiB",
+    "1, 34 %, 30927 MiB"
+   ]
+  }
+ ],
+ "TOTALS": {
+  "cumulative_wall_s": 66.222,
+  "budget_s": 1800,
+  "remaining_s": 1733.778,
+  "n_crashes": 0
+ }
+}

@@ -1,0 +1,24 @@
+{
+ "checks": {
+  "snapshot_identity": true,
+  "crn_native_repeat": true,
+  "distances_native_zero": true,
+  "frozen_runner_agreement_endpoint": true,
+  "val_eval_rng_isolation": true,
+  "pulse4_eq_persistent_H4_losses": true,
+  "D_val_eq_C_at_h4": true,
+  "D_mv_eq_A_mv_bitwise": true,
+  "D_step_counter_eq_A": true,
+  "C_differs_from_persistent_post_release_m_v": true,
+  "s_monotonic": true,
+  "pulse_excess_frozen_post_release": true,
+  "tokens_per_step_1024": true,
+  "budget_within_cap": true
+ },
+ "budget": {
+  "optimizer_updates": 64,
+  "eval_calls": 26,
+  "theta_captures": 56,
+  "opt_captures": 56
+ }
+}

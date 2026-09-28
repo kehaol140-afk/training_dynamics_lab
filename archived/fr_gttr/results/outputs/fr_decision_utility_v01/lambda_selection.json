@@ -1,0 +1,90 @@
+{
+  "scan_rows": [
+    {
+      "lambda_value": 0.01,
+      "mean_abs_hhat_C": 0.0031325744644425165,
+      "mean_rel_nonlinearity_C": 6.734482202730448,
+      "mean_slope_dev_vs_lambda0": null,
+      "p90_slope_dev_vs_lambda0": null,
+      "clip_crossing_rate": 0.0,
+      "all_near_zero": false,
+      "sign_agreement": 0.6654929577464789,
+      "mean_abs_signal": 3.1325744644425164e-05,
+      "mean_abs_dev": 6.314255465708061e-05,
+      "snr": 0.49611145470042195,
+      "mean_within_state_spearman": 0.2722222222222222
+    },
+    {
+      "lambda_value": 0.025,
+      "mean_abs_hhat_C": 0.0031325744644425165,
+      "mean_rel_nonlinearity_C": 2.655679987933968,
+      "mean_slope_dev_vs_lambda0": 4.093899529110611,
+      "p90_slope_dev_vs_lambda0": 8.238967892161373,
+      "clip_crossing_rate": 0.041666666666666664,
+      "all_near_zero": false,
+      "sign_agreement": 0.7816901408450704,
+      "mean_abs_signal": 7.831436161106292e-05,
+      "mean_abs_dev": 7.199360236032011e-05,
+      "snr": 1.0877961241487557,
+      "mean_within_state_spearman": 0.4166666666666667
+    },
+    {
+      "lambda_value": 0.05,
+      "mean_abs_hhat_C": 0.0031325744644425165,
+      "mean_rel_nonlinearity_C": 1.563014967433912,
+      "mean_slope_dev_vs_lambda0": 1.8848723823857405,
+      "p90_slope_dev_vs_lambda0": 4.927777940252594,
+      "clip_crossing_rate": 0.07291666666666667,
+      "all_near_zero": false,
+      "sign_agreement": 0.8485915492957746,
+      "mean_abs_signal": 0.00015662872322212584,
+      "mean_abs_dev": 8.96299000139918e-05,
+      "snr": 1.7475052766730197,
+      "mean_within_state_spearman": 0.5611111111111111
+    },
+    {
+      "lambda_value": 0.1,
+      "mean_abs_hhat_C": 0.0031325744644425165,
+      "mean_rel_nonlinearity_C": 1.2186472072609034,
+      "mean_slope_dev_vs_lambda0": 1.2009688059552954,
+      "p90_slope_dev_vs_lambda0": 2.390661992068232,
+      "clip_crossing_rate": 0.16666666666666666,
+      "all_near_zero": false,
+      "sign_agreement": 0.9049295774647887,
+      "mean_abs_signal": 0.0003132574464442517,
+      "mean_abs_dev": 0.000128766365996692,
+      "snr": 2.432758306251333,
+      "mean_within_state_spearman": 0.7194444444444444
+    }
+  ],
+  "primary_lambda": 0.05,
+  "conservative_lambda": 0.025,
+  "criteria": {
+    "action_gradients_finite": true,
+    "convex_mixture_by_construction": true,
+    "not_all_actions_near_zero": true,
+    "strict_locality_any_lambda_mean_slope_dev_le_0.25": false,
+    "primary_clip_crossing_rate_le_0.10": true,
+    "freeze_rule": "B_decision_signal",
+    "primary_mean_within_state_spearman_ge_0.5": true
+  },
+  "rationale": "准则 A（严格局部线性，slope-dev vs λ0=0.01 ≤ 0.25）在所有候选上均不通过：开发扫描显示响应带有 ~9.0e-05 量级的绝对 deviation floor（replay 位级确定，非随机噪声），点态线性不成立。改用准则 B（决策信号）：在满足 clip 穿越 ≤ 0.10 的候选中取最大 lambda 以最大化 SNR、符号一致率与组内排序信号（三者随 lambda 单调上升；primary 处 mean within-state Spearman = 0.561，是本实验 Level 2/3 决策评价的关键，不依赖点态线性）。clip 稳定门把 lambda 封顶（0.10 的穿越率 > 0.10 越限）。",
+  "freeze_rule": "B_decision_signal",
+  "mean_within_state_spearman": 0.5611111111111111,
+  "split": "dev",
+  "dev_states": [
+    [
+      2031,
+      52
+    ],
+    [
+      2034,
+      64
+    ],
+    [
+      2036,
+      76
+    ]
+  ],
+  "n_scan_points": 1152
+}

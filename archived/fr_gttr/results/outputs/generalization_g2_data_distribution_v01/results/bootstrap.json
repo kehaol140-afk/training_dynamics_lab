@@ -1,0 +1,14 @@
+{
+  "n_cells": 18,
+  "n_resamples": 20000,
+  "rng_seed": 20260916,
+  "observed_mean_improvement": 0.13362110067802516,
+  "bootstrap": {
+    "mean": 0.13312459022861522,
+    "median": 0.12166797271442248,
+    "pi95_low": 0.06716030682972425,
+    "pi95_high": 0.25120480053653194,
+    "fraction_resamples_improvement_positive": 1.0
+  },
+  "interpretation_note": "fraction_resamples_improvement_positive is the fraction of bootstrap resamples in which the paired improvement is positive; it is NOT a p-value, a posterior probability, or a significance probability. With only 3 train seeds the interval is exploratory uncertainty under a small number of independent training runs; stream/cell counts must not be mistaken for independent runs."
+}

@@ -1,0 +1,68 @@
+{
+ "contract_id": "A0S_CONTROLLABILITY_IDENTIFICATION_V01",
+ "date": "2026-09-18",
+ "mandate": "Response-Based Controllability Identification: does response magnitude C_t=||J_u(t)|| contain usable controllability information about achievable intervention gain G_t? Mechanism validation, NOT an optimization algorithm experiment.",
+ "hypothesis": "States with larger finite-time controllability proxy C_t achieve larger best-intervention gain G_t = L_baseline - min(L_LR+, L_LR-); and response sign predicts the useful action direction.",
+ "datasets": {
+  "D1": {
+   "source": "outputs/a0o_lr_response_validation_v01/runs/stage1_cells.jsonl (FROZEN, read-only)",
+   "filter": "H == 4",
+   "n": 48,
+   "cells": "seeds {2030,2031,2037} x steps {46,52,64,82} x streams {7110,7111,7112,7113}",
+   "fields_used": ["seed","step","stream_seed","h_eta","L0","L_plus","L_minus"],
+   "note": "fully offline; h_eta (analytic dL/du) and rollout losses from the SAME cell record; LR pulse persistent u=log(eta/eta0), delta=0.05 (frozen a0o)"
+  },
+  "D2": {
+   "source": "outputs/a0q_response_control_map_v01/runs/cells.jsonl (FROZEN, read-only) for chi_lr/chi_clip/chi_wd + NEW GPU rollouts by a0s_run_v01.py",
+   "n": 12,
+   "cells": "seeds {2030,2031,2037} x steps {46,82} x streams {7400,7401}",
+   "new_rollouts": "per cell: baseline u=0 twice (CRN bitwise) + LR +/- delta persistent H=4 via FROZEN import-only a0q.run_channel_rollout; NO analytic recompute (chi values taken from frozen A0Q records)",
+   "note": "A0Q never stored rollout losses; D2 rollouts replicate the frozen A0Q FD branch exactly"
+  }
+ },
+ "definitions": {
+  "C_lr": "|chi_lr| (D2) / |h_eta| (D1)",
+  "G": "L0 - min(L_plus, L_minus)",
+  "best_action": "+delta if L_plus < L_minus else -delta",
+  "predicted_action": "+delta if chi_lr < 0 else -delta (response sign; chi=dL/du, du=+delta lowers loss when chi<0)",
+  "J_norm": "sqrt(chi_lr^2 + chi_clip^2 + chi_wd^2)",
+  "C_J": "chi_lr^2 + chi_clip^2 + chi_wd^2 (controllability Gramian proxy)"
+ },
+ "analyses": {
+  "A0S-1_magnitude": {
+   "data": "D1 (n=48)",
+   "stats": ["Pearson(G,C)", "Spearman(G,C)", "OLS G=alpha+beta*C: beta, 95% CI (t-dist, n-2 df), p-value", "leave-one-seed-out (3 folds): fit on 2 seeds, predict held-out seed; per-fold Pearson, pooled R2 and MAE"],
+   "gate": "PASS iff Spearman rho > 0 with p < 0.05 AND LOSO pooled Pearson > 0"
+  },
+  "A0S-2_direction": {
+   "data": "D1 (n=48) and D2 (n=12)",
+   "stats": ["directional accuracy", "2x2 confusion matrix (predicted +delta/-delta vs actual)", "chance = 0.5", "binomial test p-value"],
+   "gate": "PASS iff accuracy > 0.5 with binomial p < 0.05 (per dataset)"
+  },
+  "A0S-3_matrix": {
+   "data": "D2 (n=12)",
+   "stats": ["per-channel share of C_J (median across cells)", "Model A: G ~ |chi_lr|", "Model B: G ~ |chi_lr| + |chi_clip| + |chi_wd|", "leave-one-seed-out CV (3 folds) MSE and R2 comparison"],
+   "gate": "clip improves prediction iff Model B LOSO-MSE < Model A LOSO-MSE"
+  }
+ },
+ "verdict_rules": {
+  "PASS": "A0S-1 gate PASS AND A0S-2 gate PASS on both datasets",
+  "FAIL_case_1": "A0S-1 gate FAIL: causal response is a dynamical property, not optimization utility; need richer state representation",
+  "FAIL_case_2": "short-term (H=4) controllability may PASS while long-horizon gain is NOT tested here; A0P already showed no stable temporal decay kernel, so short-term G must not be read as long-term training improvement; report must state this explicitly",
+  "overall_note": "A0S measures finite-H=4 controllability only."
+ },
+ "forbidden": [
+  "design controller",
+  "tune learning rate schedule",
+  "introduce neural predictor",
+  "change optimizer",
+  "change lambda / weight decay",
+  "modify training dynamics",
+  "redefine delta (must stay 0.05 from frozen a0o) or H (must stay 4)",
+  "edit any frozen A0O/A0Q artifact or module",
+  "result-driven threshold/rule changes"
+ ],
+ "budget": {"gpu_s": 1800, "expected_gpu_s": "~200 (36 rollouts)", "stop_on_exceed": true},
+ "deliverables": ["a0s_controllability_table.csv (D2, 12 rows)", "A0S_REPORT.md", "plots (PNG)", "D1 supplementary table", "audit pack"],
+ "stop_rule": "STOP after A0S. Do not auto-launch any next round."
+}

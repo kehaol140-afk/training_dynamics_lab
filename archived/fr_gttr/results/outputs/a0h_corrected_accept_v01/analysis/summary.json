@@ -1,0 +1,48 @@
+{
+ "COMPLETION_STATUS": "COMPLETE",
+ "PROTOCOL_VALID": "PASS",
+ "NUMERICAL_GATE": "PASS",
+ "UTILITY_PILOT_RESULT": "POSITIVE_POINT_ESTIMATE",
+ "n_units_planned": 12,
+ "missing": [],
+ "main_endpoint_fp32adj_gain_eval": {
+  "mean": 0.00014667212963104248,
+  "boot_mean": 0.0001468112086256345,
+  "pi95": [
+   8.657127618789674e-05,
+   0.0002080996831258138
+  ],
+  "n_boot": 10000,
+  "rng_seed": 260916,
+  "design": "seed->state->stream resample, equal-weight seed mean",
+  "interpretation": "exploratory uncertainty only; NOT a p-value"
+ },
+ "harmful_rate": 0.08333333333333333,
+ "noop_fraction_fp32adj": 0.08333333333333333,
+ "per_seed": {
+  "2030": {
+   "mean": 0.00019937753677368164,
+   "n_streams": 2
+  },
+  "2031": {
+   "mean": 9.122490882873535e-05,
+   "n_streams": 2
+  },
+  "2032": {
+   "mean": -1.84476375579834e-05,
+   "n_streams": 2
+  },
+  "2033": {
+   "mean": 9.745359420776367e-05,
+   "n_streams": 2
+  },
+  "2034": {
+   "mean": 0.0002543330192565918,
+   "n_streams": 2
+  },
+  "2035": {
+   "mean": 0.0002560913562774658,
+   "n_streams": 2
+  }
+ }
+}

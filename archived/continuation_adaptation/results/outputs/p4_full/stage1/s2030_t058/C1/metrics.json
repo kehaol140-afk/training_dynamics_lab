@@ -1,0 +1,163 @@
+{
+  "run_id": "C1",
+  "arm": "C1",
+  "lr_multiplier": 4.0,
+  "cell_id": "s2030_t058",
+  "seed": 2030,
+  "checkpoint_step": 58,
+  "budget_optimizer_steps": 35,
+  "n_optimizer_steps": 35,
+  "n_micro_batches": 70,
+  "device": "cuda:0",
+  "torch_version": "2.11.0",
+  "cudnn_deterministic": true,
+  "wall_seconds": 3.78657865524292,
+  "c0": {
+    "state_path": "/home/b205/projects/training_dynamics_lab/legacy_fluctuation_response/outputs/e3_confirmatory/v07/seed_2030/states/state_step_058.pt",
+    "state_sha256": "fcff48b19898f81b7b1d944fd8114f56bda8eb2ef61304d6218a83367e1a8246",
+    "corpus_sha256": "1e657af9baae0784e582d82ef936160473aa069878e422ef48683a718056b0f4",
+    "partition_sha256": "5ecaf0a3533d5dddd3fe2a768f13f5f8131cb620cb78412c35df5467539391f4"
+  },
+  "schedule": {
+    "mode": "compressed_remaining_cosine_v1",
+    "ratio": 2,
+    "gm_first": 118,
+    "gm_last": 256,
+    "lr_first": 0.0012101696076792946,
+    "lr_last": 0.0002
+  },
+  "hyperparams_used": {
+    "betas": [
+      0.9,
+      0.99
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0.01,
+    "grad_clip": 1.0,
+    "base_lr": 0.0005
+  },
+  "arm_record": {
+    "arm": "C1",
+    "spec": {
+      "betas": [
+        0.9,
+        0.99
+      ],
+      "reset_m": false,
+      "reset_v": true,
+      "reset_step": false
+    },
+    "signature_pre": {
+      "class_module": "torch.optim.adamw",
+      "class_name": "AdamW",
+      "param_groups": [
+        {
+          "lr": 0.00030801435675245636,
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "eps": 1e-08,
+          "weight_decay": 0.01,
+          "amsgrad": false,
+          "maximize": false,
+          "capturable": false,
+          "differentiable": false,
+          "fused": null
+        }
+      ]
+    },
+    "signature_post": {
+      "class_module": "torch.optim.adamw",
+      "class_name": "AdamW",
+      "param_groups": [
+        {
+          "lr": 0.00030801435675245636,
+          "betas": [
+            0.9,
+            0.99
+          ],
+          "eps": 1e-08,
+          "weight_decay": 0.01,
+          "amsgrad": false,
+          "maximize": false,
+          "capturable": false,
+          "differentiable": false,
+          "fused": null
+        }
+      ]
+    },
+    "checks": {
+      "betas_applied": true,
+      "reset_counts": {
+        "reset_channels": [
+          "v"
+        ],
+        "n_entries": 46
+      }
+    },
+    "channel_hashes_pre": {
+      "m": "d10758185f6ab7f585dbafea49bb3f4af97e5fe1c47266e82ce91adb83ca46fd",
+      "v": "9db73a19087e6fc8bfb4be78300b842955449d4fe5754ecd79887f63b711982c",
+      "step": "34e10df5f4abeba102b1bf2b0f462fbe3ec46195683f9be8d8a9611956bc56ba"
+    },
+    "channel_hashes_post": {
+      "m": "d10758185f6ab7f585dbafea49bb3f4af97e5fe1c47266e82ce91adb83ca46fd",
+      "v": "110a9322d45d5754129801bf3551dfbd4e2c08529ca44c850676d8b0274c16d8",
+      "step": "34e10df5f4abeba102b1bf2b0f462fbe3ec46195683f9be8d8a9611956bc56ba"
+    },
+    "zeroed": {
+      "m": 0,
+      "v": 46,
+      "step": 0
+    }
+  },
+  "batch_manifest_sha256": "3136967193e264859473c4baa6c538e01ae8df9ff6afce2552dca9210bfd35a6",
+  "model_hash_at_c0": "e86f78e7582a25072593d8e2ef293ed3b3c78a6f505b21283976fcab1c402a85",
+  "model_hash_final": "220b8c889dc001ceb97e7e6b6619fc6ee6371022391231cc1b4483f289818a23",
+  "optimizer_hash_final": "334fb219500bcb3f8bec48d4f1b95661edd2a4c7812d57b36c2495ba8c002db3",
+  "final_monitor_nll": 7.9587098203679565,
+  "best_monitor_nll": 7.9587098203679565,
+  "monitor_points": [
+    {
+      "opt_step": 8,
+      "token_count": 3720,
+      "mean": 10.33177830724306,
+      "p95": 13.76628985404966,
+      "p99": 21.89057708740234,
+      "cvar99": 35.954443078292044
+    },
+    {
+      "opt_step": 16,
+      "token_count": 3720,
+      "mean": 8.922897302399399,
+      "p95": 10.364246845245358,
+      "p99": 14.247445402145381,
+      "cvar99": 20.41846463554784
+    },
+    {
+      "opt_step": 24,
+      "token_count": 3720,
+      "mean": 8.348604891697565,
+      "p95": 9.940900087356566,
+      "p99": 13.281096334457395,
+      "cvar99": 17.956750919944362
+    },
+    {
+      "opt_step": 32,
+      "token_count": 3720,
+      "mean": 8.053159777259314,
+      "p95": 9.87237820625305,
+      "p99": 13.534499959945672,
+      "cvar99": 16.872547350431745
+    },
+    {
+      "opt_step": 35,
+      "token_count": 3720,
+      "mean": 7.9587098203679565,
+      "p95": 9.825381231307983,
+      "p99": 13.141602020263665,
+      "cvar99": 17.111796956313285
+    }
+  ]
+}

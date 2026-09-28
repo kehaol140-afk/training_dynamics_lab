@@ -1,0 +1,67 @@
+{
+  "audit": "fr_gttr_model_target_alignment_audit_v01",
+  "version": "v2 (review supplement, 2026-09-22)",
+  "supersedes_notes": "v1 bucket counts were multi-label without saying so; budget figures contained audit-side arithmetic (15,097/889/177) with no run-level basis. Both corrected here. v1 file retained for provenance.",
+  "claims": {
+    "unique_claim_total": 25,
+    "claim_ids": ["C01","C02","C03","C04","C05","C06","C07","C08","C09","C10","C11","C12","C13","C14","C15","C16","C17","C18","C19","C20","C21","C22","C23","C24","C25"],
+    "labeling_rule": "multi-label allowed; primary_verdict per claim in claims_status.csv; 27 = 25 unique + C18 double (PROTOCOL_MISMATCH + post-erratum EMPIRICAL) + C04 double (NOT_SUPPORTED + ladder-retained); NOT a deletion",
+    "primary_verdict_counts": {
+      "SUPPORTED_WITHIN_SCOPE": 12,
+      "NOT_SUPPORTED": 7,
+      "NOT_TESTED": 3,
+      "MIXED": 2,
+      "PARTIAL": 1,
+      "UNRESOLVED": 1
+    }
+  },
+  "exact_identities": {
+    "confirmed": 6,
+    "items": ["EXACT-1 AdamW semantics", "EXACT-2 Z_t recoverability", "EXACT-3 clip operator", "EXACT-4 bookkeeping identity (fp64 residual <=2.8e-20)", "EXACT-5 aggregate gate E=sqrt(SSEsum/TSSsum) 68/68 rows", "EXACT-6 sufficient-statistics identity 48/48 rows diff=0.0"],
+    "limits": ["foreach/fused/AMSGrad untraveled", "scaler disabled unmodeled", "theta_protocol.py pyc-only = visibility gap not semantic gap"]
+  },
+  "cpu_counterexamples": {
+    "protocol_T1_to_T9": "all PASS, see cpu_counterexamples.json",
+    "numbering_note": "AUDIT_REPORT.md v1 T1/T2/T3 were EMPIRICAL findings (A0T-extra reversal / A0P long tail / B0.6 rho=0.996) and collide with protocol CPU-test numbering; remapped to E1/E2/E3 in supplement. CPU tests prove possibility; E1/E3 are observations in this training setup. They are NOT three independent LLM-experiment proofs of the math counterexamples."
+  },
+  "budget_reconciliation": {
+    "round1_cap_18000": {
+      "experiments": {
+        "B0": {"previously_counted": 14208, "run_level_total": 14920, "newly_found": 712, "evidence": "gpu_budget_log.json phases (smoke 356+356, main 6x2304=13824, stress 384); TOTALS=14208=main+stress only"},
+        "B0.5": {"previously_counted": 1609, "run_level_total": 1609, "newly_found": 0, "evidence": "gpu_budget_log.json TOTALS + NOTE (smoke 9+64+main1536 already included)"},
+        "B0.6": {"previously_counted": 1760, "run_level_total": 1760, "newly_found": 0, "evidence": "gpu_budget_log.json TOTALS (smoke 32+failed 64+main1536+stress128)"},
+        "C0": {"previously_counted": 417, "run_level_total": 441, "newly_found": 24, "evidence": "REPORT.md:25 (417=384 main+33 failed smoke); budget_log.jsonl smoke counter 1..24 not in official cumulative"}
+      },
+      "round_total_previously": 17994,
+      "round_total_corrected": 18730,
+      "over_cap": 730,
+      "corrected_pre_C0_intermediate": 18289,
+      "notes": "18,289 = 17,577 + 712 = corrected cumulative at end of B0.6 (pre-C0 base); C0's 417/441 is counted in THIS round, not in 18,289. Historical cap 18,000 unchanged."
+    },
+    "unresolved_audit_side_figures": {
+      "15097": "no run-level source; replaced by 14,920",
+      "889": "15097-14208; decomposes as 712+177 but 177 unattributed",
+      "177": "UNRESOLVED, not fabricated"
+    },
+    "round2_C1_separate": {"updates": 45, "cap": 192, "within_caps": true},
+    "round3_C1L_separate": {"updates": 106, "cap": 128, "within_caps": true},
+    "A0_series": "earlier separate round(s); budget unit wall-seconds/evals; optimizer_updates=0 in a0k-a0u logs; outside update-cap accounting",
+    "G_series": "separately authorized; each training_manifest: 128 planned steps x1024 tokens, terminated at 102; per-arm consolidated update total UNRESOLVED from manifests",
+    "G1c": "feasibility/diagnostic round, separately authorized; no update ledger found",
+    "project_grand_total": "UNRESOLVED as single number by design: three+ separately-authorized rounds with different budget units; see cost_target_audit_v2.csv"
+  },
+  "gates": {"G1": "PASS", "G2": "PASS", "G3": "FAIL", "G4": "PASS", "G5": "PASS", "G6": "PASS"},
+  "downgrades": {"HYP-1": "NOT_SUPPORTED", "HYP-2": "NOT_SUPPORTED", "HYP-3": "CONTRADICTED_OR_MISIMPLEMENTED"},
+  "alignment_verdict": {
+    "deployment_capability_claims": "MISALIGNED (all readouts LM NLL; no downstream eval; no independent final test set)",
+    "lm_nll_axis_research": "ALIGNED within stated scopes (H<=8 prediction; H=4 control; in-sample frozen rules)",
+    "long_horizon_target": "NOT_TESTED (all evidence <=128 steps; no pre-registered ell_star)",
+    "caveat": "absence of downstream evidence does NOT negate the LM-NLL-limited efficiency findings; absence of long/cost evidence keeps tokens-to-target NOT_TESTED, not 'disproven'"
+  },
+  "next_validation": {
+    "N1": "objective feasibility study (no online GTTR policy exists); horizon T=512 marked HORIZON_UNJUSTIFIED pending baseline curve / planned training volume / target distance; NOT approved, 0 updates spent",
+    "N2_N3_N4": "unauthorized alternatives only; not bundled with N1; no 4,900-update approval exists",
+    "one_b_means": "parameter count (~1B dense external autoregressive Transformer; OLMoE-1B-7B excluded as MoE), NOT token count"
+  },
+  "files_v2": ["AUDIT_REVIEW_SUPPLEMENT.md", "claims_status.csv", "cost_target_audit_v2.csv", "validity_domain.csv", "horizon_alignment_v2.csv", "audit_summary_v2.json"]
+}

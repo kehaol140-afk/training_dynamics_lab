@@ -1,0 +1,40 @@
+{
+ "tag": "A0I_GPU_BUDGET_LOG",
+ "budget_cap_seconds": 1800,
+ "accounting_rule": "sum of GPU-active seconds per job; estimates labeled ESTIMATED; shared-GPU conditions (external jobs present, nothing killed)",
+ "entries": [
+  {
+   "job": "a0i_b probe (state 2031/52, stream 0)",
+   "gpu_seconds": 120.0,
+   "kind": "ESTIMATED_FROM_WALL",
+   "note": "wall ~10 min incl ~50 s preload (mostly CPU/disk); GPU-active prefix build + METHOD A reference grad + METHOD B ambient/math attempts; probe_2031_52.json has no meter"
+  },
+  {
+   "job": "benchmark attempt 1 (3 states)",
+   "gpu_seconds": 120.0,
+   "kind": "ESTIMATED",
+   "note": "crashed at warmup scoring_A_math KeyError 'cuda_ms' on states 2031/52, 2034/64; 2036/76 killed; per-state GPU work through A/B scoring before crash; artifacts deleted"
+  },
+  {
+   "job": "benchmark attempt 2 (3 states)",
+   "gpu_seconds": 254.5,
+   "kind": "METERED_THEN_LOST",
+   "note": "completed ALL timed GPU work (1 warmup + 5 repeats x 3 states) then crashed at timing CSV write (union-fieldnames bug); same protocol as kept run; artifacts deleted"
+  },
+  {
+   "job": "benchmark attempt 3 (3 states, KEPT)",
+   "gpu_seconds": 254.46,
+   "kind": "METERED",
+   "note": "run_2031_52 119.74 + run_2034_64 58.26 + run_2036_76 76.46 s (gpu_seconds_for_state in run_meta.json)"
+  }
+ ],
+ "total_accounted_gpu_seconds": 748.96,
+ "within_budget_cap": true,
+ "retries": 2,
+ "retries_cause": [
+  "KeyError cuda_ms on untimed warmup fallback dicts",
+  "CSV DictWriter fieldnames union bug after GPU completion"
+ ],
+ "user_interrupts": 0,
+ "environment_changes": "none (torch 2.11.0, cuda 13.0, conda fr_minimind, physical GPU1 via CUDA_VISIBLE_DEVICES=1; no upgrades)"
+}

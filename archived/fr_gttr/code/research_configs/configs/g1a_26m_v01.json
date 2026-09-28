@@ -1,0 +1,147 @@
+{
+  "protocol_version": "FR_G1A_26M_SCALE_GENERALIZATION_V01",
+  "prereg_frozen_at_utc": "2026-09-16T13:30:00Z",
+  "scientific_question": "MECHANISM_SCALE_GENERALIZATION: does the frozen A0C/A0E2 causal tangent mechanism (FD/B/BH_fixed/C ladder) replicate when model scale grows 4.98M -> ~26.7M with training data / optimizer / clipping / tokenizer / code / response protocol held fixed?",
+  "scale_only_principle": "Only hidden_size and num_hidden_layers change vs the v07 anchor config; everything else (tokenizer, position encoding, normalization, activation, attention implementation, loss, dataset D0, seq len, AdamW family and hyperparameters, clip=1.0, bf16 semantics, perturbation/q/CRN/FD/tangent definitions) is identical.",
+  "model": {
+    "codebase": "minimind/model/model_minimind.py + minimind/trainer/trainer_utils.py (frozen v07 generation, unchanged)",
+    "hidden_size": 512,
+    "num_hidden_layers": 7,
+    "num_attention_heads": 8,
+    "num_key_value_heads": 4,
+    "head_dim": 64,
+    "intermediate_size": 1664,
+    "intermediate_size_rule": "MiniMindConfig default ceil(hidden*pi/64)*64 (same frozen formula as anchor; NOT hand-picked)",
+    "vocab_size": 6400,
+    "max_seq_len": 128,
+    "tie_word_embeddings": true,
+    "use_moe": false,
+    "expected_unique_params": 26681728,
+    "anchor_unique_params": 4983168,
+    "scale_ratio": 5.352,
+    "selection_reason": "hidden=512/layers=7 gives 26.68M unique params, closest legal config to the 26M target within 25-30M; heads=8 preserves head_dim=64 (legal, same attention code path); intermediate follows the frozen default formula",
+    "param_count_note": "pre-run estimate 26682048 was corrected to the measured count 26681728 before any result was opened (measured by instantiating the frozen MiniMindConfig; hidden/layers/heads/intermediate unchanged); runner asserts the measured count at train time"
+  },
+  "training": {
+    "train_seeds": [2042, 2043, 2044],
+    "seed_conflict_check": "2042-2044 unused by v07 bank (2030-2037), A0G (2038-2041), or any registered experiment",
+    "dataset": "outputs/e3_confirmatory/v07/e3c_subset.jsonl (D0, same 4096-line subset as v07)",
+    "dataset_sha256": "1e657af9baae0784e582d82ef936160473aa069878e422ef48683a718056b0f4",
+    "partition": "outputs/e3_confirmatory/v07/partition_v07.json (read-only reuse, sha256 ee1810b229b104cdc0f03a82bf816df19afd666a287955cbbec4e7f8fdec379f)",
+    "batch_size": 4,
+    "accumulation_steps": 2,
+    "global_batch_sequences": 8,
+    "tokens_per_optimizer_step": 1024,
+    "learning_rate": 0.0005,
+    "lr_schedule": "minimind trainer_utils.get_lr cosine (same as anchor)",
+    "optimizer": "torch.optim.AdamW default family: betas=(0.9,0.999), eps=1e-8, weight_decay=0.01",
+    "grad_clip": 1.0,
+    "dtype": "bfloat16",
+    "grad_scaler": "disabled (bf16)",
+    "planned_total_optimizer_steps": 128,
+    "total_micro_steps": 256,
+    "train_batch_seed_rule": "train_seed + 1704 (same frozen derivation rule as v07)",
+    "train_batch_seed_offset": 1704,
+    "states": {
+      "EARLY": {"optimizer_step": 26, "fraction": 0.203125, "cumulative_tokens": 26624},
+      "MIDDLE": {"optimizer_step": 64, "fraction": 0.5, "cumulative_tokens": 65536},
+      "LATE": {"optimizer_step": 102, "fraction": 0.796875, "cumulative_tokens": 104448}
+    },
+    "state_step_rule": "round(fraction * 128): 20%->26, 50%->64, 80%->102 (fractions 0.203125/0.5/0.796875 recorded; NOT step 46/64/82)",
+    "training_terminates_at": 102,
+    "note": "training stops at LATE step 102 since no later state is registered; LR schedule remains defined over total_micro_steps=256 so all replayed future steps see the same scheduled LR as the anchor protocol",
+    "checkpoint_contents": "model state (original dtype), AdamW m/v/step, scaler state, full RNG state (python/numpy/torch cpu/torch cuda), global optimizer step, LR/scheduler context via metadata, batch-stream reconstruction metadata (train_batch_seed, partition sha256), config + hashes"
+  },
+  "q_construction": {
+    "rule": "identical to v07 E3C: per state, probe batch = all 32 partition probe_indices in one batch, probe loss backward, q = g_probe / ||g_probe|| (global L2), probe/eval permanently excluded from trajectory",
+    "protocol_tag": "FR_G1A_26M_THETA_Q_V01"
+  },
+  "response_protocol_inheritance": {
+    "pulse": "post-unscale / pre-clip, first optimizer step only, +/-epsilon*q",
+    "epsilon_rule": "epsilon = 0.25 * sigma_q, sigma_q = std(ddof=1) of s over 16 E1 streams (frozen v07 rule, unchanged)",
+    "crn": "baseline/plus/minus share identical Z_t, batch manifest, RNG stream, LR path; only +/-epsilon*q differs",
+    "rho0_noop_check": "sign=+1 epsilon=0.0 must bit-match baseline (same as v07)",
+    "future_lr": "set_native_micro_lr along the same 256-micro-step cosine axis",
+    "horizons_official": [1, 4, 8],
+    "horizons_note": "frozen tangent runners internally step through every optimizer step 1..max(H); recorded predictions at H in {1,2,4,8} are a byproduct - official analysis grid is exactly {1,4,8}; FD branches are run with horizons {1,4,8} only",
+    "hvp": "math-SDPA reverse-over-reverse surrogate (native flash has no double backward) - same frozen mixed-backend caveat as A0C/A0E2",
+    "clip": 1.0,
+    "model_A": "not part of G1a main comparison"
+  },
+  "streams": {
+    "e1_streams_per_state": 16,
+    "e2_streams_per_state": 4,
+    "e2_total_streams": 36,
+    "state_horizon_cells": 27,
+    "stream_seed_rule": "two_level_seed(base, train_seed, state_step, stream_id) then batch_seed=derive_stream_seed(stream_seed, 404) - identical derivation to v07 with G1a-specific bases",
+    "g1a_e1_stream_base_seed": 408202601,
+    "g1a_e2_stream_base_seed": 409202601,
+    "manifest_protocol_tag": "FR_G1A_26M_E2_PAIRED_STREAM",
+    "ordering_rule": "all 36 future-stream manifests are generated and written (future_stream_manifest.json) BEFORE any E2 response branch is executed"
+  },
+  "main_matrix": {
+    "states": 9,
+    "models": ["chi_FD", "chi_B", "chi_C"],
+    "bh_fixed_on_all_states": false,
+    "note": "B/C tangent replay additionally produces H=2 byproduct predictions (frozen runner internal grid); these never enter official statistics"
+  },
+  "mechanism_subset": {
+    "seed": 2042,
+    "states": ["EARLY", "MIDDLE", "LATE"],
+    "models": ["B", "BH_fixed", "C", "FD"],
+    "horizons": [1, 4, 8],
+    "identity_requirement": "at H=1, B = BH_fixed = C within numerical tolerance (structural identity check)",
+    "gains": {
+      "gain_curvature": "err_B - err_BH_fixed",
+      "gain_clip": "err_BH_fixed - err_C",
+      "no_sign_presupposition": "gains are reported signed per cell and pooled; no requirement that every cell be positive"
+    }
+  },
+  "smoke_gate": {
+    "state": "seed 2042 step 64 (MIDDLE)",
+    "checks": [
+      "checkpoint full restore (model+optimizer+scaler+RNG)",
+      "optimizer state dims/names match 26M model",
+      "q strictly same names/shapes as parameters",
+      "FD +/- branches CRN-identical (batch manifest hash, LR path, observations of baseline branches)",
+      "H=1 analytic B vs FD consistency at registered epsilon",
+      "B/C shadow baseline hash equality at H=8",
+      "HVP executes (math-SDPA) and is finite",
+      "no unexpected optimizer steps (optimizer step counter audit)",
+      "all outputs finite"
+    ],
+    "policy": "implementation bugs may be fixed and re-smoked with a change log; any scientific-definition problem => CONTRACT_INCOMPATIBLE, stop and report"
+  },
+  "statistics": {
+    "per_cell_outputs": ["chi_FD", "chi_B", "chi_C", "abs_err_B", "abs_err_C", "rel_err_B", "rel_err_C", "signed_err_B", "signed_err_C"],
+    "aggregations": ["A_pooled_27", "B_by_H", "C_by_seed", "D_by_stage", "E_H_gt_1_paired_B_minus_C"],
+    "metrics_source": "fr.a0c_adamw_response_propagation_v01._metric and relative_error (frozen, imported; redefinition forbidden)",
+    "extra_summary": ["C beats B count / ties / losses at H>1", "mean paired improvement err_B - err_C"],
+    "relative_error_median": "median per-cell relative error reported alongside mean"
+  },
+  "verdict_thresholds_frozen": {
+    "analysis_grid": "9 states x H in {1,4,8} = 27 rows; H=1 rows are structural ties (B==C) and are excluded from paired win/loss counts but included in pooled R2/MAE",
+    "STRONG_SCALE_REPLICATION": {
+      "condition_1": "C pooled R2 over the 27 official rows >= 0.90",
+      "condition_2": "among the 18 H>1 rows (H in {4,8}), at least 80% (>=15 of 18) have err_C < err_B; tie defined as |err_C - err_B| <= 1e-12",
+      "condition_3": "H=8 (9 rows): paired mean err_C < mean err_B AND C R2 at H=8 >= 0.50 AND corr at H=8 > 0",
+      "condition_4": "at least 2 of 3 seeds have mean(err_B - err_C) > 0 over that seed's H>1 rows (6 rows per seed)"
+    },
+    "PARTIAL_SCALE_REPLICATION": "pooled H>1 mean relative error of C < that of B, but not all STRONG conditions hold (including heterogeneous seeds/stages)",
+    "NO_SCALE_REPLICATION": "C is not overall better than B, or C lost predictive validity vs FD",
+    "note": "168/168-style full sweep is NOT required; thresholds are frozen here before any result is opened and will not be changed"
+  },
+  "dynamics_context": {
+    "recorded_per_step": ["training loss", "lr", "preclip grad norm", "clip active flag", "param norm (post step)"],
+    "recorded_per_future_step": ["clip active", "clip coefficient", "hvp norm", "native gradient norm"],
+    "usage": "context/explanation only; states may NOT be filtered post hoc using these variables"
+  },
+  "resource_rules": {
+    "gpu": "any currently available GPU; record sharing; never kill other workloads",
+    "allowed_under_oom": ["gradient checkpointing only if mathematically identical", "smaller device microbatch with matching accumulation to keep global batch/tokens fixed", "existing memory-safe HVP"],
+    "forbidden": ["shrinking the model after registration", "changing seq len / global batch / clip / optimizer / precision semantics / horizons", "dropping failed states"],
+    "resource_limit_policy": "if 26M full tangent is infeasible on available hardware, emit RESOURCE_LIMIT with full diagnostics; do NOT silently downscale"
+  },
+  "out_of_scope": ["A0G task utility", "A0H/A'' algorithms", "adjoint", "decision controllers", "v06", "second dataset", "no-clip", "64M/100M/1B", "optimizer family change", "beta sweep", "epsilon sweep", "scalar FDR revalidation", "modifying any frozen artifact"],
+  "output_dir": "outputs/generalization_g1a_26m_v01"
+}

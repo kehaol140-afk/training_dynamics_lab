@@ -1,0 +1,133 @@
+{
+  "run_id": "A",
+  "arm": "A",
+  "config_id": "CONTINUATION_ADAPTATION_SMOKE_V01",
+  "device": "cuda:0",
+  "torch_version": "2.11.0",
+  "cudnn_deterministic": true,
+  "wall_seconds": 5.702733039855957,
+  "c0": {
+    "state_path": "/home/b205/projects/training_dynamics_lab/legacy_fluctuation_response/outputs/e3_confirmatory/v07/seed_2030/states/state_step_064.pt",
+    "state_sha256": "f3ef39a934e2b030287395575c2beaaa63c26ef8d0c0633f3c8359011b61ed96",
+    "corpus_sha256": "1e657af9baae0784e582d82ef936160473aa069878e422ef48683a718056b0f4",
+    "corpus_sha_verified": true,
+    "partition_sha256": "5ecaf0a3533d5dddd3fe2a768f13f5f8131cb620cb78412c35df5467539391f4",
+    "metadata": {
+      "protocol": "E3C_CONFIRMATORY_V07_STATE_BANK",
+      "train_seed": 2030,
+      "state_optimizer_step": 64,
+      "global_micro_step": 128,
+      "total_micro_steps": 256,
+      "planned_total_optimizer_steps": 128,
+      "partition_sha256": "5ecaf0a3533d5dddd3fe2a768f13f5f8131cb620cb78412c35df5467539391f4"
+    }
+  },
+  "hyperparams_used": {
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "eps": 1e-08,
+    "weight_decay": 0.01,
+    "grad_clip": 1.0,
+    "lr_schedule_mode": "original_axis",
+    "base_lr": 0.0005,
+    "lr_first": 0.0002694782235823448,
+    "lr_last": 5e-05
+  },
+  "arm_record": {
+    "arm": "A",
+    "spec": {
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "reset_m": false,
+      "reset_v": false,
+      "reset_step": false
+    },
+    "signature_pre": {
+      "class_module": "torch.optim.adamw",
+      "class_name": "AdamW",
+      "param_groups": [
+        {
+          "lr": 0.000275,
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "eps": 1e-08,
+          "weight_decay": 0.01,
+          "amsgrad": false,
+          "maximize": false,
+          "capturable": false,
+          "differentiable": false,
+          "fused": null
+        }
+      ]
+    },
+    "signature_post": {
+      "class_module": "torch.optim.adamw",
+      "class_name": "AdamW",
+      "param_groups": [
+        {
+          "lr": 0.000275,
+          "betas": [
+            0.9,
+            0.999
+          ],
+          "eps": 1e-08,
+          "weight_decay": 0.01,
+          "amsgrad": false,
+          "maximize": false,
+          "capturable": false,
+          "differentiable": false,
+          "fused": null
+        }
+      ]
+    },
+    "checks": {
+      "betas_applied": true,
+      "reset_counts": {
+        "reset_channels": [],
+        "n_entries": 46
+      }
+    },
+    "channel_hashes_pre": {
+      "m": "307ba86ff995d6a9bda446dab72e8e2de9312d32d2c38d3319383b4e0a2186a4",
+      "v": "ec604080393d0e7e7749dd7bc3143aa269a2dea074cbd9e0f0bbb29868504651",
+      "step": "2fc7408eec47d630d72f766ec022432de44f7b5f1bfb8efce75ad6130dcd6dda"
+    },
+    "channel_hashes_post": {
+      "m": "307ba86ff995d6a9bda446dab72e8e2de9312d32d2c38d3319383b4e0a2186a4",
+      "v": "ec604080393d0e7e7749dd7bc3143aa269a2dea074cbd9e0f0bbb29868504651",
+      "step": "2fc7408eec47d630d72f766ec022432de44f7b5f1bfb8efce75ad6130dcd6dda"
+    },
+    "zeroed": {
+      "m": 0,
+      "v": 0,
+      "step": 0
+    }
+  },
+  "batch_manifest_sha256": "1559c8f9b12abc1cf6f017e31b5b829ac0daa49b8e359e5a0c4f6d08c1685549",
+  "n_optimizer_steps": 64,
+  "n_micro_batches": 128,
+  "model_hash_at_c0": "6539875ba853b1b25e6530bb436f1fe1d9f620bd981985ddac9f6f70a64b9168",
+  "model_hash_final": "e01b8bf7f375476034025d13abfe0e35c1eb38b6d895df40ddddd024cfab5028",
+  "optimizer_hash_final": "060c8283337a9747f017bb0eccc1f1a007edb5e841182d17b85704bc88d0a40f",
+  "eval_at_c0": {
+    "token_count": 15043,
+    "mean": 7.143618568004402,
+    "p95": 9.99852466583252,
+    "p99": 11.101116943359376,
+    "cvar99": 11.410051364772368
+  },
+  "eval_final": {
+    "token_count": 15043,
+    "mean": 7.000079862877923,
+    "p95": 9.86373586654663,
+    "p99": 11.030257987976073,
+    "cvar99": 11.465243983742416
+  },
+  "final_train_loss_mean_last8": 7.104255020618439
+}

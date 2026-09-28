@@ -1,0 +1,269 @@
+{
+  "seed": 2043,
+  "stage": "EARLY",
+  "step": 26,
+  "stream_id": 0,
+  "stream_seed": 8535404326167186220,
+  "epsilon": 0.038332270686896014,
+  "chi_fd": {
+    "1": -0.049538554637086576,
+    "4": -0.14648658933747663,
+    "8": -0.2042241966617489
+  },
+  "chi_B": {
+    "1": -0.050101601930388914,
+    "2": -0.09387416220503071,
+    "4": -0.16376957952437127,
+    "8": -0.2599133769100781
+  },
+  "chi_C": {
+    "1": -0.050101601930388914,
+    "2": -0.09196461533358441,
+    "4": -0.14821639111145637,
+    "8": -0.20674293134387764
+  },
+  "baseline_X_theta": {
+    "1": -0.01720239222049713,
+    "2": -0.03890684247016907,
+    "4": -0.08048325777053833,
+    "8": -0.12721776962280273
+  },
+  "step_trace": [
+    {
+      "optimizer_step_index": 1,
+      "lr": 0.00045237794621598643,
+      "native_gradient_norm": 1.2191364700670406,
+      "clip_before_norm": 1.2191364765167236,
+      "clip_after_norm": 0.999999201838182,
+      "clip_active": true,
+      "clip_coefficient": 0.820252042573189,
+      "clip_kink_margin": 0.21913747006704054,
+      "hvp_evaluated": false,
+      "hvp_norm": 0.0,
+      "hvp_gradient_relative_gap_vs_native": 0.0,
+      "chi_optimizer_only": -0.050101601930388914,
+      "chi_full_tangent": -0.050101601930388914,
+      "optimizer_only_tangent_norms": {
+        "theta": 0.1923904876765946,
+        "m": 0.07104733991581416,
+        "v": 2.2455595653488435e-05
+      },
+      "full_tangent_norms": {
+        "theta": 0.1923904876765946,
+        "m": 0.07104733991581416,
+        "v": 2.2455595653488435e-05
+      },
+      "optimizer_step_after": 27.0,
+      "baseline_model_hash_after_step": "4c377ce3d5fc188d49a586418d04f2689ff0936817994a5dab1a9bc4bb76e33b",
+      "baseline_optimizer_hash_after_step": "4eb10332cfecbbc9dd81bdb43c755fae7b4fa0eeac4528467c7617da4d20b762"
+    },
+    {
+      "optimizer_step_index": 2,
+      "lr": 0.0004489273520066158,
+      "native_gradient_norm": 1.2556059771266959,
+      "clip_before_norm": 1.255605936050415,
+      "clip_after_norm": 0.9999992638103212,
+      "clip_active": true,
+      "clip_coefficient": 0.7964275591143805,
+      "clip_kink_margin": 0.2556069771266958,
+      "hvp_evaluated": true,
+      "hvp_norm": 0.16853871915848426,
+      "hvp_gradient_relative_gap_vs_native": 0.0023810571890588057,
+      "chi_optimizer_only": -0.09387416220503071,
+      "chi_full_tangent": -0.09196461533358441,
+      "optimizer_only_tangent_norms": {
+        "theta": 0.3608640217362039,
+        "m": 0.06394260425135204,
+        "v": 2.243314040789041e-05
+      },
+      "full_tangent_norms": {
+        "theta": 0.35648710335814254,
+        "m": 0.05812199021709743,
+        "v": 1.8293541849380027e-05
+      },
+      "optimizer_step_after": 28.0,
+      "baseline_model_hash_after_step": "0fad280ef4895e7d3f19d8df3ae4651117598c6b0e0d29ae50dbb2d6b7f5fcef",
+      "baseline_optimizer_hash_after_step": "e4a079450fa435901ee63d4ab2fcd15a379449291e33bcda605660b8b9632b36"
+    },
+    {
+      "optimizer_step_index": 3,
+      "lr": 0.000445371990463959,
+      "native_gradient_norm": 1.0366090477389418,
+      "clip_before_norm": 1.0366089344024658,
+      "clip_after_norm": 0.9999991840175074,
+      "clip_active": true,
+      "clip_coefficient": 0.964682912519712,
+      "clip_kink_margin": 0.03661004773894172,
+      "hvp_evaluated": true,
+      "hvp_norm": 0.20738137690877978,
+      "hvp_gradient_relative_gap_vs_native": 0.002817182155608046,
+      "chi_optimizer_only": -0.13117595998235523,
+      "chi_full_tangent": -0.12402006297710251,
+      "optimizer_only_tangent_norms": {
+        "theta": 0.4987635092032623,
+        "m": 0.05754834233493274,
+        "v": 2.241070756176885e-05
+      },
+      "full_tangent_norms": {
+        "theta": 0.48588689430396664,
+        "m": 0.0465409384866941,
+        "v": 2.0419324381781475e-05
+      },
+      "optimizer_step_after": 29.0,
+      "baseline_model_hash_after_step": null,
+      "baseline_optimizer_hash_after_step": null
+    },
+    {
+      "optimizer_step_index": 4,
+      "lr": 0.0004417140032048658,
+      "native_gradient_norm": 1.517296179261308,
+      "clip_before_norm": 1.5172960758209229,
+      "clip_after_norm": 0.9999994414572906,
+      "clip_active": true,
+      "clip_coefficient": 0.659066670437526,
+      "clip_kink_margin": 0.5172971792613077,
+      "hvp_evaluated": true,
+      "hvp_norm": 1.1141266413018243,
+      "hvp_gradient_relative_gap_vs_native": 0.003413550277008989,
+      "chi_optimizer_only": -0.16376957952437127,
+      "chi_full_tangent": -0.14821639111145637,
+      "optimizer_only_tangent_norms": {
+        "theta": 0.6191061009828376,
+        "m": 0.05179350674125884,
+        "v": 2.2388297169918152e-05
+      },
+      "full_tangent_norms": {
+        "theta": 0.6353299114362312,
+        "m": 0.07342989826131399,
+        "v": 2.6698447108496257e-05
+      },
+      "optimizer_step_after": 30.0,
+      "baseline_model_hash_after_step": "ca598848921a82694df193b1c553a7cca0b9cc116c7ecaa8d40477097ad868da",
+      "baseline_optimizer_hash_after_step": "0d6da0463ef84eaf50f5e2681e3207e0fd493aba10d03707be18099e5e2b19ba"
+    },
+    {
+      "optimizer_step_index": 5,
+      "lr": 0.0004379555936640801,
+      "native_gradient_norm": 1.205185332166048,
+      "clip_before_norm": 1.2051852941513062,
+      "clip_after_norm": 0.9999992264057243,
+      "clip_active": true,
+      "clip_coefficient": 0.8297472127838753,
+      "clip_kink_margin": 0.20518633216604787,
+      "hvp_evaluated": true,
+      "hvp_norm": 0.11606889984310668,
+      "hvp_gradient_relative_gap_vs_native": 0.002471209904439893,
+      "chi_optimizer_only": -0.19265504517427642,
+      "chi_full_tangent": -0.16751837290083282,
+      "optimizer_only_tangent_norms": {
+        "theta": 0.7262202065324692,
+        "m": 0.046614154848342394,
+        "v": 2.2365909143367082e-05
+      },
+      "full_tangent_norms": {
+        "theta": 0.814813928072599,
+        "m": 0.0659344206972949,
+        "v": 2.7435831885328412e-05
+      },
+      "optimizer_step_after": 31.0,
+      "baseline_model_hash_after_step": null,
+      "baseline_optimizer_hash_after_step": null
+    },
+    {
+      "optimizer_step_index": 6,
+      "lr": 0.0004340990257669732,
+      "native_gradient_norm": 1.0897657224470867,
+      "clip_before_norm": 1.0897656679153442,
+      "clip_after_norm": 0.9999992047456504,
+      "clip_active": true,
+      "clip_coefficient": 0.9176275797397133,
+      "clip_kink_margin": 0.08976672244708661,
+      "hvp_evaluated": true,
+      "hvp_norm": 0.12044703123158947,
+      "hvp_gradient_relative_gap_vs_native": 0.002520350470179655,
+      "chi_optimizer_only": -0.2181401460379294,
+      "chi_full_tangent": -0.18308879816725662,
+      "optimizer_only_tangent_norms": {
+        "theta": 0.8212814517640944,
+        "m": 0.04195273826946688,
+        "v": 2.234354346821179e-05
+      },
+      "full_tangent_norms": {
+        "theta": 0.9924116433531694,
+        "m": 0.057770154234711685,
+        "v": 2.657014920839301e-05
+      },
+      "optimizer_step_after": 32.0,
+      "baseline_model_hash_after_step": null,
+      "baseline_optimizer_hash_after_step": null
+    },
+    {
+      "optimizer_step_index": 7,
+      "lr": 0.0004301466225658401,
+      "native_gradient_norm": 1.134501529875429,
+      "clip_before_norm": 1.134501576423645,
+      "clip_after_norm": 0.9999991351450681,
+      "clip_active": true,
+      "clip_coefficient": 0.8814436051630509,
+      "clip_kink_margin": 0.134502529875429,
+      "hvp_evaluated": true,
+      "hvp_norm": 0.16500719091808053,
+      "hvp_gradient_relative_gap_vs_native": 0.0024481280230987416,
+      "chi_optimizer_only": -0.24041695587305492,
+      "chi_full_tangent": -0.19552927090565603,
+      "optimizer_only_tangent_norms": {
+        "theta": 0.9055276219116587,
+        "m": 0.03775746346455238,
+        "v": 2.2321200215698257e-05
+      },
+      "full_tangent_norms": {
+        "theta": 1.1603415410879447,
+        "m": 0.05108997681143886,
+        "v": 2.377718453899544e-05
+      },
+      "optimizer_step_after": 33.0,
+      "baseline_model_hash_after_step": null,
+      "baseline_optimizer_hash_after_step": null
+    },
+    {
+      "optimizer_step_index": 8,
+      "lr": 0.0004261007648405791,
+      "native_gradient_norm": 0.9735958315833254,
+      "clip_before_norm": 0.9735958576202393,
+      "clip_after_norm": 0.9735958315833254,
+      "clip_active": false,
+      "clip_coefficient": 1.0,
+      "clip_kink_margin": -0.02640316841667445,
+      "hvp_evaluated": true,
+      "hvp_norm": 0.21950793067433316,
+      "hvp_gradient_relative_gap_vs_native": 0.0026627451882131428,
+      "chi_optimizer_only": -0.2599133769100781,
+      "chi_full_tangent": -0.20674293134387764,
+      "optimizer_only_tangent_norms": {
+        "theta": 0.9796233079709749,
+        "m": 0.03398171623034974,
+        "v": 2.229887922411983e-05
+      },
+      "full_tangent_norms": {
+        "theta": 1.3146658924671741,
+        "m": 0.04874262606914983,
+        "v": 2.431822981746105e-05
+      },
+      "optimizer_step_after": 34.0,
+      "baseline_model_hash_after_step": "754b6a202524dc2507eb67a142ea7c76f167a4a07db7cc4875c6bcc4967e1c13",
+      "baseline_optimizer_hash_after_step": "cb923f3035f19f0a5c66ac5a4260627fefa5c6df4800824abb555a0a3309a35d"
+    }
+  ],
+  "replay": {
+    "pass": true,
+    "model_hash_equal": true,
+    "optimizer_hash_equal": true,
+    "X_abs_gap_vs_shadow": {
+      "1": 0.0,
+      "4": 0.0,
+      "8": 0.0
+    }
+  },
+  "model_hash_final": "754b6a202524dc2507eb67a142ea7c76f167a4a07db7cc4875c6bcc4967e1c13",
+  "optimizer_hash_final": "cb923f3035f19f0a5c66ac5a4260627fefa5c6df4800824abb555a0a3309a35d"
+}

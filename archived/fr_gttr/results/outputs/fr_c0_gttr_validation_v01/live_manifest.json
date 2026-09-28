@@ -1,0 +1,166 @@
+{
+ "experiment_id": "FR_C0_GTTR_VALIDATION_V01",
+ "protocol": "FR_C0_Geometry_Tracking_Validation_Claude_Code.md",
+ "config_sha256": "e00ce243cd05527b38c63e1a7c81beead1ee89396b3f025399ffbb41892bd1a5",
+ "config_path": "outputs/fr_c0_gttr_validation_v01/config.json",
+ "created": "2026-09-21",
+ "status": "CONFIG_FROZEN; T1-T9 not yet run; 0 updates consumed; 0 GPU diagnostics",
+ "modules": [
+  {
+   "name": "fr.c0_gttr_validation_v01 (to create)",
+   "path": "research/src/fr/c0_gttr_validation_v01.py",
+   "role": "pure tensor-dict algebra: clip, AdamW rewrite moments, transport check, U-map, readout, prediction stats",
+   "status": "NOT_YET_WRITTEN"
+  },
+  {
+   "name": "tests/test_c0_gttr_validation_v01 (to create)",
+   "path": "research/tests/test_c0_gttr_validation_v01.py",
+   "role": "CPU theory tests T1-T9, FP64, no GPU",
+   "status": "NOT_YET_WRITTEN"
+  },
+  {
+   "name": "c0_run_v01 (to create)",
+   "path": "research/scripts/c0_run_v01.py",
+   "role": "smoke (24 updates) + main (384 updates) runner with hard diagnostic caps",
+   "status": "NOT_YET_WRITTEN"
+  },
+  {
+   "name": "c0_analyze_v01 (to create)",
+   "path": "research/scripts/c0_analyze_v01.py",
+   "role": "analysis, verdicts, figures, REPORT.md inputs",
+   "status": "NOT_YET_WRITTEN"
+  },
+  {
+   "name": "fr.a0c_adamw_response_propagation_v01",
+   "status": "FROZEN_EXISTING",
+   "uses": [
+    "clip_jvp",
+    "adamw_tangent_step"
+   ],
+   "import_only": true,
+   "redefine_forbidden": true,
+   "path": "research/src/fr/a0c_adamw_response_propagation_v01.py"
+  },
+  {
+   "name": "a0g_decision_utility_v01",
+   "status": "FROZEN_EXISTING",
+   "uses": [
+    "_grad_on_batches",
+    "_val_loss_only",
+    "_hvp",
+    "_stack_all"
+   ],
+   "path": "research/scripts/a0g_decision_utility_v01.py"
+  },
+  {
+   "name": "a0h15_production_entry_v01",
+   "status": "FROZEN_EXISTING",
+   "uses": [
+    "_baseline_no_step",
+    "_clip_only",
+    "_step_once",
+    "_clip_and_step",
+    "_restore_and_seed",
+    "_endpoint_grad"
+   ],
+   "path": "research/scripts/a0h15_production_entry_v01.py"
+  },
+  {
+   "name": "fr.a0k_closed_loop_runner_v01",
+   "status": "FROZEN_EXISTING",
+   "uses": [
+    "build_live_runtime",
+    "make_event_ctx",
+    "eval_both"
+   ],
+   "path": "research/src/fr/a0k_closed_loop_runner_v01.py"
+  },
+  {
+   "name": "b0_run_v01",
+   "status": "FROZEN_EXISTING",
+   "uses": [
+    "make_stream",
+    "cell_snapshot",
+    "run_arm"
+   ],
+   "path": "research/scripts/b0_run_v01.py"
+  },
+  {
+   "name": "fr.stage_c_runtime",
+   "status": "FROZEN_EXISTING",
+   "uses": [
+    "batches_from_train_pool"
+   ],
+   "path": "research/src/fr/stage_c_runtime.py"
+  },
+  {
+   "name": "fr.stream_rng",
+   "status": "FROZEN_EXISTING",
+   "uses": [
+    "derive_stream_seed",
+    "seed_future_stream"
+   ],
+   "path": "research/src/fr/stream_rng.py"
+  },
+  {
+   "name": "fr.rng",
+   "status": "FROZEN_EXISTING",
+   "uses": [
+    "capture_rng_state",
+    "restore_rng_state"
+   ],
+   "path": "research/src/fr/rng.py"
+  }
+ ],
+ "streams": {
+  "cell_R": {
+   "seed": 2030,
+   "step": 46,
+   "stream_seed": 7110,
+   "source": "b0_run_v01.make_stream(2030,404)->7110, batches_from_train_pool 128 micros"
+  },
+  "cell_C": {
+   "seed": 2030,
+   "step": 46,
+   "stream_seed": 7111,
+   "source": "b0_run_v01.make_stream(2030,404)->7111, batches_from_train_pool 128 micros"
+  }
+ },
+ "probe_banks_frozen": {
+  "dev_seed": 2026092101,
+  "audit_seed": 2026092102,
+  "dev_micros_sha256": "TO_FILL_AT_BANK_MATERIALIZATION (CPU index math verified unique/collision-free)",
+  "audit_micros_sha256": "TO_FILL_AT_BANK_MATERIALIZATION (CPU index math verified unique/collision-free)"
+ },
+ "budget_events": [
+  {
+   "event": "CONFIG_FROZEN",
+   "date": "2026-09-21",
+   "optimizer_updates": 0,
+   "detail": "config.json + audit.md + live_manifest.json frozen; cells R=(2030,46,7110) C=(2030,46,7111); probe seeds 2026092101/2026092102 collision-verified; budget verified 17,577/18,000 from logs; no GPU work yet"
+  },
+  {
+   "event": "THEORY_TESTS_ALL_OK",
+   "date": "2026-09-21",
+   "optimizer_updates": 0,
+   "detail": "T1-T9 20/20 PASS on CPU FP64; no GPU; module+test hashes recorded in theory_tests.json; clip-consumes-clipped-gradient tangent rule established (13% drift otherwise)"
+  },
+  {
+   "event": "IMPLEMENTATION_FROZEN",
+   "date": "2026-09-21",
+   "optimizer_updates": 0,
+   "detail": "c0_gttr_validation_v01.py (pure algebra) + test_c0_gttr_validation_v01.py (T1-T9) + c0_run_v01.py (smoke+main, hard caps) written; T1-T9 20/20 PASS CPU; runner sha256 4f9c0f70e8e823042334578b087b189d0978632aa90e6f39352429f4012746fe"
+  },
+  {
+   "event": "BUDGET_ADJUSTMENT_USER_APPROVED",
+   "date": "2026-09-21",
+   "optimizer_updates": 9,
+   "detail": "smoke attempt 1 crashed after 9 real updates (runner dict.items bug, fixed); failures counted per mandate -> round remaining 399 of 408. User approved proceeding with full smoke(24)+main(384)=417; project total 17,994 <= 18,000. The +9 overhead to be disclosed in REPORT.md."
+  }
+ ],
+ "notes": [
+  "PreToolUse hook timeouts persist this session: all writes via Bash heredoc/python verified by sha256.",
+  "Forward-call accounting: each grad/HVP eval = 2 forwards (grad_accum=2 micros); V_diag piggybacks 1 eval-mode forward with the q-gradient pass.",
+  "Headroom after planned 17,985/18,000 is 15 updates; BUDGET_BLOCKED would be emitted, not silently worked around."
+ ]
+}

@@ -1,0 +1,101 @@
+{
+ "tag": "ENGINEERING_SELFCHECK",
+ "state": "dev:2031/52",
+ "preload_one_time_s": 8.269764241000303,
+ "model_config": {
+  "hidden_size": 256,
+  "num_hidden_layers": 4,
+  "max_seq_len": 128,
+  "n_trainable_params": 4983296
+ },
+ "model_fingerprint_after_restore": "ada46c18944976988fdcd98d988b3567d5fd26e23b1f50e8e61334773f5e2d8a",
+ "forward_fp32": {
+  "mode": "forward_only",
+  "hvp_fp32": true,
+  "H": 4,
+  "M": 4,
+  "scores_hhat_fwd": {
+   "1": -0.0036626322170008304,
+   "2": -0.0008698218908983319,
+   "3": -0.0017735219471732703,
+   "4": -0.008366876195941808
+  },
+  "counters": {
+   "baseline_steps": 4,
+   "candidate_grad_calls": 4,
+   "hvp_calls": 12,
+   "reverse_adjoint_steps": 0,
+   "clip_transpose_calls": 0,
+   "endpoint_grad_calls": 1,
+   "scoring_dot_calls": 4,
+   "replay_branches": 0,
+   "replay_native_steps": 0,
+   "replay_scoring_calls": 0,
+   "outer_autograd_backward_calls": 0
+  },
+  "final_model_hash": "c58f0f51a91d2854d97c2349cbf30fa85b5b7e7713c7d355a6e969e0159d9a7c"
+ },
+ "adjoint_fp32": {
+  "mode": "adjoint_only",
+  "hvp_fp32": true,
+  "H": 4,
+  "M": 4,
+  "scores_hhat_adj": {
+   "1": -0.003662632097429393,
+   "2": -0.0008698219427558734,
+   "3": -0.0017735219661973328,
+   "4": -0.008366876243538353
+  },
+  "w_0_norm": 0.19970997502468135,
+  "counters": {
+   "baseline_steps": 4,
+   "candidate_grad_calls": 4,
+   "hvp_calls": 3,
+   "reverse_adjoint_steps": 4,
+   "clip_transpose_calls": 5,
+   "endpoint_grad_calls": 1,
+   "scoring_dot_calls": 4,
+   "replay_branches": 0,
+   "replay_native_steps": 0,
+   "replay_scoring_calls": 0,
+   "outer_autograd_backward_calls": 0
+  },
+  "final_model_hash": "91672ef88e6121e869fdfd859d4142d6c7a486854452d29e116d8b8ceb037349"
+ },
+ "replay_native": {
+  "mode": "replay_only",
+  "backend": "native",
+  "H": 4,
+  "M": 4,
+  "lambda": 0.05,
+  "v_score": {
+   "0": 7.203056514263153,
+   "1": 7.2028990387916565,
+   "2": 7.202865242958069,
+   "3": 7.202945172786713,
+   "4": 7.202537000179291
+  },
+  "gain_vs_noop": {
+   "0": 0.0,
+   "1": 0.00015747547149658203,
+   "2": 0.00019127130508422852,
+   "3": 0.00011134147644042969,
+   "4": 0.0005195140838623047
+  },
+  "chosen_id": 4,
+  "choose_noop": false,
+  "counters": {
+   "baseline_steps": 0,
+   "candidate_grad_calls": 0,
+   "hvp_calls": 0,
+   "reverse_adjoint_steps": 0,
+   "clip_transpose_calls": 0,
+   "endpoint_grad_calls": 0,
+   "scoring_dot_calls": 0,
+   "replay_branches": 5,
+   "replay_native_steps": 20,
+   "replay_scoring_calls": 5,
+   "outer_autograd_backward_calls": 0
+  }
+ }
+}

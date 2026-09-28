@@ -1,0 +1,59 @@
+{
+ "manifest_id": "A0T_EXTRA_RESPONSE_CONTROLLER_IDENTITY_V01_LIVE",
+ "contract_sha256": "08e3bfbf347d7681e989c129efd1db9605c7c8429b951cf638a6df18fcd8b755",
+ "note": "Every script hash change is logged HERE before running it. Sequencing: write/amend code -> append note with new sha256 -> run.",
+ "module_hash_notes": [
+  {
+   "seq": 0,
+   "ts": "2026-09-18",
+   "files": [
+    "contract/contract.json"
+   ],
+   "sha256": {
+    "contract/contract.json": "08e3bfbf347d7681e989c129efd1db9605c7c8429b951cf638a6df18fcd8b755"
+   },
+   "reason": "Contract frozen BEFORE running any analysis: 5 frozen analyses (action distribution/entropy/switching/fixed comparison/gain decomposition), identification limit of the adaptive component pre-registered (n=2 discriminative cells), verdict rule, forbidden list (offline-only)."
+  },
+  {
+   "seq": 1,
+   "ts": "2026-09-18",
+   "files": [
+    "research/src/fr/a0t_extra_response_controller_identity_v01.py",
+    "research/scripts/a0t_extra_analyze_v01.py"
+   ],
+   "sha256": {
+    "research/src/fr/a0t_extra_response_controller_identity_v01.py": "5a88cd5c51b8894c57c47843c67b2aa484dda0ff11d89e8a7e45247de5c8bc11",
+    "research/scripts/a0t_extra_analyze_v01.py": "588d14f15b49d3bbbec7e93963a2521367f32edef0b891f8725234665153b79b"
+   },
+   "reason": "A0T-extra stats module (distribution/entropy/switching/decomposition) + analyzer (offline, frozen-input guard asserts A0T budget log). Written BEFORE running any analysis."
+  },
+  {
+   "seq": 2,
+   "ts": "2026-09-18",
+   "files": [
+    "research/scripts/a0t_extra_analyze_v01.py"
+   ],
+   "sha256": {
+    "research/scripts/a0t_extra_analyze_v01.py": "63675ad1f96a5ed84ded04e38b6b8b44be88e60ce8c8e5befb2c8a8d183bf4b9"
+   },
+   "reason": "Post-results REPORTING amendment (no computation change, offline): report now includes section 7b - per-horizon B-vs-C gains on the 2 discriminative cells (guided -0.05 wins H=4, inverts at H=16/64). Values were already present in frozen cells.jsonl; the amendment only surfaces them."
+  },
+  {
+   "seq": 3,
+   "ts": "2026-09-18",
+   "files": [
+    "research/scripts/a0t_extra_audit_pack_v01.py"
+   ],
+   "sha256": {
+    "research/scripts/a0t_extra_audit_pack_v01.py": "86162a9e6113f0bae6328c19c1d7d6119524ac6bbdd99b870970cc8e96dbdb92"
+   },
+   "reason": "Audit pack script (established pattern). Written BEFORE running the audit pack."
+  }
+ ],
+ "events": [
+  {
+   "ts": "2026-09-18",
+   "event": "A0T-extra analysis run (offline, no GPU): P(+0.05)=0.944 pooled (2030: 0.833, 2031/2037: 1.0); H(a)=0.310 bits pooled (0.65 seed 2030, 0 else); switching: 1/12 trajectories, 3 changes (D1 2030 x7110 flips - + - + over steps 46-82, max possible); decomposition: adaptive median 0 by construction (34/36 aliased), discriminative directed benefit +2.64e-3 / +4.79e-4 at H=4, but guided -0.05 INVERTS at H=16/64 on both cells. Verdict: dominantly Case B (global LR-up discovery) + validated-but-tiny state-dependent reversal that does not persist beyond H=4 (A0P-consistent). Post-results reporting amendment seq 2 (section 7b)."
+  }
+ ]
+}

@@ -1,0 +1,30 @@
+{
+ "cell": "2030/46",
+ "smoke_stream": 202609240300,
+ "updates_planned": 40,
+ "monitor_evals_planned": 6,
+ "identity_level": "bitwise(theta,m,v,step,lr)+RNG, per-rule",
+ "base_off_on_bitwise_equal": true,
+ "base_rng_equal": true,
+ "base_mismatch": "",
+ "full_off_on_bitwise_equal": true,
+ "full_rng_equal": true,
+ "full_mismatch": "",
+ "base_off_updates": 8,
+ "base_on_updates": 8,
+ "full_off_updates": 8,
+ "full_on_updates": 8,
+ "lr_only_updates": 8,
+ "all_finite": true,
+ "first_step_lr_applied": {
+  "BASE": 0.0007323585913022454,
+  "LR_ONLY": 0.0007689765208673577,
+  "FULL": 0.0007689765208673577
+ },
+ "alpha_full_first_step": 0.047619047619047616,
+ "monitor_evals": 6,
+ "h0_mean": 7.288577717552806,
+ "ell_used": 7.020043501537879,
+ "start_above_ell": true,
+ "verdict": "PASS"
+}

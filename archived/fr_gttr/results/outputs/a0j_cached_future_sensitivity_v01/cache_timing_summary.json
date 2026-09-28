@@ -1,0 +1,184 @@
+{
+ "tag": "A0J_CACHE_TIMING",
+ "interleaved_block": {
+  "unit": "2031/52/s0",
+  "age": 2,
+  "repeats": 5,
+  "T_candidate_score_median_s": 0.5944955880113412,
+  "T_GTp_cached_median_s": 0.13217009298386984,
+  "T_selected_action_execution_median_s": 0.1852733890118543,
+  "T_native_step_median_s": 0.003086800017626956,
+  "note": "T_selected_action_execution honestly re-runs the candidate scorer (full-grad scorer already holds the selected gradient in production; here the injection copy is measured WITH candidate recomputation as the conservative upper bound)"
+ },
+ "per_unit_from_passes": [
+  {
+   "unit": "2031/52/s0",
+   "age": 1,
+   "T_refresh_s": 1.2082648020877969,
+   "T_GTp_cached_s": 0.12085890001617372,
+   "T_candidate_score_s": 1.0121005019755103,
+   "T_native_step_s": null,
+   "T_selected_action_execution_s": null
+  },
+  {
+   "unit": "2031/52/s0",
+   "age": 2,
+   "T_refresh_s": 1.3313154019997455,
+   "T_GTp_cached_s": 0.08943930000532418,
+   "T_candidate_score_s": 0.9944132020173129,
+   "T_native_step_s": 0.003086800017626956,
+   "T_selected_action_execution_s": 0.1852733890118543
+  },
+  {
+   "unit": "2031/52/s0",
+   "age": 4,
+   "T_refresh_s": 1.3925957009196281,
+   "T_GTp_cached_s": 0.13167959998827428,
+   "T_candidate_score_s": 1.034707101964159,
+   "T_native_step_s": null,
+   "T_selected_action_execution_s": null
+  },
+  {
+   "unit": "2031/52/s1",
+   "age": 1,
+   "T_refresh_s": 1.2203831020451616,
+   "T_GTp_cached_s": 0.12512670102296397,
+   "T_candidate_score_s": 1.0120133009913843,
+   "T_native_step_s": null,
+   "T_selected_action_execution_s": null
+  },
+  {
+   "unit": "2031/52/s1",
+   "age": 2,
+   "T_refresh_s": 1.2411910009686835,
+   "T_GTp_cached_s": 0.12842470000032336,
+   "T_candidate_score_s": 1.0014655010018032,
+   "T_native_step_s": null,
+   "T_selected_action_execution_s": null
+  },
+  {
+   "unit": "2031/52/s1",
+   "age": 4,
+   "T_refresh_s": 1.3920550019829534,
+   "T_GTp_cached_s": 0.12097849900601432,
+   "T_candidate_score_s": 1.0258457900199573,
+   "T_native_step_s": null,
+   "T_selected_action_execution_s": null
+  },
+  {
+   "unit": "2034/64/s0",
+   "age": 1,
+   "T_refresh_s": 1.2530829869792797,
+   "T_GTp_cached_s": 0.12031699900398962,
+   "T_candidate_score_s": 1.0532147920457646,
+   "T_native_step_s": null,
+   "T_selected_action_execution_s": null
+  },
+  {
+   "unit": "2034/64/s0",
+   "age": 2,
+   "T_refresh_s": 1.2805913909396622,
+   "T_GTp_cached_s": 0.14410169899929315,
+   "T_candidate_score_s": 1.0204564929881599,
+   "T_native_step_s": null,
+   "T_selected_action_execution_s": null
+  },
+  {
+   "unit": "2034/64/s0",
+   "age": 4,
+   "T_refresh_s": 1.3812737910193391,
+   "T_GTp_cached_s": 0.14181099901907146,
+   "T_candidate_score_s": 1.071956792002311,
+   "T_native_step_s": null,
+   "T_selected_action_execution_s": null
+  },
+  {
+   "unit": "2034/64/s1",
+   "age": 1,
+   "T_refresh_s": 1.234041692019673,
+   "T_GTp_cached_s": 0.14901029798784293,
+   "T_candidate_score_s": 1.048281692987075,
+   "T_native_step_s": null,
+   "T_selected_action_execution_s": null
+  },
+  {
+   "unit": "2034/64/s1",
+   "age": 2,
+   "T_refresh_s": 1.2727896060678177,
+   "T_GTp_cached_s": 0.1388832879893016,
+   "T_candidate_score_s": 1.0477890179899987,
+   "T_native_step_s": null,
+   "T_selected_action_execution_s": null
+  },
+  {
+   "unit": "2034/64/s1",
+   "age": 4,
+   "T_refresh_s": 1.3817751849710476,
+   "T_GTp_cached_s": 0.11948598999879323,
+   "T_candidate_score_s": 0.994714116997784,
+   "T_native_step_s": null,
+   "T_selected_action_execution_s": null
+  },
+  {
+   "unit": "2036/76/s0",
+   "age": 1,
+   "T_refresh_s": 1.2055583699548151,
+   "T_GTp_cached_s": 0.12895459600258619,
+   "T_candidate_score_s": 1.053719774034107,
+   "T_native_step_s": null,
+   "T_selected_action_execution_s": null
+  },
+  {
+   "unit": "2036/76/s0",
+   "age": 2,
+   "T_refresh_s": 1.2771148680476472,
+   "T_GTp_cached_s": 0.1374877979978919,
+   "T_candidate_score_s": 1.043648283026414,
+   "T_native_step_s": null,
+   "T_selected_action_execution_s": null
+  },
+  {
+   "unit": "2036/76/s0",
+   "age": 4,
+   "T_refresh_s": 1.3706864790292457,
+   "T_GTp_cached_s": 0.12696029801736586,
+   "T_candidate_score_s": 0.9472700869955588,
+   "T_native_step_s": null,
+   "T_selected_action_execution_s": null
+  },
+  {
+   "unit": "2036/76/s1",
+   "age": 1,
+   "T_refresh_s": 1.1919190860644449,
+   "T_GTp_cached_s": 0.10857367201242596,
+   "T_candidate_score_s": 1.0430500250076875,
+   "T_native_step_s": null,
+   "T_selected_action_execution_s": null
+  },
+  {
+   "unit": "2036/76/s1",
+   "age": 2,
+   "T_refresh_s": 1.3017713990993798,
+   "T_GTp_cached_s": 0.10820189901278354,
+   "T_candidate_score_s": 1.0908486410044134,
+   "T_native_step_s": null,
+   "T_selected_action_execution_s": null
+  },
+  {
+   "unit": "2036/76/s1",
+   "age": 4,
+   "T_refresh_s": 1.347080658073537,
+   "T_GTp_cached_s": 0.12367091799387708,
+   "T_candidate_score_s": 1.0662263309641276,
+   "T_native_step_s": null,
+   "T_selected_action_execution_s": null
+  }
+ ],
+ "definitions": {
+  "T_refresh": "ff steps + pending fwd/bwd + rollout + endpoint grad + reverse walk (one-shot, A0I-comparable)",
+  "T_GTp_cached": "apply_Gt_T(snapshot_pending, p_tau) alone",
+  "T_candidate_score": "candidate gradients + score dots + selector",
+  "T_selected_action_execution": "injection copy + clip + step at pending horizon (candidate recomputed = conservative upper bound)",
+  "T_native_step": "plain clip + step at pending horizon"
+ }
+}

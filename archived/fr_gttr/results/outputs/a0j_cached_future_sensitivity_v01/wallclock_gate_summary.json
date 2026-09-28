@@ -1,0 +1,27 @@
+{
+ "tag": "A0J_P0_GATE_PER_REPEAT",
+ "anchor": "2031/52",
+ "stream_id": 0,
+ "repeats": 5,
+ "interleaved": "full pass + native step per repeat",
+ "shared_gpu_contention_note": "external jobs on GPU1 inflate individual repeats 2-30x; per-repeat S_upper is a ratio within one contention envelope; median is the gate statistic",
+ "S_upper_median": 4.414742153165774,
+ "S_upper_min": 3.7348680478972955,
+ "S_upper_max": 5.499138609643403,
+ "S_upper_all_repeats": [
+  5.499138609643403,
+  5.2497442413588224,
+  4.414742153165774,
+  3.831092551842166,
+  3.7348680478972955
+ ],
+ "T_total_exact_median_s": 5.618431106995558,
+ "T_total_exact_min_s": 5.208929107000586,
+ "T_total_exact_max_s": 6.964341232000152,
+ "T_native_step_median_s": 0.054172700009075925,
+ "T_recomputable_prefix_median_s": 4.114112604991533,
+ "gate": {
+  "rule": "median S_upper >= 1.25 -> P1_FULL",
+  "verdict": "P1_FULL"
+ }
+}

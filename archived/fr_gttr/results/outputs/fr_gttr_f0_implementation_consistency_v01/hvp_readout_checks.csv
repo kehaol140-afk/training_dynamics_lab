@@ -1,0 +1,11 @@
+check,status,detail
+HVP scalar loss,EXECUTED_CPU_9组,适配器逐有效batch两micro/2与生产一致（FP64精确到5.6e-17）
+HVP 方向 detach,EXECUTED_CPU_9组,适配器 S.detach() 与生产 .detach() 语义一致
+HVP 共享参数,STATIC_CHECKED,生产 named_parameters 去重一次；CPU 适配器无 tie（2块独立）
+HVP None 分支,STATIC_CHECKED,生产 allow_unused=True+zeros fallback；CPU 全参有梯度
+HVP 计数,NOT_RUN_GPU,本轮 GPU=0，未执行真实 4.98M 模型 HVP
+target V value,EXECUTED_CPU,D3 fixture 两 chunk 不同 count 验证 sum/count
+target q,EXECUTED_CPU,D3 fixture：修复前 q=grad(sum) 差 count 倍；修复后 q=grad(sum)/count
+q/S 同 theta 时点,STATIC_CHECKED,生产 rollout 在读出 h 处 eval+grad 同一 theta_h
+eval RNG 隔离,STATIC_CHECKED,生产 eval_full_library capture/restore RNG
+V_design 整库,NOT_RUN_GPU,本轮 0 GPU

@@ -1,0 +1,55 @@
+{
+  "state_seed": 2026,
+  "partition_seed": 40202601,
+  "stream_base_seed_e1": 94202601,
+  "stream_base_seed_e2": 95202601,
+  "hidden_size": 256,
+  "num_hidden_layers": 4,
+  "max_seq_len": 128,
+  "batch_size": 4,
+  "accumulation_steps": 2,
+  "learning_rate": 0.0005,
+  "grad_clip": 1.0,
+  "dtype": "bfloat16",
+  "subset_lines": 4096,
+  "planned_total_optimizer_steps": 128,
+  "mid_optimizer_step": 64,
+  "probe_pool_size": 32,
+  "eval_pool_size": 128,
+  "eval_batch_size": 8,
+  "e1_streams": 16,
+  "e2_streams": 8,
+  "horizons": [
+    1,
+    8,
+    32
+  ],
+  "rho": [
+    0.1,
+    0.25,
+    0.5,
+    1.0
+  ],
+  "e3_state_steps": [
+    46,
+    52,
+    58,
+    64,
+    70,
+    76,
+    82
+  ],
+  "e3_primary_rho": 0.25,
+  "e3_e1_streams": 16,
+  "e3_e2_streams": 8,
+  "e3_e1_stream_base_seed": 105202601,
+  "e3_e2_stream_base_seed": 106202601,
+  "replication_train_seeds": [
+    2026,
+    2027,
+    2028,
+    2029
+  ],
+  "v06_e1_stream_base_seed": 206202601,
+  "v06_e2_stream_base_seed": 207202601
+}

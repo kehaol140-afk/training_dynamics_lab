@@ -1,0 +1,63 @@
+{
+ "stage": "T1-T9 CPU THEORY TESTS",
+ "date": "2026-09-21",
+ "gpu_used": false,
+ "optimizer_updates_consumed": 0,
+ "status": "ALL_OK",
+ "tests": {
+  "T1": {
+   "name": "full AdamW vs bias-corrected m/v rewrite",
+   "covers": "non-constant LR, non-zero decay, masked param groups, clip active/inactive, restored step count (t_warm=46), first-step a=0/b=0 no div-zero",
+   "result": "PASS"
+  },
+  "T2": {
+   "name": "realized d_t carry-over identity",
+   "covers": "non-constant P and eta; negative variants (P_prev substitution, double eta) both deviate and fail",
+   "result": "PASS"
+  },
+  "T3": {
+   "name": "full-state + log-LR analytic tangent vs central FD",
+   "covers": "PD quadratic training loss, V with different Hessian, clip inactive (rel 2.3e-9) and active, v>0 strict; v=0 boundary guarded (r=0 when m=0; BOUNDARY_V_ZERO flagged when m!=0, finite)",
+   "result": "PASS"
+  },
+  "T4": {
+   "name": "training-field mu vs validation q separation",
+   "covers": "e_m recursion == m_hat - mu (from step 20, filter-gain identity), readout W_field+W_track+W_wd == W_total at places=12 with PRE-update theta, q<->mu swap changes semantics",
+   "result": "PASS"
+  },
+  "T5": {
+   "name": "clip order asymmetry",
+   "covers": "C(E[g]) != E[C(g)] concrete counterexample (g1=(2,0), g2=(0,2), tau=1); noncommuting clip-JVP J and Hessian H: JH-(JH)^T nonzero",
+   "result": "PASS"
+  },
+  "T6": {
+   "name": "update nonlinear expectation",
+   "covers": "two-point c in {1,3}; mean(u_map(g)) != u_map(mean g) at module level (tau=1e12 clip-inactive)",
+   "result": "PASS"
+  },
+  "T7": {
+   "name": "quadratic valley pulse4 reversal (exact numbers)",
+   "covers": "L=(x^2+6y^2)/2, x0=y0=1, eta=0.25; H4 == 0.591064453125 > 0; H16 == -0.0005356792152846719 < 0 (fp64 exact); wrt='u' chain rule x0.25",
+   "note": "only shows reversal does not require crossing valleys; NOT the Transformer mechanism",
+   "result": "PASS"
+  },
+  "T8": {
+   "name": "prediction adapters positive/negative controls",
+   "covers": "no-clip quadratic: Mgeom E<1e-12 (FP64 exact), M0 E==1; clip active-set change: real re-clip accurate (<1e-9), fixed clip-JVP finite displacement fails (>0.3); smooth non-quadratic: Mgeom NOT exact (E>1e-6) -- falsifiable",
+   "result": "PASS"
+  },
+  "T9": {
+   "name": "readout & RNG",
+   "covers": "two-step telescope; K_V allowed negative; module functions consume no RNG and do not mutate inputs (unit-level guard; smoke re-checks on GPU)",
+   "result": "PASS"
+  }
+ },
+ "fixes_applied_during_test_development": [
+  "T1/T2 harness: native trajectory must be one continuous run (warm state was reset to zeros per call)",
+  "T3: tangent must consume the CLIPPED gradient C(g) like the real step, with d_c = clip-JVP(H d_theta); raw-g pass gives 13% multi-step drift",
+  "T3 boundary: r = m/eps is finite and nonzero for zero v with nonzero warm m (BOUNDARY_V_ZERO); r==0 only when m==0 too",
+  "T4: e_m == m_hat - mu requires filter gains to sum to 1, i.e. chain from t_prev=0; readout W_wd uses PRE-update theta"
+ ],
+ "module_sha256": "3e9d7658a96899842259dfbdcb90280c524778a9456bf65a390dafe4199320e2",
+ "test_sha256": "aa759efcb4cdcd976e56a06c21ca50673573556787db58bda2d6a62cb81562f2"
+}

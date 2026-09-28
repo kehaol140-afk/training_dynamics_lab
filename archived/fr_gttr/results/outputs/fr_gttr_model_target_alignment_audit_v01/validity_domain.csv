@@ -1,0 +1,12 @@
+domain_id,architecture_model_size,tokenizer,Dataset,training_stage,native_optimizer,precision,clip活动,perturbation_type,幅度,信息时点,局部全程时域,readout,uncertainty,domain_class,limits_or_extension
+D01,v07 MiniMind-S 4.98M dense,Minimind vocab6400,D0 pretrain_t2t_mini前4096,stage1-3 checkpoints 56态,torch.optim.AdamW(5e-4 0.9/0.999 1e-8 wd0.01),bf16 autocast+fp32 master,clip tau=1.0全局L2(活动率0.25-1.0),LR log-space乘性持久/脉冲,|u|<=0.05(5点网格至+-0.1),chi=模拟后; 控制规则=冻结bank信号,H<=8局部; 干预/观测<=64步; T=128 pilot,v_score/v_eval/v_diag(LM NLL),n=cell/stream级; rel err 0.0045-0.0219(H<=8),EXACT_FOR_IMPLEMENTATION+EMPIRICALLY_COVERED,foreach/fused/AMSGrad未走; scaler disabled; H>8为UNTESTED_EXTENSION
+D02,G1a MiniMind 26M(同tokenizer),同vocab,D0同,26M stage 26/64/102,同AdamW配置,bf16,同clip,scale-only干预,同幅度,同,H<=8,同,paired 18/18/0; R^2>=0.99949,EMPIRICALLY_COVERED,仅证26M该配置; 观察非定律
+D03,G1b MiniMind 100M(同tokenizer),同vocab,D0同,100M stage,同AdamW,bf16,同clip,scale-only,同,同,H<=8,同,同G1a,EMPIRICALLY_COVERED,同
+D04,G2 MiniMind-S 4.98M(同tokenizer),同vocab,D1 pretrain_hq(rev 3a9bbe61 shingle Jaccard 1.6e-7),D1 seed60202601,同AdamW,bf16,同clip,data分布复制(数据目标改变),同,同,H<=8,同,R^2>0.999,EMPIRICALLY_COVERED,数据分布泛化; 不外推其他语料
+D05,G3 no-clip干预(MiniMind-S),同vocab,D0,同,同AdamW,bf16,clip移除干预(gain_clip+0.094),clip regime改变,DC动作,同,同,同,v_eval,机制确认单规模,EMPIRICALLY_COVERED,clip活动率1.0(100M)端点; 中间regime未扫
+D06,~1B外部dense自回归Transformer(非本仓库架构),外部tokenizer,外部真实optimizer state系统,外部预训练中途,真实AdamW类,bf16(+fp16 trigger诊断),真实clip,未测,未测,未测,未测,未测,UNTESTED_EXTENSION,OLMoE-1B-7B被排除(MoE非dense); G1c仅可行性Phase0/1 PASS; B/FD可执行 C受scale-dependent limitation+fp16 trigger
+D07,beta/eps/batch size/data-mixture动作,—,—,—,optimizer内部超参变化,—,—,未测,任意,未测,未测,未测,UNTESTED_EXTENSION,beta变化需审计偏差校正历史; batch变化需重审step/token schedule与梯度均值定义; data-mixture改变平均场+数据目标非仅噪声
+D08,H>8 tangent预测,4.98M,同,同,同,同,同,同,同,同,H 9-64预测,同,UNTESTED_EXTENSION,现有C模型证据止H<=8; H16/64臂存在但为干预响应非tangent精度验证
+D09,>128步时域,—,—,—,—,—,—,—,—,—,>128步,—,UNTESTED_EXTENSION,全部证据<=128步(T2/T7 CPU+ E1/E2经验示外推风险)
+D10,下游任务/能力目标,—,—,—,—,—,—,—,—,—,任意,下游探针集(不存在),UNTESTED_EXTENSION,无下游评测; 无独立final测试集
+D11,fp16精度(对照bf16),外部~1B,G1c诊断,—,—,fp16,—,C-failure触发因素之一,—,—,—,cdiag,scale-dependent limitation(primary)+fp16 trigger,EMPIRICALLY_COVERED(诊断级),仅G1c cdiag; 非本仓库bank轴

@@ -1,0 +1,33 @@
+{
+ "q1_stable_timescale": {
+  "median_sign_stability": 1.0,
+  "median_best_r2": 0.35094168257444247,
+  "cv_tau_c": 3.316616948856089,
+  "n_tau_c": 12,
+  "verdict": false
+ },
+ "q2_h4_long_term_direction": {
+  "sign_agreement": 1.0,
+  "pearson": 0.8606633774382642,
+  "verdict": true
+ },
+ "q3_shared_timescale": {
+  "cv_tau_c": 3.316616948856089,
+  "tau_c_median": 174.20135476254143,
+  "group_medians": {
+   "2030": 129.51535358578116,
+   "2031": 576.9134489372144,
+   "2037": 143.97320671560595,
+   "step46": 69.87914840289872,
+   "step82": 248.8288920204692
+  },
+  "max_group_median_deviation": 2.311762125636857,
+  "normalized_shape_pairwise_pearson_median": 0.4897072636256108,
+  "verdict": false
+ },
+ "n_cells": 12,
+ "consistent_with_driver": null,
+ "mismatches": [],
+ "stage1_gate_pass": false,
+ "note": "STAGE-1 GATE FAILED: driver Stage 2 never ran. Q rules below evaluate the pre-registered criteria against recorded kernels as DESCRIPTIVE DIAGNOSTICS of the failure; they are not a bypass of the gate."
+}

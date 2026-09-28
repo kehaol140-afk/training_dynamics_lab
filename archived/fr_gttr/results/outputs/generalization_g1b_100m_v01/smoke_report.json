@@ -1,0 +1,27 @@
+{
+  "protocol": "FR_G1B_100M_SCALE_GENERALIZATION_V01",
+  "state": {
+    "seed": 2042,
+    "step": 26
+  },
+  "checks": {
+    "optimizer_state_dims_names": true,
+    "checkpoint_restore": true,
+    "rng_restored": true,
+    "q_names_shapes": true,
+    "fd_crn_consistent": true,
+    "rho0_noop": true,
+    "fd_outputs_finite": true,
+    "h1_analytic_vs_fd_rel_err": 0.018291454550939144,
+    "h1_consistency": true,
+    "h1_B_equals_C": true,
+    "shadow_hash_match": true,
+    "hvp_executed": true,
+    "hvp_finite": true,
+    "math_native_hvp_gap_max": 0.0030640598251638227,
+    "no_unexpected_optimizer_steps": true,
+    "gpu_peak_memory_mb": 11032.28564453125,
+    "all_outputs_finite": true
+  },
+  "overall_pass": true
+}

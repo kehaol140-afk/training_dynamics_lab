@@ -1,0 +1,454 @@
+{
+  "protocol": "FR_A0C_MOMENTUM_THEORY_V02",
+  "status": "NO_MATCHED_STATES",
+  "formula": "chi_hat=-eta*rho*sigma_q*mu_q*(1-beta1^H)",
+  "mu_q_formula": "sum_i(q_i^2/(sqrt(exp_avg_sq_i)+eps))",
+  "target_column": "chi",
+  "fit_parameters": [],
+  "source_paths": {
+    "a0c_state_horizon_csv": "/home/b205/projects/fluctuation_response/outputs/a0_fr_audit/v01/direct_path/a0c_state_horizon.csv",
+    "checkpoint_root": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06",
+    "probe_direction_q": "/home/b205/projects/fluctuation_response/outputs/e1_fluctuation/v03_pilot/probe_direction_q.pt"
+  },
+  "input_row_count": 448,
+  "input_columns": [
+    "seed",
+    "state_step",
+    "state_fraction",
+    "horizon",
+    "B",
+    "chi",
+    "alpha_direct",
+    "B_res",
+    "chi_res",
+    "mu_q",
+    "beta1",
+    "beta2",
+    "weight_decay"
+  ],
+  "requested_state_count": 56,
+  "matched_state_count": 0,
+  "prediction_row_count": 0,
+  "rho": 0.25,
+  "rho_source": {
+    "kind": "a0_data_audit",
+    "path": "/home/b205/projects/fluctuation_response/outputs/a0_fr_audit/v01/A0_DATA_AUDIT.json",
+    "field": "rho_values[0]"
+  },
+  "sigma_q": 0.09874270164092,
+  "sigma_q_source": {
+    "kind": "e1_report_stats",
+    "path": "/home/b205/projects/fluctuation_response/outputs/e1_fluctuation/v03_pilot/e1_fluctuation_report.json",
+    "field": "stats.sigma_q"
+  },
+  "overall_R2": null,
+  "overall_corr": null,
+  "seed_R2": {
+    "2030": null,
+    "2031": null,
+    "2032": null,
+    "2033": null,
+    "2034": null,
+    "2035": null,
+    "2036": null,
+    "2037": null
+  },
+  "horizon_R2": {
+    "1": null,
+    "2": null,
+    "4": null,
+    "8": null,
+    "12": null,
+    "16": null,
+    "24": null,
+    "32": null
+  },
+  "seed_corr": {
+    "2030": null,
+    "2031": null,
+    "2032": null,
+    "2033": null,
+    "2034": null,
+    "2035": null,
+    "2036": null,
+    "2037": null
+  },
+  "horizon_corr": {
+    "1": null,
+    "2": null,
+    "4": null,
+    "8": null,
+    "12": null,
+    "16": null,
+    "24": null,
+    "32": null
+  },
+  "missing_state_report": {
+    "requested_seeds": [
+      2030,
+      2031,
+      2032,
+      2033,
+      2034,
+      2035,
+      2036,
+      2037
+    ],
+    "available_seeds": [
+      2026,
+      2027,
+      2028,
+      2029
+    ],
+    "requested_state_count": 56,
+    "matched_state_count": 0,
+    "missing_state_count": 56,
+    "entries": [
+      {
+        "seed": 2030,
+        "state_step": 46,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2030/states/state_step_046.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2030,
+        "state_step": 52,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2030/states/state_step_052.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2030,
+        "state_step": 58,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2030/states/state_step_058.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2030,
+        "state_step": 64,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2030/states/state_step_064.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2030,
+        "state_step": 70,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2030/states/state_step_070.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2030,
+        "state_step": 76,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2030/states/state_step_076.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2030,
+        "state_step": 82,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2030/states/state_step_082.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2031,
+        "state_step": 46,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2031/states/state_step_046.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2031,
+        "state_step": 52,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2031/states/state_step_052.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2031,
+        "state_step": 58,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2031/states/state_step_058.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2031,
+        "state_step": 64,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2031/states/state_step_064.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2031,
+        "state_step": 70,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2031/states/state_step_070.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2031,
+        "state_step": 76,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2031/states/state_step_076.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2031,
+        "state_step": 82,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2031/states/state_step_082.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2032,
+        "state_step": 46,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2032/states/state_step_046.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2032,
+        "state_step": 52,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2032/states/state_step_052.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2032,
+        "state_step": 58,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2032/states/state_step_058.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2032,
+        "state_step": 64,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2032/states/state_step_064.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2032,
+        "state_step": 70,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2032/states/state_step_070.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2032,
+        "state_step": 76,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2032/states/state_step_076.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2032,
+        "state_step": 82,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2032/states/state_step_082.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2033,
+        "state_step": 46,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2033/states/state_step_046.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2033,
+        "state_step": 52,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2033/states/state_step_052.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2033,
+        "state_step": 58,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2033/states/state_step_058.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2033,
+        "state_step": 64,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2033/states/state_step_064.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2033,
+        "state_step": 70,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2033/states/state_step_070.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2033,
+        "state_step": 76,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2033/states/state_step_076.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2033,
+        "state_step": 82,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2033/states/state_step_082.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2034,
+        "state_step": 46,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2034/states/state_step_046.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2034,
+        "state_step": 52,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2034/states/state_step_052.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2034,
+        "state_step": 58,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2034/states/state_step_058.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2034,
+        "state_step": 64,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2034/states/state_step_064.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2034,
+        "state_step": 70,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2034/states/state_step_070.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2034,
+        "state_step": 76,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2034/states/state_step_076.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2034,
+        "state_step": 82,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2034/states/state_step_082.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2035,
+        "state_step": 46,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2035/states/state_step_046.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2035,
+        "state_step": 52,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2035/states/state_step_052.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2035,
+        "state_step": 58,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2035/states/state_step_058.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2035,
+        "state_step": 64,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2035/states/state_step_064.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2035,
+        "state_step": 70,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2035/states/state_step_070.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2035,
+        "state_step": 76,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2035/states/state_step_076.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2035,
+        "state_step": 82,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2035/states/state_step_082.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2036,
+        "state_step": 46,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2036/states/state_step_046.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2036,
+        "state_step": 52,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2036/states/state_step_052.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2036,
+        "state_step": 58,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2036/states/state_step_058.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2036,
+        "state_step": 64,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2036/states/state_step_064.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2036,
+        "state_step": 70,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2036/states/state_step_070.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2036,
+        "state_step": 76,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2036/states/state_step_076.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2036,
+        "state_step": 82,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2036/states/state_step_082.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2037,
+        "state_step": 46,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2037/states/state_step_046.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2037,
+        "state_step": 52,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2037/states/state_step_052.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2037,
+        "state_step": 58,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2037/states/state_step_058.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2037,
+        "state_step": 64,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2037/states/state_step_064.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2037,
+        "state_step": 70,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2037/states/state_step_070.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2037,
+        "state_step": 76,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2037/states/state_step_076.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      },
+      {
+        "seed": 2037,
+        "state_step": 82,
+        "expected_path": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2037/states/state_step_082.pt",
+        "reason": "EXACT_SEED_STATE_CHECKPOINT_NOT_FOUND"
+      }
+    ]
+  },
+  "state_results": [],
+  "prediction_rows": [],
+  "constraints": [
+    "EXACT_SEED_STATE_MATCH_ONLY",
+    "NO_CROSS_SEED_SUBSTITUTION",
+    "RAW_EXP_AVG_SQ_NO_BIAS_CORRECTION",
+    "NO_EMPIRICAL_SCALE_PARAMETER",
+    "FR_OBSERVATION_ONLY"
+  ]
+}

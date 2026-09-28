@@ -1,0 +1,431 @@
+{
+ "frozen_inputs": {
+  "a0t_cells_sha256": "ac48f0438d598a165b285f93e8937f9a13f6f6a094fa23457feaca080d9083a5",
+  "a0t_gpu_total_s": 1351.436,
+  "a0t_n_phases": 36
+ },
+ "action_distribution": {
+  "pooled": {
+   "n": 36,
+   "P(+0.05)": 0.9444444444444444,
+   "P(-0.05)": 0.05555555555555558
+  },
+  "per_seed": {
+   "2030": {
+    "n": 12,
+    "P(+0.05)": 0.8333333333333334,
+    "P(-0.05)": 0.16666666666666663
+   },
+   "2031": {
+    "n": 12,
+    "P(+0.05)": 1.0,
+    "P(-0.05)": 0.0
+   },
+   "2037": {
+    "n": 12,
+    "P(+0.05)": 1.0,
+    "P(-0.05)": 0.0
+   }
+  },
+  "per_dataset": {
+   "D1": {
+    "n": 24,
+    "P(+0.05)": 0.9166666666666666,
+    "P(-0.05)": 0.08333333333333337
+   },
+   "D2": {
+    "n": 12,
+    "P(+0.05)": 1.0,
+    "P(-0.05)": 0.0
+   }
+  }
+ },
+ "action_entropy": {
+  "pooled_bits": 0.3095434291503252,
+  "per_seed_bits": {
+   "2030": 0.6500224216483541,
+   "2031": -0.0,
+   "2037": -0.0
+  },
+  "per_dataset_bits": {
+   "D1": 0.41381685030363374,
+   "D2": -0.0
+  }
+ },
+ "switching": {
+  "total_sign_changes": 3,
+  "trajectories_with_any_switch": 1,
+  "n_trajectories": 12
+ },
+ "switching_trajectories": [
+  {
+   "dataset": "D1",
+   "seed": 2030,
+   "stream_seed": 7110,
+   "steps": [
+    46,
+    52,
+    64,
+    82
+   ],
+   "actions": [
+    "-",
+    "+",
+    "-",
+    "+"
+   ],
+   "sign_changes": 3,
+   "max_possible": 3
+  },
+  {
+   "dataset": "D1",
+   "seed": 2030,
+   "stream_seed": 7111,
+   "steps": [
+    46,
+    52,
+    64,
+    82
+   ],
+   "actions": [
+    "+",
+    "+",
+    "+",
+    "+"
+   ],
+   "sign_changes": 0,
+   "max_possible": 3
+  },
+  {
+   "dataset": "D1",
+   "seed": 2031,
+   "stream_seed": 7110,
+   "steps": [
+    46,
+    52,
+    64,
+    82
+   ],
+   "actions": [
+    "+",
+    "+",
+    "+",
+    "+"
+   ],
+   "sign_changes": 0,
+   "max_possible": 3
+  },
+  {
+   "dataset": "D1",
+   "seed": 2031,
+   "stream_seed": 7111,
+   "steps": [
+    46,
+    52,
+    64,
+    82
+   ],
+   "actions": [
+    "+",
+    "+",
+    "+",
+    "+"
+   ],
+   "sign_changes": 0,
+   "max_possible": 3
+  },
+  {
+   "dataset": "D1",
+   "seed": 2037,
+   "stream_seed": 7110,
+   "steps": [
+    46,
+    52,
+    64,
+    82
+   ],
+   "actions": [
+    "+",
+    "+",
+    "+",
+    "+"
+   ],
+   "sign_changes": 0,
+   "max_possible": 3
+  },
+  {
+   "dataset": "D1",
+   "seed": 2037,
+   "stream_seed": 7111,
+   "steps": [
+    46,
+    52,
+    64,
+    82
+   ],
+   "actions": [
+    "+",
+    "+",
+    "+",
+    "+"
+   ],
+   "sign_changes": 0,
+   "max_possible": 3
+  },
+  {
+   "dataset": "D2",
+   "seed": 2030,
+   "stream_seed": 7400,
+   "steps": [
+    46,
+    82
+   ],
+   "actions": [
+    "+",
+    "+"
+   ],
+   "sign_changes": 0,
+   "max_possible": 1
+  },
+  {
+   "dataset": "D2",
+   "seed": 2030,
+   "stream_seed": 7401,
+   "steps": [
+    46,
+    82
+   ],
+   "actions": [
+    "+",
+    "+"
+   ],
+   "sign_changes": 0,
+   "max_possible": 1
+  },
+  {
+   "dataset": "D2",
+   "seed": 2031,
+   "stream_seed": 7400,
+   "steps": [
+    46,
+    82
+   ],
+   "actions": [
+    "+",
+    "+"
+   ],
+   "sign_changes": 0,
+   "max_possible": 1
+  },
+  {
+   "dataset": "D2",
+   "seed": 2031,
+   "stream_seed": 7401,
+   "steps": [
+    46,
+    82
+   ],
+   "actions": [
+    "+",
+    "+"
+   ],
+   "sign_changes": 0,
+   "max_possible": 1
+  },
+  {
+   "dataset": "D2",
+   "seed": 2037,
+   "stream_seed": 7400,
+   "steps": [
+    46,
+    82
+   ],
+   "actions": [
+    "+",
+    "+"
+   ],
+   "sign_changes": 0,
+   "max_possible": 1
+  },
+  {
+   "dataset": "D2",
+   "seed": 2037,
+   "stream_seed": 7401,
+   "steps": [
+    46,
+    82
+   ],
+   "actions": [
+    "+",
+    "+"
+   ],
+   "sign_changes": 0,
+   "max_possible": 1
+  }
+ ],
+ "fixed_strategy_comparison": {
+  "fixed_plus_gains": {
+   "4": {
+    "n": 36,
+    "median": 0.00041031837463378906,
+    "iqr": [
+     0.00024233758449554443,
+     0.0005564689636230469
+    ],
+    "mean": 0.0003609690401289198,
+    "frac_positive": 0.9166666666666666,
+    "wilcoxon_vs0": {
+     "n_nonzero": 36,
+     "statistic": 48.0,
+     "p": 7.114140316843987e-07
+    }
+   },
+   "16": {
+    "n": 36,
+    "median": 0.0010245144367218018,
+    "iqr": [
+     0.0005558580160140991,
+     0.0013694614171981812
+    ],
+    "mean": 0.0010663949780993992,
+    "frac_positive": 0.8611111111111112,
+    "wilcoxon_vs0": {
+     "n_nonzero": 36,
+     "statistic": 54.0,
+     "p": 1.458160113543272e-06
+    }
+   },
+   "64": {
+    "n": 36,
+    "median": 0.004828751087188721,
+    "iqr": [
+     0.003997355699539185,
+     0.005483910441398621
+    ],
+    "mean": 0.004771783947944641,
+    "frac_positive": 1.0,
+    "wilcoxon_vs0": {
+     "n_nonzero": 36,
+     "statistic": 0.0,
+     "p": 2.9103830456733704e-11
+    }
+   }
+  },
+  "response_gains": {
+   "4": {
+    "n": 36,
+    "median": 0.0004407167434692383,
+    "iqr": [
+     0.0002735406160354614,
+     0.000570833683013916
+    ],
+    "mean": 0.00044749842749701603,
+    "frac_positive": 0.9722222222222222,
+    "wilcoxon_vs0": {
+     "n_nonzero": 36,
+     "statistic": 4.0,
+     "p": 2.0372681319713593e-10
+    }
+   },
+   "16": {
+    "n": 36,
+    "median": 0.0009511411190032959,
+    "iqr": [
+     0.0003991425037384033,
+     0.001347869634628296
+    ],
+    "mean": 0.0009179347091250949,
+    "frac_positive": 0.8055555555555556,
+    "wilcoxon_vs0": {
+     "n_nonzero": 36,
+     "statistic": 106.0,
+     "p": 0.00018572056433185935
+    }
+   },
+   "64": {
+    "n": 36,
+    "median": 0.004728823900222778,
+    "iqr": [
+     0.0038564354181289673,
+     0.00545850396156311
+    ],
+    "mean": 0.004027760691112942,
+    "frac_positive": 0.9444444444444444,
+    "wilcoxon_vs0": {
+     "n_nonzero": 36,
+     "statistic": 50.0,
+     "p": 9.082723408937454e-07
+    }
+   }
+  },
+  "fixed_minus": {
+   "availability": "only on 2 non-aliased cells (rolled as arm C)",
+   "cells": [
+    {
+     "dataset": "D1",
+     "seed": 2030,
+     "step": 46,
+     "stream_seed": 7110,
+     "gain_minus_4": 0.0012491941452026367,
+     "gain_minus_16": -0.0018654465675354004,
+     "gain_minus_64": -0.010452032089233398
+    },
+    {
+     "dataset": "D1",
+     "seed": 2030,
+     "step": 64,
+     "stream_seed": 7110,
+     "gain_minus_4": 0.00022917985916137695,
+     "gain_minus_16": -0.001164555549621582,
+     "gain_minus_64": -0.004440188407897949
+    }
+   ]
+  }
+ },
+ "decomposition_summary": {
+  "4": {
+   "response_gain_median": 0.0004407167434692383,
+   "best_fixed_gain_median": 0.0004407167434692383,
+   "adaptive_gain_median": 0.0,
+   "adaptive_gain_max": 0.0,
+   "n_adaptive_positive": 0,
+   "identification_note": "adaptive=0 on 34/36 aliased cells by construction; discriminative cells: 2",
+   "discriminative_cells_guided_minus_fixed_plus": [
+    0.0026358366012573242,
+    0.0004792213439941406
+   ]
+  },
+  "16": {
+   "response_gain_median": 0.0009511411190032959,
+   "best_fixed_gain_median": 0.0010245144367218018,
+   "adaptive_gain_median": 0.0,
+   "adaptive_gain_max": 0.0,
+   "n_adaptive_positive": 0,
+   "identification_note": "adaptive=0 on 34/36 aliased cells by construction; discriminative cells: 2",
+   "discriminative_cells_guided_minus_fixed_plus": [
+    -0.002826511859893799,
+    -0.0025180578231811523
+   ]
+  },
+  "64": {
+   "response_gain_median": 0.004728823900222778,
+   "best_fixed_gain_median": 0.004828751087188721,
+   "adaptive_gain_median": 0.0,
+   "adaptive_gain_max": 0.0,
+   "n_adaptive_positive": 0,
+   "identification_note": "adaptive=0 on 34/36 aliased cells by construction; discriminative cells: 2",
+   "discriminative_cells_guided_minus_fixed_plus": [
+    -0.017880499362945557,
+    -0.008904337882995605
+   ]
+  }
+ },
+ "verdict": {
+  "case_A_adaptive_control": "NOT ESTABLISHABLE: only 2/36 discriminative cells; on both the guided -0.05 beat fixed +0.05 (directed benefit +2.636e-03, +4.792e-04), consistent with state-dependence but n=2 is underpowered; a pooled adaptive test needs fixed -0.05 rollouts on all cells (absent from frozen artifacts; NOT generated - offline mandate).",
+  "case_B_global_scaling": "CONFIRMED as the dominant identity: P(+0.05)=34/36=0.944, action entropy 0.31 bits pooled, adaptive_gain median = 0 by construction on aliased cells, fixed +0.05 gain significantly positive (median +4.10e-4, wilcoxon p=7.1e-7).",
+  "case_C_response_worse": "RULED OUT: response_gain median +4.41e-4, wilcoxon p=2.0e-10 (frozen A0T).",
+  "case_B_confirmed_flag": true,
+  "case_C_ruled_out_flag": true,
+  "primary_verdict": "Dominantly Case B (global LR-up direction) with a validated-but-tiny state-dependent reversal component (2/36 cells, both correct)."
+ }
+}

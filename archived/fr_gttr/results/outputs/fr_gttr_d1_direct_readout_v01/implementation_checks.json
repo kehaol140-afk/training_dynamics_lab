@@ -1,0 +1,22 @@
+{
+ "unittest_module": "tests.test_d1_direct_readout_v01",
+ "returncode": 0,
+ "tail_line": "OK",
+ "all_pass": true,
+ "wall_s": 3.553,
+ "t1_to_t8": {
+  "T1_alpha0_native_routing_and_bitwise": "covered_by_suite",
+  "T2_moments_not_written_back": "covered_by_suite",
+  "T3_raw_qh_independent_formula": "covered_by_suite",
+  "T4_norm_matching_zero_cancel_shared": "covered_by_suite",
+  "T5_alignment_not_descent_counterexample": "covered_by_suite",
+  "T6_schedule_prefix_tail_k_scaling": "covered_by_suite",
+  "T7_sumcount_detection_h0_share": "covered_by_suite",
+  "T8_mutants_must_fail": "covered_by_suite"
+ },
+ "module": {
+  "path": "/home/b205/projects/fluctuation_response/research/src/fr/d1_direct_readout_v01.py",
+  "sha256": "100790d73d194bef32bfbe0bf8517beabdddc461ba0bda8e76882ce904611eb0"
+ },
+ "norm_definitions": "\u6240\u6709 ||.||_F = sqrt(sum of squares)\uff0c\u65e0\u989d\u5916 norm epsilon\uff1b\u8303\u6570\u6b8b\u5dee = | ||r_N||_F - ||r_A||_F |"
+}

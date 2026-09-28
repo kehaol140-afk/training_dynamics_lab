@@ -1,0 +1,51 @@
+{
+  "never_intervene": {
+    "status": "AVAILABLE",
+    "note": "j=0 恒选，纯离线可算"
+  },
+  "dev_fixed_group": {
+    "status": "AVAILABLE",
+    "j_star": 4,
+    "selection": {
+      "j_star": 4,
+      "selection_means_u": {
+        "1": 0.00012491726213031344,
+        "2": 0.00011859420273039077,
+        "3": 0.0001391818126042684,
+        "4": 0.00015185276667277017
+      },
+      "tie_break": "mean u 并列取小 j",
+      "per_horizon_means_u_sensitivity": {
+        "1": {
+          "1": 6.732344627380371e-05,
+          "2": 5.2203734715779625e-05,
+          "3": 8.947402238845825e-05,
+          "4": 0.00011710574229558308
+        },
+        "4": {
+          "1": 0.0001028229792912801,
+          "2": 0.00010979175567626953,
+          "3": 0.00014127294222513834,
+          "4": 0.00015581150849660239
+        },
+        "8": {
+          "1": 0.00020460536082585654,
+          "2": 0.00019378711779912314,
+          "3": 0.0001867984731992086,
+          "4": 0.0001826410492261251
+        }
+      },
+      "n_dev_rows": 360,
+      "frozen_before_formal": true
+    },
+    "note": "dev（split=dev，3 态 × 8 streams × H{1,4,8}，λ=0.05）mean u_ij 选组，先冻结再 formal 评价；formal 未参与选组。"
+  },
+  "replay_score": {
+    "status": "MISSING_REPLAY_SCORE",
+    "formal_v_score_replay_columns_present": false,
+    "formal_units_with_v_score_replay": 0,
+    "formal_units_total": 96,
+    "note": "冻结 level1b/level2 只有 actual_delta_eval（V_eval 回放）；候选在 V_score 上的实际回放损失只在 dev λ 扫描（lambda_scan_detail.csv，dev-only）中持久化，formal 的 V_score 回放列不存在。本阶段不补跑 GPU，故该基线标 MISSING_REPLAY_SCORE（仅阻塞本项，不阻塞其他离线分析）。",
+    "dev_only_score_rows_available": 24
+  }
+}

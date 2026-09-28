@@ -1,0 +1,169 @@
+{
+ "tag": "ALGORITHM_HEALTH_DASHBOARD",
+ "round": "A0I (post-A0H20 algorithm efficiency study)",
+ "frozen_reference": "A0H20 outputs/a0h_corrected_accept_v01 (never modified; A0I-A is offline re-analysis of its frozen labels)",
+ "H1_TASK_UTILITY": {
+  "frozen_ref": {
+   "mean_gain_eval": 0.0001467,
+   "seeds_positive": "5/6",
+   "harmful_rate": "1/12"
+  },
+  "a0i_status": "FROZEN_REFERENCE_RECONFIRMED_OFFLINE",
+  "note": "A0I-A recomputed gains/regret/harmful from the same frozen labels; no new utility experiment this round"
+ },
+ "H2_ADAPTIVITY_VALUE": {
+  "metric": "DeltaGain_adaptive = Gain_controller - Gain_dev_fixed(j=1), paired per state/seed",
+  "mean": 5.76e-05,
+  "per_seed": {
+   "2033": 0.000315,
+   "2035": 0.0002,
+   "2034": 9.73e-05,
+   "2030": -9.8e-07,
+   "2032": -8.62e-05,
+   "2031": -0.00018
+  },
+  "seed_heterogeneity": "high: 3 seeds positive large, 2030 ~zero, 2031/2032 negative",
+  "controller_vs_retrospective_best_fixed": 4.28e-05,
+  "retrospective_best_fixed": {
+   "action": "j=2",
+   "mean_gain": 0.0001039,
+   "label": "POSTHOC_DIAGNOSTIC_ONLY"
+  },
+  "controller_action_frequency": {
+   "j0": 1,
+   "j1": 3,
+   "j2": 5,
+   "j3": 1,
+   "j4": 2
+  },
+  "adaptivity_evident": true,
+  "note": "controller switches actions across states, no single-action dominance; gains over fixed are real but seed-heterogeneous"
+ },
+ "H3_SELECTION_QUALITY": {
+  "mean_regret_eval": 8.7808e-05,
+  "regret_decomposition": {
+   "adjoint_minus_replay": 2.3002e-05,
+   "replay_minus_oracle": 6.4805e-05,
+   "closure_max_abs_residual": 0.0
+  },
+  "empirical_oracle_gain": 0.0002345,
+  "oracle_capture_ratio": 0.626,
+  "label": "empirical finite-candidate oracle diagnostic only (not an achievable selector)"
+ },
+ "H4_DECISION_COST": {
+  "tag": "DEV_ENGINEERING_TIMING_NOT_CLOSED_LOOP_OVERHEAD",
+  "native_step_s": [
+   0.0561,
+   0.0471,
+   0.047
+  ],
+  "shared_prefix_s": [
+   1.0846,
+   1.0806,
+   0.9605
+  ],
+  "scoring_A_full_grad_s": [
+   0.4066,
+   0.5438,
+   0.3878
+  ],
+  "scoring_B_jvp_s": [
+   0.3028,
+   0.3464,
+   0.2955
+  ],
+  "selected_gradient_recompute_s": [
+   0.0459,
+   0.0484,
+   0.0403
+  ],
+  "total_decision_cost_METHOD_A_s": [
+   1.4913,
+   1.6245,
+   1.3483
+  ],
+  "total_decision_cost_METHOD_B_s": [
+   1.4334,
+   1.4755,
+   1.2963
+  ],
+  "equivalent_native_steps_METHOD_A": [
+   26.6,
+   34.5,
+   28.7
+  ],
+  "equivalent_native_steps_METHOD_B": [
+   25.6,
+   31.3,
+   27.6
+  ],
+  "states": [
+   "2031/52",
+   "2034/64",
+   "2036/76"
+  ],
+  "shared_gpu_conditions": true
+ },
+ "H5_EQUAL_WALLCLOCK_TRAINING_GAIN": "NOT_TESTED",
+ "a0i_b_verdicts": {
+  "A0I_A_DIAGNOSTIC_COMPLETE": "YES",
+  "DIRECTIONAL_SCORE_EQUIVALENCE": "SUPPORTED",
+  "DIRECTIONAL_DECISION_PRESERVATION": "18/18 passes same choice; ranking agreement 18/18",
+  "PER_CANDIDATE_JVP_SPEED": "FASTER (B/A scoring wall ratio 0.745; ambient flash JVP = UNSUPPORTED_IN_CURRENT_BACKEND, ran under math SDPA)",
+  "SHARED_POOL_DIRECTIONAL": "NOT_APPLICABLE (disjoint hash groups; see method_c_derivation.md)",
+  "MEMORY_RESULT": "IMPROVED (scoring stage peak alloc A 766 MB vs B 634 MB)",
+  "TOTAL_DECISION_COST_RESULT": "SIMILAR (total A 1.491s vs B 1.433s incl. selected-gradient recompute)",
+  "n_passes": 18
+ },
+ "a0i_b_equivalence": {
+  "n_passes": 18,
+  "abs_err_max": 2.8291145353123368e-05,
+  "abs_err_median": 4.224814012390634e-06,
+  "gate_pass_fraction": "54/72",
+  "ranking_agreement": {
+   "A_vs_B": "18/18",
+   "A_vs_Amath": "18/18"
+  },
+  "chosen_id_agreement": {
+   "A_vs_B": "18/18",
+   "A_vs_Amath": "18/18"
+  }
+ },
+ "a0i_a_calibration": {
+  "selected_level_12pts": {
+   "selected_level": {
+    "n": 12,
+    "pearson": 0.6348279331476092,
+    "mae": 9.803247396095963e-05,
+    "rmse": 0.0001285149131469584,
+    "r2": 0.4030065047044652,
+    "ols_slope": 0.6050665283116768,
+    "ols_intercept": -8.206244316766819e-05
+   },
+   "all_candidate_level": {
+    "n": 60,
+    "pearson": 0.8343868748094954,
+    "mae": 9.698840032215112e-05,
+    "rmse": 0.00013800878896289256,
+    "r2": 0.6962014568543564,
+    "ols_slope": 0.9713139422844851,
+    "ols_intercept": -5.1579227586701385e-06
+   }
+  },
+  "all_candidate_60pts": "see calibration.json",
+  "score_to_eval_transfer_observational": {
+   "n": 12,
+   "pearson": 0.42925043080411723,
+   "mae": 0.00010422336527357194,
+   "rmse": 0.000134278399244496,
+   "r2": 0.18425593234552018,
+   "ols_slope": 0.3836818058322146,
+   "ols_intercept": -5.09911341289075e-05
+  },
+  "pooled_conventions": {
+   "selected_level": "12 points (controller-selected action per unit); the single no-op-selected unit contributes (0,0) and is included; unit-weighted (each unit one point)",
+   "all_candidate_level": "60 points (12 units x 5 actions); no-op included as (predicted 0, actual 0); unit-weighted, candidates within a unit implicitly equally weighted",
+   "transfer_level": "12 points selected-action only; OBSERVATIONAL ONLY, no causal mechanism claim"
+  }
+ }
+}

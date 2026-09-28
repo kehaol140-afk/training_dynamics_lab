@@ -1,0 +1,191 @@
+{
+  "protocol": "FR_A0H_PROTOCOL.md §2/§3 (frozen before GPU runs)",
+  "status": "FAIL",
+  "units": [
+    {
+      "state": "dev:2031/52",
+      "stream_id": 0,
+      "unit_pass": false,
+      "bit_identical_forward": true,
+      "methods": {
+        "C|1": {
+          "pass": true,
+          "ranking_match": true,
+          "selection_match": true,
+          "max_abs_diff": 5.043704386434311e-11
+        },
+        "C|4": {
+          "pass": true,
+          "ranking_match": true,
+          "selection_match": true,
+          "max_abs_diff": 1.3578728919484001e-06
+        },
+        "C|8": {
+          "pass": false,
+          "ranking_match": true,
+          "selection_match": true,
+          "max_abs_diff": 2.733342675937528e-06
+        },
+        "B|1": {
+          "pass": true,
+          "ranking_match": true,
+          "selection_match": true,
+          "max_abs_diff": 5.043704386434311e-11
+        },
+        "B|4": {
+          "pass": true,
+          "ranking_match": true,
+          "selection_match": true,
+          "max_abs_diff": 9.378700593920541e-11
+        },
+        "B|8": {
+          "pass": true,
+          "ranking_match": true,
+          "selection_match": true,
+          "max_abs_diff": 1.0442490448736574e-10
+        }
+      },
+      "snapshot_recheck": {
+        "horizon": 4,
+        "relative_gap": 0.0,
+        "warn_threshold": 0.001
+      },
+      "hvp_proxy_symmetry_residual": {
+        "lhs": -24.91304752340397,
+        "rhs": -25.488526923300824,
+        "abs_gap": 0.575479399896853,
+        "relative": 0.022577977990982583
+      },
+      "wall_seconds": {
+        "frozen_pass": 25.27809563700066,
+        "joint_pass": 29.560483571003715
+      }
+    },
+    {
+      "state": "dev:2034/64",
+      "stream_id": 0,
+      "unit_pass": false,
+      "bit_identical_forward": true,
+      "methods": {
+        "C|1": {
+          "pass": true,
+          "ranking_match": true,
+          "selection_match": true,
+          "max_abs_diff": 8.0323070243693e-12
+        },
+        "C|4": {
+          "pass": false,
+          "ranking_match": true,
+          "selection_match": true,
+          "max_abs_diff": 1.6147387182884054e-06
+        },
+        "C|8": {
+          "pass": false,
+          "ranking_match": true,
+          "selection_match": true,
+          "max_abs_diff": 6.235768118548202e-06
+        },
+        "B|1": {
+          "pass": true,
+          "ranking_match": true,
+          "selection_match": true,
+          "max_abs_diff": 8.0323070243693e-12
+        },
+        "B|4": {
+          "pass": true,
+          "ranking_match": true,
+          "selection_match": true,
+          "max_abs_diff": 1.1014437799328203e-10
+        },
+        "B|8": {
+          "pass": true,
+          "ranking_match": true,
+          "selection_match": true,
+          "max_abs_diff": 1.4011516339534902e-11
+        }
+      },
+      "snapshot_recheck": {
+        "horizon": 4,
+        "relative_gap": 0.0,
+        "warn_threshold": 0.001
+      },
+      "hvp_proxy_symmetry_residual": {
+        "lhs": -59.42498009121446,
+        "rhs": -59.444638494607254,
+        "abs_gap": 0.01965840339279623,
+        "relative": 0.0003307010336109558
+      },
+      "wall_seconds": {
+        "frozen_pass": 23.40311959799874,
+        "joint_pass": 28.089296079000633
+      }
+    },
+    {
+      "state": "dev:2036/76",
+      "stream_id": 0,
+      "unit_pass": false,
+      "bit_identical_forward": true,
+      "methods": {
+        "C|1": {
+          "pass": true,
+          "ranking_match": true,
+          "selection_match": true,
+          "max_abs_diff": 4.557800274349044e-11
+        },
+        "C|4": {
+          "pass": true,
+          "ranking_match": true,
+          "selection_match": true,
+          "max_abs_diff": 4.623218329076646e-07
+        },
+        "C|8": {
+          "pass": true,
+          "ranking_match": true,
+          "selection_match": true,
+          "max_abs_diff": 1.0245737614674507e-06
+        },
+        "B|1": {
+          "pass": true,
+          "ranking_match": true,
+          "selection_match": true,
+          "max_abs_diff": 4.557800274349044e-11
+        },
+        "B|4": {
+          "pass": true,
+          "ranking_match": true,
+          "selection_match": true,
+          "max_abs_diff": 4.735406251149543e-11
+        },
+        "B|8": {
+          "pass": true,
+          "ranking_match": true,
+          "selection_match": true,
+          "max_abs_diff": 6.1027757500276e-11
+        }
+      },
+      "snapshot_recheck": {
+        "horizon": 4,
+        "relative_gap": 0.0,
+        "warn_threshold": 0.001
+      },
+      "hvp_proxy_symmetry_residual": {
+        "lhs": 115.88232106170477,
+        "rhs": 115.61115201640516,
+        "abs_gap": 0.27116904529961516,
+        "relative": 0.0023400380904972005
+      },
+      "wall_seconds": {
+        "frozen_pass": 22.349289207995753,
+        "joint_pass": 28.74301203899813
+      }
+    }
+  ],
+  "env": {
+    "device": "cuda:0",
+    "torch_version": "2.11.0",
+    "cuda_version": "13.0",
+    "gpu_name": "NVIDIA GeForce RTX 5090",
+    "budget_seconds": 1200.0
+  },
+  "total_wall_seconds": 248.51538634300232
+}

@@ -1,0 +1,66 @@
+{
+ "contract_id": "A0U_RESPONSE_SCHEDULE_DISCOVERY_V01",
+ "date": "2026-09-18",
+ "mandate": "Response-guided schedule discovery pilot: can LR response dynamics reveal a better training schedule than fixed hand-designed LR rules? Response used as OFFLINE schedule-discovery signal (schedule generated before training); explicitly NOT another online controller (per A0T-extra finding).",
+ "inputs_frozen_readonly": {
+  "chi": "outputs/a0o_lr_response_validation_v01/runs/stage1_cells.jsonl h_eta (H==4) for seeds {2030,2031,2037} x steps {46,52,64,82} x streams {7110,7111,7112,7113} = 12 trajectories of 4 knots. Response definition NOT modified, NOT recomputed.",
+  "note_d2": "A0Q/A0T banks cover only steps {46,82} (2 knots) -> insufficient for trajectories; used only as cross-reference in report, not in schedule construction."
+ },
+ "stage1_phase_analysis": {
+  "trajectory": "R(t) = chi_lr(t) per (seed, stream) over knots [46, 52, 64, 82]",
+  "frozen_metrics": ["mean chi", "variance chi", "sign consistency = fraction of knots with chi<0",
+                     "phases FROZEN: early={46}, middle={52,64}, late={82}: per-phase mean |chi| and mean sign",
+                     "cross-seed similarity: per stream, Pearson of 4-knot chi vectors across the 3 seed pairs + sign agreement"],
+  "question": "does response naturally define training phases? (descriptive; no inferential gate - A0P-negative precedent)"
+ },
+ "stage2_schedule_rule_frozen": {
+  "K": 4,
+  "partial_window_rule": "R_avg(i) = mean of chi over the up-to-K previous knots (all knots strictly before current); empty set (knot 46) -> KEEP native (multiplier 1.0)",
+  "decision": "R_avg < 0 -> u=+alpha; R_avg > 0 -> u=-alpha; R_avg == 0 -> keep (unreachable in practice)",
+  "alpha": 0.05,
+  "multiplier": "m(knot) = exp(u); eta_t = eta_native_t * m(segment)",
+  "no_tuning": "K, alpha, segments frozen; no threshold; no adaptive alpha; no future validation loss; no final-loss-based selection"
+ },
+ "stage3_comparison_frozen": {
+  "window": "rollout from bank state step 46, W=64 optimizer steps (steps 47..110; A0P-proven reach), one 128-micro-batch frozen-recipe stream per cell (derive_stream_seed(stream_seed,404)); nested prefixes NOT needed (single W)",
+  "segments_frozen": "step offsets 1-6 (bank 47-52): m=1.0 (no previous knots); 7-18 (53-64): m(52); 19-36 (65-82): m(64); 37-64 (83-110): m(82)",
+  "arms": {"A": "native LR schedule (multiplier 1.0 everywhere)",
+           "B": "constant +5% LR (multiplier 1.05 everywhere)",
+           "C": "response-discovered schedule (per-segment multipliers)"},
+  "checkpoints_frozen": [58, 70, 82, 94, 110],
+  "cells": "12 = 3 seeds x 4 streams {7110,7111,7112,7113}, all starting at step 46",
+  "crn": "arm A rolled twice on every cell; bitwise equality of all 5 checkpoint losses required",
+  "rollout_code": "new a0u module reusing frozen primitives (pe._restore_and_seed/_baseline_no_step/_clip_and_step, a0g._val_loss_only with RNG wrap + train/eval toggle at checkpoints); LR set as snap['lr']*m BEFORE _clip_and_step, exactly mirroring frozen a0q.run_channel_rollout semantics"
+ },
+ "metrics_frozen": {
+  "optimization": ["final validation loss at step 110 (all arms)",
+                   "loss-curve AUC: trapezoid over the 5 checkpoint losses (unnormalized, same spacing -> comparable)",
+                   "early improvement: L_A(58) - L_X(58) for X in {B,C}",
+                   "late-stage stability: population std of losses at checkpoints {82, 94, 110}"],
+  "schedule_properties": ["number of LR changes (adjacent segments with different multipliers, max 3)",
+                          "LR trajectory (the segment multipliers)",
+                          "similarity to fixed scaling: fraction of segments with m == 1.05 and count of m == 1.0 segments (C vs B)"],
+  "cost": ["schedule generation cost (analyzer wall time, CPU)",
+           "training cost (GPU seconds per arm from gpu_budget_log)"]
+ },
+ "statistics_frozen": "paired per-cell differences C-A and C-B on final loss and AUC: median, Wilcoxon signed-rank; sign consistency fraction + binomial; arm B vs A reported for reference. Cases: A) response beats fixed AND native (median C-A>0 significant AND C-B>0 significant); B) response ~= fixed (C-B not significant, C-A significant in same direction as B); C) response worse (C-A median < 0 or C significantly below both).",
+ "interpretation_cases": {
+  "case_A": "response contains useful phase-dependent optimization information",
+  "case_B": "response discovers simple global scaling direction",
+  "case_C": "local response useful for short-horizon prediction but insufficient for schedule optimization"
+ },
+ "forbidden": ["neural predictor", "tune thresholds", "tune alpha", "tune K after results",
+               "use future validation loss in schedule construction", "use final loss to select schedule",
+               "modify response definition", "recompute chi", "online/closed-loop control",
+               "edit frozen artifacts", "result-driven rule changes"],
+ "limitations_preregistered": [
+  "IN-SAMPLE schedule: chi at knot t is computed on the same stream the schedule is evaluated on (inherent to frozen bank); no out-of-sample generalization claim",
+  "sparse knots: 4 knots/trajectory; K=4 averaging fully materializes only at knot 82",
+  "absolute gains tiny (A0S scale G/L0 ~ 7e-5 at H=4)",
+  "short-term schedule effect does not imply final-training improvement (A0P long memory)"
+ ],
+ "budget": {"gpu_s": 1800, "expected_gpu_s": "~700-900 (12 cells x 3 arms + CRN)", "hard_guard_s": 1650},
+ "deliverables": ["contract.json", "schedule_definition.md", "response_phase_analysis.csv",
+                  "schedule_comparison.csv", "A0U_REPORT.md", "analysis.json", "plots", "audit pack"],
+ "stop_rule": "Stop after experiment. Do not start further controller experiments."
+}

@@ -1,0 +1,140 @@
+{
+ "extracted_utc": "2026-09-18T21:56",
+ "source": "instrumented_bf16.json (cdiag v3, fixed diag_sink)",
+ "key_facts": {
+  "failure_mode": "hvp_norm=NaN at h=7 (born inside fp16 HVP); frozen clip_jvp NaN guard raises on transformer.wte.weight",
+  "vhat_min_all_h": 0.0,
+  "sqrt_vhat_p1_all_h": 0.0001,
+  "adaptive_gain_at_zero_vhat": 10000.0,
+  "theta_tangent_norm_traj": {
+   "in_out_chain": [
+    "0->5.502",
+    "5.502->11.38",
+    "11.38->18.23",
+    "18.23->3435",
+    "3435->1.406e5",
+    "1.406e5->3.348e7"
+   ],
+   "hvp_norm": [
+    1.0,
+    0.2316,
+    93.41,
+    6721.08,
+    1058760.0,
+    678642000.0
+   ]
+  },
+  "clip_coef_traj": [
+   0.00839278,
+   0.00912708,
+   0.0076473,
+   0.00778695,
+   0.0121963,
+   0.00310193
+  ],
+  "grad_norm_traj": [
+   119.15,
+   109.564,
+   130.765,
+   128.42,
+   81.9918,
+   322.379
+  ],
+  "chi_traj": [
+   -1.85009,
+   -3.53963,
+   -5.06703,
+   -6.29677,
+   -8.94299,
+   269.617
+  ],
+  "h6_single_step_hvp_amplification": "per-step HVP gain grows 72x -> 157x -> 641x (h4->h6); AdamW step attenuates 40-240x but cannot arrest"
+ },
+ "interpretation": [
+  "Exact-zero vhat coordinates (rare/dead wte rows) exist at EVERY horizon -> adaptive gain 1/(sqrt(vhat)+eps)=1e4",
+  "C recursion blow-up is superlinear from h=3 (~30-500x per step), vs O(1) at 26M/100M (tanC_theta_norm p50 0.47/0.65)",
+  "NaN originates in the fp16 HVP forward/backward once tangent RMS ~ tens (h=7), i.e. fp16 range/precision boundary",
+  "zero-vhat AdamW guard did NOT fire (dvhat=0 at untouched rows); failure is clip_jvp NaN guard on HVP output"
+ ],
+ "determinism_check": {
+  "status": "PASS",
+  "same_error": true,
+  "first_fail_h": 7,
+  "repeat_fail_h": 7,
+  "max_chi_diff_first_vs_repeat": 0.0,
+  "field_level": "98 numeric fields, max abs diff 0.0; h=7 hvp_norm NaN matched NaN",
+  "cross_run_note": "chi also bit-identical to phase2 attempt2 and cdiag v2 (4 independent process launches)"
+ },
+ "b_control_check": {
+  "status": "PASS",
+  "chi_all": [
+   -1.85009,
+   -3.53964,
+   -5.06685,
+   -6.43993,
+   -7.67074,
+   -8.79239,
+   -9.79114,
+   -10.69707
+  ],
+  "theta_tangent_norms": [
+   5.5019,
+   11.3821,
+   16.936,
+   22.3173,
+   27.3667,
+   32.1384,
+   36.6209,
+   40.8104
+  ],
+  "clip_coef": [
+   0.00839,
+   0.00913,
+   0.00765,
+   0.00779,
+   0.0122,
+   0.0031,
+   0.01081,
+   0.01171
+  ],
+  "stable_to_H8": true,
+  "key_contrast": "B theta tangent grows LINEARLY (+~4.9/step) to 40.8 at H=8; C reached 3.35e7 at h=6 (exponential). HVP feedback is the instability driver; optimizer-only propagation is stable.",
+  "harness_note": "earlier KeyError was a key-name typo in assembly (theta_tangent_norm_out vs tangent_theta_norm_out); B data complete in b_control.json"
+ },
+ "fp32_hvp_input_check": {
+  "status": "COMPLETED_NO_ERROR",
+  "DIAGNOSTIC_ONLY": true,
+  "n_h_completed": 8,
+  "chi": [
+   -1.8500911602514338,
+   -3.5396298100501085,
+   -5.067033973554408,
+   -6.295403359009665,
+   -8.846904966190877,
+   255.13863333399425,
+   -34158.31787427827,
+   3663298.5801356323
+  ],
+  "theta_tangent_norm_out": [
+   5.502,
+   11.382,
+   18.216,
+   3438.155,
+   137939.021,
+   31820324.343,
+   907648229.671,
+   297173789598.803
+  ],
+  "hvp_norm": [
+   1.0,
+   0.231,
+   93.267,
+   6692.286,
+   1005667.863,
+   637970339.813,
+   10713209558.171,
+   487625801655.46
+  ],
+  "interpretation": "fp32 removes the h=7 NaN (fp16 range overflow) but the recursion still diverges identically in quality: flip at h=6, chi +3.7e6 and tangent norm 3e11 by h=8. Instability is dtype-INDEPENDENT; fp16 overflow is only the proximate trigger of the NaN signature."
+ }
+}

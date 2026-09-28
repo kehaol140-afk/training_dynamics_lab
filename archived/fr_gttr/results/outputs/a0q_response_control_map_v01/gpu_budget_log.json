@@ -1,0 +1,247 @@
+{
+ "phases": [
+  {
+   "phase": "cell_s2030_t46_x7400",
+   "t_start": 285521.77934496,
+   "t_end": 285560.5179159,
+   "wall_s": 38.739,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "cells_done": 1
+   },
+   "occupancy": [
+    "nvidia-smi failed: Command '['nvidia-smi', '--query-gpu=index,utilization.gpu,memory.used', '--format=csv,noheader']' timed out after 10 seconds"
+   ]
+  },
+  {
+   "phase": "cell_s2030_t46_x7401",
+   "t_start": 285597.811892818,
+   "t_end": 285620.781185868,
+   "wall_s": 22.969,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "cells_done": 2
+   },
+   "occupancy": [
+    "0, 5 %, 22260 MiB",
+    "1, 56 %, 31965 MiB"
+   ]
+  },
+  {
+   "phase": "cell_s2030_t82_x7400",
+   "t_start": 285622.672841557,
+   "t_end": 285646.862790502,
+   "wall_s": 24.19,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "cells_done": 3
+   },
+   "occupancy": [
+    "0, 0 %, 22260 MiB",
+    "1, 24 %, 32029 MiB"
+   ]
+  },
+  {
+   "phase": "cell_s2030_t82_x7401",
+   "t_start": 285646.935625391,
+   "t_end": 285668.775400095,
+   "wall_s": 21.84,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "cells_done": 4
+   },
+   "occupancy": [
+    "0, 0 %, 22260 MiB",
+    "1, 50 %, 32035 MiB"
+   ]
+  },
+  {
+   "phase": "cell_s2031_t46_x7400",
+   "t_start": 285673.65328549,
+   "t_end": 285697.588189434,
+   "wall_s": 23.935,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "cells_done": 5
+   },
+   "occupancy": [
+    "0, 0 %, 22260 MiB",
+    "1, 30 %, 32017 MiB"
+   ]
+  },
+  {
+   "phase": "cell_s2031_t46_x7401",
+   "t_start": 285698.500617211,
+   "t_end": 285706.966829196,
+   "wall_s": 8.466,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "cells_done": 6
+   },
+   "occupancy": [
+    "0, 0 %, 22261 MiB",
+    "1, 16 %, 31953 MiB"
+   ]
+  },
+  {
+   "phase": "cell_s2031_t82_x7400",
+   "t_start": 285781.199413214,
+   "t_end": 285797.815256883,
+   "wall_s": 16.616,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "cells_done": 7
+   },
+   "occupancy": [
+    "0, 0 %, 22260 MiB",
+    "1, 67 %, 32093 MiB"
+   ]
+  },
+  {
+   "phase": "cell_s2031_t82_x7401",
+   "t_start": 285798.070823905,
+   "t_end": 285897.328294149,
+   "wall_s": 99.257,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "cells_done": 8
+   },
+   "occupancy": [
+    "0, 0 %, 22161 MiB",
+    "1, 10 %, 32163 MiB"
+   ]
+  },
+  {
+   "phase": "cell_s2037_t46_x7400",
+   "t_start": 285906.530379017,
+   "t_end": 285922.363963236,
+   "wall_s": 15.834,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "cells_done": 9
+   },
+   "occupancy": [
+    "0, 22 %, 13174 MiB",
+    "1, 31 %, 32151 MiB"
+   ]
+  },
+  {
+   "phase": "cell_s2037_t46_x7401",
+   "t_start": 285922.434384523,
+   "t_end": 285936.277518611,
+   "wall_s": 13.843,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "cells_done": 10
+   },
+   "occupancy": [
+    "0, 33 %, 22583 MiB",
+    "1, 36 %, 32125 MiB"
+   ]
+  },
+  {
+   "phase": "cell_s2037_t82_x7400",
+   "t_start": 285940.986252356,
+   "t_end": 285954.672397771,
+   "wall_s": 13.686,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "cells_done": 11
+   },
+   "occupancy": [
+    "0, 0 %, 21355 MiB",
+    "1, 46 %, 32073 MiB"
+   ]
+  },
+  {
+   "phase": "cell_s2037_t82_x7401",
+   "t_start": 285954.930368248,
+   "t_end": 285970.570704462,
+   "wall_s": 15.64,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "cells_done": 12
+   },
+   "occupancy": [
+    "0, 6 %, 22577 MiB",
+    "1, 39 %, 32125 MiB"
+   ]
+  },
+  {
+   "phase": "gates",
+   "t_start": 285970.835860038,
+   "t_end": 285970.835861138,
+   "wall_s": 0.0,
+   "crashed": true,
+   "gpu": "cuda:1",
+   "detail": {
+    "lr": {
+     "n": 12,
+     "pearson": 0.8422630737066625,
+     "sign_accuracy": 1.0,
+     "rel_err_median": 0.18779534725256178,
+     "PASS": true
+    },
+    "clip": {
+     "n": 12,
+     "pearson": 0.9356758017424001,
+     "sign_accuracy": 0.8333333333333334,
+     "rel_err_median": 0.08959547980624867,
+     "PASS": false
+    },
+    "wd": {
+     "n": 12,
+     "pearson": 0.14756108359122122,
+     "sign_accuracy": 0.5,
+     "rel_err_median": 1.0007199143400274,
+     "PASS": false
+    }
+   },
+   "occupancy": [
+    "0, 6 %, 22577 MiB",
+    "1, 30 %, 32125 MiB"
+   ]
+  },
+  {
+   "phase": "evaluation",
+   "t_start": 285970.896527233,
+   "t_end": 285970.896527533,
+   "wall_s": 0.0,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "stable_channels": {
+     "lr": true,
+     "clip": false,
+     "wd": false
+    },
+    "control_variable_candidates_in_rule_order": [
+     "lr"
+    ],
+    "note": "rule from contract: gate PASS AND sign_stability>=2/3 AND 3/3 seed sign agreement, ranked by median |h|"
+   },
+   "occupancy": [
+    "0, 6 %, 22577 MiB",
+    "1, 19 %, 32125 MiB"
+   ]
+  }
+ ],
+ "TOTALS": {
+  "cumulative_wall_s": 315.015,
+  "budget_s": 1800,
+  "remaining_s": 1484.985,
+  "n_crashes": 1
+ }
+}

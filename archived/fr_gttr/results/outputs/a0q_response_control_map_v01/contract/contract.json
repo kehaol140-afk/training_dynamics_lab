@@ -1,0 +1,51 @@
+{
+ "contract_id": "A0Q_RESPONSE_CONTROL_MAP_V01",
+ "date": "2026-09-18",
+ "task": "Response-control map exploration: from A0G-A0P results, build a training-dynamics response matrix over optimizer/external control inputs. NOT an algorithm-design round: find which input channel carries a physically stable, optimization-meaningful response. Outputs: response matrix J=[LR, clip, WD]; which channel has stable response; which channel is the better future control variable. Target: a physical input channel, not a scheduler.",
+ "channels": {
+  "lr":  {"param": "param_group lr",        "parameterization": "u = log(eta/eta0)",          "delta": 0.05,
+          "analytic_source": "A0O-validated: h_lr = sum_k <p_th^{(k)}, lr_k*e_lr(k)>, e_lr = -adaptive(c_k) - wd*theta_k (frozen a0o.lr_pulse, import-only)"},
+  "clip":{"param": "grad clip threshold",   "parameterization": "u = log(tau/tau0), tau0 = 1.0 (frozen cfg grad_clip)",
+          "delta": 0.05,
+          "analytic_source": "h_clip = sum_k tau0 * <b_k, ghat_k> * 1[preclip_norm_k > tau0], where ghat_k = native_gradient_k/preclip_norm_k, b_k = cotangent_dc entering the frozen clip transpose at iter k (clip is active iff preclip_norm > tau0; clipped = g*min(1,tau/||g||) so d clipped/d tau = ghat when active, else 0; d tau/du = tau0 at u=0)"},
+  "wd":  {"param": "param_group weight_decay","parameterization": "u = log(lambda/lambda0), lambda0 = 0.01 (native AdamW default, stored in v0.2 bank state)",
+          "delta": 0.05,
+          "analytic_source": "pure theta channel (m/v unaffected by wd in AdamW): h_wd = sum_k <p_th^{(k)}, -lr_k*lambda0*theta_k>, theta_k = snapshot theta_start; wd(u)=lambda0*e^u persists across steps natively (unlike lr it is not rewritten per micro-step)"}
+ },
+ "perturbation_structure": "PERSISTENT over the H=4 window (u applied at EVERY optimizer step k=1..4), identical semantics to the A0O-validated FD reference. H=4 chosen because A0P showed first-order kernels break down at long lag; H=4 is the production horizon validated in A0O/A0K/A0L/A0N.",
+ "H": 4,
+ "delta_frozen": true,
+ "state_and_stream": {
+  "bank_states": {"seeds": [2030, 2031, 2037], "steps": [46, 82],
+   "source": "outputs/e3_confirmatory/v07/seed_{seed}/states/state_step_{step:03d}.pt (read-only)"},
+  "stream_seeds_per_state": [7400, 7401],
+  "n_cells": 12,
+  "stream_content_recipe": "batch_seed = derive_stream_seed(stream_seed, 404); batches = batches_from_train_pool(train_indices(3936), batch_size=4, batch_seed, 8 micro-batches = 4 steps x accum 2). Identical across channels and branches (CRN).",
+  "provenance_gate": "A0O amendment-A1 pattern: A0K live_manifest event key must exist (2030/2031 -> own seed, 2037 -> 2032, step -> largest multiple of 10 <= step); content NOT reused."
+ },
+ "stage1_gate": {
+  "scope": "per channel, pooled over 12 cells (n=12 analytic-vs-FD pairs per channel)",
+  "criteria": {"abs_pearson_ge": 0.8, "sign_accuracy_ge": 0.9},
+  "precedent": "A0O/A0P stage-1 gate thresholds, reused frozen",
+  "on_channel_fail": "channel reported as NOT validated for that criterion; no relaunch, no delta change, no threshold change; round continues to report all channels"
+ },
+ "stage2_evaluation": {
+  "response_magnitude": "median |h_i| per channel over 12 cells + magnitude normalized to the LR channel",
+  "sign_stability": "fraction of the 12 cells whose sign(h_i) equals the channel majority sign",
+  "cross_seed_consistency": "per-seed median h_i (sign + magnitude); sign agreement across the 3 seeds; CV of |h_i| across the 12 cells",
+  "fd_agreement": "gate metrics per channel (Pearson, sign accuracy, rel err median)"
+ },
+ "response_matrix": "J[cell] = [h_lr, h_clip, h_wd] (analytic, FD-validated); reported for all 12 cells with the FD counterparts; no cell or channel dropped",
+ "stable_channel_rule_pre_registered": "A channel is STABLE iff it passes its stage-1 gate (|Pearson|>=0.8 AND sign>=0.9). Among stable channels, the better future control variable is the one with (a) larger median |h| and (b) sign stability >= 2/3 and (c) cross-seed sign agreement = 3/3. This rule is frozen BEFORE any GPU; ties reported without selection.",
+ "forbidden": [
+  "no controller / no closed-loop runner / no algorithm design",
+  "no lambda tuning, no optimizer body change, no scheduler change (perturbation branches touch only the named scalar input per channel)",
+  "no delta change, no channel addition/removal based on results, no state/stream selection based on results",
+  "A0O/A0P and all earlier frozen artifacts read-only; docs append-only",
+  "no GPU work before this contract + live_manifest hash notes exist on disk"
+ ],
+ "amendments": [],
+ "outputs": "outputs/a0q_response_control_map_v01/ (contract/ runs/ analysis/ reports/A0Q_REPORT.md hashes/ audit/); code research/src/fr/a0q_response_control_map_v01.py + research/scripts/a0q_{run,analyze,audit_pack}_v01.py",
+ "budget_s": 1800,
+ "stop_rule": "One stage: all 12 cells x 3 channels -> per-channel gates -> evaluation -> report -> STOP. Do not auto-launch any next round."
+}

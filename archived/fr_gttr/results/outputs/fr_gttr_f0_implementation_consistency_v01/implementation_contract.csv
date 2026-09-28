@@ -1,0 +1,15 @@
+formula,production_function,reference_location,test,err,coverage_boundary
+eta[t]=w·exp(a+bψ)/Z(b),f0_terminal_rule_v01.rule_eta,verify_reference.schedule,26+9组 autograd jac 6.5e-19,数学定义一致
+d_eta/da=eta; d_eta/db=eta(ψ−μ_ψ),f0_terminal_rule_v01.rule_eta,verify_reference.schedule_with_derivative,26+9组 autograd jac 6.5e-19,含 Z 导数
+sum eta=exp(a)·sum w,f0_terminal_rule_v01.rule_eta,verify_reference,26 组 sum_eta_rel_err=0,恒等式
+AdamW 一更新(theta,m,v),f0_terminal_rule_v01.f0_adamw_sens_step(值分支),verify_reference.explicit_ref,9组 theta/m/v max_diff ≤2.8e-17,FP64 CPU 合成
+clip JVP 全局 dot,f0_terminal_rule_v01.f0_adamw_sens_step(sens),verify_reference 反例 g=(3,4),26 组(前轮 D1 反例+修复),跨块正确
+S_theta/S_m/S_v 递推,f0_terminal_rule_v01.f0_adamw_sens_step(sens),verify_reference.explicit_ref,9组 max_diff ≤5.6e-17,FP64 CPU 合成
+dP/dvbar=-1/(2√vbar(√vbar+eps)^2),f0_terminal_rule_v01 内嵌,verify_reference.explicit_ref,9组一致,vbar>0 域
+-bc1/-bc2 偏差校正,f0_terminal_rule_v01 内嵌,verify_reference,9组一致,true_step 语义
+wd 直接项 -d_eta·r,f0_terminal_rule_v01 内嵌,verify_reference,9组一致,
+V_design=sum/count,eval_full_library(修复后),IC fixture 两 chunk,修复后公式一致,本轮未跑真实 4096 行 GPU
+q=grad(V)=grad(sum)/count,eval_full_library(修复后),IC fixture,修复后比值=1,本轮未跑真实 GPU
+HVP=H_batch·S(fixed 方向 detach),ref32_rollout 内嵌,适配器（解析 Hessian）,9组 grad_err ≤7e-18,合成 CPU；真实模型 NOT_RUN
+SENS 在 h 读出 dot(q_h,S_h),rollout grad_at,适配器终点,9组一致,合成 CPU；真实 V_design NOT_RUN
+schedule 恒 T256,ref32_rollout(修复后),IC fixture D4,修复后 eta[:16]==eta256[:16],曾用 build_w(T)（D4）

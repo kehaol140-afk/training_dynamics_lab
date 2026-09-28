@@ -1,0 +1,95 @@
+{
+  "protocol": "FR_G1A_26M_SCALE_GENERALIZATION_V01",
+  "created_at_utc": "2026-09-16T06:07:57Z",
+  "experiment_config": "experiment_config.json",
+  "phases": [
+    "preregister",
+    "train",
+    "theta",
+    "smoke",
+    "tangents",
+    "mechanism",
+    "analyze",
+    "audit"
+  ],
+  "phase_status": {
+    "train": "COMPLETE",
+    "theta": "COMPLETE",
+    "smoke": "PASS",
+    "tangents": "COMPLETE",
+    "mechanism": "COMPLETE",
+    "analyze": "COMPLETE",
+    "audit": "COMPLETE"
+  },
+  "source_hashes": {
+    "g1a_config": "7c6b406a2e8964b63080ff15f3d9cf974de7b6e6b34e81b5c3a2d59ad272fba0",
+    "g1a_protocol_md": "11ee0d1438069fe20ea0b038073ad5e1b449902d11c133757357e7905798b7b7",
+    "g1a_module": "957e36c2122a27e07f2263c3342d91c000cfa037f627f05d012b25029506d75d",
+    "g1a_runner": "c80486d7c4478ac7ae6288faa359027a29a678d9ae8e0b3bf62fd9446004fbca",
+    "frozen_a0c_module": "7b1dde12db88986eba889b5bf9a79e5d73327b67cc0bbebbfc8194b39caec433",
+    "frozen_a0c_runner": "874865198da7514dcd4fe57120268934ce988b046d27baf6e6c54b20b489cd24",
+    "frozen_a0e2_module": "fad4d50d9d6fb9031702e5330459fd0cf183a872601ab21170fd58febd506ca9",
+    "frozen_a0e2_runner": "cd4d5decef578cce96031d99e71ff3f776d35020b7b1c47fdec1ecc5f077bfd1",
+    "theta_protocol_pyc": "61e1bae38a2b20d0407e134f215094060624178da215d2232c94739d1d7751e7",
+    "minimind_model": "47f124f5f386a8cd76b488b36ecc3e00fc43e3894cdb3ba602420188d9ba8860",
+    "minimind_trainer_utils": "c613d485c8861caccc9d920e4639a8053cdfb4d69e56fa33280a631a5530234b",
+    "v07_data_d0": "1e657af9baae0784e582d82ef936160473aa069878e422ef48683a718056b0f4",
+    "v07_partition": "ee1810b229b104cdc0f03a82bf816df19afd666a287955cbbec4e7f8fdec379f",
+    "v07_config": "6d81ca45a9b37206837523aa74c8ab8d0a649323aa03d431be8693cb54be1587",
+    "full_state_module": "709334f8fb229fc38869787dc22f2f7a57a3d687276b6f2392564a90f0e5853f",
+    "direction_module": "7040c5b6be82b8eebaedb7daa2ed0533c011249776c229cf533a5dff7037bebd",
+    "stream_rng_module": "242956de271a8b839ddb3b39cc7e63d48b63ed253841255580d34e39ecd867a4",
+    "batch_manifest_module": "6bf1703f0e09f4b713113bfa05ad3eccb83119c8ad0838d4a1df5688ac932ffb",
+    "stage_c_runtime_module": "692a7f8e143359601ab79d94887d5df176d1ce0bc4dd3bc303a5b5950d21d1a0",
+    "native_schedule_module": "225bcd942090ea6be5c7564dc18f29ab6ee47a80547ff6238b92d6f9b9b6b263",
+    "native_adamw_guard_module": "19cdae886e8fa57c8672c9aa323070770e975675ad35617f55a48ddc02677d7c",
+    "response_stats_module": "9bc9ce87a3afb4be518fb0360a70af017a896ba1ef58724511a68aca5cb2bba8",
+    "pilot_partition_module": "9fece66acd9a81e523597e24d7a08e8bd0c0754d4174eaaaeaae905892a72c9f",
+    "hashing_module": "ccc94714b4c2c00c5d5c3bd05fffad3b2c4da811ca8ff0e802651b0daddf7536"
+  },
+  "output_subdirs": [
+    "bank",
+    "theta",
+    "tangents",
+    "mechanism",
+    "results"
+  ],
+  "phase_details": {
+    "train": {
+      "seeds": [
+        2042,
+        2043,
+        2044
+      ],
+      "param_counts": {
+        "unique_params": 26681728,
+        "state_dict_elements": 29958528
+      }
+    },
+    "theta": {
+      "states": 9,
+      "e2_streams": 36
+    },
+    "smoke": {
+      "seed": 2042,
+      "step": 64
+    },
+    "tangents": {
+      "streams": 36,
+      "replay_pass_all": true,
+      "max_native_clip_tensor_l2_gap": 2.0861644933561e-07
+    },
+    "mechanism": {
+      "seed": 2042,
+      "h1_identity_max_abs_gap": 0.0
+    },
+    "analyze": {
+      "verdict": "STRONG_SCALE_REPLICATION"
+    },
+    "audit": {
+      "bundle": "g1a_26m_audit_package.tar.gz",
+      "bundle_sha256": "a7f522eb5ab071fcc9ee4370b25de779b2fdeea6dc156af74486d385f855f066",
+      "completed_at_utc": "2026-09-16T07:03:43Z"
+    }
+  }
+}

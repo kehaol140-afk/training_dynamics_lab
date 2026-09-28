@@ -1,0 +1,23 @@
+# A0H-1.5 cumulative GPU wall-clock budget log
+# Cap: 30 min = 1800 s cumulative for ALL new GPU work this round (diagnostics + replays + timing).
+# Rule: record start/end/elapsed per run; stop related stages when cumulative reaches cap.
+# External jobs (PIDs 5027/5519) are NOT ours; never killed. Shared-GPU runs marked shared.
+run_id | date | device | shared | states | elapsed_s | 0 | note
+run1_diag_2031_52 | 2026-09-15T03:10:20Z | cuda:1(via CUDA_VISIBLE_DEVICES) | shared | 2031/52 | 145.0 | 145 | first post-fix validation run
+run2_diag_2031_52 | 2026-09-15T03:13:47Z | cuda:1 | shared | 2031/52 | 169.0 | 314 | post-telescope-fix rerun
+run3_diag_2031_52 | 2026-09-15T03:18:58Z | cuda:1 | shared | 2031/52 | 64.0 | 378 | tele-xkey+sa-record fix
+accept_A_run | 2026-09-15T03:26:53Z | cuda:1 | shared | 2032/58,2035/70,2037/46 | 9.0 | 387 | branch-A read-once acceptance
+accept_A_run2 | 2026-09-15T03:30:22Z | cuda:1 | shared | 2032/58,2035/70,2037/46 | 10.0 | 397 | branch-A read-once acceptance v2
+accept_A_run3 | 2026-09-15T03:31:16Z | cuda:1 | shared | 2032/58,2035/70,2037/46 | 42.0 | 439 | branch-A read-once acceptance v3 (parse fix)
+run4_diag_2031_52 | 2026-09-15T03:40:46Z | cuda:1 | shared | 2031/52 | 56.0 | 495 | regression check after full_diagnostics refactor
+accept_A_run4 | 2026-09-15T03:43:04Z | cuda:1 | shared | 2032/58,2035/70,2037/46 | 11.0 | 506 | branch-A acceptance with full_diagnostics=False
+accept_A_run5 | 2026-09-15T03:44:16Z | cuda:1 | shared | 2032/58,2035/70,2037/46 | 12.0 | 518 | branch-A acceptance v5 (rng_now fix)
+accept_A_run6 | 2026-09-15T03:46:10Z | cuda:1 | shared | 2032/58,2035/70,2037/46 | 11.0 | 529 | branch-A acceptance v6 (hvp_by_j scope fix)
+accept_A_run7 | 2026-09-15T03:47:11Z | cuda:1 | shared | 2032/58,2035/70,2037/46 | 12.0 | 541 | branch-A acceptance v7 (horizon guard fix)
+accept_A_run8 | 2026-09-15T03:48:34Z | cuda:1 | shared | 2032/58,2035/70,2037/46 | 22.0 | 563 | branch-A acceptance v8 (hvp reset fix)
+accept_A_run9 | 2026-09-15T03:50:44Z | cuda:1 | shared | 2032/58,2035/70,2037/46 | 46.0 | 609 | branch-A acceptance v9 (str key fix)
+run5_diag_2031_52 | 2026-09-15T04:03:52Z | cuda:1 | shared | 2031/52 | 47.7 | 656 | dev rerun: serialize hhat_fwd_C field (post-fix)
+run6_diag_2031_52 | 2026-09-15T04:03:52Z | cuda:1 | shared | 2031/52 | 47.3 | 704 | dev rerun: r_H_C per-horizon endpoint fix
+run7_diag_2031_52 | 2026-09-15T04:03:52Z | cuda:1 | shared | 2031/52 | 46.6 | 750 | dev rerun: hhat_fwd_C validated vs frozen (H1/H4 1e-11)
+accept_devval_v10 | 2026-09-15T04:06:33Z | cuda:1 | shared | 2032/58,2035/70,2037/46 | 36.4 | 787 | dev-validation of fixed accept runner on DEMOTED batch (no acceptance status)
+branchB1_fp32hvp_3dev | 2026-09-15T04:13:06Z | cuda:1 | shared | 2031/52,2034/64,2036/76 | 34.8 | 822 | Branch B1 FP32-HVP same-config fwd vs shared adjoint (lean); B1 PASS 4.1e-10 max; B2 rankings identical 9/9

@@ -1,0 +1,91 @@
+{
+ "audit_id": "A0S_CONTROLLABILITY_IDENTIFICATION_V01_AUDIT",
+ "date": "2026-09-18",
+ "files": [
+  {
+   "path": "research/src/fr/a0s_controllability_identification_v01.py",
+   "root": "repo",
+   "sha256": "9fceb47ec693fdaa5883458013604cd99a184794c630fbecc5ccb6e93e86f37d"
+  },
+  {
+   "path": "research/scripts/a0s_run_v01.py",
+   "root": "repo",
+   "sha256": "5a8ce2087f9138d66d0b2e56ebe28c40117df7b6f967ab6ff099e876dbc884e4"
+  },
+  {
+   "path": "research/scripts/a0s_analyze_v01.py",
+   "root": "repo",
+   "sha256": "4990bcbba7739f6a8a835f6e710f97942296f5a990d948921d7ef8d574369908"
+  },
+  {
+   "path": "research/scripts/a0s_audit_pack_v01.py",
+   "root": "repo",
+   "sha256": "8b7c487af55263aecf57dc961fcdb9dafc14d5d84a70a35e2d6b6efa6a0463e8"
+  },
+  {
+   "path": "contract/contract.json",
+   "root": "output",
+   "sha256": "f1028ff611c3bb952bc1ea5c34e628d048e9db602bc3c0abec4e84e6f432d060"
+  },
+  {
+   "path": "contract/live_manifest.json",
+   "root": "output",
+   "sha256": "cd8c26c90d6f472480af77b60e7d6107d02896cb0716007ce6678e66e63f420d"
+  },
+  {
+   "path": "runs/d2_cells.jsonl",
+   "root": "output",
+   "sha256": "c5502776091d0ad527daacd0a59926cf7d20d5c28501506a9829fd3df1da2767"
+  },
+  {
+   "path": "runs/d2_summary.json",
+   "root": "output",
+   "sha256": "5b47363237e87823f5eb595346d2dc6879a66f3f522fb20ddaaefd0c020cef10"
+  },
+  {
+   "path": "runs/analysis.json",
+   "root": "output",
+   "sha256": "c5f9b068eb4e1a870f68d46ea67db1edd714f4149158643003c6adb641037766"
+  },
+  {
+   "path": "gpu_budget_log.json",
+   "root": "output",
+   "sha256": "bfa3c1f09dbfb1ef731eca31893e436c9f55cbbaeac558249c032eef8651a8f8"
+  },
+  {
+   "path": "driver.log",
+   "root": "output",
+   "sha256": "1ca030ac12702227e55e02fb40fef09af8a23bbd1017528b135521a9d49fc4e7"
+  },
+  {
+   "path": "reports/A0S_REPORT.md",
+   "root": "output",
+   "sha256": "3913e9891b6977ebc1dcea9091b975d8d477c464a4503232ae47aa0489c7ed9c"
+  },
+  {
+   "path": "reports/a0s_controllability_table.csv",
+   "root": "output",
+   "sha256": "2e1dcb4f2bbb71c7a7ed0471608cf949ec3eb75256347fded57ea08b2a04f605"
+  },
+  {
+   "path": "reports/d1_supplementary.csv",
+   "root": "output",
+   "sha256": "a280e758242fa01fc41d2a230c42fbd21176ca62f7f62430913001028700dc45"
+  },
+  {
+   "path": "reports/d2_detail.csv",
+   "root": "output",
+   "sha256": "3eda455e0c53f89d32dd60fe74406c22ba79dd71b1263eb079f17a6ac15144ed"
+  },
+  {
+   "path": "reports/plots/a0s1_gain_vs_response.png",
+   "root": "output",
+   "sha256": "09ac4e7dc21a2ca6670d54364a1f8a41fd85c86961193707837f29140ac6d326"
+  },
+  {
+   "path": "reports/plots/a0s3_matrix_analysis.png",
+   "root": "output",
+   "sha256": "8638bb1164763c2744b7849f4c0676a0afa50ad42adfe679e997cbe4b9ba9dbe"
+  }
+ ]
+}

@@ -1,0 +1,45 @@
+{
+  "protocol": "FR_G1C_EXTERNAL_1B_STRESS_TEST_V01",
+  "prereg_frozen_at_utc": "2026-09-16T16:05:00Z",
+  "frozen_before_any_result": true,
+  "scientific_positioning_B0": "external stress test (architecture+tokenizer+corpus+optimizer hypers+schedule all change simultaneously); only allowed main conclusion: whether the core finite-time state-space response structure holds on a public ~1B external LLM training system with real optimizer state; NOT a pure scale effect / scaling law / MiniMind single-factor extrapolation",
+  "primary_model_B1": "AllenAI OLMo-1B, official checkpoint index; require unsharded checkpoint with model+optimizer+train state; HF inference-only checkpoints with reinitialized optimizer state are forbidden",
+  "checkpoint_switch_rule_B2": "switch only within official AllenAI OLMo ~1B series, only before any scientific result, reason recorded; no fabrication of optimizer state; else EXTERNAL_CHECKPOINT_UNAVAILABLE",
+  "download_policy_B3": "one EARLY candidate checkpoint first; verify hashes, optimizer m/v completeness, parameter-name mapping, global step, LR, scheduler metadata, data/training metadata; only then other stages",
+  "external_optimizer_semantics_B4": "use checkpoint's real betas/eps/wd/lr/clip; frozen a0c AdamW tangent math is parametric in (beta1,beta2,eps,wd) -> supported; any MiniMind-specific assumption would require a NEW versioned external adapter, never modify frozen MiniMind code",
+  "data_future_stream_B5": "prefer official Dolma/OLMo training data consistent with the checkpoint; goal is a fixed reproducible future minibatch stream consistent with the training stack, NOT rebuilding the full corpus; record source/revision/hash/tokenizer/seq_len/packing/loss masking/sample identities; if original future order unrecoverable, use preregistered fixed Dolma future-stream pool, labeled 'conditional response under frozen in-distribution future streams' (NOT 'original training trajectory replay'); if impossible -> DATA_STREAM_UNAVAILABLE",
+  "resource_gate_B6": "single A100-40GB assumption; gate: 1 checkpoint x 1 stream x H=1 -> model+optimizer restore, fwd/bwd, gradient injection, H1 B/Jacobian, central FD, HVP path, full C, peak memory, all finite; then H=4 single stream; formal matrix only after gate",
+  "memory_policy_B7": "allowed: activation checkpointing, sequential HVP, layer-wise recomputation, CPU offload of optimizer/inactive tensors, immediate graph release, deterministic microbatch replay, existing memory-safe HVP; forbidden: quantize model/optim states, low-rank/sparse HVP, truncate layers, subsample parameters, LoRA, frozen layers, approximate C",
+  "sequence_length_B8": "native context (2048) first; if native HVP infeasible on 40GB, register SHORT-CONTEXT STRESS SUBPROTOCOL (seq 128/256) BEFORE opening formal results: tokenizer/objective/corpus unchanged, labeled local short-context stress test, not full native OLMo training dynamics; priority native > registered short-context > RESOURCE_LIMIT",
+  "checkpoint_stages_B9": "<=3 public checkpoints EARLY/MIDDLE/LATE by tokens seen / normalized progress (~20/50/80%), pre-frozen before any response result; if storage too costly, pre-register EARLY+LATE minimum set before results",
+  "formal_matrix_B10": "sparse stress test: 3 checkpoints x 2 frozen future streams x H={1,4,8}; models FD/B/C only (no Model A); 9 checkpoint-horizon cells x 2 streams; BH_fixed only in mechanism subset; if H8 beyond resources, pre-register H={1,4} as formal minimum BEFORE opening H4 results, H8=RESOURCE_NOT_COVERED",
+  "mechanism_subset_B11": "one preregistered checkpoint (prefer MIDDLE) x 2 streams x {B, BH_fixed, C, FD} x H={1,4} (+8 if formally feasible); ladder informativeness only, no per-cell B>BH>C requirement",
+  "numerical_gate_B12": "H1 first: analytic/Jacobian vs central FD rel+abs error at >=2 epsilon levels; record attention implementation, double-backward support, HVP backend, native-vs-surrogate gap; rebuild backend caveat for external model",
+  "metrics_B13": "per checkpoint/H: chi_FD/chi_B/chi_C + abs/rel/signed errors; pooled C R2/Pearson/MAE/mean+median rel err; B same; H>1 err_B-err_C wins/ties/losses; small sample: never inflate stream count into independent runs",
+  "verdict_labels_B14_frozen": {
+    "EXTERNAL_STRESS_SUPPORTED": [
+      "H1 gate passes",
+      "C pooled R2 >= 0.80 on all covered H>1 cells",
+      "mean(err_B-err_C)>0",
+      ">=2/3 checkpoints (2/2 if two) mean C error < B error",
+      "no total C collapse with H"
+    ],
+    "EXTERNAL_STRESS_MIXED": "C retains clear predictive power but advantage unstable across stages/horizons",
+    "EXTERNAL_STRESS_NOT_SUPPORTED": "C loses predictive validity or does not overall beat B",
+    "RESOURCE_LIMIT": "legitimate full tangent infeasible on current resources",
+    "EXTERNAL_CHECKPOINT_UNAVAILABLE": "no qualifying public checkpoint with real optimizer state",
+    "DATA_STREAM_UNAVAILABLE": "no legal in-distribution future stream",
+    "CONTRACT_INCOMPATIBLE": "protocol incompatibility"
+  },
+  "interpretation_B15": "never draw a single scaling curve through 5M/26M/100M/OLMo-1B; keep A (controlled MiniMind ladder) and B (external ~1B stress) separated visually; no error-vs-params law fitting",
+  "statistics_B16": "single public training trajectory: no seed bootstrapping; report checkpoint/stream/H descriptive levels at most; paired B-vs-C descriptive interval per cell allowed; no cross-seed generalization or statistical confirmation claims",
+  "red_lines": [
+    "no retraining/finetuning a 1B model",
+    "no checkpoint switching based on results",
+    "no modifying frozen MiniMind/A0/G1a/G1b/G2/G3 artifacts",
+    "no auto-starting second external model/7B/D2/A0G-lite/new optimizer/algorithm experiments"
+  ],
+  "status": "BLOCKED_EXTERNAL_CHECKPOINT_UNAVAILABLE",
+  "blocked_at_utc": "2026-09-16T16:05:00Z",
+  "blocked_reason": "no official AllenAI OLMo ~1B checkpoint with real optimizer+train state exists in public repositories (see external_checkpoint_manifest.json)"
+}

@@ -1,0 +1,142 @@
+{
+ "primary_endpoint": {
+  "G_struct_256_mean": 0.0003362278273559098,
+  "G_struct_256_se_paths": 0.0005634325880190491,
+  "n_pairs": 12,
+  "n_positive": 8
+ },
+ "h1": {
+  "ctrl_full_minus_lr_mean": -0.00028766222944335656,
+  "ctrl_full_minus_lr_se_paths": 0.000489795627369864,
+  "monitor_G_struct_mean": 0.00019444002500009402,
+  "n_positive_monitor": 9
+ },
+ "detection": {
+  "reached": {
+   "FULL": 12,
+   "LR": 12,
+   "BASE": 12
+  },
+  "both_detected_pairs": 12,
+  "same_h_detect": 11,
+  "full_earlier": 1
+ },
+ "reversal_pairs": 3,
+ "pairs": [
+  {
+   "seed": "2030",
+   "start": "46",
+   "stream": 202609240200,
+   "G256": 8.976493962098431e-05,
+   "h_LR": 96,
+   "h_FULL": 96
+  },
+  {
+   "seed": "2030",
+   "start": "46",
+   "stream": 202609240201,
+   "G256": -0.0024714203487574693,
+   "h_LR": 80,
+   "h_FULL": 80
+  },
+  {
+   "seed": "2030",
+   "start": "82",
+   "stream": 202609240202,
+   "G256": 0.0003687816227673224,
+   "h_LR": 96,
+   "h_FULL": 80
+  },
+  {
+   "seed": "2030",
+   "start": "82",
+   "stream": 202609240203,
+   "G256": 0.0001363074403570863,
+   "h_LR": 80,
+   "h_FULL": 80
+  },
+  {
+   "seed": "2031",
+   "start": "46",
+   "stream": 202609240204,
+   "G256": 0.0008270816459097219,
+   "h_LR": 80,
+   "h_FULL": 80
+  },
+  {
+   "seed": "2031",
+   "start": "46",
+   "stream": 202609240205,
+   "G256": 0.0009715741892479812,
+   "h_LR": 80,
+   "h_FULL": 80
+  },
+  {
+   "seed": "2031",
+   "start": "82",
+   "stream": 202609240206,
+   "G256": -0.00014220383733398734,
+   "h_LR": 80,
+   "h_FULL": 80
+  },
+  {
+   "seed": "2031",
+   "start": "82",
+   "stream": 202609240207,
+   "G256": 0.00031078737403422707,
+   "h_LR": 80,
+   "h_FULL": 80
+  },
+  {
+   "seed": "2032",
+   "start": "46",
+   "stream": 202609240208,
+   "G256": -0.0021251189962763206,
+   "h_LR": 112,
+   "h_FULL": 112
+  },
+  {
+   "seed": "2032",
+   "start": "46",
+   "stream": 202609240209,
+   "G256": 0.005506930711295155,
+   "h_LR": 112,
+   "h_FULL": 112
+  },
+  {
+   "seed": "2032",
+   "start": "82",
+   "stream": 202609240210,
+   "G256": -6.884197557521787e-05,
+   "h_LR": 112,
+   "h_FULL": 112
+  },
+  {
+   "seed": "2032",
+   "start": "82",
+   "stream": 202609240211,
+   "G256": 0.0006310911629814342,
+   "h_LR": 112,
+   "h_FULL": 112
+  }
+ ],
+ "ledger_final": {
+  "ts": 1790229454.8263645,
+  "phase": "cell_done",
+  "cell": "2032/82",
+  "wall_s": 1141.757,
+  "note": "s2032_t82_st202609240211_GTTR_FULL steps=256 completed=True",
+  "total_fw": 106230,
+  "optimizer_updates": 9479,
+  "train_fw": 18958,
+  "train_bw": 18958,
+  "monitor_fw": 86912,
+  "monitor_evals": 679,
+  "ctrl_fw": 360,
+  "ctrl_evals": 45,
+  "snapshots": 73,
+  "failures": 0,
+  "q_hvp_probe_calls": 0,
+  "v_final_calls": 0
+ }
+}

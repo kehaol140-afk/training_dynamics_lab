@@ -1,0 +1,15 @@
+[
+ {
+  "attempt": "main run 1 (pre-fix)",
+  "when": "2026-09-21",
+  "outcome": "crashed at R/A/t0 anchor: KeyError 8 in _sha_of_means (sha computed over all MAIN_GROUPS, but Y_A/P_A/Z_A/Q_A are only accumulated in stage 3; frozen predictions per protocol §7.1 are mean(P_D), mean(Q_D) only). Bug fixed; original protocol verdicts unaffected.",
+  "partial_credit": "none: predictions for that anchor were never saved; all measured quantities discarded (process-scoped). No audit endpoints were read before the crash, so no leakage occurred.",
+  "counters": {"optimizer_updates": 1, "grad_evals": 66, "hvp_calls": 32, "micro_forward_calls": 194, "shadow_steps": 0, "shadow_seconds": 0.0},
+  "counter_derivation": {
+   "optimizer_updates": "h=1 real clip+step inside run_anchor before the crash",
+   "grad_evals": "64 probe g0 (32 dev + 32 audit) + v/q pre + v/q post",
+   "hvp_calls": "32 dev-bank HVPs (stage 2 loop completed; crash at sha step)",
+   "micro_forward_calls": "64*2 (g0) + 2 (v/q) + 32*2 (dev HVP)"},
+  "counted_per_protocol": "All failures/rechecks/salvage count (round-total, no per-process reset)."
+ }
+]

@@ -1,0 +1,60 @@
+{
+  "protocol": "E0_MINIMIND_SMOKE_V0.2",
+  "passed": true,
+  "scientific_intervention_enabled": false,
+  "device": "cuda:0",
+  "dtype": "bfloat16",
+  "manifest_sha256": "66f4348d8565078cc6c935fe5b2c7efdaa50a84d3c6d213525fc719788e6ec14",
+  "warmup": {
+    "losses": [
+      8.804315567016602,
+      8.782241821289062
+    ],
+    "batch_hashes": [
+      "1ae459d5fce604e975bd73c5d34dbd08c8d01bde4edd929bd9024afac0371210",
+      "e2eb5192ea588138128e878cbf34267217994b1d2481052cde0c4c49b8bad8e1"
+    ],
+    "model_hash": "4324570c90c0a3cd64656336e28f4a0c94a19a51e1036aee6c16213fea02b598",
+    "optimizer_hash": "6d33297e63afce99af0c3ec1067cbe984c0ce320de78c5a98b79bf6dc507d590"
+  },
+  "branch_a": {
+    "losses": [
+      8.785218238830566,
+      8.770585060119629,
+      8.76240062713623,
+      8.770833015441895
+    ],
+    "batch_hashes": [
+      "64b9deb0b4e1d3c9c37cf21f7e6cf3bb75cd00e491e626de4cff7a34e37281f9",
+      "de4b96181334cc98907fdcf88a6f476f8cf790c6c6a38acdb706f02004b8fa7b",
+      "d4c73b3a0b55cddfaa433d9b7cb1f2b04b30a075e0aa9ca313534d118ec42fa0",
+      "bd289ceacd984eee43f4efeae291df2df6d32f52eda6755606ee2f8a26d2908a"
+    ],
+    "model_hash": "2c220533bbe94fb364a33c48f4950444a2af222d28a463926bfc8355c914ec2b",
+    "optimizer_hash": "6eca130f74981b63b5ba01c788a409f42a231673d1086d6f95b1c5cc7549df9a"
+  },
+  "branch_b": {
+    "losses": [
+      8.785218238830566,
+      8.770585060119629,
+      8.76240062713623,
+      8.770833015441895
+    ],
+    "batch_hashes": [
+      "64b9deb0b4e1d3c9c37cf21f7e6cf3bb75cd00e491e626de4cff7a34e37281f9",
+      "de4b96181334cc98907fdcf88a6f476f8cf790c6c6a38acdb706f02004b8fa7b",
+      "d4c73b3a0b55cddfaa433d9b7cb1f2b04b30a075e0aa9ca313534d118ec42fa0",
+      "bd289ceacd984eee43f4efeae291df2df6d32f52eda6755606ee2f8a26d2908a"
+    ],
+    "model_hash": "2c220533bbe94fb364a33c48f4950444a2af222d28a463926bfc8355c914ec2b",
+    "optimizer_hash": "6eca130f74981b63b5ba01c788a409f42a231673d1086d6f95b1c5cc7549df9a"
+  },
+  "checks": {
+    "metadata_equal": true,
+    "batch_hashes_equal": true,
+    "loss_trace_equal": true,
+    "model_hash_equal": true,
+    "optimizer_hash_equal": true
+  },
+  "note": "smoke 只验证基础设施，不代表跨seed/跨阶段正式E0科学结论"
+}

@@ -1,0 +1,75 @@
+{
+  "round": "fr_phase_b_fd_diagnostic_v01",
+  "protocol": "FR_PhaseB_FD_Local_Operator_Diagnostic_v1.md",
+  "date": "2026-09-23",
+  "scope": {
+    "states": [
+      {
+        "state_id": "S3",
+        "seed": 2031,
+        "n0": 82,
+        "sim_stream": 197009
+      },
+      {
+        "state_id": "S1",
+        "seed": 2030,
+        "n0": 82,
+        "sim_stream": 197007
+      }
+    ],
+    "direction": "first_direction_v1 = s_ref0/||s_ref0||, fixed, detached",
+    "fd_object": "uncropped G_SIM (clip only inside virtual reference step)",
+    "delta0": "1e-3*max(||theta0||,1)"
+  },
+  "d1_repeats": "G(theta0) x2; full FD at delta0 x2 and delta0/2 x2; one reversed endpoint order",
+  "fixed_scales_h_over_delta0": [
+    2.0,
+    1.0,
+    0.5,
+    0.25,
+    0.125
+  ],
+  "displacement_checkpoints": [
+    "theta0+s_ref0",
+    "theta0+exp(0.05)*s_ref0"
+  ],
+  "paths": {
+    "ORIG_FP32": "v3 original path verbatim (FP32 params, no autocast, train mode, fixed masks)",
+    "REF_FP64": "isolated FP64 deepcopy; base loss/grad/mask cross-checked; kernel differences labeled REFERENCE_BACKEND_CHANGE"
+  },
+  "executed_design": {
+    "invocation_1": "S3 full (D1 repeats/reversed, 5-scale FD, AD-orig raw error, AD math retry, FP64 base+AD+5-scale FD) + S1 partial (g0 x2); crashed at S1 v1_vs_bundle device bug BEFORE CSV dump -> S3 per-scale rows lost, console facts transcribed (labeled INV1_CONSOLE_RECOVERED); ledger reconstructed in costs_inv1_reconstructed.json",
+    "invocation_2": "per-state: g0 + 5 fixed-scale FD (+repeats for S1) + AD(orig for S1, math for both) + displacement checkpoints; incremental per-state CSV dump (crash-safe); cumulative ledger"
+  },
+  "ad_fallback": "path A AD on original kernel recorded as raw error if unsupported; one minimal math-backend retry allowed (REFERENCE_BACKEND_CHANGE); mem-efficient attention \u65e0\u4e8c\u9636\u5bfc\u662f\u672c\u73b0\u573a\u7684\u9884\u671f\u4e8b\u4ef6 (recorded for S3 in inv1, re-recorded for S1 in inv2)",
+  "planned_omissions_for_budget": [
+    "S1 REF_FP64 path (inv2) \u2014 S3 REF_FP64 done in inv1 (console-transcribed)",
+    "S1 endpoint-order reversal \u2014 S3 retains check (inv1)",
+    "S3 inv2 repeats \u2014 inv1 console-recovered bitwise 0",
+    "S1 g0_rep2 (inv2) \u2014 inv1 console-recovered bitwise 0"
+  ],
+  "caps": {
+    "updates": 0,
+    "micro_fw": 240,
+    "micro_bw_total": 320,
+    "ad_hvp_direction_evals": 6,
+    "v_network_calls": 0
+  },
+  "billing_note": "all evals incl. repeats/failures/backend checks billed; no borrowing from v3 budget; PARTIAL on OOM/interrupt",
+  "decision_rules": [
+    "repeat/order/restore inconsistency -> implementation/RNG issue",
+    "FP64/matched-backend FD/AD agree but original FP32 not -> numerical path limitation (kernel vs dtype distinguished)",
+    "references agree at original delta but smaller scales approach AD -> original scale beyond local range",
+    "FD/AD repeatable but actual-displacement gradient change poorly approximated -> local linear range limited at real displacement",
+    "otherwise INCONCLUSIVE"
+  ],
+  "non_goals": [
+    "no v3 rewrite",
+    "no prediction generation",
+    "no MAIN",
+    "no Phase C",
+    "no threshold tuning",
+    "no best-scale substitution",
+    "no S3 exclusion"
+  ]
+}

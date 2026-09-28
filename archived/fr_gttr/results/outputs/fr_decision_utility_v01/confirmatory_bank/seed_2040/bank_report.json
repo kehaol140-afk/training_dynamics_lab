@@ -1,0 +1,242 @@
+{
+  "protocol": "FR_DECISION_UTILITY_V01_STATE_BANK",
+  "technical_pass": true,
+  "train_seed": 2040,
+  "train_batch_seed": 3744,
+  "state_steps": [
+    46,
+    64,
+    82
+  ],
+  "partition_sha256": "5ecaf0a3533d5dddd3fe2a768f13f5f8131cb620cb78412c35df5467539391f4",
+  "data_path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/e3c_subset.jsonl",
+  "data_path_sha256": "1e657af9baae0784e582d82ef936160473aa069878e422ef48683a718056b0f4",
+  "probe_overlap": 0,
+  "eval_overlap": 0,
+  "trajectory_step0_probe_eval_overlap": [],
+  "states": [
+    {
+      "step": 46,
+      "path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/states/state_step_046.pt",
+      "model_hash": "3bfb5bcea4528efc48c3178f5dc8dc1ccc0c3bfa4b885936b77d895b887744ab",
+      "optimizer_hash": "443d327de7b1c4164aa4f775a284ca844d405824003917b33d7835f12edfc29d"
+    },
+    {
+      "step": 64,
+      "path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/states/state_step_064.pt",
+      "model_hash": "5190709eb1126e5a026482bf0749e646bbe191894f2d07ebd132cb5b12c0cc8f",
+      "optimizer_hash": "de930c23f5c6bb91ba82567982ae7163a76ea21190bc5114f07dc674f01e6a12"
+    },
+    {
+      "step": 82,
+      "path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/states/state_step_082.pt",
+      "model_hash": "1a781affa40f2961798b201736d38c59875dd0c1154d93c50510ce5115bff9a0",
+      "optimizer_hash": "6e2a476d58c4a0d2889f317050dd3c4b2a9489b6e1ea1db9930adf467902e6a1"
+    }
+  ],
+  "e2_manifests": [
+    {
+      "step": 46,
+      "stream_id": 0,
+      "stream_seed": 7256409947686759623,
+      "batch_seed": 2237058524252485540,
+      "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/e2_stream_manifests/state_step_046/e2_stream_000_batches.json",
+      "batch_manifest_sha256": "3fbdfe825dd0c4afb9ab0d70671076a99817b2515df821062657f3cafb11bf89"
+    },
+    {
+      "step": 46,
+      "stream_id": 1,
+      "stream_seed": 8699104988575723030,
+      "batch_seed": 3665835554230563271,
+      "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/e2_stream_manifests/state_step_046/e2_stream_001_batches.json",
+      "batch_manifest_sha256": "a1816bad0c199288cda43b0310621d91247e2d2cb3fcb44514d9d791390eed6f"
+    },
+    {
+      "step": 46,
+      "stream_id": 2,
+      "stream_seed": 918427992609910630,
+      "batch_seed": 5094612584208641002,
+      "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/e2_stream_manifests/state_step_046/e2_stream_002_batches.json",
+      "batch_manifest_sha256": "cfc1d62263f60ccbb9f1e1b5028be2ff1112081fd24de95753734947ef5ce9d1"
+    },
+    {
+      "step": 46,
+      "stream_id": 3,
+      "stream_seed": 2361123033498874037,
+      "batch_seed": 6523389614186718733,
+      "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/e2_stream_manifests/state_step_046/e2_stream_003_batches.json",
+      "batch_manifest_sha256": "a522083d661509f656444be486b319cd7ec7a0c23171c82fdbb3ad14d506dc56"
+    },
+    {
+      "step": 46,
+      "stream_id": 4,
+      "stream_seed": 3803818074387837444,
+      "batch_seed": 7952166644164796464,
+      "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/e2_stream_manifests/state_step_046/e2_stream_004_batches.json",
+      "batch_manifest_sha256": "658d0673bf35153dd6016987455f44b2113f57058cf4f09e6a3a4f095a058d9d"
+    },
+    {
+      "step": 46,
+      "stream_id": 5,
+      "stream_seed": 5246513115276800851,
+      "batch_seed": 157571637288098388,
+      "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/e2_stream_manifests/state_step_046/e2_stream_005_batches.json",
+      "batch_manifest_sha256": "99ef863f08bd50d9bb10b0e985a9e1f9acb6f1e5362b1667fcc717e8e0ce1bd1"
+    },
+    {
+      "step": 46,
+      "stream_id": 6,
+      "stream_seed": 6689208156165764258,
+      "batch_seed": 1586348667266176119,
+      "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/e2_stream_manifests/state_step_046/e2_stream_006_batches.json",
+      "batch_manifest_sha256": "f9c98a97d1db49f47335c349290d8e0e195fb210b9798b03f4dea4fa2b232191"
+    },
+    {
+      "step": 46,
+      "stream_id": 7,
+      "stream_seed": 8131903197054727665,
+      "batch_seed": 3015125697244253850,
+      "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/e2_stream_manifests/state_step_046/e2_stream_007_batches.json",
+      "batch_manifest_sha256": "031ba0ac5eadbc5c5067c2f20521f335b0e8643344020f17aa071cccc60fe77b"
+    },
+    {
+      "step": 64,
+      "stream_id": 0,
+      "stream_seed": 5304280376727831360,
+      "batch_seed": 13402210187785935,
+      "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/e2_stream_manifests/state_step_064/e2_stream_000_batches.json",
+      "batch_manifest_sha256": "98e15ff0540331172fe27f47bce2130139399bd44d0132ecc30792915f6d4302"
+    },
+    {
+      "step": 64,
+      "stream_id": 1,
+      "stream_seed": 6746975417616794767,
+      "batch_seed": 1442179240165863666,
+      "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/e2_stream_manifests/state_step_064/e2_stream_001_batches.json",
+      "batch_manifest_sha256": "6188625d145925793de783fa500e2fab80ed4f84cd345a9f95dc7939f4ce697c"
+    },
+    {
+      "step": 64,
+      "stream_id": 2,
+      "stream_seed": 8189670458505758174,
+      "batch_seed": 2870956270143941397,
+      "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/e2_stream_manifests/state_step_064/e2_stream_002_batches.json",
+      "batch_manifest_sha256": "f81bc453ced75b508d7c878bb6ad793bd1232a6cd337b2f93fa4506f86682813"
+    },
+    {
+      "step": 64,
+      "stream_id": 3,
+      "stream_seed": 408993462539945774,
+      "batch_seed": 4299733300122019128,
+      "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/e2_stream_manifests/state_step_064/e2_stream_003_batches.json",
+      "batch_manifest_sha256": "7e695161671fd3fd4ae828507793c1c628ceb8dfee433de263cd7a01c6fe9121"
+    },
+    {
+      "step": 64,
+      "stream_id": 4,
+      "stream_seed": 1851688503428909181,
+      "batch_seed": 5728510330100096859,
+      "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/e2_stream_manifests/state_step_064/e2_stream_004_batches.json",
+      "batch_manifest_sha256": "2ea5c72c71abd370a6eac992a1622415369aeda9e433b5cba54ca0860830a294"
+    },
+    {
+      "step": 64,
+      "stream_id": 5,
+      "stream_seed": 3294383544317872588,
+      "batch_seed": 7157287360078174590,
+      "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/e2_stream_manifests/state_step_064/e2_stream_005_batches.json",
+      "batch_manifest_sha256": "d97dbf00c7351594ad9d0132eec1c4cb2e551df16662743aefd1e997381a8d64"
+    },
+    {
+      "step": 64,
+      "stream_id": 6,
+      "stream_seed": 4737078585206835995,
+      "batch_seed": 8586064390056252321,
+      "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/e2_stream_manifests/state_step_064/e2_stream_006_batches.json",
+      "batch_manifest_sha256": "b433c54dd343f1a253cdc77d9165f29711c06240ec443e21b593ded6b6e85471"
+    },
+    {
+      "step": 64,
+      "stream_id": 7,
+      "stream_seed": 6179773626095799402,
+      "batch_seed": 791469383179554245,
+      "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/e2_stream_manifests/state_step_064/e2_stream_007_batches.json",
+      "batch_manifest_sha256": "2a0011dfb01dbcb1e17ed770de9d3696e5b6681603d6c60fecbc15a0f786cdf1"
+    },
+    {
+      "step": 82,
+      "stream_id": 0,
+      "stream_seed": 3352150805768903097,
+      "batch_seed": 7013117932977862137,
+      "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/e2_stream_manifests/state_step_082/e2_stream_000_batches.json",
+      "batch_manifest_sha256": "543ab81846030eb33c6a98a3a818b7576177fa040351f035bf231ba02d3477d8"
+    },
+    {
+      "step": 82,
+      "stream_id": 1,
+      "stream_seed": 4794845846657866504,
+      "batch_seed": 8441894962955939868,
+      "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/e2_stream_manifests/state_step_082/e2_stream_001_batches.json",
+      "batch_manifest_sha256": "24973b38a6e245743cfd8de9cf51d98e4e76de3cbead76aeecae9fdfbec5dbfa"
+    },
+    {
+      "step": 82,
+      "stream_id": 2,
+      "stream_seed": 6237540887546829911,
+      "batch_seed": 647299956079241792,
+      "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/e2_stream_manifests/state_step_082/e2_stream_002_batches.json",
+      "batch_manifest_sha256": "51fe306705cbe7585ff5a403f374e76a6b11bb282d03fc8fa1a437a1c1d647a8"
+    },
+    {
+      "step": 82,
+      "stream_id": 3,
+      "stream_seed": 7680235928435793318,
+      "batch_seed": 2076076986057319523,
+      "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/e2_stream_manifests/state_step_082/e2_stream_003_batches.json",
+      "batch_manifest_sha256": "c4e878df3034ce0b3ae5125733be2575a927d90a98a416b21bd75b5b180e9130"
+    },
+    {
+      "step": 82,
+      "stream_id": 4,
+      "stream_seed": 9122930969324756725,
+      "batch_seed": 3504854016035397254,
+      "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/e2_stream_manifests/state_step_082/e2_stream_004_batches.json",
+      "batch_manifest_sha256": "f6eaac364467f83dd821ce4148c74bedab6737d6b25fdae0480afeb890ee66be"
+    },
+    {
+      "step": 82,
+      "stream_id": 5,
+      "stream_seed": 1342253973358944325,
+      "batch_seed": 4933631046013474985,
+      "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/e2_stream_manifests/state_step_082/e2_stream_005_batches.json",
+      "batch_manifest_sha256": "11a253b027aa3ab567e521e838cd39717855a51f0d1da5893be5aa0c807f6a3a"
+    },
+    {
+      "step": 82,
+      "stream_id": 6,
+      "stream_seed": 2784949014247907732,
+      "batch_seed": 6362408075991552716,
+      "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/e2_stream_manifests/state_step_082/e2_stream_006_batches.json",
+      "batch_manifest_sha256": "1539692aed9d55ae5a14203ced5ced0eba1dbcf6f05ce6f3b76446aced24a3c0"
+    },
+    {
+      "step": 82,
+      "stream_id": 7,
+      "stream_seed": 4227644055136871139,
+      "batch_seed": 7791185105969630447,
+      "batch_manifest_path": "/home/b205/projects/fluctuation_response/outputs/fr_decision_utility_v01/confirmatory_bank/seed_2040/e2_stream_manifests/state_step_082/e2_stream_007_batches.json",
+      "batch_manifest_sha256": "f89c49e0adad24fc31a10cd1c8e4dd046659bc739440a97528e2cb1e101d5db7"
+    }
+  ],
+  "model_config": {
+    "hidden_size": 256,
+    "num_hidden_layers": 4,
+    "max_seq_len": 128,
+    "batch_size": 4,
+    "accumulation_steps": 2,
+    "learning_rate": 0.0005,
+    "grad_clip": 1.0,
+    "dtype": "bfloat16",
+    "planned_total_optimizer_steps": 128
+  }
+}

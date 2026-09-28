@@ -1,0 +1,37 @@
+{
+  "protocol": "G2_26M_STATE_BANK_V01",
+  "seeds": [
+    2043,
+    2044
+  ],
+  "stages": {
+    "EARLY": {
+      "step": 26,
+      "fraction": 0.203125,
+      "cumulative_tokens": 26624
+    },
+    "MIDDLE": {
+      "step": 64,
+      "fraction": 0.5,
+      "cumulative_tokens": 65536
+    },
+    "LATE": {
+      "step": 102,
+      "fraction": 0.796875,
+      "cumulative_tokens": 104448
+    }
+  },
+  "total_planned_optimizer_steps": 128,
+  "tokens_per_optimizer_step": 1024,
+  "training_terminated_at_step": 102,
+  "param_counts": {
+    "unique_params": 26681728,
+    "state_dict_elements": 29958528
+  },
+  "dataset": "outputs/generalization_g2_data_distribution_v01/data/d1_pool.jsonl",
+  "dataset_sha256": "5d4c5e6b181e7791f12ceff2635011f17ba6e81d208942f22e5b1a24ad85a882",
+  "seed_reports": [
+    "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/bank/seed_2043/state_bank_report.json",
+    "/home/b205/projects/fluctuation_response/outputs/generalization_g2_data_distribution_v01/bank/seed_2044/state_bank_report.json"
+  ]
+}

@@ -1,0 +1,26 @@
+# A0J frozen_future_sensitivity_v01 -- reproduction command log
+export CUDA_VISIBLE_DEVICES=1
+export PYTHONPATH=research/src:research/scripts
+PY=/home/b205/miniforge3/envs/fr_minimind/bin/python
+
+# P0 profiler + production cost accounting (attempt1 crashed: E4 KeyError; fixed, attempt2 OK)
+$PY research/scripts/a0j_p0_profiler_v01.py
+# P0 branch gate: per-repeat interleaved timing (mixed contention regimes forced this design)
+$PY research/scripts/a0j_p0_gate_repeats_v01.py
+# gate-failure probes (pre-fix; retained as FAILED-PROBE evidence)
+$PY research/scripts/a0j_gate_diagnosis_probe_v01.py
+$PY research/scripts/a0j_mirror_probe_v01.py
+$PY research/scripts/a0j_bisect_probe_v01.py
+$PY research/scripts/a0j_trace_probe_v01.py
+# P1 full measurement (attempts 1-2 crashed: NameError/AttributeError; attempt 3 post-fix PASS 30/30)
+$PY research/scripts/a0j_p1_cache_study_v01.py
+# P1 utility replay (attempt1 crashed: ImportError stable_hash; attempt2 exit 0, 90 branches)
+$PY research/scripts/a0j_p1_replay_utility_v01.py
+# offline Kr/Ks cost projection (COST_ONLY / UTILITY_NOT_VALIDATED)
+$PY research/scripts/a0j_kr_ks_cost_v01.py
+# this analyzer (offline)
+$PY research/scripts/a0j_analyze_v01.py
+# audit pack (offline)
+$PY research/scripts/a0j_audit_pack_v01.py
+# unit tests (12/12 throughout)
+$PY -m pytest research/tests/test_a0j_cache_v01.py -q

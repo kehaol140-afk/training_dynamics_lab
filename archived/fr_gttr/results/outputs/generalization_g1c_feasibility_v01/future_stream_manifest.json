@@ -1,0 +1,42 @@
+{
+  "manifest_name": "FR_G1C_1B_FEASIBILITY_FUTURE_STREAMS_V01",
+  "frozen_at_utc": "2026-09-17T02:24:00Z",
+  "naming": "conditional response under frozen in-distribution future streams (NOT original training trajectory replay; B5 registered)",
+  "shard": {
+    "url": "http://olmo-data.org/preprocessed/proof-pile-2/v0_decontaminated/algebraic-stack/train/allenai/dolma2-tokenizer/part-00-00000.npy",
+    "total_bytes": 1743968224,
+    "layout_observed": "headerless little-endian int32 flat token stream (no npy magic; verified: all first 256 int32 values in [0,100277]; total bytes divisible by 4 = 435,992,056 tokens); protocol section 6.2 'npy header' wording amended to this observed fact",
+    "tokens_total": 435992056,
+    "vocab_size": 100278
+  },
+  "streams": [
+    {
+      "stream_id": 1,
+      "file": "streams/stream1_tokens.bin",
+      "sha256": "84922a04d5446c9f8a5fe95ced74cf76266a86ba39d3c9141c9095a4bcd7b444",
+      "token_offset_in_shard": 4194304,
+      "byte_range_in_shard": [16777216, 17825791],
+      "n_tokens": 262144,
+      "min_token": 0,
+      "max_token": 100257,
+      "seed": "derive_stream_seed(20260917, 1) per protocol section 7",
+      "q_seed": "derive_stream_seed(stream_seed, 77)"
+    },
+    {
+      "stream_id": 2,
+      "file": "streams/stream2_tokens.bin",
+      "sha256": "fb7eb589fac89f10dfdaf22b393c107e612cc61c4ed2219571dabefeddc972c7",
+      "token_offset_in_shard": 8388608,
+      "byte_range_in_shard": [33554432, 34603007],
+      "n_tokens": 262144,
+      "min_token": 0,
+      "max_token": 100257,
+      "seed": "derive_stream_seed(20260917, 2) per protocol section 7",
+      "q_seed": "derive_stream_seed(stream_seed, 77)"
+    }
+  ],
+  "usage_rule": "per response branch window = H x 4 microbatches x 4096 tokens, contiguous from stream start; H=8 needs 131072 <= 262144 available",
+  "microbatches_per_optimizer_step": 4,
+  "seq_len": 4096,
+  "loss": "mean cross-entropy over all tokens in window (token-averaged)"
+}

@@ -1,0 +1,25 @@
+{
+ "old_cap_keeps_historical_meaning": true,
+ "round_approved_total_updates": 417,
+ "approvals": [],
+ "reconciled_c0_totals_skip_reconciliation_rows": {},
+ "project_cumulative": "17,994 / 18,000 (17,577 pre-C0 + 417 this round, disclosed in C0 REPORT)",
+ "cap_note": "per-process counters were within caps; ROUND-TOTAL logged forward_calls 2,428 exceeds the 2,400 cap by 28 (two zero-update salvage floor phases) — kept disclosed, not hidden by per-process accounting",
+ "c0x_gpu_cost": {
+  "optimizer_updates": 0,
+  "grad_evals": 0,
+  "hvp_calls": 0,
+  "forward_calls": 0,
+  "wall_seconds": 0,
+  "note": "C0X is fully offline (this script)"
+ },
+ "c1_budget_separate_ledger": {
+  "optimizer_updates_cap": 192,
+  "planned": "132 main + 8 smoke + up to 52 reserve",
+  "grad_evals_cap": 1400,
+  "hvp_calls_cap": 416,
+  "micro_forward_calls_cap": 3200,
+  "gpu_wall_seconds_cap": 5400,
+  "rule": "C1 costs listed separately; never divided by 18,000; '0 optimizer updates' cannot hide diagnostic cost; all failures/rechecks/salvage counted"
+ }
+}

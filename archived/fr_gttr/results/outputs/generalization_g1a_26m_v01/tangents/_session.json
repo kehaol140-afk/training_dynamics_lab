@@ -1,0 +1,8 @@
+{
+  "replay_pass_all": true,
+  "max_native_clip_tensor_l2_gap": 2.0861644933561e-07,
+  "max_hvp_math_gradient_relative_gap_vs_native": 0.006462759599065321,
+  "stream_count": 36,
+  "hvp_backend": "PYTORCH_AUTOGRAD_REVERSE_OVER_REVERSE_WITH_MATH_SDPA",
+  "native_flash_double_backward": "UNSUPPORTED_DERIVATIVE_FOR_FLASH_ATTENTION_BACKWARD"
+}

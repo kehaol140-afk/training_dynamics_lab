@@ -1,0 +1,41 @@
+{
+ "run_id": "CALFIX-1",
+ "this_round": {
+  "traj_updates": 2560,
+  "train_fw": 5120,
+  "train_bw": 5120,
+  "hvp_dirs": 510,
+  "hvp_micro": 1020,
+  "design_evals": 31,
+  "design_grad_evals": 3,
+  "total_fw": 9088,
+  "total_bw": 6524,
+  "failures": 0
+ },
+ "this_round_caps": {
+  "traj_updates": 2816,
+  "fw": 11000,
+  "bw": 8000,
+  "hvp_dirs": 576,
+  "design_evals": 36,
+  "confirm": 0,
+  "v_final": 0
+ },
+ "f0_cumulative_after": {
+  "traj_updates": 7424,
+  "total_fw": 22912,
+  "total_bw": 19300,
+  "hvp_dirs": 1650,
+  "design_evals": 63
+ },
+ "f0_total_caps": {
+  "traj_updates": 34000,
+  "total_fw": 110000,
+  "total_bw": 90000,
+  "hvp_dirs": 7000,
+  "design_evals": 250
+ },
+ "confirm_evals": 0,
+ "v_final_calls": 0,
+ "wall_note": "OBSERVATIONAL_SHARED_GPU"
+}

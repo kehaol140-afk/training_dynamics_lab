@@ -1,0 +1,37 @@
+{
+ "pooled_conventions": {
+  "selected_level": "12 points (controller-selected action per unit); the single no-op-selected unit contributes (0,0) and is included; unit-weighted (each unit one point)",
+  "all_candidate_level": "60 points (12 units x 5 actions); no-op included as (predicted 0, actual 0); unit-weighted, candidates within a unit implicitly equally weighted",
+  "transfer_level": "12 points selected-action only; OBSERVATIONAL ONLY, no causal mechanism claim"
+ },
+ "x_pred_delta_score_vs_y_delta_L_score": {
+  "selected_level": {
+   "n": 12,
+   "pearson": 0.6348279331476092,
+   "mae": 9.803247396095963e-05,
+   "rmse": 0.0001285149131469584,
+   "r2": 0.4030065047044652,
+   "ols_slope": 0.6050665283116768,
+   "ols_intercept": -8.206244316766819e-05
+  },
+  "all_candidate_level": {
+   "n": 60,
+   "pearson": 0.8343868748094954,
+   "mae": 9.698840032215112e-05,
+   "rmse": 0.00013800878896289256,
+   "r2": 0.6962014568543564,
+   "ols_slope": 0.9713139422844851,
+   "ols_intercept": -5.1579227586701385e-06
+  }
+ },
+ "x_delta_L_score_vs_y_delta_L_eval_selected": {
+  "n": 12,
+  "pearson": 0.42925043080411723,
+  "mae": 0.00010422336527357194,
+  "rmse": 0.000134278399244496,
+  "r2": 0.18425593234552018,
+  "ols_slope": 0.3836818058322146,
+  "ols_intercept": -5.09911341289075e-05
+ },
+ "frozen_reference_note": "A0H20 analysis pearson (selected) 0.6348 / (score->eval) 0.4293 - recomputed here from raw labels; small differences are rounding-only"
+}

@@ -1,0 +1,81 @@
+{
+ "tag": "ENGINEERING_ELIGIBILITY",
+ "state": "dev:2031/52",
+ "H": 4,
+ "M": 4,
+ "decision": "PASS",
+ "criteria": {
+  "same_config_fp32_scores": {
+   "against": "outputs/a0h15_vjp_shared_v01/diagnostics/diag_2031_52_fp32hvp_s0.json (frozen a0h15 pass, hvp_fp32=True, same process class)",
+   "forward_max_abs_gap": 0.0,
+   "adjoint_max_abs_gap": 0.0,
+   "note": "entry fp32 forward and fp32 adjoint both bitwise-equal to frozen-pass hhat_fwd_C / vjp_shared at H=4 (same-process reproduction)"
+  },
+  "same_config_gate_B1": {
+   "atol32": 1e-05,
+   "rtol32": 0.0001,
+   "max_abs_fwd_minus_adj": 1.2e-10,
+   "per_candidate": {
+    "1": 1.195714373868062e-10,
+    "2": 5.185754148144539e-11,
+    "3": 1.9024062490255456e-11,
+    "4": 4.7596544761052684e-11
+   },
+   "verdict": "PASS"
+  },
+  "shared_w0_no_candidate_future": {
+   "endpoint_grad_calls": 1,
+   "reverse_adjoint_steps": 4,
+   "candidate_grad_calls": 4,
+   "note": "one w_0 from public base trajectory + endpoint V_score gradient only; adjoint mode runs no candidate-future tangent HVPs in its forward pass (hvp_calls=3 = feedback terms only)"
+  },
+  "model_config_and_fingerprint": {
+   "model_config": {
+    "hidden_size": 256,
+    "num_hidden_layers": 4,
+    "max_seq_len": 128,
+    "n_trainable_params": 4983296
+   },
+   "fingerprint_after_restore_cycle": "ada46c18944976988fdcd98d988b3567d5fd26e23b1f50e8e61334773f5e2d8a",
+   "frozen_config_sha256": "6d81ca45a9b37206837523aa74c8ab8d0a649323aa03d431be8693cb54be1587"
+  },
+  "dress_rehearsal_config_mismatch_pre_read_failure": {
+   "dtype_drift_float16": "AssertionError('config drift') before model init",
+   "hidden_size_512_drift": "AssertionError('model config mismatch vs frozen cfg'); 16.65M-param wrong build rejected, not silently used",
+   "frozen_config_hash_unchanged_after_tests": true
+  },
+  "replay_native_mode_smoke": {
+   "v_noop": 7.203056514263153,
+   "chosen_id": 4,
+   "choose_noop": false,
+   "branches": 5,
+   "native_steps": 20,
+   "scoring_calls": 5
+  },
+  "mutually_exclusive_modes": [
+   "forward_only --hvp_precision bf16|fp32",
+   "adjoint_only --hvp_precision fp32",
+   "replay_only --backend native"
+  ],
+  "no_joint_pass_hidden": "each mode completes its own work; forward mode does not run a reverse walk, adjoint mode does not run candidate-future tangents"
+ },
+ "bugs_found_and_fixed_during_eligibility": [
+  {
+   "bug": "clip+optimizer-step executed before tangent loop; tangents read POST-step m/v and HVP ran at advanced weights",
+   "fix": "split _clip_only/_step_once; frozen order: clip -> tangents/HVP at step-h weights with PRE-step state -> scaler.step",
+   "evidence": "disc_h1_fwd.json matched config-independent reference to rounding (<=4.4e-8 on 7-digit reference)"
+  },
+  {
+   "bug": "snapshot step_after used lr-schedule micro-step counter (global_micro_step+h) instead of optimizer internal step (state['step']+1); unit 2031/52 has global_micro_step=104 vs optimizer step=52",
+   "fix": "capture step_after from optimizer.state directly (PRE-step) + 1.0",
+   "evidence": "after fix, entry adjoint bitwise-equal to frozen-pass vjp_shared; same-config |fwd-adj| max 1.2e-10"
+  }
+ ],
+ "evidence_files": [
+  "outputs/a0h15_vjp_shared_v01/production/selfcheck_d1_h4_m4.json",
+  "outputs/a0h15_vjp_shared_v01/production/disc_h1_fwd.json",
+  "outputs/a0h15_vjp_shared_v01/production/disc_h1_adj.json",
+  "outputs/a0h15_vjp_shared_v01/contract_round2/gpu_budget_log_round2.txt"
+ ],
+ "scope_note": "DEV_ENGINEERING eligibility only; grants no A' acceptance status and no utility PASS (amendment DEV_TIMING \u00a7scope)"
+}

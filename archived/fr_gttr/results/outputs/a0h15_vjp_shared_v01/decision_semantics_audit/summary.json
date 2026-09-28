@@ -1,0 +1,82 @@
+{
+ "tag": "A0H_ROUND2_DECISION_SEMANTICS_AUDIT",
+ "date": "2026-09-15",
+ "branch": "A",
+ "branch_meaning": "A0H A' acceptance selector deviated from frozen A0G semantics (raw-hhat argmax instead of argmin predicted Delta L over j=0..4); not a reporting name error (B), not ID/label mapping error (C), and Branch D (genuine finite-action utility failure) is NOT supported.",
+ "hhat_semantics": "hhat = d L_score(theta_{t+H}) / d lambda (Case 1); no sign transform; predicted_delta_loss = lambda*hhat; predicted_gain = -lambda*hhat",
+ "frozen_selector": "argmin predicted_delta_loss over j=0..4 (no-op included, predicted 0.0), tie-break lowest j (fr/a0g_decision_utility_v01.py:225-229)",
+ "frozen_selector_crosscheck_formal_A0G": "level3 j_hat == argmin pred_delta_C in 360/360 (state,stream,H); no-op chosen 6/360",
+ "aprime_original_execution": {
+  "preserved": true,
+  "old_program_choice": {
+   "2030/52": 2,
+   "2033/64": 3,
+   "2037/82": 4
+  },
+  "old_gain_V_score": {
+   "2030/52": -0.0002548,
+   "2033/64": -7.349e-05,
+   "2037/82": -0.0002795
+  },
+  "verdicts": {
+   "2030/52": "FAIL",
+   "2033/64": "FAIL",
+   "2037/82": "FAIL"
+  },
+  "note": "original FAIL records untouched; execution is invalid as acceptance of the intended algorithm either way, A' demoted to dev-investigation per frozen retry rule 2; NO A'' this round"
+ },
+ "offline_corrected_rescoring_with_existing_labels": {
+  "frozen_rule_choice": {
+   "2030/52": 1,
+   "2033/64": 4,
+   "2037/82": 1
+  },
+  "corrected_gain_V_score": {
+   "2030/52": 0.0008914,
+   "2033/64": 0.000358,
+   "2037/82": 0.0002355
+  },
+  "matches_replay_gain_argmax_oracle": {
+   "2030/52": true,
+   "2033/64": true,
+   "2037/82": true
+  },
+  "bf16_forward_config_choice": {
+   "2030/52": 1,
+   "2033/64": 4,
+   "2037/82": 1
+  },
+  "five_action_chosen_id_match_bf16_vs_fp32adj": true,
+  "would_L2_pass_under_frozen_semantics": true,
+  "status": "dev-investigation evidence only; NOT an unseen confirmation"
+ },
+ "five_action_audit": {
+  "identity_checks": "36/36 PASS",
+  "active_only_rank_match_9of9": "j=1..4 only, no-op excluded",
+  "five_action_rank_match_incl_noop": "9/9 (raw-score order)",
+  "proxy_sign_accuracy_H4": "9/12 active candidates",
+  "V_eval_labels": "per-candidate MISSING except old-chosen + no-op; per-candidate V_eval Gain NOT_RECONSTRUCTABLE from saved artifacts"
+ },
+ "utility_error_decomposition": {
+  "computed": "term1 predicted gain -lambda*hhat and total residual only",
+  "identifiability": "DERIVATIVE_VS_NONLINEARITY_NOT_IDENTIFIABLE (single +lambda branch; no native d_j, no -lambda, no smaller-lambda scan on A' units); tau_j per-candidate NOT_RECONSTRUCTABLE",
+  "lambda_attribution": "forbidden: cannot claim lambda too large from single +lambda replay"
+ },
+ "timing_recheck": {
+  "tag": "DEV_ENGINEERING_TIMING",
+  "R_structure": 2.576626,
+  "R_replay": 1.170308,
+  "R_frozen": 2.749585,
+  "time_reduction_vs_replay": 0.145524,
+  "speedup_vs_replay": 1.170308,
+  "note": "speedup 1.17x and time reduction 14.6% reported as separate statements",
+  "gpu_condition": "GPU1 avg util 6.2% max 24% during H4/M4 window; foreign GPU0 job untouched; exclusive-in-practice, not a deployment claim"
+ },
+ "selector_unit_tests": "research/tests/test_a0h15_selector_semantics_v01.py 7/7 OK (selector_tests.txt)",
+ "fixes_applied": [
+  "research/scripts/a0h15_accept_aprime_v01.py: selector restored to frozen_decision() (import fr.a0g_decision_utility_v01.select_action); pre-fix hash archived",
+  "new unit test module (7 tests incl. order-invariance and tie-break)",
+  "no changes to frozen a0g module, lambda, action definition, AdamW, gates, or any original artifact"
+ ],
+ "unique_next_step": "user pre-registers a fresh unseen acceptance batch (not D, not demoted A, not A' units, not this round's dev units); rerun the SAME two-layer acceptance with the fixed driver; no other changes"
+}

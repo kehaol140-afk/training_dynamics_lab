@@ -1,0 +1,333 @@
+{
+  "scope": "Independent synthetic CPU FP64 reference only. NOT remote Transformer validation.",
+  "model": "4-parameter coupled smooth logistic loss; analytic Hessian; two parameter blocks; fixed current batches",
+  "current_goal": "Check formulas, not certify the original CAL-FIX code or numerical domain.",
+  "torch_version": "2.11.0",
+  "schedule_T": 256,
+  "beta1": 0.9,
+  "beta2": 0.999,
+  "n0": 46,
+  "schedule_max_abs_ad_error": 3.469446951953614e-18,
+  "sum_eta_identity_abs_error": 4.440892098500626e-16,
+  "sum_deta_db_abs_error": 1.3877787807814457e-16,
+  "clipping_global_jvp": [
+    0.799999840000032,
+    -0.5999998800000239
+  ],
+  "wrong_blockwise_jvp": [
+    0.5119999551999974,
+    -0.21600003359997794
+  ],
+  "wrong_blockwise_relative_error": 0.47999990400001913,
+  "cases": [
+    {
+      "clip_tau": 0.02,
+      "horizon_readout": 16,
+      "schedule_T": 256,
+      "active_steps": 16,
+      "min_branch_margin": 0.0064626899266087105,
+      "loss": 0.7315994531091782,
+      "explicit_forward_sensitivity": [
+        -0.00023368228154806717,
+        0.0001756239475066409
+      ],
+      "full_reverse_autograd": [
+        -0.00023368228154806706,
+        0.00017562394750664072
+      ],
+      "max_abs_forward_reverse_error": 1.8973538018496328e-19,
+      "max_abs_primal_state_difference": 1.1102230246251565e-16,
+      "finite_differences": {
+        "0.0001": {
+          "grad": [
+            -0.0002336822824133833,
+            0.000175623947606951
+          ],
+          "max_abs_error": 8.653161195394665e-13
+        },
+        "1e-05": {
+          "grad": [
+            -0.00023368226798048394,
+            0.0001756239542682891
+          ],
+          "max_abs_error": 1.3567583227692623e-11
+        }
+      }
+    },
+    {
+      "clip_tau": 0.02,
+      "horizon_readout": 32,
+      "schedule_T": 256,
+      "active_steps": 32,
+      "min_branch_margin": 0.0064626899266087105,
+      "loss": 0.7308905666227932,
+      "explicit_forward_sensitivity": [
+        -0.0009369686472056324,
+        0.0006232532909599209
+      ],
+      "full_reverse_autograd": [
+        -0.0009369686472056324,
+        0.0006232532909599208
+      ],
+      "max_abs_forward_reverse_error": 1.0842021724855044e-19,
+      "max_abs_primal_state_difference": 2.7755575615628914e-16,
+      "finite_differences": {
+        "0.0001": {
+          "grad": [
+            -0.0009369686482241235,
+            0.0006232532906436106
+          ],
+          "max_abs_error": 1.0184910640559375e-12
+        },
+        "1e-05": {
+          "grad": [
+            -0.0009369686526650155,
+            0.000623253287868053
+          ],
+          "max_abs_error": 5.459383054136346e-12
+        }
+      }
+    },
+    {
+      "clip_tau": 0.02,
+      "horizon_readout": 256,
+      "schedule_T": 256,
+      "active_steps": 249,
+      "min_branch_margin": 0.00028397962572999577,
+      "loss": 0.7198894871331118,
+      "explicit_forward_sensitivity": [
+        -0.011247613716693215,
+        -0.0019446125090167106
+      ],
+      "full_reverse_autograd": [
+        -0.011247613716693203,
+        -0.0019446125090167125
+      ],
+      "max_abs_forward_reverse_error": 1.214306433183765e-17,
+      "max_abs_primal_state_difference": 8.881784197001252e-16,
+      "finite_differences": {
+        "0.0001": {
+          "grad": [
+            -0.011247613729836736,
+            -0.0019446125082422938
+          ],
+          "max_abs_error": 1.3143520993796898e-11
+        },
+        "1e-05": {
+          "grad": [
+            -0.011247613712628278,
+            -0.001944612504356513
+          ],
+          "max_abs_error": 4.66019757505709e-12
+        }
+      }
+    },
+    {
+      "clip_tau": 0.25,
+      "horizon_readout": 16,
+      "schedule_T": 256,
+      "active_steps": 7,
+      "min_branch_margin": 0.021648129769030827,
+      "loss": 0.7299366260515038,
+      "explicit_forward_sensitivity": [
+        -0.0018727173780318594,
+        0.0014116465226056843
+      ],
+      "full_reverse_autograd": [
+        -0.0018727173780318579,
+        0.0014116465226056843
+      ],
+      "max_abs_forward_reverse_error": 1.5178830414797062e-18,
+      "max_abs_primal_state_difference": 1.6653345369377348e-16,
+      "finite_differences": {
+        "0.0001": {
+          "grad": [
+            -0.0018727173811683429,
+            0.001411646520788068
+          ],
+          "max_abs_error": 3.1364834774533223e-12
+        },
+        "1e-05": {
+          "grad": [
+            -0.0018727173811683426,
+            0.0014116465107960605
+          ],
+          "max_abs_error": 1.1809623808381464e-11
+        }
+      }
+    },
+    {
+      "clip_tau": 0.25,
+      "horizon_readout": 32,
+      "schedule_T": 256,
+      "active_steps": 14,
+      "min_branch_margin": 0.0016118264604367827,
+      "loss": 0.7239747065497428,
+      "explicit_forward_sensitivity": [
+        -0.007604961976843249,
+        0.005052371958328742
+      ],
+      "full_reverse_autograd": [
+        -0.007604961976843249,
+        0.005052371958328741
+      ],
+      "max_abs_forward_reverse_error": 8.673617379884035e-19,
+      "max_abs_primal_state_difference": 1.6653345369377348e-16,
+      "finite_differences": {
+        "0.0001": {
+          "grad": [
+            -0.007604961986262815,
+            0.005052371954694657
+          ],
+          "max_abs_error": 9.419565821788822e-12
+        },
+        "1e-05": {
+          "grad": [
+            -0.007604961976825918,
+            0.005052371965241775
+          ],
+          "max_abs_error": 6.913033513689104e-12
+        }
+      }
+    },
+    {
+      "clip_tau": 0.25,
+      "horizon_readout": 256,
+      "schedule_T": 256,
+      "active_steps": 106,
+      "min_branch_margin": 0.0003926278384741022,
+      "loss": 0.6559862250745438,
+      "explicit_forward_sensitivity": [
+        -0.04404842805195632,
+        -0.007706276946565666
+      ],
+      "full_reverse_autograd": [
+        -0.044048428051956294,
+        -0.007706276946565669
+      ],
+      "max_abs_forward_reverse_error": 2.7755575615628914e-17,
+      "max_abs_primal_state_difference": 4.440892098500626e-16,
+      "finite_differences": {
+        "0.0001": {
+          "grad": [
+            -0.04404842796734698,
+            -0.007706276941576995
+          ],
+          "max_abs_error": 8.460934036724765e-11
+        },
+        "1e-05": {
+          "grad": [
+            -0.04404842804950348,
+            -0.007706276944352552
+          ],
+          "max_abs_error": 2.452843483879974e-12
+        }
+      }
+    },
+    {
+      "clip_tau": 100.0,
+      "horizon_readout": 16,
+      "schedule_T": 256,
+      "active_steps": 0,
+      "min_branch_margin": 99.275240754359,
+      "loss": 0.7287194590124009,
+      "explicit_forward_sensitivity": [
+        -0.003037961401885363,
+        0.0022873755073696523
+      ],
+      "full_reverse_autograd": [
+        -0.003037961401885362,
+        0.002287375507369651
+      ],
+      "max_abs_forward_reverse_error": 1.3010426069826053e-18,
+      "max_abs_primal_state_difference": 1.1102230246251565e-16,
+      "finite_differences": {
+        "0.0001": {
+          "grad": [
+            -0.0030379614057718385,
+            0.002287375505671818
+          ],
+          "max_abs_error": 3.886475342940177e-12
+        },
+        "1e-05": {
+          "grad": [
+            -0.003037961404661615,
+            0.0022873755112229333
+          ],
+          "max_abs_error": 3.8532809755464914e-12
+        }
+      }
+    },
+    {
+      "clip_tau": 100.0,
+      "horizon_readout": 32,
+      "schedule_T": 256,
+      "active_steps": 0,
+      "min_branch_margin": 99.03908619823868,
+      "loss": 0.7186724114008249,
+      "explicit_forward_sensitivity": [
+        -0.012340164393274632,
+        0.00814522602289749
+      ],
+      "full_reverse_autograd": [
+        -0.01234016439327464,
+        0.008145226022897491
+      ],
+      "max_abs_forward_reverse_error": 6.938893903907228e-18,
+      "max_abs_primal_state_difference": 1.1102230246251565e-16,
+      "finite_differences": {
+        "0.0001": {
+          "grad": [
+            -0.012340164404767151,
+            0.008145226016997853
+          ],
+          "max_abs_error": 1.1492518742217683e-11
+        },
+        "1e-05": {
+          "grad": [
+            -0.012340164395885365,
+            0.008145226021438745
+          ],
+          "max_abs_error": 2.610732810492955e-12
+        }
+      }
+    },
+    {
+      "clip_tau": 100.0,
+      "horizon_readout": 256,
+      "schedule_T": 256,
+      "active_steps": 0,
+      "min_branch_margin": 98.52364788449812,
+      "loss": 0.6351008434762638,
+      "explicit_forward_sensitivity": [
+        -0.03269095270750804,
+        -0.004185526702411828
+      ],
+      "full_reverse_autograd": [
+        -0.03269095270750801,
+        -0.0041855267024118485
+      ],
+      "max_abs_forward_reverse_error": 2.7755575615628914e-17,
+      "max_abs_primal_state_difference": 3.3306690738754696e-16,
+      "finite_differences": {
+        "0.0001": {
+          "grad": [
+            -0.03269095267210975,
+            -0.004185526699118647
+          ],
+          "max_abs_error": 3.5398288467103356e-11
+        },
+        "1e-05": {
+          "grad": [
+            -0.03269095271152267,
+            -0.004185526697453312
+          ],
+          "max_abs_error": 4.958515369135608e-12
+        }
+      }
+    }
+  ],
+  "max_forward_reverse_abs_error": 2.7755575615628914e-17,
+  "max_small_fd_abs_error": 1.3567583227692623e-11,
+  "all_assertions_passed": true
+}

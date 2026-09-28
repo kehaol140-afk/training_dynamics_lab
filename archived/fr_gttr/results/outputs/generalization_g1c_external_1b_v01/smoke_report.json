@@ -1,0 +1,19 @@
+{
+  "protocol": "FR_G1C_EXTERNAL_1B_STRESS_TEST_V01",
+  "created_at_utc": "2026-09-16T16:05:00Z",
+  "status": "NOT_RUN_BLOCKED",
+  "gpu_runs": 0,
+  "reason": "B6 resource feasibility gate requires a downloaded qualifying checkpoint; screening concluded EXTERNAL_CHECKPOINT_UNAVAILABLE; no GPU science executed",
+  "planned_gate_sequence": [
+    "model+optimizer restore",
+    "baseline forward/backward",
+    "gradient injection",
+    "H1 B/Jacobian",
+    "central FD",
+    "HVP/second-order path",
+    "full C",
+    "peak GPU memory",
+    "all finite",
+    "then H=4 single stream"
+  ]
+}

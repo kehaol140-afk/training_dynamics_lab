@@ -1,0 +1,50 @@
+{
+ "manifest_id": "A0S_CONTROLLABILITY_IDENTIFICATION_V01_LIVE",
+ "contract_sha256": "f1028ff611c3bb952bc1ea5c34e628d048e9db602bc3c0abec4e84e6f432d060",
+ "note": "Every module/driver/analyzer hash change is logged HERE before any run that could reveal results. Sequencing: write/amend code -> append note with new sha256 -> run.",
+ "module_hash_notes": [
+  {
+   "seq": 0,
+   "ts": "2026-09-18",
+   "files": [
+    "contract/contract.json"
+   ],
+   "sha256": {
+    "contract/contract.json": "f1028ff611c3bb952bc1ea5c34e628d048e9db602bc3c0abec4e84e6f432d060"
+   },
+   "reason": "Contract frozen BEFORE any GPU launch and BEFORE any analysis output: datasets D1 (A0O H=4 bank, offline) / D2 (A0Q 12 cells + new rollout losses), definitions G/C/J_norm, A0S-1/2/3 frozen stats + gates, verdict rules incl. FAIL case 1/2, forbidden list."
+  },
+  {
+   "seq": 1,
+   "ts": "2026-09-18",
+   "files": [
+    "research/src/fr/a0s_controllability_identification_v01.py",
+    "research/scripts/a0s_run_v01.py",
+    "research/scripts/a0s_analyze_v01.py"
+   ],
+   "sha256": {
+    "research/src/fr/a0s_controllability_identification_v01.py": "9fceb47ec693fdaa5883458013604cd99a184794c630fbecc5ccb6e93e86f37d",
+    "research/scripts/a0s_run_v01.py": "5a8ce2087f9138d66d0b2e56ebe28c40117df7b6f967ab6ff099e876dbc884e4",
+    "research/scripts/a0s_analyze_v01.py": "4990bcbba7739f6a8a835f6e710f97942296f5a990d948921d7ef8d574369908"
+   },
+   "reason": "A0S core module (pure stats: gain_row/OLS t-CI/LOSO/direction/binomial/Model-AB), D2 GPU driver (rollouts only via frozen a0q.run_channel_rollout; chi NOT recomputed), analyzer (A0S-1/2/3 + CSV + plots + report). Written BEFORE any GPU launch that could reveal results."
+  },
+  {
+   "seq": 2,
+   "ts": "2026-09-18",
+   "files": [
+    "research/scripts/a0s_audit_pack_v01.py"
+   ],
+   "sha256": {
+    "research/scripts/a0s_audit_pack_v01.py": "8b7c487af55263aecf57dc961fcdb9dafc14d5d84a70a35e2d6b6efa6a0463e8"
+   },
+   "reason": "Audit pack script (hash manifest + tar bundle, a0q pattern). Written BEFORE running the audit pack; packages already-recorded results, no new computation."
+  }
+ ],
+ "events": [
+  {
+   "ts": "2026-09-18",
+   "event": "A0S launch 1 (only launch): D2 driver 12/12 cells, CRN 12/12, 66.2s GPU/1800s, 0 crashes. Analyzer: all gates PASS (A0S-1 D1 Spearman +0.762 p=3.2e-10, LOSO pooled Pearson +0.825; A0S-2 D1 46/48, D2 12/12; A0S-3 LR dominates C_J, clip/wd do not improve). Verdict PASS (finite-H=4 controllability only; long-horizon NOT claimed)."
+  }
+ ]
+}

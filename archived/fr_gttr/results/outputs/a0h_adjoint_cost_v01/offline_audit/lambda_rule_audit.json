@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "recomputed_scan_summary": [
+    {
+      "lambda": 0.01,
+      "mean_abs_hhat_C": 0.0031325744644425165,
+      "clip_crossing_rate": 0.0,
+      "all_near_zero": false
+    },
+    {
+      "lambda": 0.025,
+      "mean_abs_hhat_C": 0.0031325744644425165,
+      "clip_crossing_rate": 0.041666666666666664,
+      "all_near_zero": false
+    },
+    {
+      "lambda": 0.05,
+      "mean_abs_hhat_C": 0.0031325744644425165,
+      "clip_crossing_rate": 0.07291666666666667,
+      "all_near_zero": false
+    },
+    {
+      "lambda": 0.1,
+      "mean_abs_hhat_C": 0.0031325744644425165,
+      "clip_crossing_rate": 0.16666666666666666,
+      "all_near_zero": false
+    }
+  ],
+  "frozen_scan_match": true,
+  "expected_rule": "B_decision_signal",
+  "frozen_rule": "B_decision_signal",
+  "rule_match": true,
+  "strict_A_passing_lambdas": [],
+  "primary_lambda": 0.05,
+  "conservative_lambda": 0.025,
+  "per_unit_lambda": {
+    "distinct_lambda_in_level1": [
+      0.05
+    ],
+    "rule_chooses_per_unit_lambda": false
+  },
+  "conclusion": "Rule B 为全局单一 λ（0.05），不对不同决策单元选择不同 λ。"
+}

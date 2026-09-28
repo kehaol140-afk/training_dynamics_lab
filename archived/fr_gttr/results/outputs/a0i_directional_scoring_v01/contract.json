@@ -1,0 +1,90 @@
+{
+ "contract_id": "A0I_DIRECTIONAL_SCORING_CONTRACT_V01",
+ "date": "2026-09-16",
+ "status": "FROZEN_BEFORE_A0I_GPU_EXPOSURE",
+ "round_purpose": "Post-A0H20 algorithm efficiency study. A0I-A = frozen-label offline adaptivity diagnostics (CPU only). A0I-B = scalar directional scoring feasibility on pre-existing dev states (dev-only, no acceptance identity). This is an algorithm-engineering round, NOT a new independent utility acceptance.",
+ "frozen_science_semantics": {
+  "source": "outputs/a0h_corrected_accept_v01/contract/contract.json (A0H20, frozen)",
+  "hhat_semantics": "dL_score/dlambda (Case 1); no sign transform",
+  "predicted_delta_loss_j": "lambda*hhat_j; h_0 = 0; no-op is a legal action",
+  "selected_id": "min(action_ids, key=(predicted_delta_loss_j, action_id)); exact tie lowest id; common positive lambda does not change ranking",
+  "lambda": 0.05,
+  "H": 4,
+  "M_real": 4,
+  "action_injection": "post-unscale/pre-clip, one optimizer step g' = g + lambda*(g_j - g) at h=1",
+  "score_direction": "h_j = <w_0, g_j - g> where w_0 is the shared FP32-HVP adjoint direction (candidate-independent)",
+  "directional_identity_under_test": "h_j = D_theta L_j(theta_decision)[w_0] - w_0^T g, w_0 fixed (no derivative of w_0)"
+ },
+ "a0i_a_scope": {
+  "data": "A0H20 frozen 12-unit five-action labels only (predictions + labels/score + labels/eval + analysis/analysis.json)",
+  "gpu": false,
+  "label_mutation": "NONE - diagnostics read labels, never rewrite them",
+  "controller_definition": "fp32hvp_adjoint argmin selector (production shared-adjoint scorer)",
+  "frozen_references": {
+   "task_utility": "A0H20 mean Gain_eval = +1.467e-4, per-seed 5/6 positive, harmful 1/12 (FROZEN, cited only, never renamed)",
+   "oracle_diagnostic": "oracle_eval_mean_gain ~ 2.345e-4, capture ~ 62.6% (empirical finite-candidate oracle diagnostic, batch-local)"
+  }
+ },
+ "a0i_b_scope": {
+  "dev_states": ["2031/52", "2034/64", "2036/76"],
+  "dev_states_source": "frozen a0g DEV_STATES (pre-existing dev, never exposed to acceptance)",
+  "streams": ["stream_id 0 per state (budget first; extend only if budget remains)"],
+  "H": 4,
+  "M": 4,
+  "a0h20_acceptance_units": "EXPOSED - any use demoted to debug/dev, never reused for independent utility claims",
+  "state_selection": "fixed by frozen DEV_STATES; NO cherry-picking by directional-scoring performance",
+  "w_0_source": "shared FP32-HVP adjoint computed by the frozen production path (run_adjoint_only semantics) at the same dev state/stream",
+  "reference_scorer_METHOD_A": "frozen _grad_on_batches full candidate gradients + project_tangent(w_0, g_j - g), ambient backend (production semantics)",
+  "method_B": "per-candidate scalar JVP: h_j = sum_micro jvp(loss_micro, theta_tangent=w_0)/accum - w_0^T g; torch.func.functional_call + torch.func.jvp; w fixed tangent; RNG capture/restore per candidate; autocast bf16 same as reference",
+  "method_C": "attempted ONLY if candidates share a reusable common pool with known weights; group disjointness verified offline; expected NOT_APPLICABLE (disjoint hash groups -> no amortization)",
+  "unsupported_handling": "if forward-mode AD is unsupported for a key op: minimal repro + error saved; UNSUPPORTED_IN_CURRENT_BACKEND is a legal verdict; NO silent model/backend/loss change to force equivalence"
+ },
+ "numerical_gate_prefixed": {
+  "note": "thresholds are PRE-FIXED engineering references written before seeing A0I-B results; copied from the frozen A0H20/B1 FP32 gate (atol32=1e-5, rtol32=1e-4). Raw errors are reported regardless of pass/fail; NO threshold may be adjusted after viewing results.",
+  "tolerance_formula": "abs(h_new - h_ref) <= atol32 + rtol32*abs(h_ref)",
+  "atol32": 1e-05,
+  "rtol32": 0.0001,
+  "scope": "per state/stream/action vs METHOD A reference (fp32hvp_adjoint production scores)",
+  "decision_preservation": "5-action ranking agreement AND chosen_id equality vs production fp32adj_argmin, per unit",
+  "finite_check": "all scores finite else NON_FINITE blocked",
+  "claim_limit": "tolerance pass means implementation agreement only, NOT native-derivative correctness"
+ },
+ "benchmark_protocol_prefixed": {
+  "device": "cuda:0 under CUDA_VISIBLE_DEVICES=1 (physical GPU1; shared with external jobs, occupancy recorded)",
+  "repeats": 5,
+  "warmup": 1,
+  "interleaving": "per repeat: shared prefix once (restore -> rollout+snapshots -> endpoint grad -> shared reverse adjoint -> w_0), then scoring stages with order alternating per repeat (even rep: METHOD A then METHOD B; odd rep: reversed); selected-gradient recompute and native-step reference timed every repeat",
+  "timing_method": "CUDA events + wall perf_counter, torch.cuda.synchronize, reset_peak_memory_stats per stage",
+  "stages": ["baseline_rollout_H4", "endpoint_grad", "shared_reverse_adjoint_w0", "scoring_METHOD_A_allM", "scoring_METHOD_B_allM", "selected_gradient_recompute", "native_step_reference"],
+  "per_candidate_timing": "per-candidate scoring timed inside all-M stage (M=1,2,4 prefixes allowed for TIMING ONLY, not new science candidates)",
+  "memory": "peak allocated + peak reserved per stage, reset between stages",
+  "marginal_cost_model": "T(M) = a + bM least squares over M=1,2,4; labeled LOCAL_AFFINE_DIAGNOSTIC; NOT a scaling law",
+  "report": "raw per-repeat records + medians; equivalent_native_steps = total_decision_cost / native_step_time (engineering metric, NOT closed-loop overhead)"
+ },
+ "gpu_budget_seconds": 1800,
+ "forbidden_this_round": [
+  "new independent acceptance batch",
+  "new training seeds or long training",
+  "M=8/16/32",
+  "hybrid selector",
+  "replay-gain fitting",
+  "margin abstention rule fitting",
+  "lambda changes",
+  "learning-rate action",
+  "AdamW/beta/eps/clip/schedule changes",
+  "V_eval rule changes",
+  "dev-state cherry-picking by results",
+  "reclaiming A0H20 exposed data as independent validation",
+  "calling tolerance pass an engineering success without wall-clock/memory evidence"
+ ],
+ "status_fields_separate": [
+  "A0I_A_DIAGNOSTIC_COMPLETE",
+  "DIRECTIONAL_SCORE_EQUIVALENCE",
+  "DIRECTIONAL_DECISION_PRESERVATION",
+  "PER_CANDIDATE_JVP_SPEED",
+  "SHARED_POOL_DIRECTIONAL",
+  "MEMORY_RESULT",
+  "TOTAL_DECISION_COST_RESULT"
+ ],
+ "no_composite_pass": true
+}

@@ -1,0 +1,4 @@
+run_id,实现/精度路径,源码hash,SENS_a,SENS_b,数值来源/CSV,目标与流
+CAL-1,fp32 灵敏度递推（原始 f0_adamw_sens_step：a0c.clip_jvp 双调用，全局 dot 正确；S/递推 fp32）,NOT_RECOVERABLE（未 commit，源码随后被改写；行为由本轮 trace 复核）,-5060.515069535734,-147722.88773644276,数值仅存 REPORT.md §2（stdout 摘录）；terminal_gradient_check.csv 已被 CAL-2 覆盖,FIT seed2030 / stream 202609250400 / bank seed_2030/state_step_046.pt / V_design=monitor4096 FP32/MATH
+CAL-2,fp64 灵敏度递推（重写版：inline fp64 clip JVP——带局部 dot 缺陷；S/递推 fp64）,16eb8538d4c300637df5e278453ea3d582fe532ecb44afdfa56565969e4644a7（修复前 fr 模块）,+5620.036362938654,-158605.63405911648,terminal_gradient_check.csv（当前文件，sha 4f909105…）,同上
+POST-FIX,fp64 递推 + 全局 dot 修订 + init 去别名（本轮 CPU 验证，未跑 GPU）,见 CALIBRATION_PROVENANCE_AND_CORRECTION.md 记录的修复后 hash,NOT_RUN,NOT_RUN,-,-

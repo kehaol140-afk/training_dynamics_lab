@@ -1,0 +1,157 @@
+{
+  "protocol_version": "FR_G2_DATA_DISTRIBUTION_GENERALIZATION_V01",
+  "prereg_frozen_at_utc": "2026-09-16T14:20:00Z",
+  "scientific_question": "DATA_DISTRIBUTION_GENERALIZATION: with model scale / architecture / tokenizer / training objective / AdamW / clipping / token budget / response protocol held fixed, does the full tangent C still predict the finite-difference response and systematically beat optimizer-only B at H>1 when only the pretraining corpus changes (D0 -> D1)?",
+  "data_only_principle": "Everything is bit-identical to the frozen G1a 26M configuration except the pretraining corpus: same model (26,681,728 unique params), same tokenizer, same seq len, same PretrainDataset causal-LM pipeline (BOS/EOS, truncation to 126+2, padding mask), same AdamW family/hyperparameters, same clip=1.0, same bf16 semantics, same global batch (8 seqs x 128 tokens = 1024 tokens/optimizer-step), same LR schedule axis (256 micro-steps), same 128 planned optimizer steps, same state grid (26/64/102), same q/E1/E2/stream-seed derivation, same H official grid {1,4,8}. D1 pool size = D0 pool size = 4096 records; partition sizes identical (32 probe / 128 eval / 3936 train).",
+  "d0_reference": {
+    "role": "frozen G1a 26M D0 condition; read directly for comparison; NEVER rerun",
+    "path": "outputs/e3_confirmatory/v07/e3c_subset.jsonl",
+    "sha256": "1e657af9baae0784e582d82ef936160473aa069878e422ef48683a718056b0f4",
+    "partition": "outputs/e3_confirmatory/v07/partition_v07.json",
+    "g1a_output_dir": "outputs/generalization_g1a_26m_v01"
+  },
+  "d1_selection": {
+    "priority_rule": "B2: primary D1 = MiniMind pretrain_hq.jsonl; not present locally and not in current HEAD of the official HF dataset repo, but present at the pre-deletion official revision 3a9bbe611244811e45b96661a84047f112c8ed01 (uploaded 2026-01-17, deleted from HEAD 2026-03-26) of jingyaogong/minimind_dataset; downloaded to the versioned data dir below; selected BEFORE any G2 response result was opened; no alternative corpus was compared on results",
+    "source": "https://huggingface.co/datasets/jingyaogong/minimind_dataset",
+    "source_revision": "3a9bbe611244811e45b96661a84047f112c8ed01",
+    "local_raw_path": "outputs/generalization_g2_data_distribution_v01/data/pretrain_hq.jsonl",
+    "lfs_sha256": "82b19375460d44feb15937ea3712121b5292271cf18eb87407b6d3e27427c18b",
+    "schema": "{\"text\": <string>} (identical to D0; no adapter needed; zero content filtering)",
+    "tokenizer_compatibility": "same frozen minimind tokenizer (vocab 6400); verified by token-statistics sample in dataset_manifest.json before training"
+  },
+  "d1_pool_and_partition": {
+    "pool_rule": "first 4096 indices of make_permutation(source_records, 60202601), sorted ascending; same size as D0 pool; frozen before training",
+    "pool_path": "outputs/generalization_g2_data_distribution_v01/data/d1_pool.jsonl",
+    "partition_rule": "build_partition(4096, seed=60202603, probe_size=32, eval_size=128) - identical sizes to v07/G1a partition",
+    "partition_path": "outputs/generalization_g2_data_distribution_v01/partition_g2_d1.json",
+    "no_content_selection": "no quality filtering, no language-ratio balancing, no D0 mixing, no sample picking by content; corpus order comes solely from the frozen permutation seed"
+  },
+  "model": {
+    "codebase": "minimind/model/model_minimind.py + minimind/trainer/trainer_utils.py (frozen v07 generation, unchanged)",
+    "hidden_size": 512,
+    "num_hidden_layers": 7,
+    "num_attention_heads": 8,
+    "num_key_value_heads": 4,
+    "head_dim": 64,
+    "intermediate_size": 1664,
+    "intermediate_size_rule": "MiniMindConfig default ceil(hidden*pi/64)*64 (same frozen formula as anchor; NOT hand-picked)",
+    "vocab_size": 6400,
+    "max_seq_len": 128,
+    "tie_word_embeddings": true,
+    "use_moe": false,
+    "expected_unique_params": 26681728
+  },
+  "training": {
+    "train_seeds": [2042, 2043, 2044],
+    "seed_note": "same seeds as G1a for matched random-init/data-order derivation; because the corpus differs, D0 vs D1 is NOT a sample-paired experiment",
+    "dataset": "outputs/generalization_g2_data_distribution_v01/data/d1_pool.jsonl (D1 pool, 4096 records)",
+    "partition": "outputs/generalization_g2_data_distribution_v01/partition_g2_d1.json",
+    "batch_size": 4,
+    "accumulation_steps": 2,
+    "global_batch_sequences": 8,
+    "tokens_per_optimizer_step": 1024,
+    "learning_rate": 0.0005,
+    "lr_schedule": "minimind trainer_utils.get_lr cosine (same as anchor)",
+    "optimizer": "torch.optim.AdamW default family: betas=(0.9,0.999), eps=1e-8, weight_decay=0.01",
+    "grad_clip": 1.0,
+    "dtype": "bfloat16",
+    "grad_scaler": "disabled (bf16)",
+    "planned_total_optimizer_steps": 128,
+    "total_micro_steps": 256,
+    "train_batch_seed_rule": "train_seed + 1704 (same frozen derivation rule as v07/G1a)",
+    "train_batch_seed_offset": 1704,
+    "states": {
+      "EARLY": {"optimizer_step": 26, "fraction": 0.203125, "cumulative_tokens": 26624},
+      "MIDDLE": {"optimizer_step": 64, "fraction": 0.5, "cumulative_tokens": 65536},
+      "LATE": {"optimizer_step": 102, "fraction": 0.796875, "cumulative_tokens": 104448}
+    },
+    "state_step_rule": "round(fraction * 128): 20%->26, 50%->64, 80%->102 (identical to G1a, verified against G1a training_manifest)",
+    "training_terminates_at": 102,
+    "checkpoint_contents": "same as G1a (model state, AdamW m/v/step, scaler state, full RNG state, global step, metadata incl. dataset/pool hashes)"
+  },
+  "q_construction": {
+    "rule": "identical to v07/G1a: per state, probe batch = all 32 partition probe_indices in one batch, probe loss backward, q = g_probe / ||g_probe|| (global L2); probe/eval permanently excluded from trajectory",
+    "protocol_tag": "FR_G2_26M_THETA_Q_V01"
+  },
+  "response_protocol_inheritance": {
+    "pulse": "post-unscale / pre-clip, first optimizer step only, +/-epsilon*q",
+    "epsilon_rule": "epsilon = 0.25 * sigma_q, sigma_q = std(ddof=1) of s over 16 E1 streams (frozen rule, unchanged)",
+    "crn": "baseline/plus/minus share identical Z_t, batch manifest, RNG stream, LR path",
+    "rho0_noop_check": "sign=+1 epsilon=0.0 must bit-match baseline",
+    "future_lr": "set_native_micro_lr along the same 256-micro-step cosine axis",
+    "horizons_official": [1, 4, 8],
+    "stream_seed_rule": "two_level_seed with the SAME E1/E2 base seeds as G1a (408202601/409202601) - identical index streams over the D1 corpus for matched descriptive comparison",
+    "hvp": "math-SDPA reverse-over-reverse surrogate (same frozen mixed-backend caveat)",
+    "clip": 1.0,
+    "model_A": "not part of G2"
+  },
+  "main_matrix": {
+    "states": 9,
+    "models": ["chi_FD", "chi_B", "chi_C"],
+    "bh_fixed_on_all_states": false,
+    "cells": "27 state-horizon cells; 36 baseline future streams; future_stream_manifest.json frozen before any E2 response branch"
+  },
+  "mechanism_subset": {
+    "seed": 2042,
+    "states": ["EARLY", "MIDDLE", "LATE"],
+    "models": ["B", "BH_fixed", "C", "FD"],
+    "horizons": [1, 4, 8],
+    "purpose": "mechanism-transfer diagnostic under corpus shift; NOT a necessary condition for STRONG_DATA_REPLICATION",
+    "gains": {
+      "gain_curvature": "err_B - err_BH_fixed",
+      "gain_clip": "err_BH_fixed - err_C",
+      "calibers": "BOTH reported and never mixed: (a) stream-first aggregation identical to G1a report section 7; (b) official-cell diagnostic identical to the main-matrix aggregation"
+    }
+  },
+  "smoke_gate": {
+    "state": "seed 2042 step 26 (EARLY) per B9",
+    "checks": [
+      "checkpoint full restore (model+optimizer+scaler+RNG)",
+      "optimizer state dims/names match 26M model",
+      "q strictly same names/shapes as parameters",
+      "FD +/- branches CRN-identical",
+      "H=1 analytic B vs FD consistency",
+      "B/C shadow baseline hash equality",
+      "HVP executes (math-SDPA) and is finite",
+      "no unexpected optimizer steps",
+      "all outputs finite",
+      "train-loader deterministic replay (double derivation equality) and dataset/pool/partition hash match"
+    ],
+    "policy": "implementation bugs may be fixed and re-smoked with a change log; scientific-definition problems => CONTRACT_INCOMPATIBLE, stop and report"
+  },
+  "statistics": {
+    "aggregation_source": "strict reuse of the frozen G1a/G1b main aggregation: fr.g1a_26m_scale_generalization_v01.cell_relative_errors + aggregate_metrics (which import the frozen a0c _metric / relative_error); NO third error caliber is invented",
+    "per_cell_outputs": ["chi_FD", "chi_B", "chi_C", "abs_err_B", "abs_err_C", "rel_err_B", "rel_err_C", "signed_err_B", "signed_err_C"],
+    "aggregations": ["A_pooled_27", "B_by_H", "C_by_seed", "D_by_stage", "E_H_gt_1_paired_B_minus_C"],
+    "bootstrap": "cluster-aware bootstrap seed -> stage -> cell over D1 H>1 official cells, paired B/C, 20000 resamples, rng 20260916; report mean paired improvement, 95% percentile interval, and the fraction of resamples with improvement > 0 (never called a p-value or posterior probability); 3 seeds => exploratory uncertainty, streams are not independent runs"
+  },
+  "verdict_thresholds_frozen": {
+    "analysis_grid": "9 states x H in {1,4,8} = 27 rows; H=1 rows are structural ties (B==C) and are excluded from paired win/loss counts but included in pooled R2/MAE",
+    "STRONG_DATA_REPLICATION": {
+      "condition_1": "C pooled R2 over the 27 official rows >= 0.90",
+      "condition_2": "among the 18 H>1 rows, at least 80% (>=15 of 18) have err_C < err_B; tie defined as |err_C - err_B| <= 1e-12",
+      "condition_3": "H=8 (9 rows): paired mean err_C < mean err_B AND C R2 at H=8 >= 0.50 AND corr at H=8 > 0",
+      "condition_4": "at least 2 of 3 seeds have mean(err_B - err_C) > 0 over that seed's H>1 rows"
+    },
+    "PARTIAL_DATA_REPLICATION": "pooled H>1 mean relative error of C < that of B, but not all STRONG conditions hold (including heterogeneous seeds/stages)",
+    "NO_DATA_REPLICATION": "C is not overall better than B, or C lost predictive validity vs FD",
+    "RESOURCE_LIMIT": "resources prevent completion; no silent downscale",
+    "DATASET_UNAVAILABLE": "no qualifying D1 obtained",
+    "CONTRACT_INCOMPATIBLE": "D1 cannot enter the protocol without changing core scientific definitions",
+    "note": "thresholds frozen here before any result is opened; will not be changed based on results"
+  },
+  "dynamics_context": {
+    "recorded_per_step": ["training loss", "lr", "preclip grad norm", "clip active flag", "param norm"],
+    "recorded_per_future_step": ["clip active", "clip coefficient", "hvp norm", "native gradient norm"],
+    "shift_diagnostics": ["train loss", "gradient/preclip norm", "clip activation rate", "parameter norm", "future gradient norm", "HVP norm/curvature proxy", "token/length sample statistics"],
+    "usage": "explanation only; states may NOT be filtered post hoc using these variables"
+  },
+  "resource_rules": {
+    "gpu": "share politely; never kill external workloads; GPU1 untouched",
+    "allowed_under_oom": ["existing memory-safe HVP only"],
+    "forbidden": ["shrinking the model", "changing seq len / global batch / clip / optimizer / precision semantics / horizons", "dropping failed states"],
+    "resource_limit_policy": "emit RESOURCE_LIMIT with diagnostics; do NOT silently downscale"
+  },
+  "out_of_scope": ["A0G task utility", "A0H/A'' algorithms", "1B", "G4/A0G-lite", "no-clip", "optimizer family change", "beta sweep", "epsilon sweep", "new clipping sweep", "second dataset beyond D1", "modifying any frozen artifact"],
+  "output_dir": "outputs/generalization_g2_data_distribution_v01"
+}

@@ -1,0 +1,110 @@
+{
+  "protocol": "FR_B06_REGIME_DYNAMICS_V01",
+  "frozen_at": "2026-09-21",
+  "frozen_before_any_b06_result": true,
+  "language": "report in English; raw tables English",
+  "mandate": "Test whether the short-horizon-response / long-horizon-benefit failure (B0/A0P/A0T-extra) comes from switching local dynamical regimes during training. PRIMARY output is a switching linear response model (local per-regime maps vs a single global map) fitted on the reduced state psi_t. No new model training; native replay from frozen checkpoints only, gated bitwise against frozen B0 diag.",
+  "hypothesis": "The failure is not response noise: the tangent/linear response model is locally valid within a metastable regime and fails across regime transitions. Operationalized as Q3a (switching one-step linear maps on psi_t) with Q1 (regime structure vs two nulls) and Q2 (chi by regime) as supporting evidence.",
+  "primary_question": "Q3a: local model psi_{t+1} = A_{z_t} psi_t + b_{z_t} + eps (reduced form of R = C Phi_i B) vs global model psi_{t+1} = A psi_t + b + eps (single Phi). Measured: held-out one-step prediction error, split into within-cluster steps (z_t == z_{t+1}) and across-transition steps (z_t != z_{t+1}); transition points; cluster persistence time. Supporting: Q3b occupancy-mixture vs constant prediction of the frozen response chi_H (leave-one-cell-out CV, frozen a0c _metric).",
+  "relation_to_b05": "B0.5 (complete) found H1/H2/H3 all NOT_SUPPORTED: retained after-effect is carried by direct theta displacement (not m/v memory; m kernel ~12 steps, v barely diverges), no slow-fast split at the 64-step scale, pure time-reparameterization falsified. Therefore B0.6 tests regime switching at the level of the THETA TRAJECTORY / reduced state dynamics, not optimizer memory; any switching structure found must be consistent with B0.5's fast m-memory and theta-displacement-carried gains.",
+  "state_vector": {
+    "psi_t_channels": ["log_grad_norm", "log_update_norm", "log_m_norm", "log_v_norm", "cos(g_t,g_{t-1})", "cos(update_t,update_{t-1})", "log_parameter_displacement_from_trajectory_start", "train_loss_slope", "log_preclip_norm"],
+    "cluster_channels": ["log_g", "log_upd", "log_m", "log_v", "g_cos", "upd_cos", "log_disp", "loss_slope", "log_preclip"],
+    "recorded_not_clustered": ["clip_flag", "lr_native", "train_loss", "h"],
+    "channel_policy": "lr_native is a controlled schedule input and train_loss level is cell/step-specific; both are recorded but excluded from clustering channels. g_cos at h=1 is 0 by convention (no previous gradient).",
+    "normalizations": ["pooled_standardized (scaler fit on train windows only)", "within_cell_standardized (per-trajectory stats over train window) - reported as robustness variant"],
+    "response_magnitude_channel": "per-cell frozen chi from B0 response_curvature.csv; cross-sectional only, never per-step"
+  },
+  "sample": {
+    "main_cells": {"train_seeds": [2030, 2031, 2032], "checkpoints": [46, 82], "n_cells": 6},
+    "main_streams": [7500, 7501, 7502, 7503],
+    "stress_cells": [[2030, 46, 7110], [2030, 64, 7110]],
+    "stream_class": {"dev": [7500, 7501], "audit": [7502, 7503]},
+    "identity_rule": "identical (seed, step, stream) sample as B0 native arms so every replayed trajectory is bitwise-gated against frozen B0 diag rows",
+    "n_native_trajectories": 26
+  },
+  "replay_stage": {
+    "semantics": "native LR only (multiplier 1.0 at every optimizer step), T=64, NO eval calls (zero RNG perturbation relative to the training sequence), frozen v07 recipe: same bank checkpoints, same make_stream recipe (derive_stream_seed(x,404) + batches_from_train_pool), same pe._baseline_no_step / pe._clip_and_step primitives as b0_run_v01.run_arm",
+    "recorder_extra_channels": ["m_norm", "v_norm", "g_cos", "disp"],
+    "distance_note": "B0.5 lesson: the model state_dict contains a 1.64M frozen rotary buffer; all norms/cosines use the named trainable subset (rt['named']), never the raw state_dict",
+    "not_new_training": "replay of the frozen native recipe from frozen checkpoints; no intervention arms, no new models, no checkpoint/seed/stream/T expansion"
+  },
+  "gates": {
+    "smoke": [
+      "snapshot_identity (save/load full state hash)",
+      "crn_native_repeat (recorder run twice: all recorder fields bitwise equal at every h)",
+      "tokens_per_step_1024",
+      "m_v_finite_positive (m_norm, v_norm finite and > 0 at every h)",
+      "cos_bounds (g_cos, upd_cos within [-1,1] up to 1e-6)",
+      "disp_monotone_nonneg (disp non-decreasing)",
+      "bitwise_vs_frozen_b0_diag_h1_8 (recorder shared fields == frozen B0 main_diag rows for cell 2030x46 stream 7500, h=1..8)"
+    ],
+    "main_gate": "bitwise_vs_frozen_b0_diag_full: grad_norm, update_norm, update_cos_prev, train_loss, preclip_norm, lr_native, lr_applied, multiplier, clip_active equal frozen B0 main_diag/stress_diag native rows for ALL 26 trajectories x 64 steps; fail => stop and fix",
+    "shared_fields": ["grad_norm", "update_norm", "update_cos_prev", "train_loss", "preclip_norm", "lr_native", "lr_applied", "multiplier", "clip_active"]
+  },
+  "analysis": {
+    "seed": 20260921,
+    "train_frac": 0.75,
+    "hmm_k_grid": [1, 2, 3, 4],
+    "gmm_k_grid": [1, 2, 3, 4],
+    "k_selection": "best HMM k by held-out test loglik; GMM table reported alongside",
+    "nulls": {
+      "phase_null": "multivariate phase-randomized surrogates (n=39, seeded): preserve per-channel spectra and cross-channel linear correlations; stationary linear Gaussian reference",
+      "drift_null": "continuous-drift surrogates (n=39, seeded): per-trajectory smooth drift (w=9 moving average) transplanted from a random donor trajectory (possibly time-reversed) + phase-randomized residual; smooth drift + stationary fluctuations without discrete switching. Apparent regimes must beat BOTH nulls.",
+      "requirement_trace": "user amendment: continuous drift null added alongside phase null"
+    },
+    "n_perm_q2": 20000,
+    "purity_threshold": 0.8,
+    "q3b_resolution": 1e-12,
+    "theory_tests": ["T1_slds_recovery", "T2_null_calibration (phase)", "T3_drift_null_calibration", "T4_switching_map_recovery", "T5_local_global_chi_calibration (both directions, repeated)", "T6_metric_gate"]
+  },
+  "thresholds_frozen_before_results": {
+    "q1_rules": {"min_mean_run_length": 8},
+    "q2_rules": {"alpha": 0.05, "min_seed_consistent": 2, "n_perm": 20000},
+    "q3a_rules": {"across_weight": 1.0},
+    "q3b_rules": {"min_seed_folds": 2, "resolution": 1e-12},
+    "q1_verdict_rule": "SUPPORTED iff (i) HMM k=2 test_ll > k=1, (ii) best-k HMM test_ll > phase-null p95, (iii) mean run length >= 8 AND switch rate <= phase-null p95, (iv) mean run length > drift-null p95; NOT_SUPPORTED if (i) or (ii) fails; else UNRESOLVED",
+    "q2_verdict_rule": "SUPPORTED iff permutation p < alpha AND seed-sign consistency >= 2/3 in at least half of the tested (protocol, H) rows; NOT_SUPPORTED if no row passes; else UNRESOLVED",
+    "q3a_verdict_rule": "SUPPORTED iff local map overall held-out error (within + across, across_weight=1) < global AND local across-transition error > local within-cluster error; NOT_SUPPORTED if local not better overall; else UNRESOLVED",
+    "q3b_verdict_rule": "SUPPORTED iff local favored in >= 2/3 seed folds; NOT_SUPPORTED if 0 folds; else UNRESOLVED",
+    "headline_rule": "Q3a is the headline verdict; Q1/Q2 are supporting. If Q1 is NOT_SUPPORTED, Q3a/Q3b are relabeled NOT_TESTED (no regimes to switch between) and the headline becomes the negative statement.",
+    "gain_resolution_floor": 1e-07,
+    "below_resolution_label": "UNRESOLVED"
+  },
+  "budget": {
+    "project_optimizer_update_cap": 18000,
+    "already_consumed_through_b05": 15817,
+    "b06_smoke_planned": 16,
+    "b06_main_planned": 1536,
+    "b06_stress_planned": 128,
+    "b06_total_planned": 1680,
+    "project_cumulative_planned": 17497,
+    "remaining_headroom_after_b06": 503,
+    "eval_calls_planned": 0,
+    "guard": "stop and report if the cap would be exceeded; no silent expansion of cells/arms/streams/T"
+  },
+  "terminology": {
+    "required_terms": ["controlled non-equilibrium dynamical system", "metastable regime", "switching dynamics", "non-stationary reduced model", "switching linear response"],
+    "banned_terms": ["temperature", "free energy", "entropy production", "equilibrium", "detailed balance", "field theory", "phase transition"],
+    "rule": "no banned term may appear in any conclusion (reporting a banned term only to quote the ban itself is allowed)"
+  },
+  "verdict_labels": ["PROVED", "SUPPORTED", "NOT_SUPPORTED", "MIXED", "UNRESOLVED", "NOT_TESTED"],
+  "statistics": {
+    "independent_clusters": "3 training seeds (main) + stress seed 2030; streams/timepoints are NOT independent seeds",
+    "scale": "pilot (6 cells x 4 streams = 24 trajectories + 2 stress); report per-cell values and ranges; no strong small-p claims; seed-cluster bootstrap if any, flagged exploratory",
+    "hindsight_labels": "retained-gain decay analysis and all Viterbi-derived quantities are within-sample/descriptive, not deployable"
+  },
+  "excluded_without_new_authorization": [
+    "new training runs or new models",
+    "intervention arms beyond frozen B0 artifacts",
+    "checkpoint/seed/stream/horizon expansion",
+    "closed-loop deployment",
+    "claims beyond the 64-step recorded horizon (A0P long-memory caveat mandatory)"
+  ],
+  "forbidden": [
+    "no new optimizer / no optimizer or scheduler modification",
+    "no cherry-picking cells by response sign or outcome",
+    "no banned terminology",
+    "no claim of physical phase transition; use metastable regime / switching dynamics / non-stationary reduced model only"
+  ]
+}

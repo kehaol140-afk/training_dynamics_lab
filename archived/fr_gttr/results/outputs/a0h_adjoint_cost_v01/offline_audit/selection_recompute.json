@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "n_recomputed_rows": 1440,
+  "match": {
+    "status": "PASS",
+    "n_frozen": 1440,
+    "n_recomputed": 1440,
+    "missing_keys": 0,
+    "extra_keys": 0,
+    "max_abs_numeric_diff": 0.0,
+    "n_cell_diffs": 0,
+    "examples": []
+  },
+  "note": "从 level2 预测/实际值用冻结 select_action/level3_decision 复算，含 random（重放冻结 rng 公式）；逐格核对冻结 level3 CSV。"
+}

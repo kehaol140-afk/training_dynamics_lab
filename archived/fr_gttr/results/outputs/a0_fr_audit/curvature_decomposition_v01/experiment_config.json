@@ -1,0 +1,30 @@
+{
+  "protocol": "FR_A0E_CURVATURE_DECOMPOSITION_V01",
+  "selected_states": [
+    [
+      2037,
+      46
+    ],
+    [
+      2030,
+      46
+    ],
+    [
+      2037,
+      82
+    ]
+  ],
+  "horizons_propagated": [
+    1,
+    2,
+    4,
+    8
+  ],
+  "horizons_tested": [
+    2,
+    4,
+    8
+  ],
+  "bh_definition": "B + raw HVP feedback delta_g=H(loss)delta_theta (no clip-JVP radial correction)",
+  "a0c_reproduction_tolerance": 1e-09
+}

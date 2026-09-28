@@ -1,0 +1,96 @@
+{
+  "contract_id": "A0K_FRESH_RESPONSE_CLOSED_LOOP_V01",
+  "date": "2026-09-16",
+  "status": "FROZEN_BEFORE_ANY_GPU",
+  "round_purpose": "First real training closed-loop validation of the fresh response controller. Answer Q1 single-shot effectiveness (controller vs no-op), Q2 adaptive vs fixed-j1, Q3 economics (equal-wall-clock). NOT a new algorithm; controller computation structure untouched.",
+  "frozen_science_semantics": {
+    "state": "z_t=(theta,m,v) joint AdamW state",
+    "H": 4,
+    "lambda": 0.05,
+    "candidates": "j=0 no-op (native AdamW step); j in {1,2,3,4}: inject g^lambda = g + lambda*(g_j - g) at the real step, where g = native gradient of the real training batch at the event step and g_j = full gradient of candidate data group j-1 at the event state (production candidate identity, 4 frozen data groups from train pool, Philox batches via candidate_batches_for)",
+    "selector": "j* = argmin_j (lambda * hhat_j), hhat_0 = 0 exactly, tie -> smallest action id",
+    "scorer": "production shared-adjoint FULL_GRAD_DOT hhat_j (run_adjoint_only scores_hhat_adj), hvp_fp32=True (frozen production candidate)",
+    "decision_computation": "pe.run_adjoint_only on the event snapshot with a live-manifest ctx/stream (E2 recipe: two_level_seed(E2_STREAM_BASE_SEED, seed, step, stream_id=0), batch_seed=derive_stream_seed(stream_seed,404), batches_from_train_pool); candidates from frozen group_definition members; NO cache, NO stale gradients, NO JVP scoring, NO block planning"
+  },
+  "frozen_environment": {
+    "config": "research/configs/e3c_confirmatory_v07.json (hidden 256 x 4 layers, seq 128, batch 4, accum 2, bf16, clip 1.0, lr 5e-4, planned_total_optimizer_steps=128, total_micro_steps=256)",
+    "training_loop": "e3c native AdamW recipe: setup_seed(train_seed) -> init_model(from_weight='none') -> AdamW -> batches_from_train_pool(train_indices, 4, train_seed+1704, 256 micro) -> per-micro set_native_micro_lr -> autocast fwd/bwd /accum -> scaler.unscale_ -> clip_grad_norm_(1.0) -> scaler.step+update -> zero_grad",
+    "eval": "frozen validation_split.json v_score (64) / v_eval (64) as pre-stacked tensors, a0g._val_loss_only, RNG wrapped (capture/restore) so eval consumes no trajectory RNG; eval every 10 optimizer steps at steps 10..128",
+    "identity_guarantee": "all 3 arms of a seed share identical init (setup_seed before init_model), identical data order, identical dropout RNG sequence; control events are invisible to the real trajectory RNG (save/restore around all controller computation); arm A must bitwise-reproduce e3c v0.7 bank state hashes at steps 46/52 (engineering smoke S1/S2)"
+  },
+  "groups": {
+    "A": "pure AdamW baseline (u=0, no extra compute)",
+    "B": "fixed intervention j=1 at the same control steps as C (fresh g_1 recomputed at each event, RNG-wrapped); isolates adaptive selection as the only C-vs-B difference",
+    "C": "fresh response controller: at each control step t: save full state+RNG snapshot -> run_adjoint_only decision on snapshot -> restore snapshot+RNG -> execute chosen action once at real step t"
+  },
+  "cadence_prefrozen": {
+    "K_primary": 20,
+    "K_secondary": 10,
+    "control_steps_K20": [20, 40, 60, 80, 100, 120],
+    "control_steps_K10": [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 110, 120],
+    "rule": "control event at optimizer step t happens BEFORE step t (state = end of step t-1); event modifies only step t's gradient; steps 121-128 identical across arms"
+  },
+  "seeds_prefrozen": {
+    "primary": [2030, 2031, 2032],
+    "expansion_if_budget_allows": [2033, 2034, 2035],
+    "rule": "never choose seeds by results; expansion only per budget priority"
+  },
+  "total_steps_prefrozen": {
+    "T_total": 128,
+    "reason": "= planned_total_optimizer_steps of the frozen v0.7 config; the entire FR A0-line science lives on this planned trajectory (bank states 46-82); going beyond would leave the frozen LR schedule"
+  },
+  "budget_priority_prefrozen": [
+    "1. complete K=20 protocol (A,B,C equal-step + equal-wall-clock, 3 seeds)",
+    "2. >=3 seeds guaranteed before any expansion",
+    "3. then K=10 sensitivity (3 seeds)",
+    "4. only if budget remains: 6-seed expansion for K=20"
+  ],
+  "equal_wall_clock_protocol": {
+    "definition": "per (seed,K): T_C = measured wall of arm C full 128-step run (rollout+response+snapshot+restore+candidate+execution+eval all included); then arms A and B each run a wall-clock variant (A_wc, B_wc) consuming the SAME budget T_C (finish current optimizer step after budget exhaust, then final eval)",
+    "primary_metric": "Gain_time = L_eval(A_wc @ T_C) - L_eval(C @ 128 steps) per (seed,K); positive = controller better",
+    "pairing": "T_C measured and A_wc/B_wc run in the same session immediately after C to share the contention envelope; GPU occupancy logged at each phase"
+  },
+  "metrics": {
+    "M1_Gain_final": "equal-step at 128: L_eval(A)-L_eval(C), L_eval(A)-L_eval(B), L_eval(B)-L_eval(C)",
+    "M2_Gain_time": "equal-wall-clock per protocol above (PRIMARY for Q3)",
+    "M3_ROI": "Gain_time / T_extra, T_extra = T_C - T_A128 (measured pure-128-step wall of arm A same session); per second",
+    "M4_action_success": "per control event from offline counterfactual replay: chosen action short-horizon dual-label gains vs no-op branch; positive rate, harmful rate, no-op rate (j*=0 fraction); replay branches: no-op, fixed j=1, chosen j*, H=4 rollout on the event stream with injection at horizon 1, dual V_score/V_eval labels, frozen A0H20 replay semantics",
+    "M5_adaptive_advantage": "equal-step C vs B at 128 (primary) + equal-wall-clock C vs B at T_C"
+  },
+  "per_event_log_fields": [
+    "step", "seed", "control_id", "arm", "K",
+    "model_hash_before", "optimizer_hash_before", "rng_state_hash", "dataloader_position",
+    "chosen_action_id",
+    "hhat_j j0..j4", "predicted_delta_loss_j j0..j4",
+    "actual_action_gain V_score_gain", "actual_action_gain V_eval_gain",
+    "counterfactual no_op_gain V_score/V_eval", "counterfactual fixed_reference_gain V_score/V_eval",
+    "controller_compute_time", "rollout_time", "selection_time", "execution_time",
+    "wall_clock_timestamp",
+    "offline_reconstruct_note": "chosen_id must be recomputable as argmin_j(lambda*hhat_j) with tie->smallest id from logged hhat alone; hhat_0=0.0 logged explicitly"
+  ],
+  "forbidden_this_round": [
+    "modify lambda/H/candidate count/selector/action space/AdamW/clipping",
+    "use V_eval feedback to adjust the controller",
+    "choose seeds or K from results",
+    "block planning", "response cache (A0J route is dead)", "JVP scoring",
+    "stale or cached gradients/p/w in the live loop",
+    "new data action definition (candidates = frozen 4 data groups; lookahead = E2 recipe stream)"
+  ],
+  "interpretation_cases": {
+    "Case_A": "equal-step gain > 0 AND Gain_time > 0 -> net training benefit; next: block planning/efficiency (NOT auto-started)",
+    "Case_B": "equal-step gain > 0 BUT Gain_time <= 0 -> signal works, single-step economics insufficient; next: widen decision coverage",
+    "Case_C": "equal-step gain <= 0 -> problem is not compute; revisit action space / score-eval transfer / intervention magnitude"
+  },
+  "gpu_budget_seconds": 1800,
+  "retry_rule": "infra/serialization-class retries only under same frozen contract/manifest; no env upgrades; no killing external tasks; no commit/push/reset; module hash changes logged in live_manifest BEFORE any results viewed",
+  "deliverables": [
+    "contract/contract.json(+sha256)", "contract/live_manifest.json(+sha256)",
+    "runs/ per-run logs + eval trajectories + per-event logs",
+    "dashboard/dashboard.csv + dashboard.json",
+    "reports/A0K_REPORT.md",
+    "audit/manifest_sha256.txt + a0k_audit.tar.gz + .sha256",
+    "hashes/ method fingerprints",
+    "docs: append-only FR_PROJECT_STATUS.md + FR_EXPERIMENT_INDEX.md"
+  ],
+  "stop_condition": "after A0K reporting: do NOT auto-start A0L / lambda tuning / block planning / optimizer changes; wait for analysis"
+}

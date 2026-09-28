@@ -1,0 +1,18 @@
+state_id,path_id,row_kind,h_over_delta0,h,y_ad_norm,fd_y_norm,abs_err,sym_rel_err,cos_fd_ad,raw_small_signal,checkpoint,h_eff,actual_dG_norm,pred_fd_delta0_rel_err,pred_fd_scale2_rel_err,pred_ad_rel_err,notes
+S3,ORIG_FP32,ad_error,,,,,,,,,,,,,,,INV1_CONSOLE_RECOVERED RAW_AD_ERROR: derivative for aten::_scaled_dot_product_efficient_attention_backward is not implemented (mem-efficient attention kernel)
+S3,REF_FP64,path_summary,,,6.0674,,,,,,,,,,,,INV1_CONSOLE_RECOVERED: ||y_AD(FP64)||=6.0674 == ||y_AD(FP32 math)||=6.0674; FP64 base loss_rel=2.342e-08 g_cos=1.00000000 g_rel=7.217e-07; REFERENCE_BACKEND_CHANGE (FP64 tensorop d884 GEMM kernels)
+S3,ORIG_FP32,displacement_checkpoint,,,,,,,,,s_ref0,0.10798702085728641,0.5381864821712552,1.0429537758068335,0.9071168054078792,1.8666160068211861,
+S3,ORIG_FP32,displacement_checkpoint,,,,,,,,,exp05_s_ref0,0.11352363381102007,0.5472579879892917,1.0545534836286823,0.9042880950800982,1.9103938500988387,
+S3,ORIG_FP32_MATHREF,fd_vs_ad,2.0,1.39428961e-01,6.067428e+00,1.390786e+00,5.954689e+00,9.814190e-01,0.19491918,False,,,,,,,
+S3,ORIG_FP32_MATHREF,fd_vs_ad,1.0,6.97144806e-02,6.067428e+00,2.503832e+00,4.973347e+00,8.196797e-01,0.60389965,False,,,,,,,
+S3,ORIG_FP32_MATHREF,fd_vs_ad,0.5,3.48572403e-02,6.067428e+00,4.486863e+00,2.808605e+00,4.628987e-01,0.90100405,False,,,,,,,
+S3,ORIG_FP32_MATHREF,fd_vs_ad,0.25,1.74286202e-02,6.067428e+00,5.958305e+00,1.392613e+00,2.295228e-01,0.97334193,False,,,,,,,
+S3,ORIG_FP32_MATHREF,fd_vs_ad,0.125,8.71431008e-03,6.067428e+00,6.134102e+00,5.987268e-01,9.760627e-02,0.99524388,False,,,,,,,
+S1,ORIG_FP32,displacement_checkpoint,,,,,,,,,s_ref0,0.105924635144886,0.13074487022427797,0.23850699740912315,0.2574127390459804,0.23876022730278018,
+S1,ORIG_FP32,displacement_checkpoint,,,,,,,,,exp05_s_ref0,0.11135550732199463,0.13781623684043004,0.24883823196888852,0.2633452765977366,0.25156937506270255,
+S1,ORIG_FP32,ad_error,,,,,,,,,,,,,,,RAW_AD_ERROR: derivative for aten::_scaled_dot_product_efficient_attention_backward is not implemented
+S1,ORIG_FP32_MATHREF,fd_vs_ad,2.0,1.39279494e-01,1.167286e+00,1.107856e+00,2.317744e-01,1.985585e-01,0.98059538,False,,,,,,,
+S1,ORIG_FP32_MATHREF,fd_vs_ad,1.0,6.96397468e-02,1.167286e+00,1.140897e+00,1.119334e-01,9.589203e-02,0.99555746,False,,,,,,,
+S1,ORIG_FP32_MATHREF,fd_vs_ad,0.5,3.48198734e-02,1.167286e+00,1.158439e+00,3.554105e-02,3.044760e-02,0.99956187,False,,,,,,,
+S1,ORIG_FP32_MATHREF,fd_vs_ad,0.25,1.74099367e-02,1.167286e+00,1.164863e+00,9.499994e-03,8.138534e-03,0.99996897,False,,,,,,,
+S1,ORIG_FP32_MATHREF,fd_vs_ad,0.125,8.70496834e-03,1.167286e+00,1.166665e+00,2.420396e-03,2.073525e-03,0.99999799,False,,,,,,,

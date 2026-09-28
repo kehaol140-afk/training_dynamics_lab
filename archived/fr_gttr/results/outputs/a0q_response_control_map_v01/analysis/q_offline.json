@@ -1,0 +1,20 @@
+{
+ "consistent_with_driver": true,
+ "mismatches": [],
+ "gates": {
+  "lr": true,
+  "clip": false,
+  "wd": false
+ },
+ "verdict": {
+  "stable_channels": {
+   "lr": true,
+   "clip": false,
+   "wd": false
+  },
+  "control_variable_candidates_in_rule_order": [
+   "lr"
+  ],
+  "note": "rule from contract: gate PASS AND sign_stability>=2/3 AND 3/3 seed sign agreement, ranked by median |h|"
+ }
+}

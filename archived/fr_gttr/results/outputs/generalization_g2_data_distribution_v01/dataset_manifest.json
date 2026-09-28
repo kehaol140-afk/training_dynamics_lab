@@ -1,0 +1,82 @@
+{
+  "protocol": "FR_G2_DATASET_MANIFEST_V01",
+  "created_at_utc": "2026-09-16T14:33:31Z",
+  "d0": {
+    "path": "outputs/e3_confirmatory/v07/e3c_subset.jsonl",
+    "sha256": "1e657af9baae0784e582d82ef936160473aa069878e422ef48683a718056b0f4",
+    "records": 4096,
+    "bytes": 3093545,
+    "role": "frozen G1a pool; read-only reference; never rerun",
+    "schema_keys": [
+      "text"
+    ]
+  },
+  "d1": {
+    "path": "outputs/generalization_g2_data_distribution_v01/data/pretrain_hq.jsonl",
+    "sha256": "82b19375460d44feb15937ea3712121b5292271cf18eb87407b6d3e27427c18b",
+    "records": 1413103,
+    "bytes": 1627188411,
+    "source": "https://huggingface.co/datasets/jingyaogong/minimind_dataset",
+    "source_revision": "3a9bbe611244811e45b96661a84047f112c8ed01",
+    "lfs_sha256": "82b19375460d44feb15937ea3712121b5292271cf18eb87407b6d3e27427c18b",
+    "schema_keys": [
+      "text"
+    ],
+    "schema_adapter": "none (identical {'text'} schema to D0)"
+  },
+  "d1_pool": {
+    "path": "outputs/generalization_g2_data_distribution_v01/data/d1_pool.jsonl",
+    "sha256": "5d4c5e6b181e7791f12ceff2635011f17ba6e81d208942f22e5b1a24ad85a882",
+    "records": 4096,
+    "bytes": 4728406,
+    "rule": "first 4096 indices of make_permutation(1413103, 60202601), sorted",
+    "pool_seed": 60202601
+  },
+  "partition": {
+    "path": "outputs/generalization_g2_data_distribution_v01/partition_g2_d1.json",
+    "sha256": "63fed3888a2b91296c8471147f54f1f9ffa74fd2e6134e82d94aa9e39384f050",
+    "seed": 60202603,
+    "dataset_len": 4096,
+    "probe_size": 32,
+    "eval_size": 128,
+    "train_size": 3936
+  },
+  "overlap_diagnostic": {
+    "method": "exact duplicate lines (64-bit md5 digest, full file) + char 13-gram shingle (step 3) Jaccard on samples",
+    "d0_exact_duplicate_lines": 0,
+    "d0_exact_duplicate_fraction": 0.0,
+    "d1_exact_duplicate_lines": 820,
+    "d1_exact_duplicate_fraction": 0.0005802832489917579,
+    "shingle_ngram": 13,
+    "shingle_step": 3,
+    "d0_sample_n": 150,
+    "d1_sample_n": 150,
+    "shingle_jaccard_mean": 1.5760441292356184e-07,
+    "shingle_jaccard_max": 0.0035460992907801418,
+    "note": "nonzero overlap is a property of the corpora, not a reason to switch datasets; D1 was frozen before any G2 response result"
+  },
+  "token_statistics_sample": {
+    "tokenizer": "minimind/model (vocab 6400), add_special_tokens=False, truncation at max_length-2",
+    "d0": {
+      "n": 150,
+      "token_len_mean": 114.93333333333334,
+      "token_len_std": 22.459409073446512,
+      "token_len_min": 30,
+      "token_len_max": 126,
+      "token_len_truncated_at_126_fraction": 0.7333333333333333,
+      "char_len_mean": 265.6666666666667
+    },
+    "d1": {
+      "n": 150,
+      "token_len_mean": 126.0,
+      "token_len_std": 0.0,
+      "token_len_min": 126,
+      "token_len_max": 126,
+      "token_len_truncated_at_126_fraction": 1.0,
+      "char_len_mean": 464.32666666666665
+    },
+    "d0_im_end_literal_fraction": 0.0,
+    "d1_im_end_literal_fraction": 1.0
+  },
+  "frozen_before_any_response_result": true
+}

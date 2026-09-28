@@ -1,0 +1,8 @@
+{
+ "R_structure_T_fp32_forward_over_T_fp32_adjoint": 2.5766263838258765,
+ "R_replay_T_native_replay_over_T_fp32_adjoint": 1.1703076222822633,
+ "R_frozen_T_bf16_forward_over_T_fp32_adjoint": 2.7495853779006914,
+ "time_reduction_vs_replay_1_minus_Tadj_over_Treplay": 0.1455238084753645,
+ "note": "speedup ~= 1.17x AND time reduction ~= 14.6% are DIFFERENT statements; report both separately",
+ "gpu_condition": "GPU1 sampled during H4/M4 window (41 samples): avg util 6.2%, max 24.0%; foreign job on GPU0 untouched (empty 0MiB context on GPU1) -> labeled DEV_ENGINEERING_TIMING exclusive-in-practice; NOT a formal deployment performance claim"
+}

@@ -1,0 +1,62 @@
+{
+  "invocation": 1,
+  "status": "CRASHED_AFTER_S3_COMPLETE__S3_RESULTS_ONLY_IN_CONSOLE__CSVS_LOST",
+  "crash_point": "S1 v1_vs_bundle device mismatch (cpu bundle vs cuda v1) after S1 g0_a/g0_b",
+  "ledger_source": "RECONSTRUCTED_FROM_CONSOLE_LOG_AND_DETERMINISTIC_CODE_PATH (billing is eval-count exact; sim slot reprocessing reconstructed from eval counts x 1024 slots)",
+  "updates": 0,
+  "micro_fw": 124,
+  "micro_bw_first": 124,
+  "micro_bw_second": 6,
+  "ad_hvp_evals": 3,
+  "fd_dir_estimates": 13.0,
+  "sim_unique_slots": 2048,
+  "sim_unique_nonpad": null,
+  "sim_unique_valid": null,
+  "sim_reprocessed_slots": 63488,
+  "peak_mem_gb": null,
+  "wall_s": null,
+  "wall_label": "OBSERVATIONAL_SHARED_GPU",
+  "partial": true,
+  "partial_reason": "implementation bug: CSV writes not in finally; S1 incomplete",
+  "backend_checks": 2,
+  "console_recovered_facts": {
+    "S3": {
+      "g0_repeat_rel_diff": 0.0,
+      "fd_d0_repeat_rel_diff": 0.0,
+      "fd_d0h_repeat_rel_diff": 0.0,
+      "fd_d0_reversed_order_rel_diff": 0.0,
+      "theta0_norm": 69.7145,
+      "g0_norm": 1.1043,
+      "s_ref0_norm": 0.107987,
+      "delta0": 0.069714,
+      "loss_g0": 7.130406,
+      "adjacent_fd_rel_ORIG_FP32": {"2->1": 0.7228, "1->0.5": 0.7061, "0.5->0.25": 0.3652, "0.25->0.125": 0.1396},
+      "adjacent_fd_cos_ORIG_FP32": {"2->1": 0.707582, "1->0.5": 0.728243, "0.5->0.25": 0.951932, "0.25->0.125": 0.990387},
+      "adjacent_fd_rel_REF_FP64": {"2->1": 0.7228, "1->0.5": 0.7061, "0.5->0.25": 0.3652, "0.25->0.125": 0.1396},
+      "adjacent_fd_cos_REF_FP64": {"2->1": 0.707581, "1->0.5": 0.728244, "0.5->0.25": 0.951931, "0.25->0.125": 0.990387},
+      "y_ad_norm_ORIG_FP32_math": 6.0674,
+      "y_ad_norm_REF_FP64": 6.0674,
+      "fp64_base_loss_rel": 2.342e-08,
+      "fp64_base_g_cos": 1.0,
+      "fp64_base_g_rel": 7.217e-07,
+      "checkpoint_pred_rel_err": {
+        "s_ref0": {"FD@delta0": 1.0430, "FD@2delta0": 0.9071, "AD_math": 1.8666},
+        "exp05_s_ref0": {"FD@delta0": 1.0546, "FD@2delta0": 0.9043, "AD_math": 1.9104}
+      },
+      "actual_dG_norm": {"s_ref0": 0.5382, "exp05_s_ref0": 0.5473},
+      "raw_ad_error": "derivative for aten::_scaled_dot_product_efficient_attention_backward is not implemented",
+      "top5_err_blocks": [
+        ["model.embed_tokens.weight", 0.424],
+        ["model.layers.0.self_attn.v_proj.weight", 0.185],
+        ["model.layers.0.self_attn.q_proj.weight", 0.137],
+        ["model.layers.0.self_attn.k_proj.weight", 0.111],
+        ["model.layers.0.self_attn.o_proj.weight", 0.078]
+      ],
+      "errvec_num2": 1.0038e+01
+    },
+    "S1": {
+      "g0_repeat_rel_diff": 0.0,
+      "loss_g0": 7.382933
+    }
+  }
+}

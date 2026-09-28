@@ -1,0 +1,81 @@
+{
+ "manifest_id": "A0P_LR_TEMPORAL_KERNEL_V01_LIVE",
+ "contract_sha256": "f7b04169d371a56f35a77ca829149794ce70611b65967badb8481e578f160aef",
+ "note": "Every module/driver hash change is logged HERE before any GPU launch that could reveal results. Sequencing: write/amend code -> append note with new sha256 -> launch.",
+ "module_hash_notes": [
+  {
+   "seq": 0,
+   "ts": "2026-09-18",
+   "files": [
+    "contract/contract.json"
+   ],
+   "sha256": {
+    "contract/contract.json": "f7b04169d371a56f35a77ca829149794ce70611b65967badb8481e578f160aef"
+   },
+   "reason": "Contract frozen BEFORE any GPU: impulse kernel definition, tau grid {1,2,4,8,16,32,64}, 6 bank states x 2 streams, stage-1 gate (|Pearson|>=0.8 AND sign>=0.9), fit + memory-metric + Q1/Q2/Q3 pre-registered rules, forbidden list."
+  },
+  {
+   "seq": 1,
+   "ts": "2026-09-18",
+   "files": [
+    "research/src/fr/a0p_lr_temporal_kernel_v01.py"
+   ],
+   "sha256": {
+    "research/src/fr/a0p_lr_temporal_kernel_v01.py": "87f959db60da510d1085092e687e5bcd5b6323a0b91d0fa86e85c90bf129cab0"
+   },
+   "reason": "A0P core module first write: impulse kernel = A0O-validated adjoint with source contracted at k=1 only (pulse at step 1); rollout applies e^u lr scale once at step 1 (native lr reverts from step 2). Imports DELTA/lr_pulse from frozen a0o (no redefine). Written BEFORE any GPU launch."
+  },
+  {
+   "seq": 2,
+   "ts": "2026-09-18",
+   "files": [
+    "research/scripts/a0p_run_v01.py"
+   ],
+   "sha256": {
+    "research/scripts/a0p_run_v01.py": "efa6f18fcd1b6b9efeff783460b6867a526640ad3bc8975bb5f2fbdf97afcc9b"
+   },
+   "reason": "A0P driver first write: 12 cells (seeds 2030/2031/2037 x steps 46/82 x streams 7300/7301), 128-micro-batch streams, CRN double u=0, stage-1 gate (A0O thresholds), stage-2 fits+Q1/Q2/Q3 pre-registered rules. Written BEFORE any GPU launch."
+  },
+  {
+   "seq": 3,
+   "ts": "2026-09-18",
+   "files": [
+    "research/scripts/a0p_analyze_v01.py",
+    "research/scripts/a0p_audit_pack_v01.py"
+   ],
+   "sha256": {
+    "research/scripts/a0p_analyze_v01.py": "6b0ad518d0204b8dfef16338dfddbc41c4dd81e1db9cc956fafe0e0f8fa02d1c",
+    "research/scripts/a0p_audit_pack_v01.py": "9d4dab0ee07d89c82c0dc16f5dddc676abe0dc3e87de20af0bb53869a3769741"
+   },
+   "reason": "Analyzer (offline recompute + report + fingerprints) and audit pack, a0o pattern. Written BEFORE any GPU launch."
+  },
+  {
+   "seq": 4,
+   "ts": "2026-09-18",
+   "files": [
+    "research/scripts/a0p_analyze_v01.py"
+   ],
+   "sha256": {
+    "research/scripts/a0p_analyze_v01.py": "cb7ae0710e55408fef995043973ca3413193f1468b484dad08e96b79969cae25"
+   },
+   "reason": "Post-result reporting amendment (no change to any computation formula, no GPU work): analyzer now tolerates missing driver stage-2 outputs (gate-FAIL path) and labels Q1/Q2/Q3 rule evaluations as OFFLINE DESCRIPTIVE DIAGNOSTICS on the already-recorded kernels; adds gate-failure banner to report. Trigger: Stage-1 gate FAILED (Pearson 0.7314 < 0.8, sign 0.9405 >= 0.9, n=84); driver Stage 2 never executed per frozen contract."
+  },
+  {
+   "seq": 5,
+   "ts": "2026-09-18",
+   "files": [
+    "research/scripts/a0p_analyze_v01.py"
+   ],
+   "sha256": {
+    "research/scripts/a0p_analyze_v01.py": "afb10813d8a5bd57acdb59b3d72c38d93d783867e896367d4d7292b8bd10b762"
+   },
+   "reason": "Report wording only: clarify that budget-log n_crashes=1 is the gate-FAIL flag (driver convention crashed=not PASS), not a process crash. No computation change."
+  }
+ ],
+ "events": [
+  {
+   "ts": "2026-09-18",
+   "event": "A0P launch 1 (only launch): 12/12 cells completed, 864.9s GPU, 0 crash, CRN 12/12. Stage-1 gate FAILED (frozen A0O-imported criteria): pooled Pearson 0.7314 (<0.8), sign accuracy 0.9405 (>=0.9), rel err median 0.2508. Per-tau sign accuracy 1.000 for tau<=8; degrades to 0.833 at tau16/tau64. Diagnosis: genuine first-order breakdown at long lag + noise-dominated small |R| tail; no defect indicators (CRN clean, code path tau-independent). STOP per contract; no relaunch, no threshold change."
+  }
+ ]
+}

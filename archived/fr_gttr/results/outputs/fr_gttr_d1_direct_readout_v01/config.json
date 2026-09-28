@@ -1,0 +1,183 @@
+{
+ "round": "fr_gttr_d1_direct_readout_v01",
+ "protocol": "FR_GTTR_D1_Direct_Update_Pilot_Claude_Code_v1.md",
+ "arms": {
+  "ADAMW_LR050": {
+   "kind": "native",
+   "k": 0.5,
+   "alpha": 0.0,
+   "mode": null
+  },
+  "ADAMW_LR100": {
+   "kind": "native",
+   "k": 1.0,
+   "alpha": 0.0,
+   "mode": null
+  },
+  "ADAMW_LR200": {
+   "kind": "native",
+   "k": 2.0,
+   "alpha": 0.0,
+   "mode": null
+  },
+  "QH_RAW_A010": {
+   "kind": "qh",
+   "k": 1.0,
+   "alpha": 0.1,
+   "mode": "RAW"
+  },
+  "QH_NORM_A010": {
+   "kind": "qh",
+   "k": 1.0,
+   "alpha": 0.1,
+   "mode": "NORM"
+  }
+ },
+ "order_by_seed": {
+  "2030": [
+   "ADAMW_LR100",
+   "QH_NORM_A010",
+   "ADAMW_LR050",
+   "QH_RAW_A010",
+   "ADAMW_LR200"
+  ],
+  "2031": [
+   "ADAMW_LR050",
+   "QH_RAW_A010",
+   "ADAMW_LR200",
+   "ADAMW_LR100",
+   "QH_NORM_A010"
+  ],
+  "2032": [
+   "ADAMW_LR200",
+   "ADAMW_LR100",
+   "QH_NORM_A010",
+   "ADAMW_LR050",
+   "QH_RAW_A010"
+  ]
+ },
+ "cells": [
+  {
+   "seed": 2030,
+   "start": 46,
+   "stream_seed": 99000
+  },
+  {
+   "seed": 2031,
+   "start": 46,
+   "stream_seed": 99001
+  },
+  {
+   "seed": 2032,
+   "start": 46,
+   "stream_seed": 99002
+  }
+ ],
+ "smoke_stream_seed": 99100,
+ "schedule_id": "finite_cosine_then_hold_5e-5_v01",
+ "alpha": 0.1,
+ "alpha_frozen": true,
+ "lr_grid": {
+  "ADAMW_LR050": 0.5,
+  "ADAMW_LR100": 1.0,
+  "ADAMW_LR200": 2.0
+ },
+ "lr_grid_note": "\u7c97\u7f51\u683c\uff0c\u4e0d\u5192\u5145\u5145\u5206\u8c03\u4f18\uff1b\u8fb9\u754c\u6700\u4f18\u6807 BASELINE_GRID_BOUNDARY",
+ "candidate_vs_raw": "\u5019\u9009\u4e0e QH_RAW \u540c schedule/eta/decay\uff0c\u53ea\u6bd4\u8f83\u8303\u6570\u5339\u914d",
+ "monitor": {
+  "points": [
+   0,
+   16,
+   32,
+   48,
+   64,
+   80,
+   96,
+   112,
+   128,
+   144,
+   160,
+   176,
+   192,
+   208,
+   224,
+   240,
+   256
+  ],
+  "n_points": 17,
+  "h0_shared_per_seed": true,
+  "rows": "[4096:8192)",
+  "n_rows": 4096,
+  "eval_batch_rows": 32,
+  "metric": "sum(valid-target NLL)/count(valid targets), full library",
+  "new_16_step_grid_note": "\u4e0d\u540c\u4e8e\u65e7 32 \u6b65\u68c0\u6d4b\uff0c\u4e0d\u80fd\u58f0\u79f0\u63d0\u901f"
+ },
+ "detection": {
+  "rule": "two consecutive monitor means <= ell_star",
+  "ell_star": 7.020043501537879,
+  "h_detect": "second point of first confirmed pair",
+  "not_completed_intervals_preserved": true
+ },
+ "diagnostics": {
+  "points": [
+   1,
+   16,
+   64,
+   128,
+   256
+  ],
+  "extra_gradient_calls": 0,
+  "extra_hvp_calls": 0,
+  "rA_on_norm_traj": "\u672c\u72b6\u6001 native-formula reference\uff0c\u4e0d\u662f\u53e6\u4e00\u6761\u771f\u5b9e native \u8f68\u8ff9\u7684 r_A"
+ },
+ "train": {
+  "optimizer": "torch.optim.AdamW",
+  "betas": [
+   0.9,
+   0.999
+  ],
+  "eps": 1e-08,
+  "weight_decay": 0.01,
+  "clip_tau": 1.0,
+  "batch_size": 4,
+  "accumulation_steps": 2,
+  "tokens_per_step_expected": 1024,
+  "dtype": "bfloat16 autocast, fp32 master weights/moments",
+  "grad_scaler": "disabled",
+  "four_counters": [
+   "input_slots",
+   "nonpad_tokens",
+   "valid_loss_tokens",
+   "optimizer_updates"
+  ]
+ },
+ "budget": {
+  "plan_main_updates": 3840,
+  "plan_smoke_updates": 40,
+  "plan_total_updates": 3880,
+  "cap_updates": 4096,
+  "cap_train_bw": 8192,
+  "cap_monitor_evals": 270,
+  "cap_monitor_fw": 34560,
+  "cap_total_fw": 45000,
+  "plan_train_fw": 7760,
+  "plan_train_bw": 7760,
+  "plan_monitor_evals": 249,
+  "plan_monitor_fw": 31872,
+  "plan_total_fw": 39632,
+  "extra_gradient_calls": 0,
+  "extra_hvp_calls": 0,
+  "extra_fd_calls": 0,
+  "candidate_rollout_for_selection": 0,
+  "v_final_eval_calls": 0,
+  "wall_clock": "OBSERVATIONAL_SHARED_GPU only"
+ },
+ "expected_statuses": {
+  "IMPLEMENTATION": "TBD",
+  "COVERAGE": "TBD",
+  "FINAL_BUDGET_NLL_EFFECT": "TBD",
+  "DETECTED_TARGET_TOKEN_EFFECT": "TBD",
+  "NORM_MATCHING_ABLATION": "TBD",
+  "FIXED_LR_COMPARISON": "TBD"
+ }
+}

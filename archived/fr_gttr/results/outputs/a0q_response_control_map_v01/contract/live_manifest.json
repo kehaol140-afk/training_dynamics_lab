@@ -1,0 +1,65 @@
+{
+ "manifest_id": "A0Q_RESPONSE_CONTROL_MAP_V01_LIVE",
+ "contract_sha256": "543851caf5793a657d047d529ae372292ed6c6b198719044b64343a4337271d2",
+ "note": "Every module/driver hash change is logged HERE before any GPU launch that could reveal results. Sequencing: write/amend code -> append note with new sha256 -> launch. STATUS §40 (A0G-A0P results ledger) was appended BEFORE this contract, per A0Q mandate.",
+ "module_hash_notes": [
+  {
+   "seq": 0,
+   "ts": "2026-09-18",
+   "files": [
+    "contract/contract.json"
+   ],
+   "sha256": {
+    "contract/contract.json": "543851caf5793a657d047d529ae372292ed6c6b198719044b64343a4337271d2"
+   },
+   "reason": "Contract frozen BEFORE any GPU: 3 channels (lr/clip/wd, all u=log(x/x0), delta=0.05), persistent H=4 perturbation, 6 bank states x 2 streams, per-channel A0O thresholds, evaluation metrics + stable-channel rule pre-registered, forbidden list."
+  },
+  {
+   "seq": 1,
+   "ts": "2026-09-18",
+   "files": [
+    "research/src/fr/a0q_response_control_map_v01.py"
+   ],
+   "sha256": {
+    "research/src/fr/a0q_response_control_map_v01.py": "8af52786566b9784f32ee03c4b9e1c0ef66fa6de6f55471b80011314d89e03fe"
+   },
+   "reason": "A0Q core module first write: one shared adjoint pass computes h_lr (frozen a0o lr_pulse), h_wd (pure theta channel, -lr*lambda0*theta), h_clip (dc channel, tau0<b_k,ghat>*1[active]); rollouts perturb exactly one named scalar per channel. BEFORE any GPU."
+  },
+  {
+   "seq": 2,
+   "ts": "2026-09-18",
+   "files": [
+    "research/scripts/a0q_run_v01.py"
+   ],
+   "sha256": {
+    "research/scripts/a0q_run_v01.py": "c7b0915884b9928e59f7bfd86afb42d7dafcfac236c1cad7b2b2ac59973d22d2"
+   },
+   "reason": "A0Q driver first write: 12 cells, CRN double u=0, per-channel gates (A0O thresholds), pre-registered evaluation + stable-channel rule. BEFORE any GPU."
+  },
+  {
+   "seq": 3,
+   "ts": "2026-09-18",
+   "files": [
+    "research/scripts/a0q_analyze_v01.py",
+    "research/scripts/a0q_audit_pack_v01.py"
+   ],
+   "sha256": {
+    "research/scripts/a0q_analyze_v01.py": "517835a66ac962e2ab570ae444a692238ebe42e92cfedf39263b2a6b8c847375",
+    "research/scripts/a0q_audit_pack_v01.py": "342f3a64f8ecffaa1370d502a420cd2f14a6d70ad1aca2970831b44252bc4d0c"
+   },
+   "reason": "Analyzer + audit pack, a0o pattern. BEFORE any GPU."
+  },
+  {
+   "seq": 4,
+   "ts": "2026-09-18",
+   "files": [
+    "research/src/fr/a0q_response_control_map_v01.py"
+   ],
+   "sha256": {
+    "research/src/fr/a0q_response_control_map_v01.py": "c37277072086a00b1dd11fbfecf7da5a3d832306784b9afb2c8eedf1947198fc"
+   },
+   "reason": "DEFECT FIX before any valid result: rollout used want_snapshot=(horizon==1) but read snap['lr'] at EVERY horizon -> NoneType crash at horizon 2 (A0O persistent-input rollout needs per-step lr). Fix: want_snapshot=True (H=4, negligible cost). Crash occurred on cell 1 before any record was written; cells.jsonl empty, budget log + driver.log reset; zero valid results produced or viewed."
+  }
+ ],
+ "events": []
+}

@@ -1,0 +1,85 @@
+{
+  "cumulative": {
+    "updates": 0,
+    "micro_fw": 238,
+    "micro_bw_first": 238,
+    "micro_bw_second": 12,
+    "ad_hvp_evals": 6,
+    "fd_dir_estimates": 25.0,
+    "sim_unique_slots": 2048,
+    "sim_unique_nonpad": 1891,
+    "sim_unique_valid": 1875,
+    "sim_reprocessed_slots": 94208,
+    "peak_mem_gb": 1.0765142440795898,
+    "wall_s": 75.0,
+    "wall_label": "OBSERVATIONAL_SHARED_GPU",
+    "partial": true,
+    "partial_reason": null,
+    "backend_checks": 4,
+    "caps": {
+      "fw": 240,
+      "bw_total": 320,
+      "ad_hvp": 6
+    },
+    "sim_unique_slots_data": 2048,
+    "sim_reprocessed_slots_cumulative": 94208,
+    "peak_mem_gb_inv2": 1.0765142440795898,
+    "wall_s_cumulative_best_available": 75.0
+  },
+  "runtime": {
+    "torch_version": "2.11.0",
+    "cuda_version": "13.0",
+    "device": "cuda",
+    "matmul_allow_tf32": false,
+    "cudnn_allow_tf32": true,
+    "float32_matmul_precision": "highest",
+    "autocast_in_fd_path": false,
+    "param_dtype": "float32",
+    "grad_dtype": "float32"
+  },
+  "attention_kernels": {
+    "S3:ORIG_FP32": [
+      "fmha_cutlassF_f32_aligned_64x64_rf_sm80(PyTorchMemEffAttention::AttentionKernel<float, cutlass::arch::Sm80, true, 64, 64, 64, true, true>::Params)",
+      "void cutlass::Kernel2<cutlass_80_simt_sgemm_128x256_8x4_tn_align1>(cutlass_80_simt_sgemm_128x256_8x4_tn_align1::Params)",
+      "void cutlass::Kernel2<cutlass_80_simt_sgemm_128x32_8x5_tn_align1>(cutlass_80_simt_sgemm_128x32_8x5_tn_align1::Params)",
+      "void cutlass::Kernel2<cutlass_80_simt_sgemm_128x64_8x5_tn_align1>(cutlass_80_simt_sgemm_128x64_8x5_tn_align1::Params)"
+    ],
+    "S1:ORIG_FP32": [
+      "fmha_cutlassF_f32_aligned_64x64_rf_sm80(PyTorchMemEffAttention::AttentionKernel<float, cutlass::arch::Sm80, true, 64, 64, 64, true, true>::Params)",
+      "void cutlass::Kernel2<cutlass_80_simt_sgemm_128x256_8x4_tn_align1>(cutlass_80_simt_sgemm_128x256_8x4_tn_align1::Params)",
+      "void cutlass::Kernel2<cutlass_80_simt_sgemm_128x32_8x5_tn_align1>(cutlass_80_simt_sgemm_128x32_8x5_tn_align1::Params)",
+      "void cutlass::Kernel2<cutlass_80_simt_sgemm_128x64_8x5_tn_align1>(cutlass_80_simt_sgemm_128x64_8x5_tn_align1::Params)"
+    ]
+  },
+  "invocations": [
+    {
+      "invocation": 1,
+      "ledger_source": "RECONSTRUCTED_FROM_CONSOLE_LOG_AND_DETERMINISTIC_CODE_PATH (billing is eval-count exact; sim slot reprocessing reconstructed from eval counts x 1024 slots)",
+      "status": "CRASHED_AFTER_S3_COMPLETE__S3_RESULTS_ONLY_IN_CONSOLE__CSVS_LOST",
+      "micro_fw": 124,
+      "micro_bw_first": 124,
+      "micro_bw_second": 6,
+      "ad_hvp_evals": 3,
+      "fd_dir_estimates": 13.0,
+      "sim_reprocessed_slots": 63488,
+      "peak_mem_gb": null,
+      "wall_s": null,
+      "partial": true
+    },
+    {
+      "invocation": 2,
+      "micro_fw": 114,
+      "micro_bw_first": 114,
+      "micro_bw_second": 6,
+      "ad_hvp_evals_added": 3,
+      "ad_hvp_evals_cumulative": 6,
+      "fd_dir_estimates": 12.0,
+      "sim_unique_slots_this_inv": 2048,
+      "sim_reprocessed_slots": 30720,
+      "peak_mem_gb": 1.0765142440795898,
+      "wall_s": 75.0,
+      "partial": false
+    }
+  ],
+  "wall_label": "OBSERVATIONAL_SHARED_GPU"
+}

@@ -1,0 +1,34 @@
+{
+ "contract_id": "A0T_EXTRA_RESPONSE_CONTROLLER_IDENTITY_V01",
+ "date": "2026-09-18",
+ "mandate": "Determine whether A0T response-guided LR control is genuine adaptive control or only discovers a global LR scaling direction. OFFLINE analysis of frozen A0T artifacts ONLY. No new training, no controller modification, no new optimization.",
+ "inputs_frozen_readonly": [
+  "outputs/a0t_response_lr_control_pilot_v01/runs/cells.jsonl (36 cells: chi_lr, action_u, aliased, losses A/B/C at H in {4,16,64})",
+  "outputs/a0t_response_lr_control_pilot_v01/runs/analysis.json",
+  "outputs/a0t_response_lr_control_pilot_v01/gpu_budget_log.json"
+ ],
+ "analyses_frozen": {
+  "1_action_distribution": "P(+0.05), P(-0.05) pooled and per seed (across datasets), and per dataset.",
+  "2_action_entropy": "H(a) = -sum p log2 p in bits, pooled and per seed. H=0 means single global action.",
+  "3_switching_statistics": "per (dataset, seed, stream) trajectory ordered by bank step (D1: 46,52,64,82; D2: 46,82): number of action sign changes; summary distribution. Max possible: 3 (D1), 1 (D2).",
+  "4_fixed_strategy_comparison": "using EXISTING rollout gains only: fixed +0.05 = arm B (36 cells), native = arm A, response = arm C. Fixed -0.05 exists in A0T artifacts ONLY on the cells where the guided action was -0.05 (non-aliased, chi>0) -- comparison restricted accordingly and labeled. No arm invented, no rollout imputed.",
+  "5_gain_decomposition": "response_gain = gain_C; best_fixed_gain = max over AVAILABLE fixed arms per cell (only +0.05 for 34 aliased cells; max(+0.05, -0.05) for the 2 non-aliased cells where the -0.05 rollout exists as arm C); adaptive_gain = gain_C - best_fixed_gain. IDENTIFICATION LIMIT (pre-registered): on aliased cells adaptive = 0 by construction; on non-aliased cells adaptive = min(gain_C - gain_B, 0) = 0 wherever the guided -0.05 beat fixed +0.05. Therefore the adaptive component is additionally reported as the per-cell directed benefit on non-aliased cells (gain_C - gain_B there) with the explicit caveat that a pooled adaptive test is UNDERPOWERED (n=2 discriminative cells) and that a full adaptive test would require fixed -0.05 rollouts on all cells (not present in frozen artifacts; NOT generated - no new training allowed).",
+  "interpretation_cases": {
+   "case_A": "adaptive gain significant -> state-dependent control",
+   "case_B": "adaptive gain ~ 0 -> response discovers global LR scaling",
+   "case_C": "response worse -> local response does not translate"
+  },
+  "verdict_rule_frozen": "Report all three cases with evidence. Primary verdict: Case_B confirmed if pooled adaptive gain (as computable) shows no significant positive adaptive component AND fixed +0.05 gain is significantly positive; Case_A evidence reported descriptively from the n=2 discriminative cells (direction and magnitude, no inferential claim); Case_C ruled out if response_gain median > 0 significant (already established in A0T)."
+ },
+ "forbidden": [
+  "new training / rollouts / GPU work",
+  "controller modification",
+  "new optimization",
+  "imputing or simulating fixed -0.05 losses on cells where they do not exist",
+  "editing any frozen artifact",
+  "result-driven threshold/rule changes"
+ ],
+ "budget": {"gpu_s": 0, "note": "analysis-only round; no GPU"},
+ "deliverables": ["A0T_EXTRA_REPORT.md", "CSV tables (action distribution, per-cell decomposition, switching)", "plots", "audit pack"],
+ "stop_rule": "STOP after analysis. Do not auto-launch any next round."
+}

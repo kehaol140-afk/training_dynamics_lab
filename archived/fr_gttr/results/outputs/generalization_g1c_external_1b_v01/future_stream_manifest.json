@@ -1,0 +1,15 @@
+{
+  "protocol": "FR_G1C_EXTERNAL_1B_STRESS_TEST_V01",
+  "created_at_utc": "2026-09-16T16:05:00Z",
+  "status": "NOT_CONSTRUCTED_BLOCKED",
+  "reason": "future-stream construction requires an adopted checkpoint (anchor for in-distribution data/tokenizer); checkpoint screening concluded EXTERNAL_CHECKPOINT_UNAVAILABLE before any science",
+  "planned_source_B5": "raw Dolma is public (allenai/dolma); the exact OLMo-1B-0724 preprocessed mix is s3://ai2-llm/preprocessed/olmo-mix/v1_6-decontaminated/... (public Dolma raw + registered tokenizer gpt-neox-olmo-dolma-v1_5); original future data order NOT recoverable from public artifacts (trainer state absent) -> would have been the preregistered fixed Dolma future-stream pool, labeled 'conditional response under frozen in-distribution future streams'",
+  "would_record": [
+    "data source/revision/hash",
+    "tokenizer",
+    "sequence length",
+    "packing",
+    "loss masking",
+    "sample identities"
+  ]
+}

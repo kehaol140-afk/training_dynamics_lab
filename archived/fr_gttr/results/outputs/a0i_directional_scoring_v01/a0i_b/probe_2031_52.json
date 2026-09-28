@@ -1,0 +1,18 @@
+{
+ "state": "2031/52",
+ "stream": 0,
+ "h_ref_ambient": -0.003662632097429393,
+ "w0_dot_g": -0.0002215182661035766,
+ "attempts": {
+  "ambient": {
+   "ok": false,
+   "error_type": "NotImplementedError",
+   "error": "Trying to use forward AD with _scaled_dot_product_flash_attention that does not support it because it has not been implemented yet.\nPlease file an issue to PyTorch at https://github.com/pytorch/pytorch/issues/new?template=feature-request.yml so that we can prioritize its implementation or submit a PR adding the implementation to derivatives.yaml"
+  },
+  "math": {
+   "ok": true,
+   "h_B": -0.003652798545458008,
+   "abs_err": 9.833551971385156e-06
+  }
+ }
+}

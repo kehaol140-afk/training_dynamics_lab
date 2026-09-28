@@ -1,0 +1,50 @@
+{
+ "C0_RULE_REVIEW": {
+  "X1_halfbank_gate": "ERRATUM_REQUIRED",
+  "X2_floor_correction": "CONSISTENT_RECOMPUTED (floor2 same-probe; all flags recomputed offline)",
+  "X3_axis": "UNCHANGED (A0T vs C0-v_eval AXIS_MISMATCH stands)",
+  "X4_ledger": "UNCHANGED (417 approved; reconciled 17,994/18,000)"
+ },
+ "original_verdicts_preserved": {
+  "formula_implementation": "PASS",
+  "local_training_field_prediction": "LOCAL_GEOMETRY_NOT_SUPPORTED_IN_PILOT",
+  "local_shadow_update_prediction": "LOCAL_GEOMETRY_UNRESOLVED",
+  "tracking_signal_resolution": "PASS",
+  "readout_accounting": "PASS",
+  "future_H16_H64_prediction": "NOT_TESTED",
+  "adaptive_training_value": "NOT_TESTED",
+  "energy_benefit": "NOT_TESTED"
+ },
+ "recalculated_verdicts": {
+  "formula_implementation": "PASS",
+  "local_training_field_prediction": "LOCAL_GEOMETRY_UNRESOLVED",
+  "local_training_field_prediction_note": "erratum C0X-X1-01：原 NOT_SUPPORTED_IN_PILOT 的依据为半库逐点误用；冻结聚合半库门值 DATA_MISSING，无法确认亦无法证伪。原判定保留于 C0 summary.json，不覆盖。",
+  "local_shadow_update_prediction": "LOCAL_GEOMETRY_UNRESOLVED",
+  "local_shadow_update_prediction_note": "A_U 仅 t48 三点 per cell（1 个 distinct t），聚合 E_U 复算 R=0.4333 C=0.4056；门 g1 计数失败 -> UNRESOLVED 不变。",
+  "tracking_signal_resolution": "PASS",
+  "readout_accounting": "PASS",
+  "future_H16_H64_prediction": "NOT_TESTED",
+  "adaptive_training_value": "NOT_TESTED",
+  "energy_benefit": "NOT_TESTED"
+ },
+ "errata": [
+  {
+   "erratum_id": "C0X-X1-01",
+   "status": "ERRATUM_REQUIRED",
+   "where": "research/scripts/c0_analyze_v01.py geom_verdict() ~L294-306 (half_ok = all per-anchor halfbank E <= 1 over resolved anchors)",
+   "original_verdict_preserved": "LOCAL_GEOMETRY_NOT_SUPPORTED_IN_PILOT",
+   "frozen_rule": "FR_C0 protocol §10.2 (line 366): 按固定ID将dev和audit各分成前4/后4，使用全库已确定的同一anchor集合；两个半库中Mgeom均不劣于各自M0（E_Mgeom<=1），不重新选anchor。E_M 的定义（§10.2 主预测指标）是同一 resolved anchor 集合 A 上的聚合 SSE 比率 sqrt(sum||p-ybar||^2/sum||ybar||^2)，不是逐点指标。",
+   "misapplication": "C0 analyzer 对每个 resolved anchor 分别要求 halfbank f4/l4 E<=1（逐点门），并把 C/Bp/t16 last4 单点 E=1.166 当作整 cell 半库门失败依据。",
+   "fact_check": "1.166 是 C/Bp/t16 单点 last-4 比值，不是聚合指标；该点在修正 floor 下属于 A。",
+   "correction": "按冻结规则，半库门 = A 集合上的聚合 E<=1（f4 与 l4 各一个数 per cell per channel）。C0 保存工件只有逐点半库 E 比值，未保存半库 SSE/targetSS，聚合半库 E 无法从保存数据精确复算 -> 该门数值为 DATA_MISSING。单点 1.166 不构成冻结门失败证据。",
+   "recalculated_field_verdict": "LOCAL_GEOMETRY_UNRESOLVED",
+   "recalc_reason": "冻结门无法完整求值：g1 signal PASS、g2 聚合 E<=0.8 PASS（复算 R=0.5291 C=0.4676），g3 半库聚合 E DATA_MISSING。按阶梯不能记 SUPPORTED；原 NOT_SUPPORTED 的依据是规则误用。UNRESOLVED 的语义此处=门值统计量缺失，非 signal 不足。",
+   "sensitivity_disclosure": "C/Bp/t16 的 resolved 判定是刀锋：y_norm=0.09191 > 3*SE=0.08458 仅余量 ~7.3e-3。该 anchor 占 C cell target SS 的 26.3%；若将其剔除 A，C cell 聚合 E 变为 0.4062（仍 <=0.8）。不做任何重选。"
+  }
+ ],
+ "frozen_rule_quotes": {
+  "E_definition": "对每个cell，单独计算signal-resolved anchors上的：E_M = sqrt[ sum ||prediction_M - ybar||^2 / sum ||ybar||^2 ]。",
+  "halfbank_gate": "按固定ID将dev和audit各分成前4/后4，使用全库已确定的同一anchor集合；两个半库中Mgeom均不劣于各自M0（E_Mgeom<=1），不重新选anchor。",
+  "amendment_check": "live_manifest.json budget_events 仅 CONFIG_FROZEN / THEORY_TESTS_ALL_OK / IMPLEMENTATION_FROZEN / BUDGET_ADJUSTMENT_USER_APPROVED 四项，CONFIG_FROZEN 之后无规则 amendment；规则优先级 = 冻结 config + 协议原文。"
+ }
+}

@@ -1,0 +1,101 @@
+{
+ "experiment_id": "FR_C1_LATE_COMPLETION_V01",
+ "protocol": "FR_C1L_GTTR_LateAnchor_DataFirst_Claude_Code.md",
+ "date": "2026-09-21",
+ "scope": "Complete the two A/t48 anchors missing from C1 (R and C cells, native arm A, pre-update local t=48) + offline recheck of C0X/C1 key data. Coverage completion of the pre-registered 6 anchors; NOT an independent replication and NOT a new population sample.",
+ "anchors_planned_original_C1": {
+  "R": [
+   [
+    "A",
+    0
+   ],
+   [
+    "Bp",
+    16
+   ],
+   [
+    "A",
+    48
+   ]
+  ],
+  "C": [
+   [
+    "A",
+    0
+   ],
+   [
+    "Bp",
+    16
+   ],
+   [
+    "A",
+    48
+   ]
+  ]
+ },
+ "anchors_executed_this_round": {
+  "R": [
+   [
+    "A",
+    48
+   ]
+  ],
+  "C": [
+   [
+    "A",
+    48
+   ]
+  ]
+ },
+ "state_recovery": "full native replay from frozen checkpoint outputs/e3_confirmatory/v07/seed_2030/states/state_step_046.pt; 49 real updates per cell (h=1..49; anchor at t_pre=48). No on-disk snapshot at A/t48 exists (C1 snapshots: t0/t16 only); snapshot-continuation shortcuts NOT used.",
+ "probe_banks": {
+  "source": "identical C1 banks (runs/probe_banks.json copied and re-materialized from the same frozen seeds; ID order and batch recipe unchanged)",
+  "n_dev": 32,
+  "n_audit": 32,
+  "micros_per_probe": 2,
+  "dev_seed": 2026092103,
+  "audit_seed": 2026092104
+ },
+ "k_prefixes": [
+  8,
+  16,
+  32
+ ],
+ "half_split": 16,
+ "half_note": "first16 == K16 prefix (same fixed probe IDs, alias); the independent half is last16",
+ "budget": {
+  "optimizer_updates_max": 128,
+  "grad_evals_max": 600,
+  "hvp_calls_max": 192,
+  "micro_forward_calls_max": 1800,
+  "gpu_wall_s_max": 2700,
+  "accounting": "round-total across processes; failures/rechecks/salvage count; two simultaneous counter sets (effective-batch evals and micro-forward calls); shadow arithmetic counted separately (steps+seconds); old 17,994/18,000 ledger and old C1 round ledger untouched; never divide by 18,000"
+ },
+ "precision": {
+  "model_dtype": "bfloat16",
+  "inner_products": "fp64",
+  "hvp_fp32": true,
+  "note": "FP64 used only for stable scalar accumulation of already-produced outputs (GroupAcc host fp64)"
+ },
+ "clip": {
+  "tau_source": "rt cfg grad_clip (same as C0/C1)",
+  "CLIP_DENOMINATOR_EPS": 1e-06
+ },
+ "optim": {
+  "beta1": 0.9,
+  "beta2": 0.999,
+  "eps": 1e-08,
+  "wd": 0.01
+ },
+ "stop_v": "P frozen from the AUDIT bank's mean clipped g0 (C0/C1 pair-baseline convention, a2v/b2v at t_after); ablation only, never an optimizer; shadow step never written back",
+ "leakage_order": "per anchor: dev+audit g0 -> real clip+step -> q+ fixed -> dev HVP predictions sha-saved (order_index) -> audit HVPs / g1 (CONDITIONED, no backfill)",
+ "terminology_bans": [
+  "temperature",
+  "free energy",
+  "entropy production",
+  "equilibrium",
+  "detailed balance",
+  "field theory",
+  "phase transition"
+ ]
+}

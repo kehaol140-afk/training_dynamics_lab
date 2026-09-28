@@ -1,0 +1,38 @@
+{
+  "protocol": "G1B_100M_STATE_BANK_V01",
+  "seeds": [
+    2042,
+    2043,
+    2044
+  ],
+  "stages": {
+    "EARLY": {
+      "step": 26,
+      "fraction": 0.203125,
+      "cumulative_tokens": 26624
+    },
+    "MIDDLE": {
+      "step": 64,
+      "fraction": 0.5,
+      "cumulative_tokens": 65536
+    },
+    "LATE": {
+      "step": 102,
+      "fraction": 0.796875,
+      "cumulative_tokens": 104448
+    }
+  },
+  "total_planned_optimizer_steps": 128,
+  "tokens_per_optimizer_step": 1024,
+  "training_terminated_at_step": 102,
+  "param_counts": {
+    "unique_params": 100784000,
+    "state_dict_elements": 105699200
+  },
+  "gpu_peak_memory_mb": 2562.85546875,
+  "seed_reports": [
+    "/home/b205/projects/fluctuation_response/outputs/generalization_g1b_100m_v01/bank/seed_2042/state_bank_report.json",
+    "/home/b205/projects/fluctuation_response/outputs/generalization_g1b_100m_v01/bank/seed_2043/state_bank_report.json",
+    "/home/b205/projects/fluctuation_response/outputs/generalization_g1b_100m_v01/bank/seed_2044/state_bank_report.json"
+  ]
+}

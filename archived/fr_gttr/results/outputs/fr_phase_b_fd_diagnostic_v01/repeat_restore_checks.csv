@@ -1,0 +1,43 @@
+state_id,eval_tag,entry_err,offset_err_max,offset_norm_err,exit_err,rng_restored,loss,g_diff_to_first_rel,notes
+S3,S3/g0_rep2_INV1,,,,,,,0.0,inv1 console: G(theta0) repeat rel diff = 0.000e+00; loss 7.130406 bitwise identical
+S3,S3/fd_d0_rep2_INV1,,,,,,,0.0,inv1 console: FD(d0) rep2 vs rep1 y rel diff = 0.000e+00
+S3,S3/fd_d0h_rep2_INV1,,,,,,,0.0,inv1 console: FD(d0/2) rep2 vs rep1 y rel diff = 0.000e+00
+S3,S3/fd_d0_reversed_INV1,,,,,,,0.0,inv1 console: reversed endpoint order y rel diff = 0.000e+00
+S1,S1/g0_rep2_INV1,,,,,,,0.0,inv1 console: G(theta0) repeat rel diff = 0.000e+00; loss 7.382933 bitwise identical
+S3,S3/g0_rep1,0.000e+00,0.000e+00,0.000e+00,0.000e+00,True,7.130406379699707,,
+S3,S3/fd_d0_r1/plus,0.000e+00,5.947e-08,4.871e-08,0.000e+00,True,7.113138198852539,,
+S3,S3/fd_d0_r1/minus,0.000e+00,5.947e-08,5.291e-08,0.000e+00,True,7.146591663360596,,
+S3,S3/fd_d0h_r1/plus,0.000e+00,5.959e-08,4.895e-08,0.000e+00,True,7.121313095092773,,
+S3,S3/fd_d0h_r1/minus,0.000e+00,5.959e-08,4.895e-08,0.000e+00,True,7.138958930969238,,
+S3,S3/fd_d0_rev,,,,,,,,OMITTED_INV2_BUDGET (S3 check retained in inv1)
+S3,S3/fd_s2.0/plus,0.000e+00,5.959e-08,5.791e-08,0.000e+00,True,7.099335670471191,,
+S3,S3/fd_s2.0/minus,0.000e+00,5.959e-08,5.791e-08,0.000e+00,True,7.161240577697754,,
+S3,S3/fd_s0.25/plus,0.000e+00,5.955e-08,4.835e-08,0.000e+00,True,7.125813007354736,,
+S3,S3/fd_s0.25/minus,0.000e+00,5.955e-08,5.412e-08,0.000e+00,True,7.134852409362793,,
+S3,S3/fd_s0.125/plus,0.000e+00,5.955e-08,9.027e-08,0.000e+00,True,7.12811279296875,,
+S3,S3/fd_s0.125/minus,0.000e+00,5.955e-08,9.027e-08,0.000e+00,True,7.132664680480957,,
+S3,S3/ckpt_s_ref0,0.000e+00,0.000e+00,0.000e+00,0.000e+00,True,7.105353832244873,,checkpoint s_ref0
+S3,S3/ckpt_exp05_s_ref0,0.000e+00,5.947e-08,5.578e-08,0.000e+00,True,7.104276657104492,,checkpoint exp05_s_ref0
+S3,S3/fp64_omitted,,,,,,,,REF_FP64 path omitted in inv2 (budget); S3 inv1 console-recovered FP64 results transcribed
+S1,S1/g0_rep1,0.000e+00,0.000e+00,0.000e+00,0.000e+00,True,7.382932662963867,,
+S1,S1/v1_vs_bundle,,,,,,,0.0,"1-cos(v1_rebuilt, bundle V[0])"
+S1,S1/fd_d0_r1/plus,0.000e+00,5.959e-08,7.686e-08,0.000e+00,True,7.360215187072754,,
+S1,S1/fd_d0_r1/minus,0.000e+00,5.959e-08,7.686e-08,0.000e+00,True,7.405523777008057,,
+S1,S1/fd_d0_r2/plus,0.000e+00,5.959e-08,7.686e-08,0.000e+00,True,7.360215187072754,,
+S1,S1/fd_d0_r2/minus,0.000e+00,5.959e-08,7.686e-08,0.000e+00,True,7.405523777008057,,
+S1,S1/fd_d0_r2/plus,0.000e+00,5.959e-08,7.686e-08,0.000e+00,True,7.360215187072754,,fd_d0_rep2_y_reldiff=0.000e+00
+S1,S1/fd_d0h_r1/plus,0.000e+00,5.950e-08,6.946e-08,0.000e+00,True,7.371564865112305,,
+S1,S1/fd_d0h_r1/minus,0.000e+00,5.950e-08,6.946e-08,0.000e+00,True,7.394268035888672,,
+S1,S1/fd_d0h_r2/plus,0.000e+00,5.950e-08,6.946e-08,0.000e+00,True,7.371564865112305,,
+S1,S1/fd_d0h_r2/minus,0.000e+00,5.950e-08,6.946e-08,0.000e+00,True,7.394268035888672,,
+S1,S1/fd_d0h_r2/plus,0.000e+00,5.950e-08,6.946e-08,0.000e+00,True,7.371564865112305,,fd_d0h_rep2_y_reldiff=0.000e+00
+S1,S1/fd_d0_rev,,,,,,,,OMITTED_INV2_BUDGET (S3 check retained in inv1)
+S1,S1/fd_s2.0/plus,0.000e+00,5.942e-08,6.864e-08,0.000e+00,True,7.337778568267822,,
+S1,S1/fd_s2.0/minus,0.000e+00,5.942e-08,6.864e-08,0.000e+00,True,7.4276299476623535,,
+S1,S1/fd_s0.25/plus,0.000e+00,5.959e-08,7.731e-08,0.000e+00,True,7.377249717712402,,
+S1,S1/fd_s0.25/minus,0.000e+00,5.959e-08,7.731e-08,0.000e+00,True,7.388607978820801,,
+S1,S1/fd_s0.125/plus,0.000e+00,5.957e-08,7.674e-08,0.000e+00,True,7.380091667175293,,
+S1,S1/fd_s0.125/minus,0.000e+00,5.957e-08,7.674e-08,0.000e+00,True,7.385771751403809,,
+S1,S1/ckpt_s_ref0,0.000e+00,0.000e+00,0.000e+00,0.000e+00,True,7.34846305847168,,checkpoint s_ref0
+S1,S1/ckpt_exp05_s_ref0,0.000e+00,5.949e-08,5.984e-08,0.000e+00,True,7.346714019775391,,checkpoint exp05_s_ref0
+S1,S1/fp64_omitted,,,,,,,,REF_FP64 path omitted in inv2 (budget); S3 inv1 console-recovered FP64 results transcribed

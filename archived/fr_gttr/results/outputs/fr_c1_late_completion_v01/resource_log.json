@@ -1,0 +1,43 @@
+{
+ "counters_this_process": {
+  "optimizer_updates": 98,
+  "grad_evals": 260,
+  "hvp_calls": 128,
+  "micro_forward_calls": 772,
+  "shadow_steps": 768,
+  "shadow_seconds": 8.909425256075338
+ },
+ "counters_smoke_process": {
+  "optimizer_updates": 8,
+  "grad_evals": 19,
+  "hvp_calls": 16,
+  "micro_forward_calls": 63,
+  "shadow_steps": 0,
+  "shadow_seconds": 0.0
+ },
+ "counters_round_total": {
+  "optimizer_updates": 106,
+  "grad_evals": 279,
+  "hvp_calls": 144,
+  "micro_forward_calls": 835,
+  "shadow_steps": 768,
+  "shadow_seconds": 8.909425256075338
+ },
+ "caps": {
+  "optimizer_updates_max": 128,
+  "grad_evals_max": 600,
+  "hvp_calls_max": 192,
+  "micro_forward_calls_max": 1800,
+  "gpu_wall_s_max": 2700
+ },
+ "within_caps": true,
+ "coverage": "2/2 planned late anchors (R/A/t48, C/A/t48); original C1 6-anchor coverage completed to 6/6 in aggregate reporting (OLD4 + LATE2)",
+ "floor_used_from_smoke": {
+  "grad": 0.0,
+  "hvp": 0.0,
+  "v": 0.0,
+  "q": 0.0
+ },
+ "shadow_seconds": 8.909425256075338,
+ "wall_run_s": 231.00570009206422
+}

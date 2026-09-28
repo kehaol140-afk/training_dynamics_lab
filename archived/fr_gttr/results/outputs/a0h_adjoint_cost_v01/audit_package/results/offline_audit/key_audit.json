@@ -1,0 +1,88 @@
+{
+  "status": "PASS",
+  "detail": {
+    "unit_coverage": {
+      "dev_units_found": 24,
+      "formal_units_found": 96,
+      "dev_units_missing": [],
+      "formal_units_missing": [],
+      "unexpected_units": []
+    },
+    "duplicates_l1": {
+      "n_duplicate_keys": 0,
+      "examples": []
+    },
+    "duplicates_l1b": {
+      "n_duplicate_keys": 0,
+      "examples": []
+    },
+    "duplicates_l2": {
+      "n_duplicate_keys": 0,
+      "examples": []
+    },
+    "duplicates_l3": {
+      "n_duplicate_keys": 0,
+      "examples": []
+    },
+    "candidate_set_l1": {
+      "expected_j": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_unit_H": 360,
+      "n_bad": 0,
+      "examples_bad": {}
+    },
+    "candidate_set_l1b": {
+      "expected_j": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_unit_H": 360,
+      "n_bad": 0,
+      "examples_bad": {}
+    },
+    "candidate_set_l2": {
+      "expected_j": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "n_unit_H": 360,
+      "n_bad": 0,
+      "examples_bad": {}
+    },
+    "lambda_values": [
+      0.05
+    ],
+    "horizon_values": [
+      1,
+      4,
+      8
+    ],
+    "noop_semantics": {
+      "n_noop_rows": 360,
+      "n_nonzero_noop_rows": 0,
+      "formal_units": 96,
+      "formal_H4_nonzero_candidate_rows": 384
+    },
+    "weighting": {
+      "stream_weight": 1.0,
+      "aggregation": "stream mean -> state mean -> seed mean（等权算术平均，与冻结口径一致）",
+      "effective_n": {
+        "formal_stream": 96,
+        "formal_state": 0,
+        "formal_seed": 4
+      },
+      "shadow_pass": "summary.json runtime.all_shadow_pass（主实验 96/96 True）"
+    },
+    "data_group_partition_ok": true,
+    "validation_split_cover_ok": true
+  }
+}

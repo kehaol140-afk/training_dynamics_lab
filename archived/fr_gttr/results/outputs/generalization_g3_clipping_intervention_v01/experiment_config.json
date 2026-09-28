@@ -1,0 +1,151 @@
+{
+  "protocol_version": "FR_G3_CLIPPING_INTERVENTION_V01",
+  "prereg_frozen_at_utc": "2026-09-16T18:00:00Z",
+  "scientific_question": "MECHANISM_INTERVENTION: does the clipping-Jacobian mechanism identified by A0E2 (gain_clip = err_BH_fixed - err_C > 0 under clip=1.0) have intervenable causal evidence? When clipping is fully disabled J_clip = I and BH_fixed and C must degenerate to the same response propagation (up to numerical error). Core prediction: gain_clip > 0 under clip=1.0; gain_clip ~ 0 under no-clip; Delta_clip = mean(gain_clip_clip1) - mean(gain_clip_noclip) > 0.",
+  "model_fixed_note": "G3 uses the frozen G1a 26.681728M configuration (hidden=512/layers=7/heads=8/kv=4/head_dim=64/intermediate=1664, vocab=6400, seq=128). NOT 100M. Reason: 26M has validated full tangent (G1a STRONG_SCALE_REPLICATION frozen), clip activation ~100% (training 36/36, future first-step 36/36) making it the highest-information condition for a clipping intervention, and compute cost is markedly lower than 100M.",
+  "model": {
+    "codebase": "minimind/model/model_minimind.py + minimind/trainer/trainer_utils.py (frozen v07 generation, unchanged)",
+    "hidden_size": 512,
+    "num_hidden_layers": 7,
+    "num_attention_heads": 8,
+    "num_key_value_heads": 4,
+    "head_dim": 64,
+    "intermediate_size": 1664,
+    "intermediate_size_rule": "MiniMindConfig default ceil(hidden*pi/64)*64 (same frozen formula as anchor/G1a; NOT hand-picked)",
+    "vocab_size": 6400,
+    "max_seq_len": 128,
+    "tie_word_embeddings": true,
+    "use_moe": false,
+    "expected_unique_params": 26681728,
+    "identity_check": "model config is byte-identical in every field to research/configs/g1a_26m_v01.json model block; runner asserts the measured unique-params count at train time"
+  },
+  "training": {
+    "train_seeds": [2042, 2043, 2044],
+    "paired_identity_design": "same seeds, same dataset order rule (train_batch_seed = train_seed + 1704), same partition, same LR schedule axis as G1a; the ONLY change vs G1a is clipping disabled",
+    "dataset": "outputs/e3_confirmatory/v07/e3c_subset.jsonl (D0, same 4096-line subset as v07/G1a)",
+    "partition": "outputs/e3_confirmatory/v07/partition_v07.json (read-only reuse)",
+    "batch_size": 4,
+    "accumulation_steps": 2,
+    "global_batch_sequences": 8,
+    "tokens_per_optimizer_step": 1024,
+    "learning_rate": 0.0005,
+    "lr_schedule": "minimind trainer_utils.get_lr cosine (same as anchor/G1a)",
+    "optimizer": "torch.optim.AdamW default family: betas=(0.9,0.999), eps=1e-8, weight_decay=0.01",
+    "grad_clip": null,
+    "grad_clip_enabled": false,
+    "clip_implementation": "TRAINING: torch.nn.utils.clip_grad_norm_ is NEVER called in the G3 train loop (genuine disable, recorded per-step as clip_grad_norm_called=false). Preclip grad norm is still measured but does not modify gradients. RESPONSE primitives (frozen run_theta_branch / a0c / a0e2 runners) only implement clipping through g*min(max_norm/(||g||+1e-6),1); for the no-clip condition they receive CLIP_DISABLED_MAX_NORM=1e30, for which the clamp is exactly 1.0 (mathematical identity, gradients bit-unchanged). This sentinel is used ONLY because the frozen response framework has no other code path; it is not used in training.",
+    "counterfactual_clip_indicator": "per optimizer step, record would_clip_threshold_1 = (preclip_grad_norm > 1.0); purely diagnostic, never affects training",
+    "dtype": "bfloat16",
+    "grad_scaler": "disabled (bf16)",
+    "planned_total_optimizer_steps": 128,
+    "total_micro_steps": 256,
+    "states": {
+      "EARLY": {"optimizer_step": 26, "fraction": 0.203125, "cumulative_tokens": 26624},
+      "MIDDLE": {"optimizer_step": 64, "fraction": 0.5, "cumulative_tokens": 65536},
+      "LATE": {"optimizer_step": 102, "fraction": 0.796875, "cumulative_tokens": 104448}
+    },
+    "checkpoint_contents": "same as G1a plus grad_clip_enabled flag and per-step clip_called/counterfactual records"
+  },
+  "g3a_operator_control": {
+    "bank": "outputs/generalization_g1a_26m_v01 (READ-ONLY; no retraining)",
+    "states": "seed 2042 x steps 26/64/102 (EARLY/MIDDLE/LATE)",
+    "streams_per_state": 4,
+    "horizons": [1, 4, 8],
+    "construction": "same baseline trajectory replay (clip=1.0 native); two tangent versions: (A) frozen C with real J_clip (a0e2 runner); (B) C_identity = C with the future-step clip-JVP replaced by identity (h=1 pulse through J_clip unchanged); HVP/AdamW/baseline untouched",
+    "requirement": "C_identity == BH_fixed within tolerance (max abs gap <= 1e-12); H=1 trivially identical",
+    "not_causal_evidence": "G3a answers only whether the BH_fixed-vs-C difference comes from the clipping Jacobian operator; it is NOT a no-clip training-regime claim"
+  },
+  "q_construction": {
+    "rule": "identical to G1a/v07 E3C: per state, probe batch = all 32 partition probe_indices, q = g_probe / ||g_probe|| (global L2)",
+    "protocol_tag": "FR_G3_NOCLIP_THETA_Q_V01"
+  },
+  "response_protocol_inheritance": {
+    "pulse": "post-unscale / pre-clip location semantics preserved; under no-clip the frozen branch applies the identity clip so the pulse enters raw gradients",
+    "epsilon_rule": "epsilon = 0.25 * sigma_q over 16 E1 streams (frozen rule)",
+    "crn": "baseline/plus/minus share identical Z_t, batch manifest, RNG stream, LR path",
+    "rho0_noop_check": "sign=+1 epsilon=0.0 must bit-match baseline",
+    "horizons_official": [1, 4, 8],
+    "hvp": "math-SDPA reverse-over-reverse surrogate (same frozen mixed-backend caveat)",
+    "clip": "clip=1.0 reference read from frozen G1a outputs (NOT rerun); no-clip condition via CLIP_DISABLED_MAX_NORM sentinel in frozen primitives"
+  },
+  "paired_stream_identity": {
+    "enabled": true,
+    "rule": "G3 E1/E2 stream seeds reuse the G1a bases (E1 408202601, E2 409202601) with the identical two_level_seed(base, train_seed, state_step, stream_id) derivation, so every future batch/RNG stream is bit-identical to the frozen G1a clip=1.0 condition; paired comparison by (seed, stage, stream, H) is exact by construction",
+    "clip_reference_source": "outputs/generalization_g1a_26m_v01/results/per_stream.json + mechanism stream JSONs + tangents step traces (frozen, read-only)"
+  },
+  "main_matrix": {
+    "states": 9,
+    "models": ["chi_FD", "chi_B", "chi_BH_fixed", "chi_C"],
+    "bh_fixed_on_all_states": true,
+    "note": "all four streams computed on every state (FD/B/BH_fixed/C) to demonstrate mechanism collapse, not only C"
+  },
+  "mechanism_subset": {
+    "primary": "all 36 streams carry BH_fixed; gain decomposition pooled over H>1 cells",
+    "seed_2042_reference": "mirrors G1a mechanism subset for direct comparison",
+    "identity_requirement": "under no-clip, BH_fixed == C at every H (up to fp); under clip=1.0, H=1 identity only",
+    "gains": {
+      "gain_curvature": "err_B - err_BH_fixed",
+      "gain_clip": "err_BH_fixed - err_C",
+      "no_sign_presupposition": "signed per cell; no requirement that every cell be positive"
+    }
+  },
+  "smoke_gate": {
+    "state": "seed 2042 step 26 (EARLY)",
+    "checks": [
+      "checkpoint full restore (model+optimizer+scaler+RNG)",
+      "optimizer state dims/names match 26M model",
+      "q strictly same names/shapes as parameters",
+      "FD +/- branches CRN-identical",
+      "rho0-noop bit-match",
+      "H=1 B=BH_fixed=C",
+      "H=1 analytic vs FD consistency",
+      "no-clip: no branch ever reports clipping active (first_clipped false, tangent clip_active false all steps)",
+      "no-clip: BH_fixed vs C max abs gap == 0 (bit-identical expected) at all recorded H",
+      "HVP executes and is finite",
+      "baseline shadow-hash equality at H=8",
+      "no unexpected optimizer steps",
+      "all outputs finite",
+      "training manifest records clip_grad_norm_called=false for every step"
+    ],
+    "policy": "implementation bug => fix + re-smoke with change log; BH/C theory-identity failure under no-clip => CONTRACT_MISMATCH, stop before formal statistics"
+  },
+  "statistics": {
+    "per_cell_outputs": ["chi_FD", "chi_B", "chi_BH_fixed", "chi_C", "abs/rel/signed errors for each model"],
+    "interaction": "paired by (seed, stage, H) and by (seed, stage, stream, H): Delta_clip = gain_clip_clip1 - gain_clip_noclip; pooled mean, by-H, per-seed, per-stage; hierarchical cluster bootstrap (seed>stage>stream, 20000 resamples, rng seed 20260916) for the mean interaction",
+    "metrics_source": "fr.a0c_adamw_response_propagation_v01._metric and relative_error (frozen, imported)"
+  },
+  "verdict_thresholds_frozen": {
+    "MECHANISM_CONFIRMED": {
+      "cond1_operator_control": "G3a pass AND max|C_identity - BH_fixed| <= 1e-12",
+      "cond2_gain_clip_collapse": "|gain_clip_noclip|_pooled <= 0.2 * |gain_clip_clip1|_pooled (pooled = mean over H>1 official cells)",
+      "cond3_noclip_identity_and_predictive": "no-clip BH_fixed and C each pooled R2 >= 0.5 and mean rel err <= 0.5 AND max rel |BH_fixed - C| / |chi_FD| <= 1e-6",
+      "cond4_delta_clip_positive": "pooled mean Delta_clip > 0"
+    },
+    "MECHANISM_PARTIAL": "cond1 holds AND no-clip gain_clip clearly shrinks (shrink ratio <= 0.5) but cond2 not met, or seed/stage heterogeneity in the interaction",
+    "MECHANISM_NOT_CONFIRMED": "closing clipping leaves BH_fixed-vs-C gap comparable to the clip condition (shrink ratio > 0.5), or the operator control cannot attribute the gap to J_clip",
+    "RESOURCE_LIMIT": "experiment incomplete due to resource limits (full diagnostics required)",
+    "CONTRACT_MISMATCH": "frozen BH/C definitions fail the no-clip theoretical degeneracy (BH_fixed != C beyond tolerance under no-clip)",
+    "note": "thresholds frozen here before any G3 result is opened and will not be changed"
+  },
+  "dynamics_context": {
+    "recorded_per_step": ["training loss", "lr", "preclip grad norm (measured, not applied)", "clip_grad_norm_called", "counterfactual would_clip (preclip>1.0)", "param norm"],
+    "recorded_per_future_step": ["clip active (always false under no-clip)", "clip coefficient", "hvp norm", "native gradient norm"],
+    "usage": "context/explanation only; states may NOT be filtered post hoc"
+  },
+  "resource_rules": {
+    "gpu": "any currently available GPU; record sharing; never kill other workloads",
+    "allowed_under_oom": ["mathematically identical gradient checkpointing", "smaller device microbatch with matching accumulation to keep global batch/tokens fixed", "existing memory-safe HVP"],
+    "forbidden": ["shrinking the model after registration", "changing seq len / global batch / H / optimizer / precision semantics", "dropping failed states"],
+    "resource_limit_policy": "emit RESOURCE_LIMIT with full diagnostics; do NOT silently downscale"
+  },
+  "scientific_boundaries": [
+    "G3a operator control is NOT causal training-regime evidence",
+    "the causal claim rests on G3b no-clip trajectories",
+    "curvature feedback is not claimed to vanish; only the clip-JVP leg is intervened on",
+    "no-clip does NOT imply C == FD (finite-epsilon FD nonlinearity remains)",
+    "training-dynamics differences (loss/norm) are recorded for explanation only; state selection must not change based on them",
+    "clipping-regime cross-scale observations remain observations; no empirical law, no causal attribution beyond G3b"
+  ],
+  "out_of_scope": ["G2 dataset generalization", "1B", "A0G-lite", "new optimizer", "beta sweep", "epsilon sweep", "A0H/A-prime/A-double-prime", "modifying any frozen artifact"],
+  "output_dir": "outputs/generalization_g3_clipping_intervention_v01"
+}

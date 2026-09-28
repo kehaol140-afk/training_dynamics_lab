@@ -1,0 +1,123 @@
+{
+ "d0": {
+  "path": "/home/b205/projects/fluctuation_response/minimind/dataset/pretrain_t2t_mini.jsonl",
+  "lines": 1270238,
+  "sha256": "6dd6716c84ab36897bdbfc7f88e04f4441c48c1ab7ecee88ce0b0e7d4685560c"
+ },
+ "v_monitor": {
+  "path": "/home/b205/projects/fluctuation_response/outputs/fr_gttr_phase_a_native_calibration_v01/a1/data/v_monitor_rows4096_8192.jsonl",
+  "rows": "[4096:8192)",
+  "n": 4096,
+  "sha256": "607ba1cd570eba71069c030643a8b514b1b869f16176efadc4f7687f6ef66f84",
+  "note": "D0 \u534a\u5f00\u533a\u95f4\u9010\u884c\u590d\u5236\uff0c\u672a\u6539\u52a8\u539f\u6587\u4ef6"
+ },
+ "partition": {
+  "train": 3936,
+  "probe": 32,
+  "eval": 128,
+  "train_max_row": 4095,
+  "monitor_row_range": [
+   4096,
+   8192
+  ],
+  "final_row_range": [
+   8192,
+   12288
+  ],
+  "train_excludes_monitor_final": true,
+  "exact_text_dup_within_or_across": 0,
+  "doc_id_field": null,
+  "document_independence": "DOCUMENT_INDEPENDENCE_UNVERIFIED"
+ },
+ "bank": {
+  "2030/46": {
+   "path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2030/states/state_step_046.pt",
+   "n0": 46,
+   "global_micro": 92,
+   "model_tensors": 47,
+   "optimizer_state_entries": 46,
+   "moments_dtype": "torch.float32",
+   "master_dtype": "torch.float32"
+  },
+  "2030/82": {
+   "path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2030/states/state_step_082.pt",
+   "n0": 82,
+   "global_micro": 164,
+   "model_tensors": 47,
+   "optimizer_state_entries": 46,
+   "moments_dtype": "torch.float32",
+   "master_dtype": "torch.float32"
+  },
+  "2031/46": {
+   "path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2031/states/state_step_046.pt",
+   "n0": 46,
+   "global_micro": 92,
+   "model_tensors": 47,
+   "optimizer_state_entries": 46,
+   "moments_dtype": "torch.float32",
+   "master_dtype": "torch.float32"
+  },
+  "2031/82": {
+   "path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2031/states/state_step_082.pt",
+   "n0": 82,
+   "global_micro": 164,
+   "model_tensors": 47,
+   "optimizer_state_entries": 46,
+   "moments_dtype": "torch.float32",
+   "master_dtype": "torch.float32"
+  },
+  "2032/46": {
+   "path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2032/states/state_step_046.pt",
+   "n0": 46,
+   "global_micro": 92,
+   "model_tensors": 47,
+   "optimizer_state_entries": 46,
+   "moments_dtype": "torch.float32",
+   "master_dtype": "torch.float32"
+  },
+  "2032/82": {
+   "path": "/home/b205/projects/fluctuation_response/outputs/e3_confirmatory/v07/seed_2032/states/state_step_082.pt",
+   "n0": 82,
+   "global_micro": 164,
+   "model_tensors": 47,
+   "optimizer_state_entries": 46,
+   "moments_dtype": "torch.float32",
+   "master_dtype": "torch.float32"
+  }
+ },
+ "schedule": {
+  "id": "finite_cosine_then_hold_5e-5_v01",
+  "label": "NATIVE_WITH_DECLARED_TAIL",
+  "formula": "old_get_lr(gm,256,5e-4) if gm<=256 else 5e-5",
+  "single_param_group": true,
+  "group_tail_lr": 5e-05,
+  "warmup": "none-new",
+  "cooldown": "none-new",
+  "moments_reset": false,
+  "total_micro_rewrite": false,
+  "old_scheduler_untouched": true
+ },
+ "streams": {
+  "2030/46": 97000,
+  "2030/82": 97001,
+  "2031/46": 97002,
+  "2031/82": 97003,
+  "2032/46": 97004,
+  "2032/82": 97005
+ },
+ "stream_conflict_check": "no real-training registration at 97000..97005",
+ "ema_note": "\u4ec5\u6ee4\u6ce2\u6743\u91cd\uff1b\u4e0d\u662f\u5b9e\u9645\u54cd\u5e94\u5bff\u547d\u6216\u7269\u7406\u5f1b\u8c6b\u65f6\u95f4",
+ "budget": {
+  "plan_main_updates": 1536,
+  "plan_smoke_updates": 16,
+  "plan_total": 1552,
+  "cap_updates": 1664,
+  "cap_monitor_fw": 7800,
+  "cap_total_fw": 12000,
+  "cap_wall_s": 5400,
+  "new_gradient_calls": 0,
+  "new_hvp_calls": 0,
+  "v_final_eval_calls": 0,
+  "train_backward": "present and logged"
+ }
+}

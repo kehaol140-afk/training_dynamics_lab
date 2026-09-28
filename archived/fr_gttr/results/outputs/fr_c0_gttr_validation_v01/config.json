@@ -1,0 +1,243 @@
+{
+ "config_id": "FR_C0_GTTR_VALIDATION_V01",
+ "date": "2026-09-21",
+ "protocol": "FR_C0_Geometry_Tracking_Validation_Claude_Code.md",
+ "status": "FROZEN BEFORE ANY C0 GPU WORK",
+ "mapping_note": "Pre-flight source check lived at outputs/fr_c0_geometry_tracking_validation_v01/ (SOURCE_CHECK_20260921.md); protocol-suggested experiment dir is this one.",
+ "budget": {
+  "project_cap_optimizer_updates": 18000,
+  "consumed_before_c0_verified_from_logs": {
+   "b0": 14208,
+   "b05": 1609,
+   "b06": 1760,
+   "sum": 17577
+  },
+  "this_round_cap_optimizer_updates": 408,
+  "smoke_optimizer_updates": 24,
+  "main_optimizer_updates": 384,
+  "planned_project_cumulative": 17985,
+  "headroom_after_planned": 15,
+  "counting_rule": "failed attempts, replays, retries all count; CPU synthetic tests do not",
+  "diagnostic_caps": {
+   "gpu_active_wall_s": 3600,
+   "nongradient_evals_max": 1400,
+   "hvp_calls_max": 256,
+   "forward_calls_max": 2400,
+   "shadow_steps": "counted separately, no real updates"
+  }
+ },
+ "cells": {
+  "R": {
+   "seed": 2030,
+   "bank_step": 46,
+   "stream_seed": 7110,
+   "role": "reversal_case",
+   "selection_rule": "A0T-extra two known discriminative reversal cases (A0T runs/cells.jsonl: non-aliased u=-0.05 cells), sorted by (seed, step, stream), take FIRST",
+   "historical_known": "chi_lr=+0.027389933439131653 -> action -0.05; H4 gain_C>gain_B, H16/H64 gain_C<gain_B (reversal). Action duration: every optimizer step (persistent).",
+   "checkpoint": "outputs/e3_confirmatory/v07/seed_2030/states/state_step_046.pt"
+  },
+  "C": {
+   "seed": 2030,
+   "bank_step": 46,
+   "stream_seed": 7111,
+   "role": "non_reversal_control",
+   "selection_rule": "same checkpoint (step 46), other stream (7111); single candidate, no tie-break needed",
+   "historical_known": "chi_lr=-0.013135 -> aliased action +0.05; gain_B=+5.7e-4/+5.9e-3 at H4/H64 (H16 -3.05e-4 wobble); C==B by construction.",
+   "checkpoint": "outputs/e3_confirmatory/v07/seed_2030/states/state_step_046.pt"
+  }
+ },
+ "arms": {
+  "A": {
+   "u": 0.0
+  },
+  "Bp": {
+   "u": 0.05
+  },
+  "Bm": {
+   "u": -0.05
+  },
+  "semantics": "persistent every optimizer step; eta = eta_native * exp(u); g['lr'] = snap['lr'] * exp(u) exactly as b0_run_v01.run_arm",
+  "T_steps": 64,
+  "readout_h": [
+   4,
+   16,
+   64
+  ],
+  "no_new_pulse4_arm": true
+ },
+ "anchors": {
+  "t_pre_update": [
+   0,
+   4,
+   16,
+   48
+  ],
+  "note": "0-based pre-update indices; h = t+1 in 1-based step counting; anchor t uses s_t = displacement of update h=t+1",
+  "n_total": 24
+ },
+ "probe_banks": {
+  "source": "train distribution via fr.stage_c_runtime.batches_from_train_pool (frozen primitive)",
+  "n_dev": 8,
+  "n_audit": 8,
+  "micro_per_probe": 2,
+  "batch_size": 4,
+  "seq_len": 128,
+  "tokens_per_probe": 1024,
+  "clip_semantics": "per-probe global-L2 clip, identical to training (no merging of probes)",
+  "dev_seed": 2026092101,
+  "audit_seed": 2026092102,
+  "verification": {
+   "dev_unique_micros": 16,
+   "audit_unique_micros": 16,
+   "dev_cap_audit": 0,
+   "dev_cap_stream7110": 0,
+   "dev_cap_stream7111": 0,
+   "audit_cap_stream7110": 0,
+   "audit_cap_stream7111": 0,
+   "sample_level_overlap_with_streams": "15/64 dev, 14/64 audit samples appear somewhere in the 256 stream microbatches (same 3936-sample train pool); exact-microbatch collision is zero, so no real future batch is revealed",
+   "verified_cpu_before_gpu": true
+  },
+  "rng_pairing": "per-probe seed = derive-free fixed int hash(cell,arm,bank,j,position); torch/np/python RNG set before each probe gradient/HVP and restored after (fr.rng capture/restore)",
+  "independence_caveat": "same fixed banks reused across anchors -> statistics NOT independent"
+ },
+ "v_diag": {
+  "definition": "V_score fixed subset: first 8 sample IDs of validation_split v_score (= 1 chunk of EVAL_BATCH_SIZE 8, 1024 tokens)",
+  "not_v_eval": true,
+  "selection": "ID-prefix rule frozen here, result-independent",
+  "mode": "eval-mode forward + autograd.grad in ONE pass (value fp32 from autocast CE + q gradient); RNG captured/restored; train mode restored after; p.grad untouched",
+  "reporting": "V_diag gains reported separately from V_eval gains, never mixed axes/names"
+ },
+ "v_eval": {
+  "definition": "frozen 64-sample v_eval set (8 chunks), read-only at h=4/16/64 for historical cross-check",
+  "source": "a0k build_live_runtime val_eval_tensors"
+ },
+ "clip": {
+  "tau": 1.0,
+  "semantics": "torch.nn.utils.clip_grad_norm_ actual semantics g*min(tau/(||g||+1e-6),1); a0c.clip_jvp for infinitesimal JVP; denominator eps 1e-6",
+  "probe_clip": "C(g) applied algebraically with identical formula on detached probe gradients"
+ },
+ "precision": {
+  "model_dtype": "bfloat16",
+  "autocast": true,
+  "hvp_fp32": true,
+  "inner_products": "fp64",
+  "loss_values": "fp32 (autocast CE)"
+ },
+ "prediction_models": {
+  "M0": "pred Delta c = 0",
+  "Mgeom_PRIMARY": "pred g_j^+ = g_j + H_j s_t (a0g._hvp math-SDPA proxy), then real C re-clip; p_mu = mean_dev[C(g_j+H_j s_t) - c_j]",
+  "MnoJ_ablation": "pred Delta c = mean_dev[H_j s_t], clip transform ignored (ablation only)",
+  "ordering": "predictions written to disk BEFORE audit endpoint gradients are computed (order_index logged)"
+ },
+ "shadow_update": {
+  "U_map": "U(g; common_state): real clip -> moments -> bias correction (next cumulative step) -> P -> r=P*m_hat -> s=-eta_next*r - eta_next*wd*theta'; pure algebraic, clone tensors only, never steps real optimizer",
+  "common_state": "post-update real m/v, next step count, arm next eta, theta'=theta_t+s_t",
+  "p_U": "mean_dev[U(g_j+H_j s_t) - U(g_j)] (per-probe nonlinear U BEFORE averaging)",
+  "y_U": "mean_audit[U(g_j(theta_t+s_t)) - U(g_j(theta_t))]",
+  "M0_pred": "0",
+  "stop_v_ablation": "m updates with new gradient, P fixed from pair-baseline g (artificial diagnostic, never an optimizer candidate)"
+ },
+ "tracking_readout": {
+  "hat_mu": "mean audit c_j at anchor theta_t",
+  "hat_nu": "mean audit c_j^2",
+  "e_m": "rewrite bar_m_t - hat_mu",
+  "e_v": "rewrite bar_v_t - hat_nu",
+  "W_field": "eta q^T P mu",
+  "W_track": "eta q^T P e_m",
+  "W_wd": "eta lambda q^T theta",
+  "W_total": "-q^T s = W_field+W_track+W_wd (realized, fp64)",
+  "K_V": "Delta V + W_total (exact readout remainder, NOT guaranteed positive; not renamed curvature penalty)"
+ },
+ "resolution_gate": {
+  "definition": "resolved = ||ybar|| > 3 * sqrt(SE_vec^2 + numerical_floor^2)",
+  "SE_vec": "sqrt(sum ||y_j - ybar||^2 / (K*(K-1))), K=8",
+  "numerical_floor": "from smoke repeated diagnostics (max ||diff|| of repeated identical evaluations, fp64)",
+  "note": "3x rule is a fixed engineering resolution gate, NOT significance"
+ },
+ "verdict_rules": {
+  "E_M": "sqrt(sum ||pred - ybar||^2 / sum ||ybar||^2) over signal-resolved anchors per cell; M0 == 1 by definition",
+  "LOCAL_GEOMETRY_SUPPORTED_IN_PILOT": "per cell >=6 resolved anchors covering >=2 arms and >=2 distinct t; Mgeom E<=0.8 vs M0 in BOTH cells; dev/audit half-bank (first4/last4 fixed ID split) both E_Mgeom<=1; no re-selection",
+  "alternatives": {
+   "signal_sufficient_but_rule_fails": "LOCAL_GEOMETRY_NOT_SUPPORTED_IN_PILOT",
+   "insufficient": "LOCAL_GEOMETRY_UNRESOLVED"
+  },
+  "y_mu_and_y_U_judged_separately": true,
+  "separate_verdicts": [
+   "formula_implementation",
+   "local_training_field_prediction",
+   "local_shadow_update_prediction",
+   "tracking_signal_resolution",
+   "readout_accounting",
+   "future_H16_H64_prediction (NOT_TESTED)",
+   "adaptive_training_value (NOT_TESTED)",
+   "energy_benefit (NOT_TESTED)"
+  ]
+ },
+ "gates": {
+  "bitwise_cell_R_armA_vs_b0_stress_diag": "outputs/fr_b0_response_mechanisms_v01/runs/stress_diag.csv native rows (2030,46,7110) h=1..64 shared fields",
+  "diag_on_off_identity": "smoke: params/m/v/step/RNG bitwise identical with diagnostics inserted vs not",
+  "hvp_precision_gate": "record a0g._hvp internal first-gradient vs native gradient relative gap per smoke probe; reference magnitude from A0C-recorded math-SDPA proxy gaps; NUMERICAL_UNRESOLVED if anomalous"
+ },
+ "terminology_bans": [
+  "temperature",
+  "free energy",
+  "entropy production",
+  "equilibrium",
+  "detailed balance",
+  "field theory",
+  "phase transition"
+ ],
+ "historical_a0t": {
+  "cell_R_a0t_losses": {
+   "A": {
+    "4": 7.270499289035797,
+    "16": 7.206216216087341,
+    "64": 7.068539083003998
+   },
+   "B": {
+    "4": 7.271885931491852,
+    "16": 7.205255150794983,
+    "64": 7.061110615730286
+   },
+   "C": {
+    "4": 7.2692500948905945,
+    "16": 7.208081662654877,
+    "64": 7.078991115093231
+   }
+  },
+  "cell_C_a0t_losses": {
+   "A": {
+    "4": 7.265842,
+    "16": 7.211281,
+    "64": 7.079616
+   },
+   "B": {
+    "4": 7.265272,
+    "16": 7.211586,
+    "64": 7.073692
+   },
+   "C": {
+    "4": 7.265272,
+    "16": 7.211586,
+    "64": 7.073692
+   }
+  },
+  "note": "A0T runs/cells.jsonl arm C == arm B for cell C (aliased, chi<0 -> u=+0.05). Cell R arm C used u=-0.05 (chi>0): reversal vs arm B at H=16/64."
+ },
+ "outputs": [
+  "audit.md",
+  "config.json",
+  "live_manifest.json",
+  "theory_tests.json",
+  "smoke_checks.json",
+  "budget_log.json",
+  "cell_metrics.csv",
+  "readout_balance.csv",
+  "local_geometry_predictions.csv",
+  "shadow_update_predictions.csv",
+  "tracking_diagnostics.csv",
+  "summary.json",
+  "REPORT.md",
+  "figures (<=5)"
+ ]
+}

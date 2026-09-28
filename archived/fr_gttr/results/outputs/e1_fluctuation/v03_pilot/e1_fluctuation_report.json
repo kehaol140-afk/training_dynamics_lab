@@ -1,0 +1,191 @@
+{
+  "protocol": "E1_V03_PILOT",
+  "technical_pass": true,
+  "scientific_intervention_enabled": false,
+  "q": {
+    "sha256": "0e5ffb830790b69f73e12bd284125e5d8143e0d657031358eddcb7b5c7fb8c44",
+    "norm": 0.9999999864752857,
+    "probe_indices": [
+      4088,
+      4089,
+      4090,
+      4091,
+      4092,
+      4093,
+      4094,
+      4095
+    ],
+    "probe_grad_norm_before_normalize": 2.194281571545993
+  },
+  "stats": {
+    "R": 8,
+    "mean_s": 0.5982361324131489,
+    "sigma_q": 0.09874270164092,
+    "min_s": 0.41785845160484314,
+    "max_s": 0.7132928967475891,
+    "median_s": 0.6235643923282623,
+    "mean_grad_norm": 2.034731477499008,
+    "sigma_over_mean_grad_norm": 0.04852861556075678,
+    "distinct_projection_count": 8,
+    "finite": true,
+    "nonzero_variance": true,
+    "centered_projections": [
+      0.07085729762911797,
+      -0.03452007845044136,
+      0.11505676433444023,
+      0.04509652778506279,
+      0.005559992045164108,
+      -0.18037768080830574,
+      -0.09439723566174507,
+      0.07272441312670708
+    ],
+    "epsilon_candidates": {
+      "rho_0.25": 0.02468567541023,
+      "rho_0.5": 0.04937135082046,
+      "rho_1.0": 0.09874270164092
+    }
+  },
+  "streams": [
+    {
+      "stream_id": 0,
+      "stream_seed": 3167295159205177584,
+      "batch_seed": 6219584059098205552,
+      "manifest_sha256": "73bc84bdfe238e7afaec359bf2e32b7d8e9e997377f4389d1bd9beb7634d957a",
+      "losses": [
+        8.552350044250488,
+        8.57974624633789
+      ],
+      "batch_hashes": [
+        "db990a41691e4afdaf4bcc2dc43785203ca9224e9ef3799c913e0d198b2433a3",
+        "695081693170cf60975294f8e278d7db71f583c334cf4d2e2521e7c2bda24ae4"
+      ],
+      "projection": 0.6690934300422668,
+      "grad_norm": 2.017810821533203,
+      "used_parameter_tensors": 46
+    },
+    {
+      "stream_id": 1,
+      "stream_seed": 4609990200094140991,
+      "batch_seed": 7648361089076283283,
+      "manifest_sha256": "c7f35fdf8f680eb067f03834ced0c6b378c247b48dd5f9f44aa5c29405d8099d",
+      "losses": [
+        8.575837135314941,
+        8.56083869934082
+      ],
+      "batch_hashes": [
+        "b0599aa62144df770eee6505f44682d2985f4827ec4eb58c1e6e0c92eca13198",
+        "c2548ebe021b7d1c53e0c999634e9fe167d7a7a5400f1573e04efb1674579f35"
+      ],
+      "projection": 0.5637160539627075,
+      "grad_norm": 1.9714030027389526,
+      "used_parameter_tensors": 46
+    },
+    {
+      "stream_id": 2,
+      "stream_seed": 6052685240983104398,
+      "batch_seed": 9077138119054361014,
+      "manifest_sha256": "3a57e77e69bbf3daff5550be9e23b5ed4919d00334c330f914df38d9051394a9",
+      "losses": [
+        8.533544540405273,
+        8.63504695892334
+      ],
+      "batch_hashes": [
+        "8be8432195ac0f868aee7c5cc51b6df5b4b198b88894333017334b2433f6dcc6",
+        "bedbbf6166b8aebef6e188d9fb2be259f346754d272c17d576ad91f690b84fec"
+      ],
+      "projection": 0.7132928967475891,
+      "grad_norm": 1.8850741386413574,
+      "used_parameter_tensors": 46
+    },
+    {
+      "stream_id": 3,
+      "stream_seed": 7495380281872067805,
+      "batch_seed": 1282543112177662938,
+      "manifest_sha256": "f21ca2654828f98b65c00c2fbdd161cd2a7cb5258ffba05cc47d870cff19b792",
+      "losses": [
+        8.571513175964355,
+        8.52515983581543
+      ],
+      "batch_hashes": [
+        "6ec4297523d5be907eb5edd658c3067d7def96dce09c14fe9d7c691ee7f96243",
+        "c72aaa22ac627d937ada09a3e52ffbe44df8cbee7a03753651f71b7048cec69c"
+      ],
+      "projection": 0.6433326601982117,
+      "grad_norm": 1.9530761241912842,
+      "used_parameter_tensors": 46
+    },
+    {
+      "stream_id": 4,
+      "stream_seed": 8938075322761031212,
+      "batch_seed": 2711320142155740669,
+      "manifest_sha256": "94f2bd513f6a76704521630b06f47f4a7a80bce20afa1067c5f96dafc65d85e1",
+      "losses": [
+        8.549985885620117,
+        8.499678611755371
+      ],
+      "batch_hashes": [
+        "ae528fc803aeecd5c0a061a8675dd375a54a81d43811ca1e338671b06ac323ff",
+        "b111c6c2eeedb6604f73f8709508e2360bc04694469b122eff15683276cf6098"
+      ],
+      "projection": 0.603796124458313,
+      "grad_norm": 1.832064151763916,
+      "used_parameter_tensors": 46
+    },
+    {
+      "stream_id": 5,
+      "stream_seed": 1157398326795218812,
+      "batch_seed": 4140097172133818400,
+      "manifest_sha256": "db33de02eb298860c42e3bfed04eef91ce8202dfbe91ce041223f0011fa2d665",
+      "losses": [
+        8.699788093566895,
+        8.61851692199707
+      ],
+      "batch_hashes": [
+        "fdc860fb5bb85cbeebe402edf7a859c58546051eedafe81c80226969f015cdb1",
+        "b744c26959ec69d1a42536ad581ec2f103b20d7e6dfa7e190524e5b496431889"
+      ],
+      "projection": 0.41785845160484314,
+      "grad_norm": 2.859160900115967,
+      "used_parameter_tensors": 46
+    },
+    {
+      "stream_id": 6,
+      "stream_seed": 2600093367684182219,
+      "batch_seed": 5568874202111896131,
+      "manifest_sha256": "ee17564905a8b98648dc4662c296192a1930c9ba433cbdbcde5266e1b9f70cc5",
+      "losses": [
+        8.598770141601562,
+        8.540046691894531
+      ],
+      "batch_hashes": [
+        "e9c5a442711332004e63e5147192482e0954e1559051044e4b15bae40daa0108",
+        "b5ef66832e9fbca668b4fcd40560b4806eb52649ad7e099230b6a0b35179f046"
+      ],
+      "projection": 0.5038388967514038,
+      "grad_norm": 1.8428858518600464,
+      "used_parameter_tensors": 46
+    },
+    {
+      "stream_id": 7,
+      "stream_seed": 4042788408573145626,
+      "batch_seed": 6997651232089973862,
+      "manifest_sha256": "1842e0daf3bc5f97e2eecf57c0bba3c4c42afa03b5dc945729fde281008bb0c1",
+      "losses": [
+        8.641926765441895,
+        8.550135612487793
+      ],
+      "batch_hashes": [
+        "43bd591557732f064cb5625103e23eac9ee2a7c80e00c7c0d55841d4ad865072",
+        "2fcbe1b6475963aa77d42bd20c6c808e42ba8988b7961e6abb01b5437474cd88"
+      ],
+      "projection": 0.670960545539856,
+      "grad_norm": 1.9163768291473389,
+      "used_parameter_tensors": 46
+    }
+  ],
+  "boundaries": [
+    "E1 只证明自然涨落是否可测，不证明 B->chi。",
+    "epsilon_candidates 仅供下一阶段 E2 pilot 选尺度，本脚本不会施加扰动。",
+    "当前 subset/pilot 配置不能替代跨 seed、跨阶段正式实验。"
+  ]
+}

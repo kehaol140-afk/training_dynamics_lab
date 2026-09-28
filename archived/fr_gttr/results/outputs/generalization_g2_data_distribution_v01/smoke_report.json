@@ -1,0 +1,29 @@
+{
+  "protocol": "FR_G2_DATA_DISTRIBUTION_GENERALIZATION_V01",
+  "state": {
+    "seed": 2042,
+    "step": 26,
+    "stage": "EARLY"
+  },
+  "checks": {
+    "train_loader_deterministic_replay": true,
+    "dataset_pool_partition_hashes_match": true,
+    "state_metadata_dataset_match": true,
+    "optimizer_state_dims_names": true,
+    "checkpoint_restore": true,
+    "rng_restored": true,
+    "q_names_shapes": true,
+    "fd_crn_consistent": true,
+    "rho0_noop": true,
+    "fd_outputs_finite": true,
+    "h1_analytic_vs_fd_rel_err": 0.0018276423456220295,
+    "h1_consistency": true,
+    "h1_B_equals_C": true,
+    "shadow_hash_match": true,
+    "hvp_executed": true,
+    "hvp_finite": true,
+    "no_unexpected_optimizer_steps": true,
+    "all_outputs_finite": true
+  },
+  "overall_pass": true
+}

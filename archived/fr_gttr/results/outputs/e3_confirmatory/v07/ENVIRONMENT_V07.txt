@@ -1,0 +1,38 @@
+# ENVIRONMENT V07
+
+python version: 3.11.16 | packaged by conda-forge | (main, Aug 21 2026, 22:44:51) [GCC 14.4.0]
+sys.prefix: /home/b205/miniforge3/envs/fr_minimind
+conda env: fr_minimind
+torch version: 2.11.0
+torch CUDA: 13.0
+cuda available: True
+
+## GPU
+- cuda:0 NVIDIA GeForce RTX 5090 memory=34190458880 capability=[12, 0]
+- cuda:1 NVIDIA GeForce RTX 5090 memory=34190458880 capability=[12, 0]
+
+## conda list relevant packages
+cpython                    3.11.16          py311hd8ed1ab_0                 conda-forge
+cuda-crt-tools             13.0.88          ha770c72_0                      conda-forge
+cuda-cudart                13.0.96          hecca717_0                      conda-forge
+cuda-cudart_linux-64       13.0.96          h376f20c_0                      conda-forge
+cuda-cuobjdump             13.0.85          hffce074_0                      conda-forge
+cuda-cupti                 13.0.85          h676940d_1                      conda-forge
+cuda-nvcc-tools            13.0.88          he02047a_0                      conda-forge
+cuda-nvdisasm              13.0.85          hffce074_0                      conda-forge
+cuda-nvrtc                 13.0.88          hecca717_0                      conda-forge
+cuda-nvtx                  13.0.85          hecca717_0                      conda-forge
+cuda-nvvm-tools            13.0.88          h4bc722e_0                      conda-forge
+cuda-version               13.0             hc7b4dd1_3                      conda-forge
+libcudnn                   9.25.1.1         ha4b6413_0                      conda-forge
+libtorch                   2.11.0           cuda130_mkl_h5535f43_302        conda-forge
+numpy                      2.4.6            py311h2e04523_0                 conda-forge
+python                     3.11.16          h8ab3286_0_cpython              conda-forge
+python-dateutil            2.9.0.post0      pypi_0                          pypi
+python_abi                 3.11             8_cp311                         conda-forge
+pytorch                    2.11.0           cuda130_mkl_py311_h1f370e4_302  conda-forge
+pytorch-gpu                2.11.0           cuda129_mkl_h0d04637_302        conda-forge
+tokenizers                 0.22.2           pypi_0                          pypi
+torch                      2.7.0+cu128      pypi_0                          pypi
+transformers               4.57.6           pypi_0                          pypi
+triton                     3.3.0            pypi_0                          pypi

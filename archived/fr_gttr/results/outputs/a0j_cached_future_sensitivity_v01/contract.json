@@ -1,0 +1,104 @@
+{
+ "contract_id": "A0J_FUTURE_SENSITIVITY_REUSE_CONTRACT_V01",
+ "date": "2026-09-16",
+ "status": "FROZEN_BEFORE_A0J_GPU_EXPOSURE",
+ "round_purpose": "Post-A0I future-sensitivity reuse study. A0J-P0 = bounded shared-prefix profiler + production cost accounting (attribution only). A0J-P1 = cached future sensitivity p_tau + fresh current AdamW action injection G_t (CACHE_P) vs EXACT fresh-p vs direct STALE_W, cache ages {1,2,4}, on pre-exposed dev trajectories only. This is the first round that modifies the controller COMPUTATION STRUCTURE (future-sensitivity refresh policy); it is a dev approximation study, NOT a new independent utility acceptance and NOT closed-loop training.",
+ "phase_structure": {
+  "A0J_P0": "bounded shared-prefix profiler + production cost accounting; pre-registered branch gate S_upper >= 1.25 decides full P1 vs early-stop (one-anchor CACHE_P correctness smoke only, status CACHE_ROUTE_LOW_ENGINEERING_LEVERAGE)",
+  "A0J_P1": "full study ONLY IF P0 gate passes: implementation gate (apply_Gt_T reproduces production w/scores/chosen-id), three-way exact/cache/stale comparison, cache ages {1,2,4}, dev replay utility retention, engineering cost accounting, Kr/Ks COST_PROJECTION_ONLY"
+ },
+ "frozen_science_semantics": {
+  "source": "outputs/a0i_directional_scoring_v01/contract.json -> outputs/a0h_corrected_accept_v01/contract/contract.json (A0H20, frozen)",
+  "state": "z_t = (theta_t, m_t, v_t) joint AdamW state; t = optimizer step index",
+  "p_t_definition": "p_t = full H-step future lookahead back-propagated to just AFTER the action step = the 3-channel cotangent with respect to z_(t+1) (theta,m,v channels); in the frozen shared-adjoint walk it is the cotangent INPUT to the k=1 (pending-step) reverse adjoint iteration",
+  "G_t_definition": "G_t = d z_(t+1) / d g_t, the raw-gradient action-injection Jacobian of the pending native step (post-unscale/pre-clip pulse semantics, frozen)",
+  "w_t": "w_t = G_t^T p_t (candidate-independent shared direction; frozen production w_0)",
+  "candidates": "a_j(t) = g_j(t) - g_t for j=1..M=4 hash-group data-reweighting candidate gradients; j=0 no-op a_0 = 0; candidate batches are the frozen per-stream-seed deterministic candidate batches (same batches at every age; candidate gradients are ALWAYS recomputed at current theta_t - caching old candidate gradients is FORBIDDEN)",
+  "scores": "h_j = w^T a_j(t); h_0 = 0 exactly; predicted_delta_j = lambda*h_j; lambda = 0.05",
+  "selector": "argmin_j (predicted_delta_j, action_id) over j=0..4, exact tie -> lowest id; no-op is a legal action",
+  "single_frozen_scorer": "ALL three arms (EXACT/CACHE_P/STALE_W) are scored by the SAME frozen FULL_GRAD_DOT candidate scorer on the SAME g_t and SAME g_j(t) computed once per aged unit; A0I directional (JVP) scoring is NOT introduced this round",
+  "three_arms": {
+   "EXACT": "w_exact(t) = G_t^T p_t with fresh H=4 lookahead from the true current z_t (frozen production shared-adjoint path)",
+   "CACHE_P": "w_cache(t) = G_t^T p_tau with anchor-cached p_tau but CURRENT-step snapshot for G_t (fresh raw gradient, fresh m_t/v_t, fresh optimizer internal step, fresh LR, fresh bias correction, fresh clipping state/norm, fresh parameter-group hyperparameters); reusing G_tau is FORBIDDEN",
+   "STALE_W": "w_stale(t) = w_tau = G_tau^T p_tau, the anchor's full w reused verbatim"
+  },
+  "error_decomposition_context": "w_exact - w_stale = G_t^T(p_t - p_tau) + (G_t - G_tau)^T p_tau; w_exact - w_cache = G_t^T(p_t - p_tau). CACHE_P removes the second term, but the two stale-w error terms can cancel - superiority is an empirical question, not assumed.",
+  "primary_accuracy_metric": "pairwise action-gap error gap_error_(j,l) = (w_approx - w_exact)^T (a_j - a_l); vector cosine is SECONDARY DIAGNOSTIC ONLY and must never gate cache acceptance; the acceptance-relevant quantity is chosen-id preservation and DeltaGain, not cosine"
+ },
+ "frozen_this_round_NOT_modified": [
+  "model", "AdamW", "beta1/beta2/eps/weight decay", "grad clipping", "learning-rate schedule",
+  "lambda = 0.05", "H = 4", "candidate definitions (M=4 hash groups)", "j=0 no-op",
+  "action injection position (post-unscale/pre-clip, one optimizer step)",
+  "V_score split", "V_eval split", "future minibatch generation semantics (frozen stream manifests)",
+  "RNG/dropout semantics", "tie rule", "score normalization"
+ ],
+ "forbidden_this_round": [
+  "new independent acceptance batch / new training seed / new long checkpoint training",
+  "M=8/16/32", "changing lambda", "hybrid selector", "abstention threshold", "learning-rate control",
+  "score-readout averaging", "finite-difference HVP", "shortened H", "low-rank HVP",
+  "new data action definition", "closed-loop long training", "using V_eval to tune cache age or any threshold",
+  "caching old candidate gradients", "reusing G_tau for the CACHE_P arm",
+  "opening any other method branch based on profiler results (FD-HVP / multi-score averaging / vector-JVP are next-step branches ONLY)"
+ ],
+ "only_variable_changed": "future-sensitivity refresh policy (fresh p_t vs cached p_tau vs cached w_tau), studied on pre-exposed dev trajectories; the controller is never applied continuously to change a trajectory",
+ "trajectory_construction": {
+  "baseline": "from anchor z_tau, a fixed no-op native training trajectory z_tau -> ... -> z_(tau+4) on the frozen stream; used ONLY to develop/measure cache drift; the cache controller is NEVER applied continuously (no closed-loop distribution shift mixing)",
+  "future_batches": "frozen stream manifests already cover >= 16 micro-batches (8 optimizer steps); the maximum window (age 4 + H 4 lookahead = stream horizons 5..8) is covered by the frozen manifests; NO new batches are generated",
+  "fresh_lookahead_per_age": "at t = tau+k the pending native step is stream horizon k+1 and the fresh H=4 lookahead covers stream horizons k+1..k+4"
+ },
+ "p0_profiler_spec": {
+  "tool": "torch.profiler (bounded, one exact decision pass on one anchor-stream) for ATTRIBUTION + no-profiler CUDA-event stage timing (warmup 1, >=5 timed repeats, interleaved order, same GPU/state/stream) for PRODUCTION numbers",
+  "components": ["A state snapshot/clone/restore", "B baseline H-step future lookahead (per horizon)",
+                  "C endpoint V_score forward (probe)", "D endpoint V_score gradient",
+                  "E reverse future adjoint split per step into E1 optimizer-local analytic VJP / E2 clipping VJP / E3 curvature-HVP / E4 precision-backend conversion (probe)",
+                  "F initial/current action-step G_t^T p_t", "G candidate gradient generation", "H candidate score dot-products/selector", "I audit/logging/hash/serialization (listed separately, NEVER counted as production scientific compute)"],
+  "profiler_wall_time_is_not_production_timing": true
+ },
+ "p0_branch_gate_prefixed": {
+  "T_total_exact": "current full actionable exact decision cost (production one-shot: restore + pending fwd/bwd + candidates + refresh prefix + scoring), measured no-profiler",
+  "T_recomputable_prefix": "B+C+D+E only (baseline lookahead + endpoint forward+gradient + reverse adjoint); candidate scoring NOT included; G_t^T p_t (F) still runs on cached steps and is NOT part of the skippable prefix",
+  "S_upper": "T_total_exact / (T_total_exact - T_recomputable_prefix) = theoretical speedup upper bound if the prefix were free",
+  "gate": "if S_upper < 1.25 -> early stop: one-anchor CACHE_P correctness smoke only, status CACHE_ROUTE_LOW_ENGINEERING_LEVERAGE, no full P1 utility matrix; else full A0J-P1",
+  "note": "the 25% gate is a resource-branching rule for this round only, NOT a paper significance standard"
+ },
+ "implementation_gate_prefixed": {
+  "desc": "before any cache conclusion, on dev: apply_Gt_T(snapshot, p_fresh) must reproduce the production inline w_exact of the SAME pass; report max abs score diff, 5-action rank agreement, chosen-id agreement per unit; tolerance atol32=1e-5 rtol32=1e-4 (frozen, copied from A0H20/A0I; may NOT be adjusted after viewing results); additionally the anchor exact pass scores must reproduce pe.run_adjoint_only production scores on the same unit",
+  "on_fail": "CACHE_IMPLEMENTATION_GATE=FAIL -> stop P1 utility, deliver profiler + failed probe only"
+ },
+ "anchor_stream_selection_rule_prefixed": {
+  "rule": "deterministic, applied BEFORE viewing any A0J cache result: anchors = the 3 frozen A0H-1 diagnostics dev states (2031/52, 2034/64, 2036/76 = frozen a0g DEV_STATES; recorded as exposed in the A0H20 exposure ledger excluded_states list; early/middle/late steps 52/64/76, seeds 2031/2034/2036), streams = the two smallest stream_ids {0,1} per anchor -> 6 anchor-stream trajectories",
+  "continuity_note": "same dev states as A0I-B so native-step and decision-cost references are directly comparable; dev-only, no acceptance identity; no state may be swapped based on cache performance",
+  "insufficient_data_policy": "if eligible dev states were insufficient, shrink honestly and record; not applicable here (3 anchors x 2 streams available)"
+ },
+ "cache_ages_prefixed": [1, 2, 4],
+ "accuracy_metrics_prefixed": {
+  "per_unit_per_age_per_action": ["h_exact", "h_cache", "h_stale", "predicted_delta_exact", "predicted_delta_cache", "predicted_delta_stale", "exact_rank", "cache_rank", "stale_rank"],
+  "decision_preservation_primary": "chosen_id_preservation_cache(age) and chosen_id_preservation_stalew(age) = fraction of the 6 anchor-stream units whose chosen_id equals EXACT; plus full 5-action ranking agreement",
+  "score_error_secondary": ["max abs error", "median abs error", "relative error"],
+  "pairwise_gap_error": "ALL pairs (j,l), j<l, over {0..4}: gap_exact, gap_cache, gap_stale, gap errors; record exact top1-top2 margin, cache/stale error on the exact top1-top2 pair, best-nonzero-vs-noop exact gap and corresponding cache/stale error; no-op a_0=0 genuinely included",
+  "vector_diagnostics_secondary_only": ["cosine(p_t, p_tau)", "cosine(w_exact, w_cache)", "cosine(w_exact, w_stale)", "norms"]
+ },
+ "utility_replay_prefixed": {
+  "order": "freeze exact/cache/stale chosen-ids to disk + SHA256 BEFORE any replay; replay afterwards; never use V_eval to alter choices; never drop mismatch units; no-op and harmful included",
+  "per_aged_unit": "replay j=0..4 all five actions once from z_(tau+k) with the action injected at the pending stream horizon k+1 (A0G frozen injection semantics), H=4 total steps (stream horizons k+1..k+4), dual endpoint labels V_score and V_eval at z_(tau+k+4) in the same pass",
+  "selectors_evaluated_from_same_labels": ["exact", "cache", "stale"],
+  "metrics": ["Gain_eval_selector(age) = mean_u (v_eval_0 - v_eval_chosen)", "DeltaGain_cache-exact(age)", "DeltaGain_stale-exact(age)", "Regret_eval per selector", "chosen-id preservation (from frozen decisions)"],
+  "identity": "dev approximation utility retention evidence; NOT independent validation"
+ },
+ "cost_accounting_prefixed": {
+  "separate": ["T_refresh (full fresh future sensitivity: lookahead B + endpoint C+D + reverse adjoint E + G_t^T p_t F)", "T_GTp_cached (G_t^T p_tau alone)", "T_candidate_score (candidate gradients + dots + selector)", "T_selected_action_execution (honest reuse accounting: full-grad scorer already holds selected gradient)", "T_native_step"],
+  "two_framings": ["one-shot decision cost from scratch (A0I-comparable)", "closed-loop marginal decision overhead (refresh/K_r + (score+execute+GtP)/K_s) labeled COST_PROJECTION_ONLY"],
+  "kr_ks_grid_prefixed": ["1:1", "2:1", "4:1", "2:2", "4:2", "4:4", "8:4", "8:8"],
+  "kr_ks_claim_limit": "cost arithmetic ONLY; no Kr/Ks combination may be claimed to have closed-loop utility; combinations not supported by the cache-age utility evidence must be marked COST_ONLY / UTILITY_NOT_VALIDATED",
+  "memory": "cached p_theta/p_m/p_v bytes and cached w bytes from actual tensor nbytes (p ~ 3P, w ~ P, actual bytes authoritative)"
+ },
+ "gpu_budget_seconds": 1800,
+ "retry_rule": "retries allowed ONLY for infrastructure/serialization errors under the SAME manifest and SAME algorithm; any change to score semantics / cache rule / candidate / lambda, or any implementation change after viewing V_eval, exposes the current dev study and must be recorded as such - never disguised as the original pre-registered result; no environment upgrades; no killing external tasks; no commit/push/reset",
+ "environment": "conda env fr_minimind, CUDA_VISIBLE_DEVICES=1 (physical GPU1, shared with external jobs - occupancy recorded), PYTHONPATH=research/src, torch 2.11.0, cuda:0 logical, bf16 autocast, math-SDPA HVP surrogate caveat inherited",
+ "output_dir": "outputs/a0j_cached_future_sensitivity_v01/",
+ "deliverables_p0": ["profiler_trace/", "profiler_summary.json", "prefix_components.csv", "wallclock_raw.csv", "wallclock_summary.json"],
+ "deliverables_p1": ["contract.json", "cache_dev_manifest.json", "method_fingerprints.json", "action_vjp_gate.csv", "cached_scores.csv", "gap_diagnostics.csv", "decision_preservation.csv", "cache_vector_diagnostics.csv", "decisions_frozen.json", "five_action_replay_labels.csv", "utility_retention.csv", "cache_timing_raw.csv", "cache_timing_summary.json", "cache_memory.json", "kr_ks_cost_projection.csv", "gpu_budget_log.json", "commands.txt", "logs/"],
+ "deliverables_overall": ["ALGORITHM_HEALTH_DASHBOARD.json", "REPORT.md", "manifest_sha256.txt", "audit tar.gz + tar sha256"],
+ "early_stop_missing_p1_files_policy": "if the P0 gate stops the round, P1 deliverables are explicitly marked NOT_COVERED - no fake empty results",
+ "no_single_composite_pass": "final report outputs P0_PROFILE_COMPLETE, CACHE_IMPLEMENTATION_GATE, CACHE_DECISION_PRESERVATION per age, STALE_W_DECISION_PRESERVATION per age, CACHE_UTILITY_RETENTION per age, CACHE_COST_REDUCTION, CACHE_MEMORY_COST, EQUAL_WALLCLOCK_TRAINING_GAIN=NOT_TESTED as SEPARATE fields"
+}

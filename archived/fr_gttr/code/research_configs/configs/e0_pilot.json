@@ -1,0 +1,24 @@
+{
+  "protocol_version": "e0-pilot-v0.1",
+  "stage": "E0_REPLAY",
+  "scientific_intervention_enabled": false,
+  "project_root": "/home/b205/projects/fluctuation_response",
+  "minimind_root": "/home/b205/projects/fluctuation_response/minimind",
+  "checkpoint_path": "TODO_AFTER_TASK00_AUDIT",
+  "device": "cuda:0",
+  "physical_gpu_note": "Run with CUDA_VISIBLE_DEVICES=1 on the current workstation",
+  "replay_steps": 8,
+  "stream_id": 0,
+  "require_same_batch_stream": true,
+  "require_same_rng": true,
+  "compare": [
+    "loss_trace",
+    "model_state_hash",
+    "optimizer_state_hash",
+    "scheduler_state"
+  ],
+  "pass_policy": {
+    "prefer_bitwise_equal": true,
+    "allow_tolerance_only_after_documented_nondeterminism_audit": true
+  }
+}

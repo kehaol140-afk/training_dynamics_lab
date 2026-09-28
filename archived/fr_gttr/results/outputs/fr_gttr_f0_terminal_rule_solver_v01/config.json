@@ -1,0 +1,84 @@
+{
+ "round": "fr_gttr_f0_terminal_rule_solver_v01",
+ "protocol": "FR_GTTR_F0_Full_Horizon_Terminal_Rule_Solver_v1.md",
+ "protocol_sha256": "1282467f3076c06537d576335909e136d64ceeeee1f7386737386d52a14003aa",
+ "T": 256,
+ "n0": 46,
+ "rule": {
+  "psi": "2t/255-1",
+  "Z": "sum(w e^{b psi})/sum(w)",
+  "eta": "w exp(a+b psi)/Z",
+  "box": "[-log2,log2]^2",
+  "sum_eta": "exp(a)*sum(w)",
+  "tail_w": 0.0001,
+  "schedule_id": "gttr_terminal_normalized_tilt_T256_v1"
+ },
+ "paths": {
+  "REF32": "FP32/autocast off/MATH/TF32 highest",
+  "NATIVE": "BF16 autocast \u539f\u751f"
+ },
+ "streams": {
+  "base": 202609250400,
+  "shifted": false,
+  "fit": {
+   "2030": 202609250400,
+   "2031": 202609250401
+  },
+  "audit": {
+   "2030": [
+    202609250402,
+    202609250403
+   ],
+   "2031": [
+    202609250404,
+    202609250405
+   ],
+   "2032": [
+    202609250406,
+    202609250407
+   ]
+  }
+ },
+ "design_target": {
+  "target_id": "V_design_monitor_FP32_MATH_sumcount_v1",
+  "rows": "[4096,8192)",
+  "sha256": "607ba1cd570eba71069c030643a8b514b1b869f16176efadc4f7687f6ef66f84"
+ },
+ "confirm_target": {
+  "rows": "[12288,16384)",
+  "n": 4096,
+  "sha256": "405218bf8fa6417c4df4aec5e21bc23d16e3b35034fd1c0ca121636047552351",
+  "usage_scan_hits": [],
+  "identity": "\u9996\u4e2a V_final \u4e4b\u540e\u672a\u4f7f\u7528 4096 \u884c\u5757\uff1b\u65e0\u4f7f\u7528\u8bb0\u5f55\u547d\u4e2d",
+  "doc_independence": "DOC_INDEPENDENCE_UNVERIFIED\uff08\u65e0 doc_id\uff09",
+  "sealed_before_use": true
+ },
+ "solvers": {
+  "FULL256": "a,b \u7ec8\u70b9256",
+  "SCALE256": "a \u7ec8\u70b9256",
+  "SHORT64": "a,b \u76ee\u680764\uff08T256 \u65f6\u949f\uff09",
+  "iters": 3,
+  "h_frac": [
+   1.0,
+   0.5,
+   0.25
+  ],
+  "armijo_c": 0.0001,
+  "common_start": "b=0 \u4e09\u5c3a\u5ea6\u70b9\u4e2d FIT \u6700\u4f18"
+ },
+ "budget": {
+  "caps": {
+   "traj": 34000,
+   "fw": 110000,
+   "bw": 90000,
+   "hvp_dirs": 7000,
+   "design_evals": 250,
+   "confirm_evals": 40,
+   "target_grad": 24,
+   "v_final": 0
+  }
+ },
+ "code": {
+  "runner_sha256": "4a8162adbdd642b84dc1ae55dc71f21835f32cb4b6ba84da2d54acd9f052ada9"
+ }
+}

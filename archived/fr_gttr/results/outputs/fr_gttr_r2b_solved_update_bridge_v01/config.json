@@ -1,0 +1,171 @@
+{
+ "round": "fr_gttr_r2b_solved_update_bridge_v01",
+ "protocol": "FR_GTTR_R2B_Solved_Update_To_Training_Bridge_v1.md",
+ "protocol_sha256": "d3f6c90abc8f8f8d39c2d939ddeae275a9fa550c5ab59fc5b5f7777515ee1a74",
+ "cells": [
+  {
+   "seed": 2030,
+   "start": 46,
+   "S": 0,
+   "streams": [
+    202609240200,
+    202609240201
+   ]
+  },
+  {
+   "seed": 2030,
+   "start": 82,
+   "S": 1,
+   "streams": [
+    202609240202,
+    202609240203
+   ]
+  },
+  {
+   "seed": 2031,
+   "start": 46,
+   "S": 2,
+   "streams": [
+    202609240204,
+    202609240205
+   ]
+  },
+  {
+   "seed": 2031,
+   "start": 82,
+   "S": 3,
+   "streams": [
+    202609240206,
+    202609240207
+   ]
+  },
+  {
+   "seed": 2032,
+   "start": 46,
+   "S": 4,
+   "streams": [
+    202609240208,
+    202609240209
+   ]
+  },
+  {
+   "seed": 2032,
+   "start": 82,
+   "S": 5,
+   "streams": [
+    202609240210,
+    202609240211
+   ]
+  }
+ ],
+ "arms": {
+  "BASE_K2": "a=(0,0) \u539f\u751f k=2",
+  "GTTR_LR_ONLY": "R1 a_LR(z,2)\uff1a\u9996\u6b65\u539f\u751f eta_ref*(1+x_LR)",
+  "GTTR_FULL": "R1 a_2D(z,2)\uff1a\u9996\u6b65 qh RAW\uff0ceta_ref*(1+x_2D)\uff0calpha=y_2D/(1+x_2D)"
+ },
+ "intervention": "\u4ec5\u7b2c\u4e00\u4e2a optimizer update\uff1b\u7b2c 2..256 \u6b65\u5168\u90e8\u539f\u751f k=2",
+ "schedule": {
+  "id": "finite_cosine_then_hold_5e-5_v01",
+  "k": 2.0,
+  "tail_ref": 0.0001,
+  "configured_peak": 0.0005,
+  "first_update_gm": {
+   "2030/46": 94,
+   "2030/82": 166,
+   "2031/46": 94,
+   "2031/82": 166,
+   "2032/46": 94,
+   "2032/82": 166
+  }
+ },
+ "monitor": {
+  "points_per_traj": [
+   1,
+   4,
+   16,
+   32,
+   48,
+   64,
+   80,
+   96,
+   112,
+   128,
+   144,
+   160,
+   176,
+   192,
+   208,
+   224,
+   240,
+   256
+  ],
+  "shared_h0": true,
+  "rows": "[4096:8192)",
+  "eval_batch_rows": 32
+ },
+ "ctrl": {
+  "h": [
+   0,
+   1
+  ],
+  "shared_h0": true,
+  "no_gradients": true,
+  "semantics": "R1 FP32/MATH/sum-count 64 \u884c"
+ },
+ "detection": {
+  "grid": [
+   0,
+   16,
+   32,
+   48,
+   64,
+   80,
+   96,
+   112,
+   128,
+   144,
+   160,
+   176,
+   192,
+   208,
+   224,
+   240,
+   256
+  ],
+  "rule": "\u8fde\u7eed\u4e24\u6b21 <= ell \u7684\u7b2c\u4e8c\u65f6\u70b9",
+  "ell_by_start": {
+   "46": 7.020043501537879,
+   "82": 6.979538126804536
+  },
+  "h1_h4_excluded": true
+ },
+ "budget": {
+  "caps": {
+   "updates": 9600,
+   "total_fw": 110000,
+   "bw_micro": 19200,
+   "monitor_evals": 700,
+   "ctrl_evals": 60,
+   "q_hvp_probe": 0,
+   "v_final": 0
+  },
+  "plan": {
+   "main_updates": 9216,
+   "smoke_updates": 40,
+   "monitor_evals": 660,
+   "ctrl_evals": 42
+  }
+ },
+ "snapshots": {
+  "h": [
+   1,
+   256
+  ],
+  "n": 72,
+  "plan": "full h1+h256 snapshots"
+ },
+ "code": {
+  "git_head": "UNKNOWN",
+  "runner_sha256": "f4bf3bbe7e272189c4033cda979f4d195574045d3971e46ee575af7ef5c9e472"
+ }
+}

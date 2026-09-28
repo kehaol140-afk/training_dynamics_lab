@@ -1,0 +1,5 @@
+method,n,runs_wall_s,median_s,mean_s,std_s,min_s,max_s,fixed_order_in_run,combos,repeats
+fp32_forward,3,3.381815 | 3.481904 | 3.402883,3.402883,3.422201,0.052767,3.381815,3.481904,fp32_forward > fp32_adjoint > bf16_forward > replay,"H=4,M=4",3
+fp32_adjoint,3,1.343723 | 1.311450 | 1.320674,1.320674,1.325282,0.016623,1.311450,1.343723,fp32_forward > fp32_adjoint > bf16_forward > replay,"H=4,M=4",3
+bf16_forward,3,3.608736 | 3.631305 | 3.771440,3.631305,3.670494,0.088147,3.608736,3.771440,fp32_forward > fp32_adjoint > bf16_forward > replay,"H=4,M=4",3
+replay,3,1.545594 | 1.504222 | 1.657011,1.545594,1.568943,0.079025,1.504222,1.657011,fp32_forward > fp32_adjoint > bf16_forward > replay,"H=4,M=4",3

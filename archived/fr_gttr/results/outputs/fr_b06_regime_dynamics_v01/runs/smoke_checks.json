@@ -1,0 +1,15 @@
+{
+ "snapshot_identity": true,
+ "crn_native_repeat": true,
+ "tokens_per_step_1024": true,
+ "m_v_finite_positive": true,
+ "cos_bounds": true,
+ "disp_monotone_nonneg": true,
+ "state_entries_eq_named": true,
+ "grad_flat_norm_consistency": true,
+ "bitwise_vs_frozen_b0_diag_h1_8": true,
+ "budget_after_smoke": {
+  "smoke_optimizer_updates": 16
+ },
+ "ALL_PASS": true
+}

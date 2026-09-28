@@ -1,0 +1,22 @@
+{
+  "checkpoint_candidates": 91,
+  "loaded_optimizer_states": [
+    {
+      "file": "/home/b205/projects/fluctuation_response/outputs/e3_replication/v06/seed_2028/states/state_step_052.pt",
+      "optimizer_keys": [
+        "state",
+        "param_groups"
+      ],
+      "state_count": 46,
+      "first_state_keys": [
+        "step",
+        "exp_avg",
+        "exp_avg_sq"
+      ]
+    }
+  ],
+  "formula": {
+    "chi_m": "-eta*mu_q*(1-beta1^H)",
+    "chi_mv": "chi_m+eta*nu_q*(1-beta2^H)"
+  }
+}

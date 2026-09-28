@@ -1,0 +1,9 @@
+# A0C Momentum Kernel Audit
+
+Fit:
+alpha_direct(H)=A*(1-beta1^H)+C
+
+beta1=0.9
+A=-0.46637323401576297
+C=-0.01923571964804258
+R2=0.9958811864750299

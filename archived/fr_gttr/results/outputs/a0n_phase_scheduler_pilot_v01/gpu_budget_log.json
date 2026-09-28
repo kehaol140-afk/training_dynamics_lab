@@ -1,0 +1,105 @@
+{
+ "phases": [
+  {
+   "phase": "smoke_S1_armA_bitwise_bank",
+   "t_start": 214668.942947612,
+   "t_end": 214690.848169111,
+   "wall_s": 21.905,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "ok": true,
+    "mismatches": {}
+   },
+   "occupancy": [
+    "0, 42 %, 15236 MiB",
+    "1, 52 %, 22247 MiB"
+   ]
+  },
+  {
+   "phase": "smoke_S2_ghost_phase_invisibility",
+   "t_start": 214690.908923511,
+   "t_end": 214756.658723053,
+   "wall_s": 65.75,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "ok": true,
+    "ghost_tail": "e01b8bf7f375476034025d13abfe0e35c1eb38b6d895df40ddddd024cfab5028",
+    "armA_tail": "e01b8bf7f375476034025d13abfe0e35c1eb38b6d895df40ddddd024cfab5028",
+    "ghost_events": 12
+   },
+   "occupancy": [
+    "0, 44 %, 15238 MiB",
+    "1, 52 %, 23595 MiB"
+   ]
+  },
+  {
+   "phase": "main_seed_2030",
+   "t_start": 214756.713782153,
+   "t_end": 214860.478768409,
+   "wall_s": 103.765,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "T_C": 45.664501625986304
+   },
+   "occupancy": [
+    "0, 44 %, 15411 MiB",
+    "1, 51 %, 23595 MiB"
+   ]
+  },
+  {
+   "phase": "main_seed_2031",
+   "t_start": 214860.538521309,
+   "t_end": 214964.857278062,
+   "wall_s": 104.319,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "T_C": 45.84587694500806
+   },
+   "occupancy": [
+    "0, 44 %, 15411 MiB",
+    "1, 47 %, 23595 MiB"
+   ]
+  },
+  {
+   "phase": "main_seed_2032",
+   "t_start": 214964.912539962,
+   "t_end": 215085.358539601,
+   "wall_s": 120.446,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "T_C": 45.858010539988754
+   },
+   "occupancy": [
+    "0, 0 %, 125 MiB",
+    "1, 53 %, 23595 MiB"
+   ]
+  },
+  {
+   "phase": "post_main_consistency",
+   "t_start": 215085.416510801,
+   "t_end": 215085.416511001,
+   "wall_s": 0.0,
+   "crashed": false,
+   "gpu": "cuda:1",
+   "detail": {
+    "ok": true,
+    "mismatches": {}
+   },
+   "occupancy": [
+    "0, 0 %, 125 MiB",
+    "1, 59 %, 23595 MiB"
+   ]
+  }
+ ],
+ "TOTALS": {
+  "cumulative_wall_s": 416.185,
+  "budget_s": 1800,
+  "remaining_s": 1383.815,
+  "n_crashes": 0
+ }
+}

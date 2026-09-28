@@ -1,0 +1,82 @@
+{
+ "round": "fr_phase_b_gttr_action_scoring_v03",
+ "date": "2026-09-23",
+ "outcome": "GATE_STOP_LOCAL_OPERATOR_NOT_CALIBRATED",
+ "summary": "预测封存前数值门在 S3（seed 2031, n0=82）触发：第一方向 FD half-check fd_rel=0.706>0.20（fd_cos=0.728）。按 v3 §3.2 硬停止GPU 主流程：不调 epsilon、不剔除状态、不部分封存。预测未生成、未封存；main 未启动。S0-S2 门通过（fd_rel 0.0011/0.066/0.021）。",
+ "statuses": {
+  "MODEL_GTTR": "LOCAL_OPERATOR_NOT_CALIBRATED_S3_GATE_STOP",
+  "MODEL_NO_GEOMETRY": "NOT_TESTED_PREDICTIONS_NEVER_SEALED",
+  "MODEL_COVERAGE_H4_H64": "NOT_TESTED",
+  "GEOMETRY_INCREMENTAL_INFORMATION": "NOT_TESTED",
+  "MONITOR_SELECTION_TRANSFER": "NOT_TESTED",
+  "HORIZON_PERSISTENCE": "NOT_TESTED",
+  "DECISION_PAIRS": "NOT_TESTED",
+  "CHOICES_REGRET": "NOT_TESTED",
+  "ERROR_DECOMPOSITION": "NOT_TESTED",
+  "TOKENS_TO_TARGET_IMPROVEMENT": "NOT_TESTED_PHASE_B",
+  "TIME_TO_TARGET": "NOT_EVALUATED_SHARED_GPU",
+  "WALL_CLOCK_SPEEDUP": "NOT_EVALUATED_SHARED_GPU",
+  "ENERGY_BENEFIT": "NOT_EVALUATED_SHARED_GPU",
+  "MODEL_COMPUTE_FOOTPRINT": "MEASURED_PARTIAL_BUILD",
+  "V_FINAL_EVAL_CALLS": 0
+ },
+ "gate_diagnostics": {
+  "S0": {
+   "fd_rel": 0.001065393880448133,
+   "fd_cos": 0.9999994848487901,
+   "rank": 4,
+   "gate": "PASS"
+  },
+  "S1": {
+   "fd_rel": 0.06601182247565325,
+   "rank": 4,
+   "gate": "PASS"
+  },
+  "S2": {
+   "fd_rel": 0.020623698967200343,
+   "rank": 4,
+   "gate": "PASS"
+  },
+  "S3": {
+   "fd_rel": 0.7061390274577329,
+   "fd_cos": 0.7282431519261835,
+   "rank": "NA(gate@dir1)",
+   "gate": "FAIL_STOP"
+  }
+ },
+ "budget": {
+  "planned": {
+   "updates": 1168,
+   "total_fw": 13562,
+   "total_bw": 2546,
+   "fd_dirs": 35,
+   "monitor_evals": 81,
+   "control_evals": 81
+  },
+  "actual": {
+   "updates": 16,
+   "total_fw": 570,
+   "total_bw": 162,
+   "fd_dirs": 22.0,
+   "monitor_evals": 3,
+   "control_evals": 3,
+   "model_fw": 130,
+   "model_bw": 130,
+   "virtual_steps": 1536,
+   "failures": 1,
+   "peak_mem_gb": 0.8167
+  },
+  "caps": {
+   "updates": 1280,
+   "total_fw": 14500,
+   "total_bw": 2920,
+   "fd_dirs": 50,
+   "monitor_evals": 84,
+   "control_evals": 90
+  },
+  "within_caps": true
+ },
+ "seal": "ABSENT_PREDICTIONS_NEVER_MATERIALIZED",
+ "resume_policy": "如需重试须新轮次新预测新封存（本轮不恢复、不重跑）",
+ "phase_c": "NOT_ENTERED"
+}

@@ -1,0 +1,29 @@
+{
+ "mode": "adjoint_only",
+ "hvp_fp32": true,
+ "H": 1,
+ "M": 4,
+ "scores_hhat_adj": {
+  "1": 0.0002575871557786624,
+  "2": -0.0031906902635388877,
+  "3": -0.0015462460080959538,
+  "4": -0.004333375304241974
+ },
+ "w_0_norm": 0.09007318040578222,
+ "counters": {
+  "baseline_steps": 1,
+  "candidate_grad_calls": 4,
+  "hvp_calls": 0,
+  "reverse_adjoint_steps": 1,
+  "clip_transpose_calls": 2,
+  "endpoint_grad_calls": 1,
+  "scoring_dot_calls": 4,
+  "replay_branches": 0,
+  "replay_native_steps": 0,
+  "replay_scoring_calls": 0,
+  "outer_autograd_backward_calls": 0
+ },
+ "final_model_hash": "91672ef88e6121e869fdfd859d4142d6c7a486854452d29e116d8b8ceb037349",
+ "preload_one_time_s": 8.303740580000522,
+ "state": "dev:2031/52"
+}

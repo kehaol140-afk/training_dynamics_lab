@@ -1,0 +1,47 @@
+{
+ "counters_this_process": {
+  "optimizer_updates": 36,
+  "grad_evals": 520,
+  "hvp_calls": 256,
+  "micro_forward_calls": 1544,
+  "shadow_steps": 1536,
+  "shadow_seconds": 15.585600678459741
+ },
+ "counters_smoke_process": {
+  "optimizer_updates": 8,
+  "grad_evals": 19,
+  "hvp_calls": 16,
+  "micro_forward_calls": 63,
+  "shadow_steps": 0,
+  "shadow_seconds": 0.0
+ },
+ "counters_failed_attempts": {
+  "optimizer_updates": 1,
+  "grad_evals": 66,
+  "hvp_calls": 32,
+  "micro_forward_calls": 194
+ },
+ "counters_round_total": {
+  "optimizer_updates": 45,
+  "grad_evals": 605,
+  "hvp_calls": 304,
+  "micro_forward_calls": 1801
+ },
+ "caps": {
+  "optimizer_updates_max": 192,
+  "grad_evals_max": 1400,
+  "hvp_calls_max": 416,
+  "micro_forward_calls_max": 3200,
+  "gpu_wall_s_max": 5400
+ },
+ "within_caps": true,
+ "coverage": "4/6 anchors (A/t0, Bp/t16 per cell); A/t48 not measured: full 6-anchor plan would need 432 HVPs round-total (>416) after counting the failed first attempt (32) and smoke (16)",
+ "floor_used_from_smoke": {
+  "grad": 0.0,
+  "hvp": 0.0,
+  "v": 0.0,
+  "q": 0.0
+ },
+ "shadow_seconds": 15.585600678459741,
+ "wall_run_s": 307.30940340505913
+}

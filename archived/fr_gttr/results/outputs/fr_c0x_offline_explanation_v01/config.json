@@ -1,0 +1,56 @@
+{
+ "experiment_id": "FR_C0X_OFFLINE_EXPLANATION_V01",
+ "protocol": "FR_C0X_C1_GTTR_Offline_and_Probe_Validation_Claude_Code.md (C0X part)",
+ "gpu": false,
+ "floor": {
+  "grad": 0.0,
+  "hvp": 0.0,
+  "v": 0.0,
+  "q": 0.0
+ },
+ "floor_note": "floor2 (=0.0 on every quantity, same-probe pairing, 4 repeats) supersedes smoke_checks.json floor (1.65, cross-probe pooling). Same-probe floor=0 measures bitwise repeatability only; it does NOT bound systematic error (HVP-proxy truncation, bf16 master weights, Adam eps denominators, 8-probe sampling bias, axis mismatch).",
+ "inputs_c0_sha256": {
+  "config.json": "e00ce243cd05527b38c63e1a7c81beead1ee89396b3f025399ffbb41892bd1a5",
+  "summary.json": "ef778791d80eb45e99ac3401abe45032deee2460046588c797bf37ba0579e06d",
+  "local_geometry_predictions.csv": "cc1d4b93c9e1592d0fe4ab1c7bd77752bd9c08c35b55ef1ac294e4a9b1f10fe6",
+  "shadow_update_predictions.csv": "44a4530531d7de49df10536b02bd6013ba759f640769a85cd830332a534445de",
+  "cell_metrics.csv": "83edfaffeac170d3589728a955c842e7e3b8e7486e3816930dfb5a0f6c676c4b",
+  "readout_balance.csv": "bb775a163f30325c74cc91ab8479551f239c3a6f9d1bf505872ff42d256f13e1",
+  "smoke_checks.json": "184d01938118bf2a954288724805b73fcd939dac200e0f0d32ad94d7291e3ebe",
+  "smoke_checks_floor2.json": "cb64ea2f7d704aad939fd4615e177d9361c7e1e7412c056a9ba8c277c4c72762",
+  "budget_log.jsonl": "50d8b44d3619b1f0bba088f0250047d55bc6b537af90b6f951646654b09f22e3",
+  "runs/anchor_records.jsonl": "a99f3513697255dae8c4c437bb86c61c5e3094f5e5f0250ce4448766bafbdb30",
+  "runs/step_records.jsonl": "6d06235ff9f98e47229556bdd4f87a1adc7bcbce43b9d4bf73be87d752524897"
+ },
+ "anchor_set_A": {
+  "R": [
+   "A@t0",
+   "A@t48",
+   "Bp@t0",
+   "Bp@t16",
+   "Bp@t48",
+   "Bm@t0",
+   "Bm@t48"
+  ],
+  "C": [
+   "A@t0",
+   "A@t48",
+   "Bp@t0",
+   "Bp@t16",
+   "Bp@t48",
+   "Bm@t0",
+   "Bm@t48"
+  ]
+ },
+ "aggregate_E_recalc": {
+  "R": {
+   "field": 0.5291416427462751,
+   "shadow_over_AU": 0.43325761366123716
+  },
+  "C": {
+   "field": 0.4676254198156709,
+   "shadow_over_AU": 0.4055869175206876
+  }
+ },
+ "halfbank_aggregate": "DATA_MISSING (per-half SSE/TSS not saved in C0 artifacts)"
+}

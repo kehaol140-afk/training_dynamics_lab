@@ -1,0 +1,10 @@
+axis_id,data_source,sample_selection,n_samples,tokenizer_context,loss_reduction,label_mask,units,eval_mode_dropout,precision,first_access,used_for_action_selection,overlap_status,notes
+L_train,D0=pretrain_t2t_mini.jsonl前4096行(train_indices=3936),确定性partition+stream seed重推导,~8条/step×128ctx,Minimind vocab6400 ctx128,CE mean over valid tokens per microbatch ÷ accum(2)求和,ignore_index=-100; 每行127个预测位,nats,train模式 dropout=0,bf16 autocast+fp32 master,所有训练轮,否(训练介质本身; 干预经train batch施加),与probe/eval按ID不相交,名义1024 token/step; 满行≈1016 loss-bearing; D0样本均值114.9 tokens
+probe_q,D0内独立probe集(4096=3936+32+128),冻结32条(seed注册),32,同上进,q=eval模式前向+autograd.grad逐分量; 无reduction,n/a,nats梯度范数,eval模式 dropout=0,bf16(A0C)/fp32(C1 hvp_fp32),A0C起,是(干预方向构造=q),与train/eval不相交,V_diag=v_score排序前8 ID
+V_diag,v_score排序前8个样本ID,1 chunk单batch,8,同上,CE mean over valid tokens,nats,eval dropout=0,fp32读数,C0/C1几何轮,否(记账读出W/K与q+固定方向),是V_score子集,C0/C1 readout轴; A0T绝对轴5e-4不可验证声明来源
+V_score,sorted(eval_indices)偶数位,a0g validation_split冻结,64,同上,逐batch CE mean再np.mean(8批),nats,eval dropout=0,bf16 autocast读数,A0C/A0O-A0U全部chi与FD参考,是(A0T/A0U controller与schedule选择依据),与V_eval不相交;A0T/A0U评估与选择同流(in-sample),A0O-A0U唯一读出轴; 参与动作反复选择故非独立final
+V_eval,sorted(eval_indices)奇数位,a0g validation_split冻结,64,同上,同V_score,nats,eval dropout=0,bf16(A0G/A0K)/fp32(A0H20),A0G/A0H/A0K/A0L决策效用,是(动作效用评价与选择),与V_score不相交; 与C0 v_eval为同一split,被A0G/A0K等反复用于动作评价→非独立最终测试
+v_monitor,生产代码不存在,—,0,—,—,—,—,—,—,—,—,仅见于审计建议文档; 无监控轴
+V_final,生产代码不存在,—,0,—,—,—,—,—,—,—,—,无独立最终测试集; A0K/A0L的v_eval@128是最接近者但已参与选择
+G1a_G1b_train,D0(与v07同),seeds 2042-2044 stage 26/64/102,同v07,同L_train,nats,bf16,2026-09-16,否,—,26M/100M scale-only复制
+G2_train,D1=pretrain_hq.jsonl(revision 3a9bbe61),seed 60202601前4096索引,同v07,同L_train,nats,bf16,2026-09-16,否,与D0 shingle Jaccard 1.6e-7几乎不相交,数据分布泛化轮

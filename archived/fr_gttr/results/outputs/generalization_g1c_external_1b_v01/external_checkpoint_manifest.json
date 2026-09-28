@@ -1,0 +1,113 @@
+{
+  "protocol": "FR_G1C_EXTERNAL_1B_STRESS_TEST_V01",
+  "manifest_kind": "EXTERNAL_CHECKPOINT_SCREENING",
+  "created_at_utc": "2026-09-16T16:05:00Z",
+  "screening_rule": "B1/B2: primary=AllenAI OLMo-1B official; require unsharded checkpoint containing model+optimizer+train state; never fabricate optimizer state; switch only within official AllenAI OLMo ~1B series, only before any scientific result, with recorded reason; else EXTERNAL_CHECKPOINT_UNAVAILABLE.",
+  "primary_candidate": {
+    "repo": "allenai/OLMo-1B",
+    "license": "apache-2.0",
+    "architecture": "OLMoForCausalLM (hf_olmo): d_model=2048, n_layers=16, n_heads=16, vocab=50280, max_sequence_length=2048, rope, swiglu, weight_tying, precision=amp_bf16",
+    "approx_params": "1.24B",
+    "training_stack_from_native_config": {
+      "source": "allenai/OLMo-1B-0724-954000steps-unsharded config.yaml (screening_evidence/OLMo-1B-0724_unsharded_config.yaml)",
+      "optimizer": "adamw, lr=4e-4, weight_decay=0.1, betas=[0.9,0.95]",
+      "scheduler": "cosine_with_warmup, t_warmup=10485760000 tokens, t_max=3e12, alpha_f=0.1",
+      "grad_clip": "max_grad_norm=1.0 (warmup over 2097152000 tokens at factor 5.0)",
+      "precision": "amp_bf16",
+      "attention": "flash_attention=true (0724 run); original 2024-02 run flash_attention=false",
+      "global_train_batch_size": 512,
+      "device_train_microbatch_size": 4,
+      "save_interval": 1000,
+      "data": "s3://ai2-llm/preprocessed/olmo-mix/v1_6-decontaminated/... (Dolma v1.6 mix; raw Dolma public at allenai/dolma)",
+      "checkpointer": "sharded_checkpointer=olmo_core, reset_optimizer_state=false"
+    },
+    "meets_B1_criteria_in_principle": [
+      "~1B autoregressive Transformer",
+      "AdamW",
+      "global grad clipping = 1.0",
+      "public intermediate checkpoints (336 revisions, every 1000 steps, step20000..step738020)"
+    ],
+    "fails_B1_decisive_requirement": "no optimizer state (optim.safetensors/equivalent) and no train state in ANY revision; every revision carries only model weights (model.safetensors, pytorch_model.bin) + tokenizer/config"
+  },
+  "screened_repos": [
+    {
+      "repo": "allenai/OLMo-1B",
+      "revisions_checked": [
+        "main",
+        "step20000-tokens84B",
+        "step50000-tokens210B",
+        "step114000-tokens478B",
+        "step380000-tokens1594B",
+        "step442000-tokens1854B",
+        "step502000-tokens2106B",
+        "step560000-tokens2349B",
+        "step621000-tokens2605B",
+        "step738020-tokens3095B"
+      ],
+      "n_revisions_total": 336,
+      "state_files_found": [],
+      "verdict": "model-only"
+    },
+    {
+      "repo": "allenai/OLMo-1B-hf",
+      "note": "HF-format variant",
+      "verdict": "model-only (HF format never carries optimizer state)"
+    },
+    {
+      "repo": "allenai/OLMo-1B-0724-hf",
+      "verdict": "model-only"
+    },
+    {
+      "repo": "allenai/OLMo-1B-0724-954000steps-unsharded",
+      "revisions_checked": [
+        "main"
+      ],
+      "files": [
+        "config.yaml",
+        "model.safetensors"
+      ],
+      "state_files_found": [],
+      "verdict": "model-only despite 'unsharded' name (no optim.pt/train.pt)"
+    },
+    {
+      "repo": "allenai/OLMo-2-0425-1B",
+      "revisions_checked": [
+        "main",
+        "stage1-step0-tokens0B",
+        "stage1-step1300000-tokens2727B",
+        "stage2-ingredient3-step23852-tokens51B"
+      ],
+      "n_revisions_total": 268,
+      "state_files_found": [],
+      "verdict": "model-only"
+    },
+    {
+      "repo": "allenai/OLMoE-1B-7B-0924",
+      "verdict": "excluded: MoE (1B active / 7B total), not a dense ~1B autoregressive transformer; also model-only"
+    },
+    {
+      "repo": "allenai/OLMo-7B",
+      "revisions_checked": [
+        "step279000-tokens1234B (sample of 559)"
+      ],
+      "state_files_found": [],
+      "verdict": "model-only; also out of resource scope (7B)"
+    }
+  ],
+  "dead_official_urls": [
+    {
+      "url": "https://olmo-checkpoints.org/",
+      "probe": "HTTP 404",
+      "date": "2026-09-16"
+    }
+  ],
+  "no_science_performed": true,
+  "no_result_seen_before_conclusion": true,
+  "conclusion": "EXTERNAL_CHECKPOINT_UNAVAILABLE",
+  "screening_evidence_hashes_sha256": {
+    "OLMo-1B-0724_unsharded_config.yaml": "2b3d838854d18f6e59c494a8ddef91e0efa2eb2b8de5f3af6b65526559b0131b",
+    "OLMo-1B_HF_README.md": "b1e5c82e6b36de5dd7756017308eacba7483c1647aa23aeb041007fa7a53390f",
+    "OLMo-1B_main_config.json": "89767baeb3784222457a8e18e7821640bd45021cb7d4b3b1c0d7de5a7ab59c9d",
+    "OLMo-2-0425-1B_main_config.json": "3dc581384d61b3366fc34a95d12c20e595014ea62352469c17c3e3a77f32882a"
+  }
+}

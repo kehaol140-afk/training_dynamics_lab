@@ -1,0 +1,19 @@
+{
+ "protocol_semantics": {
+  "T1_cross_step_second_term": "条件均值可非零（omega_t 揭示后 theta_next 已依赖它）；本轮不分别测量，两项标 NOT_MEASURED",
+  "T2_tracking_index": "m_{t+1}=b1 m_t+(1-b1)c_t（更新前 raw state 递推）；I_v 条件期望=nu-v，单样本二阶矩另含 variance；INNOVATION_PROXY 不称真实 tracking error",
+  "T3_ema_coeffs": "h_half(b1=0.9)=6.58 steps；h_half(b2=0.999)=692.8 steps；token_half=6737/709428（Btok=1024）；bias-corrected 旧 state 系数 w_old=beta^H(1-beta^n0)/(1-beta^(n0+H))，见 ema_timescales.csv；仅滤波权重",
+  "T4_radial_tangent": "r_total^2=b_rad^2+r_tangent^2；零/小分母 NA+tied 去重",
+  "T5_sum_count": "全库 mean=总sum/总count；无权平均 batch mean 被拒（构造反例测试）",
+  "T6_prefix": "tail wrapper：gm<=256 逐位=旧公式、gm>256 恒定 5e-5、拒 horizon/lr 重拉伸；128-vs-256 请求的 LR 与 batch 前缀恒等",
+  "T7_hit_rules": "两个连续既定 monitor 检查点<=ell 记 detected_hit（第二点）；cap 不当 hit；保留 censored",
+  "T8_exclusion_counter": "train 与 monitor/final 行零相交；counter 尝试即计（成功/失败/retry 同权）"
+ },
+ "test_files": [
+  "research/tests/test_phase_a_native_calibration_v01.py (13 tests)",
+  "research/tests/test_native_schedule.py (reused)",
+  "research/tests/test_stream_rng.py (reused)",
+  "research/tests/test_full_state_roundtrip.py (reused)"
+ ],
+ "result": "17 tests OK (unittest)"
+}

@@ -1,0 +1,42 @@
+{
+  "manifest_name": "FR_G1C_OLMO_DIRECT_CHECKPOINT_AVAILABILITY_RECHECK_V01",
+  "frozen_at_utc": "2026-09-16T16:49:26Z",
+  "selection_rule": "step-based only, from official configs/official-0425/OLMo-2-0425-1B.csv (stage1 run, steps 0..1907359, 195 entries); EARLIEST=first legal entry (step 0); EARLY/MIDDLE/LATE = nearest listed step to 20%/50%/80% of final step 1907359. Frozen BEFORE any HTTP probing; no cherry-picking by download success.",
+  "csv_sha256": "3db00360291861898a85baceccc275442d7d5ad7f3a97431a2ca2bf0e89c9e3b",
+  "files_to_probe_per_checkpoint": [
+    "config.yaml",
+    "train.pt",
+    "model.safetensors",
+    "optim.safetensors"
+  ],
+  "pt_fallback_if_safetensors_missing": [
+    "model.pt",
+    "optim.pt"
+  ],
+  "selected_checkpoints": [
+    {
+      "role": "EARLIEST_LEGAL",
+      "step": 0,
+      "progress_pct": 0.0,
+      "url": "https://olmo-checkpoints.org/ai2-llm/peteish1/step0-unsharded/"
+    },
+    {
+      "role": "EARLY_~20%",
+      "step": 380000,
+      "progress_pct": 19.92283571157816,
+      "url": "https://olmo-checkpoints.org/ai2-llm/peteish1/step380000-unsharded/"
+    },
+    {
+      "role": "MIDDLE_~50%",
+      "step": 950000,
+      "progress_pct": 49.80708927894539,
+      "url": "https://olmo-checkpoints.org/ai2-llm/peteish1/step950000-unsharded/"
+    },
+    {
+      "role": "LATE_~80%",
+      "step": 1530000,
+      "progress_pct": 80.21562799661731,
+      "url": "https://olmo-checkpoints.org/ai2-llm/peteish1/step1530000-unsharded/"
+    }
+  ]
+}

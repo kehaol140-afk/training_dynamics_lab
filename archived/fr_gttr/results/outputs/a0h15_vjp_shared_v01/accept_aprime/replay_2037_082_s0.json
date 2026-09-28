@@ -1,0 +1,36 @@
+{
+ "mode": "replay_only",
+ "backend": "native",
+ "H": 4,
+ "M": 4,
+ "lambda": 0.05,
+ "v_score": {
+  "0": 7.123793303966522,
+  "1": 7.123557806015015,
+  "2": 7.1236125230789185,
+  "3": 7.123798966407776,
+  "4": 7.124072849750519
+ },
+ "gain_vs_noop": {
+  "0": 0.0,
+  "1": 0.00023549795150756836,
+  "2": 0.00018078088760375977,
+  "3": -5.662441253662109e-06,
+  "4": -0.00027954578399658203
+ },
+ "chosen_id": 1,
+ "choose_noop": false,
+ "counters": {
+  "baseline_steps": 0,
+  "candidate_grad_calls": 0,
+  "hvp_calls": 0,
+  "reverse_adjoint_steps": 0,
+  "clip_transpose_calls": 0,
+  "endpoint_grad_calls": 0,
+  "scoring_dot_calls": 0,
+  "replay_branches": 5,
+  "replay_native_steps": 20,
+  "replay_scoring_calls": 5,
+  "outer_autograd_backward_calls": 0
+ }
+}

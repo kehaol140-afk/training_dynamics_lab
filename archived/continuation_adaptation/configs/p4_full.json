@@ -1,0 +1,905 @@
+{
+  "config_id": "CONTINUATION_ADAPTATION_P4_FULL_V01",
+  "date_frozen": "2026-09-26",
+  "protocol_doc": "docs/P4_PROTOCOL.md",
+  "supersedes": "smoke_v01 schedule placeholder (docs/EXPERIMENT_PROTOCOL.md §2) for P4 only; smoke protocol unchanged",
+  "research_question_frozen": "Under changed compute budget (B = T_remaining/2) and changed AdamW hyperparameter schedule (compressed LR schedule, beta2 migration), does inherited optimizer state (m,v,step) remain appropriate, and can simple zero-reset state adaptation (C1/C2) beat a carefully LR-tuned strong continuation baseline (A)? Falsification experiment; negative result acceptable and final.",
+  "lab_root_relative": {
+    "bank_dir": "legacy_fluctuation_response/outputs/e3_confirmatory/v07",
+    "minimind_base": "minimind_base"
+  },
+  "checkpoints": {
+    "source": "v07 state bank, read-only, no new checkpoints",
+    "n_seeds": 8,
+    "n_positions": 7,
+    "n_cells": 56,
+    "seeds": [
+      2030,
+      2031,
+      2032,
+      2033,
+      2034,
+      2035,
+      2036,
+      2037
+    ],
+    "state_steps": [
+      46,
+      52,
+      58,
+      64,
+      70,
+      76,
+      82
+    ],
+    "planned_total_optimizer_steps": 128,
+    "partition_sha256": "5ecaf0a3533d5dddd3fe2a768f13f5f8131cb620cb78412c35df5467539391f4",
+    "corpus": {
+      "subset_relpath": "e3c_subset.jsonl",
+      "subset_sha256_frozen": "1e657af9baae0784e582d82ef936160473aa069878e422ef48683a718056b0f4",
+      "partition_relpath": "partition_v07.json"
+    },
+    "cells": [
+      {
+        "cell_id": "s2030_t046",
+        "seed": 2030,
+        "state_optimizer_step": 46,
+        "state_relpath": "seed_2030/states/state_step_046.pt",
+        "state_sha256": "553ae69d89a0713f4f8f5dd6a5aab215eb71679177bc305980690872d29909e8",
+        "t_remaining": 82,
+        "budget_optimizer_steps": 41,
+        "budget_micro_steps": 82,
+        "train_batch_seed": 3734
+      },
+      {
+        "cell_id": "s2030_t052",
+        "seed": 2030,
+        "state_optimizer_step": 52,
+        "state_relpath": "seed_2030/states/state_step_052.pt",
+        "state_sha256": "d93958bbf42f2070916ad239bb36568f62ef0f987463bf0477704827d9a5c7f2",
+        "t_remaining": 76,
+        "budget_optimizer_steps": 38,
+        "budget_micro_steps": 76,
+        "train_batch_seed": 3734
+      },
+      {
+        "cell_id": "s2030_t058",
+        "seed": 2030,
+        "state_optimizer_step": 58,
+        "state_relpath": "seed_2030/states/state_step_058.pt",
+        "state_sha256": "fcff48b19898f81b7b1d944fd8114f56bda8eb2ef61304d6218a83367e1a8246",
+        "t_remaining": 70,
+        "budget_optimizer_steps": 35,
+        "budget_micro_steps": 70,
+        "train_batch_seed": 3734
+      },
+      {
+        "cell_id": "s2030_t064",
+        "seed": 2030,
+        "state_optimizer_step": 64,
+        "state_relpath": "seed_2030/states/state_step_064.pt",
+        "state_sha256": "f3ef39a934e2b030287395575c2beaaa63c26ef8d0c0633f3c8359011b61ed96",
+        "t_remaining": 64,
+        "budget_optimizer_steps": 32,
+        "budget_micro_steps": 64,
+        "train_batch_seed": 3734
+      },
+      {
+        "cell_id": "s2030_t070",
+        "seed": 2030,
+        "state_optimizer_step": 70,
+        "state_relpath": "seed_2030/states/state_step_070.pt",
+        "state_sha256": "4fec88cc20e0506c54a34d004a92df27dbadd28d785a09967b2c29cf152805c4",
+        "t_remaining": 58,
+        "budget_optimizer_steps": 29,
+        "budget_micro_steps": 58,
+        "train_batch_seed": 3734
+      },
+      {
+        "cell_id": "s2030_t076",
+        "seed": 2030,
+        "state_optimizer_step": 76,
+        "state_relpath": "seed_2030/states/state_step_076.pt",
+        "state_sha256": "009fb55c9075660624ec4e7729be4ad53d0ac042fcf8f1dc30a1ced907b1f963",
+        "t_remaining": 52,
+        "budget_optimizer_steps": 26,
+        "budget_micro_steps": 52,
+        "train_batch_seed": 3734
+      },
+      {
+        "cell_id": "s2030_t082",
+        "seed": 2030,
+        "state_optimizer_step": 82,
+        "state_relpath": "seed_2030/states/state_step_082.pt",
+        "state_sha256": "74188e8d0ccc5d24e0d724bb1296e373b4554affa0b3e7b2134e4bb0089001f2",
+        "t_remaining": 46,
+        "budget_optimizer_steps": 23,
+        "budget_micro_steps": 46,
+        "train_batch_seed": 3734
+      },
+      {
+        "cell_id": "s2031_t046",
+        "seed": 2031,
+        "state_optimizer_step": 46,
+        "state_relpath": "seed_2031/states/state_step_046.pt",
+        "state_sha256": "7b214cbd4ff806739bfa16af0df101d5024181e07f2c6e18a244b4999eee2d14",
+        "t_remaining": 82,
+        "budget_optimizer_steps": 41,
+        "budget_micro_steps": 82,
+        "train_batch_seed": 3735
+      },
+      {
+        "cell_id": "s2031_t052",
+        "seed": 2031,
+        "state_optimizer_step": 52,
+        "state_relpath": "seed_2031/states/state_step_052.pt",
+        "state_sha256": "cea357a2bd1e2faaa58834afc291b5b8a355962dacb2d37cfff05ac2073ca28b",
+        "t_remaining": 76,
+        "budget_optimizer_steps": 38,
+        "budget_micro_steps": 76,
+        "train_batch_seed": 3735
+      },
+      {
+        "cell_id": "s2031_t058",
+        "seed": 2031,
+        "state_optimizer_step": 58,
+        "state_relpath": "seed_2031/states/state_step_058.pt",
+        "state_sha256": "5b043d9ac61c76a2552f51d57a29f9594b724157d29365d39793be24224e7d49",
+        "t_remaining": 70,
+        "budget_optimizer_steps": 35,
+        "budget_micro_steps": 70,
+        "train_batch_seed": 3735
+      },
+      {
+        "cell_id": "s2031_t064",
+        "seed": 2031,
+        "state_optimizer_step": 64,
+        "state_relpath": "seed_2031/states/state_step_064.pt",
+        "state_sha256": "340fb94a4fd24be74a9569a97dd33e8e76667e79ed7eebe668233563637ba987",
+        "t_remaining": 64,
+        "budget_optimizer_steps": 32,
+        "budget_micro_steps": 64,
+        "train_batch_seed": 3735
+      },
+      {
+        "cell_id": "s2031_t070",
+        "seed": 2031,
+        "state_optimizer_step": 70,
+        "state_relpath": "seed_2031/states/state_step_070.pt",
+        "state_sha256": "77a98f8e07d007ff48631d0d96e1cc7833fadfe4a600da84f3397df604808805",
+        "t_remaining": 58,
+        "budget_optimizer_steps": 29,
+        "budget_micro_steps": 58,
+        "train_batch_seed": 3735
+      },
+      {
+        "cell_id": "s2031_t076",
+        "seed": 2031,
+        "state_optimizer_step": 76,
+        "state_relpath": "seed_2031/states/state_step_076.pt",
+        "state_sha256": "148862d3508dea25636ca68a7d4827856a1e94a2ad5405ec67640419c7a12e65",
+        "t_remaining": 52,
+        "budget_optimizer_steps": 26,
+        "budget_micro_steps": 52,
+        "train_batch_seed": 3735
+      },
+      {
+        "cell_id": "s2031_t082",
+        "seed": 2031,
+        "state_optimizer_step": 82,
+        "state_relpath": "seed_2031/states/state_step_082.pt",
+        "state_sha256": "37415502534f8637e35ab001b52a57021f10322ef320336d08421538e8d71ba0",
+        "t_remaining": 46,
+        "budget_optimizer_steps": 23,
+        "budget_micro_steps": 46,
+        "train_batch_seed": 3735
+      },
+      {
+        "cell_id": "s2032_t046",
+        "seed": 2032,
+        "state_optimizer_step": 46,
+        "state_relpath": "seed_2032/states/state_step_046.pt",
+        "state_sha256": "5f88bedbb2860172b066a157005a1763b38fc90c52b7983baf50fbba91ca70ea",
+        "t_remaining": 82,
+        "budget_optimizer_steps": 41,
+        "budget_micro_steps": 82,
+        "train_batch_seed": 3736
+      },
+      {
+        "cell_id": "s2032_t052",
+        "seed": 2032,
+        "state_optimizer_step": 52,
+        "state_relpath": "seed_2032/states/state_step_052.pt",
+        "state_sha256": "6a09e04c623418fc2442176f39f4360e0bd4cc3f3551e29680255afd93c2df97",
+        "t_remaining": 76,
+        "budget_optimizer_steps": 38,
+        "budget_micro_steps": 76,
+        "train_batch_seed": 3736
+      },
+      {
+        "cell_id": "s2032_t058",
+        "seed": 2032,
+        "state_optimizer_step": 58,
+        "state_relpath": "seed_2032/states/state_step_058.pt",
+        "state_sha256": "08960e81d72135ac681d740998bf7399a467008cb945630eed5432fbc0681a7c",
+        "t_remaining": 70,
+        "budget_optimizer_steps": 35,
+        "budget_micro_steps": 70,
+        "train_batch_seed": 3736
+      },
+      {
+        "cell_id": "s2032_t064",
+        "seed": 2032,
+        "state_optimizer_step": 64,
+        "state_relpath": "seed_2032/states/state_step_064.pt",
+        "state_sha256": "e9efa97c2f6e8b2597eea181a2922b0153e31961d42c4a3e71fbffae6d5223d0",
+        "t_remaining": 64,
+        "budget_optimizer_steps": 32,
+        "budget_micro_steps": 64,
+        "train_batch_seed": 3736
+      },
+      {
+        "cell_id": "s2032_t070",
+        "seed": 2032,
+        "state_optimizer_step": 70,
+        "state_relpath": "seed_2032/states/state_step_070.pt",
+        "state_sha256": "f0dd99eb7c164b3454a79c3277e4a7a10b8f7016d0f64e10f315956f529ac15f",
+        "t_remaining": 58,
+        "budget_optimizer_steps": 29,
+        "budget_micro_steps": 58,
+        "train_batch_seed": 3736
+      },
+      {
+        "cell_id": "s2032_t076",
+        "seed": 2032,
+        "state_optimizer_step": 76,
+        "state_relpath": "seed_2032/states/state_step_076.pt",
+        "state_sha256": "a5ae958422b98832fd6fdbff3f16456a01c45241f5ff10b848781cac0a29d779",
+        "t_remaining": 52,
+        "budget_optimizer_steps": 26,
+        "budget_micro_steps": 52,
+        "train_batch_seed": 3736
+      },
+      {
+        "cell_id": "s2032_t082",
+        "seed": 2032,
+        "state_optimizer_step": 82,
+        "state_relpath": "seed_2032/states/state_step_082.pt",
+        "state_sha256": "3a2d6a51c2e0013d22219befeaf2727ec201e19cded75db49d07ab6042fc1ccb",
+        "t_remaining": 46,
+        "budget_optimizer_steps": 23,
+        "budget_micro_steps": 46,
+        "train_batch_seed": 3736
+      },
+      {
+        "cell_id": "s2033_t046",
+        "seed": 2033,
+        "state_optimizer_step": 46,
+        "state_relpath": "seed_2033/states/state_step_046.pt",
+        "state_sha256": "480c76ff6ed4e379184f600d8adf3eedfb030e1aa7bdd663a1c11589a36d6433",
+        "t_remaining": 82,
+        "budget_optimizer_steps": 41,
+        "budget_micro_steps": 82,
+        "train_batch_seed": 3737
+      },
+      {
+        "cell_id": "s2033_t052",
+        "seed": 2033,
+        "state_optimizer_step": 52,
+        "state_relpath": "seed_2033/states/state_step_052.pt",
+        "state_sha256": "319555aef4d6adab3135101e2cb45892b2ac2788345e2d7db2e4ad9212a59c2b",
+        "t_remaining": 76,
+        "budget_optimizer_steps": 38,
+        "budget_micro_steps": 76,
+        "train_batch_seed": 3737
+      },
+      {
+        "cell_id": "s2033_t058",
+        "seed": 2033,
+        "state_optimizer_step": 58,
+        "state_relpath": "seed_2033/states/state_step_058.pt",
+        "state_sha256": "b0bd6214b6eac933459e35bc7ea37a81a9c600647254ec95133077cdeb23a3fe",
+        "t_remaining": 70,
+        "budget_optimizer_steps": 35,
+        "budget_micro_steps": 70,
+        "train_batch_seed": 3737
+      },
+      {
+        "cell_id": "s2033_t064",
+        "seed": 2033,
+        "state_optimizer_step": 64,
+        "state_relpath": "seed_2033/states/state_step_064.pt",
+        "state_sha256": "cc162373c73560a72288d887332b58cf539192895671bd7f6188fc20721b0c36",
+        "t_remaining": 64,
+        "budget_optimizer_steps": 32,
+        "budget_micro_steps": 64,
+        "train_batch_seed": 3737
+      },
+      {
+        "cell_id": "s2033_t070",
+        "seed": 2033,
+        "state_optimizer_step": 70,
+        "state_relpath": "seed_2033/states/state_step_070.pt",
+        "state_sha256": "5a0a9f7b1d42f290f256c47f9498e8ccf2cb54ca333c3b8fe2b7e409312388cb",
+        "t_remaining": 58,
+        "budget_optimizer_steps": 29,
+        "budget_micro_steps": 58,
+        "train_batch_seed": 3737
+      },
+      {
+        "cell_id": "s2033_t076",
+        "seed": 2033,
+        "state_optimizer_step": 76,
+        "state_relpath": "seed_2033/states/state_step_076.pt",
+        "state_sha256": "828b4bd5c92dce5d1f82a526434dd0f4b2f45c4fff9208be9d00a5c109666c7a",
+        "t_remaining": 52,
+        "budget_optimizer_steps": 26,
+        "budget_micro_steps": 52,
+        "train_batch_seed": 3737
+      },
+      {
+        "cell_id": "s2033_t082",
+        "seed": 2033,
+        "state_optimizer_step": 82,
+        "state_relpath": "seed_2033/states/state_step_082.pt",
+        "state_sha256": "aa8ef1eeacb28c577394b3e3cfd0faa40e6dbae62d22d14a0926062943c140fd",
+        "t_remaining": 46,
+        "budget_optimizer_steps": 23,
+        "budget_micro_steps": 46,
+        "train_batch_seed": 3737
+      },
+      {
+        "cell_id": "s2034_t046",
+        "seed": 2034,
+        "state_optimizer_step": 46,
+        "state_relpath": "seed_2034/states/state_step_046.pt",
+        "state_sha256": "42aa2966d552becb0eeda1896453a8384b54b1e1fdceffdc2d8bb7ec3907216d",
+        "t_remaining": 82,
+        "budget_optimizer_steps": 41,
+        "budget_micro_steps": 82,
+        "train_batch_seed": 3738
+      },
+      {
+        "cell_id": "s2034_t052",
+        "seed": 2034,
+        "state_optimizer_step": 52,
+        "state_relpath": "seed_2034/states/state_step_052.pt",
+        "state_sha256": "13f6fa1313a5824472b2f4d7c8096a1c49a87fb62635773b31bae46859c876bb",
+        "t_remaining": 76,
+        "budget_optimizer_steps": 38,
+        "budget_micro_steps": 76,
+        "train_batch_seed": 3738
+      },
+      {
+        "cell_id": "s2034_t058",
+        "seed": 2034,
+        "state_optimizer_step": 58,
+        "state_relpath": "seed_2034/states/state_step_058.pt",
+        "state_sha256": "641400b8b47c1bbe56bcf6ae7ebd3ddf244f346030ada5d3d4a467682cbd7336",
+        "t_remaining": 70,
+        "budget_optimizer_steps": 35,
+        "budget_micro_steps": 70,
+        "train_batch_seed": 3738
+      },
+      {
+        "cell_id": "s2034_t064",
+        "seed": 2034,
+        "state_optimizer_step": 64,
+        "state_relpath": "seed_2034/states/state_step_064.pt",
+        "state_sha256": "34b12e16ef85ee4fed3dac6d5bf1f8d8a2c02fa01d789ace3dc44e02f0f8cc3f",
+        "t_remaining": 64,
+        "budget_optimizer_steps": 32,
+        "budget_micro_steps": 64,
+        "train_batch_seed": 3738
+      },
+      {
+        "cell_id": "s2034_t070",
+        "seed": 2034,
+        "state_optimizer_step": 70,
+        "state_relpath": "seed_2034/states/state_step_070.pt",
+        "state_sha256": "d0ac7a2fce6ac46c9e98241e048cd63ab1cbb3547217693a60a1293b4d114b0b",
+        "t_remaining": 58,
+        "budget_optimizer_steps": 29,
+        "budget_micro_steps": 58,
+        "train_batch_seed": 3738
+      },
+      {
+        "cell_id": "s2034_t076",
+        "seed": 2034,
+        "state_optimizer_step": 76,
+        "state_relpath": "seed_2034/states/state_step_076.pt",
+        "state_sha256": "b7035ed6a91f195fc7f7ef69e80077aae6dace3e089012af4a77e87fc73c83e3",
+        "t_remaining": 52,
+        "budget_optimizer_steps": 26,
+        "budget_micro_steps": 52,
+        "train_batch_seed": 3738
+      },
+      {
+        "cell_id": "s2034_t082",
+        "seed": 2034,
+        "state_optimizer_step": 82,
+        "state_relpath": "seed_2034/states/state_step_082.pt",
+        "state_sha256": "e6b8de48b5716024cb4cc9ad9395a4d9a2a0b793624faf63af744cc6407f00a1",
+        "t_remaining": 46,
+        "budget_optimizer_steps": 23,
+        "budget_micro_steps": 46,
+        "train_batch_seed": 3738
+      },
+      {
+        "cell_id": "s2035_t046",
+        "seed": 2035,
+        "state_optimizer_step": 46,
+        "state_relpath": "seed_2035/states/state_step_046.pt",
+        "state_sha256": "baf26a6174eb30e3f4279da29dade056a0977c120a84bcd5b3f8d7e91e9114bb",
+        "t_remaining": 82,
+        "budget_optimizer_steps": 41,
+        "budget_micro_steps": 82,
+        "train_batch_seed": 3739
+      },
+      {
+        "cell_id": "s2035_t052",
+        "seed": 2035,
+        "state_optimizer_step": 52,
+        "state_relpath": "seed_2035/states/state_step_052.pt",
+        "state_sha256": "80a7b76930a2442c5db0d712f4cea60735672939f765ec04329d045b7de2508d",
+        "t_remaining": 76,
+        "budget_optimizer_steps": 38,
+        "budget_micro_steps": 76,
+        "train_batch_seed": 3739
+      },
+      {
+        "cell_id": "s2035_t058",
+        "seed": 2035,
+        "state_optimizer_step": 58,
+        "state_relpath": "seed_2035/states/state_step_058.pt",
+        "state_sha256": "5d84d935f079484e631da71ce8e8be8cf5d0305dc67e6042579585109f3b7060",
+        "t_remaining": 70,
+        "budget_optimizer_steps": 35,
+        "budget_micro_steps": 70,
+        "train_batch_seed": 3739
+      },
+      {
+        "cell_id": "s2035_t064",
+        "seed": 2035,
+        "state_optimizer_step": 64,
+        "state_relpath": "seed_2035/states/state_step_064.pt",
+        "state_sha256": "23305f4f2775446b8b77017f1a217801fdacf43f3d23b46262791ad531c486f6",
+        "t_remaining": 64,
+        "budget_optimizer_steps": 32,
+        "budget_micro_steps": 64,
+        "train_batch_seed": 3739
+      },
+      {
+        "cell_id": "s2035_t070",
+        "seed": 2035,
+        "state_optimizer_step": 70,
+        "state_relpath": "seed_2035/states/state_step_070.pt",
+        "state_sha256": "aba222d79a4dfea07b19219da1ab58ab3ef6702e1ea80be315e42a6cfd550f6c",
+        "t_remaining": 58,
+        "budget_optimizer_steps": 29,
+        "budget_micro_steps": 58,
+        "train_batch_seed": 3739
+      },
+      {
+        "cell_id": "s2035_t076",
+        "seed": 2035,
+        "state_optimizer_step": 76,
+        "state_relpath": "seed_2035/states/state_step_076.pt",
+        "state_sha256": "87dfcf7c0c183c5bb49219664589a82da95a72347ff14f59b797e4b0a3caecf6",
+        "t_remaining": 52,
+        "budget_optimizer_steps": 26,
+        "budget_micro_steps": 52,
+        "train_batch_seed": 3739
+      },
+      {
+        "cell_id": "s2035_t082",
+        "seed": 2035,
+        "state_optimizer_step": 82,
+        "state_relpath": "seed_2035/states/state_step_082.pt",
+        "state_sha256": "dc5af495d6f37319fbf8963c9e2ce8629a8793f5ded3609ed8578eb14043845f",
+        "t_remaining": 46,
+        "budget_optimizer_steps": 23,
+        "budget_micro_steps": 46,
+        "train_batch_seed": 3739
+      },
+      {
+        "cell_id": "s2036_t046",
+        "seed": 2036,
+        "state_optimizer_step": 46,
+        "state_relpath": "seed_2036/states/state_step_046.pt",
+        "state_sha256": "564c6a8fd4c571545f751a9f5c6a7fa03e52a9a721e5c7bf005107caced318b2",
+        "t_remaining": 82,
+        "budget_optimizer_steps": 41,
+        "budget_micro_steps": 82,
+        "train_batch_seed": 3740
+      },
+      {
+        "cell_id": "s2036_t052",
+        "seed": 2036,
+        "state_optimizer_step": 52,
+        "state_relpath": "seed_2036/states/state_step_052.pt",
+        "state_sha256": "54c04564e738b0ec8e4846209524f772a38b64f4a7b34c8d489cd9506e704b5e",
+        "t_remaining": 76,
+        "budget_optimizer_steps": 38,
+        "budget_micro_steps": 76,
+        "train_batch_seed": 3740
+      },
+      {
+        "cell_id": "s2036_t058",
+        "seed": 2036,
+        "state_optimizer_step": 58,
+        "state_relpath": "seed_2036/states/state_step_058.pt",
+        "state_sha256": "1ad516a4b29526da1ef7b92074865915fcc8e7bc18d2b0bba353361c6523dca8",
+        "t_remaining": 70,
+        "budget_optimizer_steps": 35,
+        "budget_micro_steps": 70,
+        "train_batch_seed": 3740
+      },
+      {
+        "cell_id": "s2036_t064",
+        "seed": 2036,
+        "state_optimizer_step": 64,
+        "state_relpath": "seed_2036/states/state_step_064.pt",
+        "state_sha256": "c3c65128ce3fbc13179f7856f3a08cccd8005b02dff6d5233f4cf7024a236fc6",
+        "t_remaining": 64,
+        "budget_optimizer_steps": 32,
+        "budget_micro_steps": 64,
+        "train_batch_seed": 3740
+      },
+      {
+        "cell_id": "s2036_t070",
+        "seed": 2036,
+        "state_optimizer_step": 70,
+        "state_relpath": "seed_2036/states/state_step_070.pt",
+        "state_sha256": "d2027525b93203123d605d2dc5909bcd943bb2f45c55cdb189c690b546cf1af7",
+        "t_remaining": 58,
+        "budget_optimizer_steps": 29,
+        "budget_micro_steps": 58,
+        "train_batch_seed": 3740
+      },
+      {
+        "cell_id": "s2036_t076",
+        "seed": 2036,
+        "state_optimizer_step": 76,
+        "state_relpath": "seed_2036/states/state_step_076.pt",
+        "state_sha256": "1a0a11cc89fc2e0295534917483799e18f0b0bbd0274f16e685e2b13c36e56b0",
+        "t_remaining": 52,
+        "budget_optimizer_steps": 26,
+        "budget_micro_steps": 52,
+        "train_batch_seed": 3740
+      },
+      {
+        "cell_id": "s2036_t082",
+        "seed": 2036,
+        "state_optimizer_step": 82,
+        "state_relpath": "seed_2036/states/state_step_082.pt",
+        "state_sha256": "2c3f57f03e13e00a38dfcde703660aaa6dc349cfa140ab73f25743cb9171ebf7",
+        "t_remaining": 46,
+        "budget_optimizer_steps": 23,
+        "budget_micro_steps": 46,
+        "train_batch_seed": 3740
+      },
+      {
+        "cell_id": "s2037_t046",
+        "seed": 2037,
+        "state_optimizer_step": 46,
+        "state_relpath": "seed_2037/states/state_step_046.pt",
+        "state_sha256": "cc309e432d3b4bc2ffc7eab9fe47aaf9c6a10593b1b5ae32ed55cdcdb7e104dc",
+        "t_remaining": 82,
+        "budget_optimizer_steps": 41,
+        "budget_micro_steps": 82,
+        "train_batch_seed": 3741
+      },
+      {
+        "cell_id": "s2037_t052",
+        "seed": 2037,
+        "state_optimizer_step": 52,
+        "state_relpath": "seed_2037/states/state_step_052.pt",
+        "state_sha256": "ee73de063beba24408244adb253b7846cf1626e10bcba075e10fff659bcdd79b",
+        "t_remaining": 76,
+        "budget_optimizer_steps": 38,
+        "budget_micro_steps": 76,
+        "train_batch_seed": 3741
+      },
+      {
+        "cell_id": "s2037_t058",
+        "seed": 2037,
+        "state_optimizer_step": 58,
+        "state_relpath": "seed_2037/states/state_step_058.pt",
+        "state_sha256": "423aec905d7ffe29767bfd0dbee3ac3e63baf31a12a2d3bb47ddb692e5d91dbe",
+        "t_remaining": 70,
+        "budget_optimizer_steps": 35,
+        "budget_micro_steps": 70,
+        "train_batch_seed": 3741
+      },
+      {
+        "cell_id": "s2037_t064",
+        "seed": 2037,
+        "state_optimizer_step": 64,
+        "state_relpath": "seed_2037/states/state_step_064.pt",
+        "state_sha256": "3eb1b8ca7891cd93e703b5bb657f1220f8219f70139acb22a7ca5cb42873cf15",
+        "t_remaining": 64,
+        "budget_optimizer_steps": 32,
+        "budget_micro_steps": 64,
+        "train_batch_seed": 3741
+      },
+      {
+        "cell_id": "s2037_t070",
+        "seed": 2037,
+        "state_optimizer_step": 70,
+        "state_relpath": "seed_2037/states/state_step_070.pt",
+        "state_sha256": "0bc7aff3c2f47862d3a6c197f8ead22368f03770a35c698aca587ecb648c6202",
+        "t_remaining": 58,
+        "budget_optimizer_steps": 29,
+        "budget_micro_steps": 58,
+        "train_batch_seed": 3741
+      },
+      {
+        "cell_id": "s2037_t076",
+        "seed": 2037,
+        "state_optimizer_step": 76,
+        "state_relpath": "seed_2037/states/state_step_076.pt",
+        "state_sha256": "2485ed6d95a3465d727464ba7e9cb7d6c21b11674dabae0c5c0c2021794b52b9",
+        "t_remaining": 52,
+        "budget_optimizer_steps": 26,
+        "budget_micro_steps": 52,
+        "train_batch_seed": 3741
+      },
+      {
+        "cell_id": "s2037_t082",
+        "seed": 2037,
+        "state_optimizer_step": 82,
+        "state_relpath": "seed_2037/states/state_step_082.pt",
+        "state_sha256": "a76caa48fc9df4fbb82251113bfdfc3bbbcf952c7cf8ce07e73cc063a5ffadab",
+        "t_remaining": 46,
+        "budget_optimizer_steps": 23,
+        "budget_micro_steps": 46,
+        "train_batch_seed": 3741
+      }
+    ]
+  },
+  "budget_rule": {
+    "name": "changed_budget_half_remaining_v1",
+    "formula": "B(cell) = floor((128 - t0) / 2); exact (T_remaining even for all 7 positions)",
+    "per_position": {
+      "46": {
+        "t_remaining": 82,
+        "B": 41
+      },
+      "52": {
+        "t_remaining": 76,
+        "B": 38
+      },
+      "58": {
+        "t_remaining": 70,
+        "B": 35
+      },
+      "64": {
+        "t_remaining": 64,
+        "B": 32
+      },
+      "70": {
+        "t_remaining": 58,
+        "B": 29
+      },
+      "76": {
+        "t_remaining": 52,
+        "B": 26
+      },
+      "82": {
+        "t_remaining": 46,
+        "B": 23
+      }
+    },
+    "note": "B in optimizer steps; micro steps = 2B; all arms within a cell receive identical B and identical batch stream (CRN)"
+  },
+  "model": {
+    "hidden_size": 256,
+    "num_hidden_layers": 4,
+    "max_seq_len": 128,
+    "use_moe": false
+  },
+  "train": {
+    "batch_size": 4,
+    "accumulation_steps": 2,
+    "grad_clip": 1.0,
+    "dtype": "bfloat16",
+    "base_lr": 0.0005,
+    "weight_decay": 0.01,
+    "train_batch_seed_rule": "seed + 1704 (as in bank preparation)",
+    "batch_stream": "batches_from_train_pool(partition.train_indices, batch_size, train_batch_seed, (t0+B)*accum)[t0*accum:] — identical across arms within cell"
+  },
+  "lr_schedule_transform": {
+    "name": "compressed_remaining_cosine_v1",
+    "get_lr": "minimind native: lr(gm) = base_lr * (0.1 + 0.45*(1+cos(pi*gm/256)))",
+    "remap": "for continuation micro step k = 1..2B: gm_lr(k) = t0*accum + (T_remaining/B)*k  (ratio exactly 2 for every position)",
+    "lr_cont": "lr(k) = lr_multiplier * get_lr(gm_lr(k), 256, base_lr)",
+    "lr_consumed_at_step": "value written at the accumulation-boundary micro batch (native semantics, native_schedule.set_native_micro_lr)",
+    "endpoint_property": "gm_lr(2B) = 256 exactly; final LR = 0.1*base_lr = 5e-5 for every cell (schedule completes within B in all cells)",
+    "shared_by_arms": "identical base schedule across all arms; ONLY arm A varies lr_multiplier during its grid; selected multiplier then applies to B/C1/C2/D"
+  },
+  "arms": {
+    "A": {
+      "betas": [
+        0.9,
+        0.999
+      ],
+      "reset_m": false,
+      "reset_v": false,
+      "reset_step": false
+    },
+    "B": {
+      "betas": [
+        0.9,
+        0.99
+      ],
+      "reset_m": false,
+      "reset_v": false,
+      "reset_step": false
+    },
+    "C1": {
+      "betas": [
+        0.9,
+        0.99
+      ],
+      "reset_m": false,
+      "reset_v": true,
+      "reset_step": false
+    },
+    "C2": {
+      "betas": [
+        0.9,
+        0.99
+      ],
+      "reset_m": true,
+      "reset_v": false,
+      "reset_step": false
+    },
+    "D": {
+      "betas": [
+        0.9,
+        0.99
+      ],
+      "reset_m": true,
+      "reset_v": true,
+      "reset_step": true
+    }
+  },
+  "arm_A_tuning": {
+    "grid_lr_multipliers": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "boundary_expansion": {
+      "0.5": [
+        0.25
+      ],
+      "2.0": [
+        4.0
+      ],
+      "rule": "expand once only, automatically, if argmin is at grid boundary; expanded best still at boundary -> accept and flag cell boundary_unresolved=true"
+    },
+    "selection_criterion": "final V_monitor NLL (lowest) at budget exhaustion, per cell",
+    "tie_rule": "diff <= 1e-6 -> prefer 1.0x, then smaller multiplier",
+    "selection_pool": "V_monitor ONLY (probe pool); V_final never read during selection or runs",
+    "downstream": "selected multiplier (post-expansion) applies to B/C1/C2/D of the same cell; no separate tuning for B/C/D",
+    "selection_timing": "after all A-grid runs of a cell complete; B/C/D runs of that cell start only after selection"
+  },
+  "evaluation": {
+    "v_monitor": {
+      "pool": "partition.probe_indices (32 samples, never trained on)",
+      "batch_size": 8,
+      "cadence_optimizer_steps": 8,
+      "also_at_final": true,
+      "usage": "arm A LR selection + monitor curves; may be inspected during runs"
+    },
+    "v_final": {
+      "pool": "partition.eval_indices (128 samples, never trained on)",
+      "batch_size": 8,
+      "usage": "PRIMARY metric only",
+      "sealing": "NOT computed during runs; computed exactly once, after ALL runs complete, by the sealed-evaluation script from saved final states; ledger with SHA256 of every evaluated state; SEAL_LOCK.json written before sealed evaluation"
+    },
+    "primary_metric": "final validation NLL (mean per-token CE on V_final at budget exhaustion)",
+    "primary_comparison": "C1 vs A_best and C2 vs A_best, per-cell paired",
+    "secondary_descriptive_only": [
+      "loss curve",
+      "pre-clip grad norm",
+      "||m|| ||v||",
+      "effective LR distribution",
+      "update norm",
+      "cos(update_A, update_X)",
+      "monitor NLL curve",
+      "recovery speed"
+    ],
+    "rule": "no success claim may be based on secondary metrics or early loss"
+  },
+  "run_outputs": {
+    "per_run": [
+      "metrics.json (NO V_final fields)",
+      "loss_curve.csv",
+      "optimizer_state_statistics.csv",
+      "final_state.pt (full_state format, for sealed eval)"
+    ],
+    "metrics_json_min_fields": [
+      "final_monitor_nll",
+      "best_monitor_nll",
+      "seed",
+      "checkpoint_step",
+      "arm",
+      "lr_multiplier",
+      "budget_steps",
+      "batch_manifest_sha256",
+      "model_hash_final"
+    ],
+    "update_vectors": "u_arm = vec(theta_final - theta_C0); ||u|| and cos(u_A, u_X) computed in sealed stage only"
+  },
+  "execution_order": [
+    "stage 0: SEAL_LOCK prerequisites; determinism spot-check (1 cell, arm A x1.0, rerun bitwise)",
+    "stage 1a: A-grid runs (3 multipliers x 56 cells, + automatic single boundary expansions)",
+    "stage 1b: per-cell selection on V_monitor -> selected multiplier ledger",
+    "stage 1c: B/C1/C2/D runs (4 arms x 56 cells) at selected multiplier",
+    "stage 2: sealed evaluation (V_final once, from final states, with SHA ledger)",
+    "stage 3: analysis vs frozen statistics and stop conditions (single pass)"
+  ],
+  "statistics": {
+    "paired_unit": "cell (seed x checkpoint): d = NLL_final(arm) - NLL_final(A_best) on V_final",
+    "primary_family": [
+      "C1 - A_best",
+      "C2 - A_best"
+    ],
+    "multiplicity": "Holm correction over the 2 primary comparisons, family alpha 0.05",
+    "cluster_note": "the 7 checkpoints within a seed come from ONE trajectory with overlapping continuation streams -> cell-level differences within a seed are correlated; primary inference clusters by seed",
+    "primary_test": "paired sign-flip permutation test on the 8 seed-level mean differences (20000 reps, resampling RNG seed 77080001); improvement = d < 0",
+    "primary_ci": "cluster bootstrap by seed (10000 reps, percentile) on mean paired difference",
+    "descriptive": [
+      "per-seed mean d (8 values)",
+      "per-checkpoint mean d (7 values)",
+      "mean/median/std of 56 d",
+      "naive cell-level bootstrap CI (labeled anti-conservative)"
+    ],
+    "secondary_comparisons_descriptive_only": [
+      "B - A_best",
+      "D - A_best",
+      "B - D",
+      "C1 - C2"
+    ]
+  },
+  "continue_conditions_ALL_required": {
+    "1_aggregate": "mean paired difference C - A_best < 0 (final V_final NLL)",
+    "2_seed_consistency": "seed-level mean d < 0 for at least 6 of 8 seeds",
+    "3_checkpoint_consistency": "checkpoint-level mean d < 0 for at least 5 of 7 positions",
+    "4_significance": "cluster permutation p < 0.05 after Holm for at least one of C1/C2",
+    "5_grid_robust": "A_best is post-expansion tuned A (automatic expansion in stage 1a); if C advantage exists only vs unexpanded/boundary-limited A it is not counted"
+  },
+  "stop_conditions_ANY_triggers": [
+    "C <= A_best on aggregate final V_final NLL",
+    "improvement appears only in early loss / recovery speed / monitor curve, not final NLL",
+    "improvement confined to a single seed (<6/8) or single checkpoint (<5/7)",
+    "improvement disappears against post-expansion LR-tuned A",
+    "Holm-corrected cluster permutation test not significant for either C1 or C2",
+    "technical failure rate > 4/56 cells (halt for review, counts as stop unless cause is fixed without protocol change)"
+  ],
+  "determinism_spot_check": {
+    "cell": "s2030_t064",
+    "arm": "A",
+    "lr_multiplier": 1.0,
+    "requirement": "bitwise identical loss_curve.csv and model_hash_final on rerun"
+  },
+  "estimated_runs": {
+    "A_grid": 168,
+    "boundary_expansions_expected": "0-56 (<=1 per cell)",
+    "BCD": 224,
+    "total_approx": "392-448",
+    "est_wall_single_gpu": "~4-6 h (h256, ~30 s/run incl. build+save)"
+  },
+  "forbidden": [
+    "changing any field of this config or docs/P4_PROTOCOL.md after stage 1a starts",
+    "generating new checkpoints or touching legacy/minimind_base/optimizer_sensitivity",
+    "new optimizer / GTTR / hypergradient / HVP / second-order / controller / moment-reconstruction methods",
+    "reading V_final before all runs complete (selection uses V_monitor only)",
+    "expanding arm A grid more than once, or per-result grid edits",
+    "modifying hypothesis, arms, metrics, statistics, or stop conditions based on results",
+    "interpreting secondary metrics as success"
+  ]
+}

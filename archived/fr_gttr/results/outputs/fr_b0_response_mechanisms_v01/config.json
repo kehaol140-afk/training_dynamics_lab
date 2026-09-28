@@ -1,0 +1,73 @@
+{
+  "protocol": "FR_B0_MECHANISM_VALIDATION_V01",
+  "frozen_at": "2026-09-20",
+  "frozen_before_any_b0_result": true,
+  "semantics": {
+    "u_definition": "u = log(eta/eta_native); multiplier = exp(u) (NOT 1+u)",
+    "persistent": "u applied at every optimizer step k=1..64: lr_k = snap_lr_k * exp(u)",
+    "pulse4_release": "u applied only at optimizer steps k=1..4; k>=5 restores native lr_k = snap_lr_k; theta/m/v formed during intervention are RETAINED; m1=b1*m+(1-b1)*c and v1=b2*v+(1-b2)*c^2 are lr-independent, so post-release m/v evolution is identical to persistent arm given identical gradients",
+    "pulse_is_not_a0p_impulse": true,
+    "H_units": "optimizer steps; microbatches = 2*H (accumulation_steps=2)",
+    "readouts": "H in {4,16,64} from ONE 64-step nested trajectory per arm (not re-sampled per H)",
+    "paired_arms": "all arms of a cell restore the identical full snapshot and use identical future stream (batch+dropout RNG); eval readouts wrapped in capture/restore RNG; eval runs in eval() mode and restores train()",
+    "horizon_consistency_requirement": "pulse4_release(u) == persistent(u) at H=4 bitwise (both intervene steps 1..4 only)"
+  },
+  "sample": {
+    "train_seeds": [2030, 2031, 2032],
+    "seed_selection_rule": "fixed ascending order of available v0.7 bank training seeds, first 3",
+    "checkpoints": [46, 82],
+    "checkpoint_rule": "absolute optimizer steps registered in v0.7 bank; both exist, no substitution needed",
+    "n_cells": 24,
+    "future_streams": {"dev": [7500, 7501], "audit": [7502, 7503]},
+    "stream_selection_rule": "new stream seeds 7500-7503 verified unused by all prior experiments (grep over research/ and frozen outputs)",
+    "stress_cases": [
+      {"seed": 2030, "step": 46, "stream_seed": 7110, "source": "A0T cells.jsonl aliased=false, chi_lr=+2.7390e-02"},
+      {"seed": 2030, "step": 64, "stream_seed": 7110, "source": "A0T cells.jsonl aliased=false, chi_lr=+1.9963e-03"}
+    ],
+    "stress_case_rule": "independent re-check of the 2 frozen A0T reversal cells on their original frozen stream; labeled STRESS, excluded from all main-sample statistics"
+  },
+  "arms": {
+    "T_steps": 64,
+    "per_cell_rollouts": [
+      "native(u=0)",
+      "persistent(-0.05)", "persistent(-0.025)", "persistent(+0.025)", "persistent(+0.05)",
+      "pulse4_release(-0.05)", "pulse4_release(-0.025)", "pulse4_release(+0.025)", "pulse4_release(+0.05)"
+    ],
+    "u_grid": [-0.05, -0.025, 0.0, 0.025, 0.05],
+    "stress_arms": ["native", "persistent(-0.05)", "persistent(+0.05)"]
+  },
+  "readout": {
+    "primary": "V_eval (A0G frozen validation_split v_eval, eval_batch_size=8, mean loss)",
+    "secondary": "V_score (continuity with A0O/A0T)",
+    "precision": "bf16 autocast, native attention backend (frozen v07 config, identical to A0O/A0T/A0U)"
+  },
+  "budget": {
+    "optimizer_update_cap": 18000,
+    "counting_rule": "every optimizer step executed by smoke + main + stress + frozen-runner reference replays counts; evals/HVP/CPU counted separately in gpu_budget_log.json (wall time), hidden nowhere",
+    "planned_main": 13824,
+    "planned_smoke": 448,
+    "planned_stress": 384,
+    "planned_total": 14656,
+    "headroom": 3344,
+    "no_auto_expansion": "checkpoint/seed/H/model/scan-density expansion forbidden; on overflow risk, stop and report"
+  },
+  "thresholds_frozen_before_results": {
+    "crn": "repeated native arm bitwise identical at all readouts (fail => stop and fix)",
+    "frozen_runner_agreement": "new-runner native endpoint L == a0q.run_channel_rollout(u=0) bitwise (fail => stop and fix)",
+    "pulse_persistent_H4": "pulse4_release(u) == persistent(u) at H=4 bitwise for each u: losses AND theta AND optimizer m/v/step (fail => stop and fix)",
+    "release_semantics": "post-release (H=16): pulse m/v DIVERGED from persistent m/v (any key; release != persistent continuation) AND pulse m/v CONTINUED from its own H=4 state (step counter +12, exp_avg moved, no None/reset) AND applied lr == snap native lr (fail => stop and fix)",
+    "release_semantics_correction_note": "2026-09-20 smoke stage: original wording 'post-release m/v bitwise identical to persistent' encoded a physically impossible invariant (post-release theta paths differ => gradients differ => m/v differ from step 5 on). Corrected BEFORE any main/stress results, during the smoke stage whose purpose is exactly to catch such errors. The valid bitwise m/v identity lives at H=4. Original failing evidence preserved in runs/smoke_checks_attempt1.json (release_m_v_retained_H16=false).",
+    "gain_resolution_floor": 1e-07,
+    "below_resolution_label": "UNRESOLVED",
+    "q_identifiability_rule": "Q identifiable only if (i) Q_fd(a=0.05) and Q_fd(a=0.025) have the same sign, AND (ii) |Q| > max(|Q_dev - Q_audit|, |Q(0.05) - Q(0.025)|) where dev/audit are the two-stream class means; otherwise UNRESOLVED (never clipped to positive, no epsilon padding)",
+    "q_positive_rule": "interior minimum formula u*=-chi/Q only if Q identifiable AND Q>0; if Q<=0 compare boundary actions vs zero; if UNRESOLVED output no curvature conclusion",
+    "dev_audit_rule": "quadratic fit on dev streams ({-0.025,0,+0.025}) checked for extrapolation to +/-0.05 on dev; stream-out generalization checked separately on audit; the two checks are labeled separately and never treated as independent validations of each other",
+    "v_grid_hindsight": "V_grid uses full per-cell loss curves => hindsight upper bound, not deployable value; any action chosen from real future rollouts or V_eval labeled oracle/hindsight",
+    "no_seed_averaging_of_parameters": true,
+    "stream_stats_note": "3 seeds x 2 checkpoints x 4 streams = 24 cells; timepoints/streams are NOT independent seeds; all inferential stats labeled pilot/exploratory; seed is the only independent cluster (n=3)"
+  },
+  "excluded_without_new_authorization": ["B1/B2 conditional quasi-stationarity closure", "26M/100M/1B", "new controller deployment", "new architecture", "long-horizon training", "energy claims"],
+  "local_quasi_stationarity": "NOT_TESTED this round (smooth curves are not evidence)",
+  "architecture_conclusion": "NOT_TESTED",
+  "training_energy_saving": "NOT_ESTABLISHED"
+}
