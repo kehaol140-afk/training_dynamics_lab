@@ -1,0 +1,407 @@
+=== f3.5 driver start Tue Sep 29 11:21:51 CST 2026 gpu=1 ===
+Tue Sep 29 11:21:51 CST 2026
+ 11:21:51 up 12:28,  5 users,  load average: 1.67, 1.62, 4.34
+               total        used        free      shared  buff/cache   available
+Mem:           125Gi       7.1Gi       112Gi       1.4Gi       8.4Gi       118Gi
+Swap:           32Gi        79Mi        31Gi
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdd       1007G  786G  171G  83% /
+Tue Sep 29 11:21:52 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 591.44         CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 5090        On  |   00000000:17:00.0  On |                  N/A |
+| 30%   35C    P0             65W /  575W |     437MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA GeForce RTX 5090        On  |   00000000:2A:00.0 Off |                  N/A |
+|  0%   31C    P8             15W /  575W |       0MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A              25      G   /Xwayland                             N/A      |
+|    1   N/A  N/A              25      G   /Xwayland                             N/A      |
++-----------------------------------------------------------------------------------------+
+[f3.5 2026-09-29 11:24:36] STREAM COMPLETE rc=1
+=== f3.5 driver start Tue Sep 29 11:26:34 CST 2026 gpu=1 ===
+Tue Sep 29 11:26:34 CST 2026
+ 11:26:34 up 12:33,  5 users,  load average: 7.49, 5.45, 5.28
+               total        used        free      shared  buff/cache   available
+Mem:           125Gi       7.1Gi        74Gi       1.4Gi        45Gi       118Gi
+Swap:           32Gi        79Mi        31Gi
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdd       1007G  786G  171G  83% /
+Tue Sep 29 11:26:34 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 591.44         CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 5090        On  |   00000000:17:00.0  On |                  N/A |
+| 30%   35C    P0             65W /  575W |     436MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA GeForce RTX 5090        On  |   00000000:2A:00.0 Off |                  N/A |
+|  0%   31C    P8             15W /  575W |       0MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A              25      G   /Xwayland                             N/A      |
+|    1   N/A  N/A              25      G   /Xwayland                             N/A      |
++-----------------------------------------------------------------------------------------+
+[f3.5 2026-09-29 11:26:56] STREAM COMPLETE rc=1
+=== f3.5 driver start Tue Sep 29 11:31:47 CST 2026 gpu=1 ===
+Tue Sep 29 11:31:47 CST 2026
+ 11:31:47 up 12:38,  5 users,  load average: 6.55, 6.20, 5.68
+               total        used        free      shared  buff/cache   available
+Mem:           125Gi       7.2Gi        37Gi       1.4Gi        83Gi       118Gi
+Swap:           32Gi        79Mi        31Gi
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdd       1007G  786G  171G  83% /
+Tue Sep 29 11:31:47 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 591.44         CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 5090        On  |   00000000:17:00.0  On |                  N/A |
+| 30%   35C    P0             65W /  575W |     437MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA GeForce RTX 5090        On  |   00000000:2A:00.0 Off |                  N/A |
+|  0%   32C    P8             15W /  575W |       0MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A              25      G   /Xwayland                             N/A      |
+|    1   N/A  N/A              25      G   /Xwayland                             N/A      |
++-----------------------------------------------------------------------------------------+
+[f3.5 2026-09-29 11:36:51] STREAM COMPLETE rc=1
+=== f3.5 driver start Tue Sep 29 11:37:14 CST 2026 gpu=1 ===
+Tue Sep 29 11:37:14 CST 2026
+ 11:37:23 up 12:44,  5 users,  load average: 16.38, 17.55, 11.25
+               total        used        free      shared  buff/cache   available
+Mem:           125Gi       7.1Gi        22Gi       1.4Gi        98Gi       118Gi
+Swap:           32Gi        84Mi        31Gi
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdd       1007G  825G  132G  87% /
+Tue Sep 29 11:37:23 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 591.44         CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 5090        On  |   00000000:17:00.0  On |                  N/A |
+| 30%   36C    P0             65W /  575W |     437MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA GeForce RTX 5090        On  |   00000000:2A:00.0 Off |                  N/A |
+|  0%   35C    P8             16W /  575W |       0MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A              25      G   /Xwayland                             N/A      |
+|    1   N/A  N/A              25      G   /Xwayland                             N/A      |
++-----------------------------------------------------------------------------------------+
+=== f3.5 driver start Tue Sep 29 14:44:32 CST 2026 gpu=1 ===
+Tue Sep 29 14:44:32 CST 2026
+ 14:44:32 up 15:51,  3 users,  load average: 1.12, 0.82, 9.12
+               total        used        free      shared  buff/cache   available
+Mem:           125Gi       5.1Gi       118Gi        40Mi       2.6Gi       120Gi
+Swap:           32Gi       1.9Mi        31Gi
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdd       1007G  825G  132G  87% /
+Tue Sep 29 14:44:32 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 591.44         CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 5090        On  |   00000000:17:00.0  On |                  N/A |
+| 30%   34C    P0             66W /  575W |     609MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA GeForce RTX 5090        On  |   00000000:2A:00.0 Off |                  N/A |
+|  0%   30C    P8             15W /  575W |       0MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A              25      G   /Xwayland                             N/A      |
+|    1   N/A  N/A              25      G   /Xwayland                             N/A      |
++-----------------------------------------------------------------------------------------+
+=== f3.5 driver start Tue Sep 29 15:42:17 CST 2026 gpu=1 ===
+Tue Sep 29 15:42:17 CST 2026
+ 15:42:17 up 16:49,  4 users,  load average: 4.83, 1.94, 2.75
+               total        used        free      shared  buff/cache   available
+Mem:           125Gi       4.7Gi       119Gi        40Mi       2.0Gi       120Gi
+Swap:           32Gi       1.7Mi        31Gi
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdd       1007G  825G  132G  87% /
+Tue Sep 29 15:42:17 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 591.44         CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 5090        On  |   00000000:17:00.0  On |                  N/A |
+| 30%   33C    P0             65W /  575W |     612MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA GeForce RTX 5090        On  |   00000000:2A:00.0 Off |                  N/A |
+|  0%   29C    P8             15W /  575W |       0MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A              25      G   /Xwayland                             N/A      |
+|    1   N/A  N/A              25      G   /Xwayland                             N/A      |
++-----------------------------------------------------------------------------------------+
+=== f3.5 driver start Tue Sep 29 16:05:38 CST 2026 gpu=1 ===
+Tue Sep 29 16:05:38 CST 2026
+ 16:05:38 up 17:12,  4 users,  load average: 35.24, 46.23, 38.86
+               total        used        free      shared  buff/cache   available
+Mem:           125Gi       7.8Gi       115Gi       1.2Gi       4.5Gi       117Gi
+Swap:           32Gi       1.0Gi        31Gi
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdd       1007G  826G  131G  87% /
+Tue Sep 29 16:05:38 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 591.44         CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 5090        On  |   00000000:17:00.0  On |                  N/A |
+| 30%   37C    P0             67W /  575W |     612MiB /  32607MiB |      1%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA GeForce RTX 5090        On  |   00000000:2A:00.0 Off |                  N/A |
+| 30%   54C    P1            308W /  575W |    4307MiB /  32607MiB |     55%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A              25      G   /Xwayland                             N/A      |
+|    0   N/A  N/A           14515      C   /python3.11                           N/A      |
+|    1   N/A  N/A              25      G   /Xwayland                             N/A      |
+|    1   N/A  N/A           14515      C   /python3.11                           N/A      |
++-----------------------------------------------------------------------------------------+
+[f3.5 2026-09-29 16:16:05] STREAM COMPLETE rc=1
+=== f3.5 driver start Tue Sep 29 16:25:36 CST 2026 gpu=1 ===
+Tue Sep 29 16:25:36 CST 2026
+ 16:25:36 up 17:32,  6 users,  load average: 1.02, 6.89, 19.89
+               total        used        free      shared  buff/cache   available
+Mem:           125Gi       8.6Gi       107Gi       1.4Gi        11Gi       116Gi
+Swap:           32Gi       836Mi        31Gi
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdd       1007G  826G  131G  87% /
+Tue Sep 29 16:25:36 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 591.44         CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 5090        On  |   00000000:17:00.0  On |                  N/A |
+| 30%   36C    P0             67W /  575W |     612MiB /  32607MiB |      1%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA GeForce RTX 5090        On  |   00000000:2A:00.0 Off |                  N/A |
+| 30%   56C    P1            550W /  575W |    5853MiB /  32607MiB |     91%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A              25      G   /Xwayland                             N/A      |
+|    0   N/A  N/A           28658      C   /python3.11                           N/A      |
+|    1   N/A  N/A              25      G   /Xwayland                             N/A      |
+|    1   N/A  N/A           28658      C   /python3.11                           N/A      |
++-----------------------------------------------------------------------------------------+
+[f3.5 2026-09-29 16:35:46] STREAM COMPLETE rc=1
+=== f3.5 driver start Tue Sep 29 16:36:26 CST 2026 gpu=1 ===
+Tue Sep 29 16:36:26 CST 2026
+ 16:36:26 up 17:43,  7 users,  load average: 15.40, 23.45, 23.37
+               total        used        free      shared  buff/cache   available
+Mem:           125Gi       5.4Gi       110Gi       1.4Gi        11Gi       120Gi
+Swap:           32Gi       833Mi        31Gi
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdd       1007G  826G  131G  87% /
+Tue Sep 29 16:36:26 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 591.44         CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 5090        On  |   00000000:17:00.0  On |                  N/A |
+| 30%   34C    P0             66W /  575W |     613MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA GeForce RTX 5090        On  |   00000000:2A:00.0 Off |                  N/A |
+|  0%   31C    P8             15W /  575W |       0MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A              25      G   /Xwayland                             N/A      |
+|    1   N/A  N/A              25      G   /Xwayland                             N/A      |
++-----------------------------------------------------------------------------------------+
+=== f3.5 driver start Tue Sep 29 17:41:48 CST 2026 gpu=1 ===
+Tue Sep 29 17:41:48 CST 2026
+ 17:41:48 up 18:48,  5 users,  load average: 1.49, 1.69, 11.03
+               total        used        free      shared  buff/cache   available
+Mem:           125Gi       4.9Gi       118Gi        40Mi       4.0Gi       120Gi
+Swap:           32Gi       1.9Mi        31Gi
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdd       1007G  826G  131G  87% /
+Tue Sep 29 17:41:48 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 591.44         CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 5090        On  |   00000000:17:00.0  On |                  N/A |
+| 30%   34C    P0             66W /  575W |     454MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA GeForce RTX 5090        On  |   00000000:2A:00.0 Off |                  N/A |
+|  0%   30C    P8             14W /  575W |       0MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A              25      G   /Xwayland                             N/A      |
+|    1   N/A  N/A              25      G   /Xwayland                             N/A      |
++-----------------------------------------------------------------------------------------+
+=== f3.5 driver start Tue Sep 29 18:07:57 CST 2026 gpu=1 ===
+Tue Sep 29 18:07:57 CST 2026
+ 18:07:57 up 19:14,  5 users,  load average: 1.72, 11.29, 17.91
+               total        used        free      shared  buff/cache   available
+Mem:           125Gi       5.3Gi       120Gi       1.4Gi       2.2Gi       120Gi
+Swap:           32Gi       872Mi        31Gi
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdd       1007G  826G  131G  87% /
+Tue Sep 29 18:07:57 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 591.44         CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 5090        On  |   00000000:17:00.0  On |                  N/A |
+| 30%   34C    P0             67W /  575W |     438MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA GeForce RTX 5090        On  |   00000000:2A:00.0 Off |                  N/A |
+|  0%   30C    P8             14W /  575W |       0MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A              25      G   /Xwayland                             N/A      |
+|    1   N/A  N/A              25      G   /Xwayland                             N/A      |
++-----------------------------------------------------------------------------------------+
+[f3.5 2026-09-29 20:02:25] STREAM COMPLETE rc=1
+=== f3.5 driver start Tue Sep 29 20:02:43 CST 2026 gpu=1 ===
+Tue Sep 29 20:02:43 CST 2026
+ 20:02:43 up 21:09,  5 users,  load average: 19.23, 23.72, 22.69
+               total        used        free      shared  buff/cache   available
+Mem:           125Gi       6.5Gi       109Gi       1.4Gi        11Gi       119Gi
+Swap:           32Gi       838Mi        31Gi
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdd       1007G  830G  126G  87% /
+Tue Sep 29 20:02:43 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 591.44         CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 5090        On  |   00000000:17:00.0  On |                  N/A |
+| 30%   34C    P0             67W /  575W |     437MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA GeForce RTX 5090        On  |   00000000:2A:00.0 Off |                  N/A |
+|  0%   32C    P8             14W /  575W |       0MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A              25      G   /Xwayland                             N/A      |
+|    1   N/A  N/A              25      G   /Xwayland                             N/A      |
++-----------------------------------------------------------------------------------------+
+[f3.5 2026-09-30 04:56:31] STREAM COMPLETE rc=0

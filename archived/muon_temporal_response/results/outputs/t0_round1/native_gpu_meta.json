@@ -1,0 +1,75 @@
+{
+ "alignment_max_abs_err": 5.960464477539063e-08,
+ "bf16_input_check": {
+  "delta=0.001": {
+   "bf16_distinct_fraction": 0.5
+  },
+  "delta=0.01": {
+   "bf16_distinct_fraction": 0.75
+  },
+  "delta=0.05": {
+   "bf16_distinct_fraction": 0.75
+  }
+ },
+ "repetition_check": {
+  "delta=0.0|arm1": {
+   "max_abs_diff": 0.0,
+   "bitwise_equal": true
+  },
+  "delta=0.0|arm2": {
+   "max_abs_diff": 0.0,
+   "bitwise_equal": true
+  },
+  "delta=0.001|arm1": {
+   "max_abs_diff": 0.0,
+   "bitwise_equal": true
+  },
+  "delta=0.001|arm2": {
+   "max_abs_diff": 0.0,
+   "bitwise_equal": true
+  },
+  "delta=0.01|arm1": {
+   "max_abs_diff": 0.0,
+   "bitwise_equal": true
+  },
+  "delta=0.01|arm2": {
+   "max_abs_diff": 0.0,
+   "bitwise_equal": true
+  },
+  "delta=0.05|arm1": {
+   "max_abs_diff": 0.0,
+   "bitwise_equal": true
+  },
+  "delta=0.05|arm2": {
+   "max_abs_diff": 0.0,
+   "bitwise_equal": true
+  },
+  "pulse|Bs|dp=0.001": {
+   "max_abs_diff": 0.0,
+   "bitwise_equal": true
+  },
+  "pulse|Bs|dp=0.01": {
+   "max_abs_diff": 0.0,
+   "bitwise_equal": true
+  },
+  "pulse|Bs|dp=0.05": {
+   "max_abs_diff": 0.0,
+   "bitwise_equal": true
+  },
+  "pulse|Ba|dp=0.001": {
+   "max_abs_diff": 0.0,
+   "bitwise_equal": true
+  },
+  "pulse|Ba|dp=0.01": {
+   "max_abs_diff": 0.0,
+   "bitwise_equal": true
+  },
+  "pulse|Ba|dp=0.05": {
+   "max_abs_diff": 0.0,
+   "bitwise_equal": true
+  }
+ },
+ "n_native_optimizer_steps": 67072,
+ "device": "NVIDIA GeForce RTX 5090",
+ "wall_seconds": 110.72543168067932
+}

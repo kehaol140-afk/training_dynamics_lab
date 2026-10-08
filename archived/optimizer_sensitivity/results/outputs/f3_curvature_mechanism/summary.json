@@ -1,0 +1,35 @@
+{
+ "study": "F3_CURVATURE_MECHANISM",
+ "status": "BLOCKED_AT_REPRODUCTION_GATE",
+ "date": "2026-09-27",
+ "main_experiments_run": false,
+ "verdict": null,
+ "mechanism_classification": null,
+ "note": "RQ1-RQ5 not executed: frozen gate G1/G2 (rel<=1e-12 vs archived F2 raw) unachievable in the current environment. F2's own frozen script rerun today does not bitwise reproduce its own archive (h=1 loss 7.43325 archive vs 7.43338680267334 today; FD phase diverges chaotically). Within-today determinism verified across processes/devices/28GB memory pressure. After fixing an F3 implementation order bug (dc/HVP and vendored tangent step must run before opt.step), F3 reproduces a same-day F2 rerun with G1=G2=0.0 (bitwise) on all 32 steps of both arms. See docs/F3_CURVATURE_MECHANISM_REPORT.md.",
+ "frozen_gate_vs_archive": {
+  "2042:26": {"G1_max": 0.00349, "G2_max": 0.888, "G4_max": 0.227, "pass": false},
+  "2043:26": {"G1_max": 0.00128, "G2_max": 0.908, "G4_max": 0.0357, "pass": false},
+  "2042:64": {"G1_max": 5.93e-05, "G2_max": 0.00173, "G4_max": 0.000508, "pass": false},
+  "interpretation": "All failures driven by overnight environment drift of the bf16 primal forward (~1e-4 at h=1), amplified chaotically by the ill-conditioned EARLY C arm; MIDDLE cell shows minimal drift (bounded C arm)."
+ },
+ "sameday_diagnostic_gate": {
+  "reference": "outputs/f3_curvature_mechanism/diag_f2rerun_raw_2042_26.json (2026-09-27 rerun of frozen F2 script)",
+  "G1_max": 0.0, "G2_max": 0.0, "pass_G1G2": true,
+  "artifact": "raw/gate_diag_sameday_2042_26.json",
+  "note": "Diagnostic-only; NOT a substitute for the frozen gate."
+ },
+ "implementation_fix": {
+  "bug": "dc (HVP) and vendored adamw_tangent_step executed after opt.step(); must run at PRE-step theta / PRE-step optimizer state (F2 loop order).",
+  "fix": "primal_step split into primal_grads + primal_advance; gate/rq1/rq2/rq3 reordered; rq2 q0 first propagation proven state-independent (theta-only homogeneous tangent = (1-lr*wd) scaling).",
+  "unit_tests": "12/12 PASS"
+ },
+ "env_drift_evidence": {
+  "f2_archive_h1_loss": 7.43325,
+  "today_h1_loss_full": 7.43338680267334,
+  "within_today": "bitwise-stable across processes, GPU0/GPU1, 28GB memory pressure",
+  "input_audit": "code/bank/data/env mtimes all predate F2; manifest e40dd1f4709ca8b5 identical"
+ },
+ "tests_total": "45/45 PASS across all test files",
+ "prereg_commits": ["f51ce82", "658301c"],
+ "upstream_commits": {"F2": "87d8225", "F2.5": "420d394"}
+}

@@ -1,0 +1,10 @@
+scale,seed,step,lr,eps,optimizer_step_t,sigma_max,iterations,dominant_param,dominant_group,dominant_coord_flat,dominant_token_id,dominant_token_count,dominant_token_bin
+v07_5m,2030,46,0.0003711998960218135,1e-08,46.0,39.435250884683654,8,model.layers.3.self_attn.q_proj.weight,attn_q,6968,,,
+v07_5m,2031,64,0.000275,1e-08,64.0,9.641062408829042,8,model.layers.3.mlp.gate_proj.weight,mlp_gate,187156,,,
+v07_5m,2037,82,0.00017880010397818658,1e-08,82.0,5.687305121404772,8,model.layers.3.mlp.gate_proj.weight,mlp_gate,174149,,,
+g1a_26m,2042,26,0.0004557216945831451,1e-08,26.0,289.75466673267573,8,model.layers.6.self_attn.q_proj.weight,attn_q,163301,,,
+g1a_26m,2042,64,0.000275,1e-08,64.0,50.54336972064308,8,model.layers.6.mlp.gate_proj.weight,mlp_gate,420068,,,
+g1a_26m,2042,102,9.427830541685491e-05,1e-08,102.0,10.64489418452565,8,model.layers.6.mlp.gate_proj.weight,mlp_gate,789489,,,
+g1b_100m,2042,26,0.0004557216945831451,1e-08,26.0,2197.677970624784,8,model.layers.11.self_attn.q_proj.weight,attn_q,212553,,,
+g1b_100m,2042,64,0.000275,1e-08,64.0,279.08768079820356,8,model.layers.12.self_attn.q_proj.weight,attn_q,458012,,,
+g1b_100m,2042,102,9.427830541685491e-05,1e-08,102.0,51.31762089395263,8,model.layers.12.self_attn.q_proj.weight,attn_q,442635,,,

@@ -1,0 +1,81 @@
+{
+  "format": "muon_temporal_t2a_scale_v1",
+  "date_frozen": "2026-09-29",
+  "task_source": "references/ROUND2_OPENCODE_TASK_CN.md",
+  "anchor": {
+    "run_id": "m1_muon_lr2.0_wd0.02_p0.5_s2030",
+    "final_state": "../muon_transition_experiment/outputs/m1/m1_muon_lr2.0_wd0.02_p0.5_s2030/final_state.pt",
+    "final_state_sha256": "4f68ce2423d663f87fbb44f051abe92d6ccd09118ca42a80261497ee13f095e4",
+    "run_config_sha256": "5591fccaa9a69874d13e3fa67a18f7af92bee1110d4e6b03ac6e7c871b823da0",
+    "verified": ["format mte_state_v1", "cursor step=2048", "meta arm=muon lr_multiplier=2.0 wd=0.02",
+                 "56 fp32 momentum buffers", "momentum=0.95 nesterov ns_steps=5 coeff=(3.4445,-4.775,2.0315) eps=1e-7",
+                 "four-way RNG present", "group lr 0.001 == 0.01*cosine_end(0.1) consistent"],
+    "note": "diagnostic anchor only; not claimed as a tuned optimum (LR_RANGE_UNRESOLVED lineage preserved)"
+  },
+  "installed_muon": {
+    "path": "/home/b205/miniforge3/envs/fr_minimind/lib/python3.11/site-packages/torch/optim/_muon.py",
+    "sha256": "38e95918424bd26604f786195a4aa72afb60674b4ac9ccbde777974013cb1f52",
+    "torch": "2.11.0+cu13.0"
+  },
+  "matrices": [
+    "model.layers.1.self_attn.q_proj.weight",
+    "model.layers.1.self_attn.k_proj.weight",
+    "model.layers.1.mlp.down_proj.weight",
+    "model.layers.6.self_attn.q_proj.weight",
+    "model.layers.6.self_attn.k_proj.weight",
+    "model.layers.6.mlp.down_proj.weight"
+  ],
+  "matrix_elements_expected": 2490368,
+  "batches": {
+    "n_total": 10, "n_calibration": 5, "n_check": 5,
+    "manifest": "outputs/t2a_scale_v1/batch_manifest.json",
+    "manifest_steps_sha256": "1e8b29c7a1bbe492c7203c0b53bc1de8f7fa3f2433e39ab2db9e883c1ccf292e",
+    "rule": "production stream seed-2030 p=0.5 continued after step 2048; windows_per_step=128 (64A+64B), micro_batch=32, accum=4; first5/last5 window sets disjoint (verified)"
+  },
+  "gradient_collection": {
+    "forward": "production bf16 autocast, model.eval-equivalent frozen params fp32, dropout=0",
+    "loss": "per-micro mean CE over valid targets, backward (loss/4); 4 micro per batch",
+    "clip": "global norm over ALL grad-bearing unique params (Muon+AdamW aux), max_norm=1.0, after accumulation; per-matrix G saved POST-clip",
+    "save": ["preclip_global_norm", "clip_coef", "valid_targets_per_batch", "six-matrix post-clip G (fp32)"],
+    "targets_expected": {"per_batch_slots": 32768, "per_batch_valid_targets": 32640,
+                         "total_valid_targets": 326400},
+    "optimizer_steps": 0, "scheduler_advances": 0, "eval_access": 0
+  },
+  "H_construction": {
+    "M_star": "checkpoint momentum_buffer per matrix (fp32)",
+    "per_batch_independent": "M_i = lerp(M_*, G_i, 1-beta); H_i = lerp(G_i, M_i, beta); NOT propagated across batches",
+    "beta": 0.95,
+    "math_check": "H_i == beta^2*M_* + (1-beta^2)*G_i (fp64 check)",
+    "H_ref": "mean of first-5 H in fp64, then cast back to fp32 (single conversion); frozen in calibration_lock.json before check-half analysis"
+  },
+  "three_paths": {
+    "input": "one captured fp32 H_in, cloned to each path",
+    "fp64": "same tensor .double(), installed-semantics finite NS (clamp eps 1e-7, coeff, 5 steps)",
+    "fp32": "same tensor fp32 NS, TF32 disabled during diagnostics",
+    "native": "installed _zeropower_via_newtonschulz on cuda (internal bf16)",
+    "shape_rule": "transpose only if rows>cols (none of the six matrices trigger)",
+    "D_raw": "raw NS output; no LR/WD/shape factor; s(r,c)=sqrt(max(1,A/B)) logged separately per matrix"
+  },
+  "diagnostics": {
+    "natural": "all 10 H_i through all three paths; rel offset ||H_i-H_ref||/||H_ref||",
+    "alpha_grid": [0.001, 0.01, 0.05, 0.25, 1.0],
+    "alpha_signs": ["+", "-"],
+    "alpha_zero_ref": true,
+    "alpha_def": "H_in = H_ref + alpha*(H_i - H_ref) in fp32; alpha=+1 forced to the SAVED original H_i; actual relative perturbation recorded per row",
+    "jvp": "L = J_FP64(H_ref)[H_in.double() - H_ref.double] via E2 tangent recursion (directional, no full Jacobian)",
+    "residuals": ["delta_native = Phi_native(H_in)-Phi_native(H_ref)",
+                  "r_real = Phi_64(H_in)-Phi_64(H_ref)-L",
+                  "r_numeric = [Phi_native(H_in)-Phi_64(H_in)] - [Phi_native(H_ref)-Phi_64(H_ref)]"],
+    "identity": "delta_native - L == r_real + r_numeric (elementwise)",
+    "rel_residual_denominator": "max(||delta_native||,||L||); 0 -> ZERO_BOTH, raw values retained",
+    "extra": ["bf16 changed-element fraction (H_in vs H_ref)", "native zero-response flag",
+              "cosines (null when either vector zero)"],
+    "repetition": "H_ref, batch1, batch6 natural H re-mapped once through all paths (determinism check)"
+  },
+  "budget": {
+    "gpu_wall_seconds_max": 1800,
+    "output_bytes_max": 1073741824,
+    "max_batches": 10,
+    "model_updates": 0
+  }
+}

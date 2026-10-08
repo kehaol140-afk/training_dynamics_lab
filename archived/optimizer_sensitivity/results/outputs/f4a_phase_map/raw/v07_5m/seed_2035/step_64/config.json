@@ -1,0 +1,19 @@
+{
+ "scale": "v07_5m",
+ "seed": 2035,
+ "step": 64,
+ "params": 4983296,
+ "arch": {
+  "hidden_size": 256,
+  "num_hidden_layers": 4,
+  "num_attention_heads": 8,
+  "num_key_value_heads": 4
+ },
+ "micro0": 128,
+ "stream_id": 4038,
+ "stream_seed": 5705242226502880866,
+ "stream_manifest_sha256": "8d9ce6b433340d30f8ae9e1834a31ba0f9bfccc9771f9cf27b119e0ccb579b8d",
+ "protocol": "F4A prereg 3ac9762; F2/F3 frozen arm semantics",
+ "planned_total_steps": 128,
+ "progress": 0.5
+}

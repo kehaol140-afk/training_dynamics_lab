@@ -1,0 +1,23 @@
+{
+ "cpu_seconds": {
+  "tests_and_exploration": null,
+  "run_t0_cpu.py": 4.8046300411224365,
+  "collect (this script, partial)": 5.72899603843689,
+  "budget": 1800,
+  "status": "within budget"
+ },
+ "gpu_seconds": {
+  "run_t0_native.py": 110.72543168067932,
+  "budget": 900,
+  "status": "within budget"
+ },
+ "synthetic_recursions": {
+  "fp64_momentum_recursions": 67072,
+  "native_optimizer_steps": 67072
+ },
+ "output_bytes": 2330904,
+ "transformer_optimizer_updates": 0,
+ "real_batch_gradient_computations": 0,
+ "parent_trajectory_training": 0,
+ "confirmation_set_access": 0
+}

@@ -1,0 +1,27 @@
+Model Params: 100.78M
+Trainable Params: 100.784M
+[2026-09-26T18:42:01] cell 2042:26 stream_seed=1493117413121141024 manifest=e40dd1f4709ca8b5 train_batches=984 eval_batches=8
+[2026-09-26T18:42:02] state restored micro0=52 lr0=0.000455722
+[2026-09-26T18:42:44] delta=0.02: h_FD(1)=-0.0171974 h_FD(16)=0.585969 h_FD(32)=1.15787 (42s)
+[2026-09-26T18:43:26] delta=0.05: h_FD(1)=-0.0171912 h_FD(16)=-1.04975 h_FD(32)=1.56735 (42s)
+[2026-09-26T18:44:07] delta=0.1: h_FD(1)=-0.0171709 h_FD(16)=-0.0877884 h_FD(32)=0.0965208 (41s)
+[2026-09-26T18:44:47] delta=0.25: h_FD(1)=-0.0170134 h_FD(16)=0.0349019 h_FD(32)=0.129767 (41s)
+[2026-09-26T18:45:34] delta=0.5: h_FD(1)=-0.0163921 h_FD(16)=-0.149202 h_FD(32)=-0.216462 (46s)
+[2026-09-26T18:45:46] h=1/32 loss=7.43325 coef=0.7213 |dth/du|fp64/C=0.809 (12s)
+Traceback (most recent call last):
+  File "/home/b205/projects/training_dynamics_lab/optimizer_sensitivity/scripts/f2_hypergradient.py", line 388, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/home/b205/projects/training_dynamics_lab/optimizer_sensitivity/scripts/f2_hypergradient.py", line 303, in main
+    hvp_fp32 = rig.hvp(model_cpu, batches, h - 1,
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/b205/projects/training_dynamics_lab/optimizer_sensitivity/scripts/f2_hypergradient.py", line 198, in hvp
+    hv = torch.autograd.grad(dot, list(params.values()), retain_graph=False)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/b205/miniforge3/envs/fr_minimind/lib/python3.11/site-packages/torch/autograd/__init__.py", line 532, in grad
+    result = _engine_run_backward(
+             ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/b205/miniforge3/envs/fr_minimind/lib/python3.11/site-packages/torch/autograd/graph.py", line 869, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: derivative for aten::_scaled_dot_product_efficient_attention_backward is not implemented

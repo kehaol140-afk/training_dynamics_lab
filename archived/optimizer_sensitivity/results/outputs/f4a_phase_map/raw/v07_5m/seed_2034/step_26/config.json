@@ -1,0 +1,20 @@
+{
+ "scale": "v07_5m",
+ "seed": 2034,
+ "step": 26,
+ "bank_path": "outputs/f4a1_matched_coverage/new_states/v07_5m/seed_2034/state_step_026.pt",
+ "params": 4983296,
+ "arch": {
+  "hidden_size": 256,
+  "num_hidden_layers": 4,
+  "num_attention_heads": 8,
+  "num_key_value_heads": 4
+ },
+ "micro0": 52,
+ "stream_id": 4082,
+ "stream_seed": 4620219767633840125,
+ "stream_manifest_sha256": "1495a3c6c30f27f2fbbb4781ced0351b1a27eb388e8c12a441dd005f3b38cbc2",
+ "protocol": "F4A prereg 3ac9762; F2/F3 frozen arm semantics",
+ "planned_total_steps": 128,
+ "progress": 0.203125
+}

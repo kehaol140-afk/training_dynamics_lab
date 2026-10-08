@@ -1,0 +1,28 @@
+{
+  "gate": "3C",
+  "diagnostic_only": true,
+  "model_state": "untrained fixed-seed init, fp32, CPU",
+  "n_batches_per_domain": 8,
+  "batch_sequences": 8,
+  "seq_len": 256,
+  "cross_domain_grad_cosine": {
+    "mean": 0.10267461281961768,
+    "min": -0.04433328914035777,
+    "max": 0.37552755984250885,
+    "median": 0.09821111512214863
+  },
+  "conflict_ratio_P_dot_lt_0": 0.1875,
+  "grad_norm_ratio": {
+    "mean": 1.0394371456645406,
+    "min": 0.7775103344294966,
+    "max": 1.3224320014191493
+  },
+  "within_domain_mean_cosine": {
+    "A": 0.29393030919990704,
+    "B": 0.17412344584040576
+  },
+  "update_direction_cosine_first_batch": {
+    "adamw": 0.042403778492995294,
+    "muon": 0.39940620582900127
+  }
+}

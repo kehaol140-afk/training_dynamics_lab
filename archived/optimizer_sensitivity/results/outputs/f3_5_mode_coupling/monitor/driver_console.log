@@ -1,0 +1,74 @@
+[f3.5 2026-09-29 14:44:32] START traj traj --cell 2042:26
+[f3.5 2026-09-29 14:45:18] DONE traj
+[f3.5 2026-09-29 14:45:18] START adjoint adjoint --cell 2042:26
+[f3.5 2026-09-29 14:45:31] DONE adjoint
+[f3.5 2026-09-29 14:45:31] START eigRAW eig --cell 2042:26 --metric RAW
+[f3.5 2026-09-29 15:42:17] START traj traj --cell 2042:26
+[f3.5 2026-09-29 15:43:11] DONE traj
+[f3.5 2026-09-29 15:43:11] START adjoint adjoint --cell 2042:26
+[f3.5 2026-09-29 15:43:37] DONE adjoint
+[f3.5 2026-09-29 15:43:37] START eigRAW eig --cell 2042:26 --metric RAW
+[f3.5 2026-09-29 16:05:38] START traj traj --cell 2042:26
+[f3.5 2026-09-29 16:06:17] DONE traj
+[f3.5 2026-09-29 16:06:17] START adjoint adjoint --cell 2042:26
+[f3.5 2026-09-29 16:06:31] DONE adjoint
+[f3.5 2026-09-29 16:06:31] START eigRAW eig --cell 2042:26 --metric RAW
+[f3.5 2026-09-29 16:16:05] FAIL eigRAW rc=1
+[f3.5 2026-09-29 16:16:05] STREAM COMPLETE rc=1
+[f3.5 2026-09-29 16:25:36] START traj traj --cell 2042:26
+[f3.5 2026-09-29 16:25:51] DONE traj
+[f3.5 2026-09-29 16:25:51] START adjoint adjoint --cell 2042:26
+[f3.5 2026-09-29 16:26:04] DONE adjoint
+[f3.5 2026-09-29 16:26:04] START eigRAW eig --cell 2042:26 --metric RAW
+[f3.5 2026-09-29 16:35:46] FAIL eigRAW rc=1
+[f3.5 2026-09-29 16:35:46] STREAM COMPLETE rc=1
+[f3.5 2026-09-29 16:36:26] START traj traj --cell 2042:26
+[f3.5 2026-09-29 16:36:46] DONE traj
+[f3.5 2026-09-29 16:36:46] START adjoint adjoint --cell 2042:26
+[f3.5 2026-09-29 16:36:58] DONE adjoint
+[f3.5 2026-09-29 16:36:58] START eigRAW eig --cell 2042:26 --metric RAW
+[f3.5 2026-09-29 17:41:49] START traj traj --cell 2042:26
+[f3.5 2026-09-29 17:42:18] DONE traj
+[f3.5 2026-09-29 17:42:18] START adjoint adjoint --cell 2042:26
+[f3.5 2026-09-29 17:42:30] DONE adjoint
+[f3.5 2026-09-29 17:42:30] START eigRAW eig --cell 2042:26 --metric RAW
+[f3.5 2026-09-29 18:07:57] START traj traj --cell 2042:26
+[f3.5 2026-09-29 18:08:41] DONE traj
+[f3.5 2026-09-29 18:08:41] START adjoint adjoint --cell 2042:26
+[f3.5 2026-09-29 18:08:54] DONE adjoint
+[f3.5 2026-09-29 18:08:54] START eigRAW eig --cell 2042:26 --metric RAW
+[f3.5 2026-09-29 19:52:17] DONE eigRAW
+[f3.5 2026-09-29 19:52:17] START eigDIML eig --cell 2042:26 --metric DIML
+Terminated                 CUDA_VISIBLE_DEVICES=$GPU "$PY" scripts/f3_5_mode_coupling.py "$@" >> "$OUT/${name}.out" 2>&1
+[f3.5 2026-09-29 20:02:25] FAIL eigDIML rc=143
+[f3.5 2026-09-29 20:02:25] STREAM COMPLETE rc=1
+[f3.5 2026-09-29 20:02:43] START traj traj --cell 2042:26
+[f3.5 2026-09-29 20:02:56] DONE traj
+[f3.5 2026-09-29 20:02:56] START adjoint adjoint --cell 2042:26
+[f3.5 2026-09-29 20:03:09] DONE adjoint
+[f3.5 2026-09-29 20:03:09] START eigRAW eig --cell 2042:26 --metric RAW
+[f3.5 2026-09-29 21:44:41] DONE eigRAW
+[f3.5 2026-09-29 21:44:41] START eigDIML eig --cell 2042:26 --metric DIML
+[f3.5 2026-09-29 23:12:10] DONE eigDIML
+[f3.5 2026-09-29 23:12:10] runtime cache released for 2042:26
+[f3.5 2026-09-29 23:12:10] START traj traj --cell 2043:26
+[f3.5 2026-09-29 23:21:26] DONE traj
+[f3.5 2026-09-29 23:21:26] START adjoint adjoint --cell 2043:26
+[f3.5 2026-09-29 23:23:13] DONE adjoint
+[f3.5 2026-09-29 23:23:13] START eigRAW eig --cell 2043:26 --metric RAW
+[f3.5 2026-09-30 01:03:25] DONE eigRAW
+[f3.5 2026-09-30 01:03:25] START eigDIML eig --cell 2043:26 --metric DIML
+[f3.5 2026-09-30 02:15:44] DONE eigDIML
+[f3.5 2026-09-30 02:15:44] runtime cache released for 2043:26
+[f3.5 2026-09-30 02:15:44] START traj traj --cell 2042:64
+[f3.5 2026-09-30 02:24:28] DONE traj
+[f3.5 2026-09-30 02:24:28] START adjoint adjoint --cell 2042:64
+[f3.5 2026-09-30 02:26:06] DONE adjoint
+[f3.5 2026-09-30 02:26:06] START eigRAW eig --cell 2042:64 --metric RAW
+[f3.5 2026-09-30 03:56:54] DONE eigRAW
+[f3.5 2026-09-30 03:56:54] START eigDIML eig --cell 2042:64 --metric DIML
+[f3.5 2026-09-30 04:56:22] DONE eigDIML
+[f3.5 2026-09-30 04:56:23] runtime cache released for 2042:64
+[f3.5 2026-09-30 04:56:23] START post postprocess
+[f3.5 2026-09-30 04:56:31] DONE post
+[f3.5 2026-09-30 04:56:31] STREAM COMPLETE rc=0

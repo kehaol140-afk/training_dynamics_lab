@@ -1,0 +1,440 @@
+{
+  "format": "mte_m2_prereg_v1",
+  "date_frozen": "2026-09-26",
+  "protocol": "docs/MUON_PROTOCOL_v1.1.md + v1.2 + docs/M2_PROTOCOL_ADDENDUM.md",
+  "inherits": "model/tokenizer/budget/eval/hooks from configs/m1_baseline_prereg.json",
+  "m1_cells_p05": [
+    {
+      "run_id": "m1_adamw_lr0.5_wd0.01_p0.5_s2030",
+      "result": "outputs/m1/m1_adamw_lr0.5_wd0.01_p0.5_s2030/result.json"
+    },
+    {
+      "run_id": "m1_adamw_lr0.5_wd0.02_p0.5_s2030",
+      "result": "outputs/m1/m1_adamw_lr0.5_wd0.02_p0.5_s2030/result.json"
+    },
+    {
+      "run_id": "m1_adamw_lr1.0_wd0.01_p0.5_s2030",
+      "result": "outputs/m1/m1_adamw_lr1.0_wd0.01_p0.5_s2030/result.json"
+    },
+    {
+      "run_id": "m1_adamw_lr1.0_wd0.02_p0.5_s2030",
+      "result": "outputs/m1/m1_adamw_lr1.0_wd0.02_p0.5_s2030/result.json"
+    },
+    {
+      "run_id": "m1_adamw_lr2.0_wd0.01_p0.5_s2030",
+      "result": "outputs/m1/m1_adamw_lr2.0_wd0.01_p0.5_s2030/result.json"
+    },
+    {
+      "run_id": "m1_adamw_lr2.0_wd0.02_p0.5_s2030",
+      "result": "outputs/m1/m1_adamw_lr2.0_wd0.02_p0.5_s2030/result.json"
+    },
+    {
+      "run_id": "m1_muon_lr0.5_wd0.01_p0.5_s2030",
+      "result": "outputs/m1/m1_muon_lr0.5_wd0.01_p0.5_s2030/result.json"
+    },
+    {
+      "run_id": "m1_muon_lr0.5_wd0.02_p0.5_s2030",
+      "result": "outputs/m1/m1_muon_lr0.5_wd0.02_p0.5_s2030/result.json"
+    },
+    {
+      "run_id": "m1_muon_lr1.0_wd0.01_p0.5_s2030",
+      "result": "outputs/m1/m1_muon_lr1.0_wd0.01_p0.5_s2030/result.json"
+    },
+    {
+      "run_id": "m1_muon_lr1.0_wd0.02_p0.5_s2030",
+      "result": "outputs/m1/m1_muon_lr1.0_wd0.02_p0.5_s2030/result.json"
+    },
+    {
+      "run_id": "m1_muon_lr2.0_wd0.01_p0.5_s2030",
+      "result": "outputs/m1/m1_muon_lr2.0_wd0.01_p0.5_s2030/result.json"
+    },
+    {
+      "run_id": "m1_muon_lr2.0_wd0.02_p0.5_s2030",
+      "result": "outputs/m1/m1_muon_lr2.0_wd0.02_p0.5_s2030/result.json"
+    }
+  ],
+  "boundary_rule": {
+    "base_mult": [
+      0.5,
+      1.0,
+      2.0
+    ],
+    "extension_mult": 4.0,
+    "rule": "one extension to 4 iff base-grid best (dev V_Q, tie-break lower lr then lower wd) sits at mult=2; if best remains at 4 -> LR_RANGE_UNRESOLVED; no further extension ever"
+  },
+  "selection_rule": "per (arm,p): min dev V_Q, tie-break lower lr then lower wd; p*_arm = argmin_p best V_Q, tie-break p=0.5 then lower p",
+  "new_runs": [
+    {
+      "run_id": "m2_adamw_lr0.5_wd0.01_p0.25_s2030",
+      "stage": "M2",
+      "arm": "adamw",
+      "p": 0.25,
+      "seed": 2030,
+      "lr_multiplier": 0.5,
+      "lr": 0.00015,
+      "reference_lr": 0.0003,
+      "weight_decay": 0.01,
+      "extension": false,
+      "justification": null
+    },
+    {
+      "run_id": "m2_adamw_lr0.5_wd0.02_p0.25_s2030",
+      "stage": "M2",
+      "arm": "adamw",
+      "p": 0.25,
+      "seed": 2030,
+      "lr_multiplier": 0.5,
+      "lr": 0.00015,
+      "reference_lr": 0.0003,
+      "weight_decay": 0.02,
+      "extension": false,
+      "justification": null
+    },
+    {
+      "run_id": "m2_adamw_lr1.0_wd0.01_p0.25_s2030",
+      "stage": "M2",
+      "arm": "adamw",
+      "p": 0.25,
+      "seed": 2030,
+      "lr_multiplier": 1.0,
+      "lr": 0.0003,
+      "reference_lr": 0.0003,
+      "weight_decay": 0.01,
+      "extension": false,
+      "justification": null
+    },
+    {
+      "run_id": "m2_adamw_lr1.0_wd0.02_p0.25_s2030",
+      "stage": "M2",
+      "arm": "adamw",
+      "p": 0.25,
+      "seed": 2030,
+      "lr_multiplier": 1.0,
+      "lr": 0.0003,
+      "reference_lr": 0.0003,
+      "weight_decay": 0.02,
+      "extension": false,
+      "justification": null
+    },
+    {
+      "run_id": "m2_adamw_lr2.0_wd0.01_p0.25_s2030",
+      "stage": "M2",
+      "arm": "adamw",
+      "p": 0.25,
+      "seed": 2030,
+      "lr_multiplier": 2.0,
+      "lr": 0.0006,
+      "reference_lr": 0.0003,
+      "weight_decay": 0.01,
+      "extension": false,
+      "justification": null
+    },
+    {
+      "run_id": "m2_adamw_lr2.0_wd0.02_p0.25_s2030",
+      "stage": "M2",
+      "arm": "adamw",
+      "p": 0.25,
+      "seed": 2030,
+      "lr_multiplier": 2.0,
+      "lr": 0.0006,
+      "reference_lr": 0.0003,
+      "weight_decay": 0.02,
+      "extension": false,
+      "justification": null
+    },
+    {
+      "run_id": "m2_adamw_lr0.5_wd0.01_p0.75_s2030",
+      "stage": "M2",
+      "arm": "adamw",
+      "p": 0.75,
+      "seed": 2030,
+      "lr_multiplier": 0.5,
+      "lr": 0.00015,
+      "reference_lr": 0.0003,
+      "weight_decay": 0.01,
+      "extension": false,
+      "justification": null
+    },
+    {
+      "run_id": "m2_adamw_lr0.5_wd0.02_p0.75_s2030",
+      "stage": "M2",
+      "arm": "adamw",
+      "p": 0.75,
+      "seed": 2030,
+      "lr_multiplier": 0.5,
+      "lr": 0.00015,
+      "reference_lr": 0.0003,
+      "weight_decay": 0.02,
+      "extension": false,
+      "justification": null
+    },
+    {
+      "run_id": "m2_adamw_lr1.0_wd0.01_p0.75_s2030",
+      "stage": "M2",
+      "arm": "adamw",
+      "p": 0.75,
+      "seed": 2030,
+      "lr_multiplier": 1.0,
+      "lr": 0.0003,
+      "reference_lr": 0.0003,
+      "weight_decay": 0.01,
+      "extension": false,
+      "justification": null
+    },
+    {
+      "run_id": "m2_adamw_lr1.0_wd0.02_p0.75_s2030",
+      "stage": "M2",
+      "arm": "adamw",
+      "p": 0.75,
+      "seed": 2030,
+      "lr_multiplier": 1.0,
+      "lr": 0.0003,
+      "reference_lr": 0.0003,
+      "weight_decay": 0.02,
+      "extension": false,
+      "justification": null
+    },
+    {
+      "run_id": "m2_adamw_lr2.0_wd0.01_p0.75_s2030",
+      "stage": "M2",
+      "arm": "adamw",
+      "p": 0.75,
+      "seed": 2030,
+      "lr_multiplier": 2.0,
+      "lr": 0.0006,
+      "reference_lr": 0.0003,
+      "weight_decay": 0.01,
+      "extension": false,
+      "justification": null
+    },
+    {
+      "run_id": "m2_adamw_lr2.0_wd0.02_p0.75_s2030",
+      "stage": "M2",
+      "arm": "adamw",
+      "p": 0.75,
+      "seed": 2030,
+      "lr_multiplier": 2.0,
+      "lr": 0.0006,
+      "reference_lr": 0.0003,
+      "weight_decay": 0.02,
+      "extension": false,
+      "justification": null
+    },
+    {
+      "run_id": "m2_muon_lr0.5_wd0.01_p0.25_s2030",
+      "stage": "M2",
+      "arm": "muon",
+      "p": 0.25,
+      "seed": 2030,
+      "lr_multiplier": 0.5,
+      "lr": 0.0025,
+      "reference_lr": 0.005,
+      "weight_decay": 0.01,
+      "extension": false,
+      "justification": null
+    },
+    {
+      "run_id": "m2_muon_lr0.5_wd0.02_p0.25_s2030",
+      "stage": "M2",
+      "arm": "muon",
+      "p": 0.25,
+      "seed": 2030,
+      "lr_multiplier": 0.5,
+      "lr": 0.0025,
+      "reference_lr": 0.005,
+      "weight_decay": 0.02,
+      "extension": false,
+      "justification": null
+    },
+    {
+      "run_id": "m2_muon_lr1.0_wd0.01_p0.25_s2030",
+      "stage": "M2",
+      "arm": "muon",
+      "p": 0.25,
+      "seed": 2030,
+      "lr_multiplier": 1.0,
+      "lr": 0.005,
+      "reference_lr": 0.005,
+      "weight_decay": 0.01,
+      "extension": false,
+      "justification": null
+    },
+    {
+      "run_id": "m2_muon_lr1.0_wd0.02_p0.25_s2030",
+      "stage": "M2",
+      "arm": "muon",
+      "p": 0.25,
+      "seed": 2030,
+      "lr_multiplier": 1.0,
+      "lr": 0.005,
+      "reference_lr": 0.005,
+      "weight_decay": 0.02,
+      "extension": false,
+      "justification": null
+    },
+    {
+      "run_id": "m2_muon_lr2.0_wd0.01_p0.25_s2030",
+      "stage": "M2",
+      "arm": "muon",
+      "p": 0.25,
+      "seed": 2030,
+      "lr_multiplier": 2.0,
+      "lr": 0.01,
+      "reference_lr": 0.005,
+      "weight_decay": 0.01,
+      "extension": false,
+      "justification": null
+    },
+    {
+      "run_id": "m2_muon_lr2.0_wd0.02_p0.25_s2030",
+      "stage": "M2",
+      "arm": "muon",
+      "p": 0.25,
+      "seed": 2030,
+      "lr_multiplier": 2.0,
+      "lr": 0.01,
+      "reference_lr": 0.005,
+      "weight_decay": 0.02,
+      "extension": false,
+      "justification": null
+    },
+    {
+      "run_id": "m2_muon_lr0.5_wd0.01_p0.75_s2030",
+      "stage": "M2",
+      "arm": "muon",
+      "p": 0.75,
+      "seed": 2030,
+      "lr_multiplier": 0.5,
+      "lr": 0.0025,
+      "reference_lr": 0.005,
+      "weight_decay": 0.01,
+      "extension": false,
+      "justification": null
+    },
+    {
+      "run_id": "m2_muon_lr0.5_wd0.02_p0.75_s2030",
+      "stage": "M2",
+      "arm": "muon",
+      "p": 0.75,
+      "seed": 2030,
+      "lr_multiplier": 0.5,
+      "lr": 0.0025,
+      "reference_lr": 0.005,
+      "weight_decay": 0.02,
+      "extension": false,
+      "justification": null
+    },
+    {
+      "run_id": "m2_muon_lr1.0_wd0.01_p0.75_s2030",
+      "stage": "M2",
+      "arm": "muon",
+      "p": 0.75,
+      "seed": 2030,
+      "lr_multiplier": 1.0,
+      "lr": 0.005,
+      "reference_lr": 0.005,
+      "weight_decay": 0.01,
+      "extension": false,
+      "justification": null
+    },
+    {
+      "run_id": "m2_muon_lr1.0_wd0.02_p0.75_s2030",
+      "stage": "M2",
+      "arm": "muon",
+      "p": 0.75,
+      "seed": 2030,
+      "lr_multiplier": 1.0,
+      "lr": 0.005,
+      "reference_lr": 0.005,
+      "weight_decay": 0.02,
+      "extension": false,
+      "justification": null
+    },
+    {
+      "run_id": "m2_muon_lr2.0_wd0.01_p0.75_s2030",
+      "stage": "M2",
+      "arm": "muon",
+      "p": 0.75,
+      "seed": 2030,
+      "lr_multiplier": 2.0,
+      "lr": 0.01,
+      "reference_lr": 0.005,
+      "weight_decay": 0.01,
+      "extension": false,
+      "justification": null
+    },
+    {
+      "run_id": "m2_muon_lr2.0_wd0.02_p0.75_s2030",
+      "stage": "M2",
+      "arm": "muon",
+      "p": 0.75,
+      "seed": 2030,
+      "lr_multiplier": 2.0,
+      "lr": 0.01,
+      "reference_lr": 0.005,
+      "weight_decay": 0.02,
+      "extension": false,
+      "justification": null
+    }
+  ],
+  "justified_extension_runs": [
+    {
+      "run_id": "m2_adamw_lr4.0_wd0.01_p0.5_s2030",
+      "stage": "M2",
+      "arm": "adamw",
+      "p": 0.5,
+      "seed": 2030,
+      "lr_multiplier": 4.0,
+      "lr": 0.0012,
+      "reference_lr": 0.0003,
+      "weight_decay": 0.01,
+      "extension": true,
+      "justification": "M2 addendum \u00a71.5: M1 best at mult=2.0 for this arm at p=0.5"
+    },
+    {
+      "run_id": "m2_adamw_lr4.0_wd0.02_p0.5_s2030",
+      "stage": "M2",
+      "arm": "adamw",
+      "p": 0.5,
+      "seed": 2030,
+      "lr_multiplier": 4.0,
+      "lr": 0.0012,
+      "reference_lr": 0.0003,
+      "weight_decay": 0.02,
+      "extension": true,
+      "justification": "M2 addendum \u00a71.5: M1 best at mult=2.0 for this arm at p=0.5"
+    },
+    {
+      "run_id": "m2_muon_lr4.0_wd0.01_p0.5_s2030",
+      "stage": "M2",
+      "arm": "muon",
+      "p": 0.5,
+      "seed": 2030,
+      "lr_multiplier": 4.0,
+      "lr": 0.02,
+      "reference_lr": 0.005,
+      "weight_decay": 0.01,
+      "extension": true,
+      "justification": "M2 addendum \u00a71.5: M1 best at mult=2.0 for this arm at p=0.5"
+    },
+    {
+      "run_id": "m2_muon_lr4.0_wd0.02_p0.5_s2030",
+      "stage": "M2",
+      "arm": "muon",
+      "p": 0.5,
+      "seed": 2030,
+      "lr_multiplier": 4.0,
+      "lr": 0.02,
+      "reference_lr": 0.005,
+      "weight_decay": 0.02,
+      "extension": true,
+      "justification": "M2 addendum \u00a71.5: M1 best at mult=2.0 for this arm at p=0.5"
+    }
+  ],
+  "counts": {
+    "new_base": 24,
+    "extensions": 4,
+    "m1_reused": 12,
+    "m2_total_grid": 40
+  }
+}

@@ -1,0 +1,17 @@
+unit,project,docs_read,artifacts_verified,recompute_level,status_at_20261008
+F0,optimizer_sensitivity,F0_EXISTING_BANK_SENSITIVITY_AUDIT.md,power_iteration.csv + hash,hash + frozen,COMPLETE
+F1,optimizer_sensitivity,F1_MECHANISM_CLOSURE.md,summary.json + hash,hash + frozen,COMPLETE
+F2,optimizer_sensitivity,F2_HYPERGRADIENT_PILOT*.md,summary.json + hash,hash + frozen,COMPLETE
+F2.5,optimizer_sensitivity,"F2_5_TRUST_REGION_{PREREG,REPORT}.md; F2_5_RESUME_AUDIT.md",summary.json + hash,hash + frozen,COMPLETE
+F3/F3.5,optimizer_sensitivity,"F3_CURVATURE_MECHANISM_{PREREG,REPORT,FINAL_REPORT}.md; F3_5_*; F3_OPENCODE_TAKEOVER_AUDIT.md",summary_final.json; f3_5 summary.json + hash,hash + frozen,COMPLETE
+F4-A,optimizer_sensitivity,F4A_* (inventory/facts/prereg/report/erratum/missing-coverage),phase_map_long/summary/healing_intervals/indicator_correlations/exploratory_models/summary.json,full CPU recompute from raw per-cell; median_high convention check,COMPLETE
+F4A.1,optimizer_sensitivity,"F4A1_RECONSTRUCTION_AUDIT; MATCHED_COVERAGE_{PREREG,REPORT}",matched_phase_map/summary; canary_envelope + canary raw metrics,canary 5 prereg gates from raw; stream_id arithmetic; trajectory spot check,COMPLETE
+F4A.5,optimizer_sensitivity,"FORMAL_MODELING_{PREREG,REPORT}; METRIC_ERRATUM; THESIS_MODELING_FRAMEWORK",dataset/model_comparison/loso_predictions/variance_decomposition/predictor_ablation/huber_robustness/summary,all six models pooled-OOF recomputed == CSV; fold median 0.4041 confirmed,COMPLETE
+F4B,optimizer_sensitivity,"STABILITY_AWARE_UNROLLING_{PREREG,REPORT}; ARTIFACT_ERRATUM",summary.json; summary_delta0.02; per_method_regret/selected_horizons/evaluation_cells,SAU==FIXED1 bitwise; oracle median H; dominant-subset regrets,COMPLETE
+F4B-POST,optimizer_sensitivity,"POSTMORTEM_OBSERVABILITY_{PREREG,REPORT}",summary; utility_by_horizon(504); horizon_sufficiency; online/offline csv; observability_frontier,504-row structural check; AUROC/balacc recompute; H_suff distribution,COMPLETE
+F4C,optimizer_sensitivity,"INTERVENTION_SCALE_MINING_{PREREG,REPORT}",mining_summary; f25_micro_surface,seed-clustered bootstrap CIs reproduced exactly,COMPLETE
+F4-CONS,optimizer_sensitivity,F4_CONSISTENCY_PROVENANCE_AUDIT,headline_numbers.csv; f4a5_metric_recompute.json,read + spot recompute,COMPLETE
+SYNTH,optimizer_sensitivity,RESEARCH_SYNTHESIS_F0_F4B; THESIS_MODELING_FRAMEWORK_FINAL; F4_POSTMORTEM_DECISION_MEMO; EXTERNAL_VALIDATION_PLAN,n/a (documents),n/a,COMPLETE
+P4,continuation_adaptation,P4_PROTOCOL.md,sealed table (280 rows); SEAL_LOCK; stage3 report; sealed_evaluation.json,independent recompute of all primary/secondary contrasts from sealed table,COMPLETE FROZEN
+LEGACY,legacy_fluctuation_response,FR_PROJECT_STATUS.md,git HEAD 6ac4942; FR_PROJECT_STATUS hash,hash == old manifest; mtime scan (only .pyc newer),FROZEN reference only
+OLD-BUNDLE,audits/reference,ADAMW_RESEARCH_REVIEW.md (full); PROGRESS.md; BUNDLE_MANIFEST.json,sha256 map used as identity baseline,n/a (historical comparison only),COMPLETE

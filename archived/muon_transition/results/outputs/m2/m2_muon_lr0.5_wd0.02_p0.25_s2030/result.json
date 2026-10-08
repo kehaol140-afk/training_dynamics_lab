@@ -1,0 +1,39 @@
+{
+  "run_id": "m2_muon_lr0.5_wd0.02_p0.25_s2030",
+  "stage": "M1",
+  "arm": "muon",
+  "p": 0.25,
+  "seed": 2030,
+  "lr_multiplier": 0.5,
+  "lr": 0.0025,
+  "reference_lr": 0.005,
+  "weight_decay": 0.02,
+  "n_steps": 2048,
+  "tokens": 67108864,
+  "manifest_p_hat": 0.25,
+  "schedule": {
+    "warmup_steps": 32,
+    "cosine_min_frac": 0.1
+  },
+  "grad_clip": 1.0,
+  "device": "cuda:0",
+  "wall_seconds": 728.2519569396973,
+  "final_dev": {
+    "nll_A": 2.513148124545228,
+    "tokens_A": 130560,
+    "nll_B": 2.5129211799771176,
+    "tokens_B": 130560,
+    "v_q": 2.513034652261173,
+    "q": 0.5
+  },
+  "final_train_loss": 2.5131527185440063,
+  "train_loss_mean_first20": 8.037954384088517,
+  "train_loss_mean_last20": 2.424783243238926,
+  "loss_decreased": true,
+  "any_nonfinite_gradnorm": false,
+  "any_nan_loss": false,
+  "optimizer_state_entries": 90,
+  "optimizer_state_ok": true,
+  "muon_momentum_buffers": 56,
+  "n_loss_points": 2048
+}

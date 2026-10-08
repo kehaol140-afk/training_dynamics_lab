@@ -1,0 +1,49 @@
+{
+  "n_steps": 100,
+  "device": "cuda",
+  "arms": {
+    "adamw": {
+      "loss_decreased": true,
+      "no_nan_inf_loss": true,
+      "no_nan_inf_gradnorm": true,
+      "optimizer_state_ok": true,
+      "muon_momentum_buffers": 0,
+      "first20_last20": [
+        8.334921234846115,
+        6.2045548260211945
+      ],
+      "checkpoint_roundtrip_model_match": true,
+      "checkpoint_cursor": {
+        "step": 100,
+        "run_id": "smoke_adamw_lr1.0_wd0.01_p0.5_s2030"
+      },
+      "obs_records": 1,
+      "obs_has_all_required_fields": true,
+      "obs_every_100": [
+        100
+      ]
+    },
+    "muon": {
+      "loss_decreased": true,
+      "no_nan_inf_loss": true,
+      "no_nan_inf_gradnorm": true,
+      "optimizer_state_ok": true,
+      "muon_momentum_buffers": 56,
+      "first20_last20": [
+        7.737747186422348,
+        4.855354732275009
+      ],
+      "checkpoint_roundtrip_model_match": true,
+      "checkpoint_cursor": {
+        "step": 100,
+        "run_id": "smoke_muon_lr1.0_wd0.01_p0.5_s2030"
+      },
+      "obs_records": 1,
+      "obs_has_all_required_fields": true,
+      "obs_every_100": [
+        100
+      ]
+    }
+  },
+  "smoke_pass": true
+}

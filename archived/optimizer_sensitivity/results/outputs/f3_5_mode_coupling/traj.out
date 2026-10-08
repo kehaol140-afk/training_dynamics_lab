@@ -1,0 +1,205 @@
+Model Params: 100.78M
+Trainable Params: 100.784M
+[2026-09-29T11:24:34] f3.5 cell 2042:26 stream_seed=1493117413121141024 manifest=e40dd1f4709ca8b5 micro0=52
+Traceback (most recent call last):
+  File "/home/b205/projects/training_dynamics_lab/optimizer_sensitivity/scripts/f3_5_mode_coupling.py", line 738, in <module>
+    sys.exit(main())
+  File "/home/b205/projects/training_dynamics_lab/optimizer_sensitivity/scripts/f3_5_mode_coupling.py", line 731, in main
+    return cmd_traj(seed, step)
+  File "/home/b205/projects/training_dynamics_lab/optimizer_sensitivity/scripts/f3_5_mode_coupling.py", line 173, in cmd_traj
+    for h in range(1, f3.H_MAX + 1):
+AttributeError: module 'opsens.f3_curvature_mechanism_v01' has no attribute 'H_MAX'
+Model Params: 100.78M
+Trainable Params: 100.784M
+[2026-09-29T11:26:45] f3.5 cell 2042:26 stream_seed=1493117413121141024 manifest=e40dd1f4709ca8b5 micro0=52
+Traceback (most recent call last):
+  File "/home/b205/projects/training_dynamics_lab/optimizer_sensitivity/scripts/f3_5_mode_coupling.py", line 738, in <module>
+    sys.exit(main())
+  File "/home/b205/projects/training_dynamics_lab/optimizer_sensitivity/scripts/f3_5_mode_coupling.py", line 731, in main
+    return cmd_traj(seed, step)
+  File "/home/b205/projects/training_dynamics_lab/optimizer_sensitivity/scripts/f3_5_mode_coupling.py", line 177, in cmd_traj
+    pend_f = f3m.hom_step(f3m.named, f3m.opt, clipped, dc_f, forced)
+AttributeError: module 'f3_curvature_mechanism' has no attribute 'hom_step'
+Model Params: 100.78M
+Trainable Params: 100.784M
+[2026-09-29T11:31:59] f3.5 cell 2042:26 stream_seed=1493117413121141024 manifest=e40dd1f4709ca8b5 micro0=52
+[2026-09-29T11:32:18] traj 2042:26 h=1 loss=7.43339 |dth|F=0.809 |dz|I=1 (19s)
+[2026-09-29T11:32:27] traj 2042:26 h=2 loss=7.30788 |dth|F=1.582 |dz|I=0.9876 (9s)
+[2026-09-29T11:32:40] traj 2042:26 h=3 loss=7.57780 |dth|F=2.358 |dz|I=0.99 (12s)
+[2026-09-29T11:32:46] traj 2042:26 h=4 loss=7.58423 |dth|F=3.168 |dz|I=1.022 (6s)
+[2026-09-29T11:32:53] traj 2042:26 h=5 loss=7.18555 |dth|F=4.089 |dz|I=1.123 (7s)
+[2026-09-29T11:32:59] traj 2042:26 h=6 loss=7.41098 |dth|F=5.567 |dz|I=1.331 (6s)
+[2026-09-29T11:33:07] traj 2042:26 h=7 loss=7.18966 |dth|F=7.61 |dz|I=1.669 (8s)
+[2026-09-29T11:33:13] traj 2042:26 h=8 loss=7.32121 |dth|F=10.11 |dz|I=2.062 (6s)
+[2026-09-29T11:33:20] traj 2042:26 h=9 loss=7.08460 |dth|F=14.66 |dz|I=2.525 (6s)
+[2026-09-29T11:33:27] traj 2042:26 h=10 loss=6.81875 |dth|F=28.9 |dz|I=3.915 (7s)
+[2026-09-29T11:33:33] traj 2042:26 h=11 loss=6.97575 |dth|F=54.36 |dz|I=6.54 (6s)
+[2026-09-29T11:33:39] traj 2042:26 h=12 loss=7.81563 |dth|F=97.27 |dz|I=9.967 (6s)
+[2026-09-29T11:33:45] traj 2042:26 h=13 loss=7.25484 |dth|F=158.4 |dz|I=14.79 (6s)
+[2026-09-29T11:33:51] traj 2042:26 h=14 loss=6.71860 |dth|F=225.9 |dz|I=20.02 (6s)
+[2026-09-29T11:34:00] traj 2042:26 h=15 loss=6.76835 |dth|F=301.4 |dz|I=25.61 (8s)
+[2026-09-29T11:34:10] traj 2042:26 h=16 loss=6.57518 |dth|F=379.7 |dz|I=31.31 (10s)
+[2026-09-29T11:34:16] traj 2042:26 h=17 loss=6.38639 |dth|F=452.8 |dz|I=36.73 (6s)
+[2026-09-29T11:34:22] traj 2042:26 h=18 loss=6.31853 |dth|F=523.9 |dz|I=41.93 (7s)
+[2026-09-29T11:34:28] traj 2042:26 h=19 loss=6.51370 |dth|F=597.4 |dz|I=47.15 (6s)
+[2026-09-29T11:34:34] traj 2042:26 h=20 loss=6.46050 |dth|F=670 |dz|I=52.19 (6s)
+[2026-09-29T11:34:40] traj 2042:26 h=21 loss=6.22400 |dth|F=745.3 |dz|I=57.38 (6s)
+[2026-09-29T11:34:46] traj 2042:26 h=22 loss=6.27806 |dth|F=825.1 |dz|I=62.9 (6s)
+[2026-09-29T11:34:52] traj 2042:26 h=23 loss=5.91479 |dth|F=905 |dz|I=68.42 (6s)
+[2026-09-29T11:34:58] traj 2042:26 h=24 loss=5.86026 |dth|F=990.3 |dz|I=74.34 (6s)
+[2026-09-29T11:35:04] traj 2042:26 h=25 loss=5.87705 |dth|F=1078 |dz|I=80.42 (6s)
+[2026-09-29T11:35:11] traj 2042:26 h=26 loss=5.87468 |dth|F=1166 |dz|I=86.6 (6s)
+[2026-09-29T11:35:17] traj 2042:26 h=27 loss=6.15425 |dth|F=1257 |dz|I=92.9 (6s)
+[2026-09-29T11:35:23] traj 2042:26 h=28 loss=6.03129 |dth|F=1349 |dz|I=99.29 (6s)
+[2026-09-29T11:35:30] traj 2042:26 h=29 loss=5.61279 |dth|F=1443 |dz|I=106 (6s)
+[2026-09-29T11:35:46] traj 2042:26 h=30 loss=5.72495 |dth|F=1542 |dz|I=113 (16s)
+[2026-09-29T11:35:52] traj 2042:26 h=31 loss=5.72464 |dth|F=1651 |dz|I=120.9 (6s)
+[2026-09-29T11:36:02] traj 2042:26 h=32 loss=5.48296 |dth|F=1770 |dz|I=129.4 (10s)
+Traceback (most recent call last):
+  File "/home/b205/projects/training_dynamics_lab/optimizer_sensitivity/scripts/f3_5_mode_coupling.py", line 738, in <module>
+    sys.exit(main())
+  File "/home/b205/projects/training_dynamics_lab/optimizer_sensitivity/scripts/f3_5_mode_coupling.py", line 731, in main
+    return cmd_traj(seed, step)
+  File "/home/b205/projects/training_dynamics_lab/optimizer_sensitivity/scripts/f3_5_mode_coupling.py", line 214, in cmd_traj
+    assert zi == ref_i, f"traj {cell}: impulse final {zi!r} != F3 rq2 {ref_i!r}"
+AssertionError: traj 2042:26: impulse final 129.44279858600328 != F3 rq2 129.44279858600336
+Model Params: 100.78M
+Trainable Params: 100.784M
+[2026-09-29T11:38:43] f3.5 cell 2042:26 stream_seed=1493117413121141024 manifest=e40dd1f4709ca8b5 micro0=52
+[2026-09-29T11:39:15] traj 2042:26 h=1 loss=7.43339 |dth|F=0.809 |dz|I=1 (32s)
+[2026-09-29T11:39:22] traj 2042:26 h=2 loss=7.30788 |dth|F=1.582 |dz|I=0.9876 (7s)
+[2026-09-29T11:39:31] traj 2042:26 h=3 loss=7.57780 |dth|F=2.358 |dz|I=0.99 (9s)
+[2026-09-29T11:39:52] traj 2042:26 h=4 loss=7.58423 |dth|F=3.168 |dz|I=1.022 (21s)
+[2026-09-29T11:40:04] traj 2042:26 h=5 loss=7.18555 |dth|F=4.089 |dz|I=1.123 (13s)
+[2026-09-29T11:40:11] traj 2042:26 h=6 loss=7.41098 |dth|F=5.567 |dz|I=1.331 (6s)
+[2026-09-29T11:40:40] traj 2042:26 h=7 loss=7.18966 |dth|F=7.61 |dz|I=1.669 (29s)
+[2026-09-29T11:40:46] traj 2042:26 h=8 loss=7.32121 |dth|F=10.11 |dz|I=2.062 (6s)
+[2026-09-29T11:40:52] traj 2042:26 h=9 loss=7.08460 |dth|F=14.66 |dz|I=2.525 (6s)
+[2026-09-29T11:41:01] traj 2042:26 h=10 loss=6.81875 |dth|F=28.9 |dz|I=3.915 (9s)
+[2026-09-29T11:41:07] traj 2042:26 h=11 loss=6.97575 |dth|F=54.36 |dz|I=6.54 (6s)
+[2026-09-29T11:41:13] traj 2042:26 h=12 loss=7.81563 |dth|F=97.27 |dz|I=9.967 (6s)
+[2026-09-29T11:41:19] traj 2042:26 h=13 loss=7.25484 |dth|F=158.4 |dz|I=14.79 (6s)
+[2026-09-29T11:41:25] traj 2042:26 h=14 loss=6.71860 |dth|F=225.9 |dz|I=20.02 (6s)
+[2026-09-29T11:41:53] traj 2042:26 h=15 loss=6.76835 |dth|F=301.4 |dz|I=25.61 (28s)
+[2026-09-29T11:41:59] traj 2042:26 h=16 loss=6.57518 |dth|F=379.7 |dz|I=31.31 (6s)
+[2026-09-29T11:42:05] traj 2042:26 h=17 loss=6.38639 |dth|F=452.8 |dz|I=36.73 (6s)
+[2026-09-29T11:42:11] traj 2042:26 h=18 loss=6.31853 |dth|F=523.9 |dz|I=41.93 (6s)
+[2026-09-29T11:42:18] traj 2042:26 h=19 loss=6.51370 |dth|F=597.4 |dz|I=47.15 (7s)
+[2026-09-29T11:42:25] traj 2042:26 h=20 loss=6.46050 |dth|F=670 |dz|I=52.19 (6s)
+[2026-09-29T11:42:31] traj 2042:26 h=21 loss=6.22400 |dth|F=745.3 |dz|I=57.38 (6s)
+[2026-09-29T11:42:40] traj 2042:26 h=22 loss=6.27806 |dth|F=825.1 |dz|I=62.9 (9s)
+[2026-09-29T11:42:47] traj 2042:26 h=23 loss=5.91479 |dth|F=905 |dz|I=68.42 (7s)
+[2026-09-29T11:42:53] traj 2042:26 h=24 loss=5.86026 |dth|F=990.3 |dz|I=74.34 (6s)
+[2026-09-29T11:42:59] traj 2042:26 h=25 loss=5.87705 |dth|F=1078 |dz|I=80.42 (6s)
+[2026-09-29T11:43:10] traj 2042:26 h=26 loss=5.87468 |dth|F=1166 |dz|I=86.6 (11s)
+[2026-09-29T11:43:16] traj 2042:26 h=27 loss=6.15425 |dth|F=1257 |dz|I=92.9 (6s)
+[2026-09-29T11:43:24] traj 2042:26 h=28 loss=6.03129 |dth|F=1349 |dz|I=99.29 (7s)
+[2026-09-29T11:43:30] traj 2042:26 h=29 loss=5.61279 |dth|F=1443 |dz|I=106 (6s)
+[2026-09-29T11:43:36] traj 2042:26 h=30 loss=5.72495 |dth|F=1542 |dz|I=113 (6s)
+[2026-09-29T11:43:46] traj 2042:26 h=31 loss=5.72464 |dth|F=1651 |dz|I=120.9 (10s)
+[2026-09-29T11:44:05] traj 2042:26 h=32 loss=5.48296 |dth|F=1770 |dz|I=129.4 (19s)
+[2026-09-29T11:44:13] traj 2042:26: COMPLETE (bitwise regression PASS)
+Model Params: 100.78M
+Trainable Params: 100.784M
+[2026-09-29T14:45:14] f3.5 cell 2042:26 stream_seed=1493117413121141024 manifest=e40dd1f4709ca8b5 micro0=52
+[2026-09-29T14:45:14] traj 2042:26: already complete
+Model Params: 100.78M
+Trainable Params: 100.784M
+[2026-09-29T15:43:03] f3.5 cell 2042:26 stream_seed=1493117413121141024 manifest=e40dd1f4709ca8b5 micro0=52
+[2026-09-29T15:43:03] traj 2042:26: already complete
+Model Params: 100.78M
+Trainable Params: 100.784M
+[2026-09-29T16:06:15] f3.5 cell 2042:26 stream_seed=1493117413121141024 manifest=e40dd1f4709ca8b5 micro0=52
+[2026-09-29T16:06:15] traj 2042:26: already complete
+Model Params: 100.78M
+Trainable Params: 100.784M
+[2026-09-29T16:25:49] f3.5 cell 2042:26 stream_seed=1493117413121141024 manifest=e40dd1f4709ca8b5 micro0=52
+[2026-09-29T16:25:49] traj 2042:26: already complete
+Model Params: 100.78M
+Trainable Params: 100.784M
+[2026-09-29T16:36:44] f3.5 cell 2042:26 stream_seed=1493117413121141024 manifest=e40dd1f4709ca8b5 micro0=52
+[2026-09-29T16:36:44] traj 2042:26: already complete
+Model Params: 100.78M
+Trainable Params: 100.784M
+[2026-09-29T17:42:16] f3.5 cell 2042:26 stream_seed=1493117413121141024 manifest=e40dd1f4709ca8b5 micro0=52
+[2026-09-29T17:42:16] traj 2042:26: already complete
+Model Params: 100.78M
+Trainable Params: 100.784M
+[2026-09-29T18:08:37] f3.5 cell 2042:26 stream_seed=1493117413121141024 manifest=e40dd1f4709ca8b5 micro0=52
+[2026-09-29T18:08:37] traj 2042:26: already complete
+Model Params: 100.78M
+Trainable Params: 100.784M
+[2026-09-29T20:02:55] f3.5 cell 2042:26 stream_seed=1493117413121141024 manifest=e40dd1f4709ca8b5 micro0=52
+[2026-09-29T20:02:55] traj 2042:26: already complete
+Model Params: 100.78M
+Trainable Params: 100.784M
+[2026-09-29T23:12:47] f3.5 cell 2043:26 stream_seed=4378507494899067838 manifest=c3862f6047e651f5 micro0=52
+[2026-09-29T23:13:04] traj 2043:26 h=1 loss=7.35254 |dth|F=0.7189 |dz|I=1 (17s)
+[2026-09-29T23:13:21] traj 2043:26 h=2 loss=7.39453 |dth|F=1.463 |dz|I=1.032 (17s)
+[2026-09-29T23:13:53] traj 2043:26 h=3 loss=7.42636 |dth|F=3.664 |dz|I=2.182 (32s)
+[2026-09-29T23:14:09] traj 2043:26 h=4 loss=7.45503 |dth|F=6.485 |dz|I=3.86 (15s)
+[2026-09-29T23:14:23] traj 2043:26 h=5 loss=7.28604 |dth|F=9.144 |dz|I=5.461 (14s)
+[2026-09-29T23:14:42] traj 2043:26 h=6 loss=7.45092 |dth|F=11.6 |dz|I=6.948 (19s)
+[2026-09-29T23:15:00] traj 2043:26 h=7 loss=7.26226 |dth|F=13.89 |dz|I=8.334 (18s)
+[2026-09-29T23:15:14] traj 2043:26 h=8 loss=7.39042 |dth|F=16.07 |dz|I=9.669 (15s)
+[2026-09-29T23:15:28] traj 2043:26 h=9 loss=7.41992 |dth|F=18.09 |dz|I=10.93 (14s)
+[2026-09-29T23:15:43] traj 2043:26 h=10 loss=7.24069 |dth|F=20.05 |dz|I=12.16 (14s)
+[2026-09-29T23:15:57] traj 2043:26 h=11 loss=7.18258 |dth|F=21.98 |dz|I=13.41 (15s)
+[2026-09-29T23:16:13] traj 2043:26 h=12 loss=6.98390 |dth|F=23.9 |dz|I=14.64 (15s)
+[2026-09-29T23:16:28] traj 2043:26 h=13 loss=7.02745 |dth|F=25.94 |dz|I=16.02 (15s)
+[2026-09-29T23:16:42] traj 2043:26 h=14 loss=6.94855 |dth|F=28.53 |dz|I=19.1 (14s)
+[2026-09-29T23:16:59] traj 2043:26 h=15 loss=7.10758 |dth|F=38.35 |dz|I=46.32 (16s)
+[2026-09-29T23:17:14] traj 2043:26 h=16 loss=6.85634 |dth|F=60.63 |dz|I=108 (15s)
+[2026-09-29T23:17:29] traj 2043:26 h=17 loss=7.07982 |dth|F=298 |dz|I=243.7 (15s)
+[2026-09-29T23:17:42] traj 2043:26 h=18 loss=6.85988 |dth|F=565.3 |dz|I=941.6 (13s)
+[2026-09-29T23:17:57] traj 2043:26 h=19 loss=6.61357 |dth|F=845 |dz|I=3041 (15s)
+[2026-09-29T23:18:12] traj 2043:26 h=20 loss=6.62880 |dth|F=1147 |dz|I=5115 (16s)
+[2026-09-29T23:18:30] traj 2043:26 h=21 loss=6.50957 |dth|F=1516 |dz|I=7466 (18s)
+[2026-09-29T23:18:46] traj 2043:26 h=22 loss=6.45839 |dth|F=2363 |dz|I=1.015e+04 (16s)
+[2026-09-29T23:19:03] traj 2043:26 h=23 loss=6.60658 |dth|F=3557 |dz|I=1.314e+04 (17s)
+[2026-09-29T23:19:18] traj 2043:26 h=24 loss=6.38001 |dth|F=4783 |dz|I=1.628e+04 (15s)
+[2026-09-29T23:19:33] traj 2043:26 h=25 loss=6.35953 |dth|F=5958 |dz|I=1.943e+04 (15s)
+[2026-09-29T23:19:48] traj 2043:26 h=26 loss=6.30180 |dth|F=7057 |dz|I=2.258e+04 (15s)
+[2026-09-29T23:20:03] traj 2043:26 h=27 loss=6.59368 |dth|F=8062 |dz|I=2.56e+04 (15s)
+[2026-09-29T23:20:18] traj 2043:26 h=28 loss=6.23216 |dth|F=9029 |dz|I=2.889e+04 (15s)
+[2026-09-29T23:20:33] traj 2043:26 h=29 loss=6.38681 |dth|F=1.003e+04 |dz|I=3.248e+04 (15s)
+[2026-09-29T23:20:49] traj 2043:26 h=30 loss=6.34596 |dth|F=1.11e+04 |dz|I=3.651e+04 (15s)
+[2026-09-29T23:21:04] traj 2043:26 h=31 loss=6.22857 |dth|F=1.229e+04 |dz|I=4.098e+04 (16s)
+[2026-09-29T23:21:22] traj 2043:26 h=32 loss=5.95181 |dth|F=1.357e+04 |dz|I=4.584e+04 (18s)
+[2026-09-29T23:21:24] traj 2043:26: COMPLETE (bitwise regression PASS)
+Model Params: 100.78M
+Trainable Params: 100.784M
+[2026-09-30T02:16:22] f3.5 cell 2042:64 stream_seed=2935812454010104431 manifest=602b403fd8ce55da micro0=128
+[2026-09-30T02:16:39] traj 2042:64 h=1 loss=7.33530 |dth|F=0.509 |dz|I=1 (17s)
+[2026-09-30T02:16:55] traj 2042:64 h=2 loss=7.44312 |dth|F=1.059 |dz|I=0.9564 (16s)
+[2026-09-30T02:17:11] traj 2042:64 h=3 loss=7.10516 |dth|F=1.599 |dz|I=0.9169 (16s)
+[2026-09-30T02:17:26] traj 2042:64 h=4 loss=7.07662 |dth|F=2.069 |dz|I=0.9106 (15s)
+[2026-09-30T02:17:40] traj 2042:64 h=5 loss=7.03526 |dth|F=2.518 |dz|I=0.9442 (14s)
+[2026-09-30T02:17:54] traj 2042:64 h=6 loss=7.00648 |dth|F=2.985 |dz|I=1.013 (14s)
+[2026-09-30T02:18:11] traj 2042:64 h=7 loss=6.95256 |dth|F=3.48 |dz|I=1.107 (17s)
+[2026-09-30T02:18:25] traj 2042:64 h=8 loss=7.00493 |dth|F=3.905 |dz|I=1.201 (14s)
+[2026-09-30T02:18:40] traj 2042:64 h=9 loss=6.76298 |dth|F=4.319 |dz|I=1.295 (15s)
+[2026-09-30T02:18:55] traj 2042:64 h=10 loss=6.91723 |dth|F=4.703 |dz|I=1.381 (15s)
+[2026-09-30T02:19:09] traj 2042:64 h=11 loss=6.98972 |dth|F=5.072 |dz|I=1.478 (14s)
+[2026-09-30T02:19:22] traj 2042:64 h=12 loss=6.93889 |dth|F=5.364 |dz|I=1.568 (14s)
+[2026-09-30T02:19:37] traj 2042:64 h=13 loss=6.96470 |dth|F=5.732 |dz|I=1.678 (14s)
+[2026-09-30T02:19:58] traj 2042:64 h=14 loss=6.57471 |dth|F=6.174 |dz|I=1.799 (22s)
+[2026-09-30T02:20:15] traj 2042:64 h=15 loss=6.78834 |dth|F=6.645 |dz|I=1.919 (17s)
+[2026-09-30T02:20:29] traj 2042:64 h=16 loss=6.68413 |dth|F=7.059 |dz|I=2.03 (14s)
+[2026-09-30T02:20:43] traj 2042:64 h=17 loss=6.72316 |dth|F=7.471 |dz|I=2.146 (14s)
+[2026-09-30T02:20:57] traj 2042:64 h=18 loss=6.57897 |dth|F=7.834 |dz|I=2.266 (14s)
+[2026-09-30T02:21:12] traj 2042:64 h=19 loss=6.49695 |dth|F=8.219 |dz|I=2.387 (14s)
+[2026-09-30T02:21:27] traj 2042:64 h=20 loss=6.51880 |dth|F=8.669 |dz|I=2.515 (15s)
+[2026-09-30T02:21:41] traj 2042:64 h=21 loss=6.23526 |dth|F=9.208 |dz|I=2.639 (14s)
+[2026-09-30T02:21:55] traj 2042:64 h=22 loss=6.38891 |dth|F=9.776 |dz|I=2.768 (14s)
+[2026-09-30T02:22:09] traj 2042:64 h=23 loss=6.31415 |dth|F=10.32 |dz|I=2.892 (15s)
+[2026-09-30T02:22:23] traj 2042:64 h=24 loss=6.20790 |dth|F=10.81 |dz|I=3.008 (14s)
+[2026-09-30T02:22:37] traj 2042:64 h=25 loss=6.30531 |dth|F=11.3 |dz|I=3.125 (14s)
+[2026-09-30T02:22:52] traj 2042:64 h=26 loss=6.25112 |dth|F=11.77 |dz|I=3.248 (14s)
+[2026-09-30T02:23:07] traj 2042:64 h=27 loss=6.02298 |dth|F=12.27 |dz|I=3.38 (15s)
+[2026-09-30T02:23:21] traj 2042:64 h=28 loss=6.17759 |dth|F=12.74 |dz|I=3.509 (14s)
+[2026-09-30T02:23:35] traj 2042:64 h=29 loss=6.31192 |dth|F=13.25 |dz|I=3.643 (14s)
+[2026-09-30T02:23:49] traj 2042:64 h=30 loss=6.08972 |dth|F=13.75 |dz|I=3.777 (14s)
+[2026-09-30T02:24:04] traj 2042:64 h=31 loss=5.96809 |dth|F=14.26 |dz|I=3.916 (15s)
+[2026-09-30T02:24:21] traj 2042:64 h=32 loss=5.97615 |dth|F=14.76 |dz|I=4.05 (17s)
+[2026-09-30T02:24:26] traj 2042:64: COMPLETE (bitwise regression PASS)

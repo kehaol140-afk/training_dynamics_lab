@@ -1,0 +1,281 @@
+{
+  "format": "mte_m1_prereg_v1",
+  "date_frozen": "2026-09-26",
+  "protocol": "docs/MUON_PROTOCOL_v1.2.md (patch over docs/MUON_PROTOCOL_v1.1.md)",
+  "config_py_sha256": "d0a5a825e9e7358781915f32ecb22361f24cca827dec3b038b696be9665afb8f",
+  "model": {
+    "hidden_size": 512,
+    "num_hidden_layers": 8,
+    "num_attention_heads": 8,
+    "num_key_value_heads": 4,
+    "vocab_size": 6400,
+    "use_moe": false,
+    "dropout": 0.0,
+    "flash_attn": true,
+    "total_parameters": 30025216,
+    "tie_word_embeddings": true,
+    "seq_len": 256,
+    "param_dtype": "float32 master weights",
+    "compute_dtype": "bfloat16 autocast, no GradScaler"
+  },
+  "tokenizer": {
+    "path": "/home/b205/projects/training_dynamics_lab/minimind_base/model/tokenizer.json",
+    "sha256": "71f32c68cf63a15355a8fc171b7594b3d41870fe0ddb54fc6aefa55f73a4a668",
+    "vocab_size": 6400,
+    "bos_id": 1,
+    "doc_sep_id": 0
+  },
+  "budget": {
+    "B0_tokens": 67108864,
+    "B0_tokens_expr": "2**26",
+    "optimizer_steps": 2048,
+    "tokens_per_optimizer_step": 32768,
+    "micro_batch_sequences": 32,
+    "grad_accum_steps": 4,
+    "seq_len": 256,
+    "effective_loss_tokens_per_window": 255,
+    "single_epoch_at_all_p": true
+  },
+  "schedule": {
+    "form": "linear warmup then cosine to 10% of peak",
+    "warmup_steps": 32,
+    "warmup_rule": "s(t) = t/32 for t <= 32 (1-based step)",
+    "cosine_rule": "s(t) = 0.1 + 0.45*(1+cos(pi*(t-32)/(2048-32))) for t > 32",
+    "applies_to": "both arms, both routes (Muon and its AdamW-aux share the factor)",
+    "checkpoints": [
+      0.03125,
+      1.0,
+      0.5612188112821328,
+      0.1
+    ]
+  },
+  "optimizers": {
+    "adamw": {
+      "implementation": "torch.optim.AdamW",
+      "reference_lr": 0.0003,
+      "lr_grid": [
+        0.00015,
+        0.0003,
+        0.0006
+      ],
+      "betas": [
+        0.9,
+        0.95
+      ],
+      "eps": 1e-08,
+      "wd_grid": [
+        0.01,
+        0.02
+      ],
+      "wd_applies_to": "all trainable params, no exemptions"
+    },
+    "muon": {
+      "source": "torch.optim._muon.Muon",
+      "torch_version": "2.11.0",
+      "momentum": 0.95,
+      "nesterov": true,
+      "ns_steps": 5,
+      "ns_coefficients": [
+        3.4445,
+        -4.775,
+        2.0315
+      ],
+      "eps": 1e-07,
+      "adjust_lr_fn": null,
+      "weight_decay_default": 0.1,
+      "reference_lr": 0.005,
+      "lr_grid": [
+        0.0025,
+        0.005,
+        0.01
+      ],
+      "wd_grid": [
+        0.01,
+        0.02
+      ],
+      "wd_applies_to": "all trainable params, no exemptions",
+      "route": "hidden 2D linear matrices only (56 tensors, 26,738,688 params)",
+      "aux_adamw_route": "embedding (tied head) + norms + any bias/scalar (34 tensors, 3,286,528 params)",
+      "aux_lr_rule": "same reference LR, same multiplier, same schedule"
+    }
+  },
+  "grad_clip": {
+    "global_norm": 1.0,
+    "scope": "all trainable params, both arms"
+  },
+  "data": {
+    "domain_A": {
+      "path": "/home/b205/FDA_INIT/pretrained_models/sharegpt_datasets/common_en_70k.jsonl",
+      "sha256": "7a61fda234ff634d35c5bb42b8ff761f0c1b54a895fec02ef411a9a212f31797"
+    },
+    "domain_B": {
+      "path": "/home/b205/FDA_INIT/pretrained_models/sharegpt_datasets/common_zh_70k.jsonl",
+      "sha256": "a78dfae704e5ca29f18b881b0d298f4bf401093bf33d4ea993dd5728e591c565"
+    },
+    "split_manifest": "outputs/m0/data_audit/split_manifest.json",
+    "split_manifest_sha256": "59717948246ea30114ccea330dbc045103ab1e67d7bc85d6c49c5ac05a3c4caa",
+    "eval_pools": "outputs/m0/data_audit/eval_pools.pt",
+    "eval_pools_sha256": "a1f26c90720c0770c8f1306ab0ee0cf97cc25e75310110c69f93ecdb0833097f",
+    "dedup": "exact normalized-text, keep-first, within domain, pre-split",
+    "mixture": "p = 0.5 (M1); token-level accounting via pre-generated batch manifests; realized p_hat logged"
+  },
+  "evaluation": {
+    "primary": "final token NLL at step 2048 (dev pools for M1/M2 selection)",
+    "nll_semantics": "sum/count per domain; V_Q = 0.5*NLL_A + 0.5*NLL_B; q frozen at 0.5",
+    "dev_pool_tokens_per_domain": 130560,
+    "banned": [
+      "best intermediate checkpoint",
+      "training loss",
+      "early curve"
+    ]
+  },
+  "observation_hooks": {
+    "status": "diagnostic only, never primary evidence",
+    "every_n_steps": 100,
+    "required_fields": [
+      "domain_gradient_cosine",
+      "domain_conflict_ratio",
+      "grad_global_norm",
+      "update_norm",
+      "update_work_proxy (-g^T delta_theta)"
+    ],
+    "probe": "first 4 batches x 8 windows per domain from frozen dev pools; 16 pairwise dots define conflict ratio",
+    "naming_rule": "the quantity -g^T delta_theta is named update_work_proxy; no other name is permitted for it in any config or output"
+  },
+  "m1_runs": [
+    {
+      "run_id": "m1_adamw_lr0.5_wd0.01_p0.5_s2030",
+      "stage": "M1",
+      "arm": "adamw",
+      "p": 0.5,
+      "seed": 2030,
+      "lr_multiplier": 0.5,
+      "lr": 0.00015,
+      "reference_lr": 0.0003,
+      "weight_decay": 0.01
+    },
+    {
+      "run_id": "m1_adamw_lr0.5_wd0.02_p0.5_s2030",
+      "stage": "M1",
+      "arm": "adamw",
+      "p": 0.5,
+      "seed": 2030,
+      "lr_multiplier": 0.5,
+      "lr": 0.00015,
+      "reference_lr": 0.0003,
+      "weight_decay": 0.02
+    },
+    {
+      "run_id": "m1_adamw_lr1.0_wd0.01_p0.5_s2030",
+      "stage": "M1",
+      "arm": "adamw",
+      "p": 0.5,
+      "seed": 2030,
+      "lr_multiplier": 1.0,
+      "lr": 0.0003,
+      "reference_lr": 0.0003,
+      "weight_decay": 0.01
+    },
+    {
+      "run_id": "m1_adamw_lr1.0_wd0.02_p0.5_s2030",
+      "stage": "M1",
+      "arm": "adamw",
+      "p": 0.5,
+      "seed": 2030,
+      "lr_multiplier": 1.0,
+      "lr": 0.0003,
+      "reference_lr": 0.0003,
+      "weight_decay": 0.02
+    },
+    {
+      "run_id": "m1_adamw_lr2.0_wd0.01_p0.5_s2030",
+      "stage": "M1",
+      "arm": "adamw",
+      "p": 0.5,
+      "seed": 2030,
+      "lr_multiplier": 2.0,
+      "lr": 0.0006,
+      "reference_lr": 0.0003,
+      "weight_decay": 0.01
+    },
+    {
+      "run_id": "m1_adamw_lr2.0_wd0.02_p0.5_s2030",
+      "stage": "M1",
+      "arm": "adamw",
+      "p": 0.5,
+      "seed": 2030,
+      "lr_multiplier": 2.0,
+      "lr": 0.0006,
+      "reference_lr": 0.0003,
+      "weight_decay": 0.02
+    },
+    {
+      "run_id": "m1_muon_lr0.5_wd0.01_p0.5_s2030",
+      "stage": "M1",
+      "arm": "muon",
+      "p": 0.5,
+      "seed": 2030,
+      "lr_multiplier": 0.5,
+      "lr": 0.0025,
+      "reference_lr": 0.005,
+      "weight_decay": 0.01
+    },
+    {
+      "run_id": "m1_muon_lr0.5_wd0.02_p0.5_s2030",
+      "stage": "M1",
+      "arm": "muon",
+      "p": 0.5,
+      "seed": 2030,
+      "lr_multiplier": 0.5,
+      "lr": 0.0025,
+      "reference_lr": 0.005,
+      "weight_decay": 0.02
+    },
+    {
+      "run_id": "m1_muon_lr1.0_wd0.01_p0.5_s2030",
+      "stage": "M1",
+      "arm": "muon",
+      "p": 0.5,
+      "seed": 2030,
+      "lr_multiplier": 1.0,
+      "lr": 0.005,
+      "reference_lr": 0.005,
+      "weight_decay": 0.01
+    },
+    {
+      "run_id": "m1_muon_lr1.0_wd0.02_p0.5_s2030",
+      "stage": "M1",
+      "arm": "muon",
+      "p": 0.5,
+      "seed": 2030,
+      "lr_multiplier": 1.0,
+      "lr": 0.005,
+      "reference_lr": 0.005,
+      "weight_decay": 0.02
+    },
+    {
+      "run_id": "m1_muon_lr2.0_wd0.01_p0.5_s2030",
+      "stage": "M1",
+      "arm": "muon",
+      "p": 0.5,
+      "seed": 2030,
+      "lr_multiplier": 2.0,
+      "lr": 0.01,
+      "reference_lr": 0.005,
+      "weight_decay": 0.01
+    },
+    {
+      "run_id": "m1_muon_lr2.0_wd0.02_p0.5_s2030",
+      "stage": "M1",
+      "arm": "muon",
+      "p": 0.5,
+      "seed": 2030,
+      "lr_multiplier": 2.0,
+      "lr": 0.01,
+      "reference_lr": 0.005,
+      "weight_decay": 0.02
+    }
+  ],
+  "m1_total_runs": 12,
+  "no_retuning_clause": "no LR/WD/cell may be added, removed or re-run after observing M1/M2 results (v1.1 single boundary-extension contingency excepted)"
+}

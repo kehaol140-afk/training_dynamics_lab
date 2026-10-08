@@ -1,0 +1,22 @@
+{
+ "study": "F4A_SCALE_PHASE_SEED_MAP",
+ "n_units": 74,
+ "exploratory_model_only": true,
+ "verdict": {
+  "main": "PHASE_STRUCTURE_ONLY_NO_SCALE_TREND",
+  "secondary": "HIGH_SEED_HETEROGENEITY",
+  "phase_structure": "CONFIRMED (14/14 seed trajectories self-heal; all scales)",
+  "scale_trend_peak": "NOT CONFIRMED (median peak R_curv_32: 5M=28.6, 26M=9.1, 100M=744; Spearman vs logN = 0.50 < 0.7)",
+  "scale_trend_window": "PARTIAL: 100M heals latest (2/3 seeds in (0.5,0.80]); 26M/5M by ~0.5",
+  "answers": {
+   "RQ1_self_heal": "YES - universal, monotone-in-median decay at every scale",
+   "RQ2_cross_seed": "Direction reproducible (all seeds heal); magnitude highly variable (up to 5.3 dex at 100M step26)",
+   "RQ3_peak_vs_scale": "Non-monotone (5M>26M at observed peaks); 100M stands out (~744 median)",
+   "RQ3_window_vs_scale": "100M unstable window extends latest (2/3 seeds heal only in (0.5,0.80])",
+   "RQ4_best_indicators": "A_theta (spearman -0.81), clip_ratio (+0.69), A_m (+0.51)",
+   "formal_modeling_ready": "YES with seed-hierarchical structure (heterogeneity must be modeled, not averaged away)"
+  },
+  "exploratory_model_only": true
+ },
+ "repro_gates": "3/3 bitwise PASS (g1b 2042:26/2042:64/2043:26 vs F3 raws + frozen-reference losses)"
+}

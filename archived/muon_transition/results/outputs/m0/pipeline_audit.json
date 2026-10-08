@@ -1,0 +1,145 @@
+{
+  "gate": 4,
+  "checks": {
+    "token_accounting": {
+      "tokenizer_sha256_frozen": "71f32c68cf63a15355a8fc171b7594b3d41870fe0ddb54fc6aefa55f73a4a668",
+      "seq_len": 256,
+      "packing": "per-doc enc(doc)+DOC_SEP(0); windows = consecutive (seq_len-1) slices each prefixed by BOS(1)",
+      "effective_loss_tokens_per_window": 255,
+      "effective_tokens_formula": "n_windows * (seq_len - 1)",
+      "token_counting_rule": "sum of per-token CE over valid targets only; never mean-of-batch-means"
+    },
+    "budget_B0": {
+      "definition": "B0 = total training tokens per run, identical for every run of M1/M2/M3",
+      "tokens": 67108864,
+      "tokens_per_optimizer_step": 32768,
+      "micro_batch_sequences": 32,
+      "grad_accum_steps": 4,
+      "optimizer_steps": 2048,
+      "status": "frozen definition; B0 magnitude pending protocol review before M1"
+    },
+    "evaluation": {
+      "q": 0.5,
+      "pools": "outputs/m0/data_audit/eval_pools.pt (frozen at Gate 3)",
+      "Q_dev_token_counts": {
+        "tokens_A": 130560,
+        "tokens_B": 130560
+      },
+      "Q_dev_at_init": {
+        "nll_A": 8.842047867120481,
+        "tokens_A": 130560,
+        "nll_B": 8.866617629107306,
+        "tokens_B": 130560,
+        "v_q": 8.854332748113894,
+        "q": 0.5
+      },
+      "Q_confirm_at_init": {
+        "nll_A": 8.837861902573529,
+        "tokens_A": 130560,
+        "nll_B": 8.863875893985524,
+        "tokens_B": 130560,
+        "v_q": 8.850868898279526,
+        "q": 0.5
+      },
+      "equal_token_counts_across_domains": true,
+      "metric": "token NLL = sum/count per domain; V_Q = 0.5*NLL_A + 0.5*NLL_B"
+    },
+    "reproducibility_first_updates": {
+      "adamw": {
+        "identical_losses": true,
+        "identical_param_fingerprint": true,
+        "first_losses": [
+          8.920104026794434,
+          8.838173866271973,
+          8.900337219238281
+        ]
+      },
+      "muon": {
+        "identical_losses": true,
+        "identical_param_fingerprint": true,
+        "first_losses": [
+          8.920104026794434,
+          8.90110969543457,
+          10.507163047790527
+        ]
+      }
+    },
+    "checkpoint_save_load": {
+      "adamw": {
+        "cursor_restored": true,
+        "resume_step3_loss_matches": true,
+        "param_fingerprint_matches_uninterrupted": true,
+        "saved_fields": [
+          "model",
+          "optimizers",
+          "rng",
+          "cursor",
+          "payload_sha256"
+        ]
+      },
+      "muon": {
+        "cursor_restored": true,
+        "resume_step3_loss_matches": true,
+        "param_fingerprint_matches_uninterrupted": true,
+        "saved_fields": [
+          "model",
+          "optimizers",
+          "rng",
+          "cursor",
+          "payload_sha256"
+        ]
+      }
+    },
+    "real_data_smoke_15_steps": {
+      "adamw": {
+        "smoke_lr": 0.0003,
+        "losses": [
+          8.852554321289062,
+          8.657132148742676,
+          8.486352920532227,
+          8.213652610778809,
+          8.062392234802246,
+          7.992397785186768,
+          7.821005344390869,
+          7.689694404602051,
+          7.590020179748535,
+          7.659470558166504,
+          7.588246822357178,
+          7.370993137359619,
+          7.342264652252197,
+          7.4226274490356445,
+          7.372539520263672
+        ],
+        "first": 8.852554321289062,
+        "last": 7.372539520263672,
+        "min": 7.342264652252197,
+        "decreased": true
+      },
+      "muon": {
+        "smoke_lr": 0.005,
+        "losses": [
+          8.852554321289062,
+          8.07575798034668,
+          7.897614002227783,
+          7.47641658782959,
+          7.285029411315918,
+          7.677850723266602,
+          7.305685520172119,
+          7.185323715209961,
+          7.017049789428711,
+          7.031937122344971,
+          6.923111915588379,
+          6.968544960021973,
+          7.194419860839844,
+          7.5051140785217285,
+          7.494022369384766
+        ],
+        "first": 8.852554321289062,
+        "last": 7.494022369384766,
+        "min": 6.923111915588379,
+        "decreased": true
+      }
+    }
+  },
+  "gate4_pass": true
+}

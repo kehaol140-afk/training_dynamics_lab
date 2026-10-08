@@ -1,0 +1,20 @@
+{
+  "run_id": "m1_adamw_lr0.5_wd0.01_p0.5_s2030",
+  "stage": "M1",
+  "arm": "adamw",
+  "p": 0.5,
+  "seed": 2030,
+  "lr_multiplier": 0.5,
+  "lr": 0.00015,
+  "reference_lr": 0.0003,
+  "weight_decay": 0.01,
+  "n_steps": 2048,
+  "tokens": 67108864,
+  "manifest_p_hat": 0.5,
+  "schedule": {
+    "warmup_steps": 32,
+    "cosine_min_frac": 0.1
+  },
+  "grad_clip": 1.0,
+  "device": "cuda:0"
+}

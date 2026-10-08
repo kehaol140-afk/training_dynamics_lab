@@ -1,0 +1,29 @@
+{
+ "gpu_seconds": {
+  "replay_stage": 150.4920735359192,
+  "real_stage": 464.4701871871948,
+  "total": 614.962260723114,
+  "budget": 10800,
+  "status": "within budget (0.17h of 3h)"
+ },
+ "unique_batches": {
+  "frozen_gradient_batches": 148,
+  "real_branch_batches": 2346,
+  "micro_backward_total": "148*4 (frozen) + 17*138*4 (real)"
+ },
+ "optimizer_updates": {
+  "virtual": 2208,
+  "real": 2346,
+  "real_budget_max": 2346
+ },
+ "valid_training_targets": 76573440,
+ "output_bytes": 910667,
+ "output_budget": 8589934592,
+ "cpu_seconds_approx": {
+  "q_build_tokenize": 240,
+  "analysis": 5,
+  "budget": 1800
+ },
+ "failed_attempts": 0,
+ "confirm_pool_access": 0
+}

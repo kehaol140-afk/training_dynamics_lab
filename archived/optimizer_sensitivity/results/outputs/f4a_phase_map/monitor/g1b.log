@@ -1,0 +1,108 @@
+=== f4a g1b start Wed Sep 30 13:46:15 CST 2026 gpu=1 ===
+Wed Sep 30 13:46:15 CST 2026
+ 13:46:15 up 1 day, 14:53,  7 users,  load average: 4.61, 11.55, 8.50
+               total        used        free      shared  buff/cache   available
+Mem:           125Gi       6.1Gi        98Gi       1.4Gi        23Gi       119Gi
+Swap:           32Gi       158Mi        31Gi
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdd       1007G  797G  159G  84% /
+Wed Sep 30 13:46:15 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 591.44         CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 5090        On  |   00000000:17:00.0  On |                  N/A |
+| 30%   33C    P0             66W /  575W |     436MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA GeForce RTX 5090        On  |   00000000:2A:00.0 Off |                  N/A |
+|  0%   33C    P8             15W /  575W |       0MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A              25      G   /Xwayland                             N/A      |
+|    1   N/A  N/A              25      G   /Xwayland                             N/A      |
++-----------------------------------------------------------------------------------------+
+[f4a g1b 13:46:16] START g1b_100m:2042:64
+[f4a g1b 13:54:00] FAIL g1b_100m:2042:64 rc=1
+[f4a g1b 13:54:00] STREAM COMPLETE rc=1
+[f4a g1b 13:54:00] STREAM COMPLETE rc=1
+=== f4a g1b start Wed Sep 30 14:06:23 CST 2026 gpu=1 ===
+Wed Sep 30 14:06:23 CST 2026
+ 14:06:23 up 1 day, 15:13,  7 users,  load average: 17.93, 24.63, 24.72
+               total        used        free      shared  buff/cache   available
+Mem:           125Gi       7.1Gi        97Gi       1.4Gi        23Gi       118Gi
+Swap:           32Gi       158Mi        31Gi
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdd       1007G  797G  159G  84% /
+Wed Sep 30 14:06:23 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 591.44         CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 5090        On  |   00000000:17:00.0  On |                  N/A |
+| 30%   34C    P0             65W /  575W |     437MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA GeForce RTX 5090        On  |   00000000:2A:00.0 Off |                  N/A |
+|  0%   29C    P8             14W /  575W |       0MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A              25      G   /Xwayland                             N/A      |
+|    1   N/A  N/A              25      G   /Xwayland                             N/A      |
++-----------------------------------------------------------------------------------------+
+[f4a g1b 14:06:23] START g1b_100m:2042:64
+[f4a g1b 14:13:25] START g1b_100m:2043:26
+[f4a g1b 14:21:07] START g1b_100m:2043:64
+[f4a g1b 14:28:13] START g1b_100m:2044:26
+[f4a g1b 14:34:50] START g1b_100m:2044:64
+[f4a g1b 14:41:36] START g1b_100m:2044:102
+[f4a g1b 14:46:33] START g1b_100m:2042:102
+[f4a g1b 14:50:58] START g1b_100m:2043:102
+[f4a g1b 14:55:13] START v07_5m:2030:46
+[f4a g1b 14:55:54] START v07_5m:2030:52
+[f4a g1b 14:56:35] START v07_5m:2030:58
+[f4a g1b 14:57:17] START v07_5m:2030:64
+[f4a g1b 14:57:59] START v07_5m:2030:70
+[f4a g1b 14:58:40] START v07_5m:2030:76
+[f4a g1b 14:59:21] START v07_5m:2030:82
+[f4a g1b 15:00:01] START v07_5m:2031:46
+[f4a g1b 15:00:42] START v07_5m:2031:52
+[f4a g1b 15:01:22] START v07_5m:2031:58
+[f4a g1b 15:02:04] START v07_5m:2031:64
+[f4a g1b 15:02:46] START v07_5m:2031:70
+[f4a g1b 15:03:27] START v07_5m:2031:76
+[f4a g1b 15:04:06] START v07_5m:2031:82
+[f4a g1b 15:04:47] START v07_5m:2032:46
+[f4a g1b 15:05:27] START v07_5m:2032:52
+[f4a g1b 15:06:09] START v07_5m:2032:58
+[f4a g1b 15:06:50] START v07_5m:2032:64
+[f4a g1b 15:07:30] START v07_5m:2032:70
+[f4a g1b 15:08:11] START v07_5m:2032:76
+[f4a g1b 15:08:52] START v07_5m:2032:82
+[f4a g1b 15:09:33] START v07_5m:2033:46
+[f4a g1b 15:10:12] START v07_5m:2033:52
+[f4a g1b 15:10:53] START v07_5m:2033:58
+[f4a g1b 15:11:33] START v07_5m:2033:64
+[f4a g1b 15:12:12] START v07_5m:2033:70
+[f4a g1b 15:12:52] START v07_5m:2033:76
+[f4a g1b 15:13:35] START v07_5m:2033:82
+[f4a g1b 15:14:16] STREAM COMPLETE rc=0
+[f4a g1b 15:14:16] STREAM COMPLETE rc=0

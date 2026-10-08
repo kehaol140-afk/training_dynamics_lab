@@ -1,0 +1,72 @@
+=== f4a g1a start Wed Sep 30 13:46:15 CST 2026 gpu=0 ===
+Wed Sep 30 13:46:15 CST 2026
+ 13:46:15 up 1 day, 14:53,  7 users,  load average: 4.61, 11.55, 8.50
+               total        used        free      shared  buff/cache   available
+Mem:           125Gi       6.1Gi        98Gi       1.4Gi        23Gi       119Gi
+Swap:           32Gi       158Mi        31Gi
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/sdd       1007G  797G  159G  84% /
+Wed Sep 30 13:46:15 2026       
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 590.44.01              Driver Version: 591.44         CUDA Version: 13.1     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 5090        On  |   00000000:17:00.0  On |                  N/A |
+| 30%   33C    P0             66W /  575W |     436MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA GeForce RTX 5090        On  |   00000000:2A:00.0 Off |                  N/A |
+|  0%   33C    P8             15W /  575W |       0MiB /  32607MiB |      0%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A              25      G   /Xwayland                             N/A      |
+|    1   N/A  N/A              25      G   /Xwayland                             N/A      |
++-----------------------------------------------------------------------------------------+
+[f4a g1a 13:46:15] START g1a_26m:2042:26
+[f4a g1a 13:49:28] START g1a_26m:2042:64
+[f4a g1a 13:52:48] START g1a_26m:2042:102
+[f4a g1a 13:54:57] START g1a_26m:2043:26
+[f4a g1a 13:56:27] START g1a_26m:2043:64
+[f4a g1a 13:57:58] START g1a_26m:2043:102
+[f4a g1a 13:59:29] START g1a_26m:2044:26
+[f4a g1a 14:01:02] START g1a_26m:2044:64
+[f4a g1a 14:02:41] START g1a_26m:2044:102
+[f4a g1a 14:04:14] START v07_5m:2034:46
+[f4a g1a 14:04:54] START v07_5m:2034:52
+[f4a g1a 14:05:34] START v07_5m:2034:58
+[f4a g1a 14:06:15] START v07_5m:2034:64
+[f4a g1a 14:07:18] START v07_5m:2034:70
+[f4a g1a 14:08:50] START v07_5m:2034:76
+[f4a g1a 14:10:21] START v07_5m:2034:82
+[f4a g1a 14:12:01] START v07_5m:2035:46
+[f4a g1a 14:13:36] START v07_5m:2035:52
+[f4a g1a 14:15:10] START v07_5m:2035:58
+[f4a g1a 14:16:57] START v07_5m:2035:64
+[f4a g1a 14:18:43] START v07_5m:2035:70
+[f4a g1a 14:20:39] START v07_5m:2035:76
+[f4a g1a 14:21:58] START v07_5m:2035:82
+[f4a g1a 14:23:41] START v07_5m:2036:46
+[f4a g1a 14:25:20] START v07_5m:2036:52
+[f4a g1a 14:26:46] START v07_5m:2036:58
+[f4a g1a 14:28:10] START v07_5m:2036:64
+[f4a g1a 14:29:17] START v07_5m:2036:70
+[f4a g1a 14:30:52] START v07_5m:2036:76
+[f4a g1a 14:32:17] START v07_5m:2036:82
+[f4a g1a 14:33:47] START v07_5m:2037:46
+[f4a g1a 14:34:59] START v07_5m:2037:52
+[f4a g1a 14:36:18] START v07_5m:2037:58
+[f4a g1a 14:37:41] START v07_5m:2037:64
+[f4a g1a 14:39:07] START v07_5m:2037:70
+[f4a g1a 14:40:44] START v07_5m:2037:76
+[f4a g1a 14:41:55] START v07_5m:2037:82
+[f4a g1a 14:43:25] STREAM COMPLETE rc=0
+[f4a g1a 14:43:25] STREAM COMPLETE rc=0

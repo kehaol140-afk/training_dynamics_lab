@@ -1,0 +1,89 @@
+{
+  "audit_id": "F2_HYPERGRADIENT_PILOT_V01",
+  "generated": "2026-09-26T20:39:33",
+  "prereg": "docs/F2_HYPERGRADIENT_PILOT_PREREG.md",
+  "cells": {
+    "2042:26": {
+      "stream_seed": 1493117413121141024,
+      "manifest_sha256": "e40dd1f4709ca8b59351f1e27e89bb70353449a7a850450580cae2ef65b659e4",
+      "stage": "EARLY"
+    },
+    "2042:64": {
+      "stream_seed": 2935812454010104431,
+      "manifest_sha256": "602b403fd8ce55da78489ff0614fd431f566bb28dc3c38b319d51881c7a483d5",
+      "stage": "MIDDLE"
+    },
+    "2043:26": {
+      "stream_seed": 4378507494899067838,
+      "manifest_sha256": "c3862f6047e651f577a8bad1ba7adff7dea47471c9f2170000bacfcd6c48bc79",
+      "stage": "EARLY"
+    }
+  },
+  "fd_validity_gate": {
+    "detail": {
+      "2042:26": {
+        "conv_rel": 0.0011788364191110186,
+        "spread": 0.0007991194725036621,
+        "h05": -0.017191171646118164,
+        "pass": true
+      },
+      "2042:64": {
+        "conv_rel": 0.0001443001443001443,
+        "spread": 0.0002987384796142578,
+        "h05": -0.0826120376586914,
+        "pass": true
+      },
+      "2043:26": {
+        "conv_rel": 0.007528156490812093,
+        "spread": 0.0014445185661315918,
+        "h05": -0.005027651786804199,
+        "pass": true
+      }
+    },
+    "pass": true
+  },
+  "key_readings": {
+    "2042:26": {
+      "h_FD_H1": -0.01719,
+      "h_tan_H1": -0.0185,
+      "h_FD_H16_delta_stable": "no (0.036..0.59 across delta)",
+      "h_tan_H16": -5.91,
+      "rel_err_H16": 4.63,
+      "dtheta_u_norm_H32": 938,
+      "explosion": "C-only (B=20.5)"
+    },
+    "2042:64": {
+      "h_FD_H1": -0.08261,
+      "h_tan_H1": -0.0893,
+      "h_FD_stable_all_H": true,
+      "rel_err_H32": 0.139,
+      "dtheta_u_norm_H32": 14.8,
+      "explosion": "none"
+    },
+    "2043:26": {
+      "h_FD_H1": -0.005028,
+      "h_tan_H1": -0.00555,
+      "h_FD_H16_delta_stable": "no (-0.11..0.67)",
+      "h_tan_H16": 5.33,
+      "rel_err_H16": 29.6,
+      "dtheta_u_norm_H32": 147000.0,
+      "explosion": "C-only (B=18.2)"
+    }
+  },
+  "mechanism_linkage": {
+    "u_tangent_top_module_C_arms": "attn_q (all 3 cells, all H readouts)",
+    "B_arms_top_module": "mlp_gate/mlp_down",
+    "phase_alignment": "EARLY cells (F1 worst v-floor phase) fail; MIDDLE cell (healed) usable",
+    "precision_arms": "fp32==fp64 bit-consistent in cells 1-2; frozen/C within 12% after blow-up — failure is NOT precision-caused",
+    "curvature_channel": "explosion only in C arms (HVP feedback through ill-conditioned optimizer map); B stays bounded"
+  },
+  "correlations_fp64C_H_le_16": {
+    "pearson": 0.8225736684198056,
+    "spearman": 0.9642857142857143,
+    "n": 15,
+    "sign_accuracy_over_all_readouts": "16/18"
+  },
+  "verdict": "PRACTICAL_HYPERGRADIENT_FAILURE",
+  "verdict_basis": "fd_gate=True; failure cells=['2042:26', '2043:26']",
+  "f1_gate": "F1 V_FLOOR_CAUSAL allowed this pilot"
+}

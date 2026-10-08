@@ -1,0 +1,54 @@
+{
+  "bundle": "ADAMW_RESEARCH_REVIEW_UPDATED_BUNDLE",
+  "audit_dir": "audits/ADAMW_RESEARCH_REVIEW_UPDATED_20261008_051201UTC",
+  "project_root": "/home/b205/projects/training_dynamics_lab",
+  "read_window_utc_start": "2026-10-08T05:12:00Z",
+  "manifest_generated_utc": "2026-10-08T05:55:00Z",
+  "local_timezone": "CST (UTC+0800)",
+  "taskpack": "audits/CODEX_ADAMW_REVIEW_TASKPACK_v3.zip (v3; extracted read-only into this audit dir's taskpack_v3/)",
+  "previous_bundle_reference": "reference/ADAMW_RESEARCH_REVIEW_BUNDLE_previous.zip (sha256 bccf135b4f7c7bb6c920f72a34e1b5a36ba1ebee224a1e03e13a786644d0c4c1; historical comparison only; previous read window 2026-09-30T06:11-06:54Z)",
+  "scope": {
+    "in_scope": ["optimizer_sensitivity", "continuation_adaptation"],
+    "reference_only": ["legacy_fluctuation_response (provenance/tracing; git HEAD 6ac4942 frozen)"],
+    "excluded": [
+      "model weights / checkpoints (*.pt) and corpora (metadata only)",
+      "Muon research dirs and Muon review bundles (out of scope)",
+      "hyperball_reproduction/ and hyperball_sources.zip at lab root (out-of-scope external entries observed since previous window; untouched)",
+      ".git object stores / __pycache__ / venv"
+    ]
+  },
+  "key_source_identity_checks": {
+    "note": "all sha256 vs previous bundle BUNDLE_MANIFEST.key_source_sha256_at_audit; full list in analysis/verify_out.txt",
+    "optimizer_sensitivity_frozen": [
+      "outputs/f0_existing_bank_audit/power_iteration.csv 90afb326...",
+      "outputs/f1_mechanism/summary.json b3adb732...",
+      "outputs/f2_5_trust_region/summary.json 083b312a...",
+      "outputs/f2_hypergradient/summary.json 7069c2ae...",
+      "outputs/f3_5_mode_coupling/summary.json a5589299...",
+      "outputs/f3_curvature_mechanism/summary_final.json 9fb2112b...",
+      "docs/F0_EXISTING_BANK_SENSITIVITY_AUDIT.md db4ffc68...",
+      "docs/F1_MECHANISM_CLOSURE.md f9560373...",
+      "docs/F3_CURVATURE_MECHANISM_FINAL_REPORT.md 21133711...",
+      "docs/F3_5_UNSTABLE_MODE_COUPLING_REPORT.md a9c23440..."
+    ],
+    "continuation_adaptation_frozen": [
+      "docs/P4_PROTOCOL.md 1909df17...",
+      "outputs/p4_full/stage3/analysis_report.json b9ab1fd5...",
+      "outputs/p4_full/stage2/sealed_evaluation_table.csv f8e8ef05...",
+      "outputs/p4_full/stage2/SEAL_LOCK.json 8b269dd4..."
+    ],
+    "legacy_frozen": ["docs/FR_PROJECT_STATUS.md 36229054..."]
+  },
+  "new_since_previous_window": "optimizer_sensitivity F4 chain (F4A, F4A.1, F4A.5, F4B, F4B postmortem, F4C, consistency audit, synthesis, decision memo, external validation plan); continuation_adaptation: zero writes",
+  "counts": {
+    "models": 12,
+    "experiments": 15,
+    "key_results": 19,
+    "claims": 16,
+    "coverage_units": 16,
+    "evidence_files": 63,
+    "doc_level_defects_registered": 4
+  },
+  "source_change_caveat": "Read window started 2026-10-08T05:12Z. No writes to the three research roots were made by this audit; hash identities above pin F0-F3.5/P4/legacy to the previous audit snapshot. Out-of-scope lab-root entries (hyperball_*) predate this window and were untouched.",
+  "self_reference": "this manifest intentionally carries no sha256 of itself or of the bundle zip"
+}

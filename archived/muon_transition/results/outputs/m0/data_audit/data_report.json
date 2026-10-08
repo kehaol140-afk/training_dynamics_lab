@@ -1,0 +1,209 @@
+{
+  "gate": "3A+3B",
+  "tokenizer": {
+    "path": "/home/b205/projects/training_dynamics_lab/minimind_base/model/tokenizer.json",
+    "sha256": "71f32c68cf63a15355a8fc171b7594b3d41870fe0ddb54fc6aefa55f73a4a668",
+    "sha256_matches_registration": true,
+    "vocab_size": 6400,
+    "packing_rule": {
+      "window_prefix_bos_id": 1,
+      "document_separator_id": 0,
+      "seq_len": 256,
+      "effective_loss_tokens_per_window": 255
+    }
+  },
+  "domain_A": {
+    "source": "/home/b205/FDA_INIT/pretrained_models/sharegpt_datasets/common_en_70k.jsonl",
+    "sha256": "7a61fda234ff634d35c5bb42b8ff761f0c1b54a895fec02ef411a9a212f31797",
+    "sha256_matches_registration": true,
+    "documents": 79107,
+    "empty_documents": 0,
+    "tokens": 135919339,
+    "average_tokens_per_document": 1718.1708192701026,
+    "vocab_coverage": {
+      "unique_tokens_used": 5014,
+      "vocab_size": 6400,
+      "coverage_fraction": 0.7834375,
+      "special_token_documents": {
+        "0": 0,
+        "1": 0,
+        "2": 0
+      }
+    },
+    "token_length_percentiles": {
+      "p50": 1533,
+      "p95": 2934,
+      "max": 8506
+    },
+    "duplicates": {
+      "documents": 79107,
+      "exact_duplicate_documents": 18246,
+      "exact_duplicate_rate": 0.23064962645530737,
+      "unique_normalized_documents": 60861
+    },
+    "dedup_keep_indices": 60861,
+    "documents_after_dedup": 60861,
+    "dedup_rate": 0.2306496264553074,
+    "tokens_after_dedup": 104303425,
+    "average_tokens_per_document_after_dedup": 1713.797423637469
+  },
+  "domain_B": {
+    "source": "/home/b205/FDA_INIT/pretrained_models/sharegpt_datasets/common_zh_70k.jsonl",
+    "sha256": "a78dfae704e5ca29f18b881b0d298f4bf401093bf33d4ea993dd5728e591c565",
+    "sha256_matches_registration": true,
+    "documents": 76399,
+    "empty_documents": 0,
+    "tokens": 81950621,
+    "average_tokens_per_document": 1072.666147462663,
+    "vocab_coverage": {
+      "unique_tokens_used": 6280,
+      "vocab_size": 6400,
+      "coverage_fraction": 0.98125,
+      "special_token_documents": {
+        "0": 0,
+        "1": 0,
+        "2": 0
+      }
+    },
+    "token_length_percentiles": {
+      "p50": 979,
+      "p95": 2181,
+      "max": 18858
+    },
+    "duplicates": {
+      "documents": 76399,
+      "exact_duplicate_documents": 1808,
+      "exact_duplicate_rate": 0.02366523122030393,
+      "unique_normalized_documents": 74591
+    },
+    "dedup_keep_indices": 74591,
+    "documents_after_dedup": 74591,
+    "dedup_rate": 0.02366523122030395,
+    "tokens_after_dedup": 80091588,
+    "average_tokens_per_document_after_dedup": 1073.7433202397071
+  },
+  "cross_domain": {
+    "conversation_ids_A": 17480,
+    "conversation_ids_B": 18435,
+    "shared_ids": 17279,
+    "duplicate_ids_within_A": 43381,
+    "duplicate_ids_within_B": 56156,
+    "note": "shared ids are the translation pairs; content overlap across domains is by design"
+  },
+  "split": {
+    "version": "mte_split_v2_thread",
+    "unit": "thread (conversation_id); every line of a thread goes to one split in both domains",
+    "seed": 777,
+    "fractions": {
+      "train": 0.94,
+      "dev": 0.03,
+      "confirm": 0.03
+    },
+    "line_counts": {
+      "A": {
+        "train": 57252,
+        "dev": 1813,
+        "confirm": 1796
+      },
+      "B": {
+        "train": 70209,
+        "dev": 2240,
+        "confirm": 2142
+      }
+    },
+    "thread_counts": {
+      "train": 17518,
+      "dev": 559,
+      "confirm": 559
+    },
+    "threads_total": 18636,
+    "threads_shared": 17279,
+    "threads_only_A": 201,
+    "threads_only_B": 1156,
+    "shared_threads_with_equal_line_counts": 12465,
+    "integrity": {
+      "ok": true,
+      "problems": [],
+      "shared_threads_checked": 17279,
+      "split_of_manifest_sha256": "4d5d28f9214b1671f296c30e291f048b62c63eb793993648161a62de6ffadff5"
+    }
+  },
+  "packing": {
+    "A": {
+      "train": {
+        "documents": 57252,
+        "windows": 385071,
+        "effective_loss_tokens": 98193105,
+        "first_window_sha": null
+      },
+      "dev": {
+        "documents": 1813,
+        "windows": 11969,
+        "effective_loss_tokens": 3052095,
+        "first_window_sha": null
+      },
+      "confirm": {
+        "documents": 1796,
+        "windows": 12230,
+        "effective_loss_tokens": 3118650,
+        "first_window_sha": null
+      }
+    },
+    "B": {
+      "train": {
+        "documents": 70209,
+        "windows": 295825,
+        "effective_loss_tokens": 75435375,
+        "first_window_sha": null
+      },
+      "dev": {
+        "documents": 2240,
+        "windows": 9262,
+        "effective_loss_tokens": 2361810,
+        "first_window_sha": null
+      },
+      "confirm": {
+        "documents": 2142,
+        "windows": 9288,
+        "effective_loss_tokens": 2368440,
+        "first_window_sha": null
+      }
+    }
+  },
+  "eval_pool_definition": "first EVAL_POOL_WINDOWS windows of each dev/confirm stream, deterministic order",
+  "eval_pool_windows_per_domain_per_split": 512,
+  "eval_pools": {
+    "dev": {
+      "A": {
+        "pool_windows": 512,
+        "available_windows": 11969,
+        "pool_tokens": 130560
+      },
+      "B": {
+        "pool_windows": 512,
+        "available_windows": 9262,
+        "pool_tokens": 130560
+      }
+    },
+    "confirm": {
+      "A": {
+        "pool_windows": 512,
+        "available_windows": 12230,
+        "pool_tokens": 130560
+      },
+      "B": {
+        "pool_windows": 512,
+        "available_windows": 9288,
+        "pool_tokens": 130560
+      }
+    }
+  },
+  "gate3ab_pass": true,
+  "single_epoch_feasibility": {
+    "b0_tokens": 67108864,
+    "max_p_single_epoch_A": 1.4631912857294083,
+    "max_p_single_epoch_B": 1.1240746825933456,
+    "note": "p grid {0.25,0.5,0.75} is feasible single-epoch iff max_p >= 0.75 for both domains",
+    "p_grid_feasible_single_epoch": true
+  }
+}

@@ -1,0 +1,857 @@
+{
+  "total_parameters": 30025216,
+  "muon_parameters": 26738688,
+  "adamw_aux_parameters": 3286528,
+  "muon_tensor_count": 56,
+  "adamw_aux_tensor_count": 34,
+  "overlap_count": 0,
+  "missing_count": 0,
+  "extra_count": 0,
+  "counts_add_up": true,
+  "tied_embedding_is_lm_head": true,
+  "tie_registered_once": true,
+  "non_2d_in_muon_route": [],
+  "routing_table": [
+    {
+      "name": "model.embed_tokens.weight",
+      "shape": [
+        6400,
+        512
+      ],
+      "numel": 3276800,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.0.self_attn.q_proj.weight",
+      "shape": [
+        512,
+        512
+      ],
+      "numel": 262144,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.0.self_attn.k_proj.weight",
+      "shape": [
+        256,
+        512
+      ],
+      "numel": 131072,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.0.self_attn.v_proj.weight",
+      "shape": [
+        256,
+        512
+      ],
+      "numel": 131072,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.0.self_attn.o_proj.weight",
+      "shape": [
+        512,
+        512
+      ],
+      "numel": 262144,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.0.self_attn.q_norm.weight",
+      "shape": [
+        64
+      ],
+      "numel": 64,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.0.self_attn.k_norm.weight",
+      "shape": [
+        64
+      ],
+      "numel": 64,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.0.input_layernorm.weight",
+      "shape": [
+        512
+      ],
+      "numel": 512,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.0.post_attention_layernorm.weight",
+      "shape": [
+        512
+      ],
+      "numel": 512,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.0.mlp.gate_proj.weight",
+      "shape": [
+        1664,
+        512
+      ],
+      "numel": 851968,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.0.mlp.down_proj.weight",
+      "shape": [
+        512,
+        1664
+      ],
+      "numel": 851968,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.0.mlp.up_proj.weight",
+      "shape": [
+        1664,
+        512
+      ],
+      "numel": 851968,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.1.self_attn.q_proj.weight",
+      "shape": [
+        512,
+        512
+      ],
+      "numel": 262144,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.1.self_attn.k_proj.weight",
+      "shape": [
+        256,
+        512
+      ],
+      "numel": 131072,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.1.self_attn.v_proj.weight",
+      "shape": [
+        256,
+        512
+      ],
+      "numel": 131072,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.1.self_attn.o_proj.weight",
+      "shape": [
+        512,
+        512
+      ],
+      "numel": 262144,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.1.self_attn.q_norm.weight",
+      "shape": [
+        64
+      ],
+      "numel": 64,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.1.self_attn.k_norm.weight",
+      "shape": [
+        64
+      ],
+      "numel": 64,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.1.input_layernorm.weight",
+      "shape": [
+        512
+      ],
+      "numel": 512,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.1.post_attention_layernorm.weight",
+      "shape": [
+        512
+      ],
+      "numel": 512,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.1.mlp.gate_proj.weight",
+      "shape": [
+        1664,
+        512
+      ],
+      "numel": 851968,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.1.mlp.down_proj.weight",
+      "shape": [
+        512,
+        1664
+      ],
+      "numel": 851968,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.1.mlp.up_proj.weight",
+      "shape": [
+        1664,
+        512
+      ],
+      "numel": 851968,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.2.self_attn.q_proj.weight",
+      "shape": [
+        512,
+        512
+      ],
+      "numel": 262144,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.2.self_attn.k_proj.weight",
+      "shape": [
+        256,
+        512
+      ],
+      "numel": 131072,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.2.self_attn.v_proj.weight",
+      "shape": [
+        256,
+        512
+      ],
+      "numel": 131072,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.2.self_attn.o_proj.weight",
+      "shape": [
+        512,
+        512
+      ],
+      "numel": 262144,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.2.self_attn.q_norm.weight",
+      "shape": [
+        64
+      ],
+      "numel": 64,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.2.self_attn.k_norm.weight",
+      "shape": [
+        64
+      ],
+      "numel": 64,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.2.input_layernorm.weight",
+      "shape": [
+        512
+      ],
+      "numel": 512,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.2.post_attention_layernorm.weight",
+      "shape": [
+        512
+      ],
+      "numel": 512,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.2.mlp.gate_proj.weight",
+      "shape": [
+        1664,
+        512
+      ],
+      "numel": 851968,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.2.mlp.down_proj.weight",
+      "shape": [
+        512,
+        1664
+      ],
+      "numel": 851968,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.2.mlp.up_proj.weight",
+      "shape": [
+        1664,
+        512
+      ],
+      "numel": 851968,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.3.self_attn.q_proj.weight",
+      "shape": [
+        512,
+        512
+      ],
+      "numel": 262144,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.3.self_attn.k_proj.weight",
+      "shape": [
+        256,
+        512
+      ],
+      "numel": 131072,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.3.self_attn.v_proj.weight",
+      "shape": [
+        256,
+        512
+      ],
+      "numel": 131072,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.3.self_attn.o_proj.weight",
+      "shape": [
+        512,
+        512
+      ],
+      "numel": 262144,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.3.self_attn.q_norm.weight",
+      "shape": [
+        64
+      ],
+      "numel": 64,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.3.self_attn.k_norm.weight",
+      "shape": [
+        64
+      ],
+      "numel": 64,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.3.input_layernorm.weight",
+      "shape": [
+        512
+      ],
+      "numel": 512,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.3.post_attention_layernorm.weight",
+      "shape": [
+        512
+      ],
+      "numel": 512,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.3.mlp.gate_proj.weight",
+      "shape": [
+        1664,
+        512
+      ],
+      "numel": 851968,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.3.mlp.down_proj.weight",
+      "shape": [
+        512,
+        1664
+      ],
+      "numel": 851968,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.3.mlp.up_proj.weight",
+      "shape": [
+        1664,
+        512
+      ],
+      "numel": 851968,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.4.self_attn.q_proj.weight",
+      "shape": [
+        512,
+        512
+      ],
+      "numel": 262144,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.4.self_attn.k_proj.weight",
+      "shape": [
+        256,
+        512
+      ],
+      "numel": 131072,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.4.self_attn.v_proj.weight",
+      "shape": [
+        256,
+        512
+      ],
+      "numel": 131072,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.4.self_attn.o_proj.weight",
+      "shape": [
+        512,
+        512
+      ],
+      "numel": 262144,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.4.self_attn.q_norm.weight",
+      "shape": [
+        64
+      ],
+      "numel": 64,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.4.self_attn.k_norm.weight",
+      "shape": [
+        64
+      ],
+      "numel": 64,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.4.input_layernorm.weight",
+      "shape": [
+        512
+      ],
+      "numel": 512,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.4.post_attention_layernorm.weight",
+      "shape": [
+        512
+      ],
+      "numel": 512,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.4.mlp.gate_proj.weight",
+      "shape": [
+        1664,
+        512
+      ],
+      "numel": 851968,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.4.mlp.down_proj.weight",
+      "shape": [
+        512,
+        1664
+      ],
+      "numel": 851968,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.4.mlp.up_proj.weight",
+      "shape": [
+        1664,
+        512
+      ],
+      "numel": 851968,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.5.self_attn.q_proj.weight",
+      "shape": [
+        512,
+        512
+      ],
+      "numel": 262144,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.5.self_attn.k_proj.weight",
+      "shape": [
+        256,
+        512
+      ],
+      "numel": 131072,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.5.self_attn.v_proj.weight",
+      "shape": [
+        256,
+        512
+      ],
+      "numel": 131072,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.5.self_attn.o_proj.weight",
+      "shape": [
+        512,
+        512
+      ],
+      "numel": 262144,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.5.self_attn.q_norm.weight",
+      "shape": [
+        64
+      ],
+      "numel": 64,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.5.self_attn.k_norm.weight",
+      "shape": [
+        64
+      ],
+      "numel": 64,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.5.input_layernorm.weight",
+      "shape": [
+        512
+      ],
+      "numel": 512,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.5.post_attention_layernorm.weight",
+      "shape": [
+        512
+      ],
+      "numel": 512,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.5.mlp.gate_proj.weight",
+      "shape": [
+        1664,
+        512
+      ],
+      "numel": 851968,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.5.mlp.down_proj.weight",
+      "shape": [
+        512,
+        1664
+      ],
+      "numel": 851968,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.5.mlp.up_proj.weight",
+      "shape": [
+        1664,
+        512
+      ],
+      "numel": 851968,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.6.self_attn.q_proj.weight",
+      "shape": [
+        512,
+        512
+      ],
+      "numel": 262144,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.6.self_attn.k_proj.weight",
+      "shape": [
+        256,
+        512
+      ],
+      "numel": 131072,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.6.self_attn.v_proj.weight",
+      "shape": [
+        256,
+        512
+      ],
+      "numel": 131072,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.6.self_attn.o_proj.weight",
+      "shape": [
+        512,
+        512
+      ],
+      "numel": 262144,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.6.self_attn.q_norm.weight",
+      "shape": [
+        64
+      ],
+      "numel": 64,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.6.self_attn.k_norm.weight",
+      "shape": [
+        64
+      ],
+      "numel": 64,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.6.input_layernorm.weight",
+      "shape": [
+        512
+      ],
+      "numel": 512,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.6.post_attention_layernorm.weight",
+      "shape": [
+        512
+      ],
+      "numel": 512,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.6.mlp.gate_proj.weight",
+      "shape": [
+        1664,
+        512
+      ],
+      "numel": 851968,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.6.mlp.down_proj.weight",
+      "shape": [
+        512,
+        1664
+      ],
+      "numel": 851968,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.6.mlp.up_proj.weight",
+      "shape": [
+        1664,
+        512
+      ],
+      "numel": 851968,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.7.self_attn.q_proj.weight",
+      "shape": [
+        512,
+        512
+      ],
+      "numel": 262144,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.7.self_attn.k_proj.weight",
+      "shape": [
+        256,
+        512
+      ],
+      "numel": 131072,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.7.self_attn.v_proj.weight",
+      "shape": [
+        256,
+        512
+      ],
+      "numel": 131072,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.7.self_attn.o_proj.weight",
+      "shape": [
+        512,
+        512
+      ],
+      "numel": 262144,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.7.self_attn.q_norm.weight",
+      "shape": [
+        64
+      ],
+      "numel": 64,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.7.self_attn.k_norm.weight",
+      "shape": [
+        64
+      ],
+      "numel": 64,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.7.input_layernorm.weight",
+      "shape": [
+        512
+      ],
+      "numel": 512,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.7.post_attention_layernorm.weight",
+      "shape": [
+        512
+      ],
+      "numel": 512,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "model.layers.7.mlp.gate_proj.weight",
+      "shape": [
+        1664,
+        512
+      ],
+      "numel": 851968,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.7.mlp.down_proj.weight",
+      "shape": [
+        512,
+        1664
+      ],
+      "numel": 851968,
+      "route": "muon"
+    },
+    {
+      "name": "model.layers.7.mlp.up_proj.weight",
+      "shape": [
+        1664,
+        512
+      ],
+      "numel": 851968,
+      "route": "muon"
+    },
+    {
+      "name": "model.norm.weight",
+      "shape": [
+        512
+      ],
+      "numel": 512,
+      "route": "adamw_aux"
+    },
+    {
+      "name": "lm_head.weight",
+      "shape": [
+        6400,
+        512
+      ],
+      "numel": 3276800,
+      "route": "tied_to_model.embed_tokens.weight"
+    }
+  ],
+  "qkv_routing": {
+    "rule": "self_attn.{q,k,v,o}_proj.weight -> Muon route (2D hidden linear matrices)",
+    "count": 32,
+    "all_routed_muon": true,
+    "per_layer_shapes": {
+      "self_attn.q_proj": [
+        512,
+        512
+      ],
+      "self_attn.k_proj": [
+        256,
+        512
+      ],
+      "self_attn.v_proj": [
+        256,
+        512
+      ],
+      "self_attn.o_proj": [
+        512,
+        512
+      ]
+    }
+  },
+  "embedding_routing": {
+    "rule": "model.embed_tokens.weight -> AdamW aux route; lm_head.weight is the same tensor (tied) and is NOT registered separately",
+    "embedding_shape": [
+      6400,
+      512
+    ],
+    "tied": true,
+    "registered_once": true
+  },
+  "norm_bias_scalar_routing": {
+    "rule": "all RMSNorm weights, any bias/scalar/vector params -> AdamW aux route",
+    "norm_tensor_count": 33,
+    "bias_or_scalar_in_muon_route": []
+  },
+  "model_config": {
+    "hidden_size": 512,
+    "num_hidden_layers": 8,
+    "num_attention_heads": 8,
+    "num_key_value_heads": 4,
+    "vocab_size": 6400,
+    "use_moe": false,
+    "dropout": 0.0,
+    "flash_attn": true
+  },
+  "required_fields": {
+    "total_parameters": 30025216,
+    "muon_parameters": 26738688,
+    "adamw_aux_parameters": 3286528,
+    "overlap_count": 0,
+    "missing_count": 0
+  },
+  "gate2_pass": true
+}

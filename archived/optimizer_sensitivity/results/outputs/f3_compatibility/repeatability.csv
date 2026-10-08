@@ -1,0 +1,27 @@
+cell,metric,value,tol,pass
+2042:26,primal_loss_relative_spread_max,0.0,1e-06,True
+2042:26,B_growth_ratio_maxmin_H16,1.0,1.1,True
+2042:26,B_growth_ratio_maxmin_H32,1.0,1.1,True
+2042:26,C_growth_ratio_maxmin_H16,1.0,1.1,True
+2042:26,C_growth_ratio_maxmin_H32,1.0,1.1,True
+2042:26,branch_order_rep1,1,"C>B at H16,H32",True
+2042:26,branch_order_rep2,1,"C>B at H16,H32",True
+2042:26,branch_order_rep3,1,"C>B at H16,H32",True
+2043:26,primal_loss_relative_spread_max,0.0,1e-06,True
+2043:26,B_growth_ratio_maxmin_H16,1.0,1.1,True
+2043:26,B_growth_ratio_maxmin_H32,1.0,1.1,True
+2043:26,C_growth_ratio_maxmin_H16,1.0,1.1,True
+2043:26,C_growth_ratio_maxmin_H32,1.0,1.1,True
+2043:26,branch_order_rep1,1,"C>B at H16,H32",True
+2043:26,branch_order_rep2,1,"C>B at H16,H32",True
+2043:26,branch_order_rep3,1,"C>B at H16,H32",True
+2042:64,primal_loss_relative_spread_max,0.0,1e-06,True
+2042:64,B_growth_ratio_maxmin_H16,1.0,1.1,True
+2042:64,B_growth_ratio_maxmin_H32,1.0,1.1,True
+2042:64,C_growth_ratio_maxmin_H16,1.0,1.1,True
+2042:64,C_growth_ratio_maxmin_H32,1.0,1.1,True
+2042:64,branch_order_rep1,0,"C>B at H16,H32",False
+2042:64,branch_order_rep2,0,"C>B at H16,H32",False
+2042:64,branch_order_rep3,0,"C>B at H16,H32",False
+2042:26 vs 2042:64,early_middle_order_minCearly16>maxCmiddle16,53.78766625514726,>1 strict,True
+2043:26 vs 2042:64,early_middle_order_minCearly16>maxCmiddle16,8.589127843729498,>1 strict,True

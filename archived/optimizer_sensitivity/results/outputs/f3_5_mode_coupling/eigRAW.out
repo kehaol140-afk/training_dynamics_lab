@@ -1,0 +1,156 @@
+Model Params: 100.78M
+Trainable Params: 100.784M
+[2026-09-29T11:46:02] f3.5 cell 2042:26 stream_seed=1493117413121141024 manifest=e40dd1f4709ca8b5 micro0=52
+Model Params: 100.78M
+Trainable Params: 100.784M
+[2026-09-29T14:45:43] f3.5 cell 2042:26 stream_seed=1493117413121141024 manifest=e40dd1f4709ca8b5 micro0=52
+Model Params: 100.78M
+Trainable Params: 100.784M
+[2026-09-29T15:43:49] f3.5 cell 2042:26 stream_seed=1493117413121141024 manifest=e40dd1f4709ca8b5 micro0=52
+Model Params: 100.78M
+Trainable Params: 100.784M
+[2026-09-29T16:06:42] f3.5 cell 2042:26 stream_seed=1493117413121141024 manifest=e40dd1f4709ca8b5 micro0=52
+Traceback (most recent call last):
+  File "/home/b205/projects/training_dynamics_lab/optimizer_sensitivity/scripts/f3_5_mode_coupling.py", line 740, in <module>
+    sys.exit(main())
+  File "/home/b205/projects/training_dynamics_lab/optimizer_sensitivity/scripts/f3_5_mode_coupling.py", line 736, in main
+    return cmd_eig(seed, step, args.metric)
+  File "/home/b205/projects/training_dynamics_lab/optimizer_sensitivity/scripts/f3_5_mode_coupling.py", line 374, in cmd_eig
+    sexc.append({"t": t, "S_exc": f35.alignment(W_unst, s)})
+  File "/home/b205/projects/training_dynamics_lab/optimizer_sensitivity/src/opsens/f3_5_mode_coupling_v01.py", line 349, in alignment
+    nz = state_norm(z)
+  File "/home/b205/projects/training_dynamics_lab/optimizer_sensitivity/src/opsens/f3_curvature_mechanism_v01.py", line 103, in state_norm
+    for t in dz[ch].values():
+KeyError: 'm'
+Model Params: 100.78M
+Trainable Params: 100.784M
+[2026-09-29T16:26:16] f3.5 cell 2042:26 stream_seed=1493117413121141024 manifest=e40dd1f4709ca8b5 micro0=52
+[2026-09-29T16:35:41] eig 2042:26 RAW off=0 rho=2.32916 dU=10 dW=10 (565s)
+Traceback (most recent call last):
+  File "/home/b205/projects/training_dynamics_lab/optimizer_sensitivity/scripts/f3_5_mode_coupling.py", line 744, in <module>
+    sys.exit(main())
+  File "/home/b205/projects/training_dynamics_lab/optimizer_sensitivity/scripts/f3_5_mode_coupling.py", line 740, in main
+    return cmd_eig(seed, step, args.metric)
+  File "/home/b205/projects/training_dynamics_lab/optimizer_sensitivity/scripts/f3_5_mode_coupling.py", line 447, in cmd_eig
+    del basis, basis_l, op, op_raw
+UnboundLocalError: local variable 'basis' referenced before assignment
+Model Params: 100.78M
+Trainable Params: 100.784M
+[2026-09-29T16:37:08] f3.5 cell 2042:26 stream_seed=1493117413121141024 manifest=e40dd1f4709ca8b5 micro0=52
+[2026-09-29T16:46:45] eig 2042:26 RAW off=0 rho=2.32916 dU=10 dW=10 (577s)
+Model Params: 100.78M
+Trainable Params: 100.784M
+[2026-09-29T17:42:41] f3.5 cell 2042:26 stream_seed=1493117413121141024 manifest=e40dd1f4709ca8b5 micro0=52
+[2026-09-29T17:57:11] eig 2042:26 RAW off=0 rho=2.32916 dU=10 dW=10 (870s)
+Model Params: 100.78M
+Trainable Params: 100.784M
+[2026-09-29T18:09:05] f3.5 cell 2042:26 stream_seed=1493117413121141024 manifest=e40dd1f4709ca8b5 micro0=52
+[2026-09-29T18:17:31] mem[2042:26-RAW-o0-right] rss=28.5GB
+[2026-09-29T18:26:38] mem[2042:26-RAW-o0-left] rss=30.7GB
+[2026-09-29T18:27:42] mem[2042:26-RAW-o0-align] rss=66.8GB
+[2026-09-29T18:27:42] eig 2042:26 RAW off=0 rho=2.32916 dU=10 dW=10 (1117s)
+[2026-09-29T18:36:07] mem[2042:26-RAW-o1-right] rss=71.0GB
+[2026-09-29T18:45:29] mem[2042:26-RAW-o1-left] rss=70.1GB
+[2026-09-29T18:45:58] mem[2042:26-RAW-o1-align] rss=45.3GB
+[2026-09-29T18:52:21] mem[2042:26-RAW-o1-interval] rss=64.6GB
+[2026-09-29T18:52:21] eig 2042:26 RAW off=1 rho=2.41194 dU=9 dW=11 (1479s)
+[2026-09-29T18:57:31] mem[2042:26-RAW-o3-right] rss=61.1GB
+[2026-09-29T19:04:00] mem[2042:26-RAW-o3-left] rss=62.9GB
+[2026-09-29T19:04:36] mem[2042:26-RAW-o3-align] rss=43.8GB
+[2026-09-29T19:10:21] mem[2042:26-RAW-o3-interval] rss=57.4GB
+[2026-09-29T19:10:21] eig 2042:26 RAW off=3 rho=2.76264 dU=8 dW=9 (1081s)
+[2026-09-29T19:16:09] mem[2042:26-RAW-o7-right] rss=59.3GB
+[2026-09-29T19:24:16] mem[2042:26-RAW-o7-left] rss=63.9GB
+[2026-09-29T19:25:22] mem[2042:26-RAW-o7-align] rss=38.0GB
+[2026-09-29T19:31:05] mem[2042:26-RAW-o7-interval] rss=57.0GB
+[2026-09-29T19:31:05] eig 2042:26 RAW off=7 rho=4.9073 dU=10 dW=12 (1244s)
+[2026-09-29T19:35:29] mem[2042:26-RAW-o15-right] rss=55.9GB
+[2026-09-29T19:41:19] mem[2042:26-RAW-o15-left] rss=54.7GB
+[2026-09-29T19:43:19] mem[2042:26-RAW-o15-align] rss=35.6GB
+[2026-09-29T19:51:54] mem[2042:26-RAW-o15-interval] rss=57.0GB
+[2026-09-29T19:51:54] eig 2042:26 RAW off=15 rho=4.52793 dU=10 dW=9 (1249s)
+[2026-09-29T19:51:55] eig 2042:26 RAW: COMPLETE
+Model Params: 100.78M
+Trainable Params: 100.784M
+[2026-09-29T20:03:21] f3.5 cell 2042:26 stream_seed=1493117413121141024 manifest=e40dd1f4709ca8b5 micro0=52
+[2026-09-29T20:11:21] mem[2042:26-RAW-o0-right] rss=28.5GB
+[2026-09-29T20:19:49] mem[2042:26-RAW-o0-left] rss=30.7GB
+[2026-09-29T20:20:49] mem[2042:26-RAW-o0-align] rss=66.8GB
+[2026-09-29T20:20:49] eig 2042:26 RAW off=0 rho=2.32916 dU=10 dW=10 (1048s)
+[2026-09-29T20:28:50] mem[2042:26-RAW-o1-right] rss=70.8GB
+[2026-09-29T20:37:54] mem[2042:26-RAW-o1-left] rss=70.1GB
+[2026-09-29T20:38:27] mem[2042:26-RAW-o1-align] rss=45.3GB
+[2026-09-29T20:44:56] mem[2042:26-RAW-o1-interval] rss=64.1GB
+[2026-09-29T20:44:56] eig 2042:26 RAW off=1 rho=2.41194 dU=9 dW=11 (1447s)
+[2026-09-29T20:50:31] mem[2042:26-RAW-o3-right] rss=60.7GB
+[2026-09-29T20:57:16] mem[2042:26-RAW-o3-left] rss=63.1GB
+[2026-09-29T20:57:53] mem[2042:26-RAW-o3-align] rss=44.0GB
+[2026-09-29T21:03:09] mem[2042:26-RAW-o3-interval] rss=58.5GB
+[2026-09-29T21:03:09] eig 2042:26 RAW off=3 rho=2.76264 dU=8 dW=9 (1093s)
+[2026-09-29T21:08:05] mem[2042:26-RAW-o7-right] rss=61.3GB
+[2026-09-29T21:15:14] mem[2042:26-RAW-o7-left] rss=66.1GB
+[2026-09-29T21:16:17] mem[2042:26-RAW-o7-align] rss=40.2GB
+[2026-09-29T21:22:22] mem[2042:26-RAW-o7-interval] rss=59.9GB
+[2026-09-29T21:22:22] eig 2042:26 RAW off=7 rho=4.9073 dU=10 dW=12 (1153s)
+[2026-09-29T21:27:01] mem[2042:26-RAW-o15-right] rss=58.3GB
+[2026-09-29T21:33:25] mem[2042:26-RAW-o15-left] rss=57.1GB
+[2026-09-29T21:35:24] mem[2042:26-RAW-o15-align] rss=38.0GB
+[2026-09-29T21:44:20] mem[2042:26-RAW-o15-interval] rss=57.7GB
+[2026-09-29T21:44:20] eig 2042:26 RAW off=15 rho=4.52793 dU=10 dW=9 (1318s)
+[2026-09-29T21:44:21] eig 2042:26 RAW: COMPLETE
+Model Params: 100.78M
+Trainable Params: 100.784M
+[2026-09-29T23:23:23] f3.5 cell 2043:26 stream_seed=4378507494899067838 manifest=c3862f6047e651f5 micro0=52
+[2026-09-29T23:31:16] mem[2043:26-RAW-o0-right] rss=26.2GB
+[2026-09-29T23:43:48] mem[2043:26-RAW-o0-left] rss=28.5GB
+[2026-09-29T23:45:55] mem[2043:26-RAW-o0-align] rss=62.3GB
+[2026-09-29T23:45:55] eig 2043:26 RAW off=0 rho=3.53448 dU=9 dW=9 (1352s)
+[2026-09-29T23:55:17] mem[2043:26-RAW-o1-right] rss=70.1GB
+[2026-09-30T00:04:11] mem[2043:26-RAW-o1-left] rss=69.4GB
+[2026-09-30T00:04:40] mem[2043:26-RAW-o1-align] rss=46.7GB
+[2026-09-30T00:11:56] mem[2043:26-RAW-o1-interval] rss=67.7GB
+[2026-09-30T00:11:56] eig 2043:26 RAW off=1 rho=4.57804 dU=10 dW=10 (1560s)
+[2026-09-30T00:16:49] mem[2043:26-RAW-o3-right] rss=61.0GB
+[2026-09-30T00:23:08] mem[2043:26-RAW-o3-left] rss=64.7GB
+[2026-09-30T00:23:42] mem[2043:26-RAW-o3-align] rss=43.3GB
+[2026-09-30T00:29:33] mem[2043:26-RAW-o3-interval] rss=57.0GB
+[2026-09-30T00:29:33] eig 2043:26 RAW off=3 rho=1.91079 dU=8 dW=10 (1057s)
+[2026-09-30T00:33:59] mem[2043:26-RAW-o7-right] rss=55.9GB
+[2026-09-30T00:39:53] mem[2043:26-RAW-o7-left] rss=56.9GB
+[2026-09-30T00:40:51] mem[2043:26-RAW-o7-align] rss=40.0GB
+[2026-09-30T00:45:35] mem[2043:26-RAW-o7-interval] rss=55.8GB
+[2026-09-30T00:45:35] eig 2043:26 RAW off=7 rho=1.72573 dU=8 dW=8 (962s)
+[2026-09-30T00:49:34] mem[2043:26-RAW-o15-right] rss=54.6GB
+[2026-09-30T00:55:16] mem[2043:26-RAW-o15-left] rss=57.5GB
+[2026-09-30T00:57:09] mem[2043:26-RAW-o15-align] rss=38.3GB
+[2026-09-30T01:03:03] mem[2043:26-RAW-o15-interval] rss=54.4GB
+[2026-09-30T01:03:03] eig 2043:26 RAW off=15 rho=154.879 dU=8 dW=9 (1048s)
+[2026-09-30T01:03:03] eig 2043:26 RAW: COMPLETE
+Model Params: 100.78M
+Trainable Params: 100.784M
+[2026-09-30T02:26:16] f3.5 cell 2042:64 stream_seed=2935812454010104431 manifest=602b403fd8ce55da micro0=128
+[2026-09-30T02:34:00] mem[2042:64-RAW-o0-right] rss=28.5GB
+[2026-09-30T02:41:40] mem[2042:64-RAW-o0-left] rss=30.7GB
+[2026-09-30T02:42:50] mem[2042:64-RAW-o0-align] rss=66.8GB
+[2026-09-30T02:42:50] eig 2042:64 RAW off=0 rho=2.12561 dU=10 dW=10 (994s)
+[2026-09-30T02:50:20] mem[2042:64-RAW-o1-right] rss=70.7GB
+[2026-09-30T02:57:55] mem[2042:64-RAW-o1-left] rss=70.2GB
+[2026-09-30T02:58:20] mem[2042:64-RAW-o1-align] rss=53.9GB
+[2026-09-30T03:03:19] mem[2042:64-RAW-o1-interval] rss=68.1GB
+[2026-09-30T03:03:19] eig 2042:64 RAW off=1 rho=2.05496 dU=7 dW=7 (1229s)
+[2026-09-30T03:08:10] mem[2042:64-RAW-o3-right] rss=69.1GB
+[2026-09-30T03:14:41] mem[2042:64-RAW-o3-left] rss=69.5GB
+[2026-09-30T03:15:10] mem[2042:64-RAW-o3-align] rss=50.3GB
+[2026-09-30T03:20:11] mem[2042:64-RAW-o3-interval] rss=65.4GB
+[2026-09-30T03:20:11] eig 2042:64 RAW off=3 rho=1.85011 dU=8 dW=9 (1012s)
+[2026-09-30T03:24:39] mem[2042:64-RAW-o7-right] rss=61.4GB
+[2026-09-30T03:30:41] mem[2042:64-RAW-o7-left] rss=62.5GB
+[2026-09-30T03:31:43] mem[2042:64-RAW-o7-align] rss=47.8GB
+[2026-09-30T03:36:59] mem[2042:64-RAW-o7-interval] rss=60.6GB
+[2026-09-30T03:36:59] eig 2042:64 RAW off=7 rho=2.20188 dU=7 dW=7 (1008s)
+[2026-09-30T03:41:32] mem[2042:64-RAW-o15-right] rss=60.6GB
+[2026-09-30T03:48:17] mem[2042:64-RAW-o15-left] rss=65.4GB
+[2026-09-30T03:50:10] mem[2042:64-RAW-o15-align] rss=44.0GB
+[2026-09-30T03:56:25] mem[2042:64-RAW-o15-interval] rss=59.9GB
+[2026-09-30T03:56:25] eig 2042:64 RAW off=15 rho=4.04918 dU=8 dW=10 (1166s)
+[2026-09-30T03:56:26] eig 2042:64 RAW: COMPLETE

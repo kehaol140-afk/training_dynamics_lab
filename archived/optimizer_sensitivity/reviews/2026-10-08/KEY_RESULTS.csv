@@ -1,0 +1,20 @@
+result_id,project,metric,value,interval_or_detail,source,status
+KR-01,continuation_adaptation,C1 - A_best mean (nats),+1.587064,"CI [1.2283,1.9644] (stage3 [1.2352,1.9550]); Holm p=1.0; 0/8 seeds",outputs/p4_full/stage3/analysis_report.json,CONFIRMED
+KR-02,continuation_adaptation,C2 - A_best mean (nats),+0.019356,"CI [0.0140,0.0247]; 0/8 seeds",outputs/p4_full/stage3/analysis_report.json,CONFIRMED
+KR-03,continuation_adaptation,B - A_best / D - A_best / B - D (nats),-0.013881 / +0.060853 / -0.074735,"descriptive only; B-D CI [-0.0810,-0.0687]",outputs/p4_full/stage3/analysis_report.json,CONFIRMED descriptive
+KR-04,optimizer_sensitivity,F4-A strict sustained healing,13/14,seed 2032 NOT_HEALED_IN_COVERAGE (erratum corrected from 14/14),outputs/f4a_phase_map/healing_intervals.csv,CONFIRMED
+KR-05,optimizer_sensitivity,F4-A LATE-phase curvature neutrality,24/24 R_curv~1,universal late-phase curvature-neutral,outputs/f4a_phase_map/phase_map_long.csv,CONFIRMED
+KR-06,optimizer_sensitivity,F4A.1 EARLY lambda_SO monotonicity in N,+1.0,monotone score; R_curv non-monotone,outputs/f4a1_matched_coverage/matched_summary.csv,CONFIRMED
+KR-07,optimizer_sensitivity,F4A.1 canary stream_id,4090,= 4074 + 16 new states; distribution-equivalence PASS; loss h=1 7.443730,outputs/f4a1_matched_coverage/canary_envelope.json,CONFIRMED
+KR-08,optimizer_sensitivity,F4A.5 M0 LOSO MAE,0.4249,fold median 0.4041 canonical (erratum text 0.4219 = typo); seed variance 41.79%,outputs/f4a5_modeling/model_comparison.csv,CONFIRMED
+KR-09,optimizer_sensitivity,F4A.5 prescreen balanced accuracy,0.539,< prereg threshold -> MODEL_PRESCREEN DISABLED_BY_PREREG,outputs/f4a5_modeling/summary.json,CONFIRMED
+KR-10,optimizer_sensitivity,F4B SAU vs FIXED H=1,bitwise equal,cause: lambda_hat(2)~0.35-0.38 > B_lambda=0.30 grid cap,outputs/f4b_sau/summary.json,CONFIRMED
+KR-11,optimizer_sensitivity,F4B oracle best-H median,1,dominant-subset BEST_FIXED median regret 0.3165 vs SAU 0,outputs/f4b_sau/summary.json,CONFIRMED
+KR-12,optimizer_sensitivity,F4B delta=0.02 best fixed,H=32 mean 0.1317,SAU 0.1810,outputs/f4b_sau/summary_delta0.02.json,CONFIRMED
+KR-13,optimizer_sensitivity,F4B H2-H1 regret difference (d.05 / d.02),+0.0512 / -0.0746,"CIs [+0.000,+0.113] / [-0.158,+0.000]; sign flip",outputs/f4c_mining/mining_summary.json,CONFIRMED
+KR-14,optimizer_sensitivity,F4B-post offline vs online AUROC (d.05),0.8367 vs 0.685,d.02 H_sep=1: 0.7904 / balacc 0.6728,"outputs/f4b_postmortem/{offline_diagnostic,online_observability}.csv",CONFIRMED
+KR-15,optimizer_sensitivity,F4B-post horizon sufficiency,median H_suff=1,92.9% (d.05) / 90.5% (d.02) cells H_suff<=2,outputs/f4b_postmortem/horizon_sufficiency.csv,CONFIRMED
+KR-16,optimizer_sensitivity,F4C verdict,WEAK_SCALE_DEPENDENCE,STAGE D confirmatory DISABLED_BY_PREREG,outputs/f4c_mining/mining_summary.json,CONFIRMED
+KR-17,optimizer_sensitivity,F4 consistency audit,12 VERIFIED / 3 STALE_REPORT / 1 OVERWRITTEN,all dispositioned; CONSISTENCY_RESTORED,outputs/f4_consistency/headline_numbers.csv,CONFIRMED
+KR-18,optimizer_sensitivity,Decision memo direction ranking,A mechanism > B observability > C finite-intervention-timescale,D method unsupported; E stop unnecessary; external validation option 2 preferred,docs/F4_POSTMORTEM_DECISION_MEMO.md,NEW
+KR-19,optimizer_sensitivity,F0-F3.5 + legacy + P4 frozen identity,11/11 + 4/4 hashes match old manifest,byte-identical since 2026-09-30 audit,analysis/verify_out.txt,CONFIRMED

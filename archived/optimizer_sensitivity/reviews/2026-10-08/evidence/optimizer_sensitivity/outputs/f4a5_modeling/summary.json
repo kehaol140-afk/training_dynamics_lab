@@ -1,0 +1,65 @@
+{
+ "study": "F4A5_FORMAL_MODELING",
+ "n_states": 90,
+ "selected_model": "M0",
+ "verdict": "ROBUST_PHASE_MODEL_NO_SCALE_EFFECT",
+ "results": {
+  "M0": {
+   "mae": 0.42490013460823983,
+   "rmse": 0.754608225515309,
+   "spearman": 0.8195471706842379,
+   "r2": 0.3460639929194881
+  },
+  "M1": {
+   "mae": 0.4523130171474397,
+   "rmse": 0.7948134842497273,
+   "spearman": 0.7728114582047165,
+   "r2": 0.27452469403782165
+  },
+  "M2": {
+   "mae": 0.43067459673073033,
+   "rmse": 0.7677732652911243,
+   "spearman": 0.8059184261431452,
+   "r2": 0.32304756877071883
+  },
+  "M3": {
+   "mae": 0.4852688206820861,
+   "rmse": 0.9306704140432746,
+   "spearman": 0.6701156521381241,
+   "r2": 0.0053185991365577445
+  },
+  "M4": {
+   "mae": 0.619972711966118,
+   "rmse": 0.8818108527062786,
+   "spearman": 0.7537638391570974,
+   "r2": 0.10701726871591644
+  },
+  "M5": {
+   "mae": 0.619972711966118,
+   "rmse": 0.8818108527062786,
+   "spearman": 0.7537638391570974,
+   "r2": 0.10701726871591644
+  }
+ },
+ "y_lambda_mae": {
+  "M0": 0.035800053734331906,
+  "M2": 0.03670375676963915,
+  "M4": 0.06230129998094714
+ },
+ "seed_intercept_variance_fraction": 0.4179,
+ "cheap_risk_gate": {
+  "auroc": 0.8415775401069518,
+  "balanced_accuracy": 0.5394385026737968,
+  "pr_auc": 0.5563110621600031,
+  "n": 90,
+  "n_dominant": 22,
+  "F4B_PRESCREEN_ENABLED": false
+ },
+ "answers": {
+  "progress_dominant": true,
+  "scale_effect": false,
+  "state_aware_improvement": false,
+  "seed_variance_fraction": 0.418,
+  "F4B_prescreen": "DISABLED_BY_PREREG"
+ }
+}

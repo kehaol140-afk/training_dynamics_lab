@@ -1,0 +1,95 @@
+{
+  "audit_id": "F0_PHASE4_SENSITIVITY_V01",
+  "anchor": "c=0 (null next-step gradient); gradient channel q -> theta' exact diagonal at anchor",
+  "m_channel_note": "dm-channel gain = beta1 * G_i (same denominators); theta-channel factor = 1-lr*wd (benign)",
+  "not_estimated": [
+    "clip \u5f84\u5411\u8026\u5408\u9879\uff08\u9700 g \u65b9\u5411\u7684\u771f\u5b9e\u4e0b\u4e00\u6b65\u68af\u5ea6\uff1b\u672c\u8f6e\u4e0d\u505a batch replay\uff0c\u6807\u8bb0 NOT_ESTIMATED \u800c\u975e\u8fd1\u4f3c\uff09",
+    "c!=0 \u65f6 m_hat*dsqrt \u4ea4\u53c9\u9879\u7684\u9010\u5750\u6807\u503c\uff08\u4ec5\u5728 c=0 \u951a\u70b9\u4e0a\u7cbe\u786e\uff09",
+    "HVP/Hessian \u901a\u9053\uff08theta->gradient \u53cd\u9988\uff0c\u4e0d\u5728 F0 \u8303\u56f4\uff09"
+  ],
+  "states": [
+    {
+      "scale": "v07_5m",
+      "seed": 2030,
+      "step": 46,
+      "lr": 0.0003711998960218135,
+      "eps": 1e-08,
+      "optimizer_step_t": 46.0,
+      "done_s": 14.6
+    },
+    {
+      "scale": "v07_5m",
+      "seed": 2031,
+      "step": 64,
+      "lr": 0.000275,
+      "eps": 1e-08,
+      "optimizer_step_t": 64.0,
+      "done_s": 20.7
+    },
+    {
+      "scale": "v07_5m",
+      "seed": 2037,
+      "step": 82,
+      "lr": 0.00017880010397818658,
+      "eps": 1e-08,
+      "optimizer_step_t": 82.0,
+      "done_s": 26.2
+    },
+    {
+      "scale": "g1a_26m",
+      "seed": 2042,
+      "step": 26,
+      "lr": 0.0004557216945831451,
+      "eps": 1e-08,
+      "optimizer_step_t": 26.0,
+      "done_s": 52.7
+    },
+    {
+      "scale": "g1a_26m",
+      "seed": 2042,
+      "step": 64,
+      "lr": 0.000275,
+      "eps": 1e-08,
+      "optimizer_step_t": 64.0,
+      "done_s": 76.9
+    },
+    {
+      "scale": "g1a_26m",
+      "seed": 2042,
+      "step": 102,
+      "lr": 9.427830541685491e-05,
+      "eps": 1e-08,
+      "optimizer_step_t": 102.0,
+      "done_s": 101.2
+    },
+    {
+      "scale": "g1b_100m",
+      "seed": 2042,
+      "step": 26,
+      "lr": 0.0004557216945831451,
+      "eps": 1e-08,
+      "optimizer_step_t": 26.0,
+      "done_s": 194.5
+    },
+    {
+      "scale": "g1b_100m",
+      "seed": 2042,
+      "step": 64,
+      "lr": 0.000275,
+      "eps": 1e-08,
+      "optimizer_step_t": 64.0,
+      "done_s": 279.9
+    },
+    {
+      "scale": "g1b_100m",
+      "seed": 2042,
+      "step": 102,
+      "lr": 9.427830541685491e-05,
+      "eps": 1e-08,
+      "optimizer_step_t": 102.0,
+      "done_s": 367.8
+    }
+  ],
+  "n_rows": 189,
+  "generated": "2026-09-26T09:51:13"
+}

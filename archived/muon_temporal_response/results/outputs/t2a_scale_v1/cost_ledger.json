@@ -1,0 +1,17 @@
+{
+ "gpu_wall_seconds": 26.484660148620605,
+ "budget_gpu_seconds": 1800,
+ "batches_used": 10,
+ "micro_backward_count": 40,
+ "model_updates": 0,
+ "eval_or_confirm_access": 0,
+ "output_bytes_t2a": 842367384,
+ "cpu_postprocess_seconds": 0.0,
+ "attempts": {
+  "note": "one failed attempt before the successful run: numpy axis bug in map-stats after all GPU work was already done; re-ran the full script on the SAME 10-batch manifest (no new unique batches)",
+  "n_runs": 2,
+  "n_unique_batches": 10,
+  "failed_gpu_seconds_approx": 30
+ },
+ "gpu_wall_seconds_including_failed_attempt": 56.484660148620605
+}

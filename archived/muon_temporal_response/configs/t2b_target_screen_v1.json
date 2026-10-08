@@ -1,0 +1,71 @@
+{
+  "format": "muon_temporal_t2b_target_screen_v1",
+  "date_frozen": "2026-09-29",
+  "task_source": "references/ROUND3_TARGET_SCREEN_OPENCODE_CN.md",
+  "research_outline": "references/MUON_EFFECT_FIRST_RESEARCH_OUTLINE_v3_CN.md",
+  "anchor": {
+    "run_id": "m1_muon_lr2.0_wd0.02_p0.5_s2030",
+    "path": "../muon_transition_experiment/outputs/m1/m1_muon_lr2.0_wd0.02_p0.5_s2030/final_state.pt",
+    "sha256": "4f68ce2423d663f87fbb44f051abe92d6ccd09118ca42a80261497ee13f095e4",
+    "note": "diagnostic anchor; LR_RANGE_UNRESOLVED lineage preserved; not a tuned optimum"
+  },
+  "constant_lr_plateau": {
+    "source": "checkpoint param_groups (read, not hand-filled)",
+    "muon_group": {"lr": 0.001, "weight_decay": 0.02, "momentum": 0.95, "nesterov": true,
+                   "ns_coefficients": [3.4445, -4.775, 2.0315], "eps": 1e-07, "ns_steps": 5,
+                   "adjust_lr_fn": null},
+    "adamw_aux_group": {"lr": 0.001, "betas": [0.9, 0.95], "eps": 1e-08, "weight_decay": 0.02,
+                        "decoupled_weight_decay": true},
+    "note": "0.001 is the checkpoint END-STEP lr (= 0.01 * cosine_end 0.1); the 0.01 peak is NOT used; no scheduler advance"
+  },
+  "data_blocks": {
+    "W0": {"slices": "[2048:2058)", "note": "must equal T2a batch_manifest member-by-member (verified pre-freeze)"},
+    "W1": {"slices": "[2058:2068)"},
+    "C": {"slices": "[2068:2196)", "note": "128 common-tail batches, same order for every branch"},
+    "verified_pre_freeze": ["W0 == T2a manifest", "pairwise disjoint window ids",
+                            "every batch exactly 64A+64B", "within train-pool range"]
+  },
+  "permutations": {
+    "formula": "numpy.random.Generator(numpy.random.PCG64(883000+100*b+k)).permutation(10), b in {0,1}, k in 0..7",
+    "collision_rule": "seed += 10000 and regenerate until unique within window (pre-declared; not triggered)",
+    "pi0": "k=0 of each window; pre-scheduled shuffle reference, not chosen by results",
+    "generated_and_locked_in": "outputs/t2b_target_screen_v1/permutations.json"
+  },
+  "targets": {
+    "rule": "sha256(('T2b_Q_v1|'+group_id).encode()).digest()[0] % 2 -> 0=select, 1=check; group = conversation_id (translation thread), disjoint across sides",
+    "pool": "OLD dev split only (thread-aligned mte_split_v2); confirm pools remain sealed",
+    "windows_per_domain": 512,
+    "counts_frozen": {"select": {"A_docs": 801, "B_docs": 941, "windows": 512, "tokens": 130560},
+                      "check": {"A_docs": 1012, "B_docs": 1299, "windows": 512, "tokens": 130560}},
+    "V_def": "0.5*(sum_A/count_A) + 0.5*(sum_B/count_B); domain-equal weights, no concatenated-token weighting",
+    "q_select_grad": "at theta*, no clip, no optimizer write-back, eval-mode forward, RNG isolated"
+  },
+  "replay": {
+    "frozen_batches": 148, "all_unique_params_grads": true,
+    "W0_W1_prefix_G_cached": 20, "C_tail_streamed": 128,
+    "virtual_tracks": 16, "steps_per_track": 138,
+    "state_semantics": "full Muon+AdamW state recursion incl. WD; no M/m/v/step reset inside a track; post-clip G not re-clipped; grads assigned without aliasing",
+    "scores": {"S_fin": "V_Qselect(virtual_theta_138)",
+               "S_lin": "q_select . (virtual_theta_138 - virtual_theta_pi0_138)",
+               "pi_F": "argmin S_fin (tie<=1e-6 -> smallest k)", "pi_L": "argmin S_lin (tie->smallest k)"},
+    "lock": "selection_lock.json written before any Q_check access"
+  },
+  "real_branches": {
+    "n": 16, "plus_repeat": "one extra W0/pi0 full 138-step run for determinism (not an independent sample)",
+    "steps": 138, "fresh_gradients_each_step": true,
+    "eval_points": [10, 138], "eval_target": "Q_check only",
+    "divergence_handling": "NaN/Inf -> recipe_divergence, logged separately from technical failures"
+  },
+  "screening": {
+    "delta_screen_nats": 0.001,
+    "delta_num_rule": "max(1e-8, 10*e_repeat), e_repeat from the duplicate run NLL difference",
+    "primary": "G_F[b,138] = mean_k v[b,k,138] - v[b,k_F,138] > 0 on BOTH windows and k_F not worse than pi0 (tol delta_num)",
+    "labels": ["TARGET_SELECTION_SIGNAL", "EFFECT_WITHOUT_RELIABLE_SELECTION",
+               "NO_USEFUL_SIGNAL_THIS_SETTING", "BLOCKED/INCOMPLETE/RECIPE_DIVERGENCE"]
+  },
+  "budget": {
+    "gpu_hours_max": 3, "cpu_minutes_max": 30, "output_bytes_max": 8589934592,
+    "planned_updates": {"virtual_optimizer_updates": 2208, "real_optimizer_updates_max": 2346,
+                        "frozen_gradient_batches": 148, "valid_training_targets": 76057344}
+  }
+}

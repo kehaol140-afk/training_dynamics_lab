@@ -1,0 +1,9 @@
+/home/b205/projects/training_dynamics_lab/optimizer_sensitivity/scripts/f4a1_matched_states.py:125: UserWarning: Converting a tensor with requires_grad=True to a scalar may lead to unexpected behavior.
+Consider using tensor.detach() first. (Triggered internally at /pytorch/torch/csrc/autograd/generated/python_variable_methods.cpp:836.)
+  f"(loss={float(res.loss):.5f})", flush=True)
+Model Params: 4.98M
+Trainable Params: 4.983M
+[f4a1] seed 2030: saved state_step_026 (loss=7.29001)
+[f4a1] seed 2030: saved state_step_064 (loss=7.03054)
+[f4a1] seed 2030: saved state_step_102 (loss=7.24882)
+[f4a1] seed 2030: COMPLETE [26, 64, 102]

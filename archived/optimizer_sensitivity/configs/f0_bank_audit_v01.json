@@ -1,0 +1,188 @@
+{
+  "audit_id": "F0_EXISTING_BANK_SENSITIVITY_AUDIT_V01",
+  "date_frozen": "2026-09-26",
+  "question": "primal 稳定的 AdamW 训练轨迹上，tangent/adjoint/hypergradient 一步 map 的 conditioning 是否随规模、second-moment 下限、mixed precision、embedding token frequency、clipping 而病态（G1c 1B 异常的 seed evidence 独立验证，不预设结论）",
+  "banks": {
+    "v07_5m": {
+      "root": "../legacy_fluctuation_response/outputs/e3_confirmatory/v07",
+      "unique_params": 4983168,
+      "seeds": [
+        2030,
+        2031,
+        2032,
+        2033,
+        2034,
+        2035,
+        2036,
+        2037
+      ],
+      "steps": [
+        46,
+        52,
+        58,
+        64,
+        70,
+        76,
+        82
+      ],
+      "state_glob": "seed_{seed}/states/state_step_{step:03d}.pt",
+      "preclip_context": "REPORTED_ONLY (legacy docs: anchor future first-step clip rate 0.25, preclip norm mean 2.154; v07 bank 未存逐步 preclip)"
+    },
+    "g1a_26m": {
+      "root": "../legacy_fluctuation_response/outputs/generalization_g1a_26m_v01/bank",
+      "unique_params": 26681728,
+      "seeds": [
+        2042,
+        2043,
+        2044
+      ],
+      "steps": [
+        26,
+        64,
+        102
+      ],
+      "state_glob": "seed_{seed}/states/state_step_{step:03d}.pt",
+      "dynamics_note": "per-step preclip_grad_norm",
+      "dynamics": "seed_{seed}/training_dynamics.json"
+    },
+    "g1b_100m": {
+      "root": "../legacy_fluctuation_response/outputs/generalization_g1b_100m_v01/bank",
+      "unique_params": 100784000,
+      "seeds": [
+        2042,
+        2043,
+        2044
+      ],
+      "steps": [
+        26,
+        64,
+        102
+      ],
+      "state_glob": "seed_{seed}/states/state_step_{step:03d}.pt",
+      "dynamics_note": "per-step preclip_grad_norm",
+      "dynamics": "seed_{seed}/training_dynamics.json"
+    }
+  },
+  "hyperparams_from_state": "lr/betas/eps/weight_decay 逐 state 取自 optimizer.param_groups（AdamW eps 预期 1e-8）",
+  "adam_eps_default": 1e-08,
+  "parameter_groups": {
+    "embed_tied": "model.embed_tokens.weight（tied lm_head 同一参数；model 中 lm_head.weight 为同 tied 张量副本，optimizer state 只有一份）",
+    "attn_q": "layers.*.self_attn.q_proj.weight",
+    "attn_k": "layers.*.self_attn.k_proj.weight",
+    "attn_v": "layers.*.self_attn.v_proj.weight",
+    "attn_o": "layers.*.self_attn.o_proj.weight",
+    "attn_qk_norm": "layers.*.self_attn.{q_norm,k_norm}.weight",
+    "rmsnorm": "layers.*.{input_layernorm,post_attention_layernorm}.weight + model.norm.weight",
+    "mlp_gate": "layers.*.mlp.gate_proj.weight",
+    "mlp_up": "layers.*.mlp.up_proj.weight",
+    "mlp_down": "layers.*.mlp.down_proj.weight"
+  },
+  "v_floor_thresholds": "sqrt(v) < {eps, 10eps, 100eps, 1000eps}，eps=1e-8；v 指存储的 exp_avg_sq（raw）",
+  "vhat_anchor": "c=0 锚点（下一步零梯度）：v1=beta2*v, vhat1=v1/(1-beta2^(t+1))；对角增益 G_i = lr*(1-beta1)/((1-beta1^(t+1))*(sqrt(vhat1_i)+eps)) 为梯度->theta' 通道的精确逐坐标 Jacobian（该锚点下 clip 不激活、dsqrt 交叉项在 c_i=0 坐标恒为零）",
+  "frequency_bins_rule": "对 D0=e3c_subset.jsonl 全 4096 行文本用 minimind tokenizer 分词计数（不加 bos/eos；bos/eos 每样本出现，另列为 always 类）。按计数值降序排列：head=前 20% token id，mid=20-80%，tail=后 20%（计数值>0），never=计数值==0。规则先于任何 v 统计冻结。",
+  "sensitivity_states": {
+    "v07_5m": [
+      [
+        2030,
+        46
+      ],
+      [
+        2031,
+        64
+      ],
+      [
+        2037,
+        82
+      ]
+    ],
+    "g1a_26m": [
+      [
+        2042,
+        26
+      ],
+      [
+        2042,
+        64
+      ],
+      [
+        2042,
+        102
+      ]
+    ],
+    "g1b_100m": [
+      [
+        2042,
+        26
+      ],
+      [
+        2042,
+        64
+      ],
+      [
+        2042,
+        102
+      ]
+    ]
+  },
+  "direction_classes": [
+    "random_seed_11",
+    "random_seed_22",
+    "random_seed_33",
+    "grad_aligned_mhat",
+    "embed_tail_only",
+    "embed_head_only",
+    "mlp_only"
+  ],
+  "precision_variants": [
+    "float64_reference",
+    "float32",
+    "bfloat16"
+  ],
+  "fd_states": {
+    "v07_5m": [
+      2030,
+      46
+    ],
+    "g1a_26m": [
+      2042,
+      64
+    ],
+    "g1b_100m": [
+      2042,
+      64
+    ]
+  },
+  "not_estimated_this_round": [
+    "clip 径向耦合项（需 g 方向的真实下一步梯度；本轮不做 batch replay，标记 NOT_ESTIMATED 而非近似）",
+    "c!=0 时 m_hat*dsqrt 交叉项的逐坐标值（仅在 c=0 锚点上精确）",
+    "HVP/Hessian 通道（theta->gradient 反馈，不在 F0 范围）"
+  ],
+  "forbidden": [
+    "新训练",
+    "1B 下载",
+    "修改 legacy",
+    "修改 forward AdamW 规则",
+    "为假设通过而改阈值"
+  ],
+  "fd_epsilons_abs": {
+    "float64": [
+      0.01,
+      0.001,
+      0.0001,
+      1e-05,
+      1e-06,
+      1e-07,
+      1e-08,
+      1e-09,
+      1e-10
+    ],
+    "float32": [
+      0.01,
+      0.001,
+      0.0001,
+      1e-05,
+      1e-06
+    ],
+    "rationale": "绝对梯度幅度网格。c=0 锚点上 FD 收敛到解析对角需要 sqrt((1-beta2)/bc2)*eps_fd << adam_eps（约 eps_fd << 3e-7），网格跨两个 regime；fp32 下限 1e-6 由减法消除决定。"
+  }
+}

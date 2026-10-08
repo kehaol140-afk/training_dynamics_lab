@@ -1,0 +1,54 @@
+[21s] anchor restored
+one-step virtual==real consistency (bit-level): True
+[33s] grad W0[0] preclip=0.3370 loss=2.3658
+[33s] grad W0[1] preclip=0.3562 loss=2.2148
+[33s] grad W0[2] preclip=0.3410 loss=2.2692
+[33s] grad W0[3] preclip=0.3559 loss=2.5165
+[34s] grad W0[4] preclip=0.3404 loss=2.4279
+[34s] grad W0[5] preclip=0.3542 loss=2.5228
+[34s] grad W0[6] preclip=0.3424 loss=2.2483
+[34s] grad W0[7] preclip=0.3475 loss=2.3219
+[35s] grad W0[8] preclip=0.3643 loss=2.4540
+[35s] grad W0[9] preclip=0.3549 loss=2.2309
+[35s] grad W1[0] preclip=0.3421 loss=2.4699
+[35s] grad W1[1] preclip=0.3433 loss=2.3464
+[35s] grad W1[2] preclip=0.3533 loss=2.3852
+[35s] grad W1[3] preclip=0.3395 loss=2.1374
+[36s] grad W1[4] preclip=0.3675 loss=1.9971
+[36s] grad W1[5] preclip=0.3597 loss=2.7172
+[36s] grad W1[6] preclip=0.3459 loss=2.3451
+[36s] grad W1[7] preclip=0.3475 loss=2.3079
+[36s] grad W1[8] preclip=0.3387 loss=2.1540
+[37s] grad W1[9] preclip=0.3513 loss=2.1804
+W0 six-matrix vs T2a max|diff| per matrix: ['0.00e+00', '0.00e+00', '0.00e+00', '0.00e+00', '0.00e+00', '0.00e+00']
+[50s] 16 virtual tracks initialized
+[55s] prefix done (step10 diagnostics recorded)
+grad aliasing probe (G unchanged through 160 virtual steps): True
+[65s] C tail 16/128 (loss=2.3903 preclip=0.338)
+[76s] C tail 32/128 (loss=2.1944 preclip=0.358)
+[86s] C tail 48/128 (loss=2.2828 preclip=0.329)
+[96s] C tail 64/128 (loss=2.2260 preclip=0.380)
+[106s] C tail 80/128 (loss=2.5150 preclip=0.327)
+[115s] C tail 96/128 (loss=2.1418 preclip=0.344)
+[126s] C tail 112/128 (loss=2.1392 preclip=0.417)
+[136s] C tail 128/128 (loss=2.0776 preclip=0.346)
+[136s] C tail done
+[138s] q_select computed, V(theta*)=2.397257
+[139s] W0 k0: S_fin=4.247484 S_lin=+0.000000e+00
+[140s] W0 k1: S_fin=4.246427 S_lin=+2.452668e-04
+[141s] W0 k2: S_fin=4.247828 S_lin=+2.007761e-05
+[142s] W0 k3: S_fin=4.246955 S_lin=-3.277932e-05
+[142s] W0 k4: S_fin=4.247434 S_lin=+2.674804e-05
+[143s] W0 k5: S_fin=4.245408 S_lin=+2.112007e-04
+[144s] W0 k6: S_fin=4.248706 S_lin=-1.584271e-04
+[145s] W0 k7: S_fin=4.244066 S_lin=+3.468760e-04
+[145s] W1 k0: S_fin=4.223834 S_lin=+0.000000e+00
+[146s] W1 k1: S_fin=4.224416 S_lin=-1.785738e-04
+[147s] W1 k2: S_fin=4.223849 S_lin=+1.392849e-04
+[148s] W1 k3: S_fin=4.225682 S_lin=-3.263590e-04
+[148s] W1 k4: S_fin=4.225943 S_lin=-3.131491e-04
+[149s] W1 k5: S_fin=4.223886 S_lin=-1.194465e-04
+[150s] W1 k6: S_fin=4.225549 S_lin=-1.726936e-04
+[150s] W1 k7: S_fin=4.224412 S_lin=-1.145939e-04
+selection lock: {"W0": {"kF": 7, "kL": 6, "pi0_k": 0}, "W1": {"kF": 0, "kL": 3, "pi0_k": 0}, "note": "locked from S_fin (primary) / S_lin (secondary readout) before any Q_check access", "code_sha256": {"scripts/run_t2b_replay.py": "97ae831c20f437cd5f8614ed41a0e824420017c78c54d37f4ac97b92adc91f1c", "src/t2b_common.py": "8a046b2c9e3ee705b403a213a996874996be7466f14aa928f8e3ab5904211082"}}
+replay stage done in 150s GPU

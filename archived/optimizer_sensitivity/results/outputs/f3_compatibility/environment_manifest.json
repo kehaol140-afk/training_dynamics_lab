@@ -1,0 +1,89 @@
+{
+  "generated": "2026-09-27T09:21:27",
+  "git": {
+    "HEAD": "d63a8e108ff5f515dc46e01204298c89af193477",
+    "branch": "master",
+    "status_porcelain": "?? scripts/f3_environment_manifest.py"
+  },
+  "python": {
+    "version": "3.10.20",
+    "executable": "/home/b205/miniforge3/envs/minimind-exp/bin/python",
+    "PYTHONHASHSEED": null
+  },
+  "torch": {
+    "version": "2.11.0+cu128",
+    "cuda_runtime": "12.8",
+    "float32_matmul_precision": "highest",
+    "deterministic_algorithms": false,
+    "tf32_matmul": false,
+    "tf32_cudnn": true,
+    "cudnn_deterministic": false,
+    "cudnn_benchmark": false,
+    "num_threads": 32
+  },
+  "gpu": {
+    "nvidia_smi_rows": [
+      "0, NVIDIA GeForce RTX 5090, 591.44, 32607 MiB",
+      "1, NVIDIA GeForce RTX 5090, 591.44, 32607 MiB"
+    ]
+  },
+  "env_vars": {
+    "CUDA_VISIBLE_DEVICES": "1",
+    "CUBLAS_WORKSPACE_CONFIG": null,
+    "CUBLASLT_WORKSPACE_SIZE": null,
+    "CUDA_LAUNCH_BLOCKING": null,
+    "CUDA_MODULE_LOADING": null,
+    "OMP_NUM_THREADS": null,
+    "MKL_NUM_THREADS": null,
+    "NVIDIA_TF32_OVERRIDE": null,
+    "TORCH_ALLOW_TF32_CUBLAS_OVERRIDE": null
+  },
+  "sdpa": {
+    "default_backward_order_note": "eager SDPA (flash/cudnn/mem_efficient/math) for primal; MATH forced inside rig.hvp",
+    "math_for_hvp": true
+  },
+  "primal_precision": {
+    "forward": "bf16 autocast (GPU), math-SDPA only inside HVP (fp32)",
+    "tangent": "fp64 CPU",
+    "grads_to_cpu": "float32"
+  },
+  "cell_inputs": {
+    "2042:26": {
+      "bank_state_path": "/home/b205/projects/training_dynamics_lab/legacy_fluctuation_response/outputs/generalization_g1b_100m_v01/bank/seed_2042/states/state_step_026.pt",
+      "bank_state_sha256": "ad44147d712701d158a599b3b4d929ce28dadaefe1922621e00cae872383caca",
+      "stream_seed": 1493117413121141024,
+      "future_stream_manifest_sha256": "e40dd1f4709ca8b59351f1e27e89bb70353449a7a850450580cae2ef65b659e4",
+      "n_batches": 984
+    },
+    "2042:64": {
+      "bank_state_path": "/home/b205/projects/training_dynamics_lab/legacy_fluctuation_response/outputs/generalization_g1b_100m_v01/bank/seed_2042/states/state_step_064.pt",
+      "bank_state_sha256": "d7389d875374c9e25dd1f1216783064990504127cdff14daf5b3037a287fd145",
+      "stream_seed": 2935812454010104431,
+      "future_stream_manifest_sha256": "602b403fd8ce55da78489ff0614fd431f566bb28dc3c38b319d51881c7a483d5",
+      "n_batches": 984
+    },
+    "2043:26": {
+      "bank_state_path": "/home/b205/projects/training_dynamics_lab/legacy_fluctuation_response/outputs/generalization_g1b_100m_v01/bank/seed_2043/states/state_step_026.pt",
+      "bank_state_sha256": "2ab4a2cac9b015941ba0da0cbd848bdd175ec886a65ae5aaaf0170c20480753e",
+      "stream_seed": 4378507494899067838,
+      "future_stream_manifest_sha256": "c3862f6047e651f577a8bad1ba7adff7dea47471c9f2170000bacfcd6c48bc79",
+      "n_batches": 984
+    }
+  },
+  "code_files": {
+    "scripts/f2_hypergradient.py": "2952899dc92d3a5ba710266865836a035ed2e03eb04d4f745d9d95b59fbe4bfb",
+    "scripts/f3_curvature_mechanism.py": "276027eed7711acb5bc0a55db604ae90083a985a3e0d393179d5fdff501960aa",
+    "src/opsens/f3_curvature_mechanism_v01.py": "e526ff2874fe53dfa144e044e7689b7ae231f940eba9cdf8bd5934a0ca18841c",
+    "src/opsens/a0c_adamw_response_propagation_v01.py": "7b1dde12db88986eba889b5bf9a79e5d73327b67cc0bbebbfc8194b39caec433",
+    "src/opsens/f0_bank_audit_v01.py": "ed40e3b74eda568cf0b39cff4424921ff1ed99174cb3946c5ff5dac7de9ee336",
+    "src/opsens/f1_mechanism_v01.py": "2a5cfdddbe8b86c67f71cdc734012d041eb8f3405b3abfb2a3747b5f1cfc7ef7",
+    "src/opsens/batch_manifest.py": "6bf1703f0e09f4b713113bfa05ad3eccb83119c8ad0838d4a1df5688ac932ffb",
+    "src/opsens/stream_rng.py": "242956de271a8b839ddb3b39cc7e63d48b63ed253841255580d34e39ecd867a4",
+    "../minimind_base/model/model_minimind.py": "47f124f5f386a8cd76b488b36ecc3e00fc43e3894cdb3ba602420188d9ba8860",
+    "../minimind_base/dataset/lm_dataset.py": "e6dd56b5745015ddc1579932c292ec7a5e1cc33796a5eadf4911065d92f1c6b8",
+    "docs/F3_CURVATURE_MECHANISM_PREREG.md": "271f431a0d7361f4957c6f45993b6f01aaefc50424e372575d7f83a4c7958d5d",
+    "docs/F3_REPRODUCTION_GATE_AMENDMENT.md": "8e7e7ff783d42e12eac5c03b46afae1152c5e74543a4d3bd7c4e25c5cbb73948"
+  },
+  "numpy": "2.2.6",
+  "transformers": "4.57.6"
+}

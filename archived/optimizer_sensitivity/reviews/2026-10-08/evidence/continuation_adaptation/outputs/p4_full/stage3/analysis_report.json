@@ -1,0 +1,263 @@
+{
+  "config_id": "CONTINUATION_ADAPTATION_P4_FULL_V01",
+  "primary_family": [
+    "C1",
+    "C2"
+  ],
+  "family_alpha": 0.05,
+  "primary": {
+    "C1": {
+      "paired_diff": {
+        "aggregate_mean_diff": 1.5870641475965517,
+        "aggregate_median_diff": 1.2936300810510426,
+        "std_diff": 1.2842197266344695,
+        "n_cells": 56,
+        "permutation": {
+          "observed_mean": 1.5870641475965521,
+          "seed_means": {
+            "2030": 1.1761138125925918,
+            "2031": 1.7502016573412758,
+            "2032": 0.9366524638122631,
+            "2033": 2.354175199050585,
+            "2034": 1.9440412541350613,
+            "2035": 2.263659900473365,
+            "2036": 1.0705405955106546,
+            "2037": 1.201128297856619
+          },
+          "p_value_one_sided": 1.0,
+          "reps": 20000,
+          "rng_seed": 77080001
+        },
+        "cluster_bootstrap_ci": {
+          "ci_low": 1.2352290433686242,
+          "ci_high": 1.9549917790420461,
+          "reps": 10000,
+          "percentiles": [
+            2.5,
+            97.5
+          ],
+          "level": "primary_cluster_bootstrap_by_seed"
+        },
+        "naive_bootstrap_ci": {
+          "ci_low": 1.2734762579353494,
+          "ci_high": 1.9329201299350423,
+          "reps": 10000,
+          "level": "naive_cell_bootstrap_ANTI_CONSERVATIVE"
+        },
+        "seeds_improved": 0,
+        "n_seeds": 8,
+        "checkpoints_improved": 0,
+        "n_checkpoints": 7,
+        "per_seed_means": {
+          "2030": 1.1761138125925918,
+          "2031": 1.7502016573412758,
+          "2032": 0.9366524638122631,
+          "2033": 2.354175199050585,
+          "2034": 1.9440412541350613,
+          "2035": 2.263659900473365,
+          "2036": 1.0705405955106546,
+          "2037": 1.201128297856619
+        },
+        "per_checkpoint_means": {
+          "46": 0.7239411685523904,
+          "52": 0.7145264728691543,
+          "58": 1.324196315408328,
+          "64": 1.5652455102337743,
+          "70": 1.6250166447040355,
+          "76": 2.415557511084596,
+          "82": 2.740965410323585
+        }
+      }
+    },
+    "C2": {
+      "paired_diff": {
+        "aggregate_mean_diff": 0.019356007386693536,
+        "aggregate_median_diff": 0.020728164646985903,
+        "std_diff": 0.012293254769607203,
+        "n_cells": 56,
+        "permutation": {
+          "observed_mean": 0.01935600738669354,
+          "seed_means": {
+            "2030": 0.015925743598181694,
+            "2031": 0.021905376245363657,
+            "2032": 0.006223578733639228,
+            "2033": 0.024560783367569172,
+            "2034": 0.024113458011964566,
+            "2035": 0.03242427771298027,
+            "2036": 0.014110084716672158,
+            "2037": 0.015584756707177532
+          },
+          "p_value_one_sided": 1.0,
+          "reps": 20000,
+          "rng_seed": 77080001
+        },
+        "cluster_bootstrap_ci": {
+          "ci_low": 0.014117818870607621,
+          "ci_high": 0.02463749585401041,
+          "reps": 10000,
+          "percentiles": [
+            2.5,
+            97.5
+          ],
+          "level": "primary_cluster_bootstrap_by_seed"
+        },
+        "naive_bootstrap_ci": {
+          "ci_low": 0.016133207474208038,
+          "ci_high": 0.022486030601485924,
+          "reps": 10000,
+          "level": "naive_cell_bootstrap_ANTI_CONSERVATIVE"
+        },
+        "seeds_improved": 0,
+        "n_seeds": 8,
+        "checkpoints_improved": 0,
+        "n_checkpoints": 7,
+        "per_seed_means": {
+          "2030": 0.015925743598181694,
+          "2031": 0.021905376245363657,
+          "2032": 0.006223578733639228,
+          "2033": 0.024560783367569172,
+          "2034": 0.024113458011964566,
+          "2035": 0.03242427771298027,
+          "2036": 0.014110084716672158,
+          "2037": 0.015584756707177532
+        },
+        "per_checkpoint_means": {
+          "46": 0.027534821900148332,
+          "52": 0.015443032834153159,
+          "58": 0.012841796865391553,
+          "64": 0.02422721872980016,
+          "70": 0.017511296186989767,
+          "76": 0.018165929665323266,
+          "82": 0.01976795552504851
+        }
+      }
+    }
+  },
+  "holm": {
+    "C1": {
+      "p_value": 1.0,
+      "holm_threshold": 0.025,
+      "significant": false
+    },
+    "C2": {
+      "p_value": 1.0,
+      "holm_threshold": 0.05,
+      "significant": false
+    }
+  },
+  "gates": {
+    "continue_direction": false,
+    "per_variant": {
+      "C1": {
+        "gate_checks": {
+          "1_aggregate_mean_diff_negative": false,
+          "2_seed_consistency_ge_6of8": false,
+          "3_checkpoint_consistency_ge_5of7": false,
+          "4_holm_significant": false
+        },
+        "all_gates_passed": false,
+        "holm_p": 1.0
+      },
+      "C2": {
+        "gate_checks": {
+          "1_aggregate_mean_diff_negative": false,
+          "2_seed_consistency_ge_6of8": false,
+          "3_checkpoint_consistency_ge_5of7": false,
+          "4_holm_significant": false
+        },
+        "all_gates_passed": false,
+        "holm_p": 1.0
+      }
+    },
+    "stop_rule_note": "frozen §8: any listed stop condition triggers STOP; gate 5 (grid robustness) is structurally satisfied by the automatic single boundary expansion in stage 1a"
+  },
+  "verdict": "STOP",
+  "secondary_descriptive": {
+    "B_minus_A_best": {
+      "aggregate_mean_diff": -0.01388118911802245,
+      "naive_bootstrap_ci": {
+        "ci_low": -0.017368279080292544,
+        "ci_high": -0.010268577008528361,
+        "reps": 10000,
+        "level": "naive_cell_bootstrap_ANTI_CONSERVATIVE"
+      },
+      "per_seed_means": {
+        "2030": -0.018725272295969653,
+        "2031": -0.013710090839989928,
+        "2032": -0.01751440571302711,
+        "2033": -0.012749934986438585,
+        "2034": -0.011354558803028856,
+        "2035": -0.012902387440520968,
+        "2036": -0.015437979988378814,
+        "2037": -0.008654882876825682
+      },
+      "descriptive_only": true
+    },
+    "D_minus_A_best": {
+      "aggregate_mean_diff": 0.06085340454235533,
+      "naive_bootstrap_ci": {
+        "ci_low": 0.05565317248252567,
+        "ci_high": 0.0661898438466596,
+        "reps": 10000,
+        "level": "naive_cell_bootstrap_ANTI_CONSERVATIVE"
+      },
+      "per_seed_means": {
+        "2030": 0.05275236030717207,
+        "2031": 0.07382683957413631,
+        "2032": 0.03609678574574574,
+        "2033": 0.06980641348790062,
+        "2034": 0.0685815560605,
+        "2035": 0.07695850551781026,
+        "2036": 0.05680483565428026,
+        "2037": 0.05199993999129734
+      },
+      "descriptive_only": true
+    },
+    "B_minus_D": {
+      "aggregate_mean_diff": -0.07473459366037778,
+      "naive_bootstrap_ci": {
+        "ci_low": -0.08103219020885565,
+        "ci_high": -0.06870760137594485,
+        "reps": 10000,
+        "level": "naive_cell_bootstrap_ANTI_CONSERVATIVE"
+      },
+      "per_seed_means": {
+        "2030": -0.07147763260314173,
+        "2031": -0.08753693041412625,
+        "2032": -0.05361119145877285,
+        "2033": -0.08255634847433921,
+        "2034": -0.07993611486352885,
+        "2035": -0.08986089295833123,
+        "2036": -0.07224281564265908,
+        "2037": -0.06065482286812302
+      },
+      "descriptive_only": true
+    },
+    "C1_minus_C2": {
+      "aggregate_mean_diff": 1.567708140209859,
+      "naive_bootstrap_ci": {
+        "ci_low": 1.2554501861200895,
+        "ci_high": 1.9135336712947961,
+        "reps": 10000,
+        "level": "naive_cell_bootstrap_ANTI_CONSERVATIVE"
+      },
+      "per_seed_means": {
+        "2030": 1.1601880689944102,
+        "2031": 1.728296281095912,
+        "2032": 0.9304288850786239,
+        "2033": 2.3296144156830154,
+        "2034": 1.9199277961230972,
+        "2035": 2.231235622760385,
+        "2036": 1.0564305107939824,
+        "2037": 1.1855435411494413
+      },
+      "descriptive_only": true
+    }
+  },
+  "a_grid_boundary_accounting": {
+    "cells_with_expansion": 56,
+    "cells_boundary_unresolved": 56,
+    "note": "unresolved 占比高时，C>A 结论强度降级（见 P4_PROTOCOL_REVIEW §4.4）"
+  },
+  "stop_conditions_reference": "docs/P4_PROTOCOL.md §8"
+}

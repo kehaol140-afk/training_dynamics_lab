@@ -1,0 +1,179 @@
+{
+ "anchor": "m1_muon_lr2.0_wd0.02_p0.5_s2030",
+ "anchor_sha256": "4f68ce2423d663f87fbb44f051abe92d6ccd09118ca42a80261497ee13f095e4",
+ "batch_info": [
+  {
+   "batch": 1,
+   "preclip_global_norm": 0.3370305001735687,
+   "clip_coef": 1.0,
+   "clipped": false,
+   "valid_targets": 32640,
+   "train_loss_mean_micro": 2.3658268749713898
+  },
+  {
+   "batch": 2,
+   "preclip_global_norm": 0.3561805486679077,
+   "clip_coef": 1.0,
+   "clipped": false,
+   "valid_targets": 32640,
+   "train_loss_mean_micro": 2.2147748470306396
+  },
+  {
+   "batch": 3,
+   "preclip_global_norm": 0.34101608395576477,
+   "clip_coef": 1.0,
+   "clipped": false,
+   "valid_targets": 32640,
+   "train_loss_mean_micro": 2.269198715686798
+  },
+  {
+   "batch": 4,
+   "preclip_global_norm": 0.3559412956237793,
+   "clip_coef": 1.0,
+   "clipped": false,
+   "valid_targets": 32640,
+   "train_loss_mean_micro": 2.5164818167686462
+  },
+  {
+   "batch": 5,
+   "preclip_global_norm": 0.34035056829452515,
+   "clip_coef": 1.0,
+   "clipped": false,
+   "valid_targets": 32640,
+   "train_loss_mean_micro": 2.4278780221939087
+  },
+  {
+   "batch": 6,
+   "preclip_global_norm": 0.35420113801956177,
+   "clip_coef": 1.0,
+   "clipped": false,
+   "valid_targets": 32640,
+   "train_loss_mean_micro": 2.522827446460724
+  },
+  {
+   "batch": 7,
+   "preclip_global_norm": 0.3423706293106079,
+   "clip_coef": 1.0,
+   "clipped": false,
+   "valid_targets": 32640,
+   "train_loss_mean_micro": 2.2482857704162598
+  },
+  {
+   "batch": 8,
+   "preclip_global_norm": 0.34752357006073,
+   "clip_coef": 1.0,
+   "clipped": false,
+   "valid_targets": 32640,
+   "train_loss_mean_micro": 2.3219076097011566
+  },
+  {
+   "batch": 9,
+   "preclip_global_norm": 0.3642507493495941,
+   "clip_coef": 1.0,
+   "clipped": false,
+   "valid_targets": 32640,
+   "train_loss_mean_micro": 2.4539897441864014
+  },
+  {
+   "batch": 10,
+   "preclip_global_norm": 0.3549049496650696,
+   "clip_coef": 1.0,
+   "clipped": false,
+   "valid_targets": 32640,
+   "train_loss_mean_micro": 2.2309469282627106
+  }
+ ],
+ "natural_rel_offsets": {
+  "model.layers.1.self_attn.q_proj.weight": [
+   0.5451611280441284,
+   0.5209643244743347,
+   0.5042149424552917,
+   0.5363442301750183,
+   0.5522872805595398,
+   0.6546058058738708,
+   0.6237179040908813,
+   0.6306837201118469,
+   0.7131975293159485,
+   0.6983209848403931
+  ],
+  "model.layers.1.self_attn.k_proj.weight": [
+   0.5644780397415161,
+   0.5241347551345825,
+   0.5099892020225525,
+   0.5234283804893494,
+   0.569188117980957,
+   0.6337340474128723,
+   0.6326752305030823,
+   0.6351969242095947,
+   0.7003589868545532,
+   0.677723228931427
+  ],
+  "model.layers.1.mlp.down_proj.weight": [
+   0.540470540523529,
+   0.563298761844635,
+   0.5441429615020752,
+   0.5589917302131653,
+   0.5436689853668213,
+   0.6870081424713135,
+   0.6772147417068481,
+   0.6772627830505371,
+   0.7207480072975159,
+   0.6919727325439453
+  ],
+  "model.layers.6.self_attn.q_proj.weight": [
+   0.5369028449058533,
+   0.5611312389373779,
+   0.5192313194274902,
+   0.5515060424804688,
+   0.5439223051071167,
+   0.6897955536842346,
+   0.6696589589118958,
+   0.6647000312805176,
+   0.7242759466171265,
+   0.6879991888999939
+  ],
+  "model.layers.6.self_attn.k_proj.weight": [
+   0.5212570428848267,
+   0.5476639866828918,
+   0.5125738382339478,
+   0.5336881279945374,
+   0.5304899215698242,
+   0.6892334818840027,
+   0.6596672534942627,
+   0.6463029980659485,
+   0.69789057970047,
+   0.7009789347648621
+  ],
+  "model.layers.6.mlp.down_proj.weight": [
+   0.548992395401001,
+   0.5674129128456116,
+   0.5551288723945618,
+   0.5564305782318115,
+   0.5609097480773926,
+   0.7164584994316101,
+   0.694455623626709,
+   0.6840556263923645,
+   0.7265608906745911,
+   0.7160228490829468
+  ]
+ },
+ "repetition_all_bitwise": {
+  "H_ref": true,
+  "batch1": true,
+  "batch6": true
+ },
+ "matrix_elements_actual": {
+  "model.layers.1.self_attn.q_proj.weight": 262144,
+  "model.layers.1.self_attn.k_proj.weight": 131072,
+  "model.layers.1.mlp.down_proj.weight": 851968,
+  "model.layers.6.self_attn.q_proj.weight": 262144,
+  "model.layers.6.self_attn.k_proj.weight": 131072,
+  "model.layers.6.mlp.down_proj.weight": 851968
+ },
+ "identity_max_abs_err_over_all_points": 3.725290305400808e-09,
+ "n_response_points": 660,
+ "model_updates": 0,
+ "eval_access": 0,
+ "gpu_seconds": 26.484660148620605,
+ "wall_seconds": 27.888200998306274
+}

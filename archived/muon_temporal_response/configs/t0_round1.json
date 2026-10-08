@@ -1,0 +1,91 @@
+{
+  "format": "muon_temporal_t0_round1_v1",
+  "date_frozen": "2026-09-28",
+  "provenance": {
+    "theory_outline": "references/Muon_Temporal_Theory_Outline_and_Research_Audit_v1.md",
+    "theory_outline_sha256": "9c589de97fc8cce6ba89df7549aebab6bfc497249bd530928ecd5520509c0509",
+    "experiment_design_v2": "references/Muon_Temporal_Experiment_Design_v2.md",
+    "experiment_design_v2_sha256": "a6288cba41ab8daf33d91a0b97c39b45058533dfa1ca9706ee9405b89f4114c5",
+    "execution_plan": "references/Muon_Temporal_Round1_T1_T0_Execution_Plan_v1.md",
+    "execution_plan_sha256": "2a08ecd853ddef7f59e4eca3a5672f1980f68ca9bf1888db1b1739fd535edece",
+    "installed_muon": "/home/b205/miniforge3/envs/fr_minimind/lib/python3.11/site-packages/torch/optim/_muon.py",
+    "installed_muon_sha256": "38e95918424bd26604f786195a4aa72afb60674b4ac9ccbde777974013cb1f52",
+    "torch_version": "2.11.0",
+    "torch_cuda": "13.0",
+    "notes": "installed _muon.py SHA256 matches muon_transition_experiment M0 Gate1 freeze (outputs/m0/muon_freeze.json)"
+  },
+  "construction": {
+    "S": [[2.0, 0.0], [0.0, 1.0]],
+    "Bs": [[1.0, 0.0], [0.0, 0.0]],
+    "Ba": [[0.0, -0.7071067811865476], [0.7071067811865476, 0.0]],
+    "T": 64,
+    "L": 64,
+    "beta": 0.95,
+    "nesterov": true,
+    "M0": [[2.0, 0.0], [0.0, 1.0]],
+    "M0_coordinate": "EMA (installed buf.lerp convention; equals S)",
+    "x_def": "x[i]=+1 for i in [0,32), -1 for i in [32,64), zero-based index",
+    "y_def": "y[i]=(-1)^i",
+    "phase": "q in 0..63; step t (1-based) uses i=(t-1+q)%64",
+    "arm1": "G1(q,t) = S + eps*(x[i]*Bs + y[i]*Ba)",
+    "arm2": "G2(q,t) = S + eps*(y[i]*Bs + x[i]*Ba)",
+    "phase_reset": "both arms start from the shared fixed M0 at every phase"
+  },
+  "perturbation_scales": {
+    "delta_relative_grid": [0.0, 0.001, 0.01, 0.05],
+    "epsilon_rule": "epsilon_perturb = delta_relative * ||S||_F / sqrt(2); ||S||_F = sqrt(5)",
+    "field_separation": "delta_relative, epsilon_perturb, eps_norm are distinct fields; eps_norm is the NS normalization clamp eps of the installed implementation",
+    "eps_norm": 1e-7,
+    "legacy_note": "v2 reported epsilon_perturb=0.001 absolute, NOT delta=0.001; legacy supplement not part of main matrix (not rerun this round; v2 did not record its eps_norm so it is marked not-fully-reproducible)"
+  },
+  "maps": {
+    "polar_fp64": "ideal full-rank polar factor U V^T (FP64)",
+    "finite_ns_fp64": "installed semantics (norm().clamp(min=eps) normalization, transpose-if-tall, addmm 3-coefficient quintic, 5 steps) evaluated in FP64; no bf16 cast",
+    "native_muon": "installed torch.optim path: Muon.step() on a single 2x2 fp32 parameter with fp32 grads; D captured as _zeropower_via_newtonschulz(H_t) with H_t = grad.lerp(buf, momentum) from the live optimizer state; NS internally bf16",
+    "ns_coefficients": [3.4445, -4.775, 2.0315],
+    "ns_steps": 5,
+    "shape_scaling": "installed adjust_lr_fn=None -> 'original': lr*sqrt(max(1,A/B)); for 2x2 A=B -> factor 1; scaling enters lr only, never D",
+    "native_device": "cuda:0 (RTX 5090) if free, else cuda:1, else BLOCKED",
+    "native_dtype": "param/grad/buffer fp32 (matches M1/M2 training), NS internal bfloat16"
+  },
+  "predictions": {
+    "nesterov_kernel": "w0=1-beta^2; w_j=(1-beta)*beta^(j+1) for j>=1; H_t=beta^(t+1)*M0+sum_j w_j G_{t-j}",
+    "M_scalar": "r_ts=trace(C_G(t,s))/trace(Sigma0); C_G_scalar(t,s)=r_ts*Sigma0; same filtering; same J projection; delta=0 returns exact zero",
+    "M_direction": "full 4x4 direction cross-covariance through the same filter; C_D_pred(t)=J C_H(t) J^T",
+    "J_source": "per-map analytic tangent at H=S (polar: Sylvester solution; finite_ns: E2 recursion incl. normalization branch); native uses the finite_ns_fp64 tangent as its real-arithmetic proxy (bf16 rounding has no derivative); J never fitted from output variances",
+    "full_replay": "complete recursion, diagnostic label only, not claimed as a cheap online method"
+  },
+  "pulse": {
+    "baseline": "G_t=S for all t, M0=S, T=64",
+    "pulse_step": 16,
+    "amplitudes_delta": [0.001, 0.01, 0.05],
+    "epsilon_pulse_rule": "epsilon_pulse = delta_pulse * ||S||_F (single unit-norm direction, no sqrt(2))",
+    "directions": ["Bs", "Ba"],
+    "response_def": "R_ba(t,16;eps)=<Bb,(D_plus(t)-D_minus(t))/(2*eps)>",
+    "fp64_prediction": "w_(t-16)*<Bb, J[Ba or Bs]> for t>=16 (w index t-16, zero for t<16)"
+  },
+  "statistics": {
+    "Dbar_t": "mean over phases per time",
+    "A_j": "mean_t mean_q ||D(q,t)-Dbar_t||_F^2",
+    "Delta_A": "A_2-A_1",
+    "ratio_A": "A_2/A_1 only when denominator usable",
+    "B_j(t)": "Dbar_t - map(S)",
+    "covariance": "per-time cross-phase centered covariance first, then average over time",
+    "no_seed_inflation": "64 phases are a finite enumeration population, not 64 independent training seeds"
+  },
+  "tests": {
+    "fp64_tolerance": {"atol": 1e-12, "rtol": 1e-9},
+    "tangent_vs_fd_steps": [1e-3, 1e-4, 1e-5, 1e-6],
+    "tangent_vs_fd_relerr_max": 1e-6,
+    "exact_checks": "symbol counts and input multiset labels"
+  },
+  "budget": {
+    "cpu_seconds_max": 1800,
+    "gpu_seconds_max": 900,
+    "output_bytes_max": 1073741824,
+    "transformer_updates": 0,
+    "real_batch_grad_computations": 0,
+    "parent_trajectories": 0,
+    "confirmation_set_access": 0
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "run_id": "m2_muon_lr4.0_wd0.02_p0.75_s2030",
+  "stage": "M1",
+  "arm": "muon",
+  "p": 0.75,
+  "seed": 2030,
+  "lr_multiplier": 4.0,
+  "lr": 0.02,
+  "reference_lr": 0.005,
+  "weight_decay": 0.02,
+  "n_steps": 2048,
+  "tokens": 67108864,
+  "manifest_p_hat": 0.75,
+  "schedule": {
+    "warmup_steps": 32,
+    "cosine_min_frac": 0.1
+  },
+  "grad_clip": 1.0,
+  "device": "cuda:0"
+}

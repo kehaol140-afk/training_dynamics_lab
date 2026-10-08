@@ -1,0 +1,17 @@
+claim_id,claim,classification,evidence,old_audit_disposition,current_status
+C-01,Tangent ill-conditioning worsens with scale (F0),finding,outputs/f0_existing_bank_audit/power_iteration.csv,held,UNCHANGED
+C-02,v-floor causally closes into theta' with v_hat^-3/2 scaling (F1),finding,outputs/f1_mechanism/summary.json,held,UNCHANGED
+C-03,Practical hypergradients fail under engineering budgets (F2),finding,outputs/f2_hypergradient/summary.json,held,UNCHANGED
+C-04,Trust-region collapse is correlated-spectrum-only (F2.5),finding,outputs/f2_5_trust_region/summary.json,held,UNCHANGED; re-corroborated by F4B/F4C H_best==1
+C-05,Spectral instability exists (rho>1.05) but is metric-dependent (F3/F3.5),finding,outputs/f3_curvature_mechanism/summary_final.json,held with caveat,UNCHANGED
+C-06,Instability has phase structure with self-healing,finding,outputs/f4a_phase_map/*,not established (17/74 units at window end),NEW CONFIRMED; strict healing 13/14; LATE 24/24 curvature-neutral
+C-07,A monotone scale law of instability exists,hypothesis,outputs/f4a_phase_map/summary.json; f4a1 matched_summary,expected from F4-A,WITHDRAWN -> NONMONOTONIC_SCALE_STRUCTURE; only EARLY lambda_SO monotone in N
+C-08,Macro evolution is predictable from progress alone (M0),finding,outputs/f4a5_modeling/model_comparison.csv,not tested,NEW CONFIRMED (LOSO MAE 0.4249)
+C-09,Micro per-cell trauma is predictable,hypothesis,outputs/f4a5_modeling/summary.json,not tested,WITHDRAWN (prescreen balacc 0.539; DISABLED_BY_PREREG)
+C-10,SAU yields method gain over fixed unrolling,method claim,outputs/f4b_sau/summary.json,proposed direction in old report,WITHDRAWN (NO_METHOD_GAIN; SAU==FIXED1 bitwise)
+C-11,Online observability gap is structural,finding,outputs/f4b_postmortem/*,not tested,NEW CONFIRMED (0.8367 offline vs 0.685 online)
+C-12,Utility already concentrates at H<=2,finding,outputs/f4b_postmortem/horizon_sufficiency.csv,not tested,NEW CONFIRMED
+C-13,"Intervention benefit weakly scale-dependent, delta-sensitive",finding,outputs/f4c_mining/mining_summary.json,not tested,NEW CONFIRMED
+C-14,P4 continuation adaptation: C1/C2 inferior to A_best; STOP,finding,outputs/p4_full/stage3/analysis_report.json,held (frozen),"UNCHANGED (hash-identical, recompute-identical)"
+C-15,External validation on second recipe/dataset 50M-150M is next gate,plan,docs/F4_POSTMORTEM_DECISION_MEMO.md; EXTERNAL_VALIDATION_PLAN.md,general outlook,REVISED concrete option 2 preferred; NOT EXECUTED this round
+C-16,F4 doc-level numeric presentation defects,defect register,analysis/RECOMPUTE_NOTES.md sec.5,n/a,"NEW: 4 items, none affecting verdicts"

@@ -1,0 +1,251 @@
+{
+ "study": "F4B_SAU",
+ "n_cells": 42,
+ "delta": 0.02,
+ "verdict": "NO_METHOD_GAIN",
+ "primary_gate": {
+  "A_regret_median": false,
+  "B_harmful": true,
+  "C_dominant": false,
+  "D_neutral": true,
+  "E_compute": true
+ },
+ "primary_pass": false,
+ "practical_gain": false,
+ "median_improvement_frac": 0.0,
+ "per_method": {
+  "SAU": {
+   "median": 0.0,
+   "mean": 0.1809540950815592,
+   "max": 1.0,
+   "n": 42,
+   "harmful_rate": 0.11904761904761904,
+   "mean_H": 1.0,
+   "median_H": 1.0,
+   "oracle_acc": 0.7380952380952381
+  },
+  "BEST_FIXED": {
+   "median": 0.0,
+   "mean": 0.1809540950815592,
+   "max": 1.0,
+   "n": 42,
+   "harmful_rate": 0.11904761904761904,
+   "mean_H": 6.571428571428571,
+   "median_H": 2.0,
+   "oracle_acc": 0.7380952380952381
+  },
+  "ORACLE": {
+   "median": 0.0,
+   "mean": 0.05804284302453867,
+   "max": 0.9143585611488549,
+   "n": 42,
+   "harmful_rate": 0.07142857142857142,
+   "mean_H": 2.7857142857142856,
+   "median_H": 1.0,
+   "oracle_acc": 0.9047619047619048
+  },
+  "FIXED1": {
+   "median": 0.0,
+   "mean": 0.1809540950815592,
+   "max": 1.0,
+   "n": 42,
+   "harmful_rate": 0.11904761904761904,
+   "mean_H": 1.0,
+   "median_H": 1.0,
+   "oracle_acc": 0.7380952380952381
+  },
+  "FIXED2": {
+   "median": 0.0,
+   "mean": 0.10633557971129359,
+   "max": 1.0,
+   "n": 42,
+   "harmful_rate": 0.09523809523809523,
+   "mean_H": 2.0,
+   "median_H": 2.0,
+   "oracle_acc": 0.8095238095238095
+  },
+  "FIXED4": {
+   "median": 0.0,
+   "mean": 0.14057264540655628,
+   "max": 1.0,
+   "n": 42,
+   "harmful_rate": 0.11904761904761904,
+   "mean_H": 4.0,
+   "median_H": 4.0,
+   "oracle_acc": 0.8095238095238095
+  },
+  "FIXED8": {
+   "median": 0.0,
+   "mean": 0.1474609687585679,
+   "max": 1.0,
+   "n": 42,
+   "harmful_rate": 0.11904761904761904,
+   "mean_H": 8.0,
+   "median_H": 8.0,
+   "oracle_acc": 0.8095238095238095
+  },
+  "FIXED16": {
+   "median": 0.0,
+   "mean": 0.195329519967548,
+   "max": 1.0,
+   "n": 42,
+   "harmful_rate": 0.16666666666666666,
+   "mean_H": 16.0,
+   "median_H": 16.0,
+   "oracle_acc": 0.7380952380952381
+  },
+  "FIXED32": {
+   "median": 0.0,
+   "mean": 0.1316739365652226,
+   "max": 1.0,
+   "n": 42,
+   "harmful_rate": 0.09523809523809523,
+   "mean_H": 32.0,
+   "median_H": 32.0,
+   "oracle_acc": 0.7857142857142857
+  }
+ },
+ "subsets": {
+  "dominant": {
+   "SAU": {
+    "median": 0.6369978793867077,
+    "mean": 0.5613545786218908,
+    "max": 1.0,
+    "n": 9
+   },
+   "BEST_FIXED": {
+    "median": 0.6369978793867077,
+    "mean": 0.5613545786218908,
+    "max": 1.0,
+    "n": 9
+   }
+  },
+  "neutral": {
+   "SAU": {
+    "median": 0.0,
+    "mean": 0.043478260869565216,
+    "max": 1.0,
+    "n": 23
+   },
+   "BEST_FIXED": {
+    "median": 0.0,
+    "mean": 0.043478260869565216,
+    "max": 1.0,
+    "n": 23
+   }
+  }
+ },
+ "fold_hp": {
+  "2030": {
+   "budget": [
+    8,
+    4,
+    0.1
+   ],
+   "hmin": 0.0,
+   "best_fixed_H": 2,
+   "best_fixed_hmin": 0.0
+  },
+  "2031": {
+   "budget": [
+    8,
+    4,
+    0.1
+   ],
+   "hmin": 0.0,
+   "best_fixed_H": 2,
+   "best_fixed_hmin": 0.0
+  },
+  "2032": {
+   "budget": [
+    8,
+    4,
+    0.1
+   ],
+   "hmin": 0.0,
+   "best_fixed_H": 2,
+   "best_fixed_hmin": 0.0
+  },
+  "2033": {
+   "budget": [
+    8,
+    4,
+    0.1
+   ],
+   "hmin": 0.0,
+   "best_fixed_H": 2,
+   "best_fixed_hmin": 0.0
+  },
+  "2034": {
+   "budget": [
+    8,
+    4,
+    0.1
+   ],
+   "hmin": 0.0,
+   "best_fixed_H": 2,
+   "best_fixed_hmin": 0.0
+  },
+  "2035": {
+   "budget": [
+    8,
+    4,
+    0.1
+   ],
+   "hmin": 0.0,
+   "best_fixed_H": 2,
+   "best_fixed_hmin": 0.0
+  },
+  "2036": {
+   "budget": [
+    8,
+    4,
+    0.1
+   ],
+   "hmin": 0.0,
+   "best_fixed_H": 2,
+   "best_fixed_hmin": 0.0
+  },
+  "2037": {
+   "budget": [
+    8,
+    4,
+    0.1
+   ],
+   "hmin": 0.0,
+   "best_fixed_H": 2,
+   "best_fixed_hmin": 0.0
+  },
+  "2042": {
+   "budget": [
+    8,
+    4,
+    0.1
+   ],
+   "hmin": 0.0,
+   "best_fixed_H": 2,
+   "best_fixed_hmin": 0.0
+  },
+  "2043": {
+   "budget": [
+    8,
+    4,
+    0.1
+   ],
+   "hmin": 0.0,
+   "best_fixed_H": 32,
+   "best_fixed_hmin": 0.0
+  },
+  "2044": {
+   "budget": [
+    8,
+    4,
+    0.1
+   ],
+   "hmin": 0.0,
+   "best_fixed_H": 4,
+   "best_fixed_hmin": 0.0
+  }
+ },
+ "model_prescreen": "DISABLED_BY_PREREG"
+}

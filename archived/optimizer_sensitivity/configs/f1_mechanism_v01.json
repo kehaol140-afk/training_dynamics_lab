@@ -1,0 +1,46 @@
+{
+  "audit_id": "F1_MECHANISM_CLOSURE_V01",
+  "date_frozen": "2026-09-26",
+  "question": "为什么 AdamW full-state training map z=(theta,m,v) 的 tangent conditioning 随模型规模增大而恶化（F0 已确认）；用既有 5M/26M/100M 冻结 bank 做 blockwise channel 因果分解、v-floor 干预、risk knockout、module 定位、precision 分解。不开发 optimizer/stabilization。",
+  "anchor": "与 F0 相同的 c=0 锚点（下一步零梯度）。该锚点上 full-state 一步 map 的 Jacobian 逐坐标解析：dtheta'=(1-lr*wd)*dtheta - lr*[dm1/bc1 - m1_hat*dsqrt]/(sqrt(v1_hat)+eps)^2 通道分解为 theta 通道 (1-lr*wd)、m 通道 -M_i，M_i = lr*beta1/(bc1*(sqrt(v1_hat_i)+eps)) = (beta1/(1-beta1))*G_i（注意：F0 报告中 m-channel=beta1*G 的随记把动量递推与状态通道导数混写，F0 测量本身只用梯度通道，不受影响；本 F1 以此处解析式为准并经 vendored tangent 单测验证）、v 通道 lr*m1_hat*(beta2/(2*bc2*sqrt(v1_hat)))/(sqrt(v1_hat)+eps)^2；dm'=beta1*dm；dv'=beta2*dv。MiniMind bank 无精确零 v（F0 核验 74 态），全部坐标正则。",
+  "states_f1a": {
+    "v07_5m": [[2030, 46], [2030, 64], [2030, 82], [2031, 46], [2031, 64], [2031, 82], [2037, 46], [2037, 64], [2037, 82]],
+    "g1a_26m": "3 seeds {2042,2043,2044} x steps {26,64,102}（9 态）",
+    "g1b_100m": "3 seeds {2042,2043,2044} x steps {26,64,102}（9 态）"
+  },
+  "states_f1b_f1c": {
+    "v07_5m": [[2030, 46], [2031, 64], [2037, 82]],
+    "g1a_26m": [[2042, 26], [2042, 64], [2042, 102]],
+    "g1b_100m": [[2042, 26], [2042, 64], [2042, 102]]
+  },
+  "states_f1e": {
+    "g1b_100m": [[2042, 26], [2042, 64], [2043, 26]]
+  },
+  "directions_frozen": {
+    "random_seeds": [11, 22, 33],
+    "generator_seed": 20260926,
+    "grad_aligned_mhat": "单位化 exp_avg（F0 同式）",
+    "channel_perturbations": "q_theta/q_m/q_v 各为单位 L2 的 iid N(0,1)（同一冻结 seed 序列按通道独立生成）；另加 q_m = m_hat 方向（结构化）",
+    "amplification_def": "A_full = sqrt(||dtheta'||^2+||dm'||^2+||dv'||^2)/||q||；A_theta = ||dtheta'||/||q||（两者都报）"
+  },
+  "vfloor_tau_grid": [0.0, 1e-08, 1e-07, 1e-06, 1e-05],
+  "vfloor_rule": "v_tau = max(v, tau^2) 仅作用于 sensitivity/tangent 计算所读的 v（frozen-state counterfactual probe，不改任何真实训练）；directions 在原始 v 上冻结后跨 tau 复用；每 tau 记录 forward one-step difference ||u(v_tau)-u(v)||/||u(v)||（u=theta'-theta，c=0 锚点 update）及逐模块相对差，防止把 forward 大改误称 sensitivity effect",
+  "risk_scores": {
+    "R_den": "1/(sqrt(v1_hat)+eps)（c=0 锚点分母的逆；F0 G_i 的逐坐标核心）",
+    "R_der": "|d theta'/d v_i| = lr*(beta1*|m_i|/bc1)*(beta2/(2*bc2*sqrt(v1_hat)))/(sqrt(v1_hat)+eps)^2（AdamW 对 v 的解析导数，逐坐标；由冻结 map 解析构造）"
+  },
+  "knockout_fractions": [0.0001, 0.001, 0.01, 0.05],
+  "knockout_rule": "按 risk 全局降序取 top-f 坐标，仅在其上置 G_i=0（tangent/JVP diagnostic 内 mask；forward 不变），重估 sigma_max 与 A(q_random frozen)；同时输出 kill-curve（top-f 坐标对 sum_i (G_i q_i)^2 的贡献份额，f 细网格 0.01%..100%）与 90% 质量点 f90",
+  "knockout_metadata": "每个 state x risk 的 top-64 坐标记录 module/layer/param/row/v/m/m_hat；逐坐标 gradient 不在 bank 中存储（key 集合已核验 = step/exp_avg/exp_avg_sq），以 m_hat 为存储型梯度代理并如实标注 NOT_STORED；clip state 以该 state 的 preclip_grad_norm（26M/100M training_dynamics.json；5M v07 用冻结文档值）换算记录",
+  "precision_arm_note": "F1-E 仅 H=1（不重建 future batch 流；H>1 需 batch replay，超出本轮冻结范围，在报告中如实声明）",
+  "fd_rules_f1e": {
+    "theta_channel": "加性扰动 ±eps*q_theta，中心差分 vs 解析 (1-lr*wd)*q_theta",
+    "m_channel": "加性 ±eps*q_m，中心差分 vs 解析 -beta1*G*q_m",
+    "v_channel": "v 为正但 floor 至 1e-18：加性扰动会使 v-eps*q 变负，故用乘性/log 扰动 v_pm = v*exp(±eps*q_v)，中心差分对应 log-v 对角 (dtheta'/dv_i)*v_i，解析同基比较",
+    "eps_grid_fp64": [0.01, 0.001, 0.0001, 1e-05, 1e-06, 1e-07, 1e-08, 1e-09, 1e-10],
+    "eps_grid_fp32": [0.01, 0.001, 0.0001, 1e-05, 1e-06],
+    "gate": "fp64 每通道 best rel_err <= 1e-6 且 cos >= 0.999999（v 通道 log-空间）；fp32 <= 1e-3（信息性）"
+  },
+  "verdict_labels": ["V_FLOOR_CAUSAL", "V_FLOOR_PARTIAL", "OTHER_STATE_CHANNEL", "PRECISION_DOMINATED", "NO_CLEAR_MECHANISM", "UNRESOLVED"],
+  "forbidden": ["下载 1B", "新训练大型模型", "修改 forward AdamW", "开发 FRD/stabilization", "controller", "data mixing", "重开 fluctuation-response/GTTR", "为通过实验改 gate"]
+}

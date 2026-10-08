@@ -1,0 +1,60 @@
+{
+ "written_after": "first-5 calibration outputs computed below; check-half labels untouched",
+ "H_ref_sha256": {
+  "model.layers.1.self_attn.q_proj.weight": "7dbca62e88051cfd2434a3f0b2c0eb78636f82efd680c4a15f3c2456124763cc",
+  "model.layers.1.self_attn.k_proj.weight": "c3030b535d552b88ca9a162ea34c417784c1e71e35c0f74af6637656123b536c",
+  "model.layers.1.mlp.down_proj.weight": "3c373b8da0800dfa5315848a656ffa2f7454008087b06c518eb77703c559bc55",
+  "model.layers.6.self_attn.q_proj.weight": "c3e2504440068b85ecb70b0dd829ffc46878f70371c67c41c8d743f08f7cf175",
+  "model.layers.6.self_attn.k_proj.weight": "6597f2bdc517bf9e942c9e7f73a348c8db3c6e0207a34988cba93e78acd15391",
+  "model.layers.6.mlp.down_proj.weight": "2d901dc6a821cbe60f0851d1214620fcc114eebba1e09dd4947b1e2f245649ff"
+ },
+ "rule": "H_ref = fp64 mean of first-5 H_i cast once to fp32; alpha grid {0.001,0.01,0.05,0.25,1.0} x {+,-} on natural direction E_i = H_i - H_ref; alpha=+1 forced to saved original H_i; rel-residual denominator max(||delta_native||,||L||)",
+ "code_files_sha256": {
+  "scripts/run_t2a_scale.py": "dbd2911a81154f7f10895a0b5f0ea2881c27c9a44670f07b5b9eb3fa5123cfcc",
+  "src/t0_metrics.py": "dc0bd831fbc1a2afcc19a5c4ec336a607eefa81a5d9112cd309997bcca62a662"
+ },
+ "natural_rel_offsets_first5": {
+  "model.layers.1.self_attn.q_proj.weight": [
+   0.545161247253418,
+   0.5209640264511108,
+   0.5042155385017395,
+   0.5363447070121765,
+   0.5522876381874084
+  ],
+  "model.layers.1.self_attn.k_proj.weight": [
+   0.5644780397415161,
+   0.5241347551345825,
+   0.5099890232086182,
+   0.5234281420707703,
+   0.5691877603530884
+  ],
+  "model.layers.1.mlp.down_proj.weight": [
+   0.5404714345932007,
+   0.5632987022399902,
+   0.5441439151763916,
+   0.5589925646781921,
+   0.5436690449714661
+  ],
+  "model.layers.6.self_attn.q_proj.weight": [
+   0.5369024872779846,
+   0.5611312985420227,
+   0.5192311406135559,
+   0.5515066981315613,
+   0.543921947479248
+  ],
+  "model.layers.6.self_attn.k_proj.weight": [
+   0.5212575197219849,
+   0.5476638078689575,
+   0.5125738382339478,
+   0.5336883664131165,
+   0.5304895043373108
+  ],
+  "model.layers.6.mlp.down_proj.weight": [
+   0.5489929914474487,
+   0.567411482334137,
+   0.5551281571388245,
+   0.5564290881156921,
+   0.5609089136123657
+  ]
+ }
+}
